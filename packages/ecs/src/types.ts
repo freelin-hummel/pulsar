@@ -2,7 +2,7 @@
  * Core ECS type definitions.
  */
 
-/** An entity is a unique string identifier, mapped to tldraw shape IDs. */
+/** An entity is a unique string identifier, mapped to BlockSuite block IDs. */
 export type Entity = string
 
 /**

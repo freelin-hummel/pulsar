@@ -13,7 +13,7 @@ type EventHandler = (...args: unknown[]) => void
  * World - the central ECS container.
  *
  * Manages entities, their components, and systems that process them.
- * Integrates with tldraw by using shape IDs as entity identifiers.
+ * Integrates with BlockSuite by using block IDs as entity identifiers.
  */
 export class World implements WorldAPI {
   private _entities: Map<Entity, Map<string, ComponentInstance>> = new Map()

@@ -1,8 +1,8 @@
 /**
  * WebGLManager - Base class for WebGL shader rendering on the canvas.
  *
- * Adapted from tldraw's shader-starter-kit pattern. Creates a WebGL2
- * canvas overlay that integrates with the tldraw canvas lifecycle.
+ * Creates a WebGL2 canvas overlay that integrates with the
+ * BlockSuite canvas lifecycle.
  *
  * Subclass this to create custom shader effects:
  * - Override onInit() for setup

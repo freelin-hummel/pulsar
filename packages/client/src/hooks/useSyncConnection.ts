@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import type { World } from '@pulsar/ecs'
 import type { SyncMessage } from '@pulsar/shared'
-import type { Editor } from 'tldraw'
+import type { Doc } from '@blocksuite/store'
 
 interface SyncConnectionOptions {
   roomId: string
   userId: string
   world: World
-  editor: Editor | null
+  doc: Doc | null
 }
 
 /**
@@ -22,7 +22,7 @@ export function useSyncConnection({
   roomId,
   userId,
   world,
-  editor,
+  doc,
 }: SyncConnectionOptions) {
   const [isConnected, setIsConnected] = useState(false)
   const wsRef = useRef<WebSocket | null>(null)
@@ -58,7 +58,7 @@ export function useSyncConnection({
         ws.addEventListener('message', (event) => {
           try {
             const data = JSON.parse(event.data as string)
-            handleServerMessage(data, world, editor)
+            handleServerMessage(data, world, doc)
           } catch {
             // Ignore malformed messages
           }
@@ -119,7 +119,7 @@ export function useSyncConnection({
         wsRef.current.close()
       }
     }
-  }, [roomId, userId, world, editor])
+  }, [roomId, userId, world, doc])
 
   /** Send a sync message to the server */
   const send = (message: SyncMessage) => {
@@ -135,8 +135,8 @@ export function useSyncConnection({
 function handleServerMessage(
   data: Record<string, unknown>,
   world: World,
-  editor: Editor | null
+  doc: Doc | null
 ) {
-  // Future: handle snapshot, shapes:update, presence:update, ecs:* messages
+  // Future: handle snapshot, block updates, presence:update, ecs:* messages
   // This will be implemented when the server actor is fully connected
 }

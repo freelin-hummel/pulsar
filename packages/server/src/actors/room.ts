@@ -24,7 +24,7 @@ interface ShapeChange {
  * Room Actor - manages a single collaborative canvas room.
  *
  * Each room actor maintains:
- * - The canonical shape state (tldraw document)
+ * - The canonical block state (BlockSuite document)
  * - An ECS World with component state for all entities
  * - Connected user presence information
  *

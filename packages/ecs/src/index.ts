@@ -1,12 +1,12 @@
 /**
  * @pulsar/ecs - Entity Component System
  *
- * A lightweight, composable ECS framework designed for extending tldraw shapes
+ * A lightweight, composable ECS framework designed for extending BlockSuite blocks
  * with modular, reusable behaviors. Components are pure data, systems process
  * entities with matching component signatures each frame or on events.
  *
  * Key concepts:
- * - Entity: A unique identifier (maps to a tldraw shape ID)
+ * - Entity: A unique identifier (maps to a BlockSuite block ID)
  * - Component: A typed data container attached to an entity
  * - System: Logic that processes entities matching a component query
  * - World: The container managing all entities, components, and systems
