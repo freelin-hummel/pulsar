@@ -1,0 +1,20 @@
+{
+  "name": "@pulsar/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pulsar/ecs": "workspace:*",
+    "@pulsar/shared": "workspace:*",
+    "rivetkit": "^2.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
