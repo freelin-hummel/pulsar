@@ -1,21 +1,21 @@
 # Pulsar
 
-A system-agnostic collaborative canvas with an Entity Component System (ECS) extension framework. Built on [tldraw](https://tldraw.dev), [RivetKit](https://rivet.dev), and WebGL.
+A system-agnostic collaborative canvas with an Entity Component System (ECS) extension framework. Built on [BlockSuite](https://github.com/toeverything/blocksuite), [RivetKit](https://rivet.dev), and WebGL.
 
 > **Reference docs for development:**
-> - https://tldraw.dev/llms.txt
+> - https://blocksuite.io
 > - https://rivet.dev/llms.txt
 > - https://developers.cloudflare.com/llms.txt
 
 ## Overview
 
-Pulsar extends tldraw's infinite canvas with a composable ECS that enables modular, reusable behaviors on canvas elements. While designed for virtual tabletop (VTT) use cases, the architecture is intentionally domain-agnostic — any collaborative board scenario benefits from the extensible component/system pattern.
+Pulsar extends BlockSuite's edgeless canvas with a composable ECS that enables modular, reusable behaviors on canvas elements. While designed for virtual tabletop (VTT) use cases, the architecture is intentionally domain-agnostic — any collaborative board scenario benefits from the extensible component/system pattern.
 
 ### Key Features
 
 - **ECS Extension System** — Define components (data) and systems (logic) that attach to any canvas element. Extensions are composable, live-editable, and require no build tooling.
 - **Multiplayer Sync** — Real-time collaboration powered by RivetKit actors. Each room is a stateful actor that syncs canvas shapes and ECS state across all connected clients.
-- **WebGL Shader Effects** — A shader overlay system (adapted from tldraw's shader starter kit) for visual effects applied per-element, selection, or globally.
+- **WebGL Shader Effects** — A shader overlay system for visual effects applied per-element, selection, or globally.
 - **AI Agent Friendly** — Simple, well-typed APIs designed for programmatic interaction and automated content generation.
 
 ## Architecture
@@ -24,7 +24,7 @@ Pulsar extends tldraw's infinite canvas with a composable ECS that enables modul
 ┌─────────────────────────────────────────────────────┐
 │                    @pulsar/client                     │
 │  ┌──────────┐  ┌──────────┐  ┌────────────────────┐ │
-│  │  tldraw   │  │  ECS     │  │  WebGL Shaders     │ │
+│  │BlockSuite│  │  ECS     │  │  WebGL Shaders     │ │
 │  │  Canvas   │◄─┤  World   │  │  (WebGLManager)    │ │
 │  └──────────┘  └──────────┘  └────────────────────┘ │
 │       │              │                                │
@@ -41,7 +41,7 @@ Pulsar extends tldraw's infinite canvas with a composable ECS that enables modul
 │               @pulsar/server                          │
 │  ┌────────────────────┴──────────────────────────┐   │
 │  │           RivetKit Room Actor                  │   │
-│  │  • Canonical shape state                       │   │
+│  │  • Canonical block state                        │   │
 │  │  • ECS component state                         │   │
 │  │  • User presence                               │   │
 │  │  • Durable persistence                         │   │
@@ -55,7 +55,7 @@ Pulsar extends tldraw's infinite canvas with a composable ECS that enables modul
 |---------|-------------|
 | `@pulsar/ecs` | Core Entity Component System — World, Components, Systems |
 | `@pulsar/shared` | Shared types, protocols, and built-in components |
-| `@pulsar/client` | React/tldraw client with ECS, shaders, and sync |
+| `@pulsar/client` | React/BlockSuite client with ECS, shaders, and sync |
 | `@pulsar/server` | RivetKit actor-based multiplayer backend |
 
 ## Quick Start
