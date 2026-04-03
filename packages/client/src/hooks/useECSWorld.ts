@@ -41,7 +41,7 @@ export function useECSWorld() {
         }>(entity, 'transform')
 
         if (transform) {
-          const shape = editor.getShape(entity as any)
+          const shape = editor.getShape(entity as Parameters<typeof editor.getShape>[0])
           if (shape) {
             editor.updateShape({
               id: shape.id,

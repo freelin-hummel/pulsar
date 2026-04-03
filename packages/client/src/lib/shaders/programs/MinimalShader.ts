@@ -13,9 +13,9 @@ export class MinimalShader extends ShaderProgram {
   private program: WebGLProgram | null = null
   private vao: WebGLVertexArrayObject | null = null
   private buffer: WebGLBuffer | null = null
-  private uTime = -1
-  private uResolution = -1
-  private uOpacity = -1
+  private uTime: WebGLUniformLocation | null = null
+  private uResolution: WebGLUniformLocation | null = null
+  private uOpacity: WebGLUniformLocation | null = null
   private manager: { getContext: () => WebGL2RenderingContext | null }
 
   constructor(manager: { getContext: () => WebGL2RenderingContext | null }) {
@@ -54,9 +54,9 @@ export class MinimalShader extends ShaderProgram {
     gl.bindVertexArray(null)
 
     // Get uniform locations
-    this.uTime = gl.getUniformLocation(this.program, 'uTime') as number
-    this.uResolution = gl.getUniformLocation(this.program, 'uResolution') as number
-    this.uOpacity = gl.getUniformLocation(this.program, 'uOpacity') as number
+    this.uTime = gl.getUniformLocation(this.program, 'uTime')
+    this.uResolution = gl.getUniformLocation(this.program, 'uResolution')
+    this.uOpacity = gl.getUniformLocation(this.program, 'uOpacity')
 
     // Clean up individual shaders
     gl.deleteShader(vert)

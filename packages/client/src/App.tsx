@@ -12,7 +12,7 @@ export default function App() {
     // Use URL hash as room ID, or generate one
     const hash = window.location.hash.slice(1)
     if (hash) return hash
-    const id = `room-${Math.random().toString(36).slice(2, 8)}`
+    const id = `room-${crypto.randomUUID().slice(0, 8)}`
     window.location.hash = id
     return id
   })
@@ -21,7 +21,7 @@ export default function App() {
     // Persist user ID in session storage
     const stored = sessionStorage.getItem('pulsar-user-id')
     if (stored) return stored
-    const id = `user-${Math.random().toString(36).slice(2, 8)}`
+    const id = `user-${crypto.randomUUID().slice(0, 8)}`
     sessionStorage.setItem('pulsar-user-id', id)
     return id
   })
