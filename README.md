@@ -14,38 +14,38 @@ Pulsar extends BlockSuite's edgeless canvas with a composable ECS that enables m
 ### Key Features
 
 - **ECS Extension System** — Define components (data) and systems (logic) that attach to any canvas element. Extensions are composable, live-editable, and require no build tooling.
-- **Multiplayer Sync** — Real-time collaboration powered by RivetKit actors. Each room is a stateful actor that syncs canvas shapes and ECS state across all connected clients.
+- **Multiplayer Sync** — Hybrid consistency model: document/canvas state syncs via BlockSuite's built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor.
 - **WebGL Shader Effects** — A shader overlay system for visual effects applied per-element, selection, or globally.
 - **AI Agent Friendly** — Simple, well-typed APIs designed for programmatic interaction and automated content generation.
 
 ## Architecture
 
+Pulsar uses a **hybrid consistency model** — document/canvas state syncs via BlockSuite's built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor. See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full design.
+
 ```
-┌─────────────────────────────────────────────────────┐
-│                    @pulsar/client                     │
-│  ┌──────────┐  ┌──────────┐  ┌────────────────────┐ │
-│  │BlockSuite│  │  ECS     │  │  WebGL Shaders     │ │
-│  │  Canvas   │◄─┤  World   │  │  (WebGLManager)    │ │
-│  └──────────┘  └──────────┘  └────────────────────┘ │
-│       │              │                                │
-│       │        ┌─────┴─────┐                          │
-│       │        │ Extensions │ ◄── Live-editable       │
-│       │        └───────────┘     composable behaviors │
-│       │                                               │
-│  ┌────┴──────────────────────────────────────────┐   │
-│  │          Sync (WebSocket)                      │   │
-│  └────────────────────┬──────────────────────────┘   │
-└───────────────────────┼──────────────────────────────┘
-                        │
-┌───────────────────────┼──────────────────────────────┐
-│               @pulsar/server                          │
-│  ┌────────────────────┴──────────────────────────┐   │
-│  │           RivetKit Room Actor                  │   │
-│  │  • Canonical block state                        │   │
-│  │  • ECS component state                         │   │
-│  │  • User presence                               │   │
-│  │  • Durable persistence                         │   │
-│  └───────────────────────────────────────────────┘   │
+┌──────────────────── Client ──────────────────────────┐
+│                                                       │
+│  BlockSuite Editor (Edgeless)     ECS World           │
+│  ┌──────────────────────┐  ┌────────────────────────┐│
+│  │ Y.Doc (CRDT)         │  │ Game Components        ││
+│  │ • Block positions     │  │ • HP, status, rules    ││
+│  │ • Text, styles        │  │ • Extension systems    ││
+│  │ • Surface layout      │  │ • Permissions          ││
+│  └─────────┬────────────┘  └──────────┬─────────────┘│
+│       Yjs sync                  Authoritative msgs    │
+│            │                          │               │
+└────────────┼──────────────────────────┼───────────────┘
+             │                          │
+             ▼                          ▼
+┌──────────────────── Server (RivetKit Actor) ─────────┐
+│  ┌──────────────────┐  ┌────────────────────────────┐│
+│  │ Yjs Persistence  │  │ Game State Authority       ││
+│  │ • Relay + store  │  │ • Validate mutations       ││
+│  │ • Durable log    │  │ • Enforce permissions      ││
+│  └──────────────────┘  └────────────────────────────┘│
+│  ┌───────────────────────────────────────────────────┐│
+│  │ User Presence (cursors, selections)               ││
+│  └───────────────────────────────────────────────────┘│
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -153,12 +153,11 @@ shaderManager.registerProgram('my-effect', new MyEffect())
 
 ## Multiplayer
 
-Multiplayer is powered by RivetKit actors. Each room is a durable stateful actor that:
+Multiplayer uses a hybrid sync model (see [ARCHITECTURE.md](./ARCHITECTURE.md)):
 
-- Maintains the canonical document state
-- Syncs shape changes and ECS component state
-- Tracks user presence (cursors, selections)
-- Persists durably across disconnects
+- **Document state** (canvas layout, text, visual properties) syncs via BlockSuite's built-in Yjs CRDT. The server persists and relays Yjs updates but does not validate them.
+- **Game state** (ECS components like HP, status effects, permissions) syncs through the authoritative RivetKit actor, which validates mutations before broadcasting.
+- **User presence** (cursors, selections) is relayed through the server without validation.
 
 ## Development
 
