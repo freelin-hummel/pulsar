@@ -1,21 +1,14 @@
-import { actor, setup } from 'rivetkit'
+import { setup } from 'rivetkit'
+import { createHandler } from '@rivetkit/cloudflare-workers'
 import { roomActor } from './actors/room.js'
 
-/**
- * Pulsar Server - RivetKit actor-based multiplayer backend.
- *
- * Uses RivetKit's actor model to manage room state. Each room
- * is a separate actor instance with its own durable state,
- * handling real-time sync between connected clients.
- */
-
-const app = setup({
+const registry = setup({
   use: {
     room: roomActor,
   },
 })
 
-// Start the server
-app.start()
+const { handler, ActorHandler } = createHandler(registry)
 
-console.log('[pulsar] Server started')
+export default handler
+export { ActorHandler }

@@ -11,9 +11,11 @@
   "dependencies": {
     "@pulsar/ecs": "workspace:*",
     "@pulsar/shared": "workspace:*",
-    "rivetkit": "^2.0.0"
+    "@rivetkit/cloudflare-workers": "^2.2.1",
+    "rivetkit": "^2.2.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260403.1",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0"
   }

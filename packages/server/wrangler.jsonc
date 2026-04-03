@@ -1,0 +1,26 @@
+{
+  "name": "pulsar-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ACTOR_DO",
+        "class_name": "ActorHandler"
+      }
+    ]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "ACTOR_KV",
+      "id": "6cca4eb8de23484cab97fc23192d4c1a"
+    }
+  ],
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["ActorHandler"]
+    }
+  ]
+}

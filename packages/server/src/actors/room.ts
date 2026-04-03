@@ -31,16 +31,9 @@ interface ShapeChange {
  * Clients connect via WebSocket and receive real-time updates.
  * The actor persists state durably across connections.
  */
-// Type annotation uses `any` due to rivetkit's complex internal generic types
-// that cannot be portably referenced across package boundaries
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const roomActor: any = actor({
-  types: {} as {
-    state: RoomActorState
-    input: string
-  },
-
-  createState: (c, input: string) => ({
+  createState: (_c, input: string): RoomActorState => ({
     roomId: input,
     shapes: {},
     ecsState: {},

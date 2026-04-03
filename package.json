@@ -10,7 +10,9 @@
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "deploy": "cd packages/client && npx wrangler deploy"
+    "deploy": "pnpm run deploy:server && pnpm run deploy:client",
+    "deploy:server": "cd packages/server && npx wrangler deploy",
+    "deploy:client": "cd packages/client && pnpm run build && npx wrangler pages deploy dist --project-name pulsar-ui --commit-dirty=true"
   },
   "engines": {
     "node": ">=20.0.0",

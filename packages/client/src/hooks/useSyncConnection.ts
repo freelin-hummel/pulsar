@@ -36,7 +36,10 @@ export function useSyncConnection({
 
     const tryConnect = () => {
       try {
-        const wsUrl = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/rooms/${roomId}`
+        const serverUrl = import.meta.env.VITE_RIVET_SERVER_URL as string | undefined
+        const wsUrl = serverUrl
+          ? serverUrl.replace(/^http/, 'ws') + `/ws/rooms/${roomId}`
+          : `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/rooms/${roomId}`
         const ws = new WebSocket(wsUrl)
 
         ws.addEventListener('open', () => {
