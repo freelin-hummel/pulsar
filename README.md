@@ -14,7 +14,7 @@ Pulsar extends BlockSuite's edgeless canvas with a composable ECS that enables m
 ### Key Features
 
 - **ECS Extension System** — Define components (data) and systems (logic) that attach to any canvas element. Extensions are composable, live-editable, and require no build tooling.
-- **Multiplayer Sync** — Real-time collaboration powered by RivetKit actors. Each room is a stateful actor that syncs canvas shapes and ECS state across all connected clients.
+- **Multiplayer Sync** — Hybrid consistency model: document/canvas state syncs via BlockSuite's built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor.
 - **WebGL Shader Effects** — A shader overlay system for visual effects applied per-element, selection, or globally.
 - **AI Agent Friendly** — Simple, well-typed APIs designed for programmatic interaction and automated content generation.
 

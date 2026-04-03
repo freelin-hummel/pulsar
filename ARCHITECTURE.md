@@ -87,14 +87,14 @@ A mutation is routed based on its **domain**:
 | Visual style changes | Yjs | CRDT | Color, opacity, stroke |
 | ECS game components | Server | RivetKit actor validates | HP change, status effect, dice roll |
 | Permission changes | Server | RivetKit actor validates | Visibility toggle, interaction lock |
-| Rule script updates | Server | RivetKit actor validates | GM modifying game rules |
+| Rule script updates | Yjs (source) → Server (promotion) | Source stored in Yjs blocks; server validates and activates | GM modifying game rules |
 | User presence | Server | Relay (no validation) | Cursor position, selection |
 
 ### Conflict Resolution
 
-- **Document state conflicts** are resolved automatically by Yjs CRDT semantics (last-writer-wins per property, with deterministic tie-breaking).
+- **Document state conflicts** are resolved automatically by Yjs CRDT semantics according to the underlying shared type (e.g., maps use last-writer-wins per key, text uses sequence CRDT ordering), producing deterministic convergence across clients.
 - **Game state conflicts** don't occur because the server processes mutations sequentially — it is the single writer.
-- **Cross-domain conflicts** (e.g., a client moves a block via Yjs while the server locks it via game logic) are resolved by the client: the UI layer checks ECS permission components before allowing canvas interactions. If a desync occurs, the server's game state takes precedence and the client reconciles.
+- **Cross-domain conflicts** (e.g., a client moves a block via Yjs while the server locks it via game logic) are not prevented by the server at the Yjs layer, because document mutations are not server-validated. Instead, enforcement is cooperative and layered: clients check ECS permission components before allowing canvas interactions, and while an entity is locked they ignore incoming Yjs updates to protected spatial fields in favor of the authoritative ECS state. If an out-of-policy Yjs mutation still appears (e.g., from a stale or malicious client), it may exist transiently in the CRDT but is not treated as authoritative. Reconciliation occurs either by cooperative clients overwriting the invalid value or by the server-side actor writing corrective Yjs updates back into the document.
 
 ---
 
@@ -172,6 +172,8 @@ Extension → Host:
 
 Mutation requests from extensions are validated by the host before being applied — the extension cannot directly write to the ECS world or BlockSuite document.
 
+**Message security:** The host must validate `event.origin` and `event.source` on every incoming `message` event, accepting only messages from known extension iframe origins. When posting messages to an extension iframe, the host must use a specific `targetOrigin` (not `'*'`) matching the iframe's origin. This prevents other frames or pages from spoofing `mutate`/`roll` messages to bypass the sandbox boundary.
+
 ---
 
 ## 4. Coordinate-Aware Annotation System
@@ -200,12 +202,12 @@ Permissions use **Metadata-Based Access Control** with a trust split matching th
 
 - **Mutation Validation**: The RivetKit actor validates all game-state mutations against permission rules before applying and broadcasting them. A client that bypasses UI restrictions and sends unauthorized mutations directly will have them rejected by the server.
 - **Bootstrap Permission**: The room creator role is stored server-side in the actor state and cannot be overridden by any client or rule script. This prevents the chicken-and-egg problem of permissions being stored in the document they protect.
-- **Rule Scripts**: A GM can modify game rules by editing a Rule Script block. Rule script changes are validated server-side (only the GM role can modify them). Once applied, rule changes take effect for all clients immediately via the authoritative broadcast.
+- **Rule Scripts**: Rule script source code is stored in Yjs blocks (like any other text content), so GMs can edit it collaboratively with full undo/redo via the Yjs history. However, editing a rule script block does not immediately activate it — the GM must explicitly **promote** the script by sending an activation request to the server. The RivetKit actor validates the promotion request (only the GM role can promote), evaluates the script in its trusted environment, and broadcasts the activated rules to all clients. This two-phase flow (Yjs for authoring, server for activation) ensures that rule source benefits from CRDT editing while enforcement remains server-authoritative.
 
 ### Failsafes
 
 - **GM Override**: The room creator always has a bypass mode that ignores all Rule Scripts, preventing accidental lockout.
-- **Rule Script Undo**: Rule script changes are tracked in the Yjs history, allowing undo/redo of rule modifications.
+- **Rule Script Undo**: Rule script source edits are tracked in the Yjs history, allowing undo/redo of text changes. Undoing a source edit does not automatically deactivate the currently active rule — the GM must re-promote to apply the reverted source.
 
 ---
 
