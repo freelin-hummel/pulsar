@@ -5,5 +5,5 @@
  * and provides built-in ECS components for the canvas system.
  */
 
-export type { SyncMessage, RoomState, UserPresence } from './protocol.js'
+export type { SyncMessage, ShapeChange, RoomState, UserPresence } from './protocol.js'
 export { BuiltInComponents } from './components.js'

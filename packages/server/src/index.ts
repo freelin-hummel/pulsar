@@ -9,8 +9,8 @@ import { roomActor } from './actors/room.js'
  * handling real-time sync between connected clients.
  */
 
-export const app = setup({
-  actors: {
+const app = setup({
+  use: {
     room: roomActor,
   },
 })

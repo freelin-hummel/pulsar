@@ -1,5 +1,5 @@
 import { useRef, useMemo, useCallback } from 'react'
-import { World } from '@pulsar/ecs'
+import { World, Component } from '@pulsar/ecs'
 import { BuiltInComponents } from '@pulsar/shared'
 import type { Editor } from 'tldraw'
 
@@ -18,7 +18,7 @@ export function useECSWorld() {
 
       // Register all built-in components
       for (const component of Object.values(BuiltInComponents)) {
-        w.registerComponent(component)
+        w.registerComponent(component as Component<Record<string, unknown>>)
       }
 
       worldRef.current = w

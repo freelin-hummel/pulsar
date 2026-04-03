@@ -1,7 +1,5 @@
-import { actor, type ActorContext } from 'rivetkit'
-import { World } from '@pulsar/ecs'
-import { BuiltInComponents } from '@pulsar/shared'
-import type { SyncMessage, RoomState, UserPresence, ShapeChange } from '@pulsar/shared'
+import { actor } from 'rivetkit'
+import type { SyncMessage, RoomState, UserPresence } from '@pulsar/shared'
 
 /**
  * Room state persisted by the actor.
@@ -11,6 +9,15 @@ interface RoomActorState {
   shapes: Record<string, Record<string, unknown>>
   ecsState: Record<string, Record<string, Record<string, unknown>>>
   users: Record<string, UserPresence>
+}
+
+/**
+ * Shape change from the sync protocol.
+ */
+interface ShapeChange {
+  id: string
+  type: 'create' | 'update' | 'delete'
+  data?: Record<string, unknown>
 }
 
 /**
@@ -24,70 +31,69 @@ interface RoomActorState {
  * Clients connect via WebSocket and receive real-time updates.
  * The actor persists state durably across connections.
  */
-export const roomActor = actor({
-  state: {
-    roomId: '',
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const roomActor: any = actor({
+  types: {} as {
+    state: RoomActorState
+    input: string
+  },
+
+  createState: (c, input: string) => ({
+    roomId: input,
     shapes: {},
     ecsState: {},
     users: {},
-  } as RoomActorState,
+  }),
 
   actions: {
-    /** Initialize a room with a given ID */
-    initialize(ctx: ActorContext<RoomActorState>, roomId: string) {
-      ctx.state.roomId = roomId
-      return { roomId }
-    },
-
     /** Get the full room snapshot */
-    getSnapshot(ctx: ActorContext<RoomActorState>): RoomState {
+    getSnapshot(c): RoomState {
       return {
-        roomId: ctx.state.roomId,
-        shapes: ctx.state.shapes,
-        ecsState: ctx.state.ecsState,
-        users: Object.values(ctx.state.users),
+        roomId: c.state.roomId,
+        shapes: c.state.shapes,
+        ecsState: c.state.ecsState,
+        users: Object.values(c.state.users),
       }
     },
 
     /** Handle a sync message from a client */
-    handleMessage(ctx: ActorContext<RoomActorState>, message: SyncMessage) {
+    handleMessage(c, message: SyncMessage) {
       switch (message.type) {
         case 'connect': {
-          ctx.state.users[message.userId] = {
+          c.state.users[message.userId] = {
             userId: message.userId,
-            name: `User ${Object.keys(ctx.state.users).length + 1}`,
+            name: `User ${Object.keys(c.state.users).length + 1}`,
             color: generateUserColor(message.userId),
             cursor: { x: 0, y: 0 },
             selection: [],
             lastSeen: Date.now(),
           }
-          // Broadcast join to other clients
-          ctx.broadcast('user:join', ctx.state.users[message.userId])
+          c.broadcast('user:join', c.state.users[message.userId])
           break
         }
 
         case 'disconnect': {
-          const user = ctx.state.users[message.userId]
-          delete ctx.state.users[message.userId]
+          const user = c.state.users[message.userId]
+          delete c.state.users[message.userId]
           if (user) {
-            ctx.broadcast('user:leave', { userId: message.userId })
+            c.broadcast('user:leave', { userId: message.userId })
           }
           break
         }
 
         case 'update': {
-          applyShapeChanges(ctx.state, message.changes)
-          ctx.broadcast('shapes:update', message.changes)
+          applyShapeChanges(c.state, message.changes)
+          c.broadcast('shapes:update', message.changes)
           break
         }
 
         case 'presence': {
-          const presenceUser = ctx.state.users[message.userId]
+          const presenceUser = c.state.users[message.userId]
           if (presenceUser) {
             presenceUser.cursor = message.cursor
             presenceUser.selection = message.selection
             presenceUser.lastSeen = Date.now()
-            ctx.broadcast('presence:update', {
+            c.broadcast('presence:update', {
               userId: message.userId,
               cursor: message.cursor,
               selection: message.selection,
@@ -97,11 +103,11 @@ export const roomActor = actor({
         }
 
         case 'ecs:component-add': {
-          if (!ctx.state.ecsState[message.entityId]) {
-            ctx.state.ecsState[message.entityId] = {}
+          if (!c.state.ecsState[message.entityId]) {
+            c.state.ecsState[message.entityId] = {}
           }
-          ctx.state.ecsState[message.entityId][message.component] = message.data
-          ctx.broadcast('ecs:component-add', {
+          c.state.ecsState[message.entityId][message.component] = message.data
+          c.broadcast('ecs:component-add', {
             entityId: message.entityId,
             component: message.component,
             data: message.data,
@@ -110,10 +116,10 @@ export const roomActor = actor({
         }
 
         case 'ecs:component-remove': {
-          if (ctx.state.ecsState[message.entityId]) {
-            delete ctx.state.ecsState[message.entityId][message.component]
+          if (c.state.ecsState[message.entityId]) {
+            delete c.state.ecsState[message.entityId][message.component]
           }
-          ctx.broadcast('ecs:component-remove', {
+          c.broadcast('ecs:component-remove', {
             entityId: message.entityId,
             component: message.component,
           })
@@ -121,13 +127,13 @@ export const roomActor = actor({
         }
 
         case 'ecs:component-update': {
-          if (ctx.state.ecsState[message.entityId]) {
-            ctx.state.ecsState[message.entityId][message.component] = {
-              ...ctx.state.ecsState[message.entityId][message.component],
+          if (c.state.ecsState[message.entityId]) {
+            c.state.ecsState[message.entityId][message.component] = {
+              ...c.state.ecsState[message.entityId][message.component],
               ...message.data,
             }
           }
-          ctx.broadcast('ecs:component-update', {
+          c.broadcast('ecs:component-update', {
             entityId: message.entityId,
             component: message.component,
             data: message.data,
