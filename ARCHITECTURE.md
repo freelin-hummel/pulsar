@@ -20,7 +20,7 @@ Canvas layout, text, spatial arrangement, and visual properties are synced via *
 **Why CRDT for document state:**
 
 - BlockSuite already implements Yjs internally — using it avoids reimplementing undo/redo, offline editing, and conflict resolution.
-- Canvas operations (move, resize, reorder) are commutative and don't need centralized validation.
+- Canvas operations (move, resize, reorder) are well-served by CRDT semantics — Yjs handles concurrent edits and ordering internally with deterministic conflict resolution.
 - Offline-first editing is critical for unreliable network conditions during live sessions.
 
 The RivetKit actor serves as a **persistence and relay layer** for document state: it stores the Yjs update log durably and relays updates between connected clients, but does not validate or reject document mutations.
@@ -124,7 +124,7 @@ Every entity on the canvas is a BlockSuite block with three conceptual layers:
 The Extension Registry manages the lifecycle of custom components:
 
 - **Storage**: Component code (JavaScript) and schemas are stored as strings. In collaborative mode, these are stored within dedicated blocks in the BlockSuite document, synced via Yjs.
-- **Injection**: The registry transforms source strings into executable modules at runtime using `URL.createObjectURL` for ES modules or the `Function` constructor for CommonJS-style definitions.
+- **Injection**: The registry transforms source strings into executable modules at runtime. Extension code executes exclusively within sandboxed iframes (see §3), never in the main application thread. The host communicates with extensions via structured `postMessage` calls.
 - **Reactivity**: When a user edits a component's code, Yjs syncs the change, and the registry triggers a hot-reload of that specific component for all connected clients.
 - **Namespacing**: Components are auto-prefixed with their extension name (e.g., `health:hp`) to prevent collisions.
 
@@ -236,14 +236,14 @@ Permissions use **Metadata-Based Access Control** with a trust split matching th
 | **Pure Centralized** | Full server authority, permission enforcement | No offline support, must reimplement undo/redo, BlockSuite's Yjs is wasted | Over-constrains document editing |
 | **Hybrid (chosen)** | Best of both — CRDT for documents, authority for game logic | More complex routing logic, two sync paths to maintain | Correct trade-off for a VTT |
 
-### Why BlockSuite's Yjs Instead of Custom Sync
+### Why BlockSuite's Yjs for Document State
 
-BlockSuite v0.17.0 uses Yjs internally for its document model. The current codebase bypasses this entirely, using a custom JSON sync protocol. This is being corrected because:
+BlockSuite uses Yjs internally for its document model. Leveraging this for document state sync (rather than a custom protocol) is the correct choice because:
 
-1. **Undo/Redo**: Yjs provides free, correct undo/redo with awareness of collaborative edits. Reimplementing this is error-prone.
-2. **Offline Support**: Yjs merges divergent states automatically when a client reconnects. The custom protocol would need explicit snapshot diffing.
-3. **Conflict Resolution**: Concurrent spatial edits (two users moving the same block) are resolved deterministically by Yjs. The custom protocol has no conflict resolution.
-4. **Reduced Code**: Removing the custom shape sync protocol and using BlockSuite's built-in sync eliminates a significant maintenance surface.
+1. **Undo/Redo**: Yjs provides correct undo/redo with awareness of collaborative edits out of the box.
+2. **Offline Support**: Yjs merges divergent states automatically when a client reconnects, without explicit snapshot diffing.
+3. **Conflict Resolution**: Concurrent spatial edits (two users moving the same block) are resolved deterministically by Yjs.
+4. **Reduced Surface Area**: Using BlockSuite's built-in sync for document state avoids maintaining a parallel sync protocol for canvas operations.
 
 ### Extension Schema Versioning
 
