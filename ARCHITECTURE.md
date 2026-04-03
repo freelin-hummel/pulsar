@@ -94,7 +94,7 @@ A mutation is routed based on its **domain**:
 
 - **Document state conflicts** are resolved automatically by Yjs CRDT semantics according to the underlying shared type (e.g., maps use last-writer-wins per key, text uses sequence CRDT ordering), producing deterministic convergence across clients.
 - **Game state conflicts** don't occur because the server processes mutations sequentially — it is the single writer.
-- **Cross-domain conflicts** (e.g., a client moves a block via Yjs while the server locks it via game logic) are not prevented by the server at the Yjs layer, because document mutations are not server-validated. Instead, enforcement is cooperative and layered: clients check ECS permission components before allowing canvas interactions, and while an entity is locked they ignore incoming Yjs updates to protected spatial fields in favor of the authoritative ECS state. If an out-of-policy Yjs mutation still appears (e.g., from a stale or malicious client), it may exist transiently in the CRDT but is not treated as authoritative. Reconciliation occurs either by cooperative clients overwriting the invalid value or by the server-side actor writing corrective Yjs updates back into the document.
+- **Cross-domain conflicts** (e.g., a client moves a block via Yjs while the server locks it via game logic) are not prevented by the server at the Yjs layer, because document mutations are not server-validated. Instead, enforcement is cooperative and layered. Clients check ECS permission components before allowing canvas interactions — while an entity is locked, they ignore incoming Yjs updates to protected spatial fields in favor of the authoritative ECS state. If an out-of-policy Yjs mutation still appears (e.g., from a stale or malicious client), it may exist transiently in the CRDT but is not treated as authoritative. Reconciliation occurs either by cooperative clients overwriting the invalid value or by the server-side actor writing corrective Yjs updates back into the document.
 
 ---
 
@@ -172,7 +172,7 @@ Extension → Host:
 
 Mutation requests from extensions are validated by the host before being applied — the extension cannot directly write to the ECS world or BlockSuite document.
 
-**Message security:** The host must validate `event.origin` and `event.source` on every incoming `message` event, accepting only messages from known extension iframe origins. When posting messages to an extension iframe, the host must use a specific `targetOrigin` (not `'*'`) matching the iframe's origin. This prevents other frames or pages from spoofing `mutate`/`roll` messages to bypass the sandbox boundary.
+**Message security:** The host must validate `event.origin` and `event.source` on every incoming `message` event — `event.origin` must match the known extension iframe origin, and `event.source` must be the iframe element's `contentWindow` reference. When posting messages to an extension iframe, the host must use a specific `targetOrigin` (not `'*'`) matching the iframe's origin. This prevents other frames or pages from spoofing `mutate`/`roll` messages to bypass the sandbox boundary.
 
 ---
 
