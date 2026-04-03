@@ -43,8 +43,11 @@ export function useECSWorld() {
         if (transform) {
           const block = doc.getBlock(entity)
           if (block) {
+            // Use default dimensions when actual block size is unavailable
+            const DEFAULT_BLOCK_WIDTH = 100
+            const DEFAULT_BLOCK_HEIGHT = 100
             doc.updateBlock(block.model, {
-              xywh: `[${transform.data.x},${transform.data.y},100,100]`,
+              xywh: `[${transform.data.x},${transform.data.y},${DEFAULT_BLOCK_WIDTH},${DEFAULT_BLOCK_HEIGHT}]`,
             } as Record<string, unknown>)
           }
         }

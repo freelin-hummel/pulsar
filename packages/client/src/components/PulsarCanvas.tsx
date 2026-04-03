@@ -46,7 +46,7 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     const container = editorContainerRef.current
     if (!container) return
 
-    container.innerHTML = ''
+    container.replaceChildren()
     container.appendChild(editor)
 
     // Listen for block-level changes via the Doc's slot system
