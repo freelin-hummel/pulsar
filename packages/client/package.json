@@ -11,11 +11,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@blocksuite/blocks": "0.17.0",
+    "@blocksuite/presets": "0.17.0",
+    "@blocksuite/store": "0.17.0",
     "@pulsar/ecs": "workspace:*",
     "@pulsar/shared": "workspace:*",
     "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "tldraw": "^4.4.0"
+    "react-dom": "^18.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",

@@ -1,6 +1,6 @@
 /**
  * Sync protocol types for client-server communication.
- * Based on tldraw sync patterns, adapted for RivetKit actors.
+ * Adapted for BlockSuite + RivetKit actors.
  */
 
 /** A message exchanged between client and server for state sync */

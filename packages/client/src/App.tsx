@@ -5,7 +5,7 @@ import { PulsarCanvas } from './components/PulsarCanvas.js'
  * Pulsar - Collaborative extensible canvas.
  *
  * Entry point renders a room-based canvas with multiplayer sync
- * and ECS extension support built on tldraw.
+ * and ECS extension support built on BlockSuite.
  */
 export default function App() {
   const [roomId] = useState(() => {

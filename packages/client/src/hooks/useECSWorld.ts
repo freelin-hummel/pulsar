@@ -1,12 +1,12 @@
 import { useRef, useMemo, useCallback } from 'react'
 import { World, Component } from '@pulsar/ecs'
 import { BuiltInComponents } from '@pulsar/shared'
-import type { Editor } from 'tldraw'
+import type { Doc } from '@blocksuite/store'
 
 /**
  * React hook that creates and manages an ECS World instance.
  *
- * The World bridges tldraw shapes and ECS entities/components,
+ * The World bridges BlockSuite blocks and ECS entities/components,
  * enabling modular behaviors to be attached to canvas elements.
  */
 export function useECSWorld() {
@@ -27,11 +27,11 @@ export function useECSWorld() {
   }, [])
 
   /**
-   * Sync ECS component data back to tldraw editor shapes.
-   * This is the ECS → tldraw direction of the bridge.
+   * Sync ECS component data back to BlockSuite Doc blocks.
+   * This is the ECS → BlockSuite direction of the bridge.
    */
-  const syncWorldToEditor = useCallback(
-    (editor: Editor) => {
+  const syncWorldToDoc = useCallback(
+    (doc: Doc) => {
       const entities = world.getEntities()
       for (const entity of entities) {
         const transform = world.getComponent<{
@@ -41,15 +41,14 @@ export function useECSWorld() {
         }>(entity, 'transform')
 
         if (transform) {
-          const shape = editor.getShape(entity as Parameters<typeof editor.getShape>[0])
-          if (shape) {
-            editor.updateShape({
-              id: shape.id,
-              type: shape.type,
-              x: transform.data.x,
-              y: transform.data.y,
-              rotation: transform.data.rotation,
-            })
+          const block = doc.getBlock(entity)
+          if (block) {
+            // Use default dimensions when actual block size is unavailable
+            const DEFAULT_BLOCK_WIDTH = 100
+            const DEFAULT_BLOCK_HEIGHT = 100
+            doc.updateBlock(block.model, {
+              xywh: `[${transform.data.x},${transform.data.y},${DEFAULT_BLOCK_WIDTH},${DEFAULT_BLOCK_HEIGHT}]`,
+            } as Record<string, unknown>)
           }
         }
       }
@@ -57,5 +56,5 @@ export function useECSWorld() {
     [world]
   )
 
-  return { world, syncWorldToEditor }
+  return { world, syncWorldToDoc }
 }

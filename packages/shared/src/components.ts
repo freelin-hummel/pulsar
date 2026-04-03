@@ -2,7 +2,7 @@ import { defineComponent } from '@pulsar/ecs'
 
 /**
  * Built-in components that provide core canvas element behaviors.
- * These map directly to tldraw shape properties but are managed
+ * These map to BlockSuite block properties and are managed
  * through the ECS for composable extension.
  */
 export const BuiltInComponents = {

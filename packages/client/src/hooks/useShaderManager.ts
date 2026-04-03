@@ -5,7 +5,7 @@ import { MinimalShader } from '../lib/shaders/programs/MinimalShader.js'
 /**
  * React hook for managing the WebGL shader overlay system.
  *
- * Creates a WebGL canvas overlay on top of the tldraw canvas
+ * Creates a WebGL canvas overlay on top of the BlockSuite canvas
  * that can render shader effects per-element or globally.
  */
 export function useShaderManager(containerRef: RefObject<HTMLDivElement | null>) {
