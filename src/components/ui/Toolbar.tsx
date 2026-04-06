@@ -66,7 +66,7 @@ function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
     case 'text':
       return { type: 'text' }
     case 'note':
-      return { type: 'pulsar:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }
+      return { type: 'affine:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }
     case 'image':
       // Image insertion is handled by triggering a file input, not a tool switch
       return null
@@ -157,12 +157,14 @@ export function Toolbar({
     : tools
 
   return (
-    <div className="toolbar" style={styles.bar}>
+    <div className="toolbar" data-testid="toolbar" style={styles.bar}>
       {visibleTools.map((tool) => (
         <button
           key={tool.id}
           title={tool.label}
           aria-label={tool.label}
+          data-testid={`tool-${tool.id}`}
+          data-active={activeTool === tool.id}
           onClick={() => handleToolChange(tool.id)}
           style={{
             ...styles.button,

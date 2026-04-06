@@ -79,7 +79,7 @@ export function MenuBar({ settings, onSettingsChange }: MenuBarProps) {
   }
 
   return (
-    <div ref={menuRef} className="menu-bar" style={styles.bar}>
+    <div ref={menuRef} className="menu-bar" data-testid="menu-bar" style={styles.bar}>
       <MenuButton
         label="File"
         icon={<File size={14} />}

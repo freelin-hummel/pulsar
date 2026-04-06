@@ -141,6 +141,17 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     editor.mode = viewMode === 'page' ? 'page' : 'edgeless'
   }, [editor, viewMode])
 
+  // Apply grid visibility setting to the editor's CSS
+  useEffect(() => {
+    const el = editorContainerRef.current
+    if (!el) return
+    if (settings.showGrid) {
+      el.style.setProperty('--affine-edgeless-grid-color', 'var(--color-border)')
+    } else {
+      el.style.setProperty('--affine-edgeless-grid-color', 'transparent')
+    }
+  }, [settings.showGrid])
+
   // Handle board switch
   const handleBoardChange = useCallback(
     (boardId: string) => {
