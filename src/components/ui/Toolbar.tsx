@@ -11,6 +11,9 @@ import {
   Minus,
 } from 'lucide-react'
 import { useEditorContext } from '../../editor/context.js'
+import type { MapTool, TerrainTextureId, MapObjectType } from '../../shared/mapTypes.js'
+import type { BoardMode } from '../../shared/board.js'
+import { MapToolbar } from './MapToolbar.js'
 
 type Tool =
   | 'select'
@@ -27,11 +30,13 @@ interface ToolDef {
   id: Tool
   label: string
   icon: React.ReactNode
+  /** Available in view mode */
+  viewMode?: boolean
 }
 
 const tools: ToolDef[] = [
-  { id: 'select', label: 'Select', icon: <MousePointer2 size={16} /> },
-  { id: 'hand', label: 'Hand', icon: <Hand size={16} /> },
+  { id: 'select', label: 'Select', icon: <MousePointer2 size={16} />, viewMode: true },
+  { id: 'hand', label: 'Hand', icon: <Hand size={16} />, viewMode: true },
   { id: 'rect', label: 'Rectangle', icon: <Square size={16} /> },
   { id: 'ellipse', label: 'Ellipse', icon: <Circle size={16} /> },
   { id: 'line', label: 'Line', icon: <Minus size={16} /> },
@@ -73,9 +78,31 @@ function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
 interface ToolbarProps {
   activeTool?: Tool
   onToolChange?: (tool: Tool) => void
+  /** Current board mode — in 'view' mode, only select/hand are available */
+  boardMode?: BoardMode
+  /** Whether the active board is a map (shows map tools) */
+  isMapBoard?: boolean
+  /** Map tool state */
+  activeMapTool?: MapTool | null
+  onMapToolChange?: (tool: MapTool | null) => void
+  selectedTerrain?: TerrainTextureId
+  onTerrainChange?: (terrain: TerrainTextureId) => void
+  selectedObject?: MapObjectType
+  onObjectChange?: (obj: MapObjectType) => void
 }
 
-export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarProps) {
+export function Toolbar({
+  activeTool: controlledTool,
+  onToolChange,
+  boardMode = 'edit',
+  isMapBoard = false,
+  activeMapTool = null,
+  onMapToolChange,
+  selectedTerrain = 'stone',
+  onTerrainChange,
+  selectedObject = 'crate',
+  onObjectChange,
+}: ToolbarProps) {
   const [internalTool, setInternalTool] = useState<Tool>('select')
   const activeTool = controlledTool ?? internalTool
   const editorCtx = useEditorContext()
@@ -124,9 +151,14 @@ export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarPro
     [editorCtx, onToolChange]
   )
 
+  // Filter tools based on board mode
+  const visibleTools = boardMode === 'view'
+    ? tools.filter((t) => t.viewMode)
+    : tools
+
   return (
     <div className="toolbar" style={styles.bar}>
-      {tools.map((tool) => (
+      {visibleTools.map((tool) => (
         <button
           key={tool.id}
           title={tool.label}
@@ -159,6 +191,18 @@ export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarPro
           {tool.icon}
         </button>
       ))}
+
+      {/* Map tools — shown only when active board is a map in edit mode */}
+      {isMapBoard && boardMode === 'edit' && (
+        <MapToolbar
+          activeMapTool={activeMapTool}
+          onMapToolChange={onMapToolChange ?? (() => {})}
+          selectedTerrain={selectedTerrain}
+          onTerrainChange={onTerrainChange ?? (() => {})}
+          selectedObject={selectedObject}
+          onObjectChange={onObjectChange ?? (() => {})}
+        />
+      )}
     </div>
   )
 }
