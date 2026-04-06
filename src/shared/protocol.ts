@@ -13,6 +13,8 @@ export type SyncMessage =
   | { type: 'ecs:component-add'; entityId: string; component: string; data: Record<string, unknown> }
   | { type: 'ecs:component-remove'; entityId: string; component: string }
   | { type: 'ecs:component-update'; entityId: string; component: string; data: Record<string, unknown> }
+  | { type: 'board:mode-change'; boardId: string; mode: 'edit' | 'view' }
+  | { type: 'board:link'; parentId: string; childId: string; action: 'link' | 'unlink' }
 
 /** Represents a change to a shape on the canvas */
 export interface ShapeChange {
