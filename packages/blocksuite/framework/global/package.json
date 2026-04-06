@@ -1,0 +1,70 @@
+{
+  "name": "@blocksuite/global",
+  "version": "0.17.0",
+  "types": "./index.d.ts",
+  "type": "module",
+  "repository": "toeverything/blocksuite",
+  "scripts": {
+    "test:unit:coverage": "nx vite:test --run --coverage",
+    "test:unit:ui": "nx vite:test --ui"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": "./index.d.ts",
+    "./utils": "./src/utils.ts",
+    "./env": "./src/env/index.ts",
+    "./exceptions": "./src/exceptions/index.ts",
+    "./di": "./src/di/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "utils": [
+        "dist/utils.d.ts"
+      ],
+      "env": [
+        "dist/env/index.d.ts"
+      ],
+      "exceptions": [
+        "dist/exceptions/index.d.ts"
+      ],
+      "di": [
+        "dist/di/index.d.ts"
+      ]
+    }
+  },
+  "author": "toeverything",
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": "./index.d.ts",
+      "./utils": {
+        "types": "./dist/utils.d.ts",
+        "import": "./dist/utils.js"
+      },
+      "./env": {
+        "types": "./dist/env/index.d.ts",
+        "import": "./dist/env/index.js"
+      },
+      "./exceptions": {
+        "types": "./dist/exceptions/index.d.ts",
+        "import": "./dist/exceptions/index.js"
+      },
+      "./di": {
+        "types": "./dist/di/index.d.ts",
+        "import": "./dist/di/index.js"
+      }
+    }
+  },
+  "files": [
+    "src",
+    "dist",
+    "index.d.ts",
+    "!src/__tests__",
+    "!dist/__tests__"
+  ],
+  "dependencies": {
+    "lib0": "^0.2.97",
+    "zod": "^3.23.8"
+  }
+}

@@ -1,8 +1,42 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { transform } from '@swc/core'
+
+/**
+ * Vite plugin that uses SWC to transform BlockSuite source files.
+ * BlockSuite uses TC39 stage-3 decorators (`accessor` keyword, standard
+ * `@decorator` syntax) which esbuild cannot parse. SWC handles them fine.
+ */
+function blocksuiteSwcPlugin() {
+  return {
+    name: 'blocksuite-swc',
+    enforce: 'pre' as const,
+    async transform(code: string, id: string) {
+      // Only transform blocksuite .ts files (not .tsx, not node_modules)
+      if (!id.includes('packages/blocksuite/') || !id.match(/\.ts$/)) return
+      const result = await transform(code, {
+        filename: id,
+        sourceMaps: true,
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            decorators: true,
+          },
+          transform: {
+            legacyDecorator: false,
+            decoratorVersion: '2022-03',
+            useDefineForClassFields: false,
+          },
+          target: 'es2022',
+        },
+      })
+      return { code: result.code, map: result.map }
+    },
+  }
+}
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [blocksuiteSwcPlugin(), react()],
   build: {
     outDir: '../../dist',
     emptyOutDir: true,

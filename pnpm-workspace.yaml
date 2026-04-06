@@ -1,2 +1,6 @@
 packages:
   - "packages/*"
+  - "packages/blocksuite/affine/*"
+  - "packages/blocksuite/framework/*"
+  - "packages/blocksuite/blocks"
+  - "packages/blocksuite/presets"

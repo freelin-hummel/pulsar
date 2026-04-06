@@ -11,17 +11,637 @@ importers:
 
   .: {}
 
+  packages/blocksuite/affine/block-list:
+    dependencies:
+      '@blocksuite/affine-components':
+        specifier: workspace:*
+        version: link:../components
+      '@blocksuite/affine-model':
+        specifier: workspace:*
+        version: link:../model
+      '@blocksuite/affine-shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../../framework/global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../../framework/store
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.7.6
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      minimatch:
+        specifier: ^10.0.1
+        version: 10.2.5
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
+  packages/blocksuite/affine/block-paragraph:
+    dependencies:
+      '@blocksuite/affine-components':
+        specifier: workspace:*
+        version: link:../components
+      '@blocksuite/affine-model':
+        specifier: workspace:*
+        version: link:../model
+      '@blocksuite/affine-shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../../framework/global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../../framework/store
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.7.6
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      minimatch:
+        specifier: ^10.0.1
+        version: 10.2.5
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
+  packages/blocksuite/affine/block-surface:
+    dependencies:
+      '@blocksuite/affine-components':
+        specifier: workspace:*
+        version: link:../components
+      '@blocksuite/affine-model':
+        specifier: workspace:*
+        version: link:../model
+      '@blocksuite/affine-shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../../framework/global
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../../framework/store
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      fractional-indexing:
+        specifier: ^3.2.0
+        version: 3.2.0
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      lodash.isplainobject:
+        specifier: ^4.0.6
+        version: 4.0.6
+      lodash.merge:
+        specifier: ^4.6.2
+        version: 4.6.2
+      nanoid:
+        specifier: ^5.0.7
+        version: 5.1.7
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@types/dompurify':
+        specifier: ^3.0.5
+        version: 3.2.0
+      '@types/lodash.isplainobject':
+        specifier: ^4.0.9
+        version: 4.0.9
+      '@types/lodash.merge':
+        specifier: ^4.6.9
+        version: 4.6.9
+
+  packages/blocksuite/affine/components:
+    dependencies:
+      '@blocksuite/affine-model':
+        specifier: workspace:*
+        version: link:../model
+      '@blocksuite/affine-shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../../framework/global
+      '@blocksuite/icons':
+        specifier: 2.1.67
+        version: 2.1.67(@types/react@18.3.28)(lit@3.3.2)(react@18.3.1)
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../../framework/store
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.7.6
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@lottiefiles/dotlottie-wc':
+        specifier: ^0.2.16
+        version: 0.2.24
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      katex:
+        specifier: ^0.16.11
+        version: 0.16.44
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      shiki:
+        specifier: ^1.12.0
+        version: 1.29.2
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@types/katex':
+        specifier: ^0.16.7
+        version: 0.16.8
+
+  packages/blocksuite/affine/model:
+    dependencies:
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../../framework/global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../../framework/store
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
+  packages/blocksuite/affine/shared:
+    dependencies:
+      '@blocksuite/affine-model':
+        specifier: workspace:*
+        version: link:../model
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../../framework/global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../../framework/store
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.7.6
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      minimatch:
+        specifier: ^10.0.1
+        version: 10.2.5
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
+  packages/blocksuite/blocks:
+    dependencies:
+      '@blocksuite/affine-block-list':
+        specifier: workspace:*
+        version: link:../affine/block-list
+      '@blocksuite/affine-block-paragraph':
+        specifier: workspace:*
+        version: link:../affine/block-paragraph
+      '@blocksuite/affine-block-surface':
+        specifier: workspace:*
+        version: link:../affine/block-surface
+      '@blocksuite/affine-components':
+        specifier: workspace:*
+        version: link:../affine/components
+      '@blocksuite/affine-model':
+        specifier: workspace:*
+        version: link:../affine/model
+      '@blocksuite/affine-shared':
+        specifier: workspace:*
+        version: link:../affine/shared
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../framework/block-std
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../framework/global
+      '@blocksuite/icons':
+        specifier: 2.1.67
+        version: 2.1.67(@types/react@18.3.28)(lit@3.3.2)(react@18.3.1)
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../framework/store
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.7.6
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+      '@types/sortablejs':
+        specifier: ^1.15.8
+        version: 1.15.9
+      collapse-white-space:
+        specifier: ^2.1.0
+        version: 2.1.0
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
+      dompurify:
+        specifier: ^3.1.6
+        version: 3.3.3
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.2
+      file-type:
+        specifier: ^19.4.1
+        version: 19.6.0
+      fractional-indexing:
+        specifier: ^3.2.0
+        version: 3.2.0
+      html2canvas:
+        specifier: ^1.4.1
+        version: 1.4.1
+      katex:
+        specifier: ^0.16.11
+        version: 0.16.44
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      lodash.clonedeep:
+        specifier: ^4.5.0
+        version: 4.5.0
+      lodash.isplainobject:
+        specifier: ^4.0.6
+        version: 4.0.6
+      lodash.merge:
+        specifier: ^4.6.2
+        version: 4.6.2
+      mdast-util-gfm-autolink-literal:
+        specifier: ^2.0.1
+        version: 2.0.1
+      mdast-util-gfm-strikethrough:
+        specifier: ^2.0.0
+        version: 2.0.0
+      mdast-util-gfm-table:
+        specifier: ^2.0.0
+        version: 2.0.0
+      mdast-util-gfm-task-list-item:
+        specifier: ^2.0.0
+        version: 2.0.0
+      micromark-extension-gfm-autolink-literal:
+        specifier: ^2.1.0
+        version: 2.1.0
+      micromark-extension-gfm-strikethrough:
+        specifier: ^2.1.0
+        version: 2.1.0
+      micromark-extension-gfm-table:
+        specifier: ^2.1.0
+        version: 2.1.1
+      micromark-extension-gfm-task-list-item:
+        specifier: ^2.1.0
+        version: 2.1.0
+      micromark-util-combine-extensions:
+        specifier: ^2.0.0
+        version: 2.0.1
+      minimatch:
+        specifier: ^10.0.1
+        version: 10.2.5
+      nanoid:
+        specifier: ^5.0.7
+        version: 5.1.7
+      pdf-lib:
+        specifier: ^1.17.1
+        version: 1.17.1
+      rehype-parse:
+        specifier: ^9.0.0
+        version: 9.0.1
+      rehype-stringify:
+        specifier: ^10.0.0
+        version: 10.0.1
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
+      shiki:
+        specifier: ^1.14.1
+        version: 1.29.2
+      sortablejs:
+        specifier: ^1.15.2
+        version: 1.15.7
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@types/dompurify':
+        specifier: ^3.0.5
+        version: 3.2.0
+      '@types/katex':
+        specifier: ^0.16.7
+        version: 0.16.8
+      '@types/lodash.clonedeep':
+        specifier: ^4.5.9
+        version: 4.5.9
+      '@types/lodash.isplainobject':
+        specifier: ^4.0.9
+        version: 4.0.9
+      '@types/lodash.merge':
+        specifier: ^4.6.9
+        version: 4.6.9
+
+  packages/blocksuite/framework/block-std:
+    dependencies:
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../store
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lit/context':
+        specifier: ^1.1.2
+        version: 1.1.6
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      fractional-indexing:
+        specifier: ^3.2.0
+        version: 3.2.0
+      lib0:
+        specifier: ^0.2.97
+        version: 0.2.117
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      lz-string:
+        specifier: ^1.5.0
+        version: 1.5.0
+      rehype-parse:
+        specifier: ^9.0.0
+        version: 9.0.1
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      w3c-keyname:
+        specifier: ^2.2.8
+        version: 2.2.8
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
+  packages/blocksuite/framework/global:
+    dependencies:
+      lib0:
+        specifier: ^0.2.97
+        version: 0.2.117
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
+  packages/blocksuite/framework/inline:
+    dependencies:
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../global
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      yjs:
+        specifier: ^13.6.18
+        version: 13.6.30
+
+  packages/blocksuite/framework/store:
+    dependencies:
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../inline
+      '@blocksuite/sync':
+        specifier: workspace:*
+        version: link:../sync
+      '@preact/signals-core':
+        specifier: ^1.8.0
+        version: 1.14.1
+      '@types/flexsearch':
+        specifier: ^0.7.6
+        version: 0.7.42
+      '@types/lodash.ismatch':
+        specifier: ^4.4.9
+        version: 4.4.9
+      flexsearch:
+        specifier: 0.7.43
+        version: 0.7.43
+      lib0:
+        specifier: ^0.2.97
+        version: 0.2.117
+      lodash.clonedeep:
+        specifier: ^4.5.0
+        version: 4.5.0
+      lodash.ismatch:
+        specifier: ^4.4.0
+        version: 4.4.0
+      lodash.merge:
+        specifier: ^4.6.2
+        version: 4.6.2
+      minimatch:
+        specifier: ^10.0.1
+        version: 10.2.5
+      nanoid:
+        specifier: ^5.0.7
+        version: 5.1.7
+      y-protocols:
+        specifier: ^1.0.6
+        version: 1.0.7(yjs@13.6.30)
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@types/lodash.clonedeep':
+        specifier: ^4.5.9
+        version: 4.5.9
+      '@types/lodash.merge':
+        specifier: ^4.6.9
+        version: 4.6.9
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      yjs:
+        specifier: ^13.6.18
+        version: 13.6.30
+
+  packages/blocksuite/framework/sync:
+    dependencies:
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../global
+      idb:
+        specifier: ^8.0.0
+        version: 8.0.3
+      idb-keyval:
+        specifier: ^6.2.1
+        version: 6.2.2
+      y-protocols:
+        specifier: ^1.0.6
+        version: 1.0.7(yjs@13.6.30)
+      yjs:
+        specifier: ^13.6.15
+        version: 13.6.30
+
+  packages/blocksuite/presets:
+    dependencies:
+      '@blocksuite/affine-block-surface':
+        specifier: workspace:*
+        version: link:../affine/block-surface
+      '@blocksuite/affine-shared':
+        specifier: workspace:*
+        version: link:../affine/shared
+      '@blocksuite/block-std':
+        specifier: workspace:*
+        version: link:../framework/block-std
+      '@blocksuite/blocks':
+        specifier: workspace:*
+        version: link:../blocks
+      '@blocksuite/global':
+        specifier: workspace:*
+        version: link:../framework/global
+      '@blocksuite/inline':
+        specifier: workspace:*
+        version: link:../framework/inline
+      '@blocksuite/store':
+        specifier: workspace:*
+        version: link:../framework/store
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.7.6
+      '@lit-labs/preact-signals':
+        specifier: ^1.0.2
+        version: 1.0.3
+      '@lottiefiles/dotlottie-wc':
+        specifier: ^0.2.16
+        version: 0.2.24
+      '@toeverything/theme':
+        specifier: ^1.0.8
+        version: 1.1.23
+      lit:
+        specifier: ^3.2.0
+        version: 3.3.2
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
   packages/client:
     dependencies:
       '@blocksuite/blocks':
-        specifier: 0.17.0
-        version: 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
+        specifier: workspace:*
+        version: link:../blocksuite/blocks
       '@blocksuite/presets':
-        specifier: 0.17.0
-        version: 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
+        specifier: workspace:*
+        version: link:../blocksuite/presets
       '@blocksuite/store':
-        specifier: 0.17.0
-        version: 0.17.0(lit@3.3.2)(yjs@13.6.30)
+        specifier: workspace:*
+        version: link:../blocksuite/framework/store
       '@pulsar/ecs':
         specifier: workspace:*
         version: link:../ecs
@@ -41,6 +661,9 @@ importers:
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.39.4
+      '@swc/core':
+        specifier: ^1.15.24
+        version: 1.15.24
       '@types/react':
         specifier: ^18.3.0
         version: 18.3.28
@@ -208,33 +831,6 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@blocksuite/affine-block-list@0.17.0':
-    resolution: {integrity: sha512-ZZw9JAwThM7luBa36QywEI0K04tbxFe/cFMjcD23+CM4+gIFEhWH4ZUsN+bicIyMWQpzTKK1d1tmGF+kWdaN0A==}
-
-  '@blocksuite/affine-block-paragraph@0.17.0':
-    resolution: {integrity: sha512-TBf9hKe0Uq7lL0KhOb+lJ+/0TSBWmNce0ot4xUAxYXrWs9iyRU/a7AkC7QXVwW84JohEtgOS/aUvTA7SvZxUsA==}
-
-  '@blocksuite/affine-block-surface@0.17.0':
-    resolution: {integrity: sha512-j2/KiycuKp+4kkZOnB+ccQL17N7Udmr7M0Xoj9BMsKgMYYs7Xu1eP74TR3ioru0UhxNhkzU3jGNOiLybtq5GgQ==}
-
-  '@blocksuite/affine-components@0.17.0':
-    resolution: {integrity: sha512-p0IWYAdT7uqU2a256Pr3ci1/j5goVWcra7KoFa9NrMyDEyE/jMi1HAK5pdUa6uuzfvi3TNn+MBo2msW4TR4jdQ==}
-
-  '@blocksuite/affine-model@0.17.0':
-    resolution: {integrity: sha512-dTbaUpXjmU2/mEIFNdxaCBNC3Ff9X9bGtiPevZlIKixcwzNK/zkRkIE9TdYxEe30Ys0I0G8kKzvkB8HtjmR0Dg==}
-
-  '@blocksuite/affine-shared@0.17.0':
-    resolution: {integrity: sha512-CPeMiR1s2qJiOLt2OVXXZqnqr2rPViH2II1xxSk/6836ipqMqqW6m0c+f4JqJwFv7gEgMtTXDlhx8WJ+YOUbiw==}
-
-  '@blocksuite/block-std@0.17.0':
-    resolution: {integrity: sha512-toSnfUrjfoXect/8ZwlzwQNMPEVfMS+4LAkxS4a8EhmgYPe8zkNOv/TJAcWJ1gPek0N3MCDsJMJryHYIxWSfIw==}
-
-  '@blocksuite/blocks@0.17.0':
-    resolution: {integrity: sha512-uEAjtliyJgVdgf2V8kFGDkOQiipnLY1F7gebhxzy0UfKCpxehuX8k/J2kQHYnEHoWBjTnv7EtAHGRtx1sS8hZw==}
-
-  '@blocksuite/global@0.17.0':
-    resolution: {integrity: sha512-aNncuJGwHU6d/u3lu3nez2F7iOAllbOz6CX68PmH9yXR5bG0tjlnWSuqEt0fKavFosVJuMylIILdoDz/1uQ5MA==}
-
   '@blocksuite/icons@2.1.67':
     resolution: {integrity: sha512-kfkTMVTw5lq48Y7QK28bMtYe5Hq1U0xwywSXuq61qzoqjbIffg2BLrAYutONdxhpbLLiwQZHxa21mA3gWk9N9w==}
     engines: {node: '>=18.19.0 <21.0.0'}
@@ -247,25 +843,6 @@ packages:
         optional: true
       react:
         optional: true
-
-  '@blocksuite/inline@0.17.0':
-    resolution: {integrity: sha512-ulic8k3MdIrJ6Csh6DWkCziB4nbeFlPlVngsRCGHFqLajss2QgtLDUliXfvnPLIg5xLqOY9lzqSTj8APMiWPWQ==}
-    peerDependencies:
-      lit: ^3.1.1
-      yjs: ^13.6.15
-
-  '@blocksuite/presets@0.17.0':
-    resolution: {integrity: sha512-t7GwBiTb8Z4GBg4to7wTfml4Q4klJbdtRLcNGs7phRfGXPZ2Rvf3AekD1K50bNu/6up8pFfhTszVgZbx5LvwQg==}
-
-  '@blocksuite/store@0.17.0':
-    resolution: {integrity: sha512-Zzj0Jnj+n6tMA4MBGGPE43t3Jsf9gGhDnUV2BoPgRpPpTtusFg1Y7nYCrS6Xv0DL4BMRSleRIwLzMT8x9D8jMA==}
-    peerDependencies:
-      yjs: ^13.6.15
-
-  '@blocksuite/sync@0.17.0':
-    resolution: {integrity: sha512-LRcfpEGQ8rpYiA6bOrAOTCZkBCDr22uJ4vdj+LGlbjyRppZmabBeehNxdfmFGhN2FAHE8EeDw0QaXHYv5xekvw==}
-    peerDependencies:
-      yjs: ^13.6.15
 
   '@borewit/text-codec@0.2.2':
     resolution: {integrity: sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==}
@@ -1028,6 +1605,93 @@ packages:
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
 
+  '@swc/core-darwin-arm64@1.15.24':
+    resolution: {integrity: sha512-uM5ZGfFXjtvtJ+fe448PVBEbn/CSxS3UAyLj3O9xOqKIWy3S6hPTXSPbszxkSsGDYKi+YFhzAsR4r/eXLxEQ0g==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@swc/core-darwin-x64@1.15.24':
+    resolution: {integrity: sha512-fMIb/Zfn929pw25VMBhV7Ji2Dl+lCWtUPNdYJQYOke+00E5fcQ9ynxtP8+qhUo/HZc+mYQb1gJxwHM9vty+lXg==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@swc/core-linux-arm-gnueabihf@1.15.24':
+    resolution: {integrity: sha512-vOkjsyjjxnoYx3hMEWcGxQrMgnNrRm6WAegBXrN8foHtDAR+zpdhpGF5a4lj1bNPgXAvmysjui8cM1ov/Clkaw==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@swc/core-linux-arm64-gnu@1.15.24':
+    resolution: {integrity: sha512-h/oNu+upkXJ6Cicnq7YGVj9PkdfarLCdQa8l/FlHYvfv8CEiMaeeTnpLU7gSBH/rGxosM6Qkfa/J9mThGF9CLA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-arm64-musl@1.15.24':
+    resolution: {integrity: sha512-ZpF/pRe1guk6sKzQI9D1jAORtjTdNlyeXn9GDz8ophof/w2WhojRblvSDJaGe7rJjcPN8AaOkhwdRUh7q8oYIg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-ppc64-gnu@1.15.24':
+    resolution: {integrity: sha512-QZEsZfisHTSJlmyChgDFNmKPb3W6Lhbfo/O76HhIngfEdnQNmukS38/VSe1feho+xkV5A5hETyCbx3sALBZKAQ==}
+    engines: {node: '>=10'}
+    cpu: [ppc64]
+    os: [linux]
+
+  '@swc/core-linux-s390x-gnu@1.15.24':
+    resolution: {integrity: sha512-DLdJKVsJgglqQrJBuoUYNmzm3leI7kUZhLbZGHv42onfKsGf6JDS3+bzCUQfte/XOqDjh/tmmn1DR/CF/tCJFw==}
+    engines: {node: '>=10'}
+    cpu: [s390x]
+    os: [linux]
+
+  '@swc/core-linux-x64-gnu@1.15.24':
+    resolution: {integrity: sha512-IpLYfposPA/XLxYOKpRfeccl1p5dDa3+okZDHHTchBkXEaVCnq5MADPmIWwIYj1tudt7hORsEHccG5no6IUQRw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-linux-x64-musl@1.15.24':
+    resolution: {integrity: sha512-JHy3fMSc0t/EPWgo74+OK5TGr51aElnzqfUPaiRf2qJ/BfX5CUCfMiWVBuhI7qmVMBnk1jTRnL/xZnOSHDPLYg==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-win32-arm64-msvc@1.15.24':
+    resolution: {integrity: sha512-Txj+qUH1z2bUd1P3JvwByfjKFti3cptlAxhWgmunBUUxy/IW3CXLZ6l6Gk4liANadKkU71nIU1X30Z5vpMT3BA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@swc/core-win32-ia32-msvc@1.15.24':
+    resolution: {integrity: sha512-15D/nl3XwrhFpMv+MADFOiVwv3FvH9j8c6Rf8EXBT3Q5LoMh8YnDnSgPYqw1JzPnksvsBX6QPXLiPqmcR/Z4qQ==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@swc/core-win32-x64-msvc@1.15.24':
+    resolution: {integrity: sha512-PR0PlTlPra2JbaDphrOAzm6s0v9rA0F17YzB+XbWD95B4g2cWcZY9LAeTa4xll70VLw9Jr7xBrlohqlQmelMFQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@swc/core@1.15.24':
+    resolution: {integrity: sha512-5Hj8aNasue7yusUt8LGCUe/AjM7RMAce8ZoyDyiFwx7Al+GbYKL+yE7g4sJk8vEr1dKIkTRARkNIJENc4CjkBQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@swc/helpers': '>=0.5.17'
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+
+  '@swc/counter@0.1.3':
+    resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+
+  '@swc/types@0.1.26':
+    resolution: {integrity: sha512-lyMwd7WGgG79RS7EERZV3T8wMdmPq3xwyg+1nmAM64kIhx5yl+juO2PYIHb7vTiPgPCj8LYjsNV2T5wiQHUEaw==}
+
   '@toeverything/theme@1.1.23':
     resolution: {integrity: sha512-ign2BA3CSfnqYcjtHwVgafqRYpf9UZn18RddEaZFk2Yu4zS/0LS75psxe+gQUxkw8slBAoOoI60W0JVrUDTAEw==}
 
@@ -1049,6 +1713,10 @@ packages:
   '@types/debug@4.1.13':
     resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
 
+  '@types/dompurify@3.2.0':
+    resolution: {integrity: sha512-Fgg31wv9QbLDA0SpTOXO3MaxySc4DKGLi8sna4/Utjo4r3ZRPdCt4UQee8BWr+Q5z21yifghREPJGYaEOEIACg==}
+    deprecated: This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed.
+
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
@@ -1062,8 +1730,20 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/katex@0.16.8':
+    resolution: {integrity: sha512-trgaNyfU+Xh2Tc+ABIb44a5AYUpicB3uwirOioeOkNPPbmgRNtcWyDeeFRzjPZENO9Vq8gvVqfhaaXWLlevVwg==}
+
+  '@types/lodash.clonedeep@4.5.9':
+    resolution: {integrity: sha512-19429mWC+FyaAhOLzsS8kZUsI+/GmBAQ0HFiCPsKGU+7pBXOQWhyrY6xNNDwUSX8SMZMJvuFVMF9O5dQOlQK9Q==}
+
   '@types/lodash.ismatch@4.4.9':
     resolution: {integrity: sha512-qWihnStOPKH8urljLGm6ZOEdN/5Bt4vxKR81tL3L4ArUNLvcf9RW3QSnPs21eix5BiqioSWq4aAXD4Iep+d0fw==}
+
+  '@types/lodash.isplainobject@4.0.9':
+    resolution: {integrity: sha512-QC8nKcap5hRrbtIaPRjUMlcXXnLeayqQZPSaWJDx3xeuN17+2PW5wkmEJ4+lZgNnQRlSPzxjTYKCfV1uTnPaEg==}
+
+  '@types/lodash.merge@4.6.9':
+    resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
 
   '@types/lodash@4.17.24':
     resolution: {integrity: sha512-gIW7lQLZbue7lRSWEFql49QJJWThrTFFeIMJdp3eH4tKoxm1OvEPg02rm4wCCSHS0cL3/Fizimb35b7k8atwsQ==}
@@ -2965,266 +3645,12 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@blocksuite/affine-block-list@0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-components': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-model': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/affine-shared': 0.17.0(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@floating-ui/dom': 1.7.6
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@toeverything/theme': 1.1.23
-      lit: 3.3.2
-      minimatch: 10.2.5
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - yjs
-
-  '@blocksuite/affine-block-paragraph@0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-components': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-model': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/affine-shared': 0.17.0(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@floating-ui/dom': 1.7.6
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@toeverything/theme': 1.1.23
-      lit: 3.3.2
-      minimatch: 10.2.5
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - yjs
-
-  '@blocksuite/affine-block-surface@0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-components': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-model': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/affine-shared': 0.17.0(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@toeverything/theme': 1.1.23
-      fractional-indexing: 3.2.0
-      lit: 3.3.2
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      nanoid: 5.1.7
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - yjs
-
-  '@blocksuite/affine-components@0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-model': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/affine-shared': 0.17.0(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/icons': 2.1.67(@types/react@18.3.28)(lit@3.3.2)(react@18.3.1)
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@floating-ui/dom': 1.7.6
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@lottiefiles/dotlottie-wc': 0.2.24
-      '@toeverything/theme': 1.1.23
-      katex: 0.16.44
-      lit: 3.3.2
-      shiki: 1.29.2
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - yjs
-
-  '@blocksuite/affine-model@0.17.0(lit@3.3.2)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - lit
-      - yjs
-
-  '@blocksuite/affine-shared@0.17.0(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-model': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@floating-ui/dom': 1.7.6
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@toeverything/theme': 1.1.23
-      lit: 3.3.2
-      minimatch: 10.2.5
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - yjs
-
-  '@blocksuite/block-std@0.17.0(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@types/hast': 3.0.4
-      fractional-indexing: 3.2.0
-      lib0: 0.2.117
-      lit: 3.3.2
-      lz-string: 1.5.0
-      rehype-parse: 9.0.1
-      unified: 11.0.5
-      w3c-keyname: 2.2.8
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - yjs
-
-  '@blocksuite/blocks@0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-block-list': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-block-paragraph': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-block-surface': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-components': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-model': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/affine-shared': 0.17.0(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/icons': 2.1.67(@types/react@18.3.28)(lit@3.3.2)(react@18.3.1)
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@floating-ui/dom': 1.7.6
-      '@lit-labs/preact-signals': 1.0.3
-      '@lit/context': 1.1.6
-      '@toeverything/theme': 1.1.23
-      '@types/hast': 3.0.4
-      '@types/mdast': 4.0.4
-      '@types/sortablejs': 1.15.9
-      collapse-white-space: 2.1.0
-      date-fns: 3.6.0
-      dompurify: 3.3.3
-      fflate: 0.8.2
-      file-type: 19.6.0
-      fractional-indexing: 3.2.0
-      html2canvas: 1.4.1
-      katex: 0.16.44
-      lit: 3.3.2
-      lodash.clonedeep: 4.5.0
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      mdast-util-gfm-autolink-literal: 2.0.1
-      mdast-util-gfm-strikethrough: 2.0.0
-      mdast-util-gfm-table: 2.0.0
-      mdast-util-gfm-task-list-item: 2.0.0
-      micromark-extension-gfm-autolink-literal: 2.1.0
-      micromark-extension-gfm-strikethrough: 2.1.0
-      micromark-extension-gfm-table: 2.1.1
-      micromark-extension-gfm-task-list-item: 2.1.0
-      micromark-util-combine-extensions: 2.0.1
-      minimatch: 10.2.5
-      nanoid: 5.1.7
-      pdf-lib: 1.17.1
-      rehype-parse: 9.0.1
-      rehype-stringify: 10.0.1
-      remark-parse: 11.0.0
-      remark-stringify: 11.0.0
-      shiki: 1.29.2
-      sortablejs: 1.15.7
-      unified: 11.0.5
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-      - yjs
-
-  '@blocksuite/global@0.17.0':
-    dependencies:
-      lib0: 0.2.117
-      zod: 3.25.76
-
   '@blocksuite/icons@2.1.67(@types/react@18.3.28)(lit@3.3.2)(react@18.3.1)':
     dependencies:
       '@types/react': 18.3.28
     optionalDependencies:
       lit: 3.3.2
       react: 18.3.1
-
-  '@blocksuite/inline@0.17.0(lit@3.3.2)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/global': 0.17.0
-      lit: 3.3.2
-      yjs: 13.6.30
-      zod: 3.25.76
-
-  '@blocksuite/presets@0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/affine-block-surface': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/affine-shared': 0.17.0(yjs@13.6.30)
-      '@blocksuite/block-std': 0.17.0(yjs@13.6.30)
-      '@blocksuite/blocks': 0.17.0(@types/react@18.3.28)(react@18.3.1)(yjs@13.6.30)
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/store': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@floating-ui/dom': 1.7.6
-      '@lit-labs/preact-signals': 1.0.3
-      '@lottiefiles/dotlottie-wc': 0.2.24
-      '@toeverything/theme': 1.1.23
-      lit: 3.3.2
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-      - yjs
-
-  '@blocksuite/store@0.17.0(lit@3.3.2)(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/global': 0.17.0
-      '@blocksuite/inline': 0.17.0(lit@3.3.2)(yjs@13.6.30)
-      '@blocksuite/sync': 0.17.0(yjs@13.6.30)
-      '@preact/signals-core': 1.14.1
-      '@types/flexsearch': 0.7.42
-      '@types/lodash.ismatch': 4.4.9
-      flexsearch: 0.7.43
-      lib0: 0.2.117
-      lodash.clonedeep: 4.5.0
-      lodash.ismatch: 4.4.0
-      lodash.merge: 4.6.2
-      minimatch: 10.2.5
-      nanoid: 5.1.7
-      y-protocols: 1.0.7(yjs@13.6.30)
-      yjs: 13.6.30
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - lit
-
-  '@blocksuite/sync@0.17.0(yjs@13.6.30)':
-    dependencies:
-      '@blocksuite/global': 0.17.0
-      idb: 8.0.3
-      idb-keyval: 6.2.2
-      y-protocols: 1.0.7(yjs@13.6.30)
-      yjs: 13.6.30
 
   '@borewit/text-codec@0.2.2': {}
 
@@ -3830,6 +4256,66 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
+  '@swc/core-darwin-arm64@1.15.24':
+    optional: true
+
+  '@swc/core-darwin-x64@1.15.24':
+    optional: true
+
+  '@swc/core-linux-arm-gnueabihf@1.15.24':
+    optional: true
+
+  '@swc/core-linux-arm64-gnu@1.15.24':
+    optional: true
+
+  '@swc/core-linux-arm64-musl@1.15.24':
+    optional: true
+
+  '@swc/core-linux-ppc64-gnu@1.15.24':
+    optional: true
+
+  '@swc/core-linux-s390x-gnu@1.15.24':
+    optional: true
+
+  '@swc/core-linux-x64-gnu@1.15.24':
+    optional: true
+
+  '@swc/core-linux-x64-musl@1.15.24':
+    optional: true
+
+  '@swc/core-win32-arm64-msvc@1.15.24':
+    optional: true
+
+  '@swc/core-win32-ia32-msvc@1.15.24':
+    optional: true
+
+  '@swc/core-win32-x64-msvc@1.15.24':
+    optional: true
+
+  '@swc/core@1.15.24':
+    dependencies:
+      '@swc/counter': 0.1.3
+      '@swc/types': 0.1.26
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.15.24
+      '@swc/core-darwin-x64': 1.15.24
+      '@swc/core-linux-arm-gnueabihf': 1.15.24
+      '@swc/core-linux-arm64-gnu': 1.15.24
+      '@swc/core-linux-arm64-musl': 1.15.24
+      '@swc/core-linux-ppc64-gnu': 1.15.24
+      '@swc/core-linux-s390x-gnu': 1.15.24
+      '@swc/core-linux-x64-gnu': 1.15.24
+      '@swc/core-linux-x64-musl': 1.15.24
+      '@swc/core-win32-arm64-msvc': 1.15.24
+      '@swc/core-win32-ia32-msvc': 1.15.24
+      '@swc/core-win32-x64-msvc': 1.15.24
+
+  '@swc/counter@0.1.3': {}
+
+  '@swc/types@0.1.26':
+    dependencies:
+      '@swc/counter': 0.1.3
+
   '@toeverything/theme@1.1.23': {}
 
   '@tokenizer/token@0.3.0': {}
@@ -3859,6 +4345,10 @@ snapshots:
     dependencies:
       '@types/ms': 2.1.0
 
+  '@types/dompurify@3.2.0':
+    dependencies:
+      dompurify: 3.3.3
+
   '@types/estree@1.0.8': {}
 
   '@types/flexsearch@0.7.42':
@@ -3871,7 +4361,21 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/katex@0.16.8': {}
+
+  '@types/lodash.clonedeep@4.5.9':
+    dependencies:
+      '@types/lodash': 4.17.24
+
   '@types/lodash.ismatch@4.4.9':
+    dependencies:
+      '@types/lodash': 4.17.24
+
+  '@types/lodash.isplainobject@4.0.9':
+    dependencies:
+      '@types/lodash': 4.17.24
+
+  '@types/lodash.merge@4.6.9':
     dependencies:
       '@types/lodash': 4.17.24
 
