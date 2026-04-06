@@ -4,7 +4,6 @@ import { useShaderManager } from '../hooks/useShaderManager.js'
 import { useSyncConnection } from '../hooks/useSyncConnection.js'
 import { initEditor } from '../editor/initEditor.js'
 import { EditorContext } from '../editor/context.js'
-import type { Doc } from '@blocksuite/store'
 
 interface PulsarCanvasProps {
   roomId: string
@@ -31,7 +30,7 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
   const { world, syncWorldToDoc } = useECSWorld()
 
   // Initialize shader system
-  const { shaderManager } = useShaderManager(canvasRef)
+  const { shaderManager: _shaderManager } = useShaderManager(canvasRef)
 
   // Initialize multiplayer sync
   const { isConnected } = useSyncConnection({
