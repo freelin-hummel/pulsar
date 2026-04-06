@@ -133,9 +133,9 @@ export function useSyncConnection({
 
 /** Handle incoming messages from the server */
 function handleServerMessage(
-  data: Record<string, unknown>,
-  world: World,
-  doc: Doc | null
+  _data: Record<string, unknown>,
+  _world: World,
+  _doc: Doc | null
 ) {
   // Future: handle snapshot, block updates, presence:update, ecs:* messages
   // This will be implemented when the server actor is fully connected

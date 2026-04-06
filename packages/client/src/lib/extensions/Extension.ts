@@ -1,6 +1,6 @@
 import type { World } from '@pulsar/ecs'
 import { defineComponent, defineSystem } from '@pulsar/ecs'
-import type { ComponentType, SystemDefinition } from '@pulsar/ecs'
+import type { SystemDefinition } from '@pulsar/ecs'
 
 /**
  * Extension - A composable, reusable behavior module.

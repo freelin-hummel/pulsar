@@ -12,7 +12,7 @@
     "typecheck": "pnpm -r typecheck",
     "deploy": "pnpm run deploy:server && pnpm run deploy:client",
     "deploy:server": "cd packages/server && npx wrangler deploy",
-    "deploy:client": "cd packages/client && pnpm run build && npx wrangler pages deploy dist --project-name pulsar --commit-dirty=true"
+    "deploy:client": "cd packages/client && pnpm run build && npx wrangler deploy"
   },
   "packageManager": "pnpm@9.15.9",
   "engines": {
