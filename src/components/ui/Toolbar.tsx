@@ -14,17 +14,7 @@ import { useEditorContext } from '../../editor/context.js'
 import type { MapTool, TerrainTextureId, MapObjectType } from '../../shared/mapTypes.js'
 import type { BoardMode } from '../../shared/board.js'
 import { MapToolbar } from './MapToolbar.js'
-
-type Tool =
-  | 'select'
-  | 'hand'
-  | 'rect'
-  | 'ellipse'
-  | 'text'
-  | 'pen'
-  | 'note'
-  | 'image'
-  | 'line'
+import { toEdgelessTool, type Tool } from './edgelessTools.js'
 
 interface ToolDef {
   id: Tool
@@ -45,35 +35,6 @@ const tools: ToolDef[] = [
   { id: 'note', label: 'Note', icon: <StickyNote size={16} /> },
   { id: 'image', label: 'Image', icon: <Image size={16} /> },
 ]
-
-/**
- * Map our tool IDs to BlockSuite EdgelessTool objects.
- */
-function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
-  switch (tool) {
-    case 'select':
-      return { type: 'default' }
-    case 'hand':
-      return { type: 'pan', panning: true }
-    case 'rect':
-      return { type: 'shape', shapeName: 'rect' }
-    case 'ellipse':
-      return { type: 'shape', shapeName: 'ellipse' }
-    case 'line':
-      return { type: 'connector', mode: 0 }
-    case 'pen':
-      return { type: 'brush' }
-    case 'text':
-      return { type: 'text' }
-    case 'note':
-      return { type: 'affine:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }
-    case 'image':
-      // Image insertion is handled by triggering a file input, not a tool switch
-      return null
-    default:
-      return { type: 'default' }
-  }
-}
 
 /**
  * Safely retrieve the edgeless root block component from the mounted editor.
