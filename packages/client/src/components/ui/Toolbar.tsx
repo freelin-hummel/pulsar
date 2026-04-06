@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import {
   MousePointer2,
   Hand,
@@ -10,6 +10,7 @@ import {
   Image,
   Minus,
 } from 'lucide-react'
+import { useEditorContext } from '../../editor/context.js'
 
 type Tool =
   | 'select'
@@ -40,6 +41,35 @@ const tools: ToolDef[] = [
   { id: 'image', label: 'Image', icon: <Image size={16} /> },
 ]
 
+/**
+ * Map our tool IDs to BlockSuite EdgelessTool objects.
+ */
+function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
+  switch (tool) {
+    case 'select':
+      return { type: 'default' }
+    case 'hand':
+      return { type: 'pan', panning: true }
+    case 'rect':
+      return { type: 'shape', shapeName: 'rect' }
+    case 'ellipse':
+      return { type: 'shape', shapeName: 'ellipse' }
+    case 'line':
+      return { type: 'connector', mode: 0 }
+    case 'pen':
+      return { type: 'brush' }
+    case 'text':
+      return { type: 'text' }
+    case 'note':
+      return { type: 'affine:note', childFlavour: 'affine:paragraph', childType: 'text', tip: 'Note' }
+    case 'image':
+      // Image insertion is handled by triggering a file input, not a tool switch
+      return null
+    default:
+      return { type: 'default' }
+  }
+}
+
 interface ToolbarProps {
   activeTool?: Tool
   onToolChange?: (tool: Tool) => void
@@ -48,11 +78,51 @@ interface ToolbarProps {
 export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarProps) {
   const [internalTool, setInternalTool] = useState<Tool>('select')
   const activeTool = controlledTool ?? internalTool
+  const editorCtx = useEditorContext()
 
-  const handleToolChange = (tool: Tool) => {
-    setInternalTool(tool)
-    onToolChange?.(tool)
-  }
+  const handleToolChange = useCallback(
+    (tool: Tool) => {
+      setInternalTool(tool)
+      onToolChange?.(tool)
+
+      if (!editorCtx) return
+      const { editor } = editorCtx
+
+      // For image tool, prompt file picker instead of switching tool
+      if (tool === 'image') {
+        const input = document.createElement('input')
+        input.type = 'file'
+        input.accept = 'image/*'
+        input.multiple = true
+        input.onchange = () => {
+          const files = Array.from(input.files ?? [])
+          if (files.length === 0) return
+          // Access the edgeless root and call addImages
+          const edgelessRoot = (editor as unknown as Record<string, unknown>)._edgelessRoot as
+            | { addImages?: (files: File[]) => Promise<string[]> }
+            | undefined
+          if (edgelessRoot?.addImages) {
+            edgelessRoot.addImages(files)
+          }
+        }
+        input.click()
+        return
+      }
+
+      const edgelessTool = toEdgelessTool(tool)
+      if (!edgelessTool) return
+
+      // Access the edgeless root component's tools manager
+      const edgelessRoot = (editor as unknown as Record<string, unknown>)._edgelessRoot as
+        | { tools?: { setEdgelessTool: (tool: Record<string, unknown>) => void } }
+        | undefined
+
+      if (edgelessRoot?.tools) {
+        edgelessRoot.tools.setEdgelessTool(edgelessTool)
+      }
+    },
+    [editorCtx, onToolChange]
+  )
 
   return (
     <div className="toolbar" style={styles.bar}>
