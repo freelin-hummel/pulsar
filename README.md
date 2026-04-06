@@ -1,6 +1,6 @@
 # Pulsar
 
-A system-agnostic collaborative canvas with an Entity Component System (ECS) extension framework. Built on [BlockSuite](https://github.com/toeverything/blocksuite), [RivetKit](https://rivet.dev), and WebGL.
+A system-agnostic collaborative canvas with an Entity Component System (ECS) extension framework. Fork of [BlockSuite](https://github.com/toeverything/blocksuite), extended with [RivetKit](https://rivet.dev) multiplayer and WebGL effects.
 
 > **Reference docs for development:**
 > - https://blocksuite.io
@@ -9,23 +9,23 @@ A system-agnostic collaborative canvas with an Entity Component System (ECS) ext
 
 ## Overview
 
-Pulsar extends BlockSuite's edgeless canvas with a composable ECS that enables modular, reusable behaviors on canvas elements. While designed for virtual tabletop (VTT) use cases, the architecture is intentionally domain-agnostic — any collaborative board scenario benefits from the extensible component/system pattern.
+Pulsar is the edgeless canvas editor, extended with a composable ECS that enables modular, reusable behaviors on canvas elements. While designed for virtual tabletop (VTT) use cases, the architecture is intentionally domain-agnostic — any collaborative board scenario benefits from the extensible component/system pattern.
 
 ### Key Features
 
 - **ECS Extension System** — Define components (data) and systems (logic) that attach to any canvas element. Extensions are composable, live-editable, and require no build tooling.
-- **Multiplayer Sync** — Hybrid consistency model: document/canvas state syncs via BlockSuite's built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor.
+- **Multiplayer Sync** — Hybrid consistency model: document/canvas state syncs via built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor.
 - **WebGL Shader Effects** — A shader overlay system for visual effects applied per-element, selection, or globally.
 - **AI Agent Friendly** — Simple, well-typed APIs designed for programmatic interaction and automated content generation.
 
 ## Architecture
 
-Pulsar uses a **hybrid consistency model** — document/canvas state syncs via BlockSuite's built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor. See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full design.
+Pulsar uses a **hybrid consistency model** — document/canvas state syncs via built-in Yjs CRDT, while game logic state is validated by an authoritative RivetKit server actor. See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full design.
 
 ```
 ┌──────────────────── Client ──────────────────────────┐
 │                                                       │
-│  BlockSuite Editor (Edgeless)     ECS World           │
+│  Pulsar Editor (Edgeless)         ECS World           │
 │  ┌──────────────────────┐  ┌────────────────────────┐│
 │  │ Y.Doc (CRDT)         │  │ Game Components        ││
 │  │ • Block positions     │  │ • HP, status, rules    ││
@@ -49,14 +49,34 @@ Pulsar uses a **hybrid consistency model** — document/canvas state syncs via B
 └──────────────────────────────────────────────────────┘
 ```
 
-## Packages
+## Project Structure
 
-| Package | Description |
-|---------|-------------|
-| `@pulsar/ecs` | Core Entity Component System — World, Components, Systems |
-| `@pulsar/shared` | Shared types, protocols, and built-in components |
-| `@pulsar/client` | React/BlockSuite client with ECS, shaders, and sync |
-| `@pulsar/server` | RivetKit actor-based multiplayer backend |
+```
+pulsar/
+├── src/                     # Main application source
+│   ├── ecs/                 # Entity Component System framework
+│   ├── shared/              # Shared types, protocols, built-in components
+│   ├── editor/              # Editor initialization and context
+│   ├── components/          # React UI components
+│   │   └── ui/              # MenuBar, ScenePicker, Toolbar, StatusBar
+│   ├── hooks/               # React hooks (ECS, shaders, sync)
+│   ├── lib/                 # Libraries
+│   │   ├── extensions/      # Extension system
+│   │   └── shaders/         # WebGL shader system
+│   ├── main.tsx             # Entry point
+│   ├── App.tsx              # Root component
+│   └── theme.css            # Dark theme tokens
+├── packages/
+│   ├── blocksuite/          # Editor engine (forked from BlockSuite)
+│   │   ├── blocks/          # Block implementations
+│   │   ├── presets/         # Editor presets and themes
+│   │   ├── framework/       # Core framework (store, block-std, etc.)
+│   │   └── affine/          # Editor components (surface, model, etc.)
+│   └── server/              # RivetKit multiplayer backend
+├── index.html               # HTML entry point
+├── vite.config.ts           # Vite build config with SWC decorator support
+└── package.json             # Single unified package
+```
 
 ## Quick Start
 
@@ -64,14 +84,18 @@ Pulsar uses a **hybrid consistency model** — document/canvas state syncs via B
 # Install dependencies
 pnpm install
 
-# Start the client (local mode)
+# Start the dev server (local mode)
 pnpm dev
 
-# Start the server (multiplayer)
+# Start the multiplayer server
 pnpm dev:server
 
-# Start both
-pnpm dev:all
+# Build for production
+pnpm build
+
+# Deploy
+pnpm deploy          # Client (Cloudflare Pages)
+pnpm deploy:server   # Server (Cloudflare Workers)
 ```
 
 ## ECS Extension System
@@ -79,7 +103,7 @@ pnpm dev:all
 Extensions are composable behavior modules that bundle components and systems:
 
 ```typescript
-import { defineExtension } from '@pulsar/client/lib/extensions/Extension'
+import { defineExtension } from './lib/extensions/Extension'
 
 const HealthExtension = defineExtension({
   name: 'health',
@@ -113,7 +137,7 @@ HealthExtension.install(world)
 Extensions can be loaded from source code at runtime — no build step needed:
 
 ```typescript
-import { ExtensionRegistry } from '@pulsar/client/lib/extensions/ExtensionRegistry'
+import { ExtensionRegistry } from './lib/extensions/ExtensionRegistry'
 
 const registry = new ExtensionRegistry(world)
 
@@ -139,7 +163,7 @@ registry.loadFromSource(`
 The shader system provides a WebGL2 overlay for visual effects:
 
 ```typescript
-import { ShaderProgram } from '@pulsar/client/lib/shaders/WebGLManager'
+import { ShaderProgram } from './lib/shaders/WebGLManager'
 
 class MyEffect extends ShaderProgram {
   init(gl: WebGL2RenderingContext) { /* compile shaders */ }
@@ -155,7 +179,7 @@ shaderManager.registerProgram('my-effect', new MyEffect())
 
 Multiplayer uses a hybrid sync model (see [ARCHITECTURE.md](./ARCHITECTURE.md)):
 
-- **Document state** (canvas layout, text, visual properties) syncs via BlockSuite's built-in Yjs CRDT. The server persists and relays Yjs updates but does not validate them.
+- **Document state** (canvas layout, text, visual properties) syncs via built-in Yjs CRDT. The server persists and relays Yjs updates but does not validate them.
 - **Game state** (ECS components like HP, status effects, permissions) syncs through the authoritative RivetKit actor, which validates mutations before broadcasting.
 - **User presence** (cursors, selections) is relayed through the server without validation.
 
@@ -165,7 +189,10 @@ Multiplayer uses a hybrid sync model (see [ARCHITECTURE.md](./ARCHITECTURE.md)):
 # Type checking
 pnpm typecheck
 
-# Build all packages
+# Lint
+pnpm lint
+
+# Build
 pnpm build
 ```
 

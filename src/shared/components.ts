@@ -1,4 +1,4 @@
-import { defineComponent } from '@pulsar/ecs'
+import { defineComponent } from '../ecs/index.js'
 
 /**
  * Built-in components that provide core canvas element behaviors.

@@ -1,5 +1,5 @@
 packages:
-  - "packages/*"
+  - "packages/server"
   - "packages/blocksuite/affine/*"
   - "packages/blocksuite/framework/*"
   - "packages/blocksuite/blocks"

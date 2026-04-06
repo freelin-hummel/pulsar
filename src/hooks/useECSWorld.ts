@@ -1,6 +1,6 @@
 import { useRef, useMemo, useCallback } from 'react'
-import { World, Component } from '@pulsar/ecs'
-import { BuiltInComponents } from '@pulsar/shared'
+import { World, Component } from '../ecs/index.js'
+import { BuiltInComponents } from '../shared/index.js'
 import type { Doc } from '@pulsar/store'
 
 /**

@@ -1,5 +1,31 @@
 import { actor } from 'rivetkit'
-import type { SyncMessage, RoomState, UserPresence } from '@pulsar/shared'
+
+// Sync protocol types (shared with the client)
+type SyncMessage =
+  | { type: 'connect'; roomId: string; userId: string }
+  | { type: 'disconnect'; userId: string }
+  | { type: 'update'; changes: ShapeChange[] }
+  | { type: 'presence'; userId: string; cursor: { x: number; y: number }; selection: string[] }
+  | { type: 'snapshot'; state: RoomState }
+  | { type: 'ecs:component-add'; entityId: string; component: string; data: Record<string, unknown> }
+  | { type: 'ecs:component-remove'; entityId: string; component: string }
+  | { type: 'ecs:component-update'; entityId: string; component: string; data: Record<string, unknown> }
+
+interface RoomState {
+  roomId: string
+  shapes: Record<string, Record<string, unknown>>
+  ecsState: Record<string, Record<string, Record<string, unknown>>>
+  users: UserPresence[]
+}
+
+interface UserPresence {
+  userId: string
+  name: string
+  color: string
+  cursor: { x: number; y: number }
+  selection: string[]
+  lastSeen: number
+}
 
 /**
  * Room state persisted by the actor.

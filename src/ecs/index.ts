@@ -1,5 +1,5 @@
 /**
- * @pulsar/ecs - Entity Component System
+ * Pulsar ECS - Entity Component System
  *
  * A lightweight, composable ECS framework designed for extending BlockSuite blocks
  * with modular, reusable behaviors. Components are pure data, systems process

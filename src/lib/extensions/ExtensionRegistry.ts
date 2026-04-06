@@ -1,4 +1,4 @@
-import type { World } from '@pulsar/ecs'
+import type { World } from '../../ecs/index.js'
 import { Extension, loadExtensionFromSource } from './Extension.js'
 
 /**

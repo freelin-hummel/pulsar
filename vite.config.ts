@@ -38,7 +38,7 @@ function pulsarSwcPlugin() {
 export default defineConfig({
   plugins: [pulsarSwcPlugin(), react()],
   build: {
-    outDir: '../../dist',
+    outDir: 'dist',
     emptyOutDir: true,
   },
   server: {

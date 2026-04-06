@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import type { World } from '@pulsar/ecs'
-import type { SyncMessage } from '@pulsar/shared'
+import type { World } from '../ecs/index.js'
+import type { SyncMessage } from '../shared/index.js'
 import type { Doc } from '@pulsar/store'
 
 interface SyncConnectionOptions {

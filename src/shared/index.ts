@@ -1,5 +1,5 @@
 /**
- * @pulsar/shared - Shared types, protocols, and built-in components
+ * Pulsar Shared - Types, protocols, and built-in components
  *
  * Defines the common data types exchanged between client and server,
  * and provides built-in ECS components for the canvas system.
