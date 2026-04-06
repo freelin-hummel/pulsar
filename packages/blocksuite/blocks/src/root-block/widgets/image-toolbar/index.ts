@@ -1,12 +1,12 @@
 import type {
   AdvancedMenuItem,
   MenuItemGroup,
-} from '@blocksuite/affine-components/toolbar';
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/toolbar';
+import type { ImageBlockModel } from '@pulsar/model';
 
-import { HoverController } from '@blocksuite/affine-components/hover';
-import { cloneGroups } from '@blocksuite/affine-components/toolbar';
-import { WidgetComponent } from '@blocksuite/block-std';
+import { HoverController } from '@pulsar/editor-components/hover';
+import { cloneGroups } from '@pulsar/editor-components/toolbar';
+import { WidgetComponent } from '@pulsar/block-std';
 import { limitShift, shift } from '@floating-ui/dom';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -19,10 +19,10 @@ import './components/image-toolbar.js';
 import { MORE_GROUPS, PRIMARY_GROUPS } from './config.js';
 import { ImageToolbarContext } from './context.js';
 
-export const AFFINE_IMAGE_TOOLBAR_WIDGET = 'affine-image-toolbar-widget';
+export const PULSAR_IMAGE_TOOLBAR_WIDGET = 'pulsar-image-toolbar-widget';
 
-@customElement(AFFINE_IMAGE_TOOLBAR_WIDGET)
-export class AffineImageToolbarWidget extends WidgetComponent<
+@customElement(PULSAR_IMAGE_TOOLBAR_WIDGET)
+export class PulsarImageToolbarWidget extends WidgetComponent<
   ImageBlockModel,
   ImageBlockComponent
 > {
@@ -78,7 +78,7 @@ export class AffineImageToolbarWidget extends WidgetComponent<
           container: this.block,
           // stacking-context(editor-host)
           portalStyles: {
-            zIndex: 'var(--affine-z-index-popover)',
+            zIndex: 'var(--pulsar-z-index-popover)',
           },
           computePosition: {
             referenceElement: imageContainer,
@@ -156,7 +156,7 @@ export class AffineImageToolbarWidget extends WidgetComponent<
     cloneGroups(PRIMARY_GROUPS);
 
   override firstUpdated() {
-    if (this.doc.getParent(this.model.id)?.flavour === 'affine:surface') {
+    if (this.doc.getParent(this.model.id)?.flavour === 'pulsar:surface') {
       return;
     }
 
@@ -167,6 +167,6 @@ export class AffineImageToolbarWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_IMAGE_TOOLBAR_WIDGET]: AffineImageToolbarWidget;
+    [PULSAR_IMAGE_TOOLBAR_WIDGET]: PulsarImageToolbarWidget;
   }
 }

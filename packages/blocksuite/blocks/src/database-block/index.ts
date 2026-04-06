@@ -1,4 +1,4 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
+import type { DatabaseBlockModel } from '@pulsar/model';
 
 import type { DatabaseBlockService } from './database-service.js';
 
@@ -16,10 +16,10 @@ export * from './database-service.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:database': DatabaseBlockService;
+      'pulsar:database': DatabaseBlockService;
     }
     interface BlockModels {
-      'affine:database': DatabaseBlockModel;
+      'pulsar:database': DatabaseBlockModel;
     }
   }
 }

@@ -1,9 +1,9 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { AddCursorIcon } from '@blocksuite/icons/lit';
 import { css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -68,7 +68,7 @@ const styles = css`
     visibility: hidden;
     opacity: 0;
     transition: all 150ms cubic-bezier(0.42, 0, 1, 1);
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
   }
 
   affine-data-view-kanban-group:hover .add-card {
@@ -77,28 +77,28 @@ const styles = css`
   }
 
   affine-data-view-kanban-group .add-card:hover {
-    background-color: var(--affine-hover-color);
-    color: var(--affine-text-primary-color);
+    background-color: var(--pulsar-hover-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   .sortable-ghost {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
     opacity: 0.5;
   }
 
   .sortable-drag {
-    background-color: var(--affine-background-primary-color);
+    background-color: var(--pulsar-background-primary-color);
   }
 `;
 
-@customElement('affine-data-view-kanban-group')
+@customElement('pulsar-data-view-kanban-group')
 export class KanbanGroup extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
   private clickAddCard = () => {
     const id = this.view.addCard('end', this.group.key);
     requestAnimationFrame(() => {
-      const kanban = this.closest('affine-data-view-kanban');
+      const kanban = this.closest('pulsar-data-view-kanban');
       if (kanban) {
         kanban.selectionController.selection = {
           selectionType: 'cell',
@@ -115,7 +115,7 @@ export class KanbanGroup extends SignalWatcher(
   private clickAddCardInStart = () => {
     const id = this.view.addCard('start', this.group.key);
     requestAnimationFrame(() => {
-      const kanban = this.closest('affine-data-view-kanban');
+      const kanban = this.closest('pulsar-data-view-kanban');
       if (kanban) {
         kanban.selectionController.selection = {
           selectionType: 'cell',
@@ -206,6 +206,6 @@ export class KanbanGroup extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-kanban-group': KanbanGroup;
+    'pulsar-data-view-kanban-group': KanbanGroup;
   }
 }

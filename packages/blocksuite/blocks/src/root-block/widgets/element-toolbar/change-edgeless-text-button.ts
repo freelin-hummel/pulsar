@@ -1,4 +1,4 @@
-import type { EdgelessTextBlockModel } from '@blocksuite/affine-model';
+import type { EdgelessTextBlockModel } from '@pulsar/model';
 
 import { html, nothing } from 'lit';
 

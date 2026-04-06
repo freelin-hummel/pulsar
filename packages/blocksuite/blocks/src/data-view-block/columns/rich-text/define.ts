@@ -1,4 +1,4 @@
-import { nanoid } from '@blocksuite/store';
+import { nanoid } from '@pulsar/store';
 
 import type { RichTextCellType } from '../../../database-block/columns/utils.js';
 import type { SelectTag } from '../../../database-block/data-view/utils/tags/multi-tag-select.js';

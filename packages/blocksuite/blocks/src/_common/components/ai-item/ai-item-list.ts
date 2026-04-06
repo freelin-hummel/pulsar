@@ -1,7 +1,7 @@
-import { createLitPortal } from '@blocksuite/affine-components/portal';
-import { EditorHost } from '@blocksuite/block-std';
-import { WithDisposable } from '@blocksuite/block-std';
-import { PropTypes, requiredProperties } from '@blocksuite/block-std';
+import { createLitPortal } from '@pulsar/editor-components/portal';
+import { EditorHost } from '@pulsar/block-std';
+import { WithDisposable } from '@pulsar/block-std';
+import { PropTypes, requiredProperties } from '@pulsar/block-std';
 import { flip, offset } from '@floating-ui/dom';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
@@ -96,9 +96,9 @@ export class AIItemList extends WithDisposable(LitElement) {
       display: flex;
       padding: 4px calc(var(--item-padding, 8px) + 4px);
       align-items: center;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       text-align: justify;
-      font-size: var(--affine-font-xs);
+      font-size: var(--pulsar-font-xs);
       font-style: normal;
       font-weight: 500;
       line-height: 20px;

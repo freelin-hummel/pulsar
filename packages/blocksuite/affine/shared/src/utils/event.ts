@@ -1,4 +1,4 @@
-import { IS_IOS, IS_MAC } from '@blocksuite/global/env';
+import { IS_IOS, IS_MAC } from '@pulsar/global/env';
 
 export function isTouchPadPinchEvent(e: WheelEvent) {
   // two finger pinches on touch pad, ctrlKey is always true.

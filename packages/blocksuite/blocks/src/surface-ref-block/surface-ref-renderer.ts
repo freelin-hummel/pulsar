@@ -1,15 +1,15 @@
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { SurfaceBlockService } from '@blocksuite/affine-block-surface';
-import type { Color } from '@blocksuite/affine-model';
-import type { NoteBlockModel } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { Doc } from '@blocksuite/store';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { SurfaceBlockService } from '@pulsar/block-surface';
+import type { Color } from '@pulsar/model';
+import type { NoteBlockModel } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { Doc } from '@pulsar/store';
 
-import { CanvasRenderer } from '@blocksuite/affine-block-surface';
-import { elementRenderers } from '@blocksuite/affine-block-surface';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { GfxControllerIdentifier, Viewport } from '@blocksuite/block-std/gfx';
-import { DisposableGroup, Slot } from '@blocksuite/global/utils';
+import { CanvasRenderer } from '@pulsar/block-surface';
+import { elementRenderers } from '@pulsar/block-surface';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { GfxControllerIdentifier, Viewport } from '@pulsar/block-std/gfx';
+import { DisposableGroup, Slot } from '@pulsar/global/utils';
 
 import { getSurfaceBlock } from './utils.js';
 
@@ -127,7 +127,7 @@ export class SurfaceRefRenderer {
   }
 
   get surfaceService() {
-    return this.std.getService('affine:surface') as SurfaceBlockService;
+    return this.std.getService('pulsar:surface') as SurfaceBlockService;
   }
 
   get viewport() {

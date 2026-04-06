@@ -1,10 +1,10 @@
-import type { NoteBlockModel } from '@blocksuite/affine-model';
+import type { NoteBlockModel } from '@pulsar/model';
 
-import { NoteBlockSchema } from '@blocksuite/affine-model';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { BlockService } from '@blocksuite/block-std';
-import { Point } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
+import { NoteBlockSchema } from '@pulsar/model';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { BlockService } from '@pulsar/block-std';
+import { Point } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
 import { render } from 'lit';
 
 import type { EdgelessRootService } from '../root-block/edgeless/edgeless-root-service.js';
@@ -12,8 +12,8 @@ import type { DragHandleOption } from '../root-block/widgets/drag-handle/config.
 import type { EdgelessNoteBlockComponent } from './note-edgeless-block.js';
 
 import {
-  AFFINE_DRAG_HANDLE_WIDGET,
-  AffineDragHandleWidget,
+  PULSAR_DRAG_HANDLE_WIDGET,
+  PulsarDragHandleWidget,
 } from '../root-block/widgets/drag-handle/drag-handle.js';
 import {
   captureEventTarget,
@@ -30,7 +30,7 @@ export class NoteBlockService extends BlockService {
       }
 
       const element = captureEventTarget(state.raw.target);
-      const insideDragHandle = !!element?.closest(AFFINE_DRAG_HANDLE_WIDGET);
+      const insideDragHandle = !!element?.closest(PULSAR_DRAG_HANDLE_WIDGET);
       if (!insideDragHandle) {
         return false;
       }
@@ -43,7 +43,7 @@ export class NoteBlockService extends BlockService {
         return false;
       }
       const edgelessService = editorHost.std.getService(
-        'affine:page'
+        'pulsar:page'
       ) as EdgelessRootService;
       const zoom = edgelessService?.viewport.zoom ?? 1;
       const noteComponent = anchorComponent as EdgelessNoteBlockComponent;
@@ -117,7 +117,7 @@ export class NoteBlockService extends BlockService {
     super.mounted();
 
     this.disposables.add(
-      AffineDragHandleWidget.registerOption(this._dragHandleOption)
+      PulsarDragHandleWidget.registerOption(this._dragHandleOption)
     );
 
     this.bindHotKey({
@@ -152,7 +152,7 @@ export class NoteBlockService extends BlockService {
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:note': NoteBlockService;
+      'pulsar:note': NoteBlockService;
     }
   }
 }

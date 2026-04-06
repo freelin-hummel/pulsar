@@ -14,22 +14,22 @@ export const menuItemStyles = css`
     box-sizing: border-box;
   }
   .menu-item:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
     cursor: pointer;
   }
   .item-icon {
     display: flex;
-    color: var(--item-icon-color, var(--affine-brand-color));
+    color: var(--item-icon-color, var(--pulsar-brand-color));
   }
   .menu-item:hover .item-icon {
-    color: var(--item-icon-hover-color, var(--affine-brand-color));
+    color: var(--item-icon-hover-color, var(--pulsar-brand-color));
   }
   .menu-item.discard:hover {
-    background: var(--affine-background-error-color);
+    background: var(--pulsar-background-error-color);
     .item-name,
     .item-icon,
     .enter-icon {
-      color: var(--affine-error-color);
+      color: var(--pulsar-error-color);
     }
   }
   .item-name {
@@ -37,28 +37,28 @@ export const menuItemStyles = css`
     padding: 0px 4px;
     align-items: baseline;
     flex: 1 0 0;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
     text-align: start;
     white-space: nowrap;
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
   }
 
   .item-beta {
-    color: var(--affine-text-secondary-color);
-    font-size: var(--affine-font-xs);
+    color: var(--pulsar-text-secondary-color);
+    font-size: var(--pulsar-font-xs);
     font-weight: 500;
     margin-left: 0.5em;
   }
 
   .enter-icon,
   .arrow-right-icon {
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
     display: flex;
   }
   .enter-icon {

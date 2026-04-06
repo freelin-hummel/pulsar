@@ -8,8 +8,8 @@ import type {
   StrokeStyle,
   TextAlign,
   TextVerticalAlign,
-} from '@blocksuite/affine-model';
-import type { Y } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { Y } from '@pulsar/store';
 
 import type { CanvasElementType } from '../../element-model/index.js';
 import type { ISurfaceElement } from '../surface-element.js';

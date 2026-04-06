@@ -1,8 +1,8 @@
-import type { ListBlockModel } from '@blocksuite/affine-model';
-import type { Command } from '@blocksuite/block-std';
+import type { ListBlockModel } from '@pulsar/model';
+import type { Command } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const indentParagraphCommand: Command<
   never,
@@ -36,7 +36,7 @@ export const indentParagraphCommand: Command<
   }
 
   const model = std.doc.getBlock(blockId)?.model;
-  if (!model || !matchFlavours(model, ['affine:paragraph'])) {
+  if (!model || !matchFlavours(model, ['pulsar:paragraph'])) {
     console.error(`block ${blockId} is not a paragraph block`);
     return;
   }
@@ -55,7 +55,7 @@ export const indentParagraphCommand: Command<
 
   // update collapsed state
   if (
-    matchFlavours(previousSibling, ['affine:list']) &&
+    matchFlavours(previousSibling, ['pulsar:list']) &&
     previousSibling.collapsed
   ) {
     doc.updateBlock(previousSibling, {

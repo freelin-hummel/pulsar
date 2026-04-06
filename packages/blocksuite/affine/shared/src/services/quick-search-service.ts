@@ -1,4 +1,4 @@
-import { createIdentifier } from '@blocksuite/global/di';
+import { createIdentifier } from '@pulsar/global/di';
 
 export interface QuickSearchService {
   searchDoc: (options: {
@@ -15,5 +15,5 @@ export type QuickSearchResult =
   | null;
 
 export const QuickSearchProvider = createIdentifier<QuickSearchService>(
-  'AffineQuickSearchService'
+  'PulsarQuickSearchService'
 );

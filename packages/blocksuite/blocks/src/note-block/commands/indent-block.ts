@@ -1,7 +1,7 @@
-import type { ListBlockModel } from '@blocksuite/affine-model';
-import type { Command } from '@blocksuite/block-std';
+import type { ListBlockModel } from '@pulsar/model';
+import type { Command } from '@pulsar/block-std';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 /**
  * @example
@@ -54,7 +54,7 @@ export const indentBlock: Command<
 
   // update collapsed state of affine list
   if (
-    matchFlavours(previousSibling, ['affine:list']) &&
+    matchFlavours(previousSibling, ['pulsar:list']) &&
     previousSibling.collapsed
   ) {
     doc.updateBlock(previousSibling, {

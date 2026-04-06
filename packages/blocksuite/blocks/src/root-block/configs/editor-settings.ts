@@ -1,6 +1,6 @@
 import type { z } from 'zod';
 
-import { NodePropsSchema } from '@blocksuite/affine-shared/utils';
+import { NodePropsSchema } from '@pulsar/editor-shared/utils';
 
 export const EditorSettingSchema = NodePropsSchema;
 

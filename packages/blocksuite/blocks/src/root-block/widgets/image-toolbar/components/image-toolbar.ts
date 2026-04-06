@@ -1,12 +1,12 @@
 import type {
   EditorIconButton,
   MenuItemGroup,
-} from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/toolbar';
 
-import { MoreVerticalIcon } from '@blocksuite/affine-components/icons';
-import { createLitPortal } from '@blocksuite/affine-components/portal';
-import { renderGroups } from '@blocksuite/affine-components/toolbar';
-import { assertExists, noop } from '@blocksuite/global/utils';
+import { MoreVerticalIcon } from '@pulsar/editor-components/icons';
+import { createLitPortal } from '@pulsar/editor-components/portal';
+import { renderGroups } from '@pulsar/editor-components/toolbar';
+import { assertExists, noop } from '@pulsar/global/utils';
 import { flip, offset } from '@floating-ui/dom';
 import { LitElement, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
@@ -16,8 +16,8 @@ import type { ImageToolbarContext } from '../context.js';
 
 import { styles } from '../styles.js';
 
-@customElement('affine-image-toolbar')
-export class AffineImageToolbar extends LitElement {
+@customElement('pulsar-image-toolbar')
+export class PulsarImageToolbar extends LitElement {
   private _currentOpenMenu: AbortController | null = null;
 
   private _popMenuAbortController: AbortController | null = null;
@@ -80,7 +80,7 @@ export class AffineImageToolbar extends LitElement {
       container: this.context.host,
       // stacking-context(editor-host)
       portalStyles: {
-        zIndex: 'var(--affine-z-index-popover)',
+        zIndex: 'var(--pulsar-z-index-popover)',
       },
       computePosition: {
         referenceElement: this._moreButton,
@@ -102,7 +102,7 @@ export class AffineImageToolbar extends LitElement {
 
   override render() {
     return html`
-      <editor-toolbar class="affine-image-toolbar-container" data-without-bg>
+      <editor-toolbar class="pulsar-image-toolbar-container" data-without-bg>
         ${renderGroups(this.primaryGroups, this.context)}
         <editor-icon-button
           class="image-toolbar-button more"
@@ -139,6 +139,6 @@ export class AffineImageToolbar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-image-toolbar': AffineImageToolbar;
+    'pulsar-image-toolbar': PulsarImageToolbar;
   }
 }

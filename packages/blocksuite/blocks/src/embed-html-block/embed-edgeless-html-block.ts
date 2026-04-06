@@ -1,4 +1,4 @@
-import { Bound } from '@blocksuite/global/utils';
+import { Bound } from '@pulsar/global/utils';
 import { customElement } from 'lit/decorators.js';
 
 import type { EdgelessRootService } from '../root-block/index.js';
@@ -6,7 +6,7 @@ import type { EdgelessRootService } from '../root-block/index.js';
 import { toEdgelessEmbedBlock } from '../_common/embed-block-helper/embed-block-element.js';
 import { EmbedHtmlBlockComponent } from './embed-html-block.js';
 
-@customElement('affine-embed-edgeless-html-block')
+@customElement('pulsar-embed-edgeless-html-block')
 export class EmbedEdgelessHtmlBlockComponent extends toEdgelessEmbedBlock(
   EmbedHtmlBlockComponent
 ) {
@@ -30,6 +30,6 @@ export class EmbedEdgelessHtmlBlockComponent extends toEdgelessEmbedBlock(
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 }

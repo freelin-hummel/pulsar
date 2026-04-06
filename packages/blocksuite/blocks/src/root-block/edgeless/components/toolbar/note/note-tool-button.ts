@@ -1,4 +1,4 @@
-import { ArrowUpIcon, NoteIcon } from '@blocksuite/affine-components/icons';
+import { ArrowUpIcon, NoteIcon } from '@pulsar/editor-components/icons';
 import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -32,7 +32,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
     }
   `;
 
-  override type: EdgelessTool['type'] = 'affine:note';
+  override type: EdgelessTool['type'] = 'pulsar:note';
 
   private _disposeMenu() {
     this._noteMenu?.dispose();
@@ -45,7 +45,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
       this.requestUpdate();
     } else {
       this.edgeless.tools.setEdgelessTool({
-        type: 'affine:note',
+        type: 'pulsar:note',
         childFlavour: this.childFlavour,
         childType: this.childType,
         tip: this.tip,
@@ -69,7 +69,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
           }
         });
         this.edgeless.tools.setEdgelessTool({
-          type: 'affine:note',
+          type: 'pulsar:note',
           childFlavour: this.childFlavour,
           childType: this.childType,
           tip: this.tip,
@@ -82,7 +82,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
     super.connectedCallback();
     this._disposables.add(
       this.edgeless.slots.edgelessToolUpdated.on(newTool => {
-        if (newTool.type !== 'affine:note') {
+        if (newTool.type !== 'pulsar:note') {
           this._disposeMenu();
         }
       })
@@ -96,7 +96,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
 
   override render() {
     const { active } = this;
-    const arrowColor = active ? 'currentColor' : 'var(--affine-icon-secondary)';
+    const arrowColor = active ? 'currentColor' : 'var(--pulsar-icon-secondary)';
     return html`
       <edgeless-tool-icon-button
         class="edgeless-note-button"
@@ -117,7 +117,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
   }
 
   @state()
-  accessor childFlavour: NoteTool['childFlavour'] = 'affine:paragraph';
+  accessor childFlavour: NoteTool['childFlavour'] = 'pulsar:paragraph';
 
   @state()
   accessor childType = 'text';

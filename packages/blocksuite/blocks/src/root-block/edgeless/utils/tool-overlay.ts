@@ -1,10 +1,10 @@
-import type { XYWH } from '@blocksuite/global/utils';
+import type { XYWH } from '@pulsar/global/utils';
 
 import {
   type Options,
   Overlay,
   type RoughCanvas,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   type Color,
   DEFAULT_NOTE_BACKGROUND_COLOR,
@@ -12,10 +12,10 @@ import {
   DEFAULT_SHAPE_STROKE_COLOR,
   type ShapeStyle,
   shapeMethods,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { Bound } from '@blocksuite/global/utils';
-import { DisposableGroup, Slot, noop } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { Bound } from '@pulsar/global/utils';
+import { DisposableGroup, Slot, noop } from '@pulsar/global/utils';
 
 import type { EdgelessRootBlockComponent } from '../edgeless-root-block.js';
 
@@ -361,7 +361,7 @@ export class NoteOverlay extends ToolOverlay {
     this.disposables.add(
       this.edgeless.slots.edgelessToolUpdated.on(edgelessTool => {
         // when change note child type, update overlay text
-        if (edgelessTool.type !== 'affine:note') return;
+        if (edgelessTool.type !== 'pulsar:note') return;
         this.text = this._getOverlayText(edgelessTool.tip);
         this.edgeless.surface.refresh();
       })

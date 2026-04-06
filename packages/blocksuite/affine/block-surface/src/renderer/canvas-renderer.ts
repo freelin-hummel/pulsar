@@ -1,16 +1,16 @@
-import type { Viewport } from '@blocksuite/block-std/gfx';
-import type { GridManager, LayerManager } from '@blocksuite/block-std/gfx';
-import type { IBound } from '@blocksuite/global/utils';
+import type { Viewport } from '@pulsar/block-std/gfx';
+import type { GridManager, LayerManager } from '@pulsar/block-std/gfx';
+import type { IBound } from '@pulsar/global/utils';
 
-import { type Color, ColorScheme } from '@blocksuite/affine-model';
-import { requestConnectedFrame } from '@blocksuite/affine-shared/utils';
+import { type Color, ColorScheme } from '@pulsar/model';
+import { requestConnectedFrame } from '@pulsar/editor-shared/utils';
 import {
   DisposableGroup,
   Slot,
   getBoundsWithRotation,
   intersects,
   last,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { ElementRenderer } from './elements/index.js';
 

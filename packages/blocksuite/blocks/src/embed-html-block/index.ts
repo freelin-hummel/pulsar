@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { EmbedHtmlBlockService } from './embed-html-service.js';
 
@@ -12,7 +12,7 @@ export * from './embed-html-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:embed-html': EmbedHtmlBlockService;
+      'pulsar:embed-html': EmbedHtmlBlockService;
     }
   }
 }

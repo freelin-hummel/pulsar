@@ -1,4 +1,4 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 export class MigrationError extends BlockSuiteError {
   constructor(description: string) {

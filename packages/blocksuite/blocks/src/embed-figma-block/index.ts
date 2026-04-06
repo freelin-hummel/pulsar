@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { EmbedFigmaBlockService } from './embed-figma-service.js';
 
@@ -12,7 +12,7 @@ export * from './embed-figma-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:embed-figma': EmbedFigmaBlockService;
+      'pulsar:embed-figma': EmbedFigmaBlockService;
     }
   }
 }

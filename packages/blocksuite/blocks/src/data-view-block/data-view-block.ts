@@ -1,12 +1,12 @@
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import {
   CopyIcon,
   DeleteIcon,
   MoreHorizontalIcon,
-} from '@blocksuite/affine-components/icons';
-import { RANGE_SYNC_EXCLUDE_ATTR } from '@blocksuite/block-std';
-import { Slice } from '@blocksuite/store';
+} from '@pulsar/editor-components/icons';
+import { RANGE_SYNC_EXCLUDE_ATTR } from '@pulsar/block-std';
+import { Slice } from '@pulsar/store';
 import { computed } from '@lit-labs/preact-signals';
 import { css, nothing, unsafeCSS } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -29,13 +29,13 @@ import {
   widgetPresets,
 } from '../database-block/data-view/index.js';
 import {
-  type AffineInnerModalWidget,
+  type PulsarInnerModalWidget,
   EdgelessRootBlockComponent,
 } from '../root-block/index.js';
-import { AFFINE_INNER_MODAL_WIDGET } from '../root-block/widgets/inner-modal/inner-modal.js';
+import { PULSAR_INNER_MODAL_WIDGET } from '../root-block/widgets/inner-modal/inner-modal.js';
 import { BlockQueryDataSource } from './data-source.js';
 
-@customElement('affine-data-view')
+@customElement('pulsar-data-view')
 export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBlockModel> {
   _bindHotkey: DataViewProps['bindHotkey'] = hotkeys => {
     return {
@@ -108,17 +108,17 @@ export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBloc
   private dataView = new DataView();
 
   static override styles = css`
-    ${unsafeCSS(dataViewCommonStyle('affine-database'))}
+    ${unsafeCSS(dataViewCommonStyle('pulsar-database'))}
     affine-database {
       display: block;
       border-radius: 8px;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       padding: 8px;
       margin: 8px -8px -8px;
     }
 
     .database-block-selected {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
       border-radius: 4px;
     }
 
@@ -133,11 +133,11 @@ export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBloc
     .database-ops svg {
       width: 16px;
       height: 16px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
 
     .database-ops:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     @media print {
@@ -152,7 +152,7 @@ export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBloc
   `;
 
   getRootService = () => {
-    return this.std.getService('affine:page');
+    return this.std.getService('pulsar:page');
   };
 
   headerWidget: DataViewWidget = defineUniComponent(
@@ -269,13 +269,13 @@ export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBloc
 
   get innerModalWidget() {
     return this.rootComponent?.widgetComponents[
-      AFFINE_INNER_MODAL_WIDGET
-    ] as AffineInnerModalWidget;
+      PULSAR_INNER_MODAL_WIDGET
+    ] as PulsarInnerModalWidget;
   }
 
   override get topContenteditableElement() {
     if (this.rootComponent instanceof EdgelessRootBlockComponent) {
-      const note = this.closest<NoteBlockComponent>('affine-note');
+      const note = this.closest<NoteBlockComponent>('pulsar-note');
       return note;
     }
     return this.rootComponent;
@@ -288,6 +288,6 @@ export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBloc
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view': DataViewBlockComponent;
+    'pulsar-data-view': DataViewBlockComponent;
   }
 }

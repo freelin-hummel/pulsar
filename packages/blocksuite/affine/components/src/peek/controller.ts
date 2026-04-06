@@ -1,4 +1,4 @@
-import type { BlockService } from '@blocksuite/block-std';
+import type { BlockService } from '@pulsar/block-std';
 import type { TemplateResult } from 'lit';
 
 import type { PeekViewService, PeekableClass } from './type.js';
@@ -14,7 +14,7 @@ export class PeekableController<T extends PeekableClass> {
   };
 
   private getRootService = <T extends BlockService>() => {
-    return this.target.std.getService<T>('affine:page');
+    return this.target.std.getService<T>('pulsar:page');
   };
 
   peek = (template?: TemplateResult) => {

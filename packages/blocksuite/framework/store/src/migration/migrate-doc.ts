@@ -1,4 +1,4 @@
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import * as Y from 'yjs';
 
 interface IDocMigration {
@@ -18,10 +18,10 @@ export const docMigrations: IDocMigration[] = [
       let rootModel!: Y.Map<unknown>, surface!: Y.Map<unknown>;
       blocks.forEach(block => {
         const flavour = block.get('sys:flavour');
-        if (flavour === 'affine:page') {
+        if (flavour === 'pulsar:page') {
           rootModel = block;
         }
-        if (flavour === 'affine:surface') {
+        if (flavour === 'pulsar:surface') {
           surface = block;
         }
       });
@@ -35,7 +35,7 @@ export const docMigrations: IDocMigration[] = [
         if (element.get('type') === 'frame') {
           const frameModel = new Y.Map();
           const id = element.get('id') as string;
-          frameModel.set('sys:flavour', 'affine:frame');
+          frameModel.set('sys:flavour', 'pulsar:frame');
           frameModel.set('sys:id', id);
           frameModel.set('sys:children', new Y.Array());
           frameModel.set(

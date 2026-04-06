@@ -1,6 +1,6 @@
-import type { FontFamily } from '@blocksuite/affine-model';
+import type { FontFamily } from '@pulsar/model';
 
-import { IS_FIREFOX } from '@blocksuite/global/env';
+import { IS_FIREFOX } from '@pulsar/global/env';
 
 export function wrapFontFamily(fontFamily: FontFamily | string): string {
   return `"${fontFamily}"`;

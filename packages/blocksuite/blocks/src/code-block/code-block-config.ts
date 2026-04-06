@@ -11,7 +11,7 @@ export interface CodeBlockConfig {
 declare global {
   namespace BlockSuite {
     interface BlockConfigs {
-      'affine:code': CodeBlockConfig;
+      'pulsar:code': CodeBlockConfig;
     }
   }
 }

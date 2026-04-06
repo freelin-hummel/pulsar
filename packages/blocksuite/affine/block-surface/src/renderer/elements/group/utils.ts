@@ -1,7 +1,7 @@
-import type { GroupElementModel } from '@blocksuite/affine-model';
+import type { GroupElementModel } from '@pulsar/model';
 
-import { FontWeight } from '@blocksuite/affine-model';
-import { Bound } from '@blocksuite/global/utils';
+import { FontWeight } from '@pulsar/model';
+import { Bound } from '@pulsar/global/utils';
 
 import {
   getFontString,

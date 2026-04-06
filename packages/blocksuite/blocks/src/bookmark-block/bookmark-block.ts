@@ -1,7 +1,7 @@
-import type { BookmarkBlockModel } from '@blocksuite/affine-model';
+import type { BookmarkBlockModel } from '@pulsar/model';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
 import { html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
@@ -12,7 +12,7 @@ import { BOOKMARK_MIN_WIDTH } from '../root-block/edgeless/utils/consts.js';
 import './components/bookmark-card.js';
 import { refreshBookmarkUrlData } from './utils.js';
 
-@customElement('affine-bookmark')
+@customElement('pulsar-bookmark')
 export class BookmarkBlockComponent extends CaptionedBlockComponent<
   BookmarkBlockModel,
   BookmarkBlockService
@@ -71,7 +71,7 @@ export class BookmarkBlockComponent extends CaptionedBlockComponent<
 
   override renderBlock() {
     return html`
-      <div class="affine-bookmark-container" style=${this.containerStyleMap}>
+      <div class="pulsar-bookmark-container" style=${this.containerStyleMap}>
         <bookmark-card
           .bookmark=${this}
           .loading=${this.loading}
@@ -101,6 +101,6 @@ export class BookmarkBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-bookmark': BookmarkBlockComponent;
+    'pulsar-bookmark': BookmarkBlockComponent;
   }
 }

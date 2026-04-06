@@ -1,4 +1,4 @@
-import type { BrushElementModel } from '@blocksuite/affine-model';
+import type { BrushElementModel } from '@pulsar/model';
 
 import type { CanvasRenderer } from '../../canvas-renderer.js';
 

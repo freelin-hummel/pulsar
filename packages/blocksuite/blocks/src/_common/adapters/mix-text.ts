@@ -1,8 +1,8 @@
-import type { DeltaInsert } from '@blocksuite/inline';
-import type { Job } from '@blocksuite/store';
-import type { AssetsManager } from '@blocksuite/store';
+import type { DeltaInsert } from '@pulsar/inline';
+import type { Job } from '@pulsar/store';
+import type { AssetsManager } from '@pulsar/store';
 
-import { NoteDisplayMode } from '@blocksuite/affine-model';
+import { NoteDisplayMode } from '@pulsar/model';
 import {
   ASTWalker,
   BaseAdapter,
@@ -19,7 +19,7 @@ import {
   type ToBlockSnapshotPayload,
   type ToDocSnapshotPayload,
   nanoid,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 import { MarkdownAdapter } from './markdown.js';
 
@@ -57,22 +57,22 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
         delta: DeltaInsert[];
       };
       switch (o.node.flavour) {
-        case 'affine:code': {
+        case 'pulsar:code': {
           buffer += text.delta.map(delta => delta.insert).join('');
           buffer += '\n';
           break;
         }
-        case 'affine:paragraph': {
+        case 'pulsar:paragraph': {
           buffer += text.delta.map(delta => delta.insert).join('');
           buffer += '\n';
           break;
         }
-        case 'affine:list': {
+        case 'pulsar:list': {
           buffer += text.delta.map(delta => delta.insert).join('');
           buffer += '\n';
           break;
         }
-        case 'affine:divider': {
+        case 'pulsar:divider': {
           buffer += '---\n';
           break;
         }
@@ -135,10 +135,10 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
     return {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -147,7 +147,7 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
         return {
           type: 'block',
           id: nanoid(),
-          flavour: 'affine:paragraph',
+          flavour: 'pulsar:paragraph',
           props: {
             type: 'text',
             text: {
@@ -178,7 +178,7 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
       blocks: {
         type: 'block',
         id: nanoid(),
-        flavour: 'affine:page',
+        flavour: 'pulsar:page',
         props: {
           title: {
             '$blocksuite:internal:text$': true,
@@ -193,7 +193,7 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
           {
             type: 'block',
             id: nanoid(),
-            flavour: 'affine:surface',
+            flavour: 'pulsar:surface',
             props: {
               elements: {},
             },
@@ -202,10 +202,10 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
           {
             type: 'block',
             id: nanoid(),
-            flavour: 'affine:note',
+            flavour: 'pulsar:note',
             props: {
               xywh: '[0,0,800,95]',
-              background: '--affine-background-secondary-color',
+              background: '--pulsar-background-secondary-color',
               index: 'a0',
               hidden: false,
               displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -214,7 +214,7 @@ export class MixTextAdapter extends BaseAdapter<MixText> {
               return {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: 'text',
                   text: {

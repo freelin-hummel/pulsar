@@ -1,8 +1,8 @@
-import type { FrameBlockModel } from '@blocksuite/affine-model';
+import type { FrameBlockModel } from '@pulsar/model';
 
-import { FrameOrderAdjustmentIcon } from '@blocksuite/affine-components/icons';
-import { createButtonPopper } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { FrameOrderAdjustmentIcon } from '@pulsar/editor-components/icons';
+import { createButtonPopper } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
@@ -44,7 +44,7 @@ export class EdgelessFrameOrderButton extends WithDisposable(LitElement) {
     return html`
       <style>
         .edgeless-frame-order-button svg {
-          color: ${readonly ? 'var(--affine-text-disable-color)' : 'inherit'};
+          color: ${readonly ? 'var(--pulsar-text-disable-color)' : 'inherit'};
         }
       </style>
       <edgeless-tool-icon-button

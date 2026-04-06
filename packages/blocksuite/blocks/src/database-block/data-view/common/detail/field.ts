@@ -1,9 +1,9 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   DeleteIcon,
   DuplicateIcon,
@@ -27,7 +27,7 @@ import type { SingleView } from '../../view-manager/single-view.js';
 import { renderUniLit } from '../../utils/uni-component/uni-component.js';
 import { inputConfig, typeConfig } from '../column-menu.js';
 
-@customElement('affine-data-view-record-field')
+@customElement('pulsar-data-view-record-field')
 export class RecordField extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -143,7 +143,7 @@ export class RecordField extends SignalWatcher(
       gap: 6px;
       font-size: var(--data-view-cell-text-size);
       line-height: var(--data-view-cell-text-line-height);
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       width: 160px;
       border-radius: 4px;
       cursor: pointer;
@@ -151,7 +151,7 @@ export class RecordField extends SignalWatcher(
     }
 
     .field-left:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     affine-data-view-record-field .icon {
@@ -164,7 +164,7 @@ export class RecordField extends SignalWatcher(
     affine-data-view-record-field .icon svg {
       width: 16px;
       height: 16px;
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
     }
 
     .filed-name {
@@ -189,7 +189,7 @@ export class RecordField extends SignalWatcher(
     }
 
     .field-content:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .field-content.is-editing {
@@ -197,11 +197,11 @@ export class RecordField extends SignalWatcher(
     }
 
     .field-content.is-focus {
-      border: 1px solid var(--affine-primary-color);
+      border: 1px solid var(--pulsar-primary-color);
     }
     .field-content.empty::before {
       content: 'Empty';
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
       font-size: 14px;
       line-height: 22px;
     }
@@ -212,7 +212,7 @@ export class RecordField extends SignalWatcher(
   });
 
   changeEditing = (editing: boolean) => {
-    const selection = this.closest('affine-data-view-record-detail')?.selection;
+    const selection = this.closest('pulsar-data-view-record-detail')?.selection;
     if (selection) {
       selection.selection = {
         propertyId: this.column.id,
@@ -284,6 +284,6 @@ export class RecordField extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-record-field': RecordField;
+    'pulsar-data-view-record-field': RecordField;
   }
 }

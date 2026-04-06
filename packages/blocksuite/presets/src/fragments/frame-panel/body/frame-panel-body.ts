@@ -1,17 +1,17 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
+import { CommonUtils } from '@pulsar/block-surface';
 import {
   type EditorHost,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   DocModeProvider,
   type EdgelessRootBlockComponent,
   type FrameBlockModel,
-} from '@blocksuite/blocks';
-import { Bound, DisposableGroup } from '@blocksuite/global/utils';
+} from '@pulsar/blocks';
+import { Bound, DisposableGroup } from '@pulsar/global/utils';
 import { type PropertyValues, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -60,7 +60,7 @@ const styles = css`
     align-self: center;
     width: 230px;
     height: 48px;
-    color: var(--affine-text-secondary-color, #8e8d91);
+    color: var(--pulsar-text-secondary-color, #8e8d91);
     text-align: center;
 
     /* light/base */
@@ -73,7 +73,7 @@ const styles = css`
   .insert-indicator {
     height: 2px;
     border-radius: 1px;
-    background-color: var(--affine-blue-600);
+    background-color: var(--pulsar-blue-600);
     position: absolute;
     contain: layout size;
     width: 284px;
@@ -81,9 +81,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAME_PANEL_BODY = 'affine-frame-panel-body';
+export const PULSAR_FRAME_PANEL_BODY = 'pulsar-frame-panel-body';
 
-@customElement(AFFINE_FRAME_PANEL_BODY)
+@customElement(PULSAR_FRAME_PANEL_BODY)
 export class FramePanelBody extends WithDisposable(ShadowlessElement) {
   private _clearDocDisposables = () => {
     this._docDisposables?.dispose();
@@ -219,7 +219,7 @@ export class FramePanelBody extends WithDisposable(ShadowlessElement) {
         padding: this.viewportPadding as [number, number, number, number],
       };
 
-      const rootService = this.editorHost.std.getService('affine:page');
+      const rootService = this.editorHost.std.getService('pulsar:page');
       rootService.editPropsStore.setStorage('viewport', viewport);
       rootService.std.get(DocModeProvider).setEditorMode('edgeless');
     } else {
@@ -316,7 +316,7 @@ export class FramePanelBody extends WithDisposable(ShadowlessElement) {
     this._docDisposables = new DisposableGroup();
     this._docDisposables.add(
       doc.slots.blockUpdated.on(({ flavour }) => {
-        if (flavour === 'affine:frame') {
+        if (flavour === 'pulsar:frame') {
           requestAnimationFrame(() => {
             this._updateFrames();
           });
@@ -408,7 +408,7 @@ export class FramePanelBody extends WithDisposable(ShadowlessElement) {
 
   get frames() {
     const frames = this.doc.getBlockByFlavour(
-      'affine:frame'
+      'pulsar:frame'
     ) as FrameBlockModel[];
     return frames.sort(this.compare);
   }
@@ -452,6 +452,6 @@ export class FramePanelBody extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAME_PANEL_BODY]: FramePanelBody;
+    [PULSAR_FRAME_PANEL_BODY]: FramePanelBody;
   }
 }

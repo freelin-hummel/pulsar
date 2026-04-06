@@ -1,17 +1,17 @@
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import {
   InlineManager,
   ReferenceNodeConfig,
   affineInlineMarkdownMatches,
-  getAffineInlineSpecsWithReference,
-} from '@blocksuite/affine-components/rich-text';
+  getPulsarInlineSpecsWithReference,
+} from '@pulsar/editor-components/rich-text';
 import {
   type DatabaseBlockModel,
   DatabaseBlockSchema,
-} from '@blocksuite/affine-model';
-import { BlockService } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { BlockService } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { ViewMeta } from './data-view/view/data-view.js';
 
@@ -62,7 +62,7 @@ export class DatabaseBlockService extends BlockService {
       // Add a paragraph after database
       const parent = doc.getParent(model);
       assertExists(parent);
-      doc.addBlock('affine:paragraph', {}, parent.id);
+      doc.addBlock('pulsar:paragraph', {}, parent.id);
     }
     applyColumnUpdate(blockModel);
   }
@@ -73,7 +73,7 @@ export class DatabaseBlockService extends BlockService {
 
     this.referenceNodeConfig.setDoc(this.doc);
 
-    const inlineSpecs = getAffineInlineSpecsWithReference(
+    const inlineSpecs = getPulsarInlineSpecsWithReference(
       this.referenceNodeConfig
     );
     this.inlineManager.registerSpecs(inlineSpecs);

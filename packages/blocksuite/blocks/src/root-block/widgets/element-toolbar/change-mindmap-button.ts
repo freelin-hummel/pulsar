@@ -1,8 +1,8 @@
-import type { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import type { ShapeElementModel } from '@blocksuite/affine-model';
+import type { MindmapElementModel } from '@pulsar/block-surface';
+import type { ShapeElementModel } from '@pulsar/model';
 
-import { LayoutType } from '@blocksuite/affine-block-surface';
-import { MindmapStyle } from '@blocksuite/affine-block-surface';
+import { LayoutType } from '@pulsar/block-surface';
+import { MindmapStyle } from '@pulsar/block-surface';
 import {
   MindmapBalanceLayoutIcon,
   MindmapLeftLayoutIcon,
@@ -13,10 +13,10 @@ import {
   MindmapStyleThree,
   MindmapStyleTwo,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
-import { WithDisposable } from '@blocksuite/block-std';
-import { countBy, maxBy } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
+import { WithDisposable } from '@pulsar/block-std';
+import { countBy, maxBy } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { join } from 'lit/directives/join.js';
@@ -76,7 +76,7 @@ class EdgelessChangeMindmapStylePanel extends LitElement {
       justify-content: center;
       flex-direction: row;
       gap: 8px;
-      background: var(--affine-background-overlay-panel-color);
+      background: var(--pulsar-background-overlay-panel-color);
     }
 
     .style-item {
@@ -90,7 +90,7 @@ class EdgelessChangeMindmapStylePanel extends LitElement {
     .style-item.active,
     .style-item:hover {
       cursor: pointer;
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 

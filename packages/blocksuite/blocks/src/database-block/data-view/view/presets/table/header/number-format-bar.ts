@@ -1,4 +1,4 @@
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -36,7 +36,7 @@ const DecreaseDecimalPlacesIcon = html`
   </svg>
 `;
 
-@customElement('affine-database-number-format-bar')
+@customElement('pulsar-database-number-format-bar')
 export class DatabaseNumberFormatBar extends WithDisposable(LitElement) {
   private _decrementDecimalPlaces = () => {
     this.column.updateData(data => ({
@@ -72,7 +72,7 @@ export class DatabaseNumberFormatBar extends WithDisposable(LitElement) {
       background-color: transparent;
       border: none;
       border-radius: 4px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -89,17 +89,17 @@ export class DatabaseNumberFormatBar extends WithDisposable(LitElement) {
     }
 
     .number-formatting-sample {
-      font-size: var(--affine-font-xs);
-      color: var(--affine-icon-color);
+      font-size: var(--pulsar-font-xs);
+      color: var(--pulsar-icon-color);
       margin-left: auto;
     }
     .number-format-toolbar-button:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
     .divider {
       width: 100%;
       height: 1px;
-      background-color: var(--affine-border-color);
+      background-color: var(--pulsar-border-color);
     }
   `;
 
@@ -141,6 +141,6 @@ export class DatabaseNumberFormatBar extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-number-format-bar': DatabaseNumberFormatBar;
+    'pulsar-database-number-format-bar': DatabaseNumberFormatBar;
   }
 }

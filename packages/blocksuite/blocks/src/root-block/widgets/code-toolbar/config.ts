@@ -1,4 +1,4 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
 import {
   CancelWrapIcon,
@@ -7,8 +7,8 @@ import {
   DeleteIcon,
   DuplicateIcon,
   WrapIcon,
-} from '@blocksuite/affine-components/icons';
-import { isInsidePageEditor } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-components/icons';
+import { isInsidePageEditor } from '@pulsar/editor-shared/utils';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 

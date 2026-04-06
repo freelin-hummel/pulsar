@@ -1,8 +1,8 @@
-import type { EmbedYoutubeModel } from '@blocksuite/affine-model';
-import type { EmbedYoutubeBlockUrlData } from '@blocksuite/affine-model';
+import type { EmbedYoutubeModel } from '@pulsar/model';
+import type { EmbedYoutubeBlockUrlData } from '@pulsar/model';
 
-import { isAbortError } from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { isAbortError } from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { LinkPreviewer } from '../_common/embed-block-helper/index.js';
 import type { EmbedYoutubeBlockComponent } from './embed-youtube-block.js';

@@ -2,10 +2,10 @@ import {
   CaptionIcon,
   DownloadIcon,
   PaletteIcon,
-} from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

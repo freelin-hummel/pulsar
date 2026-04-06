@@ -1,5 +1,5 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { sha } from '@blocksuite/global/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { sha } from '@pulsar/global/utils';
 
 /**
  * @internal just for test

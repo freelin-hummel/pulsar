@@ -18,8 +18,8 @@ const styles = css`
     text-indent: -9999px;
     width: 38px;
     height: 20px;
-    background: var(--affine-icon-color);
-    border: 1px solid var(--affine-black-10);
+    background: var(--pulsar-icon-color);
+    border: 1px solid var(--pulsar-black-10);
     display: block;
     border-radius: 20px;
     position: relative;
@@ -32,14 +32,14 @@ const styles = css`
     left: 1px;
     width: 16px;
     height: 16px;
-    background: var(--affine-white);
-    border: 1px solid var(--affine-black-10);
+    background: var(--pulsar-white);
+    border: 1px solid var(--pulsar-black-10);
     border-radius: 16px;
     transition: 0.1s;
   }
 
   label.on {
-    background: var(--affine-primary-color);
+    background: var(--pulsar-primary-color);
   }
 
   label.on:after {

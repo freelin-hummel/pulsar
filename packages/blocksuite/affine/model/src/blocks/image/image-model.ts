@@ -1,7 +1,7 @@
-import type { GfxElementGeometry } from '@blocksuite/block-std/gfx';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { GfxElementGeometry } from '@pulsar/block-std/gfx';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 import { GfxCompatible } from '../../utils/index.js';
 import { ImageBlockTransformer } from './image-transformer.js';
@@ -29,7 +29,7 @@ const defaultImageProps: ImageBlockProps = {
 };
 
 export const ImageBlockSchema = defineBlockSchema({
-  flavour: 'affine:image',
+  flavour: 'pulsar:image',
   props: () => defaultImageProps,
   metadata: {
     version: 1,
@@ -46,10 +46,10 @@ export class ImageBlockModel
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:image': ImageBlockModel;
+      'pulsar:image': ImageBlockModel;
     }
     interface EdgelessBlockModelMap {
-      'affine:image': ImageBlockModel;
+      'pulsar:image': ImageBlockModel;
     }
   }
 }

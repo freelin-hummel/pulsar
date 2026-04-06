@@ -1,4 +1,4 @@
-import { CommonUtils } from '@blocksuite/affine-block-surface';
+import { CommonUtils } from '@pulsar/block-surface';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -8,9 +8,9 @@ import { getPosition } from '../utils.js';
 const styles = css`
   .rotator {
     position: absolute;
-    background: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-shadow-2);
-    border: 2px solid var(--affine-primary-color);
+    background: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-shadow-2);
+    border: 2px solid var(--pulsar-primary-color);
     border-radius: 50%;
     width: 7px;
     height: 7px;

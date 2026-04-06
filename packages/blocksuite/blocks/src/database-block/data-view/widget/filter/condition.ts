@@ -1,5 +1,5 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { CloseIcon } from '@blocksuite/icons/lit';
 import { css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -37,9 +37,9 @@ export class FilterConditionView extends WithDisposable(ShadowlessElement) {
       align-items: center;
       padding: 4px;
       gap: 16px;
-      border: 1px solid var(--affine-border-color);
+      border: 1px solid var(--pulsar-border-color);
       border-radius: 8px;
-      background-color: var(--affine-white);
+      background-color: var(--pulsar-white);
     }
 
     .filter-condition-expression {
@@ -58,7 +58,7 @@ export class FilterConditionView extends WithDisposable(ShadowlessElement) {
     }
 
     .filter-condition-delete:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .filter-condition-delete svg {
@@ -69,14 +69,14 @@ export class FilterConditionView extends WithDisposable(ShadowlessElement) {
     .filter-condition-function-name {
       font-size: 12px;
       line-height: 20px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       padding: 2px 8px;
       border-radius: 4px;
       cursor: pointer;
     }
 
     .filter-condition-function-name:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .filter-condition-arg {

@@ -1,6 +1,6 @@
 import type { Doc } from 'yjs';
 
-import { type Logger, Slot } from '@blocksuite/global/utils';
+import { type Logger, Slot } from '@pulsar/global/utils';
 
 import type { DocSource } from './source.js';
 

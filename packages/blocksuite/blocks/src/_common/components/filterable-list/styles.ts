@@ -1,4 +1,4 @@
-import { PANEL_BASE } from '@blocksuite/affine-shared/styles';
+import { PANEL_BASE } from '@pulsar/editor-shared/styles';
 import { css } from 'lit';
 
 import { scrollbarStyle } from '../utils.js';
@@ -13,7 +13,7 @@ export const filterableListStyles = css`
     max-height: 100%;
     pointer-events: auto;
     overflow: hidden;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .affine-filterable-list {
@@ -58,8 +58,8 @@ export const filterableListStyles = css`
   }
 
   .input-wrapper:focus-within {
-    border-color: var(--affine-blue-700);
-    box-shadow: var(--affine-active-shadow);
+    border-color: var(--pulsar-blue-700);
+    box-shadow: var(--pulsar-active-shadow);
   }
 
   ${scrollbarStyle('.items-container')}
@@ -82,8 +82,8 @@ export const filterableListStyles = css`
   }
 
   .filterable-item.focussed {
-    color: var(--affine-blue-700);
-    background: var(--affine-hover-color-filled);
+    color: var(--pulsar-blue-700);
+    background: var(--pulsar-hover-color-filled);
   }
 
   #filter-input {
@@ -103,7 +103,7 @@ export const filterableListStyles = css`
   }
 
   #filter-input::placeholder {
-    color: var(--affine-placeholder-color);
-    font-size: var(--affine-font-sm);
+    color: var(--pulsar-placeholder-color);
+    font-size: var(--pulsar-font-sm);
   }
 `;

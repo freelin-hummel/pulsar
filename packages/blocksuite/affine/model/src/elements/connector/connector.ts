@@ -2,15 +2,15 @@ import type {
   BaseElementProps,
   PointTestOptions,
   SerializedElement,
-} from '@blocksuite/block-std/gfx';
-import type { IVec, SerializedXYWH, XYWH } from '@blocksuite/global/utils';
+} from '@pulsar/block-std/gfx';
+import type { IVec, SerializedXYWH, XYWH } from '@pulsar/global/utils';
 
 import {
   GfxPrimitiveElementModel,
   derive,
   field,
   local,
-} from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std/gfx';
 import {
   Bound,
   PointLocation,
@@ -23,8 +23,8 @@ import {
   getBezierPoint,
   linePolylineIntersects,
   polyLineNearestPoint,
-} from '@blocksuite/global/utils';
-import { DocCollection, type Y } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { DocCollection, type Y } from '@pulsar/store';
 
 import {
   CONNECTOR_LABEL_MAX_WIDTH,

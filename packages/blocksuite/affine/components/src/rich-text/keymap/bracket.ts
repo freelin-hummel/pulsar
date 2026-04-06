@@ -1,11 +1,11 @@
-import type { BlockStdScope, UIEventHandler } from '@blocksuite/block-std';
-import type { InlineEditor } from '@blocksuite/inline';
+import type { BlockStdScope, UIEventHandler } from '@pulsar/block-std';
+import type { InlineEditor } from '@pulsar/inline';
 
-import { BRACKET_PAIRS } from '@blocksuite/affine-shared/consts';
+import { BRACKET_PAIRS } from '@pulsar/editor-shared/consts';
 import {
   createDefaultDoc,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 import { getInlineEditorByModel } from '../dom.js';
 import { insertLinkedNode } from '../linked-node.js';
@@ -25,7 +25,7 @@ export const bracketKeymap = (
           if (!textSelection) return;
           const model = doc.getBlock(textSelection.from.blockId)?.model;
           if (!model) return;
-          if (!matchFlavours(model, ['affine:code'])) return;
+          if (!matchFlavours(model, ['pulsar:code'])) return;
           const inlineEditor = getInlineEditorByModel(
             std.host,
             textSelection.from.blockId
@@ -52,7 +52,7 @@ export const bracketKeymap = (
           const model = doc.getBlock(textSelection.from.blockId)?.model;
           if (!model) return;
 
-          const isCodeBlock = matchFlavours(model, ['affine:code']);
+          const isCodeBlock = matchFlavours(model, ['pulsar:code']);
           // When selection is collapsed, only trigger auto complete in code block
           if (textSelection.isCollapsed() && !isCodeBlock) return;
           if (!textSelection.isInSameBlock()) return;
@@ -128,7 +128,7 @@ function tryConvertToLinkedDoc(std: BlockStdScope, inlineEditor: InlineEditor) {
   const root = std.doc.root;
   if (!root) return false;
   const linkedDocWidgetEle = std.view.getWidget(
-    'affine-linked-doc-widget',
+    'pulsar-linked-doc-widget',
     root.id
   );
   if (!linkedDocWidgetEle) return false;

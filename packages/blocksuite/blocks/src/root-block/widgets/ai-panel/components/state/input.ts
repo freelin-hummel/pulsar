@@ -1,7 +1,7 @@
-import { ArrowUpBigIcon } from '@blocksuite/affine-components/icons';
-import { AIStarIcon } from '@blocksuite/affine-components/icons';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { ArrowUpBigIcon } from '@pulsar/editor-components/icons';
+import { AIStarIcon } from '@pulsar/editor-components/icons';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
@@ -48,7 +48,7 @@ export class AIPanelInput extends WithDisposable(LitElement) {
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      background: var(--affine-background-overlay-panel-color);
+      background: var(--pulsar-background-overlay-panel-color);
     }
 
     .icon {
@@ -74,22 +74,22 @@ export class AIPanelInput extends WithDisposable(LitElement) {
         overflow: hidden;
         padding: 0px;
 
-        color: var(--affine-text-primary-color);
+        color: var(--pulsar-text-primary-color);
 
         /* light/sm */
-        font-family: var(--affine-font-family);
-        font-size: var(--affine-font-sm);
+        font-family: var(--pulsar-font-family);
+        font-size: var(--pulsar-font-sm);
         font-style: normal;
         font-weight: 400;
         line-height: 22px; /* 157.143% */
       }
 
       textarea::placeholder {
-        color: var(--affine-placeholder-color);
+        color: var(--pulsar-placeholder-color);
       }
 
       textarea::-moz-placeholder {
-        color: var(--affine-placeholder-color);
+        color: var(--pulsar-placeholder-color);
       }
     }
 
@@ -99,16 +99,16 @@ export class AIPanelInput extends WithDisposable(LitElement) {
       padding: 2px;
       gap: 10px;
       border-radius: 4px;
-      background: var(--affine-black-10, rgba(0, 0, 0, 0.1));
+      background: var(--pulsar-black-10, rgba(0, 0, 0, 0.1));
 
       svg {
         width: 16px;
         height: 16px;
-        color: var(--affine-pure-white, #fff);
+        color: var(--pulsar-pure-white, #fff);
       }
     }
     .arrow[data-active] {
-      background: var(--affine-brand-color, #1e96eb);
+      background: var(--pulsar-brand-color, #1e96eb);
     }
     .arrow[data-active]:hover {
       cursor: pointer;

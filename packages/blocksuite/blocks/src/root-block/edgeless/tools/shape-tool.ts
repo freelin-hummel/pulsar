@@ -1,19 +1,19 @@
-import type { ShapeElementModel } from '@blocksuite/affine-model';
-import type { ShapeName } from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IVec } from '@blocksuite/global/utils';
+import type { ShapeElementModel } from '@pulsar/model';
+import type { ShapeName } from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IVec } from '@pulsar/global/utils';
 
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
+import { CanvasElementType } from '@pulsar/block-surface';
 import {
   DEFAULT_SHAPE_FILL_COLOR,
   DEFAULT_SHAPE_STROKE_COLOR,
   getShapeType,
   ShapeType,
-} from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { Bound } from '@blocksuite/global/utils';
-import { noop } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { Bound } from '@pulsar/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { SelectionArea } from '../services/tools-manager.js';
 import type { EdgelessTool } from '../types.js';

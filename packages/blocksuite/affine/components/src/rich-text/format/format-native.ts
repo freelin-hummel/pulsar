@@ -1,10 +1,10 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
-import { INLINE_ROOT_ATTR, type InlineRootElement } from '@blocksuite/inline';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
+import { INLINE_ROOT_ATTR, type InlineRootElement } from '@pulsar/inline';
 
-import type { AffineTextAttributes } from '../inline/index.js';
+import type { PulsarTextAttributes } from '../inline/index.js';
 
 import { FORMAT_NATIVE_SUPPORT_FLAVOURS } from './consts.js';
 
@@ -14,7 +14,7 @@ export const formatNativeCommand: Command<
   never,
   {
     range?: Range;
-    styles: AffineTextAttributes;
+    styles: PulsarTextAttributes;
     mode?: 'replace' | 'merge';
   }
 > = (ctx, next) => {

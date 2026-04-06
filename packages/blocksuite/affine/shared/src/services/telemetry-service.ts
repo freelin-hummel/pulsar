@@ -1,4 +1,4 @@
-import { createIdentifier } from '@blocksuite/global/di';
+import { createIdentifier } from '@pulsar/global/di';
 
 export type ElementCreationSource =
   | 'shortcut'
@@ -57,5 +57,5 @@ export interface TelemetryService {
 }
 
 export const TelemetryProvider = createIdentifier<TelemetryService>(
-  'AffineTelemetryService'
+  'PulsarTelemetryService'
 );

@@ -1,4 +1,4 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
 import {
   CopyIcon,
@@ -6,7 +6,7 @@ import {
   DownloadIcon,
   DuplicateIcon,
   RefreshIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 
 import type { AttachmentToolbarMoreMenuContext } from './context.js';
 
@@ -31,8 +31,8 @@ export const BUILT_IN_GROUPS: MenuItemGroup<AttachmentToolbarMoreMenuContext>[] 
           disabled: ({ doc }) => doc.readonly,
           action: ({ doc, blockComponent, close }) => {
             const model = blockComponent.model;
-            const prop: { flavour: 'affine:attachment' } = {
-              flavour: 'affine:attachment',
+            const prop: { flavour: 'pulsar:attachment' } = {
+              flavour: 'pulsar:attachment',
               ...cloneAttachmentProperties(model),
             };
             doc.addSiblingBlocks(model, [prop]);

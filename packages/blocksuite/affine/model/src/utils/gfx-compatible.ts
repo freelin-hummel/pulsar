@@ -1,8 +1,8 @@
-import type { Constructor } from '@blocksuite/global/utils';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { Constructor } from '@pulsar/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { GfxBlockElementModel } from '@blocksuite/block-std/gfx';
-import { BlockModel } from '@blocksuite/store';
+import { GfxBlockElementModel } from '@pulsar/block-std/gfx';
+import { BlockModel } from '@pulsar/store';
 
 export type GfxCompatibleProps = {
   xywh: SerializedXYWH;

@@ -1,7 +1,7 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
-import type { BlockStdScope, EditorHost } from '@blocksuite/block-std';
-import type { GfxModel } from '@blocksuite/block-std/gfx';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
+import type { BlockStdScope, EditorHost } from '@pulsar/block-std';
+import type { GfxModel } from '@pulsar/block-std/gfx';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 export abstract class MenuContext {
   // Sometimes we need to close the menu.
@@ -39,6 +39,6 @@ export interface ToolbarMoreMenuConfig {
 export function getMoreMenuConfig(std: BlockStdScope): ToolbarMoreMenuConfig {
   return {
     configure: <T extends MenuContext>(groups: MenuItemGroup<T>[]) => groups,
-    ...std.getConfig('affine:page')?.toolbarMoreMenu,
+    ...std.getConfig('pulsar:page')?.toolbarMoreMenu,
   };
 }

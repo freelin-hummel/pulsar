@@ -2,8 +2,8 @@ import {
   on,
   once,
   requestConnectedFrame,
-} from '@blocksuite/affine-shared/utils';
-import { DisposableGroup } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { LitElement, css, html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 

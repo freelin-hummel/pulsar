@@ -2,8 +2,8 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { computed } from '@lit-labs/preact-signals';
 import { css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -22,7 +22,7 @@ import {
   type TableViewSelectionWithType,
 } from './types.js';
 
-@customElement('affine-database-cell-container')
+@customElement('pulsar-database-cell-container')
 export class DatabaseCellContainer extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -81,7 +81,7 @@ export class DatabaseCellContainer extends SignalWatcher(
   };
 
   private get groupKey() {
-    return this.closest('affine-data-view-table-group')?.group?.key;
+    return this.closest('pulsar-data-view-table-group')?.group?.key;
   }
 
   private get readonly() {
@@ -89,7 +89,7 @@ export class DatabaseCellContainer extends SignalWatcher(
   }
 
   private get selectionView() {
-    return this.closest('affine-database-table')?.selectionController;
+    return this.closest('pulsar-database-table')?.selectionController;
   }
 
   override connectedCallback() {
@@ -140,7 +140,7 @@ export class DatabaseCellContainer extends SignalWatcher(
   }
 
   get table() {
-    const table = this.closest('affine-database-table');
+    const table = this.closest('pulsar-database-table');
     assertExists(table);
     return table;
   }
@@ -169,6 +169,6 @@ export class DatabaseCellContainer extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-cell-container': DatabaseCellContainer;
+    'pulsar-database-cell-container': DatabaseCellContainer;
   }
 }

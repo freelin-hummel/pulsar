@@ -1,16 +1,16 @@
-import type { SurfaceBlockProps } from '@blocksuite/block-std/gfx';
+import type { SurfaceBlockProps } from '@pulsar/block-std/gfx';
 import type {
   FromSnapshotPayload,
   SnapshotReturn,
   ToSnapshotPayload,
   Y,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
-import { BaseBlockTransformer, DocCollection } from '@blocksuite/store';
+import { BaseBlockTransformer, DocCollection } from '@pulsar/store';
 
-const SURFACE_TEXT_UNIQ_IDENTIFIER = 'affine:surface:text';
+const SURFACE_TEXT_UNIQ_IDENTIFIER = 'pulsar:surface:text';
 // Used for group children field
-const SURFACE_YMAP_UNIQ_IDENTIFIER = 'affine:surface:ymap';
+const SURFACE_YMAP_UNIQ_IDENTIFIER = 'pulsar:surface:ymap';
 
 export class SurfaceBlockTransformer extends BaseBlockTransformer<SurfaceBlockProps> {
   private _elementToJSON(element: Y.Map<unknown>) {

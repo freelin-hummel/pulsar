@@ -1,18 +1,18 @@
-import type { ParagraphBlockModel } from '@blocksuite/affine-model';
+import type { ParagraphBlockModel } from '@pulsar/model';
 import type {
   BlockComponent,
   EditorHost,
   TextRangePoint,
   TextSelection,
-} from '@blocksuite/block-std';
-import type { Text } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import type { Text } from '@pulsar/store';
 
 import {
   QuickSearchProvider,
   type QuickSearchService,
   TelemetryProvider,
-} from '@blocksuite/affine-shared/services';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/services';
+import { assertExists } from '@pulsar/global/utils';
 import {
   type BlockModel,
   type BlockSnapshot,
@@ -21,7 +21,7 @@ import {
   type JobMiddleware,
   type SliceSnapshot,
   fromJSON,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 import { matchFlavours } from '../../../_common/utils/index.js';
 import { extractSearchParams } from '../../../_common/utils/url.js';
@@ -289,7 +289,7 @@ class PasteTr {
     const host = this.std.host;
 
     const cursorBlock =
-      this.fromPointState.model.flavour === 'affine:code' || !this.lastSnapshot
+      this.fromPointState.model.flavour === 'pulsar:code' || !this.lastSnapshot
         ? this.std.doc.getBlock(this.fromPointState.model.id)
         : this.std.doc.getBlock(this.lastSnapshot.id);
     assertExists(cursorBlock);
@@ -304,7 +304,7 @@ class PasteTr {
           return;
         }
         if (!cursorModel.text) {
-          if (matchFlavours(cursorModel, ['affine:image'])) {
+          if (matchFlavours(cursorModel, ['pulsar:image'])) {
             const selection = this.std.selection.create('image', {
               blockId: target.blockId,
             });
@@ -401,8 +401,8 @@ class PasteTr {
       this.firstSnapshot !== this.lastSnapshot &&
       this.lastSnapshot.props.text &&
       !(
-        matchFlavours(this.fromPointState.model, ['affine:code']) &&
-        matchFlavours(this.endPointState.model, ['affine:code'])
+        matchFlavours(this.fromPointState.model, ['pulsar:code']) &&
+        matchFlavours(this.endPointState.model, ['pulsar:code'])
       )
     ) {
       const text = fromJSON(this.lastSnapshot.props.text) as Text;
@@ -430,7 +430,7 @@ class PasteTr {
           .reduce((a, b) => a + b + 1, -1);
     }
     this.firstSnapshotIsPlainText =
-      this.firstSnapshot.flavour === 'affine:paragraph' &&
+      this.firstSnapshot.flavour === 'pulsar:paragraph' &&
       this.firstSnapshot.props.type === 'text';
   }
 
@@ -505,7 +505,7 @@ class PasteTr {
   }
 
   merge() {
-    if (this.fromPointState.model.flavour === 'affine:code' && !this.to) {
+    if (this.fromPointState.model.flavour === 'pulsar:code' && !this.to) {
       this._mergeCode();
       return;
     }
@@ -520,7 +520,7 @@ class PasteTr {
 }
 
 function flatNote(snapshot: SliceSnapshot) {
-  if (snapshot.content[0]?.flavour === 'affine:note') {
+  if (snapshot.content[0]?.flavour === 'pulsar:note') {
     snapshot.content = snapshot.content[0].children;
   }
 }

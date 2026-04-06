@@ -1,5 +1,5 @@
-import { BlockComponent } from '@blocksuite/block-std';
-import { Peekable } from '@blocksuite/blocks';
+import { BlockComponent } from '@pulsar/block-std';
+import { Peekable } from '@pulsar/blocks';
 import { computed } from '@lit-labs/preact-signals';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -11,7 +11,7 @@ import './components/ai-chat-messages.js';
 import { AIChatBlockStyles } from './styles.js';
 import { ChatMessagesSchema } from './types.js';
 
-@customElement('affine-ai-chat')
+@customElement('pulsar-ai-chat')
 @Peekable({
   enableOn: ({ doc }: AIChatBlockComponent) => !doc.readonly,
 })
@@ -38,7 +38,7 @@ export class AIChatBlockComponent extends BlockComponent<AIChatBlockModel> {
   }
 
   get _rootService() {
-    return this.host.std.getService('affine:page');
+    return this.host.std.getService('pulsar:page');
   }
 
   override renderBlock() {
@@ -47,7 +47,7 @@ export class AIChatBlockComponent extends BlockComponent<AIChatBlockModel> {
       customHeading: true,
     };
 
-    return html`<div class="affine-ai-chat-block-container">
+    return html`<div class="pulsar-ai-chat-block-container">
       <div class="ai-chat-messages-container">
         <ai-chat-messages
           .host=${this.host}
@@ -65,6 +65,6 @@ export class AIChatBlockComponent extends BlockComponent<AIChatBlockModel> {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-ai-chat': AIChatBlockComponent;
+    'pulsar-ai-chat': AIChatBlockComponent;
   }
 }

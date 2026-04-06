@@ -1,17 +1,17 @@
-import type { ReferenceInfo } from '@blocksuite/affine-model';
-import type { InlineEditor, InlineRootElement } from '@blocksuite/inline';
+import type { ReferenceInfo } from '@pulsar/model';
+import type { InlineEditor, InlineRootElement } from '@pulsar/inline';
 
-import { ReferenceInfoSchema } from '@blocksuite/affine-model';
+import { ReferenceInfoSchema } from '@pulsar/model';
 import { html } from 'lit';
 import { z } from 'zod';
 
 import type { InlineSpecs } from '../inline-manager.js';
 import type { ReferenceNodeConfig } from './nodes/reference-node/reference-config.js';
 
-export type AffineInlineEditor = InlineEditor<AffineTextAttributes>;
-export type AffineInlineRootElement = InlineRootElement<AffineTextAttributes>;
+export type PulsarInlineEditor = InlineEditor<PulsarTextAttributes>;
+export type PulsarInlineRootElement = InlineRootElement<PulsarTextAttributes>;
 
-export interface AffineTextAttributes {
+export interface PulsarTextAttributes {
   bold?: true | null;
   italic?: true | null;
   underline?: true | null;
@@ -28,7 +28,7 @@ export interface AffineTextAttributes {
   latex?: string | null;
 }
 
-export const basicAffineInlineSpecs: InlineSpecs<AffineTextAttributes>[] = [
+export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
   {
     name: 'bold',
     schema: z.literal(true).optional().nullable().catch(undefined),
@@ -116,11 +116,11 @@ export const basicAffineInlineSpecs: InlineSpecs<AffineTextAttributes>[] = [
   },
 ];
 
-export function getAffineInlineSpecsWithReference(
+export function getPulsarInlineSpecsWithReference(
   referenceNodeConfig: ReferenceNodeConfig
-): InlineSpecs<AffineTextAttributes>[] {
+): InlineSpecs<PulsarTextAttributes>[] {
   return [
-    ...basicAffineInlineSpecs,
+    ...basicPulsarInlineSpecs,
     {
       name: 'reference',
       schema: z

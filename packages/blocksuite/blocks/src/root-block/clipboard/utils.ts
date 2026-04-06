@@ -1,5 +1,5 @@
-import { toast } from '@blocksuite/affine-components/toast';
-import { assertExists } from '@blocksuite/global/utils';
+import { toast } from '@pulsar/editor-components/toast';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { FileSnapshot } from './adapter.js';
 

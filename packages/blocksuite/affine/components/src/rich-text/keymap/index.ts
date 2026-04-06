@@ -1,4 +1,4 @@
-import type { BlockStdScope, UIEventHandler } from '@blocksuite/block-std';
+import type { BlockStdScope, UIEventHandler } from '@pulsar/block-std';
 
 import { textCommonKeymap } from './basic.js';
 import { bracketKeymap } from './bracket.js';

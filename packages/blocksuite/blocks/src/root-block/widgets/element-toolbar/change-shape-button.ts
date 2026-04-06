@@ -2,7 +2,7 @@ import type {
   ColorScheme,
   ShapeProps,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
 import {
   AddTextIcon,
@@ -10,8 +10,8 @@ import {
   GeneralStyleIcon,
   ScribbledStyleIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/icons';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
 import {
   DEFAULT_SHAPE_FILL_COLOR,
   DEFAULT_SHAPE_STROKE_COLOR,
@@ -24,9 +24,9 @@ import {
   getShapeName,
   getShapeRadius,
   getShapeType,
-} from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
-import { countBy, maxBy } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
+import { countBy, maxBy } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { cache } from 'lit/directives/cache.js';
@@ -79,7 +79,7 @@ const changeShapeButtonStyles = [
 
     .edgeless-component-line-size-button div {
       border-radius: 50%;
-      background-color: var(--affine-icon-color);
+      background-color: var(--pulsar-icon-color);
     }
 
     .edgeless-component-line-size-button.size-s div {
@@ -103,7 +103,7 @@ function getMostCommonFillColor(
         ? (ele.fillColor[colorScheme] ?? ele.fillColor.normal ?? null)
         : ele.fillColor;
     }
-    return '--affine-palette-transparent';
+    return '--pulsar-palette-transparent';
   });
   const max = maxBy(Object.entries(colors), ([_k, count]) => count);
   return max ? (max[0] as string) : null;

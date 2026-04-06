@@ -1,6 +1,6 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { Doc } from '@blocksuite/store';
-import { type BlockModel, BlockViewType } from '@blocksuite/store';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { Doc } from '@pulsar/store';
+import { type BlockModel, BlockViewType } from '@pulsar/store';
 import { consume, provide } from '@lit/context';
 import { computed } from '@lit-labs/preact-signals';
 import { type PropertyValues, type TemplateResult, nothing, render } from 'lit';

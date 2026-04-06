@@ -1,9 +1,9 @@
-import { createPopup } from '@blocksuite/affine-components/context-menu';
+import { createPopup } from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   ArrowLeftBigIcon,
   InvisibleIcon,
@@ -25,9 +25,9 @@ export class DataViewPropertiesSettingView extends SignalWatcher(
   static override styles = css`
     data-view-properties-setting {
       position: absolute;
-      background-color: var(--affine-background-overlay-panel-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
       border-radius: 8px;
-      box-shadow: var(--affine-shadow-2);
+      box-shadow: var(--pulsar-shadow-2);
       padding: 8px;
       min-width: 300px;
     }
@@ -39,13 +39,13 @@ export class DataViewPropertiesSettingView extends SignalWatcher(
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--affine-divider-color);
+      border-bottom: 1px solid var(--pulsar-divider-color);
     }
 
     .properties-group-title {
       font-size: 12px;
       line-height: 20px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -61,7 +61,7 @@ export class DataViewPropertiesSettingView extends SignalWatcher(
     }
 
     .properties-group-op:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .properties-group {
@@ -79,7 +79,7 @@ export class DataViewPropertiesSettingView extends SignalWatcher(
     }
 
     .property-item:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .property-item-drag-bar {
@@ -99,8 +99,8 @@ export class DataViewPropertiesSettingView extends SignalWatcher(
     }
 
     .property-item-icon svg {
-      color: var(--affine-icon-color);
-      fill: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
+      fill: var(--pulsar-icon-color);
       width: 20px;
       height: 20px;
     }
@@ -112,22 +112,22 @@ export class DataViewPropertiesSettingView extends SignalWatcher(
     }
 
     .property-item-op-icon:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
     .property-item-op-icon.disabled:hover {
       background-color: transparent;
     }
 
     .property-item-op-icon svg {
-      fill: var(--affine-icon-color);
-      color: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
+      color: var(--pulsar-icon-color);
       width: 20px;
       height: 20px;
     }
 
     .property-item-op-icon.disabled svg {
-      fill: var(--affine-text-disable-color);
-      color: var(--affine-text-disable-color);
+      fill: var(--pulsar-text-disable-color);
+      color: var(--pulsar-text-disable-color);
     }
 
     .property-item-name {

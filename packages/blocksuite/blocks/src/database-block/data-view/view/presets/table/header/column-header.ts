@@ -1,9 +1,9 @@
-import { getScrollContainer } from '@blocksuite/affine-shared/utils';
+import { getScrollContainer } from '@pulsar/editor-shared/utils';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { PlusIcon } from '@blocksuite/icons/lit';
 import { autoUpdate } from '@floating-ui/dom';
 import { type TemplateResult, nothing } from 'lit';
@@ -18,7 +18,7 @@ import type { TableSingleView } from '../table-view-manager.js';
 import './database-header-column.js';
 import { styles } from './styles.js';
 
-@customElement('affine-database-column-header')
+@customElement('pulsar-database-column-header')
 export class DatabaseColumnHeader extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -37,7 +37,7 @@ export class DatabaseColumnHeader extends SignalWatcher(
   static override styles = styles;
 
   editLastColumnTitle = () => {
-    const columns = this.querySelectorAll('affine-database-header-column');
+    const columns = this.querySelectorAll('pulsar-database-header-column');
     const column = columns.item(columns.length - 1);
     column.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     column.editTitle();
@@ -80,9 +80,9 @@ export class DatabaseColumnHeader extends SignalWatcher(
   override connectedCallback() {
     super.connectedCallback();
     const scrollContainer = getScrollContainer(
-      this.closest('affine-data-view-renderer')!
+      this.closest('pulsar-data-view-renderer')!
     );
-    const group = this.closest('affine-data-view-table-group');
+    const group = this.closest('pulsar-data-view-table-group');
     if (group) {
       const cancel = autoUpdate(group, this, () => {
         if (!scrollContainer) {
@@ -104,7 +104,7 @@ export class DatabaseColumnHeader extends SignalWatcher(
   override render() {
     return html`
       ${this.renderGroupHeader?.()}
-      <div class="affine-database-column-header database-row">
+      <div class="pulsar-database-column-header database-row">
         ${this.readonly
           ? nothing
           : html`<div class="data-view-table-left-bar"></div>`}
@@ -120,14 +120,14 @@ export class DatabaseColumnHeader extends SignalWatcher(
               style="${style}"
               data-column-id="${column.id}"
               data-column-index="${index}"
-              class="affine-database-column database-cell"
+              class="pulsar-database-column database-cell"
               .column="${column}"
               .tableViewManager="${this.tableViewManager}"
             ></affine-database-header-column>`;
           }
         )}
         <div
-          style="background-color: var(--affine-border-color);width: 1px;"
+          style="background-color: var(--pulsar-border-color);width: 1px;"
         ></div>
         <div
           @click="${this._onAddColumn}"
@@ -152,6 +152,6 @@ export class DatabaseColumnHeader extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-column-header': DatabaseColumnHeader;
+    'pulsar-database-column-header': DatabaseColumnHeader;
   }
 }

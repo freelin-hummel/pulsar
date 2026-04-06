@@ -1,5 +1,5 @@
-import { ArrowRightSmallIcon } from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
+import { ArrowRightSmallIcon } from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
 import { consume } from '@lit/context';
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -23,9 +23,9 @@ export class EdgelessSlideMenu extends WithDisposable(LitElement) {
       position: relative;
     }
     .menu-container {
-      background: var(--affine-background-overlay-panel-color);
+      background: var(--pulsar-background-overlay-panel-color);
       border-radius: 8px 8px 0 0;
-      border: 1px solid var(--affine-border-color);
+      border: 1px solid var(--pulsar-border-color);
       border-bottom: none;
       display: flex;
       align-items: center;
@@ -55,10 +55,10 @@ export class EdgelessSlideMenu extends WithDisposable(LitElement) {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid var(--affine-border-color);
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-shadow-2);
-      color: var(--affine-icon-color);
+      border: 1px solid var(--pulsar-border-color);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-shadow-2);
+      color: var(--pulsar-icon-color);
       transition:
         transform 0.3s ease-in-out,
         opacity 0.5s ease-in-out;

@@ -1,33 +1,33 @@
-import type { ColorScheme } from '@blocksuite/affine-model';
+import type { ColorScheme } from '@pulsar/model';
 
 import {
   normalizeShapeBound,
   TextUtils,
-} from '@blocksuite/affine-block-surface';
-import { ConnectorUtils } from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
+import { ConnectorUtils } from '@pulsar/block-surface';
 import {
   SmallArrowDownIcon,
   TextAlignCenterIcon,
   TextAlignLeftIcon,
   TextAlignRightIcon,
-} from '@blocksuite/affine-components/icons';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
-import { ShapeElementModel } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/icons';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
+import { ShapeElementModel } from '@pulsar/model';
 import {
   FontFamily,
   FontStyle,
   FontWeight,
   TextAlign,
   type TextStyleProps,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   ConnectorElementModel,
   EdgelessTextBlockModel,
   LINE_COLORS,
   TextElementModel,
-} from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound, countBy, maxBy } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound, countBy, maxBy } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';

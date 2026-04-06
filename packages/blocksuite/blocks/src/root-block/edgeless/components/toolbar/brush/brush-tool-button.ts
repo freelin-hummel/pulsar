@@ -1,9 +1,9 @@
 import {
   EdgelessPenDarkIcon,
   EdgelessPenLightIcon,
-} from '@blocksuite/affine-components/icons';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { SignalWatcher } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { SignalWatcher } from '@pulsar/block-std';
 import { computed } from '@lit-labs/preact-signals';
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';

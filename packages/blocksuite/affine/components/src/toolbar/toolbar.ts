@@ -1,6 +1,6 @@
-import { PANEL_BASE } from '@blocksuite/affine-shared/styles';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { PANEL_BASE } from '@pulsar/editor-shared/styles';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -25,7 +25,7 @@ export class EditorToolbar extends WithDisposable(LitElement) {
       justify-content: center;
       align-items: center;
       gap: 8px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       fill: currentColor;
     }
   `;

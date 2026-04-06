@@ -1,24 +1,24 @@
-import type { DocMode } from '@blocksuite/affine-model';
+import type { DocMode } from '@pulsar/model';
 
 import {
   EmbedEdgelessIcon,
   EmbedPageIcon,
-} from '@blocksuite/affine-components/icons';
-import { Peekable } from '@blocksuite/affine-components/peek';
-import { REFERENCE_NODE } from '@blocksuite/affine-components/rich-text';
+} from '@pulsar/editor-components/icons';
+import { Peekable } from '@pulsar/editor-components/peek';
+import { REFERENCE_NODE } from '@pulsar/editor-components/rich-text';
 import {
   type EmbedSyncedDocModel,
   NoteDisplayMode,
-} from '@blocksuite/affine-model';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+} from '@pulsar/model';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   BlockServiceWatcher,
   BlockStdScope,
   type EditorHost,
-} from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
-import { BlockViewType, DocCollection, type Query } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
+import { BlockViewType, DocCollection, type Query } from '@pulsar/store';
 import { type PropertyValues, html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';
@@ -38,7 +38,7 @@ import { SpecProvider } from '../_specs/utils/spec-provider.js';
 import './components/embed-synced-doc-card.js';
 import { blockStyles } from './styles.js';
 
-@customElement('affine-embed-synced-doc-block')
+@customElement('pulsar-embed-synced-doc-block')
 @Peekable({
   enableOn: ({ doc }: EmbedSyncedDocBlockComponent) => !doc.readonly,
 })
@@ -52,7 +52,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
     const currentDisposables = this.disposables;
 
     class EmbedSyncedDocWatcher extends BlockServiceWatcher {
-      static override readonly flavour = 'affine:embed-synced-doc';
+      static override readonly flavour = 'pulsar:embed-synced-doc';
 
       override mounted() {
         const disposableGroup = this.blockService.disposables;
@@ -85,7 +85,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
       if (this.syncedDocMode !== 'edgeless') return;
 
       const service = this.syncedDocEditorHost?.std.getService(
-        'affine:page'
+        'pulsar:page'
       ) as EdgelessRootService;
 
       if (!service) return;
@@ -114,7 +114,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
     mode: 'loose',
     match: [
       {
-        flavour: 'affine:note',
+        flavour: 'pulsar:note',
         props: {
           displayMode: NoteDisplayMode.EdgelessOnly,
         },
@@ -150,7 +150,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
         [
           'page',
           () => html`
-            <div class="affine-page-viewport">
+            <div class="pulsar-page-viewport">
               ${new BlockStdScope({
                 doc: syncedDoc,
                 extensions: this._buildPreviewSpec('page:preview'),
@@ -161,7 +161,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
         [
           'edgeless',
           () => html`
-            <div class="affine-edgeless-viewport">
+            <div class="pulsar-edgeless-viewport">
               ${new BlockStdScope({
                 doc: syncedDoc,
                 extensions: this._buildPreviewSpec('edgeless:preview'),
@@ -178,7 +178,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
       () => html`
         <div
           class=${classMap({
-            'affine-embed-synced-doc-container': true,
+            'pulsar-embed-synced-doc-container': true,
             [editorMode]: true,
             [theme]: true,
             selected: isSelected,
@@ -188,10 +188,10 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
           style=${containerStyleMap}
           ?data-scale=${undefined}
         >
-          <div class="affine-embed-synced-doc-editor">
+          <div class="pulsar-embed-synced-doc-editor">
             ${this.isPageMode && this._isEmptySyncedDoc
               ? html`
-                  <div class="affine-embed-synced-doc-editor-empty">
+                  <div class="pulsar-embed-synced-doc-editor-empty">
                     <span>
                       This is a linked doc, you can add content here.
                     </span>
@@ -201,13 +201,13 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
           </div>
           <div
             class=${classMap({
-              'affine-embed-synced-doc-header-wrapper': true,
+              'pulsar-embed-synced-doc-header-wrapper': true,
               selected: isSelected,
             })}
           >
-            <div class="affine-embed-synced-doc-header">
+            <div class="pulsar-embed-synced-doc-header">
               ${icon}
-              <span class="affine-embed-synced-doc-title">
+              <span class="pulsar-embed-synced-doc-title">
                 ${this.docTitle}
               </span>
             </div>
@@ -232,7 +232,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
     assertExists(parent);
     const index = parent.children.indexOf(this.model);
 
-    doc.addBlock('affine:embed-linked-doc', { pageId, caption }, parent, index);
+    doc.addBlock('pulsar:embed-linked-doc', { pageId, caption }, parent, index);
 
     this.std.selection.setGroup('note', []);
     doc.deleteBlock(this.model);
@@ -252,7 +252,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
     const text = new doc.Text(yText);
 
     doc.addBlock(
-      'affine:paragraph',
+      'pulsar:paragraph',
       {
         text,
       },
@@ -348,7 +348,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
   }
 
   private get _rootService() {
-    return this.std.getService('affine:page');
+    return this.std.getService('pulsar:page');
   }
 
   private _selectBlock() {
@@ -428,7 +428,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
 
     // Forward docLinkClicked event from the synced doc
     const syncedDocRootService =
-      this.syncedDocEditorHost?.std.getService('affine:page');
+      this.syncedDocEditorHost?.std.getService('pulsar:page');
     syncedDocRootService &&
       this.disposables.add(
         syncedDocRootService.slots.docLinkClicked.on(({ pageId }) => {

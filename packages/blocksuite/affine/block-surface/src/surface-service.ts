@@ -1,5 +1,5 @@
-import { BlockService } from '@blocksuite/block-std';
-import { GfxControllerIdentifier } from '@blocksuite/block-std/gfx';
+import { BlockService } from '@pulsar/block-std';
+import { GfxControllerIdentifier } from '@pulsar/block-std/gfx';
 
 import { type SurfaceBlockModel, SurfaceBlockSchema } from './surface-model.js';
 
@@ -12,12 +12,12 @@ export class SurfaceBlockService extends BlockService {
     super.mounted();
 
     this.surface = this.doc.getBlockByFlavour(
-      'affine:surface'
+      'pulsar:surface'
     )[0] as SurfaceBlockModel;
 
     if (!this.surface) {
       const disposable = this.doc.slots.blockUpdated.on(payload => {
-        if (payload.flavour === 'affine:surface') {
+        if (payload.flavour === 'pulsar:surface') {
           disposable.dispose();
           const surface = this.doc.getBlockById(
             payload.id

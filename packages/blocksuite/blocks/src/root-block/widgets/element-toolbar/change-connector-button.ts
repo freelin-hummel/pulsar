@@ -16,8 +16,8 @@ import {
   RearEndpointTriangleIcon,
   ScribbledStyleIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/icons';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
 import {
   type ConnectorElementModel,
   ConnectorEndpoint,
@@ -28,10 +28,10 @@ import {
   type ConnectorElementProps,
   type ConnectorLabelProps,
   PointStyle,
-} from '@blocksuite/affine-model';
-import { LINE_COLORS, LineWidth, StrokeStyle } from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
-import { countBy, maxBy } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { LINE_COLORS, LineWidth, StrokeStyle } from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
+import { countBy, maxBy } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';

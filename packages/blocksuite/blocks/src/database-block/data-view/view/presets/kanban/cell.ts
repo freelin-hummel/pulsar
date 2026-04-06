@@ -4,7 +4,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { createRef } from 'lit/directives/ref.js';
@@ -32,7 +32,7 @@ const styles = css`
   }
 
   affine-data-view-kanban-cell:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   affine-data-view-kanban-cell .icon {
@@ -47,8 +47,8 @@ const styles = css`
   affine-data-view-kanban-cell .icon svg {
     width: 16px;
     height: 16px;
-    fill: var(--affine-icon-color);
-    color: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
+    color: var(--pulsar-icon-color);
   }
 
   .kanban-cell {
@@ -58,7 +58,7 @@ const styles = css`
   }
 `;
 
-@customElement('affine-data-view-kanban-cell')
+@customElement('pulsar-data-view-kanban-cell')
 export class KanbanCell extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -68,7 +68,7 @@ export class KanbanCell extends SignalWatcher(
 
   selectCurrentCell = (editing: boolean) => {
     const selectionView = this.closest(
-      'affine-data-view-kanban'
+      'pulsar-data-view-kanban'
     )?.selectionController;
     if (!selectionView) return;
     if (selectionView) {
@@ -101,7 +101,7 @@ export class KanbanCell extends SignalWatcher(
       }
       e.stopPropagation();
       const selectionElement = this.closest(
-        'affine-data-view-kanban'
+        'pulsar-data-view-kanban'
       )?.selectionController;
       if (!selectionElement) return;
       if (e.shiftKey) return;
@@ -134,7 +134,7 @@ export class KanbanCell extends SignalWatcher(
     if (!renderer) return;
     const { view, edit } = renderer;
     this.style.border = this.isFocus
-      ? '1px solid var(--affine-primary-color)'
+      ? '1px solid var(--pulsar-primary-color)'
       : '';
     this.style.boxShadow = this.editing
       ? '0px 0px 0px 2px rgba(30, 150, 235, 0.30)'
@@ -159,7 +159,7 @@ export class KanbanCell extends SignalWatcher(
   }
 
   get selection() {
-    return this.closest('affine-data-view-kanban')?.selectionController;
+    return this.closest('pulsar-data-view-kanban')?.selectionController;
   }
 
   @property({ attribute: false })
@@ -186,6 +186,6 @@ export class KanbanCell extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-kanban-cell': KanbanCell;
+    'pulsar-data-view-kanban-cell': KanbanCell;
   }
 }

@@ -5,10 +5,10 @@ export const styles = css`
     border-radius: 8px;
   }
   .embed-block-container.selected.light {
-    box-shadow: 0px 0px 0px 1px var(--affine-brand-color);
+    box-shadow: 0px 0px 0px 1px var(--pulsar-brand-color);
   }
   .embed-block-container.selected.dark {
-    box-shadow: 0px 0px 0px 1px var(--affine-brand-color);
+    box-shadow: 0px 0px 0px 1px var(--pulsar-brand-color);
   }
   @media print {
     .embed-block-container.selected.light,

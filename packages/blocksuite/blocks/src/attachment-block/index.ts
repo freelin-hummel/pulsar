@@ -6,7 +6,7 @@ export * from './attachment-service.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:attachment': AttachmentBlockService;
+      'pulsar:attachment': AttachmentBlockService;
     }
   }
 }

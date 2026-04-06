@@ -6,14 +6,14 @@ export const datePickerStyle = css`
   }
 
   .date-picker {
-    background: var(--affine-background-overlay-panel-color);
+    background: var(--pulsar-background-overlay-panel-color);
     border-radius: 12px;
     box-sizing: border-box;
-    box-shadow: var(--affine-menu-shadow);
+    box-shadow: var(--pulsar-menu-shadow);
     display: flex;
     flex-direction: column;
     gap: var(--gap-v);
-    font-family: var(--affine-font-family);
+    font-family: var(--pulsar-font-family);
   }
 
   /* small action */
@@ -27,11 +27,11 @@ export const datePickerStyle = css`
   }
   .interactive.date-picker-small-action,
   .interactive.action-label.today {
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
   .date-picker-small-action:hover {
-    color: var(--affine-icon-hover-color);
-    background: var(--affine-icon-hover-background);
+    color: var(--pulsar-icon-hover-color);
+    background: var(--pulsar-icon-hover-background);
   }
   .date-picker-small-action.left > svg {
     transform: rotate(0deg);
@@ -56,7 +56,7 @@ export const datePickerStyle = css`
     display: flex;
     align-items: center;
     gap: 4px;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
     font-weight: 600;
     padding: 2px;
     border-radius: 4px;
@@ -70,7 +70,7 @@ export const datePickerStyle = css`
     display: flex;
     align-items: center;
     gap: 16px;
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
   .date-picker-header__action.with-slot {
     gap: 4px;
@@ -99,7 +99,7 @@ export const datePickerStyle = css`
     gap: var(--gap-h);
   }
   .days-header > div {
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     font-weight: 500;
     font-size: 12px;
     cursor: default;
@@ -134,12 +134,12 @@ export const datePickerStyle = css`
     opacity: 0.1;
   }
   .date-cell.date-cell--today {
-    color: var(--affine-primary-color);
+    color: var(--pulsar-primary-color);
     font-weight: 600;
   }
   .date-cell.date-cell--selected {
-    background: var(--affine-primary-color);
-    color: var(--affine-pure-white);
+    background: var(--pulsar-primary-color);
+    color: var(--pulsar-pure-white);
     font-weight: 500;
   }
 
@@ -153,8 +153,8 @@ export const datePickerStyle = css`
     position: relative;
     border: none;
     background-color: unset;
-    font-family: var(--affine-font-family);
-    color: var(--affine-text-primary-color);
+    font-family: var(--pulsar-font-family);
+    color: var(--pulsar-text-primary-color);
   }
   /* --hover */
   .interactive::after,
@@ -171,18 +171,18 @@ export const datePickerStyle = css`
     background: transparent;
   }
   .interactive:hover::after {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
   /* --focus */
   .interactive::before {
     opacity: 0;
     transition: none;
-    box-shadow: 0 0 0 3px var(--affine-primary-color);
+    box-shadow: 0 0 0 3px var(--pulsar-primary-color);
   }
   /* .interactive:active, */
   .interactive:focus-visible {
     outline: none;
-    outline: 1px solid var(--affine-primary-color);
+    outline: 1px solid var(--pulsar-primary-color);
   }
   /* .interactive:active::before, */
   .interactive:focus-visible::before {
@@ -222,8 +222,8 @@ export const datePickerStyle = css`
   }
   .date-picker-month button.active,
   .date-picker-year button.active {
-    color: var(--affine-primary-color);
-    /* background: var(--affine-primary-color); */
+    color: var(--pulsar-primary-color);
+    /* background: var(--pulsar-primary-color); */
     font-weight: 600;
   }
   .date-picker .date-picker-header {

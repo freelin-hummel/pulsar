@@ -1,8 +1,8 @@
-import type { TextSelection } from '@blocksuite/block-std';
-import type { RichText } from '@blocksuite/blocks';
+import type { TextSelection } from '@pulsar/block-std';
+import type { RichText } from '@pulsar/blocks';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { DocCollection } from '@blocksuite/store';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { DocCollection } from '@pulsar/store';
 import { css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
@@ -40,9 +40,9 @@ export class CommentInput extends WithDisposable(ShadowlessElement) {
 
     .comment-quote {
       font-size: 10px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       padding-left: 8px;
-      border-left: 2px solid var(--affine-text-secondary-color);
+      border-left: 2px solid var(--pulsar-text-secondary-color);
       margin-bottom: 8px;
     }
 

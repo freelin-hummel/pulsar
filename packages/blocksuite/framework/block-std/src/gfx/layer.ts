@@ -1,13 +1,13 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { GfxBlockElementModel } from '@blocksuite/block-std/gfx';
+import { GfxBlockElementModel } from '@pulsar/block-std/gfx';
 import {
   Bound,
   DisposableGroup,
   last,
   nToLast,
-} from '@blocksuite/global/utils';
-import { Slot, assertType } from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
+import { Slot, assertType } from '@pulsar/global/utils';
 import { generateKeyBetween } from 'fractional-indexing';
 
 import type { GfxModel } from './gfx-block-model.js';

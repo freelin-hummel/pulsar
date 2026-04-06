@@ -1,16 +1,16 @@
-import type { GroupElementModel } from '@blocksuite/affine-model';
+import type { GroupElementModel } from '@pulsar/model';
 
 import {
   NoteIcon,
   RenameIcon,
   UngroupButtonIcon,
-} from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
-import { NoteDisplayMode } from '@blocksuite/affine-model';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { deserializeXYWH, serializeXYWH } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
+import { NoteDisplayMode } from '@pulsar/model';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { deserializeXYWH, serializeXYWH } from '@pulsar/global/utils';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { join } from 'lit/directives/join.js';
@@ -28,7 +28,7 @@ export class EdgelessChangeGroupButton extends WithDisposable(LitElement) {
     const rootModel = this.edgeless.doc.root;
     const notes = rootModel.children.filter(
       model =>
-        matchFlavours(model, ['affine:note']) &&
+        matchFlavours(model, ['pulsar:note']) &&
         model.displayMode !== NoteDisplayMode.EdgelessOnly
     );
     const lastNote = notes[notes.length - 1];
@@ -43,7 +43,7 @@ export class EdgelessChangeGroupButton extends WithDisposable(LitElement) {
       targetXYWH[3] = DEFAULT_NOTE_HEIGHT;
 
       const newAddedNote = this.edgeless.doc.addBlock(
-        'affine:note',
+        'pulsar:note',
         {
           xywh: serializeXYWH(...targetXYWH),
         },
@@ -54,7 +54,7 @@ export class EdgelessChangeGroupButton extends WithDisposable(LitElement) {
     }
 
     this.edgeless.doc.addBlock(
-      'affine:surface-ref',
+      'pulsar:surface-ref',
       {
         reference: this.groups[0].id,
         refFlavour: 'group',

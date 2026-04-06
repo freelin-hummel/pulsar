@@ -1,22 +1,22 @@
-import type { BlockService, EditorHost } from '@blocksuite/block-std';
-import type { IBound } from '@blocksuite/global/utils';
-import type { Doc } from '@blocksuite/store';
+import type { BlockService, EditorHost } from '@pulsar/block-std';
+import type { IBound } from '@pulsar/global/utils';
+import type { Doc } from '@pulsar/store';
 
 import {
   type CanvasRenderer,
   SurfaceElementModel,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   GroupElementModel,
   type RootBlockModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   isInsidePageEditor,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { assertExists } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { assertExists } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
 
 import type { GfxBlockModel } from '../../root-block/edgeless/block-model.js';
 import type { EdgelessRootBlockComponent } from '../../root-block/edgeless/edgeless-root-block.js';
@@ -139,7 +139,7 @@ export class ExportManager {
           ? getBlockComponentByModel(this.editorHost, rootModel)
           : null;
         const imageCard = rootComponent?.querySelector(
-          'affine-image-fallback-card'
+          'pulsar-image-fallback-card'
         );
         const isReady =
           !imageCard || imageCard.getAttribute('imageState') === '0';
@@ -433,11 +433,11 @@ export class ExportManager {
     if (edgelessBackground) {
       await this._drawEdgelessBackground(ctx, {
         backgroundColor: containerComputedStyle.getPropertyValue(
-          '--affine-background-primary-color'
+          '--pulsar-background-primary-color'
         ),
         size: getBackgroundGrid(edgelessBackground.zoom, true).gap,
         gridColor: containerComputedStyle.getPropertyValue(
-          '--affine-edgeless-grid-color'
+          '--pulsar-edgeless-grid-color'
         ),
       });
     }
@@ -447,7 +447,7 @@ export class ExportManager {
       edgeless?.service.gfx.getElementsByBound(bound, { type: 'block' }) ??
       [];
     for (const block of blocks) {
-      if (matchFlavours(block, ['affine:image'])) {
+      if (matchFlavours(block, ['pulsar:image'])) {
         if (!block.sourceId) return;
 
         const blob = await block.doc.blobSync.get(block.sourceId);
@@ -484,7 +484,7 @@ export class ExportManager {
         );
       }
 
-      if (matchFlavours(block, ['affine:frame'])) {
+      if (matchFlavours(block, ['pulsar:frame'])) {
         // TODO(@L-Sun): use children of frame instead of bound
         const blocksInsideFrame = getBlocksInFrameBound(this.doc, block, false);
         const frameBound = Bound.deserialize(block.xywh);

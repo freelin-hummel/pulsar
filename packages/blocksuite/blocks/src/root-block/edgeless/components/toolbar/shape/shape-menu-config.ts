@@ -11,8 +11,8 @@ import {
   ScribbledTriangleIcon,
   SquareIcon,
   TriangleIcon,
-} from '@blocksuite/affine-components/icons';
-import { ShapeType } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/icons';
+import { ShapeType } from '@pulsar/model';
 
 import type { ShapeTool } from '../../../tools/shape-tool.js';
 
@@ -70,5 +70,5 @@ export const ShapeComponentConfigMap = ShapeComponentConfig.reduce(
   {} as Record<Config['name'], Config>
 );
 
-export const SHAPE_COLOR_PREFIX = '--affine-palette-shape-';
-export const LINE_COLOR_PREFIX = '--affine-palette-line-';
+export const SHAPE_COLOR_PREFIX = '--pulsar-palette-shape-';
+export const LINE_COLOR_PREFIX = '--pulsar-palette-line-';

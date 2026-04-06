@@ -22,7 +22,7 @@ import {
   ToolsIcon,
   TriangleIcon,
   ViewBarIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   ConnectorMode,
   LINE_COLORS,
@@ -30,8 +30,8 @@ import {
   SHAPE_STROKE_COLORS,
   ShapeStyle,
   ShapeType,
-} from '@blocksuite/affine-model';
-import { isControlledKeyboardEvent } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/model';
+import { isControlledKeyboardEvent } from '@pulsar/editor-shared/utils';
 import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 
@@ -55,10 +55,10 @@ import {
 // EDGELESS TOOLS PIE MENU SCHEMA
 //----------------------------------------------------------
 
-export const AFFINE_PIE_MENU_ID_EDGELESS_TOOLS = 'affine:pie:edgeless:tools';
+export const PULSAR_PIE_MENU_ID_EDGELESS_TOOLS = 'pulsar:pie:edgeless:tools';
 
 const pie = new PieMenuBuilder({
-  id: AFFINE_PIE_MENU_ID_EDGELESS_TOOLS,
+  id: PULSAR_PIE_MENU_ID_EDGELESS_TOOLS,
   label: 'Tools',
   icon: ToolsIcon,
   trigger: ({ keyEvent: ev, rootComponent }) => {
@@ -115,7 +115,7 @@ pie.command({
   label: 'Note',
   icon: NoteIcon,
   action: setEdgelessToolAction({
-    type: 'affine:note',
+    type: 'pulsar:note',
     childFlavour: DEFAULT_NOTE_CHILD_FLAVOUR,
     childType: DEFAULT_NOTE_CHILD_TYPE,
     tip: DEFAULT_NOTE_TIP,

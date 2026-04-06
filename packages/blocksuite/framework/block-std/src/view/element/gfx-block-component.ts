@@ -1,7 +1,7 @@
-import type { SerializedXYWH } from '@blocksuite/global/utils';
-import type { BlockModel } from '@blocksuite/store';
+import type { SerializedXYWH } from '@pulsar/global/utils';
+import type { BlockModel } from '@pulsar/store';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import { nothing } from 'lit';
 
 import type { BlockService } from '../../extension/index.js';

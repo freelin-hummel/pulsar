@@ -1,19 +1,19 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { whenHover } from '@blocksuite/affine-components/hover';
+import { whenHover } from '@pulsar/editor-components/hover';
 import {
   ArrowDownIcon,
   HighLightDuotoneIcon,
   TextBackgroundDuotoneIcon,
   TextForegroundDuotoneIcon,
-} from '@blocksuite/affine-components/icons';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { assertExists } from '@pulsar/global/utils';
 import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { html } from 'lit';
 import { type RefOrCallback, ref } from 'lit/directives/ref.js';
 
-import type { AffineFormatBarWidget } from '../../format-bar.js';
+import type { PulsarFormatBarWidget } from '../../format-bar.js';
 
 import { backgroundConfig, foregroundConfig } from './consts.js';
 
@@ -34,7 +34,7 @@ const updateHighlight = (
   lastUsedHighlightType = highlightType;
 
   const payload: {
-    styles: AffineTextAttributes;
+    styles: PulsarTextAttributes;
   } = {
     styles: {
       color: highlightType === HighlightType.Foreground ? color : null,
@@ -52,7 +52,7 @@ const updateHighlight = (
 };
 
 const HighlightPanel = (
-  formatBar: AffineFormatBarWidget,
+  formatBar: PulsarFormatBarWidget,
   containerRef?: RefOrCallback
 ) => {
   return html`
@@ -107,7 +107,7 @@ const HighlightPanel = (
   `;
 };
 
-export const HighlightButton = (formatBar: AffineFormatBarWidget) => {
+export const HighlightButton = (formatBar: PulsarFormatBarWidget) => {
   const editorHost = formatBar.host;
 
   const { setFloating, setReference } = whenHover(isHover => {

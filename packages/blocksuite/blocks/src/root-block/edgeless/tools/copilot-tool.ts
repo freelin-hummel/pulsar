@@ -1,13 +1,13 @@
-import type { PointerEventState } from '@blocksuite/block-std';
+import type { PointerEventState } from '@pulsar/block-std';
 
-import { Bound, getElementsBound } from '@blocksuite/global/utils';
-import { Slot } from '@blocksuite/store';
+import { Bound, getElementsBound } from '@pulsar/global/utils';
+import { Slot } from '@pulsar/store';
 
 import type { EdgelessTool } from '../types.js';
 
 import {
-  AFFINE_AI_PANEL_WIDGET,
-  type AffineAIPanelWidget,
+  PULSAR_AI_PANEL_WIDGET,
+  type PulsarAIPanelWidget,
 } from '../../widgets/ai-panel/ai-panel.js';
 import { EdgelessToolController } from './edgeless-tool.js';
 
@@ -155,9 +155,9 @@ export class CopilotSelectionController extends EdgelessToolController<CopilotSe
   // AI processing
   get processing() {
     const aiPanel = this._edgeless.host.view.getWidget(
-      AFFINE_AI_PANEL_WIDGET,
+      PULSAR_AI_PANEL_WIDGET,
       this._edgeless.doc.root!.id
-    ) as AffineAIPanelWidget;
+    ) as PulsarAIPanelWidget;
     return aiPanel && aiPanel.state !== 'hidden';
   }
 

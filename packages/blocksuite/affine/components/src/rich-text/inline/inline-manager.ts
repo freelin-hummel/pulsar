@@ -1,5 +1,5 @@
-import type { InlineEditor, KeyboardBindingContext } from '@blocksuite/inline';
-import type { Y } from '@blocksuite/store';
+import type { InlineEditor, KeyboardBindingContext } from '@pulsar/inline';
+import type { Y } from '@pulsar/store';
 
 import {
   type AttributeRenderer,
@@ -10,7 +10,7 @@ import {
   type KeyboardBindingHandler,
   baseTextAttributes,
   getDefaultAttributeRenderer,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 import { type ZodObject, type ZodTypeAny, z } from 'zod';
 
 export type InlineSpecs<

@@ -1,17 +1,17 @@
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { HoverController } from '@blocksuite/affine-components/hover';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { HoverController } from '@pulsar/editor-components/hover';
 import {
   AttachmentIcon16,
   getAttachmentFileIcons,
-} from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
+} from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
 import {
   type AttachmentBlockModel,
   AttachmentBlockStyles,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { humanFileSize } from '@blocksuite/affine-shared/utils';
-import { Slice } from '@blocksuite/store';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { humanFileSize } from '@pulsar/editor-shared/utils';
+import { Slice } from '@pulsar/store';
 import { flip, offset } from '@floating-ui/dom';
 import { html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -27,7 +27,7 @@ import { renderEmbedView } from './embed.js';
 import { styles } from './styles.js';
 import { checkAttachmentBlob, downloadAttachmentBlob } from './utils.js';
 
-@customElement('affine-attachment')
+@customElement('pulsar-attachment')
 export class AttachmentBlockComponent extends CaptionedBlockComponent<
   AttachmentBlockModel,
   AttachmentBlockService
@@ -206,12 +206,12 @@ export class AttachmentBlockComponent extends CaptionedBlockComponent<
     return html`
       <div
         ${this._whenHover ? ref(this._whenHover.setReference) : nothing}
-        class="affine-attachment-container"
+        class="pulsar-attachment-container"
         style=${this.containerStyleMap}
       >
         ${embedView
           ? html`<div
-              class="affine-attachment-embed-container"
+              class="pulsar-attachment-embed-container"
               @click=${this.onClick}
               @dblclick=${this.onDoubleClick}
             >
@@ -219,14 +219,14 @@ export class AttachmentBlockComponent extends CaptionedBlockComponent<
 
               <div
                 class=${classMap({
-                  'affine-attachment-iframe-overlay': true,
+                  'pulsar-attachment-iframe-overlay': true,
                   hide: !this._showOverlay,
                 })}
               ></div>
             </div>`
           : html`<div
               class=${classMap({
-                'affine-attachment-card': true,
+                'pulsar-attachment-card': true,
                 [cardStyle]: true,
                 loading: this.loading,
                 error: this.error,
@@ -235,21 +235,21 @@ export class AttachmentBlockComponent extends CaptionedBlockComponent<
               @click=${this.onClick}
               @dblclick=${this.onDoubleClick}
             >
-              <div class="affine-attachment-content">
-                <div class="affine-attachment-content-title">
-                  <div class="affine-attachment-content-title-icon">
+              <div class="pulsar-attachment-content">
+                <div class="pulsar-attachment-content-title">
+                  <div class="pulsar-attachment-content-title-icon">
                     ${titleIcon}
                   </div>
 
-                  <div class="affine-attachment-content-title-text">
+                  <div class="pulsar-attachment-content-title-text">
                     ${titleText}
                   </div>
                 </div>
 
-                <div class="affine-attachment-content-info">${infoText}</div>
+                <div class="pulsar-attachment-content-info">${infoText}</div>
               </div>
 
-              <div class="affine-attachment-banner">${FileTypeIcon}</div>
+              <div class="pulsar-attachment-banner">${FileTypeIcon}</div>
             </div>`}
       </div>
     `;
@@ -283,6 +283,6 @@ export class AttachmentBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-attachment': AttachmentBlockComponent;
+    'pulsar-attachment': AttachmentBlockComponent;
   }
 }

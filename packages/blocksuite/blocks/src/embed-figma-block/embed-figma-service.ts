@@ -1,7 +1,7 @@
-import { EmbedFigmaBlockSchema } from '@blocksuite/affine-model';
-import { EmbedFigmaStyles } from '@blocksuite/affine-model';
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
-import { BlockService } from '@blocksuite/block-std';
+import { EmbedFigmaBlockSchema } from '@pulsar/model';
+import { EmbedFigmaStyles } from '@pulsar/model';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
+import { BlockService } from '@pulsar/block-std';
 
 import { figmaUrlRegex } from './embed-figma-model.js';
 

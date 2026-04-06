@@ -1,6 +1,6 @@
-import type { Color } from '@blocksuite/affine-model';
+import type { Color } from '@pulsar/model';
 
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

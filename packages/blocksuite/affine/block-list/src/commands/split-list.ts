@@ -1,10 +1,10 @@
-import type { Command, EditorHost } from '@blocksuite/block-std';
+import type { Command, EditorHost } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
 import {
   getNextContinuousNumberedLists,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 import { correctNumberedListsOrderToPrev } from './utils.js';
 
@@ -21,7 +21,7 @@ export const splitListCommand: Command<
   const doc = host.doc;
 
   const model = doc.getBlock(blockId)?.model;
-  if (!model || !matchFlavours(model, ['affine:list'])) {
+  if (!model || !matchFlavours(model, ['pulsar:list'])) {
     console.error(`block ${blockId} is not a list block`);
     return;
   }
@@ -53,7 +53,7 @@ export const splitListCommand: Command<
      *   - bbb
      */
     if (parent.role === 'hub') {
-      const id = doc.addBlock('affine:paragraph', {}, parent, modelIndex);
+      const id = doc.addBlock('pulsar:paragraph', {}, parent, modelIndex);
       const paragraph = doc.getBlock(id);
       if (!paragraph) return;
       doc.deleteBlock(model, {
@@ -128,7 +128,7 @@ export const splitListCommand: Command<
      */
     const afterText = model.text.split(inlineIndex);
     newListId = doc.addBlock(
-      'affine:list',
+      'pulsar:list',
       {
         type: model.type,
         text: afterText,
@@ -178,7 +178,7 @@ export const splitListCommand: Command<
      */
     const afterText = model.text.split(inlineIndex);
     newListId = doc.addBlock(
-      'affine:list',
+      'pulsar:list',
       {
         type: model.type,
         text: afterText,

@@ -1,7 +1,7 @@
-import type { ShapeElementModel } from '@blocksuite/affine-model';
-import type { GfxModel } from '@blocksuite/block-std/gfx';
+import type { ShapeElementModel } from '@pulsar/model';
+import type { GfxModel } from '@pulsar/block-std/gfx';
 
-import { assertType } from '@blocksuite/global/utils';
+import { assertType } from '@pulsar/global/utils';
 
 import type { MindmapElementModel } from '../../mindmap.js';
 

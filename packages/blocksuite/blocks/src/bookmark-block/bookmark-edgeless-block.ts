@@ -1,14 +1,14 @@
 import {
   EMBED_CARD_HEIGHT,
   EMBED_CARD_WIDTH,
-} from '@blocksuite/affine-shared/consts';
-import { toGfxBlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/consts';
+import { toGfxBlockComponent } from '@pulsar/block-std';
 import { customElement } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
 import { BookmarkBlockComponent } from './bookmark-block.js';
 
-@customElement('affine-edgeless-bookmark')
+@customElement('pulsar-edgeless-bookmark')
 export class BookmarkEdgelessBlockComponent extends toGfxBlockComponent(
   BookmarkBlockComponent
 ) {
@@ -48,6 +48,6 @@ export class BookmarkEdgelessBlockComponent extends toGfxBlockComponent(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-bookmark': BookmarkEdgelessBlockComponent;
+    'pulsar-edgeless-bookmark': BookmarkEdgelessBlockComponent;
   }
 }

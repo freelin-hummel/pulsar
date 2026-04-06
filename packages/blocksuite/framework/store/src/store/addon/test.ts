@@ -1,4 +1,4 @@
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { JSXElement } from '../../utils/jsx.js';
 

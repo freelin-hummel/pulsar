@@ -1,4 +1,4 @@
-import type { Text } from '@blocksuite/store';
+import type { Text } from '@pulsar/store';
 
 import { columnType } from '../../data-view/column/column-config.js';
 import { tRichText } from '../../data-view/logical/data-type.js';

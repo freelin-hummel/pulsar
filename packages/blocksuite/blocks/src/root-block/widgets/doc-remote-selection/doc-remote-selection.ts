@@ -1,13 +1,13 @@
-import type { UserInfo } from '@blocksuite/store';
+import type { UserInfo } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 import {
   type BaseSelection,
   BlockSelection,
   TextSelection,
-} from '@blocksuite/block-std';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { WidgetComponent } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { computed } from '@lit-labs/preact-signals';
 import { css, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -26,11 +26,11 @@ export interface SelectionRect {
   transparent?: boolean;
 }
 
-export const AFFINE_DOC_REMOTE_SELECTION_WIDGET =
-  'affine-doc-remote-selection-widget';
+export const PULSAR_DOC_REMOTE_SELECTION_WIDGET =
+  'pulsar-doc-remote-selection-widget';
 
-@customElement(AFFINE_DOC_REMOTE_SELECTION_WIDGET)
-export class AffineDocRemoteSelectionWidget extends WidgetComponent {
+@customElement(PULSAR_DOC_REMOTE_SELECTION_WIDGET)
+export class PulsarDocRemoteSelectionWidget extends WidgetComponent {
   private _abortController = new AbortController();
 
   private _remoteColorManager: RemoteColorManager | null = null;
@@ -61,18 +61,18 @@ export class AffineDocRemoteSelectionWidget extends WidgetComponent {
 
   private get _config(): DocRemoteSelectionConfig {
     const config =
-      this.std.getConfig('affine:page')?.docRemoteSelectionWidget ?? {};
+      this.std.getConfig('pulsar:page')?.docRemoteSelectionWidget ?? {};
 
     return {
       blockSelectionBackgroundTransparent: block => {
         return (
           matchFlavours(block, [
-            'affine:code',
-            'affine:database',
-            'affine:image',
-            'affine:attachment',
-            'affine:bookmark',
-            'affine:surface-ref',
+            'pulsar:code',
+            'pulsar:database',
+            'pulsar:image',
+            'pulsar:attachment',
+            'pulsar:bookmark',
+            'pulsar:surface-ref',
           ]) || /affine:embed-*/.test(block.flavour)
         );
       },
@@ -89,7 +89,7 @@ export class AffineDocRemoteSelectionWidget extends WidgetComponent {
   }
 
   private _getCursorRect(selections: BaseSelection[]): SelectionRect | null {
-    if (this.block.model.flavour !== 'affine:page') {
+    if (this.block.model.flavour !== 'pulsar:page') {
       console.error('remote selection widget must be used in page component');
       return null;
     }
@@ -167,7 +167,7 @@ export class AffineDocRemoteSelectionWidget extends WidgetComponent {
   }
 
   private _getSelectionRect(selections: BaseSelection[]): SelectionRect[] {
-    if (this.block.model.flavour !== 'affine:page') {
+    if (this.block.model.flavour !== 'pulsar:page') {
       console.error('remote selection widget must be used in page component');
       return [];
     }
@@ -321,7 +321,7 @@ export class AffineDocRemoteSelectionWidget extends WidgetComponent {
                       color: 'white',
                       maxWidth: '160px',
                       padding: '0 3px',
-                      border: '1px solid var(--affine-pure-black-20)',
+                      border: '1px solid var(--pulsar-pure-black-20)',
                       boxShadow: '0px 1px 6px 0px rgba(0, 0, 0, 0.16)',
                       borderRadius: '4px',
                       fontSize: '12px',
@@ -345,6 +345,6 @@ export class AffineDocRemoteSelectionWidget extends WidgetComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_DOC_REMOTE_SELECTION_WIDGET]: AffineDocRemoteSelectionWidget;
+    [PULSAR_DOC_REMOTE_SELECTION_WIDGET]: PulsarDocRemoteSelectionWidget;
   }
 }

@@ -1,6 +1,6 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { DisposableGroup, Slot } from '@blocksuite/global/utils';
-import { type StackItem, nanoid } from '@blocksuite/store';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { DisposableGroup, Slot } from '@pulsar/global/utils';
+import { type StackItem, nanoid } from '@pulsar/store';
 import { computed, signal } from '@lit-labs/preact-signals';
 
 import type { BlockStdScope } from '../scope/index.js';

@@ -1,8 +1,8 @@
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
-import type { AffineEditorContainer } from '../../editors/editor-container.js';
+import type { PulsarEditorContainer } from '../../editors/editor-container.js';
 
 import { CommentInput } from './comment-input.js';
 import { CommentManager } from './comment-manager.js';
@@ -14,8 +14,8 @@ export class CommentPanel extends WithDisposable(ShadowlessElement) {
       position: absolute;
       top: 0;
       right: 0;
-      border: 1px solid var(--affine-border-color, #e3e2e4);
-      background-color: var(--affine-background-primary-color);
+      border: 1px solid var(--pulsar-border-color, #e3e2e4);
+      background-color: var(--pulsar-background-primary-color);
       height: 100vh;
       width: 320px;
       box-sizing: border-box;
@@ -43,9 +43,9 @@ export class CommentPanel extends WithDisposable(ShadowlessElement) {
 
     .comment-panel-comment-quote {
       font-size: 10px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       padding-left: 8px;
-      border-left: 2px solid var(--affine-text-secondary-color);
+      border-left: 2px solid var(--pulsar-text-secondary-color);
       margin-bottom: 8px;
     }
 
@@ -107,7 +107,7 @@ export class CommentPanel extends WithDisposable(ShadowlessElement) {
   private accessor _container!: HTMLDivElement;
 
   @property({ attribute: false })
-  accessor editor!: AffineEditorContainer;
+  accessor editor!: PulsarEditorContainer;
 }
 
 declare global {

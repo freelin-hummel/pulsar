@@ -1,4 +1,4 @@
-import { type SchemaToModel, defineBlockSchema } from '@blocksuite/store';
+import { type SchemaToModel, defineBlockSchema } from '@pulsar/store';
 
 type SurfaceRefProps = {
   reference: string;
@@ -7,7 +7,7 @@ type SurfaceRefProps = {
 };
 
 export const SurfaceRefBlockSchema = defineBlockSchema({
-  flavour: 'affine:surface-ref',
+  flavour: 'pulsar:surface-ref',
   props: () =>
     ({
       reference: '',
@@ -16,7 +16,7 @@ export const SurfaceRefBlockSchema = defineBlockSchema({
   metadata: {
     version: 1,
     role: 'content',
-    parent: ['affine:note', 'affine:paragraph', 'affine:list'],
+    parent: ['pulsar:note', 'pulsar:paragraph', 'pulsar:list'],
   },
 });
 
@@ -25,7 +25,7 @@ export type SurfaceRefBlockModel = SchemaToModel<typeof SurfaceRefBlockSchema>;
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:surface-ref': SurfaceRefBlockModel;
+      'pulsar:surface-ref': SurfaceRefBlockModel;
     }
   }
 }

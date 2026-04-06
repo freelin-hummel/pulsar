@@ -1,17 +1,17 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { InlineRange } from '@blocksuite/inline';
-import type { Text } from '@blocksuite/store';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { InlineRange } from '@pulsar/inline';
+import type { Text } from '@pulsar/store';
 
-import { getViewportElement } from '@blocksuite/affine-shared/utils';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import type { DatabaseBlockComponent } from '../../database-block.js';
 
-@customElement('affine-database-title')
+@customElement('pulsar-database-title')
 export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
   private _onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' && !event.isComposing) {
@@ -33,7 +33,7 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
       font-size: 20px;
       font-weight: 600;
       line-height: 28px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-family: inherit;
       /* overflow-x: scroll; */
       overflow: hidden;
@@ -55,11 +55,11 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
       content: 'Untitled';
       position: absolute;
       pointer-events: none;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .affine-database-title [data-title-focus='true']::before {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
   `;
 
@@ -115,7 +115,7 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
       ellipsis: !this.isActive,
     });
 
-    return html`<div class="affine-database-title">
+    return html`<div class="pulsar-database-title">
       <rich-text
         .yText=${this.titleText.yText}
         .inlineEventSource=${this.topContenteditableElement}
@@ -137,7 +137,7 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
   }
 
   get database() {
-    return this.closest<DatabaseBlockComponent>('affine-database');
+    return this.closest<DatabaseBlockComponent>('pulsar-database');
   }
 
   get inlineEditor() {
@@ -170,6 +170,6 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-title': DatabaseTitle;
+    'pulsar-database-title': DatabaseTitle;
   }
 }

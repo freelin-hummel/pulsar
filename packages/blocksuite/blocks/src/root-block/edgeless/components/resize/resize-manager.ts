@@ -1,9 +1,9 @@
-import type { PointLocation } from '@blocksuite/global/utils';
-import type { IVec } from '@blocksuite/global/utils';
+import type { PointLocation } from '@pulsar/global/utils';
+import type { IVec } from '@pulsar/global/utils';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { Bound } from '@blocksuite/global/utils';
-import { type IPoint, assertExists } from '@blocksuite/global/utils';
+import { CommonUtils } from '@pulsar/block-surface';
+import { Bound } from '@pulsar/global/utils';
+import { type IPoint, assertExists } from '@pulsar/global/utils';
 
 import type { SelectableProps } from '../../utils/query.js';
 

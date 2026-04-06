@@ -25,7 +25,7 @@ import {
   StrokeStyle,
   TextAlign,
   TextVerticalAlign,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import { z } from 'zod';
 
 const ConnectorEndpointSchema = z.nativeEnum(PointStyle);
@@ -196,8 +196,8 @@ export const NodePropsSchema = z.object({
   connector: ConnectorSchema,
   brush: BrushSchema,
   text: TextSchema,
-  'affine:edgeless-text': EdgelessTextSchema,
-  'affine:note': NoteSchema,
+  'pulsar:edgeless-text': EdgelessTextSchema,
+  'pulsar:note': NoteSchema,
   // shapes
   'shape:diamond': ShapeSchema,
   'shape:ellipse': ShapeSchema,

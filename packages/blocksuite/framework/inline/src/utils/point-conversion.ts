@@ -1,4 +1,4 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { VElement, VLine } from '../components/index.js';
 import type { DomPoint, TextPoint } from '../types.js';

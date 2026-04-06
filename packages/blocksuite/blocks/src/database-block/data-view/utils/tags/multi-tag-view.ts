@@ -1,4 +1,4 @@
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -7,7 +7,7 @@ import { html } from 'lit/static-html.js';
 
 import type { SelectTag } from './multi-tag-select.js';
 
-@customElement('affine-multi-tag-view')
+@customElement('pulsar-multi-tag-view')
 export class MultiTagView extends WithDisposable(ShadowlessElement) {
   static override styles = css`
     affine-multi-tag-view {
@@ -28,7 +28,7 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
       flex-wrap: wrap;
       gap: 6px;
       width: 100%;
-      font-size: var(--affine-font-sm);
+      font-size: var(--pulsar-font-sm);
     }
 
     .affine-select-cell-container .select-selected {
@@ -38,7 +38,7 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
       padding: 0 8px;
       border-radius: 4px;
       white-space: nowrap;
-      background: var(--affine-tag-white);
+      background: var(--pulsar-tag-white);
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -48,7 +48,7 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
     const values = this.value;
     const map = new Map<string, SelectTag>(this.options?.map(v => [v.id, v]));
     return html`
-      <div contenteditable="false" class="affine-select-cell-container">
+      <div contenteditable="false" class="pulsar-select-cell-container">
         ${repeat(values, id => {
           const option = map.get(id);
           if (!option) {
@@ -77,6 +77,6 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-multi-tag-view': MultiTagView;
+    'pulsar-multi-tag-view': MultiTagView;
   }
 }

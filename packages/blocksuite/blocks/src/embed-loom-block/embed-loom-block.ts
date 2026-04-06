@@ -1,6 +1,6 @@
-import type { EmbedLoomModel, EmbedLoomStyles } from '@blocksuite/affine-model';
+import type { EmbedLoomModel, EmbedLoomStyles } from '@pulsar/model';
 
-import { OpenIcon } from '@blocksuite/affine-components/icons';
+import { OpenIcon } from '@pulsar/editor-components/icons';
 import { html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -14,7 +14,7 @@ import { loomUrlRegex } from './embed-loom-model.js';
 import { LoomIcon, styles } from './styles.js';
 import { refreshEmbedLoomUrlData } from './utils.js';
 
-@customElement('affine-embed-loom-block')
+@customElement('pulsar-embed-loom-block')
 export class EmbedLoomBlockComponent extends EmbedBlockComponent<
   EmbedLoomModel,
   EmbedLoomBlockService
@@ -138,17 +138,17 @@ export class EmbedLoomBlockComponent extends EmbedBlockComponent<
         <div>
           <div
             class=${classMap({
-              'affine-embed-loom-block': true,
+              'pulsar-embed-loom-block': true,
               loading,
               selected: this._isSelected,
             })}
             @click=${this._handleClick}
             @dblclick=${this._handleDoubleClick}
           >
-            <div class="affine-embed-loom-video">
+            <div class="pulsar-embed-loom-video">
               ${videoId
                 ? html`
-                    <div class="affine-embed-loom-video-iframe-container">
+                    <div class="pulsar-embed-loom-video-iframe-container">
                       <iframe
                         src=${`https://www.loom.com/embed/${videoId}?hide_title=true`}
                         frameborder="0"
@@ -157,7 +157,7 @@ export class EmbedLoomBlockComponent extends EmbedBlockComponent<
 
                       <div
                         class=${classMap({
-                          'affine-embed-loom-video-iframe-overlay': true,
+                          'pulsar-embed-loom-video-iframe-overlay': true,
                           hide: !this._showOverlay,
                         })}
                       ></div>
@@ -165,25 +165,25 @@ export class EmbedLoomBlockComponent extends EmbedBlockComponent<
                   `
                 : bannerImage}
             </div>
-            <div class="affine-embed-loom-content">
-              <div class="affine-embed-loom-content-header">
-                <div class="affine-embed-loom-content-title-icon">
+            <div class="pulsar-embed-loom-content">
+              <div class="pulsar-embed-loom-content-header">
+                <div class="pulsar-embed-loom-content-title-icon">
                   ${titleIcon}
                 </div>
 
-                <div class="affine-embed-loom-content-title-text">
+                <div class="pulsar-embed-loom-content-title-text">
                   ${titleText}
                 </div>
               </div>
 
-              <div class="affine-embed-loom-content-description">
+              <div class="pulsar-embed-loom-content-description">
                 ${descriptionText}
               </div>
 
-              <div class="affine-embed-loom-content-url" @click=${this.open}>
+              <div class="pulsar-embed-loom-content-url" @click=${this.open}>
                 <span>loom.com</span>
 
-                <div class="affine-embed-loom-content-url-icon">
+                <div class="pulsar-embed-loom-content-url-icon">
                   ${OpenIcon}
                 </div>
               </div>
@@ -206,6 +206,6 @@ export class EmbedLoomBlockComponent extends EmbedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-embed-loom-block': EmbedLoomBlockComponent;
+    'pulsar-embed-loom-block': EmbedLoomBlockComponent;
   }
 }

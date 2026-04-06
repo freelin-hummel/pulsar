@@ -1,19 +1,19 @@
 import type {
   EdgelessRootBlockComponent,
   NoteBlockModel,
-} from '@blocksuite/blocks';
-import type { Doc } from '@blocksuite/store';
+} from '@pulsar/blocks';
+import type { Doc } from '@pulsar/store';
 
-import { WithDisposable, SignalWatcher } from '@blocksuite/block-std';
-import { BlocksUtils, NoteDisplayMode } from '@blocksuite/blocks';
-import { Bound, DisposableGroup } from '@blocksuite/global/utils';
+import { WithDisposable, SignalWatcher } from '@pulsar/block-std';
+import { BlocksUtils, NoteDisplayMode } from '@pulsar/blocks';
+import { Bound, DisposableGroup } from '@pulsar/global/utils';
 import { effect, signal } from '@lit-labs/preact-signals';
 import { LitElement, type PropertyValues, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { repeat } from 'lit/directives/repeat.js';
 
-import type { AffineEditorContainer } from '../../../editors/editor-container.js';
+import type { PulsarEditorContainer } from '../../../editors/editor-container.js';
 import type {
   ClickBlockEvent,
   DisplayModeChangeEvent,
@@ -70,7 +70,7 @@ const styles = css`
     font-size: 14px;
     line-height: 24px;
     font-weight: 500;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     padding-left: 8px;
     height: 40px;
     box-sizing: border-box;
@@ -81,7 +81,7 @@ const styles = css`
   .insert-indicator {
     height: 2px;
     border-radius: 1px;
-    background-color: var(--affine-brand-color);
+    background-color: var(--pulsar-brand-color);
     border-radius: 1px;
     position: absolute;
     contain: layout size;
@@ -99,7 +99,7 @@ const styles = css`
     align-self: center;
     width: 190px;
     height: 48px;
-    color: var(--affine-text-secondary-color, #8e8d91);
+    color: var(--pulsar-text-secondary-color, #8e8d91);
     text-align: center;
     /* light/base */
     font-size: 15px;
@@ -109,9 +109,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_OUTLINE_PANEL_BODY = 'affine-outline-panel-body';
+export const PULSAR_OUTLINE_PANEL_BODY = 'pulsar-outline-panel-body';
 
-@customElement(AFFINE_OUTLINE_PANEL_BODY)
+@customElement(PULSAR_OUTLINE_PANEL_BODY)
 export class OutlinePanelBody extends SignalWatcher(
   WithDisposable(LitElement)
 ) {
@@ -339,7 +339,7 @@ export class OutlinePanelBody extends SignalWatcher(
     }
 
     const noteParentChildNotes = noteParent.children.filter(block =>
-      BlocksUtils.matchFlavours(block, ['affine:note'])
+      BlocksUtils.matchFlavours(block, ['pulsar:note'])
     ) as NoteBlockModel[];
     const noteParentLastNote =
       noteParentChildNotes[noteParentChildNotes.length - 1];
@@ -523,7 +523,7 @@ export class OutlinePanelBody extends SignalWatcher(
     const newSelected: string[] = [];
 
     rootModel.children.forEach(block => {
-      if (!['affine:note'].includes(block.flavour)) return;
+      if (!['pulsar:note'].includes(block.flavour)) return;
 
       const blockModel = block as NoteBlockModel;
 
@@ -694,7 +694,7 @@ export class OutlinePanelBody extends SignalWatcher(
   accessor edgeless!: EdgelessRootBlockComponent | null;
 
   @property({ attribute: false })
-  accessor editor!: AffineEditorContainer;
+  accessor editor!: PulsarEditorContainer;
 
   @property({ attribute: false })
   accessor enableNotesSorting!: boolean;
@@ -726,6 +726,6 @@ export class OutlinePanelBody extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_PANEL_BODY]: OutlinePanelBody;
+    [PULSAR_OUTLINE_PANEL_BODY]: OutlinePanelBody;
   }
 }

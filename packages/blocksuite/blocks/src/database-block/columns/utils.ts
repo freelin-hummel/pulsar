@@ -1,4 +1,4 @@
-import { Text } from '@blocksuite/store';
+import { Text } from '@pulsar/store';
 
 export type RichTextCellType = Text | Text['yText'];
 export const toYText = (text: RichTextCellType): Text['yText'] => {

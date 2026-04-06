@@ -3,25 +3,25 @@ import {
   type ExtensionType,
   FlavourExtension,
   WidgetViewMapExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { SurfaceRefBlockService } from './surface-ref-service.js';
 
 export const PageSurfaceRefBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:surface-ref'),
+  FlavourExtension('pulsar:surface-ref'),
   SurfaceRefBlockService,
-  BlockViewExtension('affine:surface-ref', literal`affine-surface-ref`),
-  WidgetViewMapExtension('affine:surface-ref', {
-    surfaceToolbar: literal`affine-surface-ref-toolbar`,
+  BlockViewExtension('pulsar:surface-ref', literal`pulsar-surface-ref`),
+  WidgetViewMapExtension('pulsar:surface-ref', {
+    surfaceToolbar: literal`pulsar-surface-ref-toolbar`,
   }),
 ];
 
 export const EdgelessSurfaceRefBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:surface-ref'),
+  FlavourExtension('pulsar:surface-ref'),
   SurfaceRefBlockService,
   BlockViewExtension(
-    'affine:surface-ref',
-    literal`affine-edgeless-surface-ref`
+    'pulsar:surface-ref',
+    literal`pulsar-edgeless-surface-ref`
   ),
 ];

@@ -1,18 +1,18 @@
-import type { ShapeElementModel } from '@blocksuite/affine-model';
+import type { ShapeElementModel } from '@pulsar/model';
 
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { LayoutType } from '@blocksuite/affine-block-surface';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { LayoutType } from '@pulsar/block-surface';
 import {
   EdgelessTextBlockModel,
   NoteDisplayMode,
   ConnectorElementModel,
   ConnectorMode,
   GroupElementModel,
-} from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { IS_MAC } from '@blocksuite/global/env';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { IS_MAC } from '@pulsar/global/env';
+import { Bound } from '@pulsar/global/utils';
 
 import type { EdgelessRootBlockComponent } from './edgeless-root-block.js';
 import type { EdgelessTool } from './types.js';
@@ -107,7 +107,7 @@ export class EdgelessPageKeyboardManager extends PageKeyboardManager {
         },
         n: () => {
           this._setEdgelessTool(rootComponent, {
-            type: 'affine:note',
+            type: 'pulsar:note',
             childFlavour: DEFAULT_NOTE_CHILD_FLAVOUR,
             childType: DEFAULT_NOTE_CHILD_TYPE,
             tip: DEFAULT_NOTE_TIP,
@@ -131,7 +131,7 @@ export class EdgelessPageKeyboardManager extends PageKeyboardManager {
             selection.selectedElements.length === 1 &&
             selection.firstElement instanceof GfxBlockModel &&
             matchFlavours(selection.firstElement as GfxBlockModel, [
-              'affine:note',
+              'pulsar:note',
             ])
           ) {
             rootComponent.slots.toggleNoteSlicer.emit();
@@ -266,7 +266,7 @@ export class EdgelessPageKeyboardManager extends PageKeyboardManager {
                   block =>
                     block.group === null &&
                     !(
-                      matchFlavours(block, ['affine:note']) &&
+                      matchFlavours(block, ['pulsar:note']) &&
                       block.displayMode === NoteDisplayMode.DocOnly
                     )
                 )

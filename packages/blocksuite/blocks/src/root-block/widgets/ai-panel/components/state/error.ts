@@ -1,6 +1,6 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -56,9 +56,9 @@ export class AIPanelError extends WithDisposable(LitElement) {
         align-self: stretch;
         .answer-label {
           align-self: stretch;
-          color: var(--affine-text-secondary-color);
+          color: var(--pulsar-text-secondary-color);
           /* light/xsMedium */
-          font-size: var(--affine-font-xs);
+          font-size: var(--pulsar-font-xs);
           font-style: normal;
           font-weight: 500;
           line-height: 20px; /* 166.667% */
@@ -66,12 +66,12 @@ export class AIPanelError extends WithDisposable(LitElement) {
       }
       .error-info {
         align-self: stretch;
-        color: var(--affine-error-color, #eb4335);
+        color: var(--pulsar-error-color, #eb4335);
         font-feature-settings:
           'clig' off,
           'liga' off;
         /* light/sm */
-        font-size: var(--affine-font-sm);
+        font-size: var(--pulsar-font-sm);
         font-style: normal;
         font-weight: 400;
         line-height: 22px; /* 157.143% */
@@ -96,11 +96,11 @@ export class AIPanelError extends WithDisposable(LitElement) {
         align-items: center;
         gap: 4px;
         border-radius: 8px;
-        border: 1px solid var(--affine-border-color);
-        background: var(--affine-white);
-        color: var(--affine-text-primary-color);
+        border: 1px solid var(--pulsar-border-color);
+        background: var(--pulsar-white);
+        color: var(--pulsar-text-primary-color);
         /* light/xsMedium */
-        font-size: var(--affine-font-xs);
+        font-size: var(--pulsar-font-xs);
         font-style: normal;
         font-weight: 500;
         line-height: 20px; /* 166.667% */
@@ -109,9 +109,9 @@ export class AIPanelError extends WithDisposable(LitElement) {
         cursor: pointer;
       }
       .action-button.primary {
-        border: 1px solid var(--affine-black-10);
-        background: var(--affine-primary-color);
-        color: var(--affine-pure-white);
+        border: 1px solid var(--pulsar-black-10);
+        background: var(--pulsar-primary-color);
+        color: var(--pulsar-pure-white);
       }
       .action-button > span {
         display: flex;
@@ -120,7 +120,7 @@ export class AIPanelError extends WithDisposable(LitElement) {
         padding: 0 4px;
       }
       .action-button:not(.primary):hover {
-        background: var(--affine-hover-color);
+        background: var(--pulsar-hover-color);
       }
     }
 
@@ -138,8 +138,8 @@ export class AIPanelError extends WithDisposable(LitElement) {
 
     .response-list-container ai-item-list {
       --item-padding: 4px;
-      --item-icon-color: var(--affine-icon-secondary);
-      --item-icon-hover-color: var(--affine-icon-color);
+      --item-icon-color: var(--pulsar-icon-secondary);
+      --item-icon-hover-color: var(--pulsar-icon-color);
     }
   `;
 

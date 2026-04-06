@@ -1,6 +1,6 @@
-import type { Viewport } from '@blocksuite/block-std/gfx';
+import type { Viewport } from '@pulsar/block-std/gfx';
 
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
+import { MindmapElementModel } from '@pulsar/block-surface';
 
 export function isMindmapNode(el: BlockSuite.EdgelessModel) {
   return (

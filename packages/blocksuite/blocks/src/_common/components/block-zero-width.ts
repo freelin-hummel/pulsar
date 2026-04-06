@@ -1,8 +1,8 @@
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { ZERO_WIDTH_SPACE } from '@blocksuite/inline/consts';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { ZERO_WIDTH_SPACE } from '@pulsar/inline/consts';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -26,9 +26,9 @@ export class BlockZeroWidth extends LitElement {
     stopPropagation(e);
     if (this.block.doc.readonly) return;
     const nextBlock = this.block.model.doc.getNext(this.block.model);
-    if (nextBlock?.flavour !== 'affine:paragraph') {
+    if (nextBlock?.flavour !== 'pulsar:paragraph') {
       const [paragraphId] = this.block.doc.addSiblingBlocks(this.block.model, [
-        { flavour: 'affine:paragraph' },
+        { flavour: 'pulsar:paragraph' },
       ]);
       focusTextModel(this.block.host.std, paragraphId);
     }

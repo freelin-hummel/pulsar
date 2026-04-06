@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { CenterPeekIcon, MoreHorizontalIcon } from '@blocksuite/icons/lit';
 import { css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -21,15 +21,15 @@ const styles = css`
     display: flex;
     position: relative;
     flex-direction: column;
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     transition: background-color 100ms ease-in-out;
-    background-color: var(--affine-background-kanban-card-color);
+    background-color: var(--pulsar-background-kanban-card-color);
   }
 
   affine-data-view-kanban-card:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   affine-data-view-kanban-card .card-header {
@@ -44,7 +44,7 @@ const styles = css`
   }
 
   .card-header.has-divider {
-    border-bottom: 0.5px solid var(--affine-border-color);
+    border-bottom: 0.5px solid var(--pulsar-border-color);
   }
 
   affine-data-view-kanban-card .card-header-title {
@@ -54,7 +54,7 @@ const styles = css`
 
   affine-data-view-kanban-card .card-header-icon {
     padding: 4px;
-    background-color: var(--affine-background-secondary-color);
+    background-color: var(--pulsar-background-secondary-color);
     display: flex;
     align-items: center;
     border-radius: 4px;
@@ -64,8 +64,8 @@ const styles = css`
   affine-data-view-kanban-card .card-header-icon svg {
     width: 16px;
     height: 16px;
-    fill: var(--affine-icon-color);
-    color: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
+    color: var(--pulsar-icon-color);
   }
 
   affine-data-view-kanban-card .card-body {
@@ -95,7 +95,7 @@ const styles = css`
     padding: 4px;
     border-radius: 4px;
     box-shadow: 0px 0px 4px 0px rgba(66, 65, 73, 0.14);
-    background-color: var(--affine-background-primary-color);
+    background-color: var(--pulsar-background-primary-color);
   }
 
   .card-op:hover:before {
@@ -106,18 +106,18 @@ const styles = css`
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .card-op svg {
-    fill: var(--affine-icon-color);
-    color: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
+    color: var(--pulsar-icon-color);
     width: 16px;
     height: 16px;
   }
 `;
 
-@customElement('affine-data-view-kanban-card')
+@customElement('pulsar-data-view-kanban-card')
 export class KanbanCard extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -162,7 +162,7 @@ export class KanbanCard extends SignalWatcher(
         ],
       };
       const target = e.target as HTMLElement;
-      const ref = target.closest('affine-data-view-kanban-cell') ?? this;
+      const ref = target.closest('pulsar-data-view-kanban-cell') ?? this;
       popCardMenu(this.dataViewEle, ref, this.cardId, selection);
     }
   };
@@ -170,7 +170,7 @@ export class KanbanCard extends SignalWatcher(
   static override styles = styles;
 
   private getSelection() {
-    return this.closest('affine-data-view-kanban')?.selectionController;
+    return this.closest('pulsar-data-view-kanban')?.selectionController;
   }
 
   private renderBody(columns: KanbanColumn[]) {
@@ -292,7 +292,7 @@ export class KanbanCard extends SignalWatcher(
       v => !this.view.isInHeader(v.id)
     );
     this.style.border = this.isFocus
-      ? '1px solid var(--affine-primary-color)'
+      ? '1px solid var(--pulsar-primary-color)'
       : '';
     return html`
       ${this.renderHeader(columns)} ${this.renderBody(columns)}
@@ -318,6 +318,6 @@ export class KanbanCard extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-kanban-card': KanbanCard;
+    'pulsar-data-view-kanban-card': KanbanCard;
   }
 }

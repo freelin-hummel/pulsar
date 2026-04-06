@@ -2,9 +2,9 @@ import type {
   Constructor,
   IVec,
   SerializedXYWH,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import {
   Bound,
   PointLocation,
@@ -14,8 +14,8 @@ import {
   polygonGetPointTangent,
   polygonNearestPoint,
   rotatePoints,
-} from '@blocksuite/global/utils';
-import { BlockModel } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { BlockModel } from '@pulsar/store';
 
 import type { EditorHost } from '../view/index.js';
 import type {

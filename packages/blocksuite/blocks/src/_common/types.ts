@@ -1,12 +1,12 @@
-import type { RefNodeSlots } from '@blocksuite/affine-components/rich-text';
-import type { BrushElementModel } from '@blocksuite/affine-model';
+import type { RefNodeSlots } from '@pulsar/editor-components/rich-text';
+import type { BrushElementModel } from '@pulsar/model';
 import type {
   ConnectorElementModel,
   DocMode,
   GroupElementModel,
-} from '@blocksuite/affine-model';
-import type { Slot } from '@blocksuite/global/utils';
-import type { Doc } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { Slot } from '@pulsar/global/utils';
+import type { Doc } from '@pulsar/store';
 
 /** Common context interface definition for block models. */
 
@@ -29,5 +29,5 @@ export type Connectable = Exclude<
   ConnectorElementModel | BrushElementModel | GroupElementModel
 >;
 
-export type { EmbedCardStyle } from '@blocksuite/affine-model';
-export * from '@blocksuite/affine-shared/types';
+export type { EmbedCardStyle } from '@pulsar/model';
+export * from '@pulsar/editor-shared/types';

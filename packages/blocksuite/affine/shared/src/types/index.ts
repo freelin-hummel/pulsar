@@ -1,6 +1,6 @@
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { EmbedCardStyle } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 export interface EditingState {
   element: BlockComponent;
@@ -14,16 +14,16 @@ export enum LassoMode {
 }
 
 export type NoteChildrenFlavour =
-  | 'affine:paragraph'
-  | 'affine:list'
-  | 'affine:code'
-  | 'affine:divider'
-  | 'affine:database'
-  | 'affine:data-view'
-  | 'affine:image'
-  | 'affine:bookmark'
-  | 'affine:attachment'
-  | 'affine:surface-ref';
+  | 'pulsar:paragraph'
+  | 'pulsar:list'
+  | 'pulsar:code'
+  | 'pulsar:divider'
+  | 'pulsar:database'
+  | 'pulsar:data-view'
+  | 'pulsar:image'
+  | 'pulsar:bookmark'
+  | 'pulsar:attachment'
+  | 'pulsar:surface-ref';
 
 export interface Viewport {
   left: number;

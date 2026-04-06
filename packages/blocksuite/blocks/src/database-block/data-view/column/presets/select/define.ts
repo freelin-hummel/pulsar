@@ -1,4 +1,4 @@
-import { Text, nanoid } from '@blocksuite/store';
+import { Text, nanoid } from '@pulsar/store';
 
 import type { SelectTag } from '../../../utils/tags/multi-tag-select.js';
 import type { SelectColumnData } from '../../types.js';

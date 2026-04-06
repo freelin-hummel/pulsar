@@ -1,12 +1,12 @@
 import {
-  type AffineTextAttributes,
+  type PulsarTextAttributes,
   type InlineSpecs,
-  basicAffineInlineSpecs,
-} from '@blocksuite/affine-components/rich-text';
+  basicPulsarInlineSpecs,
+} from '@pulsar/editor-components/rich-text';
 import { html } from 'lit';
 import { z } from 'zod';
 
-export type CodeBlockTextAttributes = AffineTextAttributes & {
+export type CodeBlockTextAttributes = PulsarTextAttributes & {
   'code-block-unit'?: null;
 };
 
@@ -19,7 +19,7 @@ export const codeBlockInlineSpecs: InlineSpecs<CodeBlockTextAttributes>[] = [
       return html`<affine-code-unit .delta=${delta}></affine-code-unit>`;
     },
   },
-  ...basicAffineInlineSpecs,
+  ...basicPulsarInlineSpecs,
   {
     name: 'link',
     schema: z.string().optional().nullable().catch(undefined),

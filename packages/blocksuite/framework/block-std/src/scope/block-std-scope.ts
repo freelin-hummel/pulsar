@@ -1,8 +1,8 @@
-import type { ServiceProvider } from '@blocksuite/global/di';
-import type { Doc } from '@blocksuite/store';
+import type { ServiceProvider } from '@pulsar/global/di';
+import type { Doc } from '@pulsar/store';
 
-import { Container } from '@blocksuite/global/di';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { Container } from '@pulsar/global/di';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { BlockService } from '../extension/index.js';
 import type { ExtensionType } from '../extension/index.js';

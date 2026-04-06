@@ -1,16 +1,16 @@
 import {
   createPopup,
   popMenu,
-} from '@blocksuite/affine-components/context-menu';
-import { rangeWrap } from '@blocksuite/affine-shared/utils';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/context-menu';
+import { rangeWrap } from '@pulsar/editor-shared/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import {
   CloseIcon,
   DeleteIcon,
   MoreHorizontalIcon,
   PlusIcon,
 } from '@blocksuite/icons/lit';
-import { nanoid } from '@blocksuite/store';
+import { nanoid } from '@pulsar/store';
 import { autoPlacement, flip, offset } from '@floating-ui/dom';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -38,7 +38,7 @@ type RenderOption = {
   select: () => void;
 };
 
-@customElement('affine-multi-tag-select')
+@customElement('pulsar-multi-tag-select')
 export class MultiTagSelect extends WithDisposable(ShadowlessElement) {
   private _clickItemOption = (e: MouseEvent, id: string) => {
     e.stopPropagation();
@@ -324,7 +324,7 @@ export class MultiTagSelect extends WithDisposable(ShadowlessElement) {
     const selectedTag = this.value;
     const map = new Map<string, SelectTag>(this.options.map(v => [v.id, v]));
     return html`
-      <div class="affine-select-cell-select">
+      <div class="pulsar-select-cell-select">
         <div class="select-input-container">
           ${selectedTag.map(id => {
             const option = map.get(id);
@@ -459,7 +459,7 @@ export class MultiTagSelect extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-multi-tag-select': MultiTagSelect;
+    'pulsar-multi-tag-select': MultiTagSelect;
   }
 }
 

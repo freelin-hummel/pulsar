@@ -1,4 +1,4 @@
-import type { BlockCommands } from '@blocksuite/block-std';
+import type { BlockCommands } from '@pulsar/block-std';
 
 import { addParagraphCommand } from './add-paragraph.js';
 import { appendParagraphCommand } from './append-paragraph.js';

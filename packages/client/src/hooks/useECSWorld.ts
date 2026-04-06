@@ -1,7 +1,7 @@
 import { useRef, useMemo, useCallback } from 'react'
 import { World, Component } from '@pulsar/ecs'
 import { BuiltInComponents } from '@pulsar/shared'
-import type { Doc } from '@blocksuite/store'
+import type { Doc } from '@pulsar/store'
 
 /**
  * React hook that creates and manages an ECS World instance.

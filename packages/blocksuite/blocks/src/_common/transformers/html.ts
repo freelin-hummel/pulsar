@@ -1,6 +1,6 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { Job } from '@blocksuite/store';
+import { Job } from '@pulsar/store';
 
 import { HtmlAdapter } from '../adapters/index.js';
 import { createAssetsArchive, download } from './utils.js';

@@ -1,13 +1,13 @@
-import type { InsertToPosition } from '@blocksuite/affine-shared/utils';
+import type { InsertToPosition } from '@pulsar/editor-shared/utils';
 import type {
   BlockStdScope,
   EventName,
   UIEventHandler,
-} from '@blocksuite/block-std';
-import type { Disposable } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import type { Disposable } from '@pulsar/global/utils';
 import type { ReadonlySignal } from '@lit-labs/preact-signals';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { DataSource } from '../common/data-source/base.js';
 import type { DataViewRenderer } from '../data-view.js';

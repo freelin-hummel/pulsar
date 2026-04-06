@@ -1,7 +1,7 @@
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { GroupIcon } from '@blocksuite/affine-components/icons';
-import { GroupElementModel } from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { GroupIcon } from '@pulsar/editor-components/icons';
+import { GroupElementModel } from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

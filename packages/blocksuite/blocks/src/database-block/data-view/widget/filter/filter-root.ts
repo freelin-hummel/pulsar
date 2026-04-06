@@ -1,5 +1,5 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import {
   ArrowDownSmallIcon,
   ConvertIcon,
@@ -53,7 +53,7 @@ export class FilterRootView extends WithDisposable(ShadowlessElement) {
       font-size: 14px;
       font-weight: 600;
       line-height: 22px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-root-op {
@@ -71,7 +71,7 @@ export class FilterRootView extends WithDisposable(ShadowlessElement) {
     }
 
     .filter-root-op-clickable:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .filter-root-container {
@@ -93,23 +93,23 @@ export class FilterRootView extends WithDisposable(ShadowlessElement) {
       line-height: 22px;
       border-radius: 4px;
       cursor: pointer;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
     }
 
     .filter-root-button svg {
-      fill: var(--affine-text-secondary-color);
-      color: var(--affine-text-secondary-color);
+      fill: var(--pulsar-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       width: 20px;
       height: 20px;
     }
 
     .filter-root-button:hover {
-      background-color: var(--affine-hover-color);
-      color: var(--affine-text-primary-color);
+      background-color: var(--pulsar-hover-color);
+      color: var(--pulsar-text-primary-color);
     }
     .filter-root-button:hover svg {
-      fill: var(--affine-text-primary-color);
-      color: var(--affine-text-primary-color);
+      fill: var(--pulsar-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-root-item {
@@ -126,7 +126,7 @@ export class FilterRootView extends WithDisposable(ShadowlessElement) {
       line-height: 22px;
       display: flex;
       align-items: center;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       gap: 6px;
     }
 
@@ -140,31 +140,31 @@ export class FilterRootView extends WithDisposable(ShadowlessElement) {
     }
 
     .filter-root-item-ops:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .filter-root-item-ops svg {
-      fill: var(--affine-text-secondary-color);
-      color: var(--affine-text-secondary-color);
+      fill: var(--pulsar-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       width: 18px;
       height: 18px;
     }
     .filter-root-item-ops:hover svg {
-      fill: var(--affine-text-primary-color);
-      color: var(--affine-text-primary-color);
+      fill: var(--pulsar-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-root-grabber {
       cursor: grab;
       width: 4px;
       height: 12px;
-      background-color: var(--affine-placeholder-color);
+      background-color: var(--pulsar-placeholder-color);
       border-radius: 1px;
     }
 
     .divider {
       height: 1px;
-      background-color: var(--affine-divider-color);
+      background-color: var(--pulsar-divider-color);
       flex-shrink: 0;
       margin: 8px 0;
     }

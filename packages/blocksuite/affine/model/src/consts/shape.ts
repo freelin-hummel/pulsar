@@ -50,17 +50,17 @@ export enum ShapeStyle {
 }
 
 export enum ShapeFillColor {
-  Black = '--affine-palette-shape-black',
-  Blue = '--affine-palette-shape-blue',
-  Green = '--affine-palette-shape-green',
-  Grey = '--affine-palette-shape-grey',
-  Magenta = '--affine-palette-shape-magenta',
-  Orange = '--affine-palette-shape-orange',
-  Purple = '--affine-palette-shape-purple',
-  Red = '--affine-palette-shape-red',
-  Teal = '--affine-palette-shape-teal',
-  White = '--affine-palette-shape-white',
-  Yellow = '--affine-palette-shape-yellow',
+  Black = '--pulsar-palette-shape-black',
+  Blue = '--pulsar-palette-shape-blue',
+  Green = '--pulsar-palette-shape-green',
+  Grey = '--pulsar-palette-shape-grey',
+  Magenta = '--pulsar-palette-shape-magenta',
+  Orange = '--pulsar-palette-shape-orange',
+  Purple = '--pulsar-palette-shape-purple',
+  Red = '--pulsar-palette-shape-red',
+  Teal = '--pulsar-palette-shape-teal',
+  White = '--pulsar-palette-shape-white',
+  Yellow = '--pulsar-palette-shape-yellow',
 }
 
 export const SHAPE_FILL_COLORS = [

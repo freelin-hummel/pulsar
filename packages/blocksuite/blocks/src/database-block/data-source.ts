@@ -1,12 +1,12 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { DatabaseBlockModel } from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
 
 import {
   type InsertToPosition,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
-import { type BlockModel, Text } from '@blocksuite/store';
+} from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
+import { type BlockModel, Text } from '@pulsar/store';
 import { type ReadonlySignal, computed } from '@lit-labs/preact-signals';
 
 import type { ColumnConfig } from './data-view/index.js';
@@ -310,7 +310,7 @@ export class DatabaseBlockDataSource extends DataSourceBase {
       typeof insertPosition === 'number'
         ? insertPosition
         : insertPositionToIndex(insertPosition, this._model.children);
-    return this.doc.addBlock('affine:paragraph', {}, this._model.id, index);
+    return this.doc.addBlock('pulsar:paragraph', {}, this._model.id, index);
   }
 
   rowDelete(ids: string[]): void {

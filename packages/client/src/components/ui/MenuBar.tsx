@@ -6,7 +6,6 @@ import {
   Eye,
   EyeOff,
   Moon,
-  Puzzle,
   Info,
 } from 'lucide-react'
 
@@ -14,7 +13,6 @@ export interface GlobalSettings {
   showGrid: boolean
   snapToGrid: boolean
   gridSize: number
-  showExtensions: boolean
 }
 
 interface MenuBarProps {
@@ -64,18 +62,6 @@ export function MenuBar({ settings, onSettingsChange }: MenuBarProps) {
       checked: settings.snapToGrid,
       onAction: () =>
         onSettingsChange({ ...settings, snapToGrid: !settings.snapToGrid }),
-    },
-    { label: '', type: 'separator' },
-    {
-      label: 'Show Extensions',
-      icon: <Puzzle size={14} />,
-      type: 'toggle',
-      checked: settings.showExtensions,
-      onAction: () =>
-        onSettingsChange({
-          ...settings,
-          showExtensions: !settings.showExtensions,
-        }),
     },
     { label: '', type: 'separator' },
     {

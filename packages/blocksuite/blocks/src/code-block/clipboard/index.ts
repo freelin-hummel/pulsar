@@ -1,7 +1,7 @@
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { Clipboard, type UIEventHandler } from '@blocksuite/block-std';
-import { DisposableGroup, assertExists } from '@blocksuite/global/utils';
+import { Clipboard, type UIEventHandler } from '@pulsar/block-std';
+import { DisposableGroup, assertExists } from '@pulsar/global/utils';
 
 import { HtmlAdapter, PlainTextAdapter } from '../../_common/adapters/index.js';
 import { pasteMiddleware } from '../../root-block/clipboard/middlewares/index.js';

@@ -1,8 +1,8 @@
-import type { VLine } from '@blocksuite/inline';
-import type { Y } from '@blocksuite/store';
+import type { VLine } from '@pulsar/inline';
+import type { Y } from '@pulsar/store';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import {
   type AttributeRenderer,
   type DeltaInsert,
@@ -11,16 +11,16 @@ import {
   type InlineRangeProvider,
   type KeyboardBindingContext,
   createInlineKeyDownHandler,
-} from '@blocksuite/inline';
-import { DocCollection, Text } from '@blocksuite/store';
+} from '@pulsar/inline';
+import { DocCollection, Text } from '@pulsar/store';
 import { type TemplateResult, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { z } from 'zod';
 
 import type {
-  AffineInlineEditor,
-  AffineTextAttributes,
+  PulsarInlineEditor,
+  PulsarTextAttributes,
 } from './inline/index.js';
 
 import { onVBeforeinput, onVCompositionEnd } from './hooks.js';
@@ -33,7 +33,7 @@ interface RichTextStackItem {
 export class RichText extends WithDisposable(ShadowlessElement) {
   #verticalScrollContainer: HTMLElement | null = null;
 
-  private _inlineEditor: AffineInlineEditor | null = null;
+  private _inlineEditor: PulsarInlineEditor | null = null;
 
   private _onCopy = (e: ClipboardEvent) => {
     const inlineEditor = this.inlineEditor;
@@ -150,7 +150,7 @@ export class RichText extends WithDisposable(ShadowlessElement) {
     }
 
     // init inline editor
-    this._inlineEditor = new InlineEditor<AffineTextAttributes>(this._yText, {
+    this._inlineEditor = new InlineEditor<PulsarTextAttributes>(this._yText, {
       isEmbed: delta => this.embedChecker(delta),
       hooks: {
         beforeinput: onVBeforeinput,
@@ -365,7 +365,7 @@ export class RichText extends WithDisposable(ShadowlessElement) {
 
   @property({ attribute: false })
   accessor embedChecker: <
-    TextAttributes extends AffineTextAttributes = AffineTextAttributes,
+    TextAttributes extends PulsarTextAttributes = PulsarTextAttributes,
   >(
     delta: DeltaInsert<TextAttributes>
   ) => boolean = () => false;
@@ -393,7 +393,7 @@ export class RichText extends WithDisposable(ShadowlessElement) {
 
   @property({ attribute: false })
   accessor markdownShortcutHandler:
-    | (<TextAttributes extends AffineTextAttributes = AffineTextAttributes>(
+    | (<TextAttributes extends PulsarTextAttributes = PulsarTextAttributes>(
         context: KeyboardBindingContext<TextAttributes>,
         undoManager: Y.UndoManager
       ) => boolean)

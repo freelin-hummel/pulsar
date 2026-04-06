@@ -1,12 +1,12 @@
-import type { ServiceIdentifier } from '@blocksuite/global/di';
-import type { BlockModel } from '@blocksuite/store';
+import type { ServiceIdentifier } from '@pulsar/global/di';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   Bound,
   DisposableGroup,
   type IBound,
   last,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { BlockStdScope } from '../scope/block-std-scope.js';
 import type { SurfaceBlockModel } from './surface/surface-model.js';

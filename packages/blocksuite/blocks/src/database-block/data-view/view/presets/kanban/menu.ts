@@ -1,4 +1,4 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
 import {
   ArrowRightBigIcon,
   DeleteIcon,

@@ -1,17 +1,17 @@
-import type { FrameBlockModel } from '@blocksuite/affine-model';
+import type { FrameBlockModel } from '@pulsar/model';
 
-import { NoteIcon, RenameIcon } from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
-import { type ColorScheme, NoteDisplayMode } from '@blocksuite/affine-model';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { NoteIcon, RenameIcon } from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
+import { type ColorScheme, NoteDisplayMode } from '@pulsar/model';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import {
   countBy,
   deserializeXYWH,
   maxBy,
   serializeXYWH,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { join } from 'lit/directives/join.js';
@@ -30,15 +30,15 @@ import { DEFAULT_NOTE_HEIGHT } from '../../edgeless/utils/consts.js';
 import { mountFrameTitleEditor } from '../../edgeless/utils/text.js';
 
 const FRAME_BACKGROUND = [
-  '--affine-tag-gray',
-  '--affine-tag-red',
-  '--affine-tag-orange',
-  '--affine-tag-yellow',
-  '--affine-tag-green',
-  '--affine-tag-teal',
-  '--affine-tag-blue',
-  '--affine-tag-purple',
-  '--affine-tag-pink',
+  '--pulsar-tag-gray',
+  '--pulsar-tag-red',
+  '--pulsar-tag-orange',
+  '--pulsar-tag-yellow',
+  '--pulsar-tag-green',
+  '--pulsar-tag-teal',
+  '--pulsar-tag-blue',
+  '--pulsar-tag-purple',
+  '--pulsar-tag-pink',
 ] as const;
 
 function getMostCommonColor(
@@ -78,7 +78,7 @@ export class EdgelessChangeFrameButton extends WithDisposable(LitElement) {
     const rootModel = this.edgeless.doc.root;
     const notes = rootModel.children.filter(
       model =>
-        matchFlavours(model, ['affine:note']) &&
+        matchFlavours(model, ['pulsar:note']) &&
         model.displayMode !== NoteDisplayMode.EdgelessOnly
     );
     const lastNote = notes[notes.length - 1];
@@ -93,7 +93,7 @@ export class EdgelessChangeFrameButton extends WithDisposable(LitElement) {
       targetXYWH[3] = DEFAULT_NOTE_HEIGHT;
 
       const newAddedNote = this.edgeless.doc.addBlock(
-        'affine:note',
+        'pulsar:note',
         {
           xywh: serializeXYWH(...targetXYWH),
         },
@@ -104,10 +104,10 @@ export class EdgelessChangeFrameButton extends WithDisposable(LitElement) {
     }
 
     this.edgeless.doc.addBlock(
-      'affine:surface-ref',
+      'pulsar:surface-ref',
       {
         reference: this.frames[0].id,
-        refFlavour: 'affine:frame',
+        refFlavour: 'pulsar:frame',
       },
       targetParent
     );
@@ -127,7 +127,7 @@ export class EdgelessChangeFrameButton extends WithDisposable(LitElement) {
     const onlyOne = len === 1;
     const colorScheme = this.edgeless.surface.renderer.getColorScheme();
     const background =
-      getMostCommonColor(frames, colorScheme) ?? '--affine-palette-transparent';
+      getMostCommonColor(frames, colorScheme) ?? '--pulsar-palette-transparent';
 
     return join(
       [

@@ -1,4 +1,4 @@
-import type { DeltaInsert } from '@blocksuite/inline';
+import type { DeltaInsert } from '@pulsar/inline';
 import type {
   FromBlockSnapshotPayload,
   FromBlockSnapshotResult,
@@ -6,12 +6,12 @@ import type {
   FromDocSnapshotResult,
   FromSliceSnapshotPayload,
   FromSliceSnapshotResult,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
-import { NoteDisplayMode } from '@blocksuite/affine-model';
-import { getFilenameFromContentDisposition } from '@blocksuite/affine-shared/utils';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { isEqual, sha } from '@blocksuite/global/utils';
+import { NoteDisplayMode } from '@pulsar/model';
+import { getFilenameFromContentDisposition } from '@pulsar/editor-shared/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { isEqual, sha } from '@pulsar/global/utils';
 import {
   ASTWalker,
   type AssetsManager,
@@ -21,7 +21,7 @@ import {
   type SliceSnapshot,
   getAssetName,
   nanoid,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import { collapseWhiteSpace } from 'collapse-white-space';
 import rehypeParse from 'rehype-parse';
 import { unified } from 'unified';
@@ -317,7 +317,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:image',
+                  flavour: 'pulsar:image',
                   props: {
                     sourceId: blobId,
                   },
@@ -345,7 +345,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:code',
+                flavour: 'pulsar:code',
                 props: {
                   language: 'Plain Text',
                   text: {
@@ -371,7 +371,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: 'quote',
                   text: {
@@ -399,7 +399,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:paragraph',
+              flavour: 'pulsar:paragraph',
               props: {
                 type: context.getGlobalContext('hast:blockquote')
                   ? 'quote'
@@ -426,7 +426,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: o.node.tagName,
                   text: {
@@ -464,7 +464,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:list',
+              flavour: 'pulsar:list',
               props: {
                 type: listType,
                 text: {
@@ -504,7 +504,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:divider',
+                flavour: 'pulsar:divider',
                 props: {},
                 children: [],
               },
@@ -521,7 +521,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:paragraph',
+                  flavour: 'pulsar:paragraph',
                   props: {
                     type: 'text',
                     text: {
@@ -544,7 +544,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:paragraph',
+                  flavour: 'pulsar:paragraph',
                   props: {
                     type: 'text',
                     text: {
@@ -580,7 +580,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:bookmark',
+                  flavour: 'pulsar:bookmark',
                   props: {
                     type: 'card',
                     url: bookmarkURL ?? '',
@@ -652,7 +652,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:image',
+                  flavour: 'pulsar:image',
                   props: {
                     sourceId: blobId,
                   },
@@ -728,7 +728,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:attachment',
+                  flavour: 'pulsar:attachment',
                   props: {
                     name,
                     size,
@@ -791,7 +791,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                     {
                       type: 'block',
                       id: nanoid(),
-                      flavour: 'affine:paragraph',
+                      flavour: 'pulsar:paragraph',
                       props: {
                         text: {
                           '$blocksuite:internal:text$': true,
@@ -808,7 +808,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                   {
                     type: 'block',
                     id: nanoid(),
-                    flavour: 'affine:paragraph',
+                    flavour: 'pulsar:paragraph',
                     props: {
                       text: {
                         '$blocksuite:internal:text$': true,
@@ -829,7 +829,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
                   {
                     type: 'block',
                     id: nanoid(),
-                    flavour: 'affine:paragraph',
+                    flavour: 'pulsar:paragraph',
                     props: {
                       text: {
                         '$blocksuite:internal:text$': true,
@@ -997,7 +997,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:database',
+              flavour: 'pulsar:database',
               props: {
                 views: [
                   {
@@ -1082,10 +1082,10 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -1113,10 +1113,10 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -1134,7 +1134,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
       blocks: {
         type: 'block',
         id: nanoid(),
-        flavour: 'affine:page',
+        flavour: 'pulsar:page',
         props: {
           title: {
             '$blocksuite:internal:text$': true,
@@ -1150,7 +1150,7 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
           {
             type: 'block',
             id: nanoid(),
-            flavour: 'affine:surface',
+            flavour: 'pulsar:surface',
             props: {
               elements: {},
             },
@@ -1174,10 +1174,10 @@ export class NotionHtmlAdapter extends BaseAdapter<NotionHtml> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,

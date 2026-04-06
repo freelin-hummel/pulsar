@@ -1,8 +1,8 @@
-import type { UIEventStateContext } from '@blocksuite/block-std';
-import type { IVec } from '@blocksuite/global/utils';
+import type { UIEventStateContext } from '@pulsar/block-std';
+import type { IVec } from '@pulsar/global/utils';
 
-import { WidgetComponent } from '@blocksuite/block-std';
-import { noop } from '@blocksuite/global/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { noop } from '@pulsar/global/utils';
 import { nothing } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -22,10 +22,10 @@ noop(PieNodeCenter);
 noop(PieCenterRotator);
 noop(PieNodeChild);
 
-export const AFFINE_PIE_MENU_WIDGET = 'affine-pie-menu-widget';
+export const PULSAR_PIE_MENU_WIDGET = 'pulsar-pie-menu-widget';
 
-@customElement(AFFINE_PIE_MENU_WIDGET)
-export class AffinePieMenuWidget extends WidgetComponent {
+@customElement(PULSAR_PIE_MENU_WIDGET)
+export class PulsarPieMenuWidget extends WidgetComponent {
   private _handleCursorPos = (ctx: UIEventStateContext) => {
     const ev = ctx.get('pointerState');
     const { x, y } = ev.point;
@@ -81,7 +81,7 @@ export class AffinePieMenuWidget extends WidgetComponent {
     }: {
       x: number;
       y: number;
-      widgetComponent: AffinePieMenuWidget;
+      widgetComponent: PulsarPieMenuWidget;
     }
   ) {
     const menu = new PieMenu();
@@ -152,7 +152,7 @@ export class AffinePieMenuWidget extends WidgetComponent {
     if (rootComponent instanceof EdgelessRootBlockComponent) {
       return rootComponent;
     }
-    throw new Error('AffinePieMenuWidget is only supported in edgeless');
+    throw new Error('PulsarPieMenuWidget is only supported in edgeless');
   }
 
   @state()
@@ -161,7 +161,7 @@ export class AffinePieMenuWidget extends WidgetComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_PIE_MENU_WIDGET]: AffinePieMenuWidget;
+    [PULSAR_PIE_MENU_WIDGET]: PulsarPieMenuWidget;
   }
 }
 

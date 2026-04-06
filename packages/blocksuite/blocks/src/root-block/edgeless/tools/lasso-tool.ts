@@ -1,9 +1,9 @@
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IVec } from '@blocksuite/global/utils';
-import type { IPoint } from '@blocksuite/global/utils';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IVec } from '@pulsar/global/utils';
+import type { IPoint } from '@pulsar/global/utils';
 
-import { Overlay, CommonUtils } from '@blocksuite/affine-block-surface';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { Overlay, CommonUtils } from '@pulsar/block-surface';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   Bound,
   Vec,
@@ -13,7 +13,7 @@ import {
   noop,
   pointInPolygon,
   rotatePoints,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { EdgelessTool } from '../types.js';
 
@@ -30,10 +30,10 @@ class LassoOverlay extends Overlay {
     const zoom = this._renderer?.viewport.zoom ?? 1.0;
     ctx.save();
     const primaryColor = ThemeObserver.getPropertyValue(
-      '--affine-primary-color'
+      '--pulsar-primary-color'
     );
     const strokeColor = ThemeObserver.getPropertyValue(
-      '--affine-secondary-color'
+      '--pulsar-secondary-color'
     );
     if (this.startPoint) {
       const [x, y] = this.startPoint;

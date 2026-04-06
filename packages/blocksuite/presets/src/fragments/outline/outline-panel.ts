@@ -1,10 +1,10 @@
-import { WithDisposable, SignalWatcher } from '@blocksuite/block-std';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { WithDisposable, SignalWatcher } from '@pulsar/block-std';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, type PropertyValues, css, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
-import type { AffineEditorContainer } from '../../editors/editor-container.js';
+import type { PulsarEditorContainer } from '../../editors/editor-container.js';
 
 import './body/outline-notice.js';
 import './body/outline-panel-body.js';
@@ -19,7 +19,7 @@ const styles = css`
   }
 
   .outline-panel-container {
-    background-color: var(--affine-background-primary-color);
+    background-color: var(--pulsar-background-primary-color);
     box-sizing: border-box;
 
     display: flex;
@@ -45,7 +45,7 @@ const styles = css`
     border-radius: 2px;
   }
   .outline-panel-body:hover::-webkit-scrollbar-thumb {
-    background-color: var(--affine-black-30);
+    background-color: var(--pulsar-black-30);
   }
   .outline-panel-body::-webkit-scrollbar-track {
     background-color: transparent;
@@ -55,9 +55,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_OUTLINE_PANEL = 'affine-outline-panel';
+export const PULSAR_OUTLINE_PANEL = 'pulsar-outline-panel';
 
-@customElement(AFFINE_OUTLINE_PANEL)
+@customElement(PULSAR_OUTLINE_PANEL)
 export class OutlinePanel extends SignalWatcher(WithDisposable(LitElement)) {
   private _editorDisposables: DisposableGroup | null = null;
 
@@ -185,7 +185,7 @@ export class OutlinePanel extends SignalWatcher(WithDisposable(LitElement)) {
   }
 
   get edgeless() {
-    return this.editor.querySelector('affine-edgeless-root');
+    return this.editor.querySelector('pulsar-edgeless-root');
   }
 
   get host() {
@@ -206,7 +206,7 @@ export class OutlinePanel extends SignalWatcher(WithDisposable(LitElement)) {
   private accessor _showPreviewIcon = false;
 
   @property({ attribute: false })
-  accessor editor!: AffineEditorContainer;
+  accessor editor!: PulsarEditorContainer;
 
   @property({ attribute: false })
   accessor fitPadding!: number[];
@@ -214,6 +214,6 @@ export class OutlinePanel extends SignalWatcher(WithDisposable(LitElement)) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_PANEL]: OutlinePanel;
+    [PULSAR_OUTLINE_PANEL]: OutlinePanel;
   }
 }

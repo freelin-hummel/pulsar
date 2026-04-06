@@ -1,5 +1,5 @@
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
 import { isInsidePageEditor } from './checker.js';
 
@@ -25,7 +25,7 @@ export function getViewportElement(editorHost: EditorHost): HTMLElement | null {
 
   if (
     !rootComponent ||
-    rootComponent.closest('affine-page-root') !== rootComponent
+    rootComponent.closest('pulsar-page-root') !== rootComponent
   ) {
     console.error('Failed to get viewport element!');
     return null;

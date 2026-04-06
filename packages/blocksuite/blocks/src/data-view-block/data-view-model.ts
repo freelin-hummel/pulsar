@@ -1,11 +1,11 @@
-import type { Column } from '@blocksuite/affine-model';
+import type { Column } from '@pulsar/model';
 
 import {
   type InsertToPosition,
   arrayMove,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+} from '@pulsar/editor-shared/utils';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 import type { DataViewDataType } from '../database-block/data-view/index.js';
 
@@ -78,7 +78,7 @@ export class DataViewBlockModel extends BlockModel<Props> {
 }
 
 export const DataViewBlockSchema = defineBlockSchema({
-  flavour: 'affine:data-view',
+  flavour: 'pulsar:data-view',
   props: (): Props => ({
     views: [],
     title: '',
@@ -88,8 +88,8 @@ export const DataViewBlockSchema = defineBlockSchema({
   metadata: {
     role: 'hub',
     version: 1,
-    parent: ['affine:note'],
-    children: ['affine:paragraph', 'affine:list'],
+    parent: ['pulsar:note'],
+    children: ['pulsar:paragraph', 'pulsar:list'],
   },
   toModel: () => {
     return new DataViewBlockModel();

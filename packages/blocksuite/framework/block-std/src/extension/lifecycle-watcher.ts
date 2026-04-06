@@ -1,6 +1,6 @@
-import type { Container } from '@blocksuite/global/di';
+import type { Container } from '@pulsar/global/di';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { BlockStdScope } from '../scope/index.js';
 

@@ -1,6 +1,6 @@
-import type { ExtensionType } from '@blocksuite/block-std';
+import type { ExtensionType } from '@pulsar/block-std';
 
-import { EdgelessSurfaceBlockSpec } from '@blocksuite/affine-block-surface';
+import { EdgelessSurfaceBlockSpec } from '@pulsar/block-surface';
 
 import { EdgelessTextBlockSpec } from '../../edgeless-text-block/edgeless-text-spec.js';
 import { FrameBlockSpec } from '../../frame-block/frame-spec.js';

@@ -1,7 +1,7 @@
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+import type { ImageBlockModel } from '@pulsar/model';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { Peekable } from '@blocksuite/affine-components/peek';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { Peekable } from '@pulsar/editor-components/peek';
 import { html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -20,7 +20,7 @@ import {
   turnImageIntoCardView,
 } from './utils.js';
 
-@customElement('affine-image')
+@customElement('pulsar-image')
 @Peekable()
 export class ImageBlockComponent extends CaptionedBlockComponent<
   ImageBlockModel,
@@ -82,7 +82,7 @@ export class ImageBlockComponent extends CaptionedBlockComponent<
 
     return html`
       <div
-        class="affine-image-container"
+        class="pulsar-image-container"
         style=${containerStyleMap}
         @click=${this._handleClick}
       >
@@ -124,7 +124,7 @@ export class ImageBlockComponent extends CaptionedBlockComponent<
   @property({ attribute: false })
   accessor error = false;
 
-  @query('affine-image-fallback-card')
+  @query('pulsar-image-fallback-card')
   accessor fallbackCard: ImageBlockFallbackCard | null = null;
 
   @state()
@@ -133,7 +133,7 @@ export class ImageBlockComponent extends CaptionedBlockComponent<
   @property({ attribute: false })
   accessor loading = false;
 
-  @query('affine-page-image')
+  @query('pulsar-page-image')
   private accessor pageImage: ImageBlockPageComponent | null = null;
 
   @property({ attribute: false })
@@ -146,6 +146,6 @@ export class ImageBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-image': ImageBlockComponent;
+    'pulsar-image': ImageBlockComponent;
   }
 }

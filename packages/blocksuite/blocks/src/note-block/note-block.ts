@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
-import type { NoteBlockModel } from '@blocksuite/affine-model';
+import type { NoteBlockModel } from '@pulsar/model';
 
-import { BlockComponent } from '@blocksuite/block-std';
+import { BlockComponent } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -9,7 +9,7 @@ import type { NoteBlockService } from './note-service.js';
 
 import { KeymapController } from './keymap-controller.js';
 
-@customElement('affine-note')
+@customElement('pulsar-note')
 export class NoteBlockComponent extends BlockComponent<
   NoteBlockModel,
   NoteBlockService
@@ -19,7 +19,7 @@ export class NoteBlockComponent extends BlockComponent<
       display: flow-root;
     }
     .affine-note-block-container.selected {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 
@@ -33,8 +33,8 @@ export class NoteBlockComponent extends BlockComponent<
 
   override renderBlock() {
     return html`
-      <div class="affine-note-block-container">
-        <div class="affine-block-children-container">
+      <div class="pulsar-note-block-container">
+        <div class="pulsar-block-children-container">
           ${this.renderChildren(this.model)}
         </div>
       </div>
@@ -44,6 +44,6 @@ export class NoteBlockComponent extends BlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-note': NoteBlockComponent;
+    'pulsar-note': NoteBlockComponent;
   }
 }

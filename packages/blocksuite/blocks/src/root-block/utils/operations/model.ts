@@ -1,7 +1,7 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { assertExists } from '@blocksuite/global/utils';
-import { type BlockModel, Text } from '@blocksuite/store';
+import { assertExists } from '@pulsar/global/utils';
+import { type BlockModel, Text } from '@pulsar/store';
 
 /**
  * This file should only contain functions that are used to
@@ -32,7 +32,7 @@ export function mergeToCodeModel(models: BlockModel[]) {
   models.map(model => doc.deleteBlock(model));
 
   const id = doc.addBlock(
-    'affine:code',
+    'pulsar:code',
     { text: new Text(text) },
     parent,
     index

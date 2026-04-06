@@ -1,4 +1,4 @@
-import type { InsertToPosition } from '@blocksuite/affine-shared/utils';
+import type { InsertToPosition } from '@pulsar/editor-shared/utils';
 import type { ReadonlySignal } from '@lit-labs/preact-signals';
 
 import type { ColumnConfig, ColumnMeta } from '../../column/column-config.js';

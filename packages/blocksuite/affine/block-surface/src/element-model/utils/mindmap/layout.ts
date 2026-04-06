@@ -1,6 +1,6 @@
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { Bound } from '@blocksuite/global/utils';
+import { Bound } from '@pulsar/global/utils';
 
 import type { MindmapElementModel } from '../../mindmap.js';
 

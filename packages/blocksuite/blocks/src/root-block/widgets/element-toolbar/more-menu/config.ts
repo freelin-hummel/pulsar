@@ -1,8 +1,8 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
-import { isPeekable, peek } from '@blocksuite/affine-components/peek';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { Bound } from '@blocksuite/global/utils';
+import { isPeekable, peek } from '@pulsar/editor-components/peek';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { Bound } from '@pulsar/global/utils';
 import {
   ArrowDownBigBottomIcon,
   ArrowDownBigIcon,
@@ -257,7 +257,7 @@ export const conversionsGroup: MenuItemGroup<ElementToolbarMoreMenuContext> = {
         const linkedDoc = createLinkedDocFromNote(doc, element, title);
         // insert linked doc card
         const cardId = service.addBlock(
-          'affine:embed-synced-doc',
+          'pulsar:embed-synced-doc',
           {
             xywh: element.xywh,
             style: 'syncedDoc',
@@ -325,7 +325,7 @@ export const conversionsGroup: MenuItemGroup<ElementToolbarMoreMenuContext> = {
         const height = 390;
         const bound = edgelessElementsBound(elements);
         const cardId = service.addBlock(
-          'affine:embed-linked-doc',
+          'pulsar:embed-linked-doc',
           {
             xywh: `[${bound.center[0] - width / 2}, ${bound.center[1] - height / 2}, ${width}, ${height}]`,
             style: 'vertical',

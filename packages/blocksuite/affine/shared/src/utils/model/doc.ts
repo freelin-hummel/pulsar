@@ -1,4 +1,4 @@
-import type { DocCollection } from '@blocksuite/store';
+import type { DocCollection } from '@pulsar/store';
 
 export function createDefaultDoc(
   collection: DocCollection,
@@ -8,7 +8,7 @@ export function createDefaultDoc(
 
   doc.load();
   const title = options.title ?? '';
-  const rootId = doc.addBlock('affine:page', {
+  const rootId = doc.addBlock('pulsar:page', {
     title: new doc.Text(title),
   });
   collection.setDocMeta(doc.id, {
@@ -16,9 +16,9 @@ export function createDefaultDoc(
   });
 
   // @ts-ignore FIXME: will be fixed when surface model migrated to affine-model
-  doc.addBlock('affine:surface', {}, rootId);
-  const noteId = doc.addBlock('affine:note', {}, rootId);
-  doc.addBlock('affine:paragraph', {}, noteId);
+  doc.addBlock('pulsar:surface', {}, rootId);
+  const noteId = doc.addBlock('pulsar:note', {}, rootId);
+  doc.addBlock('pulsar:paragraph', {}, noteId);
   // To make sure the content of new doc would not be clear
   // By undo operation for the first time
   doc.resetHistory();

@@ -1,11 +1,11 @@
-import type { HoverController } from '@blocksuite/affine-components/hover';
+import type { HoverController } from '@pulsar/editor-components/hover';
 
-import { AttachmentBlockStyles } from '@blocksuite/affine-model';
+import { AttachmentBlockStyles } from '@pulsar/model';
 import {
   EMBED_CARD_HEIGHT,
   EMBED_CARD_WIDTH,
-} from '@blocksuite/affine-shared/consts';
-import { toGfxBlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/consts';
+import { toGfxBlockComponent } from '@pulsar/block-std';
 import { customElement } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
@@ -13,7 +13,7 @@ import type { EdgelessRootService } from '../root-block/index.js';
 
 import { AttachmentBlockComponent } from './attachment-block.js';
 
-@customElement('affine-edgeless-attachment')
+@customElement('pulsar-edgeless-attachment')
 export class AttachmentEdgelessBlockComponent extends toGfxBlockComponent(
   AttachmentBlockComponent
 ) {
@@ -68,12 +68,12 @@ export class AttachmentEdgelessBlockComponent extends toGfxBlockComponent(
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-attachment': AttachmentEdgelessBlockComponent;
+    'pulsar-edgeless-attachment': AttachmentEdgelessBlockComponent;
   }
 }

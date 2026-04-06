@@ -2,7 +2,7 @@ import type { TemplateResult } from 'lit';
 
 import type { EdgelessRootBlockComponent } from '../../edgeless/edgeless-root-block.js';
 import type { PieMenuId } from '../../types.js';
-import type { AffinePieMenuWidget } from './index.js';
+import type { PulsarPieMenuWidget } from './index.js';
 import type { PieMenu } from './menu.js';
 import type { PieNode } from './node.js';
 
@@ -46,7 +46,7 @@ export interface PieRootNodeModel extends PieBaseNodeModel {
 export type PieMenuContext = {
   rootComponent: EdgelessRootBlockComponent;
   menu: PieMenu;
-  widgetComponent: AffinePieMenuWidget;
+  widgetComponent: PulsarPieMenuWidget;
   node: PieNode;
 };
 export type ActionFunction = (ctx: PieMenuContext) => void;

@@ -1,23 +1,23 @@
 import type {
   BaseElementProps,
   SerializedElement,
-} from '@blocksuite/block-std/gfx';
-import type { Y } from '@blocksuite/store';
+} from '@pulsar/block-std/gfx';
+import type { Y } from '@pulsar/store';
 
 import {
   GfxGroupLikeElementModel,
   field,
   local,
   observe,
-} from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std/gfx';
 import {
   Bound,
   type IVec,
   type PointLocation,
   keys,
   linePolygonIntersects,
-} from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 
 type GroupElementProps = BaseElementProps & {
   children: Y.Map<boolean>;

@@ -1,11 +1,11 @@
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+import type { ImageBlockModel } from '@pulsar/model';
 
-import { humanFileSize } from '@blocksuite/affine-shared/utils';
+import { humanFileSize } from '@pulsar/editor-shared/utils';
 import {
   ShadowlessElement,
   WithDisposable,
   modelContext,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { consume } from '@lit/context';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -18,7 +18,7 @@ export const SURFACE_IMAGE_CARD_HEIGHT = 122;
 export const NOTE_IMAGE_CARD_WIDTH = 752;
 export const NOTE_IMAGE_CARD_HEIGHT = 78;
 
-@customElement('affine-image-fallback-card')
+@customElement('pulsar-image-fallback-card')
 export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
   static override styles = css`
     .affine-image-fallback-card-container {
@@ -33,9 +33,9 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background-color: var(--affine-background-secondary-color, #f4f4f5);
+      background-color: var(--pulsar-background-secondary-color, #f4f4f5);
       border-radius: 8px;
-      border: 1px solid var(--affine-background-tertiary-color, #eee);
+      border: 1px solid var(--pulsar-background-tertiary-color, #eee);
       padding: 12px;
     }
 
@@ -43,20 +43,20 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
       text-align: justify;
-      font-family: var(--affine-font-family);
-      font-size: var(--affine-font-sm);
+      font-family: var(--pulsar-font-family);
+      font-size: var(--pulsar-font-sm);
       font-style: normal;
       font-weight: 600;
-      line-height: var(--affine-line-height);
+      line-height: var(--pulsar-line-height);
       user-select: none;
     }
 
     .affine-image-card-size {
       overflow: hidden;
       padding-top: 12px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       text-overflow: ellipsis;
       font-size: 10px;
       font-style: normal;
@@ -104,18 +104,18 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
         : null;
 
     return html`
-      <div class="affine-image-fallback-card-container">
+      <div class="pulsar-image-fallback-card-container">
         <div
-          class="affine-image-fallback-card drag-target"
+          class="pulsar-image-fallback-card drag-target"
           style=${cardStyleMap}
         >
-          <div class="affine-image-fallback-card-content">
+          <div class="pulsar-image-fallback-card-content">
             ${titleIcon}
-            <span class="affine-image-fallback-card-title-text"
+            <span class="pulsar-image-fallback-card-title-text"
               >${titleText}</span
             >
           </div>
-          <div class="affine-image-card-size">${size}</div>
+          <div class="pulsar-image-card-size">${size}</div>
         </div>
       </div>
     `;
@@ -136,6 +136,6 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-image-fallback-card': ImageBlockFallbackCard;
+    'pulsar-image-fallback-card': ImageBlockFallbackCard;
   }
 }

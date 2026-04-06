@@ -1,15 +1,15 @@
-import type { EmbedOptions } from '@blocksuite/affine-shared/types';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { InlineRange } from '@blocksuite/inline/types';
+import type { EmbedOptions } from '@pulsar/editor-shared/types';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { InlineRange } from '@pulsar/inline/types';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
 import {
   getHostName,
   isValidUrl,
   normalizeUrl,
-} from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { computePosition, inline, offset, shift } from '@floating-ui/dom';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -18,7 +18,7 @@ import { join } from 'lit/directives/join.js';
 import { repeat } from 'lit/directives/repeat.js';
 
 import type { EditorIconButton } from '../../../../../../toolbar/index.js';
-import type { AffineInlineEditor } from '../../../affine-inline-specs.js';
+import type { PulsarInlineEditor } from '../../../affine-inline-specs.js';
 
 import {
   ConfirmIcon,
@@ -51,10 +51,10 @@ export class LinkPopup extends WithDisposable(LitElement) {
       .catch(console.error);
 
     return html`
-      <div class="affine-link-popover create">
+      <div class="pulsar-link-popover create">
         <input
           id="link-input"
-          class="affine-link-popover-input"
+          class="pulsar-link-popover-input"
           type="text"
           spellcheck="false"
           placeholder="Paste or type a link"
@@ -97,27 +97,27 @@ export class LinkPopup extends WithDisposable(LitElement) {
       .catch(console.error);
 
     return html`
-      <div class="affine-link-edit-popover">
-        <div class="affine-edit-area text">
+      <div class="pulsar-link-edit-popover">
+        <div class="pulsar-edit-area text">
           <input
-            class="affine-edit-input"
+            class="pulsar-edit-input"
             id="text-input"
             type="text"
             placeholder="Enter text"
             @input=${this._updateConfirmBtn}
           />
-          <label class="affine-edit-label" for="text-input">Text</label>
+          <label class="pulsar-edit-label" for="text-input">Text</label>
         </div>
-        <div class="affine-edit-area link">
+        <div class="pulsar-edit-area link">
           <input
             id="link-input"
-            class="affine-edit-input"
+            class="pulsar-edit-input"
             type="text"
             spellcheck="false"
             placeholder="Paste or type a link"
             @input=${this._updateConfirmBtn}
           />
-          <label class="affine-edit-label" for="link-input">Link</label>
+          <label class="pulsar-edit-label" for="link-input">Link</label>
         </div>
         ${this._confirmBtnTemplate()}
       </div>
@@ -156,7 +156,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
     const buttons = [
       html`
         <a
-          class="affine-link-preview"
+          class="pulsar-link-preview"
           href=${this.currentLink}
           rel="noopener noreferrer"
           target="_blank"
@@ -202,7 +202,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
     ];
 
     return html`
-      <editor-toolbar class="affine-link-popover view">
+      <editor-toolbar class="pulsar-link-popover view">
         ${join(
           buttons.filter(button => button !== nothing),
           renderToolbarSeparator
@@ -220,7 +220,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
   private _confirmBtnTemplate() {
     return html`
       <editor-icon-button
-        class="affine-confirm-button"
+        class="pulsar-confirm-button"
         .iconSize=${'24px'}
         .disabled=${true}
         @click=${this._onConfirm}
@@ -235,7 +235,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
       return;
     }
 
-    let targetFlavour = 'affine:bookmark';
+    let targetFlavour = 'pulsar:bookmark';
 
     if (this._embedOptions && this._embedOptions.viewType === 'card') {
       targetFlavour = this._embedOptions.flavour;
@@ -308,7 +308,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
     const schema = block.doc.schema;
     const parent = block.doc.getParent(block.model);
     if (!parent) return false;
-    const bookmarkSchema = schema.flavourSchemaMap.get('affine:bookmark');
+    const bookmarkSchema = schema.flavourSchemaMap.get('pulsar:bookmark');
     if (!bookmarkSchema) return false;
     const parentSchema = schema.flavourSchemaMap.get(parent.flavour);
     if (!parentSchema) return false;
@@ -511,14 +511,14 @@ export class LinkPopup extends WithDisposable(LitElement) {
           ? nothing
           : html`
               <div
-                class="affine-link-popover-overlay-mask"
+                class="pulsar-link-popover-overlay-mask"
                 @click=${() => {
                   this.abortController.abort();
                   this.host?.selection.clear();
                 }}
               ></div>
             `}
-        <div class="affine-link-popover-container" @keydown=${this._onKeydown}>
+        <div class="pulsar-link-popover-container" @keydown=${this._onKeydown}>
           ${choose(this.type, [
             ['create', this._createTemplate],
             ['edit', this._editTemplate],
@@ -610,7 +610,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
   accessor confirmButton: EditorIconButton | null = null;
 
   @property({ attribute: false })
-  accessor inlineEditor!: AffineInlineEditor;
+  accessor inlineEditor!: PulsarInlineEditor;
 
   @query('#link-input')
   accessor linkInput: HTMLInputElement | null = null;

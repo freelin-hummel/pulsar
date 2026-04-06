@@ -1,4 +1,4 @@
-import { type BlockComponent, SignalWatcher } from '@blocksuite/block-std';
+import { type BlockComponent, SignalWatcher } from '@pulsar/block-std';
 import { LitElement, type PropertyValues, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -19,7 +19,7 @@ import { customElement, property } from 'lit/decorators.js';
  * }
  * ```
  */
-@customElement('affine-block-selection')
+@customElement('pulsar-block-selection')
 export class BlockSelection extends SignalWatcher(LitElement) {
   static override styles = css`
     :host {
@@ -30,7 +30,7 @@ export class BlockSelection extends SignalWatcher(LitElement) {
       width: 100%;
       height: 100%;
       pointer-events: none;
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
       border-color: transparent;
       border-style: solid;
     }
@@ -64,6 +64,6 @@ export class BlockSelection extends SignalWatcher(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-block-selection': BlockSelection;
+    'pulsar-block-selection': BlockSelection;
   }
 }

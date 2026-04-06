@@ -1,6 +1,6 @@
-import type { GroupElementModel } from '@blocksuite/affine-model';
+import type { GroupElementModel } from '@pulsar/model';
 
-import { Bound } from '@blocksuite/global/utils';
+import { Bound } from '@pulsar/global/utils';
 
 import type { CanvasRenderer } from '../../canvas-renderer.js';
 
@@ -26,7 +26,7 @@ export function group(
       renderTitle(model, ctx, renderer, renderParams);
     } else {
       ctx.lineWidth = 2 / renderer.viewport.zoom;
-      ctx.strokeStyle = renderer.getPropertyValue('--affine-blue');
+      ctx.strokeStyle = renderer.getPropertyValue('--pulsar-blue');
       ctx.strokeRect(0, 0, bound.w, bound.h);
     }
   } else if (model.childElements.some(child => elements.includes(child.id))) {
@@ -53,7 +53,7 @@ function renderTitle(
   ctx.beginPath();
 
   ctx.font = font;
-  ctx.fillStyle = renderer.getPropertyValue('--affine-blue');
+  ctx.fillStyle = renderer.getPropertyValue('--pulsar-blue');
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.fillText(text, padding[0], -lineHeight / 2 - padding[1]);

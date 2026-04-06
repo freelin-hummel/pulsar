@@ -1,9 +1,9 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { toggleLinkPopup } from '@blocksuite/affine-components/rich-text';
-import { INLINE_ROOT_ATTR, type InlineRootElement } from '@blocksuite/inline';
+import { toggleLinkPopup } from '@pulsar/editor-components/rich-text';
+import { INLINE_ROOT_ATTR, type InlineRootElement } from '@pulsar/inline';
 
-import type { AffineTextAttributes } from '../inline/index.js';
+import type { PulsarTextAttributes } from '../inline/index.js';
 
 import { generateTextStyleCommand, getCombinedTextStyle } from './utils.js';
 
@@ -20,7 +20,7 @@ export const toggleLink: Command = (_ctx, next) => {
   const range = selection.getRangeAt(0);
   if (range.collapsed) return false;
   const inlineRoot = range.startContainer.parentElement?.closest<
-    InlineRootElement<AffineTextAttributes>
+    InlineRootElement<PulsarTextAttributes>
   >(`[${INLINE_ROOT_ATTR}]`);
   if (!inlineRoot) return false;
 
@@ -60,7 +60,7 @@ export const getTextStyle: Command<never, 'textStyle'> = (ctx, next) => {
 export const isTextStyleActive: Command<
   never,
   never,
-  { key: keyof AffineTextAttributes }
+  { key: keyof PulsarTextAttributes }
 > = (ctx, next) => {
   const key = ctx.key;
   const [result] = getCombinedTextStyle(ctx.std.command.chain())
@@ -85,7 +85,7 @@ export const isTextStyleActive: Command<
 declare global {
   namespace BlockSuite {
     interface CommandContext {
-      textStyle?: AffineTextAttributes;
+      textStyle?: PulsarTextAttributes;
     }
 
     interface Commands {

@@ -1,5 +1,5 @@
-import { createModal } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement } from '@blocksuite/block-std';
+import { createModal } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement } from '@pulsar/block-std';
 import { CloseIcon } from '@blocksuite/icons/lit';
 import {
   type ReferenceElement,
@@ -24,8 +24,8 @@ class SideLayoutModal extends ShadowlessElement {
       top: 0;
       bottom: 0;
       width: 1200px;
-      background-color: var(--affine-background-overlay-panel-color);
-      border-left: 0.5px solid var(--affine-border-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
+      border-left: 0.5px solid var(--pulsar-border-color);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
 
@@ -57,11 +57,11 @@ class SideLayoutModal extends ShadowlessElement {
     .header-op svg {
       width: 20px;
       height: 20px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
 
     .header-op:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 

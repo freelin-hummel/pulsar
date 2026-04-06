@@ -1,5 +1,5 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
 import { html } from 'lit';
 

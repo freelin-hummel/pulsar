@@ -1,5 +1,5 @@
-import { QuickSearchProvider } from '@blocksuite/affine-shared/services';
-import { isValidUrl, normalizeUrl } from '@blocksuite/affine-shared/utils';
+import { QuickSearchProvider } from '@pulsar/editor-shared/services';
+import { isValidUrl, normalizeUrl } from '@pulsar/editor-shared/utils';
 import { PenIcon } from '@blocksuite/icons/lit';
 import { baseTheme } from '@toeverything/theme';
 import { css, unsafeCSS } from 'lit';
@@ -16,7 +16,7 @@ import { createFromBaseCellRenderer } from '../../renderer.js';
 import './components/link-node.js';
 import { linkColumnModelConfig } from './define.js';
 
-@customElement('affine-database-link-cell')
+@customElement('pulsar-database-link-cell')
 export class LinkCell extends BaseCellRenderer<string> {
   private _onClick = (event: Event) => {
     event.stopPropagation();
@@ -80,26 +80,26 @@ export class LinkCell extends BaseCellRenderer<string> {
       align-items: center;
       visibility: hidden;
       cursor: pointer;
-      background: var(--affine-background-primary-color);
+      background: var(--pulsar-background-primary-color);
       border-radius: 4px;
     }
     .affine-database-link-icon:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .affine-database-link-icon svg {
       width: 16px;
       height: 16px;
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
     }
     .data-view-link-column-linked-doc {
       text-decoration: underline;
-      text-decoration-color: var(--affine-divider-color);
+      text-decoration-color: var(--pulsar-divider-color);
       transition: text-decoration-color 0.2s ease-out;
       cursor: pointer;
     }
     .data-view-link-column-linked-doc:hover {
-      text-decoration-color: var(--affine-icon-color);
+      text-decoration-color: var(--pulsar-icon-color);
     }
   `;
 
@@ -128,7 +128,7 @@ export class LinkCell extends BaseCellRenderer<string> {
     const docName =
       this.docId && this.std?.collection.getDoc(this.docId)?.meta?.title;
     return html`
-      <div class="affine-database-link" @click="${this._onClick}">
+      <div class="pulsar-database-link" @click="${this._onClick}">
         ${docName
           ? html`<span
               class="data-view-link-column-linked-doc"
@@ -138,7 +138,7 @@ export class LinkCell extends BaseCellRenderer<string> {
           : html`<affine-database-link-node
               .link="${linkText}"
             ></affine-database-link-node>`}
-        <div class="affine-database-link-icon" @click="${this._onEdit}">
+        <div class="pulsar-database-link-icon" @click="${this._onEdit}">
           ${PenIcon()}
         </div>
       </div>
@@ -180,7 +180,7 @@ export class LinkCell extends BaseCellRenderer<string> {
   accessor docId: string | undefined = undefined;
 }
 
-@customElement('affine-database-link-cell-editing')
+@customElement('pulsar-database-link-cell-editing')
 export class LinkCellEditing extends BaseCellRenderer<string> {
   private _focusEnd = () => {
     const end = this._container.value.length;
@@ -220,7 +220,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
       padding: 0;
       border: none;
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       background-color: transparent;
       font-size: var(--data-view-cell-text-size);
@@ -245,7 +245,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
     const linkText = this.value ?? '';
 
     return html`<input
-      class="affine-database-link-editing link"
+      class="pulsar-database-link-editing link"
       .value=${linkText}
       @keydown=${this._onKeydown}
       @pointerdown=${stopPropagation}

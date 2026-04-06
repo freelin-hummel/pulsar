@@ -1,4 +1,4 @@
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -14,7 +14,7 @@ export class AIPanelDivider extends WithDisposable(LitElement) {
     }
     .divider {
       height: 0.5px;
-      background: var(--affine-border-color);
+      background: var(--pulsar-border-color);
       width: 100%;
     }
   `;

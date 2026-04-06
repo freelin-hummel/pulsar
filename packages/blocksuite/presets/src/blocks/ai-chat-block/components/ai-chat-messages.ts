@@ -1,5 +1,5 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { AffineAIPanelState } from '@blocksuite/blocks';
+import type { EditorHost } from '@pulsar/block-std';
+import type { PulsarAIPanelState } from '@pulsar/blocks';
 
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -83,7 +83,7 @@ export class AIChatMessage extends LitElement {
   accessor messageRole: MessageRole | undefined = undefined;
 
   @property({ attribute: false })
-  accessor state: AffineAIPanelState = 'finished';
+  accessor state: PulsarAIPanelState = 'finished';
 
   @property({ attribute: false })
   accessor textRendererOptions: TextRendererOptions = {};

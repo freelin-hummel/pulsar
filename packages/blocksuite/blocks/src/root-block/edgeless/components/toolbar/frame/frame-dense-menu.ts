@@ -1,6 +1,6 @@
-import type { Menu } from '@blocksuite/affine-components/context-menu';
+import type { Menu } from '@pulsar/editor-components/context-menu';
 
-import { FrameIcon } from '@blocksuite/affine-components/icons';
+import { FrameIcon } from '@pulsar/editor-components/icons';
 
 import type { DenseMenuBuilder } from '../common/type.js';
 

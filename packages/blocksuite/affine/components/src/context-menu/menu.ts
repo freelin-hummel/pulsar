@@ -6,8 +6,8 @@ import type {
 } from '@floating-ui/dom';
 import type { TemplateResult } from 'lit';
 
-import { rangeWrap } from '@blocksuite/affine-shared/utils';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { rangeWrap } from '@pulsar/editor-shared/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import {
   ArrowRightSmallIcon,
   CheckBoxCkeckSolidIcon,
@@ -138,7 +138,7 @@ const isSelectableItem = (item: Item): item is SelectItem => {
   return item.type === 'select';
 };
 
-@customElement('affine-menu')
+@customElement('pulsar-menu')
 export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
   private _checked: Record<string, boolean> = {};
 
@@ -191,7 +191,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
           type: 'select',
           label: () => html`
             ${icon}
-            <div class="affine-menu-action-text">
+            <div class="pulsar-menu-action-text">
               ${menu.label?.() ?? menu.name}
             </div>
             ${postfix}
@@ -219,7 +219,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
                 ? CheckBoxCkeckSolidIcon({ style: `color:#1E96EB` })
                 : CheckBoxUnIcon()}
             </div>
-            <div class="affine-menu-action-text">
+            <div class="pulsar-menu-action-text">
               ${menu.label?.() ?? menu.name}
             </div>
             ${postfix}
@@ -244,7 +244,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
         {
           type: 'normal',
           label: () => html`
-            <div class="affine-menu-action-text">
+            <div class="pulsar-menu-action-text">
               ${menu.label?.() ?? menu.name}
             </div>
 
@@ -315,7 +315,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
             html`${menu.icon
                 ? html` <div class="icon">${menu.icon}</div>`
                 : nothing}
-              <div class="affine-menu-action-text">
+              <div class="pulsar-menu-action-text">
                 ${menu.label?.() ?? menu.name}
               </div>
               ${postfix}`,
@@ -341,14 +341,14 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
 
   static override styles = css`
     affine-menu {
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       display: flex;
       flex-direction: column;
       user-select: none;
       min-width: 276px;
-      box-shadow: var(--affine-shadow-2);
+      box-shadow: var(--pulsar-shadow-2);
       border-radius: 8px;
-      background-color: var(--affine-background-overlay-panel-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
       padding: 8px;
       position: absolute;
       z-index: 999;
@@ -380,15 +380,15 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       font-size: 14px;
       line-height: 22px;
       padding: 5px 12px;
-      border: 1px solid var(--affine-border-color);
+      border: 1px solid var(--pulsar-border-color);
     }
 
     .affine-menu-header input::placeholder {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
 
     .affine-menu-header input:focus {
-      border: 1px solid var(--affine-primary-color);
+      border: 1px solid var(--pulsar-primary-color);
     }
 
     .affine-menu-action {
@@ -408,8 +408,8 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--affine-icon-color);
-      fill: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
+      fill: var(--pulsar-icon-color);
     }
 
     .affine-menu-action .content {
@@ -426,24 +426,24 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
     }
 
     .affine-menu-action.selected {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .affine-menu-action.selected.delete-item {
-      background-color: var(--affine-background-error-color);
-      color: var(--affine-error-color);
+      background-color: var(--pulsar-background-error-color);
+      color: var(--pulsar-error-color);
     }
 
     .affine-menu-action.selected.delete-item .icon > svg {
-      color: var(--affine-error-color);
+      color: var(--pulsar-error-color);
     }
 
     .affine-menu-action.selected-item {
-      color: var(--affine-text-emphasis-color);
+      color: var(--pulsar-text-emphasis-color);
     }
 
     .affine-menu-action.selected-item .icon {
-      color: var(--affine-text-emphasis-color);
+      color: var(--pulsar-text-emphasis-color);
       fill: currentColor;
     }
 
@@ -454,7 +454,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
     .no-results {
       font-size: 12px;
       line-height: 20px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -659,13 +659,13 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       this.options.input?.divider !== false;
     return html`
       <div
-        class="affine-menu"
+        class="pulsar-menu"
         style=${ifDefined(this.options.style)}
         @click="${this._clickContainer}"
       >
         ${this.options.input
           ? html` <div
-                class="affine-menu-header"
+                class="pulsar-menu-header"
                 style=${headerStyle}
                 @mouseenter="${this.mouseEnterHeader}"
               >
@@ -686,7 +686,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
                 ? html`<menu-divider style="width: 100%"></menu-divider>`
                 : null}`
           : null}
-        <div class="affine-menu-body">
+        <div class="pulsar-menu-body">
           ${this.selectableItems.length === 0 && this.isSearchMode
             ? html` <div class="no-results">No Results</div>`
             : ''}
@@ -707,9 +707,9 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
               `;
             }
 
-            const itemClass = menu.class || 'affine-menu-item';
+            const itemClass = menu.class || 'pulsar-menu-item';
             const classes = classMap({
-              'affine-menu-action': true,
+              'pulsar-menu-action': true,
               selected: menu.type === 'select' && this._selectedIndex === i,
               [itemClass]: true,
             });
@@ -749,7 +749,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-menu': MenuComponent<unknown>;
+    'pulsar-menu': MenuComponent<unknown>;
   }
 }
 export const getDefaultModalRoot = (ele: HTMLElement) => {
@@ -769,7 +769,7 @@ export const createModal = (container: HTMLElement = document.body) => {
   div.style.width = '100%';
   div.style.height = '100%';
   div.style.zIndex = '1001';
-  div.style.fontFamily = 'var(--affine-font-family)';
+  div.style.fontFamily = 'var(--pulsar-font-family)';
   container.append(div);
   return div;
 };

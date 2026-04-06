@@ -1,5 +1,5 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockSelection } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
+import type { BlockSelection } from '@pulsar/block-std';
 
 export const getBlockSelectionsCommand: Command<
   never,

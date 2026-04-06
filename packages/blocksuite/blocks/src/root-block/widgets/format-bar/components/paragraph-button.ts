@@ -1,22 +1,22 @@
-import type { ParagraphBlockModel } from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { ParagraphBlockModel } from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { whenHover } from '@blocksuite/affine-components/hover';
-import { ArrowDownIcon } from '@blocksuite/affine-components/icons';
-import { assertExists } from '@blocksuite/global/utils';
+import { whenHover } from '@pulsar/editor-components/hover';
+import { ArrowDownIcon } from '@pulsar/editor-components/icons';
+import { assertExists } from '@pulsar/global/utils';
 import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { html } from 'lit';
 import { type RefOrCallback, ref } from 'lit/directives/ref.js';
 import { repeat } from 'lit/directives/repeat.js';
 
 import type { ParagraphActionConfigItem } from '../config.js';
-import type { AffineFormatBarWidget } from '../format-bar.js';
+import type { PulsarFormatBarWidget } from '../format-bar.js';
 
 import { textConversionConfigs } from '../../../../_common/configs/text-conversion.js';
 
 interface ParagraphPanelProps {
   host: EditorHost;
-  formatBar: AffineFormatBarWidget;
+  formatBar: PulsarFormatBarWidget;
   ref?: RefOrCallback;
 }
 
@@ -52,7 +52,7 @@ const ParagraphPanel = ({
   `;
 };
 
-export const ParagraphButton = (formatBar: AffineFormatBarWidget) => {
+export const ParagraphButton = (formatBar: PulsarFormatBarWidget) => {
   if (formatBar.displayType !== 'text' && formatBar.displayType !== 'block') {
     return null;
   }
@@ -73,7 +73,7 @@ export const ParagraphButton = (formatBar: AffineFormatBarWidget) => {
         )?.icon ?? textConversionConfigs[0].icon);
 
   const rootComponent = formatBar.block;
-  if (rootComponent.model.flavour !== 'affine:page') {
+  if (rootComponent.model.flavour !== 'pulsar:page') {
     console.error('paragraph button host is not a page component');
     return null;
   }

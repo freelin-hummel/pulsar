@@ -1,12 +1,12 @@
-import type { SurfaceBlockComponent } from '@blocksuite/affine-block-surface';
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { RootBlockModel } from '@blocksuite/affine-model';
-import type { SurfaceSelection } from '@blocksuite/block-std';
-import type { IBound } from '@blocksuite/global/utils';
+import type { SurfaceBlockComponent } from '@pulsar/block-surface';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { RootBlockModel } from '@pulsar/model';
+import type { SurfaceSelection } from '@pulsar/block-std';
+import type { IBound } from '@pulsar/global/utils';
 
-import '@blocksuite/affine-block-surface';
-import { BlockComponent } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+import '@pulsar/block-surface';
+import { BlockComponent } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 
@@ -23,7 +23,7 @@ import './components/toolbar/edgeless-toolbar.js';
 import { edgelessElementsBound } from './utils/bound-utils.js';
 import { getBackgroundGrid, isCanvasElement } from './utils/query.js';
 
-@customElement('affine-edgeless-root-preview')
+@customElement('pulsar-edgeless-root-preview')
 export class EdgelessRootPreviewBlockComponent extends BlockComponent<
   RootBlockModel,
   EdgelessRootService,
@@ -66,10 +66,10 @@ export class EdgelessRootPreviewBlockComponent extends BlockComponent<
 
     .edgeless-background {
       height: 100%;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       background-image: radial-gradient(
-        var(--affine-edgeless-grid-color) 1px,
-        var(--affine-background-primary-color) 1px
+        var(--pulsar-edgeless-grid-color) 1px,
+        var(--pulsar-background-primary-color) 1px
       );
     }
 
@@ -233,7 +233,7 @@ export class EdgelessRootPreviewBlockComponent extends BlockComponent<
 
   get surfaceBlockModel() {
     return this.model.children.find(
-      child => child.flavour === 'affine:surface'
+      child => child.flavour === 'pulsar:surface'
     ) as SurfaceBlockModel;
   }
 
@@ -255,12 +255,12 @@ export class EdgelessRootPreviewBlockComponent extends BlockComponent<
   @query('.edgeless-layer')
   accessor layer!: HTMLDivElement;
 
-  @query('affine-surface')
+  @query('pulsar-surface')
   accessor surface!: SurfaceBlockComponent;
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-root-preview': EdgelessRootPreviewBlockComponent;
+    'pulsar-edgeless-root-preview': EdgelessRootPreviewBlockComponent;
   }
 }

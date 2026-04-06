@@ -1,6 +1,6 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
+import type { RootBlockModel } from '@pulsar/model';
 
-import { BlockComponent } from '@blocksuite/block-std';
+import { BlockComponent } from '@pulsar/block-std';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -15,14 +15,14 @@ export class MindmapRootBlock extends BlockComponent<RootBlockModel> {
           height: 100%;
 
           background-size: 20px 20px;
-          background-color: var(--affine-background-primary-color);
+          background-color: var(--pulsar-background-primary-color);
           background-image: radial-gradient(
-            var(--affine-edgeless-grid-color) 1px,
-            var(--affine-background-primary-color) 1px
+            var(--pulsar-edgeless-grid-color) 1px,
+            var(--pulsar-background-primary-color) 1px
           );
         }
       </style>
-      <div class="affine-mini-mindmap-root">
+      <div class="pulsar-mini-mindmap-root">
         ${this.host.renderChildren(this.model)}
       </div>
     `;

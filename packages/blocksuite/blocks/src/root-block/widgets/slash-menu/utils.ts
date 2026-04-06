@@ -1,10 +1,10 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { getInlineEditorByModel } from '@blocksuite/affine-components/rich-text';
-import { isInsideBlockByFlavour } from '@blocksuite/affine-shared/utils';
-import { assertType } from '@blocksuite/global/utils';
+import { getInlineEditorByModel } from '@pulsar/editor-components/rich-text';
+import { isInsideBlockByFlavour } from '@pulsar/editor-shared/utils';
+import { assertType } from '@pulsar/global/utils';
 
 import type { TextConversionConfig } from '../../../_common/configs/text-conversion.js';
 import type {
@@ -86,7 +86,7 @@ export function insertContent(
   editorHost: EditorHost,
   model: BlockModel,
   text: string,
-  attributes?: AffineTextAttributes
+  attributes?: PulsarTextAttributes
 ) {
   if (!model.text) {
     console.error("Can't insert text! Text not found");
@@ -127,16 +127,16 @@ export function formatTime(date: Date) {
 }
 
 export function insideDatabase(model: BlockModel) {
-  return isInsideBlockByFlavour(model.doc, model, 'affine:database');
+  return isInsideBlockByFlavour(model.doc, model, 'pulsar:database');
 }
 
 export function insideEdgelessText(model: BlockModel) {
-  return isInsideBlockByFlavour(model.doc, model, 'affine:edgeless-text');
+  return isInsideBlockByFlavour(model.doc, model, 'pulsar:edgeless-text');
 }
 
 export function createDatabaseBlockInNextLine(model: BlockModel) {
   let parent = model.doc.getParent(model);
-  while (parent && parent.flavour !== 'affine:note') {
+  while (parent && parent.flavour !== 'pulsar:note') {
     model = parent;
     parent = model.doc.getParent(parent);
   }
@@ -145,7 +145,7 @@ export function createDatabaseBlockInNextLine(model: BlockModel) {
   }
   const index = parent.children.indexOf(model);
 
-  return model.doc.addBlock('affine:database', {}, parent, index + 1);
+  return model.doc.addBlock('pulsar:database', {}, parent, index + 1);
 }
 
 export function tryRemoveEmptyLine(model: BlockModel) {

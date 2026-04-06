@@ -1,5 +1,5 @@
-import type { Command } from '@blocksuite/block-std';
-import type { TextSelection } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
+import type { TextSelection } from '@pulsar/block-std';
 
 export const getTextSelectionCommand: Command<never, 'currentTextSelection'> = (
   ctx,

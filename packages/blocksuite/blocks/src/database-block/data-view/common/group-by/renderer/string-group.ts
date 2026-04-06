@@ -1,4 +1,4 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import { css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -32,7 +32,7 @@ export class StringGroupView extends BaseGroup<NonNullable<unknown>, string> {
     }
 
     .data-view-group-title-string-view:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 

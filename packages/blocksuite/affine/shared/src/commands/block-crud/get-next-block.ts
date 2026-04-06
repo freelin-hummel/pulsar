@@ -1,7 +1,7 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 function getNext(std: BlockSuite.Std, block: BlockComponent) {
   const view = std.view;

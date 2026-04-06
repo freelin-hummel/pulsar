@@ -1,20 +1,20 @@
-import type { GfxCompatibleProps } from '@blocksuite/affine-model';
-import type { GfxBlockComponent } from '@blocksuite/block-std';
-import type { GfxBlockElementModel } from '@blocksuite/block-std/gfx';
-import type { BlockModel } from '@blocksuite/store';
+import type { GfxCompatibleProps } from '@pulsar/model';
+import type { GfxBlockComponent } from '@pulsar/block-std';
+import type { GfxBlockElementModel } from '@pulsar/block-std/gfx';
+import type { BlockModel } from '@pulsar/store';
 import type { TemplateResult } from 'lit';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   type BlockService,
   GfxElementSymbol,
   blockComponentSymbol,
   isGfxBlockComponent,
   toGfxBlockComponent,
-} from '@blocksuite/block-std';
-import { Bound, Point } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { Bound, Point } from '@pulsar/global/utils';
 import { html, render } from 'lit';
 import { query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -25,8 +25,8 @@ import type { DragHandleOption } from '../../root-block/widgets/drag-handle/conf
 
 import { BOOKMARK_MIN_WIDTH } from '../../root-block/edgeless/utils/consts.js';
 import {
-  AFFINE_DRAG_HANDLE_WIDGET,
-  AffineDragHandleWidget,
+  PULSAR_DRAG_HANDLE_WIDGET,
+  PulsarDragHandleWidget,
 } from '../../root-block/widgets/drag-handle/drag-handle.js';
 import {
   captureEventTarget,
@@ -62,7 +62,7 @@ export class EmbedBlockComponent<
       const element = captureEventTarget(state.raw.target);
 
       const isDraggingByDragHandle = !!element?.closest(
-        AFFINE_DRAG_HANDLE_WIDGET
+        PULSAR_DRAG_HANDLE_WIDGET
       );
       const isDraggingByComponent = blockComponent.contains(element);
       const isInSurface = isGfxBlockComponent(blockComponent);
@@ -77,7 +77,7 @@ export class EmbedBlockComponent<
         return true;
       } else if (isInSurface && isDraggingByDragHandle) {
         const edgelessService = editorHost.std.getService(
-          'affine:page'
+          'pulsar:page'
         ) as EdgelessRootService;
         const zoom = edgelessService?.viewport.zoom ?? 1;
         const dragPreviewEl = document.createElement('div');
@@ -186,7 +186,7 @@ export class EmbedBlockComponent<
 
     this.contentEditable = 'false';
     this.disposables.add(
-      AffineDragHandleWidget.registerOption(this._dragHandleOption)
+      PulsarDragHandleWidget.registerOption(this._dragHandleOption)
     );
   }
 
@@ -282,7 +282,7 @@ export function toEdgelessEmbedBlock<
     }
 
     get rootService() {
-      return this.std.getService('affine:page') as EdgelessRootService;
+      return this.std.getService('pulsar:page') as EdgelessRootService;
     }
 
     protected override accessor blockContainerStyles: StyleInfo | undefined =

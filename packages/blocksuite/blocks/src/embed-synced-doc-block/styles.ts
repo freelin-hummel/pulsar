@@ -30,7 +30,7 @@ export const blockStyles = css`
     height: calc(${EMBED_CARD_HEIGHT.syncedDoc}px + 36px);
   }
   .edgeless-block-portal-embed .affine-embed-synced-doc-container.surface {
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
   }
 
   affine-embed-synced-doc-block[data-nested-editor]
@@ -67,7 +67,7 @@ export const blockStyles = css`
     left: 0;
     height: 34px;
     width: 100%;
-    background-color: var(--affine-white);
+    background-color: var(--pulsar-white);
     opacity: 0;
   }
   @media print {
@@ -85,7 +85,7 @@ export const blockStyles = css`
     width: 100%;
     height: 100%;
     padding: 0 24px;
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
   .affine-embed-synced-doc-header svg {
     flex-shrink: 0;
@@ -110,7 +110,7 @@ export const blockStyles = css`
     cursor: pointer;
   }
   .affine-embed-synced-doc-editor-overlay:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .affine-embed-synced-doc-editor-empty {
@@ -129,11 +129,11 @@ export const blockStyles = css`
   }
 
   .affine-embed-synced-doc-editor-empty > span {
-    color: var(--affine-placeholder-color);
+    color: var(--pulsar-placeholder-color);
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: var(--affine-font-family);
+    font-family: var(--pulsar-font-family);
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -141,7 +141,7 @@ export const blockStyles = css`
   }
 
   .affine-embed-synced-doc-container.surface {
-    background: var(--affine-background-primary-color);
+    background: var(--pulsar-background-primary-color);
   }
 
   .affine-embed-synced-doc-container
@@ -168,9 +168,9 @@ export const cardStyles = css`
     width: 100%;
     height: ${EMBED_CARD_HEIGHT.horizontal}px;
     border-radius: 8px;
-    border: 1px solid var(--affine-background-tertiary-color);
+    border: 1px solid var(--pulsar-background-tertiary-color);
     opacity: var(--add, 1);
-    background: var(--affine-background-primary-color);
+    background: var(--pulsar-background-primary-color);
     user-select: none;
   }
 
@@ -207,7 +207,7 @@ export const cardStyles = css`
   .affine-embed-synced-doc-card-content-title-icon svg {
     width: 16px;
     height: 16px;
-    fill: var(--affine-background-primary-color);
+    fill: var(--pulsar-background-primary-color);
   }
 
   .affine-embed-synced-doc-card-content-title-text {
@@ -217,9 +217,9 @@ export const cardStyles = css`
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-text-primary-color);
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-sm);
+    color: var(--pulsar-text-primary-color);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-sm);
     font-style: normal;
     font-weight: 600;
     line-height: 22px;
@@ -241,9 +241,9 @@ export const cardStyles = css`
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-placeholder-color);
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-xs);
+    color: var(--pulsar-placeholder-color);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-xs);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -269,9 +269,9 @@ export const cardStyles = css`
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-text-secondary-color);
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-xs);
+    color: var(--pulsar-text-secondary-color);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-xs);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -287,7 +287,7 @@ export const cardStyles = css`
   .affine-embed-synced-doc-card-content-reload-button svg {
     width: 12px;
     height: 12px;
-    fill: var(--affine-background-primary-color);
+    fill: var(--pulsar-background-primary-color);
   }
   .affine-embed-synced-doc-card-content-reload-button > span {
     display: -webkit-box;
@@ -297,9 +297,9 @@ export const cardStyles = css`
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-brand-color);
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-xs);
+    color: var(--pulsar-brand-color);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-xs);
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
@@ -348,7 +348,7 @@ export const cardStyles = css`
 
   .affine-embed-synced-doc-card:not(.loading).deleted,
   .affine-embed-synced-doc-card:not(.loading).error {
-    background: var(--affine-background-secondary-color);
+    background: var(--pulsar-background-secondary-color);
   }
   .affine-embed-synced-doc-card:not(.loading):not(.error):not(
       .surface

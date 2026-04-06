@@ -1,16 +1,16 @@
-import type { BlockCommands } from '@blocksuite/block-std';
+import type { BlockCommands } from '@pulsar/block-std';
 
 import {
   getSelectedPeekableBlocksCommand,
   peekSelectedBlockCommand,
-} from '@blocksuite/affine-components/peek';
-import { textCommands } from '@blocksuite/affine-components/rich-text';
+} from '@pulsar/editor-components/peek';
+import { textCommands } from '@pulsar/editor-components/rich-text';
 import {
   copySelectedModelsCommand,
   deleteSelectedModelsCommand,
   draftSelectedModelsCommand,
   getSelectedModelsCommand,
-} from '@blocksuite/affine-shared/commands';
+} from '@pulsar/editor-shared/commands';
 
 export const commands: BlockCommands = {
   // models

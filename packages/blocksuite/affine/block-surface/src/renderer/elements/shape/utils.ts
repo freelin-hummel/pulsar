@@ -2,9 +2,9 @@ import type {
   ShapeElementModel,
   TextAlign,
   TextVerticalAlign,
-} from '@blocksuite/affine-model';
-import type { Bound } from '@blocksuite/global/utils';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import type { Bound } from '@pulsar/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
 import type { CanvasRenderer } from '../../canvas-renderer.js';
 

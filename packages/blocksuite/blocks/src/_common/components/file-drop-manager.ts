@@ -1,15 +1,15 @@
-import type { BlockService } from '@blocksuite/block-std';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { IVec } from '@blocksuite/global/utils';
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockService } from '@pulsar/block-std';
+import type { EditorHost } from '@pulsar/block-std';
+import type { IVec } from '@pulsar/global/utils';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   getClosestBlockComponentByPoint,
   isInsidePageEditor,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { Point } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { Point } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { DragIndicator } from './drag-indicator.js';
 
@@ -91,7 +91,7 @@ export class FileDropManager {
     if (element) {
       const model = element.model;
       const parent = this.doc.getParent(model);
-      if (!matchFlavours(parent, ['affine:surface'])) {
+      if (!matchFlavours(parent, ['pulsar:surface'])) {
         result = calcDropTarget(point, model, element);
       }
     }
@@ -109,11 +109,11 @@ export class FileDropManager {
     this._fileDropOptions = fileDropOptions;
 
     this._indicator = document.querySelector(
-      'affine-drag-indicator'
+      'pulsar-drag-indicator'
     ) as DragIndicator;
     if (!this._indicator) {
       this._indicator = document.createElement(
-        'affine-drag-indicator'
+        'pulsar-drag-indicator'
       ) as DragIndicator;
       document.body.append(this._indicator);
     }
@@ -143,8 +143,8 @@ export class FileDropManager {
       assertExists(rootModel);
 
       let lastNote = rootModel.children[rootModel.children.length - 1];
-      if (!lastNote || !matchFlavours(lastNote, ['affine:note'])) {
-        const newNoteId = this.doc.addBlock('affine:note', {}, rootModel.id);
+      if (!lastNote || !matchFlavours(lastNote, ['pulsar:note'])) {
+        const newNoteId = this.doc.addBlock('pulsar:note', {}, rootModel.id);
         const newNote = this.doc.getBlockById(newNoteId);
         assertExists(newNote);
         lastNote = newNote;
@@ -155,7 +155,7 @@ export class FileDropManager {
         targetModel = lastItem;
       } else {
         const newParagraphId = this.doc.addBlock(
-          'affine:paragraph',
+          'pulsar:paragraph',
           {},
           lastNote,
           0

@@ -1,11 +1,11 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { Command } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   asyncSetInlineRange,
   focusTextModel,
-} from '@blocksuite/affine-components/rich-text';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-components/rich-text';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 import { onModelTextUpdated } from '../../root-block/utils/callback.js';
 import {
@@ -59,7 +59,7 @@ export const updateBlockType: Command<
   }
 
   const mergeToCode: Command<never, 'updatedBlocks'> = (_, next) => {
-    if (flavour !== 'affine:code') return;
+    if (flavour !== 'pulsar:code') return;
     const id = mergeToCodeModel(blockModels);
     if (!id) return;
     const model = doc.getBlockById(id);
@@ -71,7 +71,7 @@ export const updateBlockType: Command<
     return next({ updatedBlocks: [model] });
   };
   const appendDivider: Command<never, 'updatedBlocks'> = (_, next) => {
-    if (flavour !== 'affine:divider') {
+    if (flavour !== 'pulsar:divider') {
       return false;
     }
     const model = blockModels.at(-1);
@@ -85,9 +85,9 @@ export const updateBlockType: Command<
     const index = parent.children.indexOf(model);
     const nextSibling = doc.getNext(model);
     let nextSiblingId = nextSibling?.id as string;
-    const id = doc.addBlock('affine:divider', {}, parent, index + 1);
+    const id = doc.addBlock('pulsar:divider', {}, parent, index + 1);
     if (!nextSibling) {
-      nextSiblingId = doc.addBlock('affine:paragraph', {}, parent);
+      nextSiblingId = doc.addBlock('pulsar:paragraph', {}, parent);
     }
     focusTextModel(host.std, nextSiblingId);
     const newModel = doc.getBlockById(id);
@@ -176,9 +176,9 @@ export const updateBlockType: Command<
         blockModels.forEach(model => {
           if (
             !matchFlavours(model, [
-              'affine:paragraph',
-              'affine:list',
-              'affine:code',
+              'pulsar:paragraph',
+              'pulsar:list',
+              'pulsar:code',
             ])
           ) {
             return;
@@ -200,7 +200,7 @@ export const updateBlockType: Command<
     // focus
     .try(chain => [
       chain.inline((_, next) => {
-        if (['affine:code', 'affine:divider'].includes(flavour)) {
+        if (['pulsar:code', 'pulsar:divider'].includes(flavour)) {
           return next();
         }
         return false;

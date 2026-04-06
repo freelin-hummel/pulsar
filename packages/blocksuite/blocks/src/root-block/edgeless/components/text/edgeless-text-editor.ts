@@ -1,15 +1,15 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { TextElementModel } from '@blocksuite/affine-model';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { TextElementModel } from '@pulsar/model';
 
-import { CommonUtils, TextUtils } from '@blocksuite/affine-block-surface';
-import '@blocksuite/affine-components/rich-text';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { CommonUtils, TextUtils } from '@pulsar/block-surface';
+import '@pulsar/editor-components/rich-text';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   RANGE_SYNC_EXCLUDE_ATTR,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { Bound, Vec, assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { Bound, Vec, assertExists } from '@pulsar/global/utils';
 import { css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -117,7 +117,7 @@ export class EdgelessTextEditor extends WithDisposable(ShadowlessElement) {
       transform-origin: left top;
       font-kerning: none;
       border: ${EdgelessTextEditor.BORDER_WIDTH}px solid
-        var(--affine-primary-color, #1e96eb);
+        var(--pulsar-primary-color, #1e96eb);
       border-radius: 4px;
       box-shadow: 0px 0px 0px 2px rgba(30, 150, 235, 0.3);
       padding: ${EdgelessTextEditor.VERTICAL_PADDING}px
@@ -137,7 +137,7 @@ export class EdgelessTextEditor extends WithDisposable(ShadowlessElement) {
 
     .edgeless-text-editor-placeholder {
       pointer-events: none;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
       white-space: nowrap;
     }
   `;

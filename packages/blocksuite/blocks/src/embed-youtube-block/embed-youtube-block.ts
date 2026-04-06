@@ -1,9 +1,9 @@
 import type {
   EmbedYoutubeModel,
   EmbedYoutubeStyles,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { OpenIcon } from '@blocksuite/affine-components/icons';
+import { OpenIcon } from '@pulsar/editor-components/icons';
 import { html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -17,7 +17,7 @@ import { youtubeUrlRegex } from './embed-youtube-model.js';
 import { YoutubeIcon, styles } from './styles.js';
 import { refreshEmbedYoutubeUrlData } from './utils.js';
 
-@customElement('affine-embed-youtube-block')
+@customElement('pulsar-embed-youtube-block')
 export class EmbedYoutubeBlockComponent extends EmbedBlockComponent<
   EmbedYoutubeModel,
   EmbedYoutubeBlockService
@@ -162,17 +162,17 @@ export class EmbedYoutubeBlockComponent extends EmbedBlockComponent<
         <div>
           <div
             class=${classMap({
-              'affine-embed-youtube-block': true,
+              'pulsar-embed-youtube-block': true,
               loading,
               selected: this._isSelected,
             })}
             @click=${this._handleClick}
             @dblclick=${this._handleDoubleClick}
           >
-            <div class="affine-embed-youtube-video">
+            <div class="pulsar-embed-youtube-video">
               ${videoId
                 ? html`
-                    <div class="affine-embed-youtube-video-iframe-container">
+                    <div class="pulsar-embed-youtube-video-iframe-container">
                       <iframe
                         id="ytplayer"
                         type="text/html"
@@ -183,13 +183,13 @@ export class EmbedYoutubeBlockComponent extends EmbedBlockComponent<
                       ></iframe>
                       <div
                         class=${classMap({
-                          'affine-embed-youtube-video-iframe-overlay': true,
+                          'pulsar-embed-youtube-video-iframe-overlay': true,
                           hide: !this._showOverlay,
                         })}
                       ></div>
                       <img
                         class=${classMap({
-                          'affine-embed-youtube-video-iframe-overlay': true,
+                          'pulsar-embed-youtube-video-iframe-overlay': true,
                           'media-print': true,
                           hide: !this._showImage,
                         })}
@@ -200,33 +200,33 @@ export class EmbedYoutubeBlockComponent extends EmbedBlockComponent<
                   `
                 : bannerImage}
             </div>
-            <div class="affine-embed-youtube-content">
-              <div class="affine-embed-youtube-content-header">
-                <div class="affine-embed-youtube-content-title-icon">
+            <div class="pulsar-embed-youtube-content">
+              <div class="pulsar-embed-youtube-content-header">
+                <div class="pulsar-embed-youtube-content-title-icon">
                   ${titleIcon}
                 </div>
 
-                <div class="affine-embed-youtube-content-title-text">
+                <div class="pulsar-embed-youtube-content-title-text">
                   ${titleText}
                 </div>
 
-                <div class="affine-embed-youtube-content-creator-image">
+                <div class="pulsar-embed-youtube-content-creator-image">
                   ${creatorImageEl}
                 </div>
 
-                <div class="affine-embed-youtube-content-creator-text">
+                <div class="pulsar-embed-youtube-content-creator-text">
                   ${creator}
                 </div>
               </div>
 
-              <div class="affine-embed-youtube-content-description">
+              <div class="pulsar-embed-youtube-content-description">
                 ${descriptionText}
               </div>
 
-              <div class="affine-embed-youtube-content-url" @click=${this.open}>
+              <div class="pulsar-embed-youtube-content-url" @click=${this.open}>
                 <span>www.youtube.com</span>
 
-                <div class="affine-embed-youtube-content-url-icon">
+                <div class="pulsar-embed-youtube-content-url-icon">
                   ${OpenIcon}
                 </div>
               </div>
@@ -252,6 +252,6 @@ export class EmbedYoutubeBlockComponent extends EmbedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-embed-youtube-block': EmbedYoutubeBlockComponent;
+    'pulsar-embed-youtube-block': EmbedYoutubeBlockComponent;
   }
 }

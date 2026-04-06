@@ -1,6 +1,6 @@
-import type { IVec } from '@blocksuite/global/utils';
+import type { IVec } from '@pulsar/global/utils';
 
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
@@ -17,7 +17,7 @@ import {
   isRootNode,
 } from './utils.js';
 
-@customElement('affine-pie-node')
+@customElement('pulsar-pie-node')
 export class PieNode extends WithDisposable(LitElement) {
   private _handleChildNodeClick = () => {
     this.select();

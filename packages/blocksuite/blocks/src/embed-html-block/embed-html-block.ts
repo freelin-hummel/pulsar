@@ -1,4 +1,4 @@
-import type { EmbedHtmlModel, EmbedHtmlStyles } from '@blocksuite/affine-model';
+import type { EmbedHtmlModel, EmbedHtmlStyles } from '@pulsar/model';
 
 import { html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
@@ -12,7 +12,7 @@ import { EmbedBlockComponent } from '../_common/embed-block-helper/index.js';
 import './components/fullscreen-toolbar.js';
 import { HtmlIcon, styles } from './styles.js';
 
-@customElement('affine-embed-html-block')
+@customElement('pulsar-embed-html-block')
 export class EmbedHtmlBlockComponent extends EmbedBlockComponent<
   EmbedHtmlModel,
   EmbedHtmlBlockService
@@ -106,20 +106,20 @@ export class EmbedHtmlBlockComponent extends EmbedBlockComponent<
 
     return this.renderEmbed(() => {
       if (!this.model.html) {
-        return html` <div class="affine-html-empty">Empty</div>`;
+        return html` <div class="pulsar-html-empty">Empty</div>`;
       }
       return html`
         <div
           class=${classMap({
-            'affine-embed-html-block': true,
+            'pulsar-embed-html-block': true,
             selected: this._isSelected,
           })}
           style=${styleMap(this.embedHtmlStyle)}
           @click=${this._handleClick}
           @dblclick=${this._handleDoubleClick}
         >
-          <div class="affine-embed-html">
-            <div class="affine-embed-html-iframe-container">
+          <div class="pulsar-embed-html">
+            <div class="pulsar-embed-html-iframe-container">
               <div class="embed-html-block-iframe-wrapper" allowfullscreen>
                 <iframe
                   class="embed-html-block-iframe"
@@ -134,17 +134,17 @@ export class EmbedHtmlBlockComponent extends EmbedBlockComponent<
 
               <div
                 class=${classMap({
-                  'affine-embed-html-iframe-overlay': true,
+                  'pulsar-embed-html-iframe-overlay': true,
                   hide: !this._showOverlay,
                 })}
               ></div>
             </div>
           </div>
 
-          <div class="affine-embed-html-title">
-            <div class="affine-embed-html-title-icon">${HtmlIcon}</div>
+          <div class="pulsar-embed-html-title">
+            <div class="pulsar-embed-html-title-icon">${HtmlIcon}</div>
 
-            <div class="affine-embed-html-title-text">${titleText}</div>
+            <div class="pulsar-embed-html-title-text">${titleText}</div>
           </div>
         </div>
       `;
@@ -163,6 +163,6 @@ export class EmbedHtmlBlockComponent extends EmbedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-embed-html-block': EmbedHtmlBlockComponent;
+    'pulsar-embed-html-block': EmbedHtmlBlockComponent;
   }
 }

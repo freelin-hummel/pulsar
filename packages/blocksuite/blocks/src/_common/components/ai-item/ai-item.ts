@@ -1,7 +1,7 @@
-import { ArrowRightIcon, EnterIcon } from '@blocksuite/affine-components/icons';
-import { EditorHost } from '@blocksuite/block-std';
-import { WithDisposable } from '@blocksuite/block-std';
-import { PropTypes, requiredProperties } from '@blocksuite/block-std';
+import { ArrowRightIcon, EnterIcon } from '@pulsar/editor-components/icons';
+import { EditorHost } from '@pulsar/block-std';
+import { WithDisposable } from '@pulsar/block-std';
+import { PropTypes, requiredProperties } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 

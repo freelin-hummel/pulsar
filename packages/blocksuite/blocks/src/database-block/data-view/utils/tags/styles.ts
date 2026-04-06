@@ -5,17 +5,17 @@ export const styles = css`
   affine-multi-tag-select {
     position: absolute;
     z-index: 2;
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
     border-radius: 8px;
-    background: var(--affine-background-primary-color);
-    box-shadow: var(--affine-shadow-2);
-    font-family: var(--affine-font-family);
+    background: var(--pulsar-background-primary-color);
+    box-shadow: var(--pulsar-shadow-2);
+    font-family: var(--pulsar-font-family);
     min-width: 300px;
     max-width: 720px;
   }
 
   .affine-select-cell-select {
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
   }
 
   @media print {
@@ -31,7 +31,7 @@ export const styles = css`
     gap: 6px;
     min-height: 44px;
     padding: 10px 8px;
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
     border-radius: 8px;
   }
 
@@ -50,20 +50,20 @@ export const styles = css`
   }
 
   .select-input::placeholder {
-    color: var(--affine-placeholder-color);
+    color: var(--pulsar-placeholder-color);
   }
 
   .select-option-container {
     padding: 8px;
-    color: var(--affine-black-90);
-    fill: var(--affine-black-90);
+    color: var(--pulsar-black-90);
+    fill: var(--pulsar-black-90);
     max-height: 400px;
     overflow-y: auto;
   }
 
   .select-option-container-header {
     padding: 0px 4px 8px 4px;
-    color: var(--affine-black-60);
+    color: var(--pulsar-black-60);
     font-size: 12px;
     user-select: none;
   }
@@ -74,10 +74,10 @@ export const styles = css`
     padding: 2px 10px;
     gap: 10px;
     height: 28px;
-    background: var(--affine-tag-white);
+    background: var(--pulsar-tag-white);
     border-radius: 4px;
-    color: var(--affine-black-90);
-    background: var(--affine-tertiary-color);
+    color: var(--pulsar-black-90);
+    background: var(--pulsar-tertiary-color);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -100,7 +100,7 @@ export const styles = css`
   }
 
   .select-selected > .close-icon > svg {
-    fill: var(--affine-black-90);
+    fill: var(--pulsar-black-90);
   }
 
   .select-option-new {
@@ -111,7 +111,7 @@ export const styles = css`
     padding: 4px;
     gap: 5px;
     border-radius: 4px;
-    background: var(--affine-selected-color);
+    background: var(--pulsar-selected-color);
   }
 
   .select-option-new-text {
@@ -121,7 +121,7 @@ export const styles = css`
     height: 28px;
     padding: 2px 10px;
     border-radius: 4px;
-    background: var(--affine-tag-red);
+    background: var(--pulsar-tag-red);
   }
 
   .select-option-new-icon {
@@ -129,7 +129,7 @@ export const styles = css`
     align-items: center;
     gap: 6px;
     height: 28px;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
     margin-right: 8px;
   }
 
@@ -150,7 +150,7 @@ export const styles = css`
   }
 
   .select-option.selected {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .select-option-text-container {
@@ -189,7 +189,7 @@ export const styles = css`
   }
 
   .select-option-icon:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .select-option-icon svg {

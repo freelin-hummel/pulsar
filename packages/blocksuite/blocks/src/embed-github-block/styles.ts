@@ -11,10 +11,10 @@ export const styles = css`
     height: ${EMBED_CARD_HEIGHT.horizontal}px;
 
     border-radius: 8px;
-    border: 1px solid var(--affine-background-tertiary-color);
+    border: 1px solid var(--pulsar-background-tertiary-color);
 
     opacity: var(--add, 1);
-    background: var(--affine-background-primary-color);
+    background: var(--pulsar-background-primary-color);
     user-select: none;
   }
 
@@ -55,7 +55,7 @@ export const styles = css`
   .affine-embed-github-content-title-icons svg {
     width: 16px;
     height: 16px;
-    color: var(--affine-pure-white);
+    color: var(--pulsar-pure-white);
   }
 
   .affine-embed-github-content-title-site-icon {
@@ -66,8 +66,8 @@ export const styles = css`
     align-items: center;
 
     .github-icon {
-      fill: var(--affine-black);
-      color: var(--affine-black);
+      fill: var(--pulsar-black);
+      color: var(--pulsar-black);
     }
   }
 
@@ -78,7 +78,7 @@ export const styles = css`
     padding: 3px 6px;
     border-radius: 20px;
 
-    color: var(--affine-pure-white);
+    color: var(--pulsar-pure-white);
     leading-trim: both;
 
     text-edge: cap;
@@ -86,7 +86,7 @@ export const styles = css`
       'clig' off,
       'liga' off;
     text-transform: capitalize;
-    font-family: var(--affine-font-family);
+    font-family: var(--pulsar-font-family);
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -132,10 +132,10 @@ export const styles = css`
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
 
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-sm);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-sm);
     font-style: normal;
     font-weight: 600;
     line-height: 22px;
@@ -152,10 +152,10 @@ export const styles = css`
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
 
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-xs);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-xs);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -183,19 +183,19 @@ export const styles = css`
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
 
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-xs);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-xs);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
   }
   .affine-embed-github-content-url:hover > span {
-    color: var(--affine-link-color);
+    color: var(--pulsar-link-color);
   }
   .affine-embed-github-content-url:hover .open-icon {
-    fill: var(--affine-link-color);
+    fill: var(--pulsar-link-color);
   }
 
   .affine-embed-github-content-url-icon {
@@ -208,7 +208,7 @@ export const styles = css`
   .affine-embed-github-content-url-icon .open-icon {
     height: 12px;
     width: 12px;
-    fill: var(--affine-text-secondary-color);
+    fill: var(--pulsar-text-secondary-color);
   }
 
   .affine-embed-github-banner {
@@ -231,16 +231,16 @@ export const styles = css`
 
   .affine-embed-github-block.loading {
     .affine-embed-github-content-title-text {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
   }
 
   .affine-embed-github-block.selected {
     .affine-embed-github-content-url > span {
-      color: var(--affine-link-color);
+      color: var(--pulsar-link-color);
     }
     .affine-embed-github-content-url .open-icon {
-      fill: var(--affine-link-color);
+      fill: var(--pulsar-link-color);
     }
   }
 
@@ -307,8 +307,8 @@ export const styles = css`
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
 
-      font-family: var(--affine-font-family);
-      font-size: var(--affine-font-xs);
+      font-family: var(--pulsar-font-family);
+      font-size: var(--pulsar-font-xs);
       font-style: normal;
       font-weight: 600;
       line-height: 20px;
@@ -316,7 +316,7 @@ export const styles = css`
 
     .affine-embed-github-content-assignees-text.label {
       width: 72px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-weight: 600;
     }
 
@@ -330,12 +330,12 @@ export const styles = css`
     }
 
     .affine-embed-github-content-assignees-text-users.user {
-      color: var(--affine-link-color);
+      color: var(--pulsar-link-color);
       cursor: pointer;
     }
 
     .affine-embed-github-content-assignees-text-users.placeholder {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
 
     .affine-embed-github-banner {

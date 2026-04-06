@@ -1,4 +1,4 @@
-import { IS_MAC } from '@blocksuite/global/env';
+import { IS_MAC } from '@pulsar/global/env';
 
 import type { EventOptions, UIEventDispatcher } from '../dispatcher.js';
 

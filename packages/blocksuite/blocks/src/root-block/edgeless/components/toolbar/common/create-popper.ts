@@ -1,4 +1,4 @@
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 // more than 100% due to the shadow
 const leaveToPercent = `calc(100% + 10px)`;

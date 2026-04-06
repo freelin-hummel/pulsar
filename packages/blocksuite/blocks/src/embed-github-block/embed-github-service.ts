@@ -2,9 +2,9 @@ import {
   EmbedGithubBlockSchema,
   type EmbedGithubModel,
   EmbedGithubStyles,
-} from '@blocksuite/affine-model';
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
-import { BlockService } from '@blocksuite/block-std';
+} from '@pulsar/model';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
+import { BlockService } from '@pulsar/block-std';
 
 import { LinkPreviewer } from '../_common/embed-block-helper/index.js';
 import { githubUrlRegex } from './embed-github-model.js';

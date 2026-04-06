@@ -1,37 +1,37 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
+import type { DatabaseBlockModel } from '@pulsar/model';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { popMenu } from '@blocksuite/affine-components/context-menu';
-import { toast } from '@blocksuite/affine-components/toast';
-import { DatabaseBlockSchema } from '@blocksuite/affine-model';
-import { NOTE_SELECTOR } from '@blocksuite/affine-shared/consts';
-import { RANGE_SYNC_EXCLUDE_ATTR } from '@blocksuite/block-std';
-import { Rect } from '@blocksuite/global/utils';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { popMenu } from '@pulsar/editor-components/context-menu';
+import { toast } from '@pulsar/editor-components/toast';
+import { DatabaseBlockSchema } from '@pulsar/model';
+import { NOTE_SELECTOR } from '@pulsar/editor-shared/consts';
+import { RANGE_SYNC_EXCLUDE_ATTR } from '@pulsar/block-std';
+import { Rect } from '@pulsar/global/utils';
 import {
   CopyIcon,
   DeleteIcon,
   MoreHorizontalIcon,
 } from '@blocksuite/icons/lit';
-import { Slice } from '@blocksuite/store';
+import { Slice } from '@pulsar/store';
 import { computed } from '@lit-labs/preact-signals';
 import { css, html, nothing, unsafeCSS } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import type { NoteBlockComponent } from '../note-block/index.js';
-import type { AffineInnerModalWidget } from '../root-block/index.js';
+import type { PulsarInnerModalWidget } from '../root-block/index.js';
 import type { DatabaseOptionsConfig } from './config.js';
 import type { DatabaseBlockService } from './database-service.js';
 
 import { DragIndicator } from '../_common/components/index.js';
 import {
-  AffineDragHandleWidget,
+  PulsarDragHandleWidget,
   EdgelessRootBlockComponent,
 } from '../root-block/index.js';
 import {
   captureEventTarget,
   getDropResult,
 } from '../root-block/widgets/drag-handle/utils.js';
-import { AFFINE_INNER_MODAL_WIDGET } from '../root-block/widgets/inner-modal/inner-modal.js';
+import { PULSAR_INNER_MODAL_WIDGET } from '../root-block/widgets/inner-modal/inner-modal.js';
 import './components/title/index.js';
 import { DatabaseBlockDataSource } from './data-source.js';
 import { dataViewCommonStyle } from './data-view/common/css-variable.js';
@@ -48,7 +48,7 @@ import {
   widgetPresets,
 } from './data-view/index.js';
 
-@customElement('affine-database')
+@customElement('pulsar-database')
 export class DatabaseBlockComponent extends CaptionedBlockComponent<
   DatabaseBlockModel,
   DatabaseBlockService
@@ -132,17 +132,17 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
   };
 
   static override styles = css`
-    ${unsafeCSS(dataViewCommonStyle('affine-database'))}
+    ${unsafeCSS(dataViewCommonStyle('pulsar-database'))}
     affine-database {
       display: block;
       border-radius: 8px;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       padding: 8px;
       margin: 8px -8px -8px;
     }
 
     .database-block-selected {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
       border-radius: 4px;
     }
 
@@ -157,11 +157,11 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
     .database-ops svg {
       width: 16px;
       height: 16px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
 
     .database-ops:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     @media print {
@@ -176,7 +176,7 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
   `;
 
   getRootService = () => {
-    return this.std.getService('affine:page');
+    return this.std.getService('pulsar:page');
   };
 
   headerWidget: DataViewWidget = defineUniComponent(
@@ -297,7 +297,7 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
     this.setAttribute(RANGE_SYNC_EXCLUDE_ATTR, 'true');
     let canDrop = false;
     this.disposables.add(
-      AffineDragHandleWidget.registerOption({
+      PulsarDragHandleWidget.registerOption({
         flavour: DatabaseBlockSchema.model.flavour,
         onDragMove: state => {
           const target = captureEventTarget(state.raw.target);
@@ -345,7 +345,7 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
     return html`
       <div
         contenteditable="false"
-        style="position: relative;background-color: var(--affine-background-primary-color);border-radius: 4px"
+        style="position: relative;background-color: var(--pulsar-background-primary-color);border-radius: 4px"
       >
         ${this.dataView.render({
           bindHotkey: this._bindHotkey,
@@ -379,14 +379,14 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
 
   get innerModalWidget() {
     return this.rootComponent!.widgetComponents[
-      AFFINE_INNER_MODAL_WIDGET
-    ] as AffineInnerModalWidget;
+      PULSAR_INNER_MODAL_WIDGET
+    ] as PulsarInnerModalWidget;
   }
 
   get optionsConfig(): DatabaseOptionsConfig {
     return {
       configure: (_model, options) => options,
-      ...this.std.getConfig('affine:page')?.databaseOptions,
+      ...this.std.getConfig('pulsar:page')?.databaseOptions,
     };
   }
 
@@ -407,6 +407,6 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database': DatabaseBlockComponent;
+    'pulsar-database': DatabaseBlockComponent;
   }
 }

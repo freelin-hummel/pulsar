@@ -1,14 +1,14 @@
 import {
   type Menu,
   popFilterableSimpleMenu,
-} from '@blocksuite/affine-components/context-menu';
+} from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { ArrowDownSmallIcon } from '@blocksuite/icons/lit';
-import { Text } from '@blocksuite/store';
+import { Text } from '@pulsar/store';
 import { computed, signal } from '@lit-labs/preact-signals';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -27,7 +27,7 @@ const styles = css`
     cursor: pointer;
     transition: opacity 230ms ease;
     font-size: 12px;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     display: flex;
     opacity: 0;
     min-width: ${DEFAULT_COLUMN_MIN_WIDTH}px;
@@ -41,7 +41,7 @@ const styles = css`
   }
 
   .stats-cell:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
     cursor: pointer;
   }
 
@@ -59,15 +59,15 @@ const styles = css`
 
   .label {
     text-transform: uppercase;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
   }
 
   .value {
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 `;
 
-@customElement('affine-database-column-stats-cell')
+@customElement('pulsar-database-column-stats-cell')
 export class DatabaseColumnStatsCell extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -217,6 +217,6 @@ export class DatabaseColumnStatsCell extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-column-stats-cell': DatabaseColumnStatsCell;
+    'pulsar-database-column-stats-cell': DatabaseColumnStatsCell;
   }
 }

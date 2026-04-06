@@ -1,5 +1,5 @@
-import { on, once, stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable, SignalWatcher } from '@blocksuite/block-std';
+import { on, once, stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable, SignalWatcher } from '@pulsar/block-std';
 import { batch, computed, signal } from '@lit-labs/preact-signals';
 import { LitElement, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';

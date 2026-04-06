@@ -1,4 +1,4 @@
-import type { DocMode, ReferenceInfo } from '@blocksuite/affine-model';
+import type { DocMode, ReferenceInfo } from '@pulsar/model';
 import type { TemplateResult } from 'lit';
 
 import {
@@ -14,9 +14,9 @@ import {
   EmbedCardLightListIcon,
   EmbedCardLightVerticalIcon,
   LightLoadingIcon,
-} from '@blocksuite/affine-components/icons';
-import { DocModes } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+} from '@pulsar/editor-components/icons';
+import { DocModes } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 
 type EmbedCardIcons = {
   LoadingIcon: TemplateResult<1>;

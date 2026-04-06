@@ -1,12 +1,12 @@
-import type { Column } from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { Block, Doc } from '@blocksuite/store';
+import type { Column } from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
+import type { Block, Doc } from '@pulsar/store';
 
 import {
   type InsertToPosition,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
-import { Slot, assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { Slot, assertExists } from '@pulsar/global/utils';
 
 import type { BlockMeta } from './block-meta/base.js';
 import type { DataViewBlockModel } from './data-view-model.js';

@@ -1,7 +1,7 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { Command } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { type DraftModel, toDraftModel } from '@blocksuite/store';
+import { type DraftModel, toDraftModel } from '@pulsar/store';
 
 export const draftSelectedModelsCommand: Command<
   'selectedModels',
@@ -21,7 +21,7 @@ export const draftSelectedModelsCommand: Command<
     const modelMap = new Map(draftedModels.map(model => [model.id, model]));
 
     const traverse = (model: DraftModel) => {
-      const isDatabase = model.flavour === 'affine:database';
+      const isDatabase = model.flavour === 'pulsar:database';
       const children = isDatabase
         ? model.children
         : model.children.filter(child => modelMap.has(child.id));

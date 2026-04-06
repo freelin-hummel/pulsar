@@ -1,39 +1,39 @@
 import type {
   SurfaceBlockComponent,
   SurfaceBlockModel,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import type {
   AttachmentBlockProps,
   ImageBlockProps,
   RootBlockModel,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import type {
   GfxBlockComponent,
   SurfaceSelection,
   UIEventHandler,
-} from '@blocksuite/block-std';
-import type { IBound, IPoint, IVec } from '@blocksuite/global/utils';
-import type { BlockModel } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import type { IBound, IPoint, IVec } from '@pulsar/global/utils';
+import type { BlockModel } from '@pulsar/store';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { toast } from '@blocksuite/affine-components/toast';
-import { NoteDisplayMode } from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { humanFileSize } from '@blocksuite/affine-shared/utils';
+import { CommonUtils } from '@pulsar/block-surface';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { toast } from '@pulsar/editor-components/toast';
+import { NoteDisplayMode } from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { humanFileSize } from '@pulsar/editor-shared/utils';
 import {
   handleNativeRangeAtPoint,
   isTouchPadPinchEvent,
   requestConnectedFrame,
   requestThrottledConnectedFrame,
-} from '@blocksuite/affine-shared/utils';
-import { BlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { BlockComponent } from '@pulsar/block-std';
 import {
   GfxBlockElementModel,
   type GfxViewportElement,
-} from '@blocksuite/block-std/gfx';
-import { IS_WINDOWS } from '@blocksuite/global/env';
+} from '@pulsar/block-std/gfx';
+import { IS_WINDOWS } from '@pulsar/global/env';
 import {
   Bound,
   Point,
@@ -41,7 +41,7 @@ import {
   assertExists,
   serializeXYWH,
   throttle,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import { css, html, nothing } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -97,7 +97,7 @@ import { mountShapeTextEditor } from './utils/text.js';
 
 const { normalizeWheelDeltaY } = CommonUtils;
 
-@customElement('affine-edgeless-root')
+@customElement('pulsar-edgeless-root')
 export class EdgelessRootBlockComponent extends BlockComponent<
   RootBlockModel,
   EdgelessRootService,
@@ -143,10 +143,10 @@ export class EdgelessRootBlockComponent extends BlockComponent<
 
     .edgeless-background {
       height: 100%;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       background-image: radial-gradient(
-        var(--affine-edgeless-grid-color) 1px,
-        var(--affine-background-primary-color) 1px
+        var(--pulsar-edgeless-grid-color) 1px,
+        var(--pulsar-background-primary-color) 1px
       );
     }
 
@@ -462,7 +462,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   async addAttachments(files: File[], point?: IVec): Promise<string[]> {
     if (!files.length) return [];
 
-    const attachmentService = this.std.getService('affine:attachment');
+    const attachmentService = this.std.getService('pulsar:attachment');
     const maxFileSize = attachmentService.maxFileSize;
     const isSizeExceeded = files.some(file => file.size > maxFileSize);
     if (isSizeExceeded) {
@@ -495,7 +495,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
           EMBED_CARD_HEIGHT.cubeThick
         );
         const blockId = this.service.addBlock(
-          'affine:attachment',
+          'pulsar:attachment',
           {
             name: file.name,
             size: file.size,
@@ -554,7 +554,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
     );
     if (!imageFiles.length) return [];
 
-    const imageService = this.std.getService('affine:image');
+    const imageService = this.std.getService('pulsar:image');
     const maxFileSize = imageService.maxFileSize;
     const isSizeExceeded = imageFiles.some(file => file.size > maxFileSize);
     if (isSizeExceeded) {
@@ -585,7 +585,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
       const center = Vec.toVec(point);
       const bound = calcBoundByOrigin(center, inTopLeft);
       const blockId = this.service.addBlock(
-        'affine:image',
+        'pulsar:image',
         {
           size: file.size,
           xywh: bound.serialize(),
@@ -698,7 +698,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
     } = options;
     const [x, y] = this.service.viewport.toModelCoord(point.x, point.y);
     const blockId = this.service.addBlock(
-      'affine:note',
+      'pulsar:note',
       {
         xywh: serializeXYWH(
           x - offsetX * scale,
@@ -907,7 +907,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
    */
   setSelection(noteId: string, _active = true, blockId: string, point?: Point) {
     const noteBlock = this.service.blocks
-      .filter(block => block.flavour === 'affine:note')
+      .filter(block => block.flavour === 'pulsar:note')
       .find(b => b.id === noteId);
     assertExists(noteBlock);
 
@@ -941,7 +941,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
 
   get surfaceBlockModel() {
     return this.model.children.find(
-      child => child.flavour === 'affine:surface'
+      child => child.flavour === 'pulsar:surface'
     ) as SurfaceBlockModel;
   }
 
@@ -1000,12 +1000,12 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   @query('edgeless-selected-rect')
   accessor selectedRect!: EdgelessSelectedRect;
 
-  @query('affine-surface')
+  @query('pulsar-surface')
   accessor surface!: SurfaceBlockComponent;
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-root': EdgelessRootBlockComponent;
+    'pulsar-edgeless-root': EdgelessRootBlockComponent;
   }
 }

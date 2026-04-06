@@ -1,7 +1,7 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { getLastNoteBlock } from '@blocksuite/affine-shared/utils';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { getLastNoteBlock } from '@pulsar/editor-shared/utils';
 
 /**
  * Append a paragraph block at the end of the whole page.
@@ -18,10 +18,10 @@ export const appendParagraphCommand: Command<
   const note = getLastNoteBlock(doc);
   let noteId = note?.id;
   if (!noteId) {
-    noteId = doc.addBlock('affine:note', {}, doc.root.id);
+    noteId = doc.addBlock('pulsar:note', {}, doc.root.id);
   }
   const id = doc.addBlock(
-    'affine:paragraph',
+    'pulsar:paragraph',
     { text: new doc.Text(text) },
     noteId
   );

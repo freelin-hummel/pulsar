@@ -4,13 +4,13 @@ import type {
   NoteBlockModel,
   ConnectorElementModel,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
-import type { XYWH } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import type { XYWH } from '@pulsar/global/utils';
 
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { FrameIcon, SmallNoteIcon } from '@blocksuite/affine-components/icons';
-import { FontFamilyIcon } from '@blocksuite/affine-components/icons';
+import { CanvasElementType } from '@pulsar/block-surface';
+import { CommonUtils } from '@pulsar/block-surface';
+import { FrameIcon, SmallNoteIcon } from '@pulsar/editor-components/icons';
+import { FontFamilyIcon } from '@pulsar/editor-components/icons';
 import {
   DEFAULT_NOTE_BACKGROUND_COLOR,
   DEFAULT_SHAPE_FILL_COLOR,
@@ -23,13 +23,13 @@ import {
   getShapeName,
   TextElementModel,
   GroupElementModel,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { WithDisposable } from '@blocksuite/block-std';
-import { serializeXYWH } from '@blocksuite/global/utils';
-import { Bound, Vec } from '@blocksuite/global/utils';
-import { assertExists, assertInstanceOf } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { WithDisposable } from '@pulsar/block-std';
+import { serializeXYWH } from '@pulsar/global/utils';
+import { Bound, Vec } from '@pulsar/global/utils';
+import { assertExists, assertInstanceOf } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -88,8 +88,8 @@ export class EdgelessAutoCompletePanel extends WithDisposable(LitElement) {
       padding: 8px 0;
       gap: 8px;
       border-radius: 8px;
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-shadow-2);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-shadow-2);
       z-index: 1;
     }
 
@@ -106,7 +106,7 @@ export class EdgelessAutoCompletePanel extends WithDisposable(LitElement) {
       font-size: 12px;
       font-style: normal;
       font-weight: 500;
-      border: 1px solid var(--affine-border-color, #e3e2e4);
+      border: 1px solid var(--pulsar-border-color, #e3e2e4);
       box-sizing: border-box;
     }
   `;
@@ -139,7 +139,7 @@ export class EdgelessAutoCompletePanel extends WithDisposable(LitElement) {
     const { service, surfaceBlockModel } = edgeless;
     const frameIndex = service.frames.length + 1;
     const id = service.addBlock(
-      'affine:frame',
+      'pulsar:frame',
       {
         title: new DocCollection.Y.Text(`Frame ${frameIndex}`),
         xywh: serializeXYWH(...xywh),
@@ -179,7 +179,7 @@ export class EdgelessAutoCompletePanel extends WithDisposable(LitElement) {
       } else {
         let tag = this.currentSource.fillColor.split('-').pop();
         if (!tag || tag === 'gray') tag = 'grey';
-        background = `--affine-note-background-${tag}`;
+        background = `--pulsar-note-background-${tag}`;
       }
     } else {
       if (typeof this.currentSource.background === 'object') {
@@ -190,14 +190,14 @@ export class EdgelessAutoCompletePanel extends WithDisposable(LitElement) {
     }
 
     const id = service!.addBlock(
-      'affine:note',
+      'pulsar:note',
       {
         xywh: serializeXYWH(...xywh),
         background,
       },
       doc.root?.id
     );
-    doc.addBlock('affine:paragraph', { type: 'text' }, id);
+    doc.addBlock('pulsar:paragraph', { type: 'text' }, id);
     const group = this.currentSource.group;
 
     if (group instanceof GroupElementModel) {
@@ -449,7 +449,7 @@ export class EdgelessAutoCompletePanel extends WithDisposable(LitElement) {
     const xywh = this._getTargetXYWH(w, h)?.xywh;
     if (!xywh) return;
 
-    const strokeColor = ThemeObserver.getPropertyValue('--affine-black-30');
+    const strokeColor = ThemeObserver.getPropertyValue('--pulsar-black-30');
     this._overlay = new AutoCompleteFrameOverlay(xywh, strokeColor);
     this.edgeless.surface.renderer.addOverlay(this._overlay);
   }

@@ -1,6 +1,6 @@
-import type { ExtensionType } from '@blocksuite/block-std';
+import type { ExtensionType } from '@pulsar/block-std';
 
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import { SpecBuilder } from './spec-builder.js';
 

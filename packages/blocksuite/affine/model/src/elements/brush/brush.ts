@@ -1,7 +1,7 @@
 import type {
   BaseElementProps,
   PointTestOptions,
-} from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std/gfx';
 
 import {
   GfxPrimitiveElementModel,
@@ -9,7 +9,7 @@ import {
   derive,
   field,
   watch,
-} from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std/gfx';
 import {
   Bound,
   type IVec,
@@ -27,7 +27,7 @@ import {
   lineIntersects,
   polyLineNearestPoint,
   transformPointsToNewBound,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { Color } from '../../consts/index.js';
 

@@ -1,9 +1,9 @@
-import type { BlockCaptionEditor } from '@blocksuite/affine-components/caption';
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+import type { BlockCaptionEditor } from '@pulsar/editor-components/caption';
+import type { ImageBlockModel } from '@pulsar/model';
 
-import '@blocksuite/affine-components/caption';
-import { Peekable } from '@blocksuite/affine-components/peek';
-import { GfxBlockComponent } from '@blocksuite/block-std';
+import '@pulsar/editor-components/caption';
+import { Peekable } from '@pulsar/editor-components/peek';
+import { GfxBlockComponent } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -21,7 +21,7 @@ import {
   turnImageIntoCardView,
 } from './utils.js';
 
-@customElement('affine-edgeless-image')
+@customElement('pulsar-edgeless-image')
 @Peekable()
 export class ImageEdgelessBlockComponent extends GfxBlockComponent<
   ImageBlockModel,
@@ -91,7 +91,7 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
     });
 
     return html`
-      <div class="affine-image-container" style=${containerStyleMap}>
+      <div class="pulsar-image-container" style=${containerStyleMap}>
         ${when(
           this.loading || this.error || !this.blobUrl,
           () =>
@@ -137,7 +137,7 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
   @property({ attribute: false })
   accessor error = false;
 
-  @query('affine-image-fallback-card')
+  @query('pulsar-image-fallback-card')
   accessor fallbackCard: ImageBlockFallbackCard | null = null;
 
   @state()
@@ -155,6 +155,6 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-image': ImageEdgelessBlockComponent;
+    'pulsar-edgeless-image': ImageEdgelessBlockComponent;
   }
 }

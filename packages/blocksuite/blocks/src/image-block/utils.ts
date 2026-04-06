@@ -1,18 +1,18 @@
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+import type { ImageBlockModel } from '@pulsar/model';
 import type {
   AttachmentBlockProps,
   ImageBlockProps,
-} from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { toast } from '@blocksuite/affine-components/toast';
+import { toast } from '@pulsar/editor-components/toast';
 import {
   downloadBlob,
   humanFileSize,
   withTempBlobData,
-} from '@blocksuite/affine-shared/utils';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+} from '@pulsar/editor-shared/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { ImageBlockComponent } from './image-block.js';
 import type { ImageEdgelessBlockComponent } from './image-edgeless-block.js';
@@ -21,7 +21,7 @@ import { readImageSize } from '../root-block/edgeless/components/utils.js';
 import { transformModel } from '../root-block/utils/operations/model.js';
 
 const MAX_RETRY_COUNT = 3;
-const DEFAULT_ATTACHMENT_NAME = 'affine-attachment';
+const DEFAULT_ATTACHMENT_NAME = 'pulsar-attachment';
 
 const imageUploads = new Set<string>();
 export function setImageUploading(blockId: string) {
@@ -316,9 +316,9 @@ export function addSiblingImageBlock(
 
   const imageBlockProps: Partial<ImageBlockProps> &
     {
-      flavour: 'affine:image';
+      flavour: 'pulsar:image';
     }[] = imageFiles.map(file => ({
-    flavour: 'affine:image',
+    flavour: 'pulsar:image',
     size: file.size,
   }));
 
@@ -358,7 +358,7 @@ export function addImageBlocks(
 
   const doc = editorHost.doc;
   const blockIds = imageFiles.map(file =>
-    doc.addBlock('affine:image', { size: file.size }, parent, parentIndex)
+    doc.addBlock('pulsar:image', { size: file.size }, parent, parentIndex)
   );
   blockIds.map(
     (blockId, index) =>
@@ -374,7 +374,7 @@ export async function turnImageIntoCardView(
   block: ImageBlockComponent | ImageEdgelessBlockComponent
 ) {
   const doc = block.doc;
-  if (!doc.schema.flavourSchemaMap.has('affine:attachment')) {
+  if (!doc.schema.flavourSchemaMap.has('pulsar:attachment')) {
     console.error('The attachment flavour is not supported!');
     return;
   }
@@ -398,5 +398,5 @@ export async function turnImageIntoCardView(
     caption: model.caption,
     ...attachmentConvertData,
   };
-  transformModel(model, 'affine:attachment', attachmentProp);
+  transformModel(model, 'pulsar:attachment', attachmentProp);
 }

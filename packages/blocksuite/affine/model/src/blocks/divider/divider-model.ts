@@ -1,7 +1,7 @@
-import { type SchemaToModel, defineBlockSchema } from '@blocksuite/store';
+import { type SchemaToModel, defineBlockSchema } from '@pulsar/store';
 
 export const DividerBlockSchema = defineBlockSchema({
-  flavour: 'affine:divider',
+  flavour: 'pulsar:divider',
   metadata: {
     version: 1,
     role: 'content',
@@ -14,7 +14,7 @@ export type DividerBlockModel = SchemaToModel<typeof DividerBlockSchema>;
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:divider': DividerBlockModel;
+      'pulsar:divider': DividerBlockModel;
     }
   }
 }

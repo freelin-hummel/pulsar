@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { type PropertyValues, type TemplateResult, css, html } from 'lit';
 import {
   customElement,

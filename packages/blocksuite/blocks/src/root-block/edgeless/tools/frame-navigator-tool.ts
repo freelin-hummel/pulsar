@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { NavigatorMode } from '../../../_common/edgeless/frame/consts.js';
 

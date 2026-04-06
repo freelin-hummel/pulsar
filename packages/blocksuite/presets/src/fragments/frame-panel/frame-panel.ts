@@ -1,11 +1,11 @@
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { FramePreview } from '@blocksuite/blocks';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { FramePreview } from '@pulsar/blocks';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { baseTheme } from '@toeverything/theme';
 import { type PropertyValues, css, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import type { AffineEditorContainer } from '../../index.js';
+import type { PulsarEditorContainer } from '../../index.js';
 
 import './body/frame-panel-body.js';
 import './header/frame-panel-header.js';
@@ -18,7 +18,7 @@ const styles = css`
   }
 
   .frame-panel-container {
-    background-color: var(--affine-background-primary-color);
+    background-color: var(--pulsar-background-primary-color);
     box-sizing: border-box;
 
     display: flex;
@@ -50,7 +50,7 @@ const styles = css`
   }
 
   .frame-panel-body:hover::-webkit-scrollbar-thumb {
-    background-color: var(--affine-black-30);
+    background-color: var(--pulsar-black-30);
   }
 
   .frame-panel-body::-webkit-scrollbar-track {
@@ -62,9 +62,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAME_PANEL = 'affine-frame-panel';
+export const PULSAR_FRAME_PANEL = 'pulsar-frame-panel';
 
-@customElement(AFFINE_FRAME_PANEL)
+@customElement(PULSAR_FRAME_PANEL)
 export class FramePanel extends WithDisposable(ShadowlessElement) {
   private _editorDisposables: DisposableGroup | null = null;
 
@@ -135,7 +135,7 @@ export class FramePanel extends WithDisposable(ShadowlessElement) {
   }
 
   get edgeless() {
-    return this.editor.querySelector('affine-edgeless-root');
+    return this.editor.querySelector('pulsar-edgeless-root');
   }
 
   get host() {
@@ -143,7 +143,7 @@ export class FramePanel extends WithDisposable(ShadowlessElement) {
   }
 
   @property({ attribute: false })
-  accessor editor!: AffineEditorContainer;
+  accessor editor!: PulsarEditorContainer;
 
   @property({ attribute: false })
   accessor fitPadding: number[] = [50, 380, 50, 50];
@@ -151,6 +151,6 @@ export class FramePanel extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAME_PANEL]: FramePanel;
+    [PULSAR_FRAME_PANEL]: FramePanel;
   }
 }

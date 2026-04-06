@@ -29,10 +29,10 @@ export interface AIPanelGeneratingConfig {
   stages?: string[];
 }
 
-export interface AffineAIPanelWidgetConfig {
+export interface PulsarAIPanelWidgetConfig {
   answerRenderer: (
     answer: string,
-    state?: AffineAIPanelState
+    state?: PulsarAIPanelState
   ) => TemplateResult<1> | typeof nothing;
   generateAnswer?: (props: {
     input: string;
@@ -51,7 +51,7 @@ export interface AffineAIPanelWidgetConfig {
   copy?: CopyConfig;
 }
 
-export type AffineAIPanelState =
+export type PulsarAIPanelState =
   | 'hidden'
   | 'input'
   | 'generating'

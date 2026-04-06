@@ -1,5 +1,5 @@
 {
-  "name": "@blocksuite/affine-model",
+  "name": "@pulsar/model",
   "version": "0.17.0",
   "description": "Default BlockSuite editable blocks.",
   "type": "module",
@@ -11,10 +11,10 @@
   "author": "toeverything",
   "license": "MPL-2.0",
   "dependencies": {
-    "@blocksuite/block-std": "workspace:*",
-    "@blocksuite/global": "workspace:*",
-    "@blocksuite/inline": "workspace:*",
-    "@blocksuite/store": "workspace:*",
+    "@pulsar/block-std": "workspace:*",
+    "@pulsar/global": "workspace:*",
+    "@pulsar/inline": "workspace:*",
+    "@pulsar/store": "workspace:*",
     "zod": "^3.23.8"
   },
   "exports": {

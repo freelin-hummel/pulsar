@@ -1,7 +1,7 @@
-import type { PointLocation } from '@blocksuite/global/utils';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { PointLocation } from '@pulsar/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { GfxLocalElementModel } from '@blocksuite/block-std/gfx';
+import { GfxLocalElementModel } from '@pulsar/block-std/gfx';
 
 import type { PointStyle } from '../../consts/index.js';
 import type { Connection } from './connector.js';

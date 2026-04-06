@@ -2,16 +2,16 @@ import type {
   BeforeinputHookCtx,
   CompositionEndHookCtx,
   HookContext,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 
-import { isStrictUrl } from '@blocksuite/affine-shared/utils';
+import { isStrictUrl } from '@pulsar/editor-shared/utils';
 
-import type { AffineTextAttributes } from './inline/index.js';
+import type { PulsarTextAttributes } from './inline/index.js';
 
 const EDGE_IGNORED_ATTRIBUTES = ['code', 'link'] as const;
 const GLOBAL_IGNORED_ATTRIBUTES = [] as const;
 
-const autoIdentifyLink = (ctx: HookContext<AffineTextAttributes>) => {
+const autoIdentifyLink = (ctx: HookContext<PulsarTextAttributes>) => {
   // auto identify link only on pressing space
   if (ctx.data !== ' ') {
     return;
@@ -62,8 +62,8 @@ const autoIdentifyLink = (ctx: HookContext<AffineTextAttributes>) => {
 
 function handleExtendedAttributes(
   ctx:
-    | BeforeinputHookCtx<AffineTextAttributes>
-    | CompositionEndHookCtx<AffineTextAttributes>
+    | BeforeinputHookCtx<PulsarTextAttributes>
+    | CompositionEndHookCtx<PulsarTextAttributes>
 ) {
   const { data, inlineEditor, inlineRange } = ctx;
   const deltas = inlineEditor.getDeltasByInlineRange(inlineRange);
@@ -104,14 +104,14 @@ function handleExtendedAttributes(
 }
 
 export const onVBeforeinput = (
-  ctx: BeforeinputHookCtx<AffineTextAttributes>
+  ctx: BeforeinputHookCtx<PulsarTextAttributes>
 ) => {
   handleExtendedAttributes(ctx);
   autoIdentifyLink(ctx);
 };
 
 export const onVCompositionEnd = (
-  ctx: CompositionEndHookCtx<AffineTextAttributes>
+  ctx: CompositionEndHookCtx<PulsarTextAttributes>
 ) => {
   handleExtendedAttributes(ctx);
 };

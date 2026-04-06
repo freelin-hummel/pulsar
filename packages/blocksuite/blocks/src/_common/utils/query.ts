@@ -1,9 +1,9 @@
-import type { BlockComponent, EditorHost } from '@blocksuite/block-std';
-import type { Point } from '@blocksuite/global/utils';
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockComponent, EditorHost } from '@pulsar/block-std';
+import type { Point } from '@pulsar/global/utils';
+import type { BlockModel } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { RootBlockComponent } from '../../index.js';
 
@@ -37,12 +37,12 @@ export function getRootByEditorHost(
 
 /** If it's not in the page mode, it will return `null` directly */
 export function getPageRootByEditorHost(editorHost: EditorHost) {
-  return editorHost.querySelector('affine-page-root');
+  return editorHost.querySelector('pulsar-page-root');
 }
 
 /** If it's not in the edgeless mode, it will return `null` directly */
 export function getEdgelessRootByEditorHost(editorHost: EditorHost) {
-  return editorHost.querySelector('affine-edgeless-root');
+  return editorHost.querySelector('pulsar-edgeless-root');
 }
 
 /**
@@ -136,7 +136,7 @@ export function getDropRectByPoint(
     flag: DropFlags.Normal,
   };
 
-  const isDatabase = matchFlavours(model, ['affine:database']);
+  const isDatabase = matchFlavours(model, ['pulsar:database']);
 
   if (isDatabase) {
     const table = getDatabaseBlockTableElement(element);
@@ -174,12 +174,12 @@ export function getDropRectByPoint(
       for (; i < len; i++) {
         e = elements[i];
 
-        if (e.classList.contains('affine-database-block-row-cell-content')) {
+        if (e.classList.contains('pulsar-database-block-row-cell-content')) {
           result.rect = getCellRect(e, bounds);
           return result;
         }
 
-        if (e.classList.contains('affine-database-block-row')) {
+        if (e.classList.contains('pulsar-database-block-row')) {
           e = e.querySelector(ATTR_SELECTOR);
           assertExists(e);
           result.rect = getCellRect(e, bounds);
@@ -189,7 +189,7 @@ export function getDropRectByPoint(
     }
   } else {
     const parent = element.parentElement;
-    if (parent?.classList.contains('affine-database-block-row-cell-content')) {
+    if (parent?.classList.contains('pulsar-database-block-row-cell-content')) {
       result.flag = DropFlags.Database;
       result.rect = getCellRect(parent);
       return result;

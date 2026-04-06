@@ -1,7 +1,7 @@
 import type { ReactiveController } from 'lit';
 import type { Ref } from 'lit/directives/ref.js';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { effect } from '@lit-labs/preact-signals';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -213,7 +213,7 @@ export class TableSelectionController implements ReactiveController {
       const focusCellContainer = this.getFocusCellContainer();
       cell = focusCellContainer ?? null;
     } else {
-      cell = target.closest('affine-database-cell-container');
+      cell = target.closest('pulsar-database-cell-container');
     }
     return [cell, fillValues];
   }
@@ -246,7 +246,7 @@ export class TableSelectionController implements ReactiveController {
     const rows = this.rows(groupKey);
     const cells = rows
       ?.item(0)
-      .querySelectorAll('affine-database-cell-container');
+      .querySelectorAll('pulsar-database-cell-container');
 
     return (x1: number, x2: number, y1: number, y2: number) => {
       const rowOffsets: number[] = Array.from(rows ?? []).map(
@@ -339,7 +339,7 @@ export class TableSelectionController implements ReactiveController {
         ?.querySelectorAll('data-view-table-row') ?? []
     );
     const cells = Array.from(
-      row?.querySelectorAll('affine-database-cell-container') ?? []
+      row?.querySelectorAll('pulsar-database-cell-container') ?? []
     );
     if (!row || !rows || !cells) {
       return;
@@ -377,7 +377,7 @@ export class TableSelectionController implements ReactiveController {
       }
     }
     rows[rowIndex]
-      ?.querySelectorAll('affine-database-cell-container')
+      ?.querySelectorAll('pulsar-database-cell-container')
       ?.item(columnIndex)
       ?.selectCurrentCell(false);
   }
@@ -389,7 +389,7 @@ export class TableSelectionController implements ReactiveController {
   ): DatabaseCellContainer | undefined {
     const row = this.rows(groupKey)?.item(rowIndex);
     return row
-      ?.querySelectorAll('affine-database-cell-container')
+      ?.querySelectorAll('pulsar-database-cell-container')
       .item(columnIndex);
   }
 
@@ -397,7 +397,7 @@ export class TableSelectionController implements ReactiveController {
     const container =
       groupKey != null
         ? this.tableContainer?.querySelector(
-            `affine-data-view-table-group[data-group-key="${groupKey}"]`
+            `pulsar-data-view-table-group[data-group-key="${groupKey}"]`
           )
         : this.tableContainer;
     return container ?? null;
@@ -424,7 +424,7 @@ export class TableSelectionController implements ReactiveController {
     if (!topRow || !bottomRow) {
       return;
     }
-    const topCells = topRow.querySelectorAll('affine-database-cell-container');
+    const topCells = topRow.querySelectorAll('pulsar-database-cell-container');
     const leftCell = topCells.item(left);
     const rightCell = topCells.item(right);
     if (!leftCell || !rightCell) {
@@ -573,7 +573,7 @@ export class TableSelectionController implements ReactiveController {
     const container =
       groupKey != null
         ? this.tableContainer?.querySelector(
-            `affine-data-view-table-group[data-group-key="${groupKey}"]`
+            `pulsar-data-view-table-group[data-group-key="${groupKey}"]`
           )
         : this.tableContainer;
     return container?.querySelectorAll('data-view-table-row');
@@ -687,7 +687,7 @@ export class TableSelectionController implements ReactiveController {
       const max =
         (this.rows(newSelection.groupKey)
           ?.item(0)
-          .querySelectorAll('affine-database-cell-container').length ?? 0) - 1;
+          .querySelectorAll('pulsar-database-cell-container').length ?? 0) - 1;
       newSelection.columnsSelection.end = Math.min(
         max,
         newSelection.columnsSelection.end + 1
@@ -748,7 +748,7 @@ export class TableSelectionController implements ReactiveController {
     cell: DatabaseCellContainer,
     fillValues?: boolean
   ) {
-    const groupKey = cell.closest('affine-data-view-table-group')?.group?.key;
+    const groupKey = cell.closest('pulsar-data-view-table-group')?.group?.key;
     const table = this.tableContainer;
     const scrollContainer = table?.parentElement;
     if (!table || !scrollContainer) {
@@ -909,7 +909,7 @@ class SelectionElement extends WithDisposable(ShadowlessElement) {
       position: absolute;
       z-index: 2;
       box-sizing: border-box;
-      background: var(--affine-primary-color-04);
+      background: var(--pulsar-primary-color-04);
       pointer-events: none;
       display: none;
     }
@@ -919,7 +919,7 @@ class SelectionElement extends WithDisposable(ShadowlessElement) {
       width: 100%;
       z-index: 2;
       box-sizing: border-box;
-      border: 1px solid var(--affine-primary-color);
+      border: 1px solid var(--pulsar-primary-color);
       border-radius: 2px;
       pointer-events: none;
       display: none;
@@ -1114,7 +1114,7 @@ class SelectionElement extends WithDisposable(ShadowlessElement) {
     div.style.top = `${y}px`;
     div.style.width = `${w}px`;
     div.style.height = `${h}px`;
-    div.style.borderColor = 'var(--affine-primary-color)';
+    div.style.borderColor = 'var(--pulsar-primary-color)';
     div.style.borderStyle = this.controller.__dragToFillElement.dragging
       ? 'dashed'
       : 'solid';

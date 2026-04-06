@@ -6,7 +6,7 @@ export * from './data-view-model.js';
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:data-view': DataViewBlockModel;
+      'pulsar:data-view': DataViewBlockModel;
     }
   }
 }

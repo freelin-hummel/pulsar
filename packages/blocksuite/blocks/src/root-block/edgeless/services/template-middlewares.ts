@@ -1,10 +1,10 @@
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
-import type { BlockSnapshot, SnapshotReturn } from '@blocksuite/store';
+import type { ConnectorElementModel } from '@pulsar/model';
+import type { BlockSnapshot, SnapshotReturn } from '@pulsar/store';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { sortIndex } from '@blocksuite/affine-block-surface';
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists, assertType } from '@blocksuite/global/utils';
+import { CommonUtils } from '@pulsar/block-surface';
+import { sortIndex } from '@pulsar/block-surface';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists, assertType } from '@pulsar/global/utils';
 
 import type { SlotBlockPayload, TemplateJob } from './template.js';
 
@@ -35,7 +35,7 @@ export const replaceIdMiddleware = (job: TemplateJob) => {
       ? (regeneratedIdMap.get(data.parent) ?? data.parent)
       : undefined;
 
-    if (blockJson.flavour === 'affine:surface-ref') {
+    if (blockJson.flavour === 'pulsar:surface-ref') {
       assertType<
         SnapshotReturn<{
           reference: string;
@@ -46,7 +46,7 @@ export const replaceIdMiddleware = (job: TemplateJob) => {
         regeneratedIdMap.get(blockJson.props['reference']) ?? '';
     }
 
-    if (blockJson.flavour === 'affine:surface') {
+    if (blockJson.flavour === 'pulsar:surface') {
       const elements: Record<string, Record<string, unknown>> = {};
       const defered: string[] = [];
 
@@ -159,7 +159,7 @@ export const createInsertPlaceMiddleware = (targetPlace: Bound) => {
         ).serialize();
       }
 
-      if (blockJson.flavour === 'affine:surface') {
+      if (blockJson.flavour === 'pulsar:surface') {
         Object.entries(
           blockJson.props.elements as Record<string, Record<string, unknown>>
         ).forEach(([_, val]) => {
@@ -212,7 +212,7 @@ export const createStickerMiddleware = (
     });
 
     const changeInserPosition = (blockJson: BlockSnapshot) => {
-      if (blockJson.flavour === 'affine:image' && blockJson.props.xywh) {
+      if (blockJson.flavour === 'pulsar:image' && blockJson.props.xywh) {
         const bound = Bound.deserialize(blockJson.props['xywh'] as string);
 
         blockJson.props['xywh'] = new Bound(
@@ -265,7 +265,7 @@ export const createRegenerateIndexMiddleware = (
 
       job.walk(block => {
         if (block.props.index) {
-          if (block.flavour === 'affine:frame') {
+          if (block.flavour === 'pulsar:frame') {
             frameList.push({
               id: block.id,
               index: block.props.index as string,
@@ -279,7 +279,7 @@ export const createRegenerateIndexMiddleware = (
           }
         }
 
-        if (block.flavour === 'affine:surface') {
+        if (block.flavour === 'pulsar:surface') {
           Object.entries(
             block.props.elements as Record<string, Record<string, unknown>>
           ).forEach(([_, element]) => {
@@ -311,7 +311,7 @@ export const createRegenerateIndexMiddleware = (
       frameList.sort((a, b) => sortIndex(a, b, groupIndexMap));
 
       frameList.forEach(index => {
-        indexMap.set(index.id, generateIndex('affine:frame'));
+        indexMap.set(index.id, generateIndex('pulsar:frame'));
       });
 
       indexList.forEach(index => {
@@ -324,7 +324,7 @@ export const createRegenerateIndexMiddleware = (
           indexMap.get(blockJson.id) ?? blockJson.props.index;
       }
 
-      if (blockJson.flavour === 'affine:surface') {
+      if (blockJson.flavour === 'pulsar:surface') {
         Object.entries(
           blockJson.props.elements as Record<string, Record<string, unknown>>
         ).forEach(([_, element]) => {

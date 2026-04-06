@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -12,7 +12,7 @@ import { html } from 'lit/static-html.js';
 import type { Column } from '../../../../view-manager/column.js';
 import type { TableSingleView } from '../table-view-manager.js';
 
-@customElement('affine-data-view-column-preview')
+@customElement('pulsar-data-view-column-preview')
 export class DataViewColumnPreview extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -27,7 +27,7 @@ export class DataViewColumnPreview extends SignalWatcher(
     const columnIndex = this.tableViewManager.columnGetIndex(this.column.id);
     return html`
       <div
-        style="background-color: var(--affine-background-primary-color);border-top: 1px solid var(--affine-border-color);box-shadow: var(--affine-shadow-2);"
+        style="background-color: var(--pulsar-background-primary-color);border-top: 1px solid var(--pulsar-border-color);box-shadow: var(--pulsar-shadow-2);"
       >
         <affine-database-header-column
           .tableViewManager="${this.tableViewManager}"
@@ -35,13 +35,13 @@ export class DataViewColumnPreview extends SignalWatcher(
         ></affine-database-header-column>
         ${repeat(rows, (id, index) => {
           const height = this.table.querySelector(
-            `affine-database-cell-container[data-row-id="${id}"]`
+            `pulsar-database-cell-container[data-row-id="${id}"]`
           )?.clientHeight;
           const style = styleMap({
             height: height + 'px',
           });
           return html`<div
-            style="border-top: 1px solid var(--affine-border-color)"
+            style="border-top: 1px solid var(--pulsar-border-color)"
           >
             <div style="${style}">
               <affine-database-cell-container
@@ -86,6 +86,6 @@ export class DataViewColumnPreview extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-column-preview': DataViewColumnPreview;
+    'pulsar-data-view-column-preview': DataViewColumnPreview;
   }
 }

@@ -1,4 +1,4 @@
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -23,7 +23,7 @@ const styles = css`
     font-size: 12px;
     flex-direction: column;
     border-radius: 8px;
-    background-color: var(--affine-background-overlay-panel-color);
+    background-color: var(--pulsar-background-overlay-panel-color);
   }
   .outline-notice-header {
     display: flex;
@@ -35,7 +35,7 @@ const styles = css`
   .outline-notice-label {
     font-weight: 600;
     line-height: 20px;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
   }
   .outline-notice-close-button {
     display: flex;
@@ -44,7 +44,7 @@ const styles = css`
     width: 20px;
     height: 20px;
     cursor: pointer;
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
   .outline-notice-body {
     display: flex;
@@ -57,7 +57,7 @@ const styles = css`
     height: 20px;
     align-items: center;
     line-height: 20px;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
   .outline-notice-item.notice {
     font-weight: 400;
@@ -79,9 +79,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_OUTLINE_NOTICE = 'affine-outline-notice';
+export const PULSAR_OUTLINE_NOTICE = 'pulsar-outline-notice';
 
-@customElement(AFFINE_OUTLINE_NOTICE)
+@customElement(PULSAR_OUTLINE_NOTICE)
 export class OutlineNotice extends WithDisposable(LitElement) {
   static override styles = styles;
 
@@ -132,6 +132,6 @@ export class OutlineNotice extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_NOTICE]: OutlineNotice;
+    [PULSAR_OUTLINE_NOTICE]: OutlineNotice;
   }
 }

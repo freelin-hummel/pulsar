@@ -1,10 +1,10 @@
 import {
   EMBED_CARD_HEIGHT,
   EMBED_CARD_WIDTH,
-} from '@blocksuite/affine-shared/consts';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { BlockStdScope } from '@blocksuite/block-std';
-import { Bound, assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/consts';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { BlockStdScope } from '@pulsar/block-std';
+import { Bound, assertExists } from '@pulsar/global/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';
@@ -17,7 +17,7 @@ import type { EdgelessRootService } from '../root-block/index.js';
 import { toEdgelessEmbedBlock } from '../_common/embed-block-helper/embed-block-element.js';
 import { EmbedSyncedDocBlockComponent } from './embed-synced-doc-block.js';
 
-@customElement('affine-embed-edgeless-synced-doc-block')
+@customElement('pulsar-embed-edgeless-synced-doc-block')
 export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
   EmbedSyncedDocBlockComponent
 ) {
@@ -54,7 +54,7 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
         [
           'page',
           () => html`
-            <div class="affine-page-viewport">
+            <div class="pulsar-page-viewport">
               ${new BlockStdScope({
                 doc: syncedDoc,
                 extensions: this._buildPreviewSpec('page:preview'),
@@ -65,7 +65,7 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
         [
           'edgeless',
           () => html`
-            <div class="affine-edgeless-viewport">
+            <div class="pulsar-edgeless-viewport">
               ${new BlockStdScope({
                 doc: syncedDoc,
                 extensions: this._buildPreviewSpec('edgeless:preview'),
@@ -80,7 +80,7 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
       () => html`
         <div
           class=${classMap({
-            'affine-embed-synced-doc-container': true,
+            'pulsar-embed-synced-doc-container': true,
             [editorMode]: true,
             [theme]: true,
             selected: isSelected,
@@ -90,10 +90,10 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
           style=${containerStyleMap}
           ?data-scale=${scale}
         >
-          <div class="affine-embed-synced-doc-editor">
+          <div class="pulsar-embed-synced-doc-editor">
             ${this.isPageMode && this._isEmptySyncedDoc
               ? html`
-                  <div class="affine-embed-synced-doc-editor-empty">
+                  <div class="pulsar-embed-synced-doc-editor-empty">
                     <span>
                       This is a linked doc, you can add content here.
                     </span>
@@ -101,7 +101,7 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
                 `
               : guard([editorMode, syncedDoc], renderEditor)}
           </div>
-          <div class="affine-embed-synced-doc-editor-overlay"></div>
+          <div class="pulsar-embed-synced-doc-editor-overlay"></div>
         </div>
       `
     );
@@ -121,7 +121,7 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
     }
 
     const newId = edgelessService.addBlock(
-      'affine:embed-linked-doc',
+      'pulsar:embed-linked-doc',
       { pageId, xywh: bound.serialize(), style, caption },
       edgelessService.surface
     );
@@ -161,7 +161,7 @@ export class EmbedEdgelessSyncedDocBlockComponent extends toEdgelessEmbedBlock(
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 
   override accessor useCaptionEditor = true;

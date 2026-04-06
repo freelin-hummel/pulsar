@@ -1,7 +1,7 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { EdgelessRootBlockComponent } from '@blocksuite/blocks';
+import type { EditorHost } from '@pulsar/block-std';
+import type { EdgelessRootBlockComponent } from '@pulsar/blocks';
 
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, type PropertyValues, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
@@ -33,7 +33,7 @@ const styles = css`
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     padding: 0 4px;
   }
 
@@ -41,7 +41,7 @@ const styles = css`
     width: 100%;
     height: 1px;
     box-sizing: border-box;
-    background: var(--affine-border-color);
+    background: var(--pulsar-border-color);
     margin: 8px 0;
   }
 
@@ -56,7 +56,7 @@ const styles = css`
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   .frames-setting-menu-item .toggle-button {
@@ -68,9 +68,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAMES_SETTING_MENU = 'affine-frames-setting-menu';
+export const PULSAR_FRAMES_SETTING_MENU = 'pulsar-frames-setting-menu';
 
-@customElement(AFFINE_FRAMES_SETTING_MENU)
+@customElement(PULSAR_FRAMES_SETTING_MENU)
 export class FramesSettingMenu extends WithDisposable(LitElement) {
   private _onBlackBackgroundChange = (checked: boolean) => {
     this.blackBackground = checked;
@@ -104,7 +104,7 @@ export class FramesSettingMenu extends WithDisposable(LitElement) {
   static override styles = styles;
 
   private get _rootService() {
-    return this.editorHost.std.getService('affine:page');
+    return this.editorHost.std.getService('pulsar:page');
   }
 
   private _tryRestoreSettings() {
@@ -217,6 +217,6 @@ export class FramesSettingMenu extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAMES_SETTING_MENU]: FramesSettingMenu;
+    [PULSAR_FRAMES_SETTING_MENU]: FramesSettingMenu;
   }
 }

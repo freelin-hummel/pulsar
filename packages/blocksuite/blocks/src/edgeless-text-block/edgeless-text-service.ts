@@ -1,5 +1,5 @@
-import { EdgelessTextBlockSchema } from '@blocksuite/affine-model';
-import { BlockService } from '@blocksuite/block-std';
+import { EdgelessTextBlockSchema } from '@pulsar/model';
+import { BlockService } from '@pulsar/block-std';
 
 export class EdgelessTextBlockService extends BlockService {
   static override readonly flavour = EdgelessTextBlockSchema.model.flavour;
@@ -8,7 +8,7 @@ export class EdgelessTextBlockService extends BlockService {
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:edgeless-text': EdgelessTextBlockService;
+      'pulsar:edgeless-text': EdgelessTextBlockService;
     }
   }
 }

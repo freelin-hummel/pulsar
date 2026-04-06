@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { CenterPeekIcon, MoreHorizontalIcon } from '@blocksuite/icons/lit';
 import { css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -29,7 +29,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
 
   static override styles = css`
     .affine-database-block-row:has(.row-select-checkbox.selected) {
-      background: var(--affine-primary-color-04);
+      background: var(--pulsar-primary-color-04);
     }
     .affine-database-block-row:has(.row-select-checkbox.selected)
       .row-selected-bg {
@@ -43,13 +43,13 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       right: 0;
       top: 0;
       bottom: 0;
-      background: var(--affine-primary-color-04);
+      background: var(--pulsar-primary-color-04);
     }
     .affine-database-block-row {
       width: 100%;
       display: flex;
       flex-direction: row;
-      border-bottom: 1px solid var(--affine-border-color);
+      border-bottom: 1px solid var(--pulsar-border-color);
       position: relative;
     }
 
@@ -91,7 +91,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       padding: 4px;
       border-radius: 4px;
       box-shadow: 0px 0px 4px 0px rgba(66, 65, 73, 0.14);
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       position: relative;
     }
 
@@ -103,12 +103,12 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       right: 0;
       top: 0;
       bottom: 0;
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .row-op svg {
-      fill: var(--affine-icon-color);
-      color: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
+      color: var(--pulsar-icon-color);
       width: 16px;
       height: 16px;
     }
@@ -119,7 +119,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       align-items: center;
       justify-content: center;
       cursor: grab;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
     }
   `;
 
@@ -133,7 +133,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
     }
     e.preventDefault();
     const ele = e.target as HTMLElement;
-    const cell = ele.closest('affine-database-cell-container');
+    const cell = ele.closest('pulsar-database-cell-container');
     const row = { id: this.rowId, groupKey: this.groupKey };
     if (!TableRowSelection.includes(selection.selection, row)) {
       selection.selection = TableRowSelection.create({
@@ -158,7 +158,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
     super.connectedCallback();
     this.disposables.addFromEvent(this, 'contextmenu', this.contextMenu);
     // eslint-disable-next-line wc/no-self-class
-    this.classList.add('affine-database-block-row', 'database-row');
+    this.classList.add('pulsar-database-block-row', 'database-row');
   }
 
   protected override render(): unknown {
@@ -176,7 +176,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
                   style="width: 4px;
                   border-radius: 2px;
                   height: 12px;
-                  background-color: var(--affine-placeholder-color);"
+                  background-color: var(--pulsar-placeholder-color);"
                 ></div>
               </div>
               <row-select-checkbox
@@ -256,11 +256,11 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
   }
 
   get groupKey() {
-    return this.closest('affine-data-view-table-group')?.group?.key;
+    return this.closest('pulsar-data-view-table-group')?.group?.key;
   }
 
   get selectionController() {
-    return this.closest('affine-database-table')?.selectionController;
+    return this.closest('pulsar-database-table')?.selectionController;
   }
 
   @property({ attribute: false })

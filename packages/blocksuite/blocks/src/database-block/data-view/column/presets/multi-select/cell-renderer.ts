@@ -14,7 +14,7 @@ import { BaseCellRenderer } from '../../base-cell.js';
 import { createFromBaseCellRenderer } from '../../renderer.js';
 import { multiSelectColumnModelConfig } from './define.js';
 
-@customElement('affine-database-multi-select-cell')
+@customElement('pulsar-database-multi-select-cell')
 export class MultiSelectCell extends BaseCellRenderer<
   string[],
   SelectColumnData
@@ -29,7 +29,7 @@ export class MultiSelectCell extends BaseCellRenderer<
   }
 }
 
-@customElement('affine-database-multi-select-cell-editing')
+@customElement('pulsar-database-multi-select-cell-editing')
 export class MultiSelectCellEditing extends BaseCellRenderer<
   string[],
   SelectColumnData
@@ -54,7 +54,7 @@ export class MultiSelectCellEditing extends BaseCellRenderer<
   private popTagSelect = () => {
     this._disposables.add({
       dispose: popTagSelect(
-        this.querySelector('affine-multi-tag-view') ?? this,
+        this.querySelector('pulsar-multi-tag-view') ?? this,
         {
           options: this._options,
           onOptionsChange: this._onOptionsChange,

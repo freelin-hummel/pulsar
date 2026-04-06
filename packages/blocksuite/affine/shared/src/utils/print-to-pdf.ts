@@ -40,8 +40,8 @@ export async function printToPdf(
                 display: none;
               }
               :root {
-                --affine-note-shadow-box: none !important;
-                --affine-note-shadow-sticker: none !important;
+                --pulsar-note-shadow-box: none !important;
+                --pulsar-note-shadow-sticker: none !important;
               }
             }</style></head><body></body></html>`);
 

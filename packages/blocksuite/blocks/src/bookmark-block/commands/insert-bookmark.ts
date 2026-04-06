@@ -1,7 +1,7 @@
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
-import type { Command } from '@blocksuite/block-std';
+import type { EmbedCardStyle } from '@pulsar/model';
+import type { Command } from '@pulsar/block-std';
 
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
 
 import { insertEmbedCard } from '../../_common/embed-block-helper/insert-embed-card.js';
 
@@ -13,7 +13,7 @@ export const insertBookmarkCommand: Command<
   const { url, std } = ctx;
   const embedOptions = std.get(EmbedOptionProvider).getEmbedBlockOptions(url);
 
-  let flavour = 'affine:bookmark';
+  let flavour = 'pulsar:bookmark';
   let targetStyle: EmbedCardStyle = 'vertical';
   const props: Record<string, unknown> = { url };
   if (embedOptions) {

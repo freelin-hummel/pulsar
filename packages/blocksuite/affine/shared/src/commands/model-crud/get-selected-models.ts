@@ -1,5 +1,5 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { Command } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 /**
  * Retrieves the selected models based on the provided selection types and mode.

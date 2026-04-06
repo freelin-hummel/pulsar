@@ -1,15 +1,15 @@
-import type { FrameBlockModel } from '@blocksuite/affine-model';
+import type { FrameBlockModel } from '@pulsar/model';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
+import { CommonUtils } from '@pulsar/block-surface';
 import {
   FrameNavigatorNextIcon,
   FrameNavigatorPrevIcon,
   NavigatorExitFullScreenIcon,
   NavigatorFullScreenIcon,
   StopAIIcon,
-} from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
+import { Bound } from '@pulsar/global/utils';
 import { cssVar } from '@toeverything/theme';
 import { LitElement, type PropertyValues, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -50,7 +50,7 @@ export class PresentationToolbar extends EdgelessToolbarToolMixin(LitElement) {
       content: '';
       width: 1px;
       height: 100%;
-      background: var(--affine-border-color);
+      background: var(--pulsar-border-color);
       transform: scaleX(0.5);
     }
     .config-buttons {
@@ -77,7 +77,7 @@ export class PresentationToolbar extends EdgelessToolbarToolMixin(LitElement) {
     }
 
     .edgeless-frame-navigator-count {
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       white-space: nowrap;
     }
     .edgeless-frame-navigator-stop {
@@ -103,7 +103,7 @@ export class PresentationToolbar extends EdgelessToolbarToolMixin(LitElement) {
       border-radius: inherit;
     }
     .edgeless-frame-navigator-stop:hover::before {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
   `;
 

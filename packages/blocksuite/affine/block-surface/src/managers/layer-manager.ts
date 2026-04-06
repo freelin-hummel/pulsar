@@ -1,12 +1,12 @@
-import type { GroupElementModel } from '@blocksuite/affine-model';
-import type { Doc } from '@blocksuite/store';
-import type { BlockModel } from '@blocksuite/store';
+import type { GroupElementModel } from '@pulsar/model';
+import type { Doc } from '@pulsar/store';
+import type { BlockModel } from '@pulsar/store';
 
-import { FrameBlockModel } from '@blocksuite/affine-model';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { GfxBlockElementModel, type GfxModel } from '@blocksuite/block-std/gfx';
-import { Bound, last, nToLast } from '@blocksuite/global/utils';
-import { DisposableGroup, Slot, assertType } from '@blocksuite/global/utils';
+import { FrameBlockModel } from '@pulsar/model';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { GfxBlockElementModel, type GfxModel } from '@pulsar/block-std/gfx';
+import { Bound, last, nToLast } from '@pulsar/global/utils';
+import { DisposableGroup, Slot, assertType } from '@pulsar/global/utils';
 import { generateKeyBetween } from 'fractional-indexing';
 
 import type { SurfaceBlockModel } from '../surface-model.js';
@@ -494,7 +494,7 @@ export class LayerManager {
       if (element instanceof SurfaceElementModel) {
         this.canvasElements.push(element);
         this.canvasGrid.add(element);
-      } else if (matchFlavours(element, ['affine:frame'])) {
+      } else if (matchFlavours(element, ['pulsar:frame'])) {
         this.framesGrid.add(element);
         this.frames.push(element);
       } else {
@@ -534,11 +534,11 @@ export class LayerManager {
       return true;
     }
 
-    if (!type.startsWith('affine:')) {
+    if (!type.startsWith('pulsar:')) {
       updateType = 'canvas';
       updateArray(this.canvasElements, element);
       this.canvasGrid.update(element as SurfaceElementModel);
-    } else if (matchFlavours(element as BlockModel, ['affine:frame'])) {
+    } else if (matchFlavours(element as BlockModel, ['pulsar:frame'])) {
       updateArray(this.frames, element);
       this.framesGrid.update(element as FrameBlockModel);
     } else {
@@ -622,7 +622,7 @@ export class LayerManager {
     const isGroup =
       type === 'group' || element instanceof SurfaceGroupLikeModel;
 
-    if (!type.startsWith('affine:')) {
+    if (!type.startsWith('pulsar:')) {
       insertType = 'canvas';
       if (isGroup) {
         (element as GroupElementModel).childElements.forEach(child => {
@@ -633,7 +633,7 @@ export class LayerManager {
       }
       insertToOrderedArray(this.canvasElements, element);
       this.canvasGrid.add(element as SurfaceElementModel);
-    } else if (matchFlavours(element as BlockModel, ['affine:frame'])) {
+    } else if (matchFlavours(element as BlockModel, ['pulsar:frame'])) {
       insertToOrderedArray(this.frames, element);
       this.framesGrid.add(element as FrameBlockModel);
     } else {
@@ -680,7 +680,7 @@ export class LayerManager {
     const manager = new LayerManager(this._doc, this._surface);
 
     return (elementType: string) => {
-      if (ignoreRule && elementType !== 'affine:frame') {
+      if (ignoreRule && elementType !== 'pulsar:frame') {
         elementType = 'shape';
       }
 
@@ -729,7 +729,7 @@ export class LayerManager {
       deleteType = 'canvas';
       removeFromOrderedArray(this.canvasElements, element);
       this.canvasGrid.remove(element);
-    } else if (matchFlavours(element, ['affine:frame'])) {
+    } else if (matchFlavours(element, ['pulsar:frame'])) {
       removeFromOrderedArray(this.frames, element);
       this.framesGrid.remove(element as FrameBlockModel);
     } else {
@@ -754,8 +754,8 @@ export class LayerManager {
   }
 
   generateIndex(elementType: string): string {
-    const batch = elementType === 'affine:frame' ? 'frame' : 'common';
-    const type = elementType.startsWith('affine:') ? 'block' : 'canvas';
+    const batch = elementType === 'pulsar:frame' ? 'frame' : 'common';
+    const type = elementType.startsWith('pulsar:') ? 'block' : 'canvas';
 
     if (batch === 'frame') {
       const lastFrame = last(this.frames);
@@ -804,14 +804,14 @@ export class LayerManager {
   getReorderedIndex(element: GfxModel, direction: ReorderingDirection): string {
     const group = (element.group as BlockSuite.SurfaceGroupLikeModel) || null;
     const isFrameBlock =
-      (element as FrameBlockModel).flavour === 'affine:frame';
+      (element as FrameBlockModel).flavour === 'pulsar:frame';
 
     let elements: GfxModel[];
 
     if (group !== null) {
       elements = group.childElements.filter(
         element =>
-          ((element as FrameBlockModel)?.flavour === 'affine:frame') ===
+          ((element as FrameBlockModel)?.flavour === 'pulsar:frame') ===
           isFrameBlock
       );
 

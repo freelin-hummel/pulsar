@@ -1,5 +1,5 @@
-import { createPopup } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { createPopup } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { CloseIcon, FilterIcon, PlusIcon } from '@blocksuite/icons/lit';
 import { type TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -73,11 +73,11 @@ export class FilterBar extends WithDisposable(ShadowlessElement) {
       display: flex;
       align-items: center;
       padding: 4px;
-      background-color: var(--affine-white);
+      background-color: var(--pulsar-white);
     }
 
     .filter-bar-add-filter {
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       padding: 4px 8px;
       display: flex;
       align-items: center;
@@ -119,7 +119,7 @@ export class FilterBar extends WithDisposable(ShadowlessElement) {
   renderMoreFilter = (count: number): TemplateResult => {
     return html` <div
       class="dv-shadow-2 dv-round-8"
-      style="padding: 8px;background-color: var(--affine-background-overlay-panel-color);display:flex;flex-direction: column;gap: 8px;"
+      style="padding: 8px;background-color: var(--pulsar-background-overlay-panel-color);display:flex;flex-direction: column;gap: 8px;"
     >
       ${repeat(
         this.data.conditions.slice(count),

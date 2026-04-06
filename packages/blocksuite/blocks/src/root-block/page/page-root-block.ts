@@ -1,17 +1,17 @@
-import type { NoteBlockModel, RootBlockModel } from '@blocksuite/affine-model';
-import type { Viewport } from '@blocksuite/affine-shared/types';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { BlockModel, Text } from '@blocksuite/store';
+import type { NoteBlockModel, RootBlockModel } from '@pulsar/model';
+import type { Viewport } from '@pulsar/editor-shared/types';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { BlockModel, Text } from '@pulsar/store';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { NoteDisplayMode } from '@blocksuite/affine-model';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { NoteDisplayMode } from '@pulsar/model';
 import {
   focusTitle,
   getDocTitleInlineEditor,
   getScrollContainer,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { BlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { BlockComponent } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -46,7 +46,7 @@ function testClickOnBlankArea(
   return false;
 }
 
-@customElement('affine-page-root')
+@customElement('pulsar-page-root')
 export class PageRootBlockComponent extends BlockComponent<
   RootBlockModel,
   PageRootService,
@@ -70,12 +70,12 @@ export class PageRootBlockComponent extends BlockComponent<
       flex-direction: column;
       width: 100%;
       height: 100%;
-      font-family: var(--affine-font-family);
-      font-size: var(--affine-font-base);
-      line-height: var(--affine-line-height);
-      color: var(--affine-text-primary-color);
+      font-family: var(--pulsar-font-family);
+      font-size: var(--pulsar-font-base);
+      line-height: var(--pulsar-line-height);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
-      max-width: var(--affine-editor-width);
+      max-width: var(--pulsar-editor-width);
       margin: 0 auto;
       /* cursor: crosshair; */
       cursor: default;
@@ -83,11 +83,11 @@ export class PageRootBlockComponent extends BlockComponent<
       /* Leave a place for drag-handle */
       /* Do not use prettier format this style, or it will be broken */
       /* prettier-ignore */
-      padding-left: var(--affine-editor-side-padding, ${DOC_BLOCK_CHILD_PADDING}px);
+      padding-left: var(--pulsar-editor-side-padding, ${DOC_BLOCK_CHILD_PADDING}px);
       /* prettier-ignore */
-      padding-right: var(--affine-editor-side-padding, ${DOC_BLOCK_CHILD_PADDING}px);
+      padding-right: var(--pulsar-editor-side-padding, ${DOC_BLOCK_CHILD_PADDING}px);
       /* prettier-ignore */
-      padding-bottom: var(--affine-editor-bottom-padding, ${DOC_BOTTOM_PADDING}px);
+      padding-bottom: var(--pulsar-editor-bottom-padding, ${DOC_BOTTOM_PADDING}px);
     }
 
     /* Extra small devices (phones, 640px and down) */
@@ -114,13 +114,13 @@ export class PageRootBlockComponent extends BlockComponent<
   focusFirstParagraph = () => {
     const defaultNote = this._getDefaultNoteBlock();
     const firstText = defaultNote?.children.find(block =>
-      matchFlavours(block, ['affine:paragraph', 'affine:list', 'affine:code'])
+      matchFlavours(block, ['pulsar:paragraph', 'pulsar:list', 'pulsar:code'])
     );
     if (firstText) {
       focusTextModel(this.std, firstText.id);
     } else {
       const newFirstParagraphId = this.doc.addBlock(
-        'affine:paragraph',
+        'pulsar:paragraph',
         {},
         defaultNote,
         0
@@ -133,7 +133,7 @@ export class PageRootBlockComponent extends BlockComponent<
 
   prependParagraphWithText = (text: Text) => {
     const newFirstParagraphId = this.doc.addBlock(
-      'affine:paragraph',
+      'pulsar:paragraph',
       { text },
       this._getDefaultNoteBlock(),
       0
@@ -144,13 +144,13 @@ export class PageRootBlockComponent extends BlockComponent<
   private _createDefaultNoteBlock() {
     const { doc } = this;
 
-    const noteId = doc.addBlock('affine:note', {}, doc.root?.id);
+    const noteId = doc.addBlock('pulsar:note', {}, doc.root?.id);
     return doc.getBlockById(noteId) as NoteBlockModel;
   }
 
   private _getDefaultNoteBlock() {
     return (
-      this.doc.root?.children.find(child => child.flavour === 'affine:note') ??
+      this.doc.root?.children.find(child => child.flavour === 'pulsar:note') ??
       this._createDefaultNoteBlock()
     );
   }
@@ -189,7 +189,7 @@ export class PageRootBlockComponent extends BlockComponent<
       'Mod-a': () => {
         const blocks = this.model.children
           .filter(model => {
-            if (matchFlavours(model, ['affine:note'])) {
+            if (matchFlavours(model, ['pulsar:note'])) {
               const note = model as NoteBlockModel;
               if (note.displayMode === NoteDisplayMode.EdgelessOnly)
                 return false;
@@ -218,14 +218,14 @@ export class PageRootBlockComponent extends BlockComponent<
         let path: string[] = buildPath(this.doc.getBlockById(sel.blockId));
         while (path.length > 0 && !model) {
           const m = this.doc.getBlockById(path[path.length - 1]);
-          if (m && m.flavour === 'affine:note') {
+          if (m && m.flavour === 'pulsar:note') {
             model = m;
           }
           path = path.slice(0, -1);
         }
         if (!model) return;
         const prevNote = this.doc.getPrev(model);
-        if (!prevNote || prevNote.flavour !== 'affine:note') {
+        if (!prevNote || prevNote.flavour !== 'pulsar:note') {
           const isFirstText = sel.is('text') && sel.start.index === 0;
           const isBlock = sel.is('block');
           if (isBlock || isFirstText) {
@@ -233,7 +233,7 @@ export class PageRootBlockComponent extends BlockComponent<
           }
           return;
         }
-        const notes = this.doc.getBlockByFlavour('affine:note');
+        const notes = this.doc.getBlockByFlavour('pulsar:note');
         const index = notes.indexOf(prevNote);
         if (index !== 0) return;
 
@@ -292,7 +292,7 @@ export class PageRootBlockComponent extends BlockComponent<
         .slice()
         .reverse()
         .find(child => {
-          const isNote = matchFlavours(child, ['affine:note']);
+          const isNote = matchFlavours(child, ['pulsar:note']);
           if (!isNote) return false;
           const note = child as NoteBlockModel;
           const displayOnDoc =
@@ -302,8 +302,8 @@ export class PageRootBlockComponent extends BlockComponent<
         });
       if (!lastNote) {
         if (readonly) return;
-        const noteId = this.doc.addBlock('affine:note', {}, this.model.id);
-        const paragraphId = this.doc.addBlock('affine:paragraph', {}, noteId);
+        const noteId = this.doc.addBlock('pulsar:note', {}, this.model.id);
+        const paragraphId = this.doc.addBlock('pulsar:paragraph', {}, noteId);
         newTextSelectionId = paragraphId;
       } else {
         const last = lastNote.children.at(-1);
@@ -311,19 +311,19 @@ export class PageRootBlockComponent extends BlockComponent<
           !last ||
           !last.text ||
           matchFlavours(last, [
-            'affine:code',
-            'affine:divider',
-            'affine:image',
-            'affine:database',
-            'affine:bookmark',
-            'affine:attachment',
-            'affine:surface-ref',
+            'pulsar:code',
+            'pulsar:divider',
+            'pulsar:image',
+            'pulsar:database',
+            'pulsar:bookmark',
+            'pulsar:attachment',
+            'pulsar:surface-ref',
           ]) ||
           /affine:embed-*/.test(last.flavour)
         ) {
           if (readonly) return;
           const paragraphId = this.doc.addBlock(
-            'affine:paragraph',
+            'pulsar:paragraph',
             {},
             lastNote.id
           );
@@ -359,7 +359,7 @@ export class PageRootBlockComponent extends BlockComponent<
   override firstUpdated() {
     this._initViewportResizeEffect();
     const noteModels = this.model.children.filter(model =>
-      matchFlavours(model, ['affine:note'])
+      matchFlavours(model, ['pulsar:note'])
     );
     noteModels.forEach(note => {
       this.disposables.add(
@@ -380,7 +380,7 @@ export class PageRootBlockComponent extends BlockComponent<
     )}`;
 
     const children = this.renderChildren(this.model, child => {
-      const isNote = matchFlavours(child, ['affine:note']);
+      const isNote = matchFlavours(child, ['pulsar:note']);
       const note = child as NoteBlockModel;
       const displayOnEdgeless =
         !!note.displayMode && note.displayMode === NoteDisplayMode.EdgelessOnly;
@@ -389,7 +389,7 @@ export class PageRootBlockComponent extends BlockComponent<
     });
 
     return html`
-      <div class="affine-page-root-block-container">${children} ${widgets}</div>
+      <div class="pulsar-page-root-block-container">${children} ${widgets}</div>
     `;
   }
 
@@ -440,6 +440,6 @@ export class PageRootBlockComponent extends BlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-page-root': PageRootBlockComponent;
+    'pulsar-page-root': PageRootBlockComponent;
   }
 }

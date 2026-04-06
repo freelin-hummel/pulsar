@@ -2,28 +2,28 @@ import type {
   BaseElementProps,
   SerializedElement,
   SurfaceBlockModel,
-} from '@blocksuite/block-std/gfx';
-import type { SerializedXYWH, XYWH } from '@blocksuite/global/utils';
+} from '@pulsar/block-std/gfx';
+import type { SerializedXYWH, XYWH } from '@pulsar/global/utils';
 
 import {
   LocalConnectorElementModel,
   TextResizing,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   GfxGroupLikeElementModel,
   convert,
   field,
   observe,
   watch,
-} from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std/gfx';
 import {
   assertType,
   deserializeXYWH,
   keys,
   last,
   pick,
-} from '@blocksuite/global/utils';
-import { DocCollection, type Y } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { DocCollection, type Y } from '@pulsar/store';
 import { generateKeyBetween } from 'fractional-indexing';
 import { z } from 'zod';
 

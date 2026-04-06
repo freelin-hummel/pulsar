@@ -1,18 +1,18 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { ConnectorElementModel } from '@pulsar/model';
 
-import { TextUtils } from '@blocksuite/affine-block-surface';
-import '@blocksuite/affine-components/rich-text';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { almostEqual } from '@blocksuite/affine-shared/utils';
+import { TextUtils } from '@pulsar/block-surface';
+import '@pulsar/editor-components/rich-text';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { almostEqual } from '@pulsar/editor-shared/utils';
 import {
   RANGE_SYNC_EXCLUDE_ATTR,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { Bound, Vec } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { Bound, Vec } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 import { css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -63,8 +63,8 @@ export class EdgelessConnectorLabelEditor extends WithDisposable(
       transform-origin: center;
       z-index: 10;
       padding: ${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px;
-      border: ${BORDER_WIDTH}px solid var(--affine-primary-color, #1e96eb);
-      background: var(--affine-background-primary-color, #fff);
+      border: ${BORDER_WIDTH}px solid var(--pulsar-primary-color, #1e96eb);
+      background: var(--pulsar-background-primary-color, #fff);
       border-radius: 2px;
       box-shadow: 0px 0px 0px 2px rgba(30, 150, 235, 0.3);
       box-sizing: border-box;
@@ -82,7 +82,7 @@ export class EdgelessConnectorLabelEditor extends WithDisposable(
 
       .edgeless-connector-label-editor-placeholder {
         pointer-events: none;
-        color: var(--affine-text-disable-color);
+        color: var(--pulsar-text-disable-color);
         white-space: nowrap;
       }
     }

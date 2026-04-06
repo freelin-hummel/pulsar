@@ -1,7 +1,7 @@
-import type { Command, TextSelection } from '@blocksuite/block-std';
-import type { Text } from '@blocksuite/store';
+import type { Command, TextSelection } from '@pulsar/block-std';
+import type { Text } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const deleteTextCommand: Command<
   'currentTextSelection',
@@ -28,7 +28,7 @@ export const deleteTextCommand: Command<
   if (!fromElement) return;
 
   let fromText: Text | undefined;
-  if (matchFlavours(fromElement.model, ['affine:page'])) {
+  if (matchFlavours(fromElement.model, ['pulsar:page'])) {
     fromText = fromElement.model.title;
   } else {
     fromText = fromElement.model.text;

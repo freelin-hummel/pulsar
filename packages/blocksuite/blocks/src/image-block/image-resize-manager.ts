@@ -1,11 +1,11 @@
-import type { BlockComponent, PointerEventState } from '@blocksuite/block-std';
+import type { BlockComponent, PointerEventState } from '@pulsar/block-std';
 
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
 import {
   getClosestBlockComponentByElement,
   getModelByElement,
-} from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { EdgelessRootBlockComponent } from '../root-block/index.js';
 

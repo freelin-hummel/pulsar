@@ -1,4 +1,4 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import { css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -77,7 +77,7 @@ export class SelectGroupView extends BaseGroup<
     const tag = this.tag;
     if (!tag) {
       return html` <div
-        style="font-size: 14px;color: var(--affine-text-primary-color);line-height: 22px;"
+        style="font-size: 14px;color: var(--pulsar-text-primary-color);line-height: 22px;"
       >
         Ungroups
       </div>`;

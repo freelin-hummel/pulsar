@@ -1,4 +1,4 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import { css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -36,7 +36,7 @@ export class NumberGroupView extends BaseGroup<NonNullable<unknown>, number> {
     }
 
     .data-view-group-title-number-view:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 

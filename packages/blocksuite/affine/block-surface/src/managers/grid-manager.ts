@@ -1,12 +1,12 @@
-import type { GfxModel } from '@blocksuite/block-std/gfx';
-import type { IBound } from '@blocksuite/global/utils';
+import type { GfxModel } from '@pulsar/block-std/gfx';
+import type { IBound } from '@pulsar/global/utils';
 
 import {
   Bound,
   getBoundsWithRotation,
   intersects,
   isPointIn,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import { GRID_SIZE } from '../consts.js';
 import { compare } from './layer-utils.js';

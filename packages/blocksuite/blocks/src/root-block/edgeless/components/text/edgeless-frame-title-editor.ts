@@ -1,13 +1,13 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
+import type { RichText } from '@pulsar/editor-components/rich-text';
 
-import { FrameBlockModel } from '@blocksuite/affine-model';
+import { FrameBlockModel } from '@pulsar/model';
 import {
   RANGE_SYNC_EXCLUDE_ATTR,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { cssVarV2 } from '@toeverything/theme/v2';
 import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -34,10 +34,10 @@ export class EdgelessFrameTitleEditor extends WithDisposable(
       padding: 0 4px;
       outline: none;
       z-index: 1;
-      border: 1px solid var(--affine-primary-color);
+      border: 1px solid var(--pulsar-primary-color);
       box-shadow: 0px 0px 0px 2px rgba(30, 150, 235, 0.3);
       overflow: hidden;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
     }
   `;
 
@@ -118,7 +118,7 @@ export class EdgelessFrameTitleEditor extends WithDisposable(
 
     const colors = this.frameBlock?.titleElement?.colors ?? {
       background: cssVarV2('edgeless/frame/background/white'),
-      text: 'var(--affine-text-primary-color)',
+      text: 'var(--pulsar-text-primary-color)',
     };
 
     const inlineEditorStyle = styleMap({

@@ -6,8 +6,8 @@ import type {
   EmbedLoomModel,
   EmbedSyncedDocModel,
   EmbedYoutubeModel,
-} from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
 
 import { BookmarkBlockComponent } from '../../../bookmark-block/bookmark-block.js';
 import { EmbedFigmaBlockComponent } from '../../../embed-figma-block/embed-figma-block.js';

@@ -1,4 +1,4 @@
-import type { StrokeStyle } from '@blocksuite/affine-model';
+import type { StrokeStyle } from '@pulsar/model';
 
 export interface GeneralShapeOptions {
   x: number;

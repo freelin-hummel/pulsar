@@ -1,5 +1,5 @@
-import type { DocMode } from '@blocksuite/blocks';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { DocMode } from '@pulsar/blocks';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import {
   BlockStdScope,
@@ -8,15 +8,15 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
-import { type AbstractEditor, DocModeProvider } from '@blocksuite/blocks';
+} from '@pulsar/block-std';
+import { type AbstractEditor, DocModeProvider } from '@pulsar/blocks';
 import {
   EdgelessEditorBlockSpecs,
   type EdgelessRootBlockComponent,
   PageEditorBlockSpecs,
   type PageRootBlockComponent,
-} from '@blocksuite/blocks';
-import { Slot, noop } from '@blocksuite/global/utils';
+} from '@pulsar/blocks';
+import { Slot, noop } from '@pulsar/global/utils';
 import { computed, effect, signal } from '@lit-labs/preact-signals';
 import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -43,8 +43,8 @@ function forwardSlot<T extends Record<string, Slot<any>>>(
   });
 }
 
-@customElement('affine-editor-container')
-export class AffineEditorContainer
+@customElement('pulsar-editor-container')
+export class PulsarEditorContainer
   extends SignalWatcher(WithDisposable(ShadowlessElement))
   implements AbstractEditor
 {
@@ -93,7 +93,7 @@ export class AffineEditorContainer
       overflow-y: auto;
       container-name: viewport;
       container-type: inline-size;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
     }
     .affine-page-viewport * {
       box-sizing: border-box;
@@ -107,7 +107,7 @@ export class AffineEditorContainer
 
     .playground-page-editor-container {
       flex-grow: 1;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       display: block;
     }
 
@@ -122,8 +122,8 @@ export class AffineEditorContainer
     }
 
     .edgeless-editor-container {
-      font-family: var(--affine-font-family);
-      background: var(--affine-background-primary-color);
+      font-family: var(--pulsar-font-family);
+      background: var(--pulsar-background-primary-color);
       display: block;
       height: 100%;
       position: relative;
@@ -199,8 +199,8 @@ export class AffineEditorContainer
       html`
         <div
           class=${mode === 'page'
-            ? 'affine-page-viewport'
-            : 'affine-edgeless-viewport'}
+            ? 'pulsar-page-viewport'
+            : 'pulsar-edgeless-viewport'}
         >
           ${when(
             mode === 'page',
@@ -285,11 +285,11 @@ export class AffineEditorContainer
   }
 
   /** @deprecated unreliable since edgelessSpecs can be overridden */
-  @query('affine-edgeless-root')
+  @query('pulsar-edgeless-root')
   private accessor _edgelessRoot: EdgelessRootBlockComponent | null = null;
 
   /** @deprecated unreliable since pageSpecs can be overridden */
-  @query('affine-page-root')
+  @query('pulsar-page-root')
   private accessor _pageRoot: PageRootBlockComponent | null = null;
 
   @property({ attribute: false })
@@ -298,6 +298,6 @@ export class AffineEditorContainer
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-editor-container': AffineEditorContainer;
+    'pulsar-editor-container': PulsarEditorContainer;
   }
 }

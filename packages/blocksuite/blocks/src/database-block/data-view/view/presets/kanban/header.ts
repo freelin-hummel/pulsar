@@ -1,9 +1,9 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit/static-html.js';
@@ -26,11 +26,11 @@ const styles = css`
   }
 
   .select-group:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 `;
 
-@customElement('affine-data-view-kanban-header')
+@customElement('pulsar-data-view-kanban-header')
 export class KanbanHeader extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -72,6 +72,6 @@ export class KanbanHeader extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-kanban-header': KanbanHeader;
+    'pulsar-data-view-kanban-header': KanbanHeader;
   }
 }

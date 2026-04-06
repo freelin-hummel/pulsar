@@ -1,5 +1,5 @@
-import { clamp } from '@blocksuite/affine-shared/utils';
-import { Text } from '@blocksuite/store';
+import { clamp } from '@pulsar/editor-shared/utils';
+import { Text } from '@pulsar/store';
 
 import type { NumberFormat } from './utils/formatter.js';
 

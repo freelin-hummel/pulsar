@@ -1,4 +1,4 @@
-import { clamp, stopPropagation } from '@blocksuite/affine-shared/utils';
+import { clamp, stopPropagation } from '@pulsar/editor-shared/utils';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -52,18 +52,18 @@ export class EdgelessScalePanel extends LitElement {
     .scale-input {
       display: flx;
       align-self: stretch;
-      border: 0.5px solid var(--affine-border-color);
+      border: 0.5px solid var(--pulsar-border-color);
       border-radius: 8px;
       padding: 4px 8px;
       box-sizing: border-box;
     }
 
     .scale-input::placeholder {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
 
     .scale-input:focus {
-      outline-color: var(--affine-primary-color);
+      outline-color: var(--pulsar-primary-color);
       outline-width: 0.5px;
     }
   `;

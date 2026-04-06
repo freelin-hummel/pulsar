@@ -1,10 +1,10 @@
-import { type AffineInlineEditor, REFERENCE_NODE } from './inline/index.js';
+import { type PulsarInlineEditor, REFERENCE_NODE } from './inline/index.js';
 
 export function insertLinkedNode({
   inlineEditor,
   docId,
 }: {
-  inlineEditor: AffineInlineEditor;
+  inlineEditor: PulsarInlineEditor;
   docId: string;
 }) {
   if (!inlineEditor) return;

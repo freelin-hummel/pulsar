@@ -1,5 +1,5 @@
-import { isAbortError } from '@blocksuite/affine-shared/utils';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { isAbortError } from '@pulsar/editor-shared/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { LinkPreviewData, LinkPreviewResponseData } from './types.js';
 

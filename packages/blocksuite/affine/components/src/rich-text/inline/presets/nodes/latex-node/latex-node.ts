@@ -1,16 +1,16 @@
-import type { InlineEditor } from '@blocksuite/inline';
+import type { InlineEditor } from '@pulsar/inline';
 
 import {
   type BlockComponent,
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   type DeltaInsert,
   ZERO_WIDTH_NON_JOINER,
   ZERO_WIDTH_SPACE,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 import { effect, signal } from '@lit-labs/preact-signals';
 import { cssVar } from '@toeverything/theme';
 import { cssVarV2 } from '@toeverything/theme/v2';
@@ -18,14 +18,14 @@ import katex from 'katex';
 import { css, html, render, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import type { AffineTextAttributes } from '../../affine-inline-specs.js';
+import type { PulsarTextAttributes } from '../../affine-inline-specs.js';
 
 import { createLitPortal } from '../../../../../portal/helper.js';
 import './latex-editor-menu.js';
 import './latex-editor-unit.js';
 
-@customElement('affine-latex-node')
-export class AffineLatexNode extends SignalWatcher(
+@customElement('pulsar-latex-node')
+export class PulsarLatexNode extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
   private _editorAbortController: AbortController | null = null;
@@ -39,7 +39,7 @@ export class AffineLatexNode extends SignalWatcher(
       white-space: nowrap;
       word-break: break-word;
       color: ${unsafeCSS(cssVar('textPrimaryColor'))};
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
       border-radius: 4px;
       text-decoration: none;
       cursor: pointer;
@@ -166,7 +166,7 @@ export class AffineLatexNode extends SignalWatcher(
   }
 
   override render() {
-    return html`<span class="affine-latex" data-selected=${this.selected}
+    return html`<span class="pulsar-latex" data-selected=${this.selected}
       ><div class="latex-container"></div>
       <v-text .str=${ZERO_WIDTH_NON_JOINER}></v-text
     ></span>`;
@@ -196,7 +196,7 @@ export class AffineLatexNode extends SignalWatcher(
       abortController: this._editorAbortController,
       shadowDom: false,
       portalStyles: {
-        zIndex: 'var(--affine-z-index-popover)',
+        zIndex: 'var(--pulsar-z-index-popover)',
       },
     });
 
@@ -218,12 +218,12 @@ export class AffineLatexNode extends SignalWatcher(
   }
 
   @property({ attribute: false })
-  accessor delta: DeltaInsert<AffineTextAttributes> = {
+  accessor delta: DeltaInsert<PulsarTextAttributes> = {
     insert: ZERO_WIDTH_SPACE,
   };
 
   @property({ attribute: false })
-  accessor editor!: InlineEditor<AffineTextAttributes>;
+  accessor editor!: InlineEditor<PulsarTextAttributes>;
 
   @property({ attribute: false })
   accessor endOffset!: number;
@@ -237,6 +237,6 @@ export class AffineLatexNode extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-latex-node': AffineLatexNode;
+    'pulsar-latex-node': PulsarLatexNode;
   }
 }

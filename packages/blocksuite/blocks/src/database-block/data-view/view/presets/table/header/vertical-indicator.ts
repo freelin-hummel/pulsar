@@ -1,4 +1,4 @@
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -36,7 +36,7 @@ export class TableVerticalIndicator extends WithDisposable(ShadowlessElement) {
       position: absolute;
       z-index: 1;
       width: 100%;
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
       pointer-events: none;
     }
     .vertical-indicator-group::after {
@@ -46,7 +46,7 @@ export class TableVerticalIndicator extends WithDisposable(ShadowlessElement) {
       height: 100%;
       content: '';
       right: 0;
-      background-color: var(--affine-primary-color);
+      background-color: var(--pulsar-primary-color);
       border-radius: 1px;
     }
     .with-shadow.vertical-indicator-group::after {
@@ -96,7 +96,7 @@ export class TableVerticalIndicator extends WithDisposable(ShadowlessElement) {
 export const getTableGroupRects = (tableContainer: HTMLElement) => {
   const tableRect = tableContainer.getBoundingClientRect();
   const groups = tableContainer.querySelectorAll(
-    'affine-data-view-table-group'
+    'pulsar-data-view-table-group'
   );
   return Array.from(groups).map(group => {
     const groupRect = group.getBoundingClientRect();
@@ -125,7 +125,7 @@ export const startDragWidthAdjustmentBar = (
   const left =
     tableContainer
       .querySelector(
-        `affine-database-header-column[data-column-id='${column.id}']`
+        `pulsar-database-header-column[data-column-id='${column.id}']`
       )
       ?.getBoundingClientRect().left ?? 0;
   const rectList = getTableGroupRects(tableContainer);

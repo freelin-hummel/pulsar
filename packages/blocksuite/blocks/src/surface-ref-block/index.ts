@@ -11,7 +11,7 @@ export {
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:surface-ref': SurfaceRefBlockService;
+      'pulsar:surface-ref': SurfaceRefBlockService;
     }
   }
 }

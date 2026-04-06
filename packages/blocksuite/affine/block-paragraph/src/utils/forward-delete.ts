@@ -1,10 +1,10 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
+import type { BlockStdScope } from '@pulsar/block-std';
 
-import { EMBED_BLOCK_FLAVOUR_LIST } from '@blocksuite/affine-shared/consts';
+import { EMBED_BLOCK_FLAVOUR_LIST } from '@pulsar/editor-shared/consts';
 import {
   getNextContentBlock,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 export function forwardDelete(std: BlockStdScope) {
   const { doc, host } = std;
@@ -12,7 +12,7 @@ export function forwardDelete(std: BlockStdScope) {
   if (!text) return;
   const isCollapsed = text.isCollapsed();
   const model = doc.getBlock(text.from.blockId)?.model;
-  if (!model || !matchFlavours(model, ['affine:paragraph'])) return;
+  if (!model || !matchFlavours(model, ['pulsar:paragraph'])) return;
   const isEnd = isCollapsed && text.from.index === model.text.length;
   if (!isEnd) return;
   const parent = doc.getParent(model);
@@ -20,13 +20,13 @@ export function forwardDelete(std: BlockStdScope) {
 
   const nextSibling = doc.getNext(model);
   const ignoreForwardDeleteFlavourList: BlockSuite.Flavour[] = [
-    'affine:attachment',
-    'affine:bookmark',
+    'pulsar:attachment',
+    'pulsar:bookmark',
     // @ts-ignore TODO: should be fixed after database model is migrated to affine-models
-    'affine:database',
-    'affine:code',
-    'affine:image',
-    'affine:divider',
+    'pulsar:database',
+    'pulsar:code',
+    'pulsar:image',
+    'pulsar:divider',
     ...EMBED_BLOCK_FLAVOUR_LIST,
   ];
 

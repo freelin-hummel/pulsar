@@ -6,18 +6,18 @@ export const codeBlockStyles = css`
   }
 
   .affine-code-block-container {
-    font-size: var(--affine-font-sm);
-    line-height: var(--affine-line-height);
+    font-size: var(--pulsar-font-sm);
+    line-height: var(--pulsar-line-height);
     position: relative;
     padding: 32px 24px;
     margin-bottom: 4px;
-    background: var(--affine-background-code-block);
+    background: var(--pulsar-background-code-block);
     border-radius: 10px;
     box-sizing: border-box;
   }
 
   .affine-code-block-container .inline-editor {
-    font-family: var(--affine-font-code-family);
+    font-family: var(--pulsar-font-code-family);
     font-variant-ligatures: none;
   }
 
@@ -40,10 +40,10 @@ export const codeBlockStyles = css`
     white-space: nowrap;
     left: -0.5px;
     z-index: 1;
-    background: var(--affine-background-code-block);
-    font-size: var(--affine-font-sm);
-    line-height: var(--affine-line-height);
-    color: var(--affine-text-secondary);
+    background: var(--pulsar-background-code-block);
+    font-size: var(--pulsar-font-sm);
+    line-height: var(--pulsar-line-height);
+    color: var(--pulsar-text-secondary);
     box-sizing: border-box;
     user-select: none;
   }

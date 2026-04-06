@@ -1,9 +1,9 @@
 import type {
   SurfaceBlockModel,
   SurfaceBlockTransformer,
-} from '@blocksuite/affine-block-surface';
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
-import type { BlockModel, Y } from '@blocksuite/store';
+} from '@pulsar/block-surface';
+import type { ConnectorElementModel } from '@pulsar/model';
+import type { BlockModel, Y } from '@pulsar/store';
 
 import {
   Bound,
@@ -11,26 +11,26 @@ import {
   assertExists,
   assertType,
   getCommonBound,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import {
   type BlockSnapshot,
   type DocSnapshot,
   DocSnapshotSchema,
   Job,
   type SnapshotReturn,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 /**
  * Those block contains other block's id
  * should defer the loading
  */
-const DEFERED_BLOCK = ['affine:surface', 'affine:surface-ref'] as const;
+const DEFERED_BLOCK = ['pulsar:surface', 'pulsar:surface-ref'] as const;
 
 /**
  * Those block should not be inserted directly
  * it should be merged with current existing block
  */
-const MERGE_BLOCK = ['affine:surface', 'affine:page'] as const;
+const MERGE_BLOCK = ['pulsar:surface', 'pulsar:page'] as const;
 
 type MergeBlockFlavour = (typeof MERGE_BLOCK)[number];
 
@@ -107,9 +107,9 @@ export class TemplateJob {
 
   private _getMergeBlockId(modelData: BlockSnapshot) {
     switch (modelData.flavour as MergeBlockFlavour) {
-      case 'affine:page':
+      case 'pulsar:page':
         return this.model.doc.root!.id;
-      case 'affine:surface':
+      case 'pulsar:surface':
         return this.model.id;
     }
   }
@@ -122,7 +122,7 @@ export class TemplateJob {
         bounds.push(Bound.deserialize(block.props['xywh'] as string));
       }
 
-      if (block.flavour === 'affine:surface') {
+      if (block.flavour === 'pulsar:surface') {
         const ignoreType = ['connector', 'group'];
 
         Object.entries(
@@ -293,9 +293,9 @@ export class TemplateJob {
 
   private _mergeProps(from: BlockSnapshot, to: BlockModel) {
     switch (from.flavour as MergeBlockFlavour) {
-      case 'affine:page':
+      case 'pulsar:page':
         break;
-      case 'affine:surface':
+      case 'pulsar:surface':
         this._mergeSurfaceElements(
           from.props.elements as Record<string, Record<string, unknown>>,
           (to as SurfaceBlockModel).elements.getValue()!
@@ -309,7 +309,7 @@ export class TemplateJob {
     to: Y.Map<Y.Map<unknown>>
   ) {
     const schema =
-      this.model.doc.collection.schema.flavourSchemaMap.get('affine:surface');
+      this.model.doc.collection.schema.flavourSchemaMap.get('pulsar:surface');
     const surfaceTransformer =
       schema?.transformer?.() as SurfaceBlockTransformer;
 

@@ -1,6 +1,6 @@
-import type { Command, EditorHost } from '@blocksuite/block-std';
+import type { Command, EditorHost } from '@pulsar/block-std';
 
-import { toNumberedList } from '@blocksuite/affine-shared/utils';
+import { toNumberedList } from '@pulsar/editor-shared/utils';
 
 export const convertToNumberedListCommand: Command<
   never,

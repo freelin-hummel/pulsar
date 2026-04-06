@@ -1,13 +1,13 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { BlockStdScope } from '@blocksuite/block-std';
+import { BlockStdScope } from '@pulsar/block-std';
 import {
   EditorHost,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { EdgelessEditorBlockSpecs } from '@blocksuite/blocks';
-import { noop } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { EdgelessEditorBlockSpecs } from '@pulsar/blocks';
+import { noop } from '@pulsar/global/utils';
 import { type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { guard } from 'lit/directives/guard.js';
@@ -18,8 +18,8 @@ noop(EditorHost);
 export class EdgelessEditor extends WithDisposable(ShadowlessElement) {
   static override styles = css`
     edgeless-editor {
-      font-family: var(--affine-font-family);
-      background: var(--affine-background-primary-color);
+      font-family: var(--pulsar-font-family);
+      background: var(--pulsar-background-primary-color);
     }
 
     edgeless-editor * {
@@ -64,7 +64,7 @@ export class EdgelessEditor extends WithDisposable(ShadowlessElement) {
     if (!this.doc.root) return nothing;
 
     return html`
-      <div class="affine-edgeless-viewport">
+      <div class="pulsar-edgeless-viewport">
         ${guard([std], () => std.render())}
       </div>
     `;

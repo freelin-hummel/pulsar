@@ -1,4 +1,4 @@
-import type { Slot } from '@blocksuite/global/utils';
+import type { Slot } from '@pulsar/global/utils';
 
 import type { Doc, DocCollection } from '../store/index.js';
 import type { AssetsManager } from './assets.js';

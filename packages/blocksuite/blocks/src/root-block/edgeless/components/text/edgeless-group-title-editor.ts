@@ -1,18 +1,18 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { GroupElementModel } from '@blocksuite/affine-model';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { GroupElementModel } from '@pulsar/model';
 
 import {
   GROUP_TITLE_FONT_SIZE,
   GROUP_TITLE_OFFSET,
   GROUP_TITLE_PADDING,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   RANGE_SYNC_EXCLUDE_ATTR,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -112,14 +112,14 @@ export class EdgelessGroupTitleEditor extends WithDisposable(
       left: x + 'px',
       top: `${y - GROUP_TITLE_OFFSET + 2}px`,
       minWidth: '8px',
-      fontFamily: 'var(--affine-font-family)',
-      color: 'var(--affine-text-primary-color)',
-      background: 'var(--affine-white-10)',
+      fontFamily: 'var(--pulsar-font-family)',
+      color: 'var(--pulsar-text-primary-color)',
+      background: 'var(--pulsar-white-10)',
       outline: 'none',
       zIndex: '1',
       border: `1px solid
-        var(--affine-primary-color)`,
-      boxShadow: 'var(--affine-active-shadow)',
+        var(--pulsar-primary-color)`,
+      boxShadow: 'var(--pulsar-active-shadow)',
     });
     return html`<rich-text
       .yText=${this.group.title}

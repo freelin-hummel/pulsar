@@ -1,33 +1,33 @@
-import type { BlockCaptionEditor } from '@blocksuite/affine-components/caption';
-import type { SurfaceRefBlockModel } from '@blocksuite/affine-model';
-import type { Doc } from '@blocksuite/store';
+import type { BlockCaptionEditor } from '@pulsar/editor-components/caption';
+import type { SurfaceRefBlockModel } from '@pulsar/model';
+import type { Doc } from '@pulsar/store';
 
 import {
   type SurfaceBlockModel,
   SurfaceElementModel,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   EdgelessModeIcon,
   FrameIcon,
   MoreDeleteIcon,
-} from '@blocksuite/affine-components/icons';
-import { Peekable } from '@blocksuite/affine-components/peek';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
-import { requestConnectedFrame } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-components/icons';
+import { Peekable } from '@pulsar/editor-components/peek';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
+import { requestConnectedFrame } from '@pulsar/editor-shared/utils';
 import {
   type BaseSelection,
   BlockStdScope,
   type EditorHost,
-} from '@blocksuite/block-std';
-import { BlockServiceWatcher } from '@blocksuite/block-std';
-import { BlockComponent } from '@blocksuite/block-std';
-import { GfxBlockElementModel } from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std';
+import { BlockServiceWatcher } from '@pulsar/block-std';
+import { BlockComponent } from '@pulsar/block-std';
+import { GfxBlockElementModel } from '@pulsar/block-std/gfx';
 import {
   Bound,
   type SerializedXYWH,
   deserializeXYWH,
-} from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -41,12 +41,12 @@ import { SpecProvider } from '../_specs/index.js';
 import { noContentPlaceholder } from './utils.js';
 
 const REF_LABEL_ICON = {
-  'affine:frame': FrameIcon,
+  'pulsar:frame': FrameIcon,
   DEFAULT_NOTE_HEIGHT: EdgelessModeIcon,
 } as Record<string, TemplateResult>;
 
 const NO_CONTENT_TITLE = {
-  'affine:frame': 'Frame',
+  'pulsar:frame': 'Frame',
   group: 'Group',
   DEFAULT: 'Content',
 } as Record<string, string>;
@@ -56,7 +56,7 @@ const NO_CONTENT_REASON = {
   DEFAULT: 'This content was deleted on edgeless mode',
 } as Record<string, string>;
 
-@customElement('affine-surface-ref')
+@customElement('pulsar-surface-ref')
 @Peekable()
 export class SurfaceRefBlockComponent extends BlockComponent<
   SurfaceRefBlockModel,
@@ -99,7 +99,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
       font-size: 28px;
       font-weight: 600;
       line-height: 36px;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
     }
 
     .placeholder-action {
@@ -117,9 +117,9 @@ export class SurfaceRefBlockComponent extends BlockComponent<
       gap: 4px;
 
       border-radius: 8px;
-      border: 1px solid var(--affine-border-color);
+      border: 1px solid var(--pulsar-border-color);
 
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       font-size: 12px;
       font-weight: 500;
       line-height: 20px;
@@ -129,7 +129,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     }
 
     .delete-button > .icon > svg {
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
       width: 16px;
       height: 16px;
       display: block;
@@ -141,20 +141,20 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
       text-align: center;
       font-size: 12px;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       line-height: 20px;
 
-      color: var(--affine-warning-color);
-      background-color: var(--affine-background-error-color);
+      color: var(--pulsar-warning-color);
+      background-color: var(--pulsar-background-error-color);
     }
 
     .ref-content {
       position: relative;
       padding: 20px;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       background: radial-gradient(
-        var(--affine-edgeless-grid-color) 1px,
-        var(--affine-background-primary-color) 1px
+        var(--pulsar-edgeless-grid-color) 1px,
+        var(--pulsar-background-primary-color) 1px
       );
     }
 
@@ -169,7 +169,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
     .ref-viewport.frame {
       border-radius: 2px;
-      border: 1px solid var(--affine-black-30);
+      border: 1px solid var(--pulsar-black-30);
     }
 
     .surface-ref-mask {
@@ -201,10 +201,10 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
       width: 100%;
       padding: 8px 16px;
-      border: 1px solid var(--affine-border-color);
+      border: 1px solid var(--pulsar-border-color);
       gap: 14px;
 
-      background: var(--affine-background-primary-color);
+      background: var(--pulsar-background-primary-color);
 
       font-size: 12px;
 
@@ -214,14 +214,14 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     .ref-label .title {
       display: inline-block;
       font-weight: 600;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       line-height: 20px;
 
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
     }
 
     .ref-label .title > svg {
-      color: var(--affine-icon-secondary);
+      color: var(--pulsar-icon-secondary);
       display: inline-block;
       vertical-align: baseline;
       width: 20px;
@@ -232,7 +232,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     .ref-label .suffix {
       display: inline-block;
       font-weight: 400;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
       line-height: 20px;
     }
   `;
@@ -254,7 +254,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
       const [paragraphId] = this.doc.addSiblingBlocks(this.model, [
         {
-          flavour: 'affine:paragraph',
+          flavour: 'pulsar:paragraph',
         },
       ]);
       const model = this.doc.getBlockById(paragraphId);
@@ -289,7 +289,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
   private _initReferencedModel() {
     const surfaceModel: SurfaceBlockModel | null =
-      (this.doc.getBlocksByFlavour('affine:surface')[0]?.model as
+      (this.doc.getBlocksByFlavour('pulsar:surface')[0]?.model as
         | SurfaceBlockModel
         | undefined) ?? null;
     this._surfaceModel = surfaceModel;
@@ -321,13 +321,13 @@ export class SurfaceRefBlockComponent extends BlockComponent<
           doc =>
             doc.getBlock(this.model.reference) ||
             (
-              doc.getBlocksByFlavour('affine:surface')[0]
+              doc.getBlocksByFlavour('pulsar:surface')[0]
                 .model as SurfaceBlockModel
             ).getElementById(this.model.reference)
         );
 
       if (doc) {
-        this._surfaceModel = doc.getBlocksByFlavour('affine:surface')[0]
+        this._surfaceModel = doc.getBlocksByFlavour('pulsar:surface')[0]
           .model as SurfaceBlockModel;
       }
 
@@ -338,10 +338,10 @@ export class SurfaceRefBlockComponent extends BlockComponent<
         ];
       }
 
-      if (doc && doc.getBlocksByFlavour('affine:surface')[0]) {
+      if (doc && doc.getBlocksByFlavour('pulsar:surface')[0]) {
         return [
           (
-            doc.getBlocksByFlavour('affine:surface')[0]
+            doc.getBlocksByFlavour('pulsar:surface')[0]
               .model as SurfaceBlockModel
           ).getElementById(this.model.reference),
           doc.id,
@@ -410,7 +410,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
   private _initSpec() {
     const refreshViewport = this._refreshViewport.bind(this);
     class PageViewWatcher extends BlockServiceWatcher {
-      static override readonly flavour = 'affine:page';
+      static override readonly flavour = 'pulsar:page';
 
       override mounted() {
         this.blockService.disposables.add(
@@ -431,7 +431,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     const reference = this.model.reference;
 
     class FrameViewWatcher extends BlockServiceWatcher {
-      static override readonly flavour = 'affine:frame';
+      static override readonly flavour = 'pulsar:frame';
 
       override mounted() {
         const disposable = this.blockService.specSlots.viewConnected.on(
@@ -464,7 +464,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     if (!previewEditorHost) return;
 
     const edgelessService = previewEditorHost.std.getService(
-      'affine:page'
+      'pulsar:page'
     ) as EdgelessRootService;
 
     edgelessService.viewport.setViewportByBound(
@@ -502,7 +502,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
     return html`<div class="ref-content">
       <div
-        class="ref-viewport ${flavourOrType === 'affine:frame' ? 'frame' : ''}"
+        class="ref-viewport ${flavourOrType === 'pulsar:frame' ? 'frame' : ''}"
         style=${styleMap({
           width: `${w}px`,
           aspectRatio: `${w} / ${h}`,
@@ -542,7 +542,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     return (
       this.isConnected &&
       // prevent surface-ref from render itself in loop
-      !this.parentComponent?.closest('affine-surface-ref')
+      !this.parentComponent?.closest('pulsar-surface-ref')
     );
   }
 
@@ -573,11 +573,11 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
     return html`
       <div
-        class="affine-surface-ref"
+        class="pulsar-surface-ref"
         @click=${this._focusBlock}
         style=${styleMap({
           outline: this._focused
-            ? '2px solid var(--affine-primary-color)'
+            ? '2px solid var(--pulsar-primary-color)'
             : undefined,
         })}
       >
@@ -597,7 +597,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
       xywh: this._referenceXYWH,
       padding: [60, 20, 20, 20] as [number, number, number, number],
     };
-    const pageService = this.std.getService('affine:page');
+    const pageService = this.std.getService('pulsar:page');
 
     pageService.editPropsStore.setStorage('viewport', viewport);
 
@@ -620,7 +620,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
   @state()
   private accessor _surfaceModel: SurfaceBlockModel | null = null;
 
-  @query('affine-surface-ref > block-caption-editor')
+  @query('pulsar-surface-ref > block-caption-editor')
   accessor captionElement!: BlockCaptionEditor;
 
   @query('editor-host')
@@ -629,6 +629,6 @@ export class SurfaceRefBlockComponent extends BlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-surface-ref': SurfaceRefBlockComponent;
+    'pulsar-surface-ref': SurfaceRefBlockComponent;
   }
 }

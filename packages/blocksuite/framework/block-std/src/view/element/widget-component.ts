@@ -1,4 +1,4 @@
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import { consume } from '@lit/context';
 import { LitElement } from 'lit';

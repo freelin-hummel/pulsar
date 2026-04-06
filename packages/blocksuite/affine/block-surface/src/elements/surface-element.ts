@@ -1,4 +1,4 @@
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
 import type { CanvasElementType } from '../element-model/index.js';
 

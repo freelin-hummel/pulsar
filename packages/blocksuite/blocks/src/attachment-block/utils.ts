@@ -1,13 +1,13 @@
 import type {
   AttachmentBlockModel,
   AttachmentBlockProps,
-} from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { toast } from '@blocksuite/affine-components/toast';
-import { defaultAttachmentProps } from '@blocksuite/affine-model';
-import { humanFileSize } from '@blocksuite/affine-shared/utils';
+import { toast } from '@pulsar/editor-components/toast';
+import { defaultAttachmentProps } from '@pulsar/model';
+import { humanFileSize } from '@pulsar/editor-shared/utils';
 
 import type { AttachmentBlockComponent } from './attachment-block.js';
 
@@ -222,9 +222,9 @@ export async function addSiblingAttachmentBlocks(
   // Get the types of all files
   const types = await Promise.all(files.map(file => getFileType(file)));
   const attachmentBlockProps: (Partial<AttachmentBlockProps> & {
-    flavour: 'affine:attachment';
+    flavour: 'pulsar:attachment';
   })[] = files.map((file, index) => ({
-    flavour: 'affine:attachment',
+    flavour: 'pulsar:attachment',
     name: file.name,
     size: file.size,
     type: types[index],

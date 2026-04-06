@@ -1,11 +1,11 @@
-import type { XYWH } from '@blocksuite/global/utils';
+import type { XYWH } from '@pulsar/global/utils';
 
 import {
   type Options,
   Overlay,
   type RoughCanvas,
   CommonUtils,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   type Connection,
   type NoteBlockModel,
@@ -15,9 +15,9 @@ import {
   getShapeType,
   GroupElementModel,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
-import { Bound, assertExists } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/model';
+import { Bound, assertExists } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 
 import type { EdgelessRootBlockComponent } from '../../edgeless-root-block.js';
 
@@ -286,7 +286,7 @@ export function createEdgelessElement(
   } else {
     const { doc } = edgeless;
     id = doc.addBlock(
-      'affine:note',
+      'pulsar:note',
       {
         background: current.background,
         displayMode: current.displayMode,
@@ -300,7 +300,7 @@ export function createEdgelessElement(
     doc.updateBlock(note, () => {
       note.edgeless.collapse = true;
     });
-    doc.addBlock('affine:paragraph', {}, note.id);
+    doc.addBlock('pulsar:paragraph', {}, note.id);
   }
   const group = current.group;
   if (group instanceof GroupElementModel) {

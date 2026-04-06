@@ -1,7 +1,7 @@
-import type { BlockComponent, EditorHost } from '@blocksuite/block-std';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { BlockComponent, EditorHost } from '@pulsar/block-std';
+import type { BlockModel, Doc } from '@pulsar/store';
 
-import { type NoteBlockModel, NoteDisplayMode } from '@blocksuite/affine-model';
+import { type NoteBlockModel, NoteDisplayMode } from '@pulsar/model';
 
 import { matchFlavours } from './checker.js';
 
@@ -38,7 +38,7 @@ export async function asyncGetBlockComponent(
 
 export function findNoteBlockModel(model: BlockModel) {
   return findAncestorModel(model, m =>
-    matchFlavours(m, ['affine:note'])
+    matchFlavours(m, ['pulsar:note'])
   ) as NoteBlockModel | null;
 }
 
@@ -49,7 +49,7 @@ export function getLastNoteBlock(doc: Doc) {
   for (let i = children.length - 1; i >= 0; i--) {
     const child = children[i];
     if (
-      matchFlavours(child, ['affine:note']) &&
+      matchFlavours(child, ['pulsar:note']) &&
       child.displayMode !== NoteDisplayMode.EdgelessOnly
     ) {
       note = child as NoteBlockModel;

@@ -1,9 +1,9 @@
-import type { AffineFormatBarWidget } from './format-bar.js';
+import type { PulsarFormatBarWidget } from './format-bar.js';
 
 import { MenuContext } from '../../configs/toolbar.js';
 
 export class FormatBarContext extends MenuContext {
-  constructor(public toolbar: AffineFormatBarWidget) {
+  constructor(public toolbar: PulsarFormatBarWidget) {
     super();
   }
 

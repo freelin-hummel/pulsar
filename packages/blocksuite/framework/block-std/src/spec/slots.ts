@@ -1,4 +1,4 @@
-import { Slot } from '@blocksuite/global/utils';
+import { Slot } from '@pulsar/global/utils';
 
 import type { BlockService } from '../extension/service.js';
 import type { BlockComponent, WidgetComponent } from '../view/index.js';

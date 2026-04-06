@@ -1,22 +1,22 @@
-import type { AffineInlineEditor } from '@blocksuite/affine-components/rich-text';
-import type { EditorHost, UIEventStateContext } from '@blocksuite/block-std';
+import type { PulsarInlineEditor } from '@pulsar/editor-components/rich-text';
+import type { EditorHost, UIEventStateContext } from '@pulsar/block-std';
 
-import { getInlineEditorByModel } from '@blocksuite/affine-components/rich-text';
+import { getInlineEditorByModel } from '@pulsar/editor-components/rich-text';
 import {
   getCurrentNativeRange,
   getViewportElement,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { DisposableGroup, throttle } from '@blocksuite/global/utils';
-import { InlineEditor } from '@blocksuite/inline';
+} from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { DisposableGroup, throttle } from '@pulsar/global/utils';
+import { InlineEditor } from '@pulsar/inline';
 import { customElement } from 'lit/decorators.js';
 
 import { getPopperPosition } from '../../../root-block/utils/position.js';
 import { type LinkedMenuGroup, getMenus } from './config.js';
 import { LinkedDocPopover } from './linked-doc-popover.js';
 
-export const AFFINE_LINKED_DOC_WIDGET = 'affine-linked-doc-widget';
+export const PULSAR_LINKED_DOC_WIDGET = 'pulsar-linked-doc-widget';
 
 export interface LinkedWidgetConfig {
   /**
@@ -34,12 +34,12 @@ export interface LinkedWidgetConfig {
     query: string,
     abort: () => void,
     editorHost: EditorHost,
-    inlineEditor: AffineInlineEditor
+    inlineEditor: PulsarInlineEditor
   ) => Promise<LinkedMenuGroup[]>;
 }
 
-@customElement(AFFINE_LINKED_DOC_WIDGET)
-export class AffineLinkedDocWidget extends WidgetComponent {
+@customElement(PULSAR_LINKED_DOC_WIDGET)
+export class PulsarLinkedDocWidget extends WidgetComponent {
   private _abortController: AbortController | null = null;
 
   private _onCompositionEnd = (ctx: UIEventStateContext) => {
@@ -88,7 +88,7 @@ export class AffineLinkedDocWidget extends WidgetComponent {
     if (evt.target instanceof HTMLElement) {
       const editor = (
         evt.target.closest('.can-link-doc > .inline-editor') as {
-          inlineEditor?: AffineInlineEditor;
+          inlineEditor?: PulsarInlineEditor;
         }
       )?.inlineEditor;
       if (editor instanceof InlineEditor) {
@@ -112,7 +112,7 @@ export class AffineLinkedDocWidget extends WidgetComponent {
   };
 
   showLinkedDocPopover = (
-    inlineEditor: AffineInlineEditor,
+    inlineEditor: PulsarInlineEditor,
     triggerKey: string
   ) => {
     const curRange = getCurrentNativeRange();
@@ -226,16 +226,16 @@ export class AffineLinkedDocWidget extends WidgetComponent {
   get config(): LinkedWidgetConfig {
     return {
       triggerKeys: ['@', '[[', '【【'],
-      ignoreBlockTypes: ['affine:code'],
+      ignoreBlockTypes: ['pulsar:code'],
       convertTriggerKey: true,
       getMenus,
-      ...this.std.getConfig('affine:page')?.linkedWidget,
+      ...this.std.getConfig('pulsar:page')?.linkedWidget,
     };
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_LINKED_DOC_WIDGET]: AffineLinkedDocWidget;
+    [PULSAR_LINKED_DOC_WIDGET]: PulsarLinkedDocWidget;
   }
 }

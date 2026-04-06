@@ -1,4 +1,4 @@
-import type { TextElementModel } from '@blocksuite/affine-model';
+import type { TextElementModel } from '@pulsar/model';
 
 import type { CanvasRenderer } from '../../canvas-renderer.js';
 

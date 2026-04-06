@@ -23,12 +23,12 @@ interface Scene {
  * PulsarCanvas - The main canvas component.
  *
  * All UI is rendered in-scene (no separate pages):
- * - MenuBar: File menu with global settings (grid, snap, extensions)
+ * - MenuBar: File menu with global settings (grid, snap)
  * - ScenePicker: top-left, switch scenes + toggle doc/board view
  * - Toolbar: bottom-center, clean SVG icons, no animation
  * - StatusBar: bottom-right, connection & room info
  *
- * Wraps BlockSuite's EdgelessEditor with:
+ * Wraps the Pulsar edgeless editor with:
  * - ECS World integration (components/systems on blocks)
  * - Multiplayer sync via RivetKit actors
  * - WebGL shader overlay system
@@ -49,12 +49,37 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     showGrid: true,
     snapToGrid: true,
     gridSize: 20,
-    showExtensions: false,
   })
 
-  // Initialize BlockSuite editor (stable across re-renders)
+  // Initialize the editor (stable across re-renders)
   const editorInstance = useMemo(() => initEditor(), [])
   const { editor, collection, doc } = editorInstance
+
+  // Navigate to a doc by id (used for linked doc clicks and scene switching)
+  const navigateToDoc = useCallback(
+    (targetId: string) => {
+      let targetDoc = collection.getDoc(targetId)
+      if (!targetDoc) {
+        // Create a new doc if it doesn't exist (e.g. linked doc reference)
+        targetDoc = collection.createDoc({ id: targetId })
+        targetDoc.load(() => {
+          const pageBlockId = targetDoc!.addBlock('pulsar:page', {})
+          targetDoc!.addBlock('pulsar:surface', {}, pageBlockId)
+          const noteId = targetDoc!.addBlock('pulsar:note', {}, pageBlockId)
+          targetDoc!.addBlock('pulsar:paragraph', {}, noteId)
+        })
+        setScenes((prev) => {
+          if (prev.some((s) => s.id === targetId)) return prev
+          return [...prev, { id: targetId, label: targetId }]
+        })
+      } else {
+        targetDoc.load()
+      }
+      editor.doc = targetDoc
+      setActiveSceneId(targetId)
+    },
+    [collection, editor]
+  )
 
   // Initialize ECS World
   const { world, syncWorldToDoc } = useECSWorld()
@@ -78,14 +103,9 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
   // Handle scene switch
   const handleSceneChange = useCallback(
     (sceneId: string) => {
-      const existing = collection.getDoc(sceneId)
-      if (existing) {
-        existing.load()
-        editor.doc = existing
-        setActiveSceneId(sceneId)
-      }
+      navigateToDoc(sceneId)
     },
-    [collection, editor]
+    [navigateToDoc]
   )
 
   // Add a new scene
@@ -94,17 +114,17 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     const id = `page${idx}`
     const newDoc = collection.createDoc({ id })
     newDoc.load(() => {
-      const pageBlockId = newDoc.addBlock('affine:page', {})
-      newDoc.addBlock('affine:surface', {}, pageBlockId)
-      const noteId = newDoc.addBlock('affine:note', {}, pageBlockId)
-      newDoc.addBlock('affine:paragraph', {}, noteId)
+      const pageBlockId = newDoc.addBlock('pulsar:page', {})
+      newDoc.addBlock('pulsar:surface', {}, pageBlockId)
+      const noteId = newDoc.addBlock('pulsar:note', {}, pageBlockId)
+      newDoc.addBlock('pulsar:paragraph', {}, noteId)
     })
     setScenes((prev) => [...prev, { id, label: `Scene ${idx}` }])
     editor.doc = newDoc
     setActiveSceneId(id)
   }, [collection, editor, scenes.length])
 
-  // Mount the BlockSuite editor web component into the DOM
+  // Mount the editor into the DOM and wire up event bridges
   useEffect(() => {
     const container = editorContainerRef.current
     if (!container) return
@@ -112,10 +132,9 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     container.replaceChildren()
     container.appendChild(editor)
 
-    // Listen for block-level changes via the Doc's slot system
-    // and bridge them to the ECS world
     const disposables: Array<() => void> = []
 
+    // Bridge block changes to ECS world
     const blockUpdated = doc.slots.blockUpdated.on((event) => {
       if (event.type === 'add') {
         world.addEntity(event.id)
@@ -126,6 +145,15 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     })
     disposables.push(() => blockUpdated.dispose())
 
+    // Handle linked doc clicks — navigate to the target doc
+    const docLinkClicked = editor.slots.docLinkClicked.on(
+      (info: { docId?: string; pageId?: string }) => {
+        const targetId = info.docId ?? info.pageId
+        if (targetId) navigateToDoc(targetId)
+      }
+    )
+    disposables.push(() => docLinkClicked.dispose())
+
     // Initialize the ECS world
     world.init()
 
@@ -134,7 +162,7 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
         dispose()
       }
     }
-  }, [editor, doc, world, syncWorldToDoc])
+  }, [editor, doc, world, syncWorldToDoc, navigateToDoc])
 
   return (
     <EditorContext.Provider value={{ editor, collection, doc }}>

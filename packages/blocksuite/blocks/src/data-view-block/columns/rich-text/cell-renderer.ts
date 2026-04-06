@@ -1,14 +1,14 @@
 import type {
-  AffineInlineEditor,
-  AffineTextAttributes,
+  PulsarInlineEditor,
+  PulsarTextAttributes,
   RichText,
-} from '@blocksuite/affine-components/rich-text';
-import type { Y } from '@blocksuite/store';
+} from '@pulsar/editor-components/rich-text';
+import type { Y } from '@pulsar/store';
 
-import { getViewportElement } from '@blocksuite/affine-shared/utils';
-import { IS_MAC } from '@blocksuite/global/env';
-import { assertExists } from '@blocksuite/global/utils';
-import { DocCollection, Text } from '@blocksuite/store';
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { IS_MAC } from '@pulsar/global/env';
+import { assertExists } from '@pulsar/global/utils';
+import { DocCollection, Text } from '@pulsar/store';
 import { css, nothing } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 import { html } from 'lit/static-html.js';
@@ -21,8 +21,8 @@ import { createIcon } from '../../../database-block/data-view/utils/uni-icon.js'
 import { richTextColumnModelConfig } from './define.js';
 
 function toggleStyle(
-  inlineEditor: AffineInlineEditor,
-  attrs: AffineTextAttributes
+  inlineEditor: PulsarInlineEditor,
+  attrs: PulsarTextAttributes
 ): void {
   const inlineRange = inlineEditor.getInlineRange();
   if (!inlineRange) return;
@@ -33,7 +33,7 @@ function toggleStyle(
   }
 
   const deltas = inlineEditor.getDeltasByInlineRange(inlineRange);
-  let oldAttributes: AffineTextAttributes = {};
+  let oldAttributes: PulsarTextAttributes = {};
 
   for (const [delta] of deltas) {
     const attributes = delta.attributes;
@@ -66,7 +66,7 @@ function toggleStyle(
   inlineEditor.syncInlineRange();
 }
 
-@customElement('affine-data-view-rich-text-cell')
+@customElement('pulsar-data-view-rich-text-cell')
 export class RichTextCell extends BaseCellRenderer<Y.Text> {
   private _initYText = (text?: string) => {
     const yText = new DocCollection.Y.Text(text);
@@ -116,7 +116,7 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
   override render() {
     if (!this.service) return nothing;
     if (!this.value) {
-      return html`<div class="affine-data-view-rich-text"></div>`;
+      return html`<div class="pulsar-data-view-rich-text"></div>`;
     }
     return html`<rich-text
       .yText=${this.value}
@@ -126,7 +126,7 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
       .embedChecker=${this.inlineManager?.embedChecker}
       .markdownShortcutHandler=${this.inlineManager?.markdownShortcutHandler}
       .readonly=${true}
-      class="affine-data-view-rich-text inline-editor"
+      class="pulsar-data-view-rich-text inline-editor"
     ></rich-text>`;
   }
 
@@ -150,13 +150,13 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
   }
 
   get service() {
-    const database = this.closest<DatabaseBlockComponent>('affine-data-view');
+    const database = this.closest<DatabaseBlockComponent>('pulsar-data-view');
     return database?.service;
   }
 
   get topContenteditableElement() {
     const databaseBlock =
-      this.closest<DatabaseBlockComponent>('affine-data-view');
+      this.closest<DatabaseBlockComponent>('pulsar-data-view');
     return databaseBlock?.topContenteditableElement;
   }
 
@@ -164,7 +164,7 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
   private accessor _richTextElement: RichText | null = null;
 }
 
-@customElement('affine-data-view-rich-text-cell-editing')
+@customElement('pulsar-data-view-rich-text-cell-editing')
 export class RichTextCellEditing extends BaseCellRenderer<Text> {
   private _handleKeyDown = (event: KeyboardEvent) => {
     if (event.key !== 'Escape') {
@@ -327,7 +327,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
         this.topContenteditableElement?.host
           ? getViewportElement(this.topContenteditableElement.host)
           : null}
-      class="affine-data-view-rich-text inline-editor"
+      class="pulsar-data-view-rich-text inline-editor"
     ></rich-text>`;
   }
 
@@ -351,13 +351,13 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
   }
 
   get service() {
-    const database = this.closest<DatabaseBlockComponent>('affine-data-view');
+    const database = this.closest<DatabaseBlockComponent>('pulsar-data-view');
     return database?.service;
   }
 
   get topContenteditableElement() {
     const databaseBlock =
-      this.closest<DatabaseBlockComponent>('affine-data-view');
+      this.closest<DatabaseBlockComponent>('pulsar-data-view');
     return databaseBlock?.topContenteditableElement;
   }
 
@@ -367,7 +367,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-rich-text-cell-editing': RichTextCellEditing;
+    'pulsar-data-view-rich-text-cell-editing': RichTextCellEditing;
   }
 }
 

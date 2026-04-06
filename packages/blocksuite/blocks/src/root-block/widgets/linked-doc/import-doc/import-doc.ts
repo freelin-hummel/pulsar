@@ -5,15 +5,15 @@ import {
   HelpIcon,
   NewIcon,
   NotionIcon,
-} from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
-import { sha } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
+import { sha } from '@pulsar/global/utils';
 import {
   type DocCollection,
   type JobMiddleware,
   extMimeMap,
-} from '@blocksuite/store';
-import { Job } from '@blocksuite/store';
+} from '@pulsar/store';
+import { Job } from '@pulsar/store';
 import { LitElement, type PropertyValues, html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 

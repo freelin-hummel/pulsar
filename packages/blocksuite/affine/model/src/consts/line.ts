@@ -14,17 +14,17 @@ export enum LineWidth {
 }
 
 export enum LineColor {
-  Black = '--affine-palette-line-black',
-  Blue = '--affine-palette-line-blue',
-  Green = '--affine-palette-line-green',
-  Grey = '--affine-palette-line-grey',
-  Magenta = '--affine-palette-line-magenta',
-  Orange = '--affine-palette-line-orange',
-  Purple = '--affine-palette-line-purple',
-  Red = '--affine-palette-line-red',
-  Teal = '--affine-palette-line-teal',
-  White = '--affine-palette-line-white',
-  Yellow = '--affine-palette-line-yellow',
+  Black = '--pulsar-palette-line-black',
+  Blue = '--pulsar-palette-line-blue',
+  Green = '--pulsar-palette-line-green',
+  Grey = '--pulsar-palette-line-grey',
+  Magenta = '--pulsar-palette-line-magenta',
+  Orange = '--pulsar-palette-line-orange',
+  Purple = '--pulsar-palette-line-purple',
+  Red = '--pulsar-palette-line-red',
+  Teal = '--pulsar-palette-line-teal',
+  White = '--pulsar-palette-line-white',
+  Yellow = '--pulsar-palette-line-yellow',
 }
 
 export const LineColorMap = createEnumMap(LineColor);

@@ -1,4 +1,4 @@
-import type { MindmapStyle } from '@blocksuite/affine-block-surface';
+import type { MindmapStyle } from '@pulsar/block-surface';
 
 import { LitElement, type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -36,7 +36,7 @@ export class EdgelessMindmapMenu extends EdgelessToolbarToolMixin(LitElement) {
       width: 1px;
       transform: scaleX(0.5);
       height: 48px;
-      background: var(--affine-border-color);
+      background: var(--pulsar-border-color);
     }
     .text-item {
       width: 60px;
@@ -65,7 +65,7 @@ export class EdgelessMindmapMenu extends EdgelessToolbarToolMixin(LitElement) {
     }
     .text-item:hover,
     .mindmap-item:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
     .text-item > button.next,
     .mindmap-item > button.next {

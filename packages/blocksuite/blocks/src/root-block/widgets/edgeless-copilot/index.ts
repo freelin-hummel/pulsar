@@ -1,11 +1,11 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
+import type { RootBlockModel } from '@pulsar/model';
 
 import {
   MOUSE_BUTTON,
   requestConnectedFrame,
-} from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { Bound, getElementsBound } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { Bound, getElementsBound } from '@pulsar/global/utils';
 import {
   autoUpdate,
   computePosition,
@@ -21,14 +21,14 @@ import { styleMap } from 'lit/directives/style-map.js';
 import type { AIItemGroupConfig } from '../../../_common/components/ai-item/types.js';
 import type { EdgelessRootBlockComponent } from '../../edgeless/edgeless-root-block.js';
 import type { CopilotSelectionController } from '../../edgeless/tools/copilot-tool.js';
-import type { AffineAIPanelWidget } from '../ai-panel/ai-panel.js';
+import type { PulsarAIPanelWidget } from '../ai-panel/ai-panel.js';
 
-import { AFFINE_AI_PANEL_WIDGET } from '../ai-panel/ai-panel.js';
+import { PULSAR_AI_PANEL_WIDGET } from '../ai-panel/ai-panel.js';
 import { EdgelessCopilotPanel } from '../edgeless-copilot-panel/index.js';
 
-export const AFFINE_EDGELESS_COPILOT_WIDGET = 'affine-edgeless-copilot-widget';
+export const PULSAR_EDGELESS_COPILOT_WIDGET = 'pulsar-edgeless-copilot-widget';
 
-@customElement(AFFINE_EDGELESS_COPILOT_WIDGET)
+@customElement(PULSAR_EDGELESS_COPILOT_WIDGET)
 export class EdgelessCopilotWidget extends WidgetComponent<
   RootBlockModel,
   EdgelessRootBlockComponent
@@ -46,7 +46,7 @@ export class EdgelessCopilotWidget extends WidgetComponent<
       position: absolute;
       box-sizing: border-box;
       border-radius: 4px;
-      border: 2px dashed var(--affine-brand-color, #1e96eb);
+      border: 2px dashed var(--pulsar-brand-color, #1e96eb);
     }
   `;
 
@@ -143,9 +143,9 @@ export class EdgelessCopilotWidget extends WidgetComponent<
         const off = this.block.dispatcher.add('pointerDown', ctx => {
           const e = ctx.get('pointerState').raw;
           const aiPanel = this.host.view.getWidget(
-            AFFINE_AI_PANEL_WIDGET,
+            PULSAR_AI_PANEL_WIDGET,
             this.doc.root!.id
-          ) as AffineAIPanelWidget;
+          ) as PulsarAIPanelWidget;
 
           if (
             e.button === MOUSE_BUTTON.MAIN &&
@@ -236,7 +236,7 @@ export class EdgelessCopilotWidget extends WidgetComponent<
 
     const rect = this._selectionRect;
 
-    return html`<div class="affine-edgeless-ai">
+    return html`<div class="pulsar-edgeless-ai">
       <div
         class="copilot-selection-rect"
         style=${styleMap({
@@ -290,6 +290,6 @@ export class EdgelessCopilotWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_EDGELESS_COPILOT_WIDGET]: EdgelessCopilotWidget;
+    [PULSAR_EDGELESS_COPILOT_WIDGET]: EdgelessCopilotWidget;
   }
 }

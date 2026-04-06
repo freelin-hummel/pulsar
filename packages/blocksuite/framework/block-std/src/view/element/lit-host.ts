@@ -4,10 +4,10 @@ import {
   BlockSuiteError,
   ErrorCode,
   handleError,
-} from '@blocksuite/global/exceptions';
-import { Slot } from '@blocksuite/global/utils';
-import { Doc } from '@blocksuite/store';
-import { type BlockModel, BlockViewType } from '@blocksuite/store';
+} from '@pulsar/global/exceptions';
+import { Slot } from '@pulsar/global/utils';
+import { Doc } from '@pulsar/store';
+import { type BlockModel, BlockViewType } from '@pulsar/store';
 import { createContext, provide } from '@lit/context';
 import { LitElement, type TemplateResult, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';

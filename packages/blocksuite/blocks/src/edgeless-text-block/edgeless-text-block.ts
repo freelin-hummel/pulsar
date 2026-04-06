@@ -1,11 +1,11 @@
-import type { EdgelessTextBlockModel } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { EdgelessTextBlockModel } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { TextUtils } from '@blocksuite/affine-block-surface';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { GfxBlockComponent } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+import { TextUtils } from '@pulsar/block-surface';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { GfxBlockComponent } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
@@ -25,7 +25,7 @@ import {
 export const EDGELESS_TEXT_BLOCK_MIN_WIDTH = 50;
 export const EDGELESS_TEXT_BLOCK_MIN_HEIGHT = 50;
 
-@customElement('affine-edgeless-text')
+@customElement('pulsar-edgeless-text')
 export class EdgelessTextBlockComponent extends GfxBlockComponent<
   EdgelessTextBlockModel,
   EdgelessTextBlockService
@@ -206,10 +206,10 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
         const firstChild = this.model.firstChild();
         if (
           !firstChild ||
-          !matchFlavours(firstChild, ['affine:list', 'affine:paragraph'])
+          !matchFlavours(firstChild, ['pulsar:list', 'pulsar:paragraph'])
         ) {
           newParagraphId = this.doc.addBlock(
-            'affine:paragraph',
+            'pulsar:paragraph',
             {},
             this.model.id,
             0
@@ -219,10 +219,10 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
         const lastChild = this.model.lastChild();
         if (
           !lastChild ||
-          !matchFlavours(lastChild, ['affine:list', 'affine:paragraph'])
+          !matchFlavours(lastChild, ['pulsar:list', 'pulsar:paragraph'])
         ) {
           newParagraphId = this.doc.addBlock(
-            'affine:paragraph',
+            'pulsar:paragraph',
             {},
             this.model.id
           );
@@ -282,7 +282,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
         ? '0px 0px 0px 2px rgba(30, 150, 235, 0.3)'
         : 'none',
       fontWeight: '400',
-      lineHeight: 'var(--affine-line-height)',
+      lineHeight: 'var(--pulsar-line-height)',
     };
 
     this.style.transform = `scale(${scale})`;
@@ -320,8 +320,8 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
     });
 
     return html`
-      <div style=${style} class="affine-edgeless-text-block-container">
-        <div class="affine-block-children-container">
+      <div style=${style} class="pulsar-edgeless-text-block-container">
+        <div class="pulsar-block-children-container">
           ${this.renderChildren(this.model)}
         </div>
       </div>
@@ -330,7 +330,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
 
   tryFocusEnd() {
     const paragraphOrLists = Array.from(
-      this.querySelectorAll<BlockComponent>('affine-paragraph, affine-list')
+      this.querySelectorAll<BlockComponent>('pulsar-paragraph, affine-list')
     );
     const last = paragraphOrLists.at(-1);
     if (last) {
@@ -360,7 +360,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 
   @state()
@@ -375,6 +375,6 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-text': EdgelessTextBlockComponent;
+    'pulsar-edgeless-text': EdgelessTextBlockComponent;
   }
 }

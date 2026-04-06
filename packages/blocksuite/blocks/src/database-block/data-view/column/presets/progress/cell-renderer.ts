@@ -54,7 +54,7 @@ const styles = css`
     border-radius: 2px;
     opacity: 1;
     cursor: ew-resize;
-    background: var(--affine-primary-color);
+    background: var(--pulsar-primary-color);
     transition: opacity 0.2s ease-in-out;
   }
 
@@ -64,18 +64,18 @@ const styles = css`
     align-items: center;
     height: 18px;
     width: 25px;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     font-size: 14px;
   }
 `;
 
 const progressColors = {
-  empty: 'var(--affine-black-10)',
-  processing: 'var(--affine-processing-color)',
-  success: 'var(--affine-success-color)',
+  empty: 'var(--pulsar-black-10)',
+  processing: 'var(--pulsar-processing-color)',
+  success: 'var(--pulsar-success-color)',
 };
 
-@customElement('affine-database-progress-cell')
+@customElement('pulsar-database-progress-cell')
 export class ProgressCell extends BaseCellRenderer<number> {
   static override styles = styles;
 
@@ -91,13 +91,13 @@ export class ProgressCell extends BaseCellRenderer<number> {
     });
     const bgStyles = styleMap({
       backgroundColor:
-        progress === 0 ? progressColors.empty : 'var(--affine-hover-color)',
+        progress === 0 ? progressColors.empty : 'var(--pulsar-hover-color)',
     });
 
-    return html` <div class="affine-database-progress">
-      <div class="affine-database-progress-bar">
-        <div class="affine-database-progress-bg" style=${bgStyles}>
-          <div class="affine-database-progress-fg" style=${fgStyles}></div>
+    return html` <div class="pulsar-database-progress">
+      <div class="pulsar-database-progress-bar">
+        <div class="pulsar-database-progress-bg" style=${bgStyles}>
+          <div class="pulsar-database-progress-fg" style=${fgStyles}></div>
         </div>
       </div>
       <div class="progress-number progress">${progress}</div>
@@ -105,7 +105,7 @@ export class ProgressCell extends BaseCellRenderer<number> {
   }
 }
 
-@customElement('affine-database-progress-cell-editing')
+@customElement('pulsar-database-progress-cell-editing')
 export class ProgressCellEditing extends BaseCellRenderer<number> {
   static override styles = styles;
 
@@ -188,18 +188,18 @@ export class ProgressCellEditing extends BaseCellRenderer<number> {
     });
     const bgStyles = styleMap({
       backgroundColor:
-        progress === 0 ? progressColors.empty : 'var(--affine-hover-color)',
+        progress === 0 ? progressColors.empty : 'var(--pulsar-hover-color)',
     });
     const handleStyles = styleMap({
       left: `calc(${progress}% - 3px)`,
     });
 
-    return html` <div class="affine-database-progress">
-      <div class="affine-database-progress-bar">
-        <div class="affine-database-progress-bg" style=${bgStyles}>
-          <div class="affine-database-progress-fg" style=${fgStyles}></div>
+    return html` <div class="pulsar-database-progress">
+      <div class="pulsar-database-progress-bar">
+        <div class="pulsar-database-progress-bg" style=${bgStyles}>
+          <div class="pulsar-database-progress-fg" style=${fgStyles}></div>
           <div
-            class="affine-database-progress-drag-handle"
+            class="pulsar-database-progress-drag-handle"
             style=${handleStyles}
           ></div>
         </div>

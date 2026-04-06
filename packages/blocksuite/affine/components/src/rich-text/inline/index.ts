@@ -5,16 +5,16 @@ export {
   type InlineSpecs,
 } from './inline-manager.js';
 export {
-  type AffineInlineEditor,
-  type AffineInlineRootElement,
-  type AffineTextAttributes,
-  basicAffineInlineSpecs,
-  getAffineInlineSpecsWithReference,
+  type PulsarInlineEditor,
+  type PulsarInlineRootElement,
+  type PulsarTextAttributes,
+  basicPulsarInlineSpecs,
+  getPulsarInlineSpecsWithReference,
 } from './presets/affine-inline-specs.js';
 export { affineInlineMarkdownMatches } from './presets/markdown.js';
 export {
-  AffineLink,
-  AffineReference,
+  PulsarLink,
+  PulsarReference,
   DEFAULT_DOC_NAME,
   REFERENCE_NODE,
   type RefNodeSlots,

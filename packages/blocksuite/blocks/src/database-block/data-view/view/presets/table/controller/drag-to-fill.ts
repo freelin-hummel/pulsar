@@ -1,6 +1,6 @@
-import { ShadowlessElement } from '@blocksuite/block-std';
-import { assertEquals } from '@blocksuite/global/utils';
-import { DocCollection, type Text } from '@blocksuite/store';
+import { ShadowlessElement } from '@pulsar/block-std';
+import { assertEquals } from '@pulsar/global/utils';
+import { DocCollection, type Text } from '@pulsar/store';
 import { css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { createRef, ref } from 'lit/directives/ref.js';
@@ -16,8 +16,8 @@ export class DragToFillElement extends ShadowlessElement {
     .drag-to-fill {
       border-radius: 50%;
       box-sizing: border-box;
-      background-color: var(--affine-background-primary-color);
-      border: 2px solid var(--affine-primary-color);
+      background-color: var(--pulsar-background-primary-color);
+      border: 2px solid var(--pulsar-primary-color);
       display: none;
       position: absolute;
       cursor: ns-resize;

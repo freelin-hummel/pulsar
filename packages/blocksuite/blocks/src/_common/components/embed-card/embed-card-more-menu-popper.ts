@@ -5,11 +5,11 @@ import {
   DuplicateIcon,
   OpenIcon,
   RefreshIcon,
-} from '@blocksuite/affine-components/icons';
-import { isPeekable, peek } from '@blocksuite/affine-components/peek';
-import { toast } from '@blocksuite/affine-components/toast';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Slice } from '@blocksuite/store';
+} from '@pulsar/editor-components/icons';
+import { isPeekable, peek } from '@pulsar/editor-components/peek';
+import { toast } from '@pulsar/editor-components/toast';
+import { WithDisposable } from '@pulsar/block-std';
+import { Slice } from '@pulsar/store';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -33,8 +33,8 @@ export class EmbedCardMoreMenu extends WithDisposable(LitElement) {
     .embed-card-more-menu-container {
       border-radius: 8px;
       padding: 8px;
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-shadow-2);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-shadow-2);
     }
 
     .embed-card-more-menu-container > .menu-item {
@@ -45,15 +45,15 @@ export class EmbedCardMoreMenu extends WithDisposable(LitElement) {
     }
 
     .embed-card-more-menu-container > .menu-item:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .embed-card-more-menu-container > .menu-item:hover.delete {
-      background: var(--affine-background-error-color);
-      color: var(--affine-error-color);
+      background: var(--pulsar-background-error-color);
+      color: var(--pulsar-error-color);
     }
     .embed-card-more-menu-container > .menu-item:hover.delete > svg {
-      color: var(--affine-error-color);
+      color: var(--pulsar-error-color);
     }
 
     .embed-card-more-menu-container > .menu-item svg {
@@ -64,7 +64,7 @@ export class EmbedCardMoreMenu extends WithDisposable(LitElement) {
       width: 148px;
       height: 1px;
       margin: 8px;
-      background-color: var(--affine-border-color);
+      background-color: var(--pulsar-border-color);
     }
   `;
 

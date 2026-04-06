@@ -1,27 +1,27 @@
-import type { NoteBlockModel } from '@blocksuite/affine-model';
-import type { BlockComponent, EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { NoteBlockModel } from '@pulsar/model';
+import type { BlockComponent, EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { MoreIndicatorIcon } from '@blocksuite/affine-components/icons';
+import { MoreIndicatorIcon } from '@pulsar/editor-components/icons';
 import {
   DEFAULT_NOTE_BACKGROUND_COLOR,
   NoteDisplayMode,
   StrokeStyle,
-} from '@blocksuite/affine-model';
-import { EDGELESS_BLOCK_CHILD_PADDING } from '@blocksuite/affine-shared/consts';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+} from '@pulsar/model';
+import { EDGELESS_BLOCK_CHILD_PADDING } from '@pulsar/editor-shared/consts';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   handleNativeRangeAtPoint,
   matchFlavours,
   stopPropagation,
-} from '@blocksuite/affine-shared/utils';
-import { getClosestBlockComponentByPoint } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
+import { getClosestBlockComponentByPoint } from '@pulsar/editor-shared/utils';
 import {
   ShadowlessElement,
   WithDisposable,
   toGfxBlockComponent,
-} from '@blocksuite/block-std';
-import { Bound, Point, almostEqual, clamp } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { Bound, Point, almostEqual, clamp } from '@pulsar/global/utils';
 import { css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -68,7 +68,7 @@ export class EdgelessNoteMask extends WithDisposable(ShadowlessElement) {
     const extra = this.editing ? ACTIVE_NOTE_EXTRA_PADDING : 0;
     return html`
       <div
-        class="affine-note-mask"
+        class="pulsar-note-mask"
         style=${styleMap({
           position: 'absolute',
           top: `${-extra}px`,
@@ -103,7 +103,7 @@ export class EdgelessNoteMask extends WithDisposable(ShadowlessElement) {
 
 const ACTIVE_NOTE_EXTRA_PADDING = 20;
 
-@customElement('affine-edgeless-note')
+@customElement('pulsar-edgeless-note')
 export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
   NoteBlockComponent
 ) {
@@ -180,12 +180,12 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
           position: 'absolute',
           left: `${-(extraPadding + extraBorder / 2)}px`,
           top: `${height + extraPadding + extraBorder / 2}px`,
-          background: 'var(--affine-white)',
+          background: 'var(--pulsar-white)',
           opacity: 0.5,
           pointerEvents: 'none',
-          borderLeft: '2px var(--affine-blue) solid',
-          borderBottom: '2px var(--affine-blue) solid',
-          borderRight: '2px var(--affine-blue) solid',
+          borderLeft: '2px var(--pulsar-blue) solid',
+          borderBottom: '2px var(--pulsar-blue) solid',
+          borderRight: '2px var(--pulsar-blue) solid',
           borderRadius: '0 0 8px 8px',
         })}
       ></div>
@@ -277,14 +277,14 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
 
     if (
       (!nearestModel.text ||
-        !matchFlavours(nearestModel, ['affine:paragraph', 'affine:list'])) &&
+        !matchFlavours(nearestModel, ['pulsar:paragraph', 'pulsar:list'])) &&
       (!siblingModel ||
         !siblingModel.text ||
-        !matchFlavours(siblingModel, ['affine:paragraph', 'affine:list']))
+        !matchFlavours(siblingModel, ['pulsar:paragraph', 'pulsar:list']))
     ) {
       const [pId] = this.doc.addSiblingBlocks(
         nearestModel,
-        [{ flavour: 'affine:paragraph' }],
+        [{ flavour: 'pulsar:paragraph' }],
         insertPos
       );
 
@@ -399,7 +399,7 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
       transformOrigin: '0 0',
       transform: `scale(${scale})`,
       fontWeight: '400',
-      lineHeight: 'var(--affine-line-height)',
+      lineHeight: 'var(--pulsar-line-height)',
     };
 
     const extra = this._editing ? ACTIVE_NOTE_EXTRA_PADDING : 0;
@@ -421,9 +421,9 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
       backgroundColor,
       border: `${borderSize}px ${
         borderStyle === StrokeStyle.Dash ? 'dashed' : borderStyle
-      } var(--affine-black-10)`,
+      } var(--pulsar-black-10)`,
       boxShadow: this._editing
-        ? 'var(--affine-active-shadow)'
+        ? 'var(--pulsar-active-shadow)'
         : !shadowType
           ? 'none'
           : `var(${shadowType})`,
@@ -496,7 +496,7 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 
   @state()
@@ -520,6 +520,6 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-note': EdgelessNoteBlockComponent;
+    'pulsar-edgeless-note': EdgelessNoteBlockComponent;
   }
 }

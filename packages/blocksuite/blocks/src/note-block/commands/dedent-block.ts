@@ -1,4 +1,4 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
 /**
  * @example

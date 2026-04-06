@@ -2,13 +2,13 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { DatabaseBlockService } from './database-service.js';
 
 export const DatabaseBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:database'),
+  FlavourExtension('pulsar:database'),
   DatabaseBlockService,
-  BlockViewExtension('affine:database', literal`affine-database`),
+  BlockViewExtension('pulsar:database', literal`pulsar-database`),
 ];

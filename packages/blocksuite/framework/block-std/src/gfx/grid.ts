@@ -1,12 +1,12 @@
-import type { IBound } from '@blocksuite/global/utils';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { IBound } from '@pulsar/global/utils';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import {
   Bound,
   getBoundsWithRotation,
   intersects,
   isPointIn,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import { compare } from '../utils/layer.js';
 import { GfxBlockElementModel, type GfxModel } from './gfx-block-model.js';

@@ -27,13 +27,13 @@ const styles = css`
   .affine-database-search-container svg {
     width: 20px;
     height: 20px;
-    fill: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
   }
 
   .search-container-expand {
     overflow: visible;
     width: 138px;
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .search-input-container {
@@ -63,7 +63,7 @@ const styles = css`
     height: max-content;
   }
   .affine-database-search-input-icon:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .search-container-expand .affine-database-search-input-icon {
@@ -77,7 +77,7 @@ const styles = css`
     padding: 0 2px 0 30px;
     border: none;
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
     box-sizing: border-box;
     color: inherit;
     background: transparent;
@@ -85,8 +85,8 @@ const styles = css`
   }
 
   .affine-database-search-input::placeholder {
-    color: var(--affine-placeholder-color);
-    font-size: var(--affine-font-sm);
+    color: var(--pulsar-placeholder-color);
+    font-size: var(--pulsar-font-sm);
   }
 `;
 
@@ -136,17 +136,17 @@ export class DataViewHeaderToolsSearch extends WidgetBase {
 
   override render() {
     const searchToolClassMap = classMap({
-      'affine-database-search-container': true,
+      'pulsar-database-search-container': true,
       'search-container-expand': this.showSearch,
     });
     return html`
       <label class="${searchToolClassMap}" @click="${this._clickSearch}">
-        <div class="affine-database-search-input-icon dv-icon-20">
+        <div class="pulsar-database-search-input-icon dv-icon-20">
           ${SearchIcon()}
         </div>
         <input
           placeholder="Search..."
-          class="affine-database-search-input"
+          class="pulsar-database-search-input"
           @input="${this._onSearch}"
           @click="${(event: MouseEvent) => event.stopPropagation()}"
           @keydown="${this._onSearchKeydown}"
@@ -163,7 +163,7 @@ export class DataViewHeaderToolsSearch extends WidgetBase {
                 boxSizing: 'border-box',
                 padding: '2px 6px',
                 borderRadius: '4px',
-                background: 'var(--affine-white-10)',
+                background: 'var(--pulsar-white-10)',
               })}
               >Esc</span
             >

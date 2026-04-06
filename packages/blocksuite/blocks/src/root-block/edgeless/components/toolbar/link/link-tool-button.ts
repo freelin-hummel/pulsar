@@ -1,5 +1,5 @@
-import { LinkIcon } from '@blocksuite/affine-components/icons';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
+import { LinkIcon } from '@pulsar/editor-components/icons';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 

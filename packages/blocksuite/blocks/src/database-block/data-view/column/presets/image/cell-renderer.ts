@@ -6,7 +6,7 @@ import { BaseCellRenderer } from '../../base-cell.js';
 import { createFromBaseCellRenderer } from '../../renderer.js';
 import { imageColumnModelConfig } from './define.js';
 
-@customElement('affine-database-image-cell')
+@customElement('pulsar-database-image-cell')
 export class TextCell extends BaseCellRenderer<string> {
   static override styles = css`
     affine-database-image-cell {

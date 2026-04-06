@@ -1,5 +1,5 @@
-import type { NoteBlockModel, RootBlockModel } from '@blocksuite/affine-model';
-import type { IVec } from '@blocksuite/global/utils';
+import type { NoteBlockModel, RootBlockModel } from '@pulsar/model';
+import type { IVec } from '@pulsar/global/utils';
 
 import {
   findNoteBlockModel,
@@ -8,22 +8,22 @@ import {
   isInsideEdgelessEditor,
   isInsidePageEditor,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { getCurrentNativeRange } from '@blocksuite/affine-shared/utils';
-import { type BlockComponent, BlockStdScope } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { getCurrentNativeRange } from '@pulsar/editor-shared/utils';
+import { type BlockComponent, BlockStdScope } from '@pulsar/block-std';
 import {
   type PointerEventState,
   type UIEventHandler,
   WidgetComponent,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   Bound,
   DisposableGroup,
   Point,
   Rect,
   throttle,
-} from '@blocksuite/global/utils';
-import { type BlockModel, BlockViewType, type Query } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { type BlockModel, BlockViewType, type Query } from '@pulsar/store';
 import { html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -74,10 +74,10 @@ import {
   updateDragHandleClassName,
 } from './utils.js';
 
-export const AFFINE_DRAG_HANDLE_WIDGET = 'affine-drag-handle-widget';
+export const PULSAR_DRAG_HANDLE_WIDGET = 'pulsar-drag-handle-widget';
 
-@customElement(AFFINE_DRAG_HANDLE_WIDGET)
-export class AffineDragHandleWidget extends WidgetComponent<
+@customElement(PULSAR_DRAG_HANDLE_WIDGET)
+export class PulsarDragHandleWidget extends WidgetComponent<
   RootBlockModel,
   EdgelessRootBlockComponent | PageRootBlockComponent
 > {
@@ -143,7 +143,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
   };
 
   private _changeCursorToGrabbing = () => {
-    document.documentElement.classList.add('affine-drag-preview-grabbing');
+    document.documentElement.classList.add('pulsar-drag-preview-grabbing');
   };
 
   private _checkTopLevelBlockSelection = () => {
@@ -193,7 +193,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
     const state = ctx.get('pointerState');
     const { target } = state.raw;
     const element = captureEventTarget(target);
-    const insideDragHandle = !!element?.closest(AFFINE_DRAG_HANDLE_WIDGET);
+    const insideDragHandle = !!element?.closest(PULSAR_DRAG_HANDLE_WIDGET);
     if (!insideDragHandle) return;
 
     if (!this._anchorBlockId) return;
@@ -447,21 +447,21 @@ export class AffineDragHandleWidget extends WidgetComponent<
     const blockId = closestBlock.model.id;
     const model = closestBlock.model;
 
-    const isDatabase = matchFlavours(model, ['affine:database']);
+    const isDatabase = matchFlavours(model, ['pulsar:database']);
     if (isDatabase) return null;
 
     // note block can only be dropped into another note block
     // prevent note block from being dropped into other blocks
     const isDraggedElementNote =
       this.draggingElements.length === 1 &&
-      matchFlavours(this.draggingElements[0].model, ['affine:note']);
+      matchFlavours(this.draggingElements[0].model, ['pulsar:note']);
 
     if (isDraggedElementNote) {
       const parent = this.std.doc.getParent(closestBlock.model);
       if (!parent) return null;
       const parentElement = this._getBlockComponentFromViewStore(parent.id);
       if (!parentElement) return null;
-      if (!matchFlavours(parentElement.model, ['affine:note'])) return null;
+      if (!matchFlavours(parentElement.model, ['pulsar:note'])) return null;
     }
 
     // Should make sure that target drop block is
@@ -673,7 +673,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
 
       const isSurfaceComponent = selectedBlocks.some(block => {
         const parent = this.doc.getParent(block.id);
-        return matchFlavours(parent, ['affine:surface']);
+        return matchFlavours(parent, ['pulsar:surface']);
       });
       if (isSurfaceComponent) return true;
 
@@ -869,7 +869,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
     const event = state.raw;
     const { target } = event;
     const element = captureEventTarget(target);
-    const insideDragHandle = !!element?.closest(AFFINE_DRAG_HANDLE_WIDGET);
+    const insideDragHandle = !!element?.closest(PULSAR_DRAG_HANDLE_WIDGET);
     // Should only start dragging when pointer down on drag handle
     // And current mouse button is left button
     if (!insideDragHandle) {
@@ -995,11 +995,11 @@ export class AffineDragHandleWidget extends WidgetComponent<
     // Need to be optimized
     const relatedElement = captureEventTarget(relatedTarget);
     const outOfPageViewPort = element.classList.contains(
-      'affine-page-viewport'
+      'pulsar-page-viewport'
     );
     const inPage = !!relatedElement?.closest('.affine-page-viewport');
 
-    const inDragHandle = !!relatedElement?.closest(AFFINE_DRAG_HANDLE_WIDGET);
+    const inDragHandle = !!relatedElement?.closest(PULSAR_DRAG_HANDLE_WIDGET);
     if (outOfPageViewPort && !inDragHandle && !inPage) {
       this._hide();
     }
@@ -1041,7 +1041,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
   };
 
   private _resetCursor = () => {
-    document.documentElement.classList.remove('affine-drag-preview-grabbing');
+    document.documentElement.classList.remove('pulsar-drag-preview-grabbing');
   };
 
   private _resetDropResult = () => {
@@ -1429,7 +1429,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
   scale = 1;
 
   static registerOption(option: DragHandleOption) {
-    return AffineDragHandleWidget.staticOptionRunner.register(option);
+    return PulsarDragHandleWidget.staticOptionRunner.register(option);
   }
 
   private _clearRaf() {
@@ -1617,11 +1617,11 @@ export class AffineDragHandleWidget extends WidgetComponent<
     );
 
     return html`
-      <div class="affine-drag-handle-widget">
-        <div class="affine-drag-handle-container">
-          <div class="affine-drag-handle-grabber"></div>
+      <div class="pulsar-drag-handle-widget">
+        <div class="pulsar-drag-handle-container">
+          <div class="pulsar-drag-handle-grabber"></div>
         </div>
-        <div class="affine-drag-hover-rect" style=${hoverRectStyle}></div>
+        <div class="pulsar-drag-hover-rect" style=${hoverRectStyle}></div>
       </div>
     `;
   }
@@ -1639,7 +1639,7 @@ export class AffineDragHandleWidget extends WidgetComponent<
   }
 
   get optionRunner() {
-    return AffineDragHandleWidget.staticOptionRunner;
+    return PulsarDragHandleWidget.staticOptionRunner;
   }
 
   get rootComponent() {
@@ -1670,6 +1670,6 @@ export class AffineDragHandleWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_DRAG_HANDLE_WIDGET]: AffineDragHandleWidget;
+    [PULSAR_DRAG_HANDLE_WIDGET]: PulsarDragHandleWidget;
   }
 }

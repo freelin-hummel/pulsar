@@ -1,6 +1,6 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { isInsidePageEditor } from '@blocksuite/affine-shared/utils';
+import { isInsidePageEditor } from '@pulsar/editor-shared/utils';
 
 import type { AIItemGroupConfig } from '../../../_common/components/ai-item/types.js';
 

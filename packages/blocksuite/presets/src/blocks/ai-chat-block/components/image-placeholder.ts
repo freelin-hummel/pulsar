@@ -12,8 +12,8 @@ export class ImagePlaceholder extends LitElement {
       padding: 12px;
       align-items: flex-start;
       border-radius: 8px;
-      border: 1px solid var(--affine-background-tertiary-color);
-      background: var(--affine-background-secondary-color);
+      border: 1px solid var(--pulsar-background-tertiary-color);
+      background: var(--pulsar-background-secondary-color);
       box-sizing: border-box;
     }
 
@@ -21,11 +21,11 @@ export class ImagePlaceholder extends LitElement {
       display: flex;
       gap: 8px;
       align-items: center;
-      color: var(--affine-placeholder-color, #c0bfc1);
+      color: var(--pulsar-placeholder-color, #c0bfc1);
       text-align: justify;
       /* light/smBold */
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      font-size: var(--affine-font-sm);
+      font-size: var(--pulsar-font-sm);
       font-style: normal;
       font-weight: 600;
       line-height: 22px; /* 157.143% */
@@ -36,7 +36,7 @@ export class ImagePlaceholder extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
   `;
 

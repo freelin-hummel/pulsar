@@ -1,8 +1,8 @@
-import type { FrameBlockModel } from '@blocksuite/blocks';
-import type { Y } from '@blocksuite/store';
+import type { FrameBlockModel } from '@pulsar/blocks';
+import type { Y } from '@pulsar/store';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { type PropertyValues, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
@@ -19,7 +19,7 @@ const styles = css`
     height: 20px;
     box-sizing: border-box;
     gap: 6px;
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
     cursor: default;
     position: relative;
   }
@@ -33,10 +33,10 @@ const styles = css`
     height: 18px;
     box-sizing: border-box;
     border-radius: 2px;
-    background: var(--affine-black);
+    background: var(--pulsar-black);
     margin-left: 2px;
 
-    color: var(--affine-white);
+    color: var(--pulsar-white);
     text-align: center;
     font-weight: 500;
     line-height: 18px;
@@ -44,7 +44,7 @@ const styles = css`
 
   .frame-card-title-container .card-title {
     height: 20px;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
     font-weight: 400;
     line-height: 20px;
 
@@ -55,9 +55,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAME_CARD_TITLE = 'affine-frame-card-title';
+export const PULSAR_FRAME_CARD_TITLE = 'pulsar-frame-card-title';
 
-@customElement(AFFINE_FRAME_CARD_TITLE)
+@customElement(PULSAR_FRAME_CARD_TITLE)
 export class FrameCardTitle extends WithDisposable(ShadowlessElement) {
   private _clearTitleDisposables = () => {
     this._titleDisposables?.dispose();
@@ -147,6 +147,6 @@ export class FrameCardTitle extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAME_CARD_TITLE]: FrameCardTitle;
+    [PULSAR_FRAME_CARD_TITLE]: FrameCardTitle;
   }
 }

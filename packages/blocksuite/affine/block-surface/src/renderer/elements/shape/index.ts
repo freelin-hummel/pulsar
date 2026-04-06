@@ -1,13 +1,13 @@
-import type { ShapeElementModel, ShapeType } from '@blocksuite/affine-model';
-import type { IBound } from '@blocksuite/global/utils';
+import type { ShapeElementModel, ShapeType } from '@pulsar/model';
+import type { IBound } from '@pulsar/global/utils';
 
-import { TextAlign } from '@blocksuite/affine-model';
+import { TextAlign } from '@pulsar/model';
 import {
   DEFAULT_SHAPE_FILL_COLOR,
   DEFAULT_SHAPE_STROKE_COLOR,
   DEFAULT_SHAPE_TEXT_COLOR,
-} from '@blocksuite/affine-model';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { Bound } from '@pulsar/global/utils';
 
 import type { RoughCanvas } from '../../../utils/rough/canvas.js';
 import type { CanvasRenderer } from '../../canvas-renderer.js';

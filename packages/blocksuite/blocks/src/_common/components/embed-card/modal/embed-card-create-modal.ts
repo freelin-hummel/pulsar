@@ -1,12 +1,12 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { toast } from '@blocksuite/affine-components/toast';
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { Vec } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { toast } from '@pulsar/editor-components/toast';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { Vec } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -39,7 +39,7 @@ export class EmbedCardCreateModal extends WithDisposable(ShadowlessElement) {
     const { mode } = this.createOptions;
     if (mode === 'page') {
       const { parentModel, index } = this.createOptions;
-      let flavour = 'affine:bookmark';
+      let flavour = 'pulsar:bookmark';
 
       if (embedOptions) {
         flavour = embedOptions.flavour;
@@ -54,7 +54,7 @@ export class EmbedCardCreateModal extends WithDisposable(ShadowlessElement) {
         index
       );
     } else if (mode === 'edgeless') {
-      let flavour = 'affine:bookmark',
+      let flavour = 'pulsar:bookmark',
         targetStyle: EmbedCardStyle = 'vertical';
 
       if (embedOptions) {

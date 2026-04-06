@@ -4,26 +4,26 @@ import {
   type ExtensionType,
   FlavourExtension,
   WidgetViewMapExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { commands } from './commands/index.js';
 import { ImageBlockService } from './image-service.js';
 
 export const ImageBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:image'),
+  FlavourExtension('pulsar:image'),
   ImageBlockService,
   CommandExtension(commands),
-  BlockViewExtension('affine:image', model => {
+  BlockViewExtension('pulsar:image', model => {
     const parent = model.doc.getParent(model.id);
 
-    if (parent?.flavour === 'affine:surface') {
-      return literal`affine-edgeless-image`;
+    if (parent?.flavour === 'pulsar:surface') {
+      return literal`pulsar-edgeless-image`;
     }
 
-    return literal`affine-image`;
+    return literal`pulsar-image`;
   }),
-  WidgetViewMapExtension('affine:image', {
-    imageToolbar: literal`affine-image-toolbar-widget`,
+  WidgetViewMapExtension('pulsar:image', {
+    imageToolbar: literal`pulsar-image-toolbar-widget`,
   }),
 ];

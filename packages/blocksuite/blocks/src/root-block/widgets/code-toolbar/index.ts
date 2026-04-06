@@ -1,12 +1,12 @@
 import type {
   AdvancedMenuItem,
   MenuItemGroup,
-} from '@blocksuite/affine-components/toolbar';
-import type { CodeBlockModel } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/toolbar';
+import type { CodeBlockModel } from '@pulsar/model';
 
-import { HoverController } from '@blocksuite/affine-components/hover';
-import { cloneGroups } from '@blocksuite/affine-components/toolbar';
-import { WidgetComponent } from '@blocksuite/block-std';
+import { HoverController } from '@pulsar/editor-components/hover';
+import { cloneGroups } from '@pulsar/editor-components/toolbar';
+import { WidgetComponent } from '@pulsar/block-std';
 import { limitShift, shift } from '@floating-ui/dom';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -19,9 +19,9 @@ import './components/code-toolbar.js';
 import { MORE_GROUPS, PRIMARY_GROUPS } from './config.js';
 import { CodeBlockToolbarContext } from './context.js';
 
-export const AFFINE_CODE_TOOLBAR_WIDGET = 'affine-code-toolbar-widget';
-@customElement(AFFINE_CODE_TOOLBAR_WIDGET)
-export class AffineCodeToolbarWidget extends WidgetComponent<
+export const PULSAR_CODE_TOOLBAR_WIDGET = 'pulsar-code-toolbar-widget';
+@customElement(PULSAR_CODE_TOOLBAR_WIDGET)
+export class PulsarCodeToolbarWidget extends WidgetComponent<
   CodeBlockModel,
   CodeBlockComponent
 > {
@@ -71,7 +71,7 @@ export class AffineCodeToolbarWidget extends WidgetComponent<
           container: this.block,
           // stacking-context(editor-host)
           portalStyles: {
-            zIndex: 'var(--affine-z-index-popover)',
+            zIndex: 'var(--pulsar-z-index-popover)',
           },
           computePosition: {
             referenceElement: codeBlock,
@@ -157,6 +157,6 @@ export class AffineCodeToolbarWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_CODE_TOOLBAR_WIDGET]: AffineCodeToolbarWidget;
+    [PULSAR_CODE_TOOLBAR_WIDGET]: PulsarCodeToolbarWidget;
   }
 }

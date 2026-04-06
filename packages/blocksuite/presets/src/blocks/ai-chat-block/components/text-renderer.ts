@@ -1,18 +1,18 @@
-import type { AffineAIPanelState } from '@blocksuite/blocks';
+import type { PulsarAIPanelState } from '@pulsar/blocks';
 
 import {
   BlockStdScope,
   type EditorHost,
   WithDisposable,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   CodeBlockComponent,
   DividerBlockComponent,
   ListBlockComponent,
   ParagraphBlockComponent,
   SpecProvider,
-} from '@blocksuite/blocks';
-import { BlockViewType, type Doc, type Query } from '@blocksuite/store';
+} from '@pulsar/blocks';
+import { BlockViewType, type Doc, type Query } from '@pulsar/store';
 import { LitElement, type PropertyValues, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -30,39 +30,39 @@ const textBlockStyles = css`
 const customHeadingStyles = css`
   .custom-heading {
     .h1 {
-      font-size: calc(var(--affine-font-h-1) - 2px);
+      font-size: calc(var(--pulsar-font-h-1) - 2px);
       code {
-        font-size: calc(var(--affine-font-base) + 6px);
+        font-size: calc(var(--pulsar-font-base) + 6px);
       }
     }
     .h2 {
-      font-size: calc(var(--affine-font-h-2) - 2px);
+      font-size: calc(var(--pulsar-font-h-2) - 2px);
       code {
-        font-size: calc(var(--affine-font-base) + 4px);
+        font-size: calc(var(--pulsar-font-base) + 4px);
       }
     }
     .h3 {
-      font-size: calc(var(--affine-font-h-3) - 2px);
+      font-size: calc(var(--pulsar-font-h-3) - 2px);
       code {
-        font-size: calc(var(--affine-font-base) + 2px);
+        font-size: calc(var(--pulsar-font-base) + 2px);
       }
     }
     .h4 {
-      font-size: calc(var(--affine-font-h-4) - 2px);
+      font-size: calc(var(--pulsar-font-h-4) - 2px);
       code {
-        font-size: var(--affine-font-base);
+        font-size: var(--pulsar-font-base);
       }
     }
     .h5 {
-      font-size: calc(var(--affine-font-h-5) - 2px);
+      font-size: calc(var(--pulsar-font-h-5) - 2px);
       code {
-        font-size: calc(var(--affine-font-base) - 2px);
+        font-size: calc(var(--pulsar-font-base) - 2px);
       }
     }
     .h6 {
-      font-size: calc(var(--affine-font-h-6) - 2px);
+      font-size: calc(var(--pulsar-font-h-6) - 2px);
       code {
-        font-size: calc(var(--affine-font-base) - 4px);
+        font-size: calc(var(--pulsar-font-base) - 4px);
       }
     }
   }
@@ -89,13 +89,13 @@ export class TextRenderer extends WithDisposable(LitElement) {
   private readonly _query: Query = {
     mode: 'strict',
     match: [
-      'affine:page',
-      'affine:note',
-      'affine:surface',
-      'affine:paragraph',
-      'affine:code',
-      'affine:list',
-      'affine:divider',
+      'pulsar:page',
+      'pulsar:note',
+      'pulsar:surface',
+      'pulsar:paragraph',
+      'pulsar:code',
+      'pulsar:list',
+      'pulsar:divider',
     ].map(flavour => ({ flavour, viewType: BlockViewType.Display })),
   };
 
@@ -131,15 +131,15 @@ export class TextRenderer extends WithDisposable(LitElement) {
   static override styles = css`
     .ai-answer-text-editor.affine-page-viewport {
       background: transparent;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       margin-top: 0;
       margin-bottom: 0;
     }
 
     .ai-answer-text-editor .affine-page-root-block-container {
       padding: 0;
-      line-height: var(--affine-line-height);
-      color: var(--affine-text-primary-color);
+      line-height: var(--pulsar-line-height);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
     }
 
@@ -176,7 +176,7 @@ export class TextRenderer extends WithDisposable(LitElement) {
       border-radius: 20px;
     }
     .ai-answer-text-container.show-scrollbar:hover::-webkit-scrollbar-thumb {
-      background-color: var(--affine-black-30);
+      background-color: var(--pulsar-black-30);
     }
     .ai-answer-text-container.show-scrollbar::-webkit-scrollbar-corner {
       display: none;
@@ -283,7 +283,7 @@ export class TextRenderer extends WithDisposable(LitElement) {
   accessor options!: TextRendererOptions;
 
   @property({ attribute: false })
-  accessor state: AffineAIPanelState | undefined = undefined;
+  accessor state: PulsarAIPanelState | undefined = undefined;
 }
 
 declare global {

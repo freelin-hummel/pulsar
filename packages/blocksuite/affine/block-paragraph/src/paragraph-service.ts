@@ -1,21 +1,21 @@
 import {
-  type AffineTextAttributes,
+  type PulsarTextAttributes,
   InlineManager,
   ReferenceNodeConfig,
   affineInlineMarkdownMatches,
-  getAffineInlineSpecsWithReference,
+  getPulsarInlineSpecsWithReference,
   textKeymap,
-} from '@blocksuite/affine-components/rich-text';
+} from '@pulsar/editor-components/rich-text';
 import {
   type ParagraphBlockModel,
   ParagraphBlockSchema,
-} from '@blocksuite/affine-model';
-import { BlockService } from '@blocksuite/block-std';
+} from '@pulsar/model';
+import { BlockService } from '@pulsar/block-std';
 
 export class ParagraphBlockService extends BlockService {
   static override readonly flavour = ParagraphBlockSchema.model.flavour;
 
-  readonly inlineManager = new InlineManager<AffineTextAttributes>();
+  readonly inlineManager = new InlineManager<PulsarTextAttributes>();
 
   placeholderGenerator: (model: ParagraphBlockModel) => string = model => {
     if (model.type === 'text') {
@@ -42,7 +42,7 @@ export class ParagraphBlockService extends BlockService {
     this.bindHotKey(textKeymap(this.std));
     this.referenceNodeConfig.setDoc(this.doc);
 
-    const inlineSpecs = getAffineInlineSpecsWithReference(
+    const inlineSpecs = getPulsarInlineSpecsWithReference(
       this.referenceNodeConfig
     );
     this.inlineManager.registerSpecs(inlineSpecs);

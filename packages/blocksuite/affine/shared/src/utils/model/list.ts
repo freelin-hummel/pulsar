@@ -1,6 +1,6 @@
-import type { ListBlockModel } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { ListBlockModel } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import { matchFlavours } from './checker.js';
 
@@ -23,7 +23,7 @@ export function getNextContinuousNumberedLists(
   const firstNotNumberedListIndex = parent.children.findIndex(
     (model, i) =>
       i > modelIndex &&
-      (!matchFlavours(model, ['affine:list']) || model.type !== 'numbered')
+      (!matchFlavours(model, ['pulsar:list']) || model.type !== 'numbered')
   );
   const newContinuousLists = parent.children.slice(
     modelIndex + 1,
@@ -32,7 +32,7 @@ export function getNextContinuousNumberedLists(
   if (
     !newContinuousLists.every(
       model =>
-        matchFlavours(model, ['affine:list']) && model.type === 'numbered'
+        matchFlavours(model, ['pulsar:list']) && model.type === 'numbered'
     )
   )
     return [];
@@ -56,7 +56,7 @@ export function toNumberedList(
   // if there is a numbered list before, the order continues from the previous list
   if (
     prevSibling &&
-    matchFlavours(prevSibling, ['affine:list']) &&
+    matchFlavours(prevSibling, ['pulsar:list']) &&
     prevSibling.type === 'numbered'
   ) {
     doc.transact(() => {
@@ -67,7 +67,7 @@ export function toNumberedList(
 
   // add a new list block and delete the current block
   const newListId = doc.addBlock(
-    'affine:list',
+    'pulsar:list',
     {
       type: 'numbered',
       text: model.text.clone(),

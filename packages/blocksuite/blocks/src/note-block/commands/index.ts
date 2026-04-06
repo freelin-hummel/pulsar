@@ -1,4 +1,4 @@
-import type { BlockCommands, BlockComponent } from '@blocksuite/block-std';
+import type { BlockCommands, BlockComponent } from '@pulsar/block-std';
 
 import {
   getBlockIndexCommand,
@@ -6,7 +6,7 @@ import {
   getNextBlockCommand,
   getPrevBlockCommand,
   getSelectedBlocksCommand,
-} from '@blocksuite/affine-shared/commands';
+} from '@pulsar/editor-shared/commands';
 
 import { updateBlockType } from './block-type.js';
 import { dedentBlock } from './dedent-block.js';

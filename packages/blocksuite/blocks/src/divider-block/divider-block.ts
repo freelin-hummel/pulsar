@@ -1,15 +1,15 @@
 /// <reference types="vite/client" />
 
-import type { DividerBlockModel } from '@blocksuite/affine-model';
+import type { DividerBlockModel } from '@pulsar/model';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '../_common/consts.js';
 import { dividerBlockStyles } from './styles.js';
 
-@customElement('affine-divider')
+@customElement('pulsar-divider')
 export class DividerBlockComponent extends CaptionedBlockComponent<DividerBlockModel> {
   static override styles = dividerBlockStyles;
 
@@ -29,14 +29,14 @@ export class DividerBlockComponent extends CaptionedBlockComponent<DividerBlockM
 
   override renderBlock() {
     const children = html`<div
-      class="affine-block-children-container"
+      class="pulsar-block-children-container"
       style="padding-left: ${BLOCK_CHILDREN_CONTAINER_PADDING_LEFT}px"
     >
       ${this.renderChildren(this.model)}
     </div>`;
 
     return html`
-      <div class="affine-divider-block-container">
+      <div class="pulsar-divider-block-container">
         <hr />
 
         ${children}
@@ -49,6 +49,6 @@ export class DividerBlockComponent extends CaptionedBlockComponent<DividerBlockM
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-divider': DividerBlockComponent;
+    'pulsar-divider': DividerBlockComponent;
   }
 }

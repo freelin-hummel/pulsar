@@ -1,10 +1,10 @@
-import type { ListBlockModel } from '@blocksuite/affine-model';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { ListBlockModel } from '@pulsar/model';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import {
   getNextContinuousNumberedLists,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 /**
  * correct target is a numbered list, which is divided into two steps:
@@ -23,7 +23,7 @@ export function correctNumberedListsOrderToPrev(
   if (!model) return;
 
   if (
-    !matchFlavours(model, ['affine:list']) ||
+    !matchFlavours(model, ['pulsar:list']) ||
     model.type$.value !== 'numbered'
   ) {
     return;
@@ -34,7 +34,7 @@ export function correctNumberedListsOrderToPrev(
     const previousSibling = doc.getPrev(model);
     if (
       previousSibling &&
-      matchFlavours(previousSibling, ['affine:list']) &&
+      matchFlavours(previousSibling, ['pulsar:list']) &&
       previousSibling.type === 'numbered'
     ) {
       if (!previousSibling.order) previousSibling.order = 1;

@@ -1,6 +1,6 @@
-import type { PointerEventState } from '@blocksuite/block-std';
+import type { PointerEventState } from '@pulsar/block-std';
 
-import { Point, noop } from '@blocksuite/global/utils';
+import { Point, noop } from '@pulsar/global/utils';
 
 import type { SelectionArea } from '../services/tools-manager.js';
 import type { EdgelessTool } from '../types.js';
@@ -19,7 +19,7 @@ import { DraggingNoteOverlay, NoteOverlay } from '../utils/tool-overlay.js';
 import { EdgelessToolController } from './edgeless-tool.js';
 
 export type NoteTool = {
-  type: 'affine:note';
+  type: 'pulsar:note';
   childFlavour: NoteChildrenFlavour;
   childType: string | null;
   tip: string;
@@ -33,8 +33,8 @@ export class NoteToolController extends EdgelessToolController<NoteTool> {
   private _noteOverlay: NoteOverlay | null = null;
 
   readonly tool = {
-    type: 'affine:note',
-    childFlavour: 'affine:paragraph',
+    type: 'pulsar:note',
+    childFlavour: 'pulsar:paragraph',
     childType: 'text',
     tip: 'Text',
   } as NoteTool;
@@ -102,10 +102,10 @@ export class NoteToolController extends EdgelessToolController<NoteTool> {
   }
 
   afterModeSwitch(newTool: EdgelessTool) {
-    if (newTool.type !== 'affine:note') return;
+    if (newTool.type !== 'pulsar:note') return;
 
     const attributes =
-      this._edgeless.service.editPropsStore.lastProps$.value['affine:note'];
+      this._edgeless.service.editPropsStore.lastProps$.value['pulsar:note'];
     const background = attributes.background;
     this._noteOverlay = new NoteOverlay(this._edgeless, background);
     this._noteOverlay.text = newTool.tip;
@@ -179,7 +179,7 @@ export class NoteToolController extends EdgelessToolController<NoteTool> {
     this._clearOverlay();
 
     const attributes =
-      this._edgeless.service.editPropsStore.lastProps$.value['affine:note'];
+      this._edgeless.service.editPropsStore.lastProps$.value['pulsar:note'];
     const background = attributes.background;
     this._draggingNoteOverlay = new DraggingNoteOverlay(
       this._edgeless,

@@ -3,21 +3,21 @@ import type {
   NoteBlockModel,
   RootBlockModel,
   SurfaceRefBlockModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
 import {
   AutoConnectLeftIcon,
   AutoConnectRightIcon,
   HiddenIcon,
   SmallDocIcon,
-} from '@blocksuite/affine-components/icons';
-import { NoteDisplayMode } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/icons';
+import { NoteDisplayMode } from '@pulsar/model';
 import {
   matchFlavours,
   stopPropagation,
-} from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -84,7 +84,7 @@ function getIndexLabelTooltip(icon: TemplateResult, content: string) {
     }
 
     .index-label-tooltip-content {
-      font-size: var(--affine-font-sm);
+      font-size: var(--pulsar-font-sm);
 
       display: flex;
       height: 16px;
@@ -103,10 +103,10 @@ function getIndexLabelTooltip(icon: TemplateResult, content: string) {
 
 type AutoConnectElement = NoteBlockModel | FrameBlockModel;
 
-export const AFFINE_EDGELESS_AUTO_CONNECT_WIDGET =
-  'affine-edgeless-auto-connect-widget';
+export const PULSAR_EDGELESS_AUTO_CONNECT_WIDGET =
+  'pulsar-edgeless-auto-connect-widget';
 
-@customElement(AFFINE_EDGELESS_AUTO_CONNECT_WIDGET)
+@customElement(PULSAR_EDGELESS_AUTO_CONNECT_WIDGET)
 export class EdgelessAutoConnectWidget extends WidgetComponent<
   RootBlockModel,
   EdgelessRootBlockComponent,
@@ -116,7 +116,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
     const service = this.service;
     const pageVisibleBlocks = new Map<AutoConnectElement, number>();
     const notes = service.doc.root?.children.filter(child =>
-      matchFlavours(child, ['affine:note'])
+      matchFlavours(child, ['pulsar:note'])
     ) as NoteBlockModel[];
     const edgelessOnlyNotesSet = new Set<NoteBlockModel>();
 
@@ -130,7 +130,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
       }
 
       note.children.forEach(model => {
-        if (matchFlavours(model, ['affine:surface-ref'])) {
+        if (matchFlavours(model, ['pulsar:surface-ref'])) {
           const reference = service.getElementById(
             model.reference
           ) as AutoConnectElement;
@@ -163,7 +163,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
       height: 24px;
       min-width: 24px;
 
-      color: var(--affine-white);
+      color: var(--pulsar-white);
       font-size: 15px;
       line-height: 22px;
       text-align: center;
@@ -172,7 +172,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
       user-select: none;
 
       border-radius: 25px;
-      background: var(--affine-primary-color);
+      background: var(--pulsar-primary-color);
     }
 
     .navigator {
@@ -201,7 +201,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
     }
 
     .navigator div:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .navigator.show {
@@ -227,9 +227,9 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
           width: `${EDGELESS_ONLY_INDEX_LABEL_WIDTH}px`,
           height: `${EDGELESS_ONLY_INDEX_LABEL_HEIGHT}px`,
           borderRadius: '50%',
-          backgroundColor: 'var(--affine-text-secondary-color)',
-          border: '1px solid var(--affine-border-color)',
-          color: 'var(--affine-white)',
+          backgroundColor: 'var(--pulsar-text-secondary-color)',
+          border: '1px solid var(--pulsar-border-color)',
+          color: 'var(--pulsar-white)',
           position: 'absolute',
           transform: `translate(${
             left + width / 2 - EDGELESS_ONLY_INDEX_LABEL_WIDTH / 2
@@ -401,7 +401,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
   private _initLabels() {
     const { service } = this.block;
     const surfaceRefs = service.doc
-      .getBlocksByFlavour('affine:surface-ref')
+      .getBlocksByFlavour('pulsar:surface-ref')
       .map(block => block.model) as SurfaceRefBlockModel[];
 
     const getVisibility = () => {
@@ -428,7 +428,7 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
     );
     this._disposables.add(
       this.doc.slots.blockUpdated.on(payload => {
-        if (payload.flavour === 'affine:surface-ref') {
+        if (payload.flavour === 'pulsar:surface-ref') {
           switch (payload.type) {
             case 'add':
               surfaceRefs.push(payload.model as SurfaceRefBlockModel);
@@ -580,6 +580,6 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-auto-connect-widget': EdgelessAutoConnectWidget;
+    'pulsar-edgeless-auto-connect-widget': EdgelessAutoConnectWidget;
   }
 }

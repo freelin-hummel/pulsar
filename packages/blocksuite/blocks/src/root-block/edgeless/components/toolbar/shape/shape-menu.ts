@@ -1,10 +1,10 @@
-import type { ShapeFillColor } from '@blocksuite/affine-model';
+import type { ShapeFillColor } from '@pulsar/model';
 import type { Signal } from '@lit-labs/preact-signals';
 
 import {
   GeneralStyleIcon,
   ScribbledStyleIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   DEFAULT_SHAPE_FILL_COLOR,
   LineColor,
@@ -12,9 +12,9 @@ import {
   type ShapeName,
   ShapeStyle,
   ShapeType,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { SignalWatcher } from '@blocksuite/block-std';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { SignalWatcher } from '@pulsar/block-std';
 import { computed, signal } from '@lit-labs/preact-signals';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -93,7 +93,7 @@ export class EdgelessShapeMenu extends SignalWatcher(LitElement) {
     }
     .shape-type-container svg,
     .shape-style-container svg {
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
       stroke: none;
     }
     menu-divider {

@@ -6,7 +6,7 @@ export const styles = css`
   }
 
   .affine-reference-popover-container {
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     animation: affine-popover-fade-in 0.2s ease;
     position: absolute;
   }

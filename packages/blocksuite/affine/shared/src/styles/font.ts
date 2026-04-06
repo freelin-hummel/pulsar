@@ -11,14 +11,14 @@ export const FONT_BASE = unsafeCSS(`
 
 export const FONT_SM = unsafeCSS(`
   ${FONT_BASE};
-  font-size: var(--affine-font-sm);
+  font-size: var(--pulsar-font-sm);
   font-weight: 500;
   line-height: 22px;
 `);
 
 export const FONT_XS = unsafeCSS(`
   ${FONT_BASE};
-  font-size: var(--affine-font-xs);
+  font-size: var(--pulsar-font-xs);
   font-weight: 500;
   line-height: 20px;
 `);

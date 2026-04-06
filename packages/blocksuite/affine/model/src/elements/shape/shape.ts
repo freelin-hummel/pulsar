@@ -1,14 +1,14 @@
 import type {
   BaseElementProps,
   PointTestOptions,
-} from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-std/gfx';
 import type {
   Bound,
   IBound,
   IVec,
   PointLocation,
   SerializedXYWH,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import {
   type Color,
@@ -20,13 +20,13 @@ import {
   TextAlign,
   type TextStyleProps,
   TextVerticalAlign,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   GfxPrimitiveElementModel,
   field,
   local,
-} from '@blocksuite/block-std/gfx';
-import { DocCollection, type Y } from '@blocksuite/store';
+} from '@pulsar/block-std/gfx';
+import { DocCollection, type Y } from '@pulsar/store';
 
 import {
   LineColor,

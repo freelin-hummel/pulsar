@@ -1,5 +1,5 @@
-import { MindmapStyle } from '@blocksuite/affine-block-surface';
-import { assertExists } from '@blocksuite/global/utils';
+import { MindmapStyle } from '@pulsar/block-surface';
+import { assertExists } from '@pulsar/global/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';

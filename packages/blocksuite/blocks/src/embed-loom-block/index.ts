@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { EmbedLoomBlockService } from './embed-loom-service.js';
 
@@ -13,7 +13,7 @@ export * from './embed-loom-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:embed-loom': EmbedLoomBlockService;
+      'pulsar:embed-loom': EmbedLoomBlockService;
     }
   }
 }

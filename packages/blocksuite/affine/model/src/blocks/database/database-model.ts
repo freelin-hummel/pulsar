@@ -1,6 +1,6 @@
-import type { MigrationRunner, Text } from '@blocksuite/store';
+import type { MigrationRunner, Text } from '@pulsar/store';
 
-import { BlockModel, defineBlockSchema, nanoid } from '@blocksuite/store';
+import { BlockModel, defineBlockSchema, nanoid } from '@pulsar/store';
 
 import type { Column, SerializedCells, ViewBasicDataType } from './types.js';
 
@@ -46,7 +46,7 @@ const migration = {
 } satisfies Record<string, MigrationRunner<typeof DatabaseBlockSchema>>;
 
 export const DatabaseBlockSchema = defineBlockSchema({
-  flavour: 'affine:database',
+  flavour: 'pulsar:database',
   props: (internal): DatabaseBlockProps => ({
     views: [],
     title: internal.Text(),
@@ -56,8 +56,8 @@ export const DatabaseBlockSchema = defineBlockSchema({
   metadata: {
     role: 'hub',
     version: 3,
-    parent: ['affine:note'],
-    children: ['affine:paragraph', 'affine:list'],
+    parent: ['pulsar:note'],
+    children: ['pulsar:paragraph', 'pulsar:list'],
   },
   toModel: () => new DatabaseBlockModel(),
   onUpgrade: (data, previousVersion, latestVersion) => {

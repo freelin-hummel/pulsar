@@ -1,14 +1,14 @@
-import type { FrameBlockModel } from '@blocksuite/affine-model';
+import type { FrameBlockModel } from '@pulsar/model';
 
-import { BlockServiceWatcher, BlockStdScope } from '@blocksuite/block-std';
+import { BlockServiceWatcher, BlockStdScope } from '@pulsar/block-std';
 import {
   type EditorHost,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { DisposableGroup, deserializeXYWH } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
-import { BlockViewType, type Doc, type Query } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { DisposableGroup, deserializeXYWH } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
+import { BlockViewType, type Doc, type Query } from '@pulsar/store';
 import { css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -67,7 +67,7 @@ export class FramePreview extends WithDisposable(ShadowlessElement) {
     mode: 'loose',
     match: [
       {
-        flavour: 'affine:frame',
+        flavour: 'pulsar:frame',
         viewType: BlockViewType.Hidden,
       },
     ],
@@ -110,7 +110,7 @@ export class FramePreview extends WithDisposable(ShadowlessElement) {
   private _initSpec() {
     const refreshViewport = this._refreshViewport.bind(this);
     class FramePreviewWatcher extends BlockServiceWatcher {
-      static override readonly flavour = 'affine:page';
+      static override readonly flavour = 'pulsar:page';
 
       override mounted() {
         const blockService = this.blockService;
@@ -136,7 +136,7 @@ export class FramePreview extends WithDisposable(ShadowlessElement) {
     if (!previewEditorHost) return;
 
     const edgelessService = previewEditorHost.std.getService(
-      'affine:page'
+      'pulsar:page'
     ) as EdgelessRootService;
 
     const frameBound = Bound.deserialize(this.frame.xywh);

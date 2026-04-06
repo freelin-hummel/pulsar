@@ -1,4 +1,4 @@
-/// <reference types="@blocksuite/global" preserve="true" />
+/// <reference types="@pulsar/global" preserve="true" />
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../shim.d.ts" />
 
@@ -18,7 +18,7 @@ export {
 } from './utils/id-generator.js';
 export * as Utils from './utils/utils.js';
 export * from './yjs/index.js';
-export { Slot } from '@blocksuite/global/utils';
+export { Slot } from '@pulsar/global/utils';
 
 import type * as Y from 'yjs';
 
@@ -40,7 +40,7 @@ const importIdentifier = '__ $BLOCKSUITE_STORE$ __';
 if (env[importIdentifier] === true) {
   // https://github.com/yjs/yjs/issues/438
   console.error(
-    '@blocksuite/store was already imported. This breaks constructor checks and will lead to issues!'
+    '@pulsar/store was already imported. This breaks constructor checks and will lead to issues!'
   );
 }
 // @ts-ignore

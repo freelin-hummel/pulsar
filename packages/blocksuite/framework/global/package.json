@@ -1,5 +1,5 @@
 {
-  "name": "@blocksuite/global",
+  "name": "@pulsar/global",
   "version": "0.17.0",
   "types": "./index.d.ts",
   "type": "module",

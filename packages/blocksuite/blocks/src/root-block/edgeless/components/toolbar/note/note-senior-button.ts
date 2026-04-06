@@ -2,9 +2,9 @@ import {
   Heading1Icon,
   LinkIcon,
   TextIcon,
-} from '@blocksuite/affine-components/icons';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { SignalWatcher } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { SignalWatcher } from '@pulsar/block-std';
 import { computed } from '@lit-labs/preact-signals';
 import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
@@ -22,7 +22,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
 ) {
   private _noteBg$ = computed(() => {
     return ThemeObserver.generateColorProperty(
-      this.edgeless.service.editPropsStore.lastProps$.value['affine:note']
+      this.edgeless.service.editPropsStore.lastProps$.value['pulsar:note']
         .background
     );
   });
@@ -41,7 +41,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
     }
 
     .note-root {
-      --paper-border-color: var(--affine-pure-white);
+      --paper-border-color: var(--pulsar-pure-white);
       --paper-foriegn-color: rgba(0, 0, 0, 0.1);
       --paper-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
       --icon-card-bg: #fff;
@@ -49,7 +49,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
         inset 0px -2px 1px rgba(0, 0, 0, 0.14);
     }
     .note-root[data-dark='true'] {
-      --paper-border-color: var(--affine-divider-color);
+      --paper-border-color: var(--pulsar-divider-color);
       --paper-foriegn-color: rgba(255, 255, 255, 0.12);
       --paper-shadow: 0px 2px 6px rgba(0, 0, 0, 0.8);
       --icon-card-bg: #343434;
@@ -91,7 +91,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--affine-icon-secondary);
+      color: var(--pulsar-icon-secondary);
       background: var(--icon-card-bg);
       box-shadow: var(--icon-card-shadow);
       bottom: 12px;
@@ -136,7 +136,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
 
   override enableActiveBackground = true;
 
-  override type = 'affine:note' as const;
+  override type = 'pulsar:note' as const;
 
   private _toggleNoteMenu() {
     if (this.tryDisposePopper()) return;
@@ -144,7 +144,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
     const { edgeless, childFlavour, childType, tip } = this;
 
     this.setEdgelessTool({
-      type: 'affine:note',
+      type: 'pulsar:note',
       childFlavour,
       childType,
       tip,
@@ -169,7 +169,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
           }
         });
         this.setEdgelessTool({
-          type: 'affine:note',
+          type: 'pulsar:note',
           childFlavour: this.childFlavour,
           childType: this.childType,
           tip: this.tip,
@@ -202,7 +202,7 @@ export class EdgelessNoteSeniorButton extends EdgelessToolbarToolMixin(
 
   // TODO: better to extract these states outside of component?
   @state()
-  accessor childFlavour: NoteTool['childFlavour'] = 'affine:paragraph';
+  accessor childFlavour: NoteTool['childFlavour'] = 'pulsar:paragraph';
 
   @state()
   accessor childType = 'text';

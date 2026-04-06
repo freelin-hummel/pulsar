@@ -1,8 +1,8 @@
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
-import type { Container } from '@blocksuite/global/di';
+import type { EmbedCardStyle } from '@pulsar/model';
+import type { Container } from '@pulsar/global/di';
 
-import { Extension } from '@blocksuite/block-std';
-import { createIdentifier } from '@blocksuite/global/di';
+import { Extension } from '@pulsar/block-std';
+import { createIdentifier } from '@pulsar/global/di';
 
 export type EmbedOptions = {
   flavour: string;
@@ -17,7 +17,7 @@ export interface EmbedOptionProvider {
 }
 
 export const EmbedOptionProvider = createIdentifier<EmbedOptionProvider>(
-  'AffineEmbedOptionProvider'
+  'PulsarEmbedOptionProvider'
 );
 
 export class EmbedOptionService

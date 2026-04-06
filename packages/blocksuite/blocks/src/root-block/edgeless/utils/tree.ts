@@ -1,4 +1,4 @@
-import { isGfxContainerElm } from '@blocksuite/block-std/gfx';
+import { isGfxContainerElm } from '@pulsar/block-std/gfx';
 
 /**
  * Get the top elements from the list of elements, which are in some tree structures.

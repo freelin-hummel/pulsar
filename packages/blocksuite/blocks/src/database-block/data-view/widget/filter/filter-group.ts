@@ -1,7 +1,7 @@
 import type { TemplateResult } from 'lit';
 
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import {
   ArrowDownSmallIcon,
   ConvertIcon,
@@ -97,7 +97,7 @@ export class FilterGroupView extends WithDisposable(ShadowlessElement) {
       font-style: normal;
       font-weight: 400;
       line-height: 22px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-group-op-clickable {
@@ -106,7 +106,7 @@ export class FilterGroupView extends WithDisposable(ShadowlessElement) {
     }
 
     .filter-group-op-clickable:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .filter-group-container {
@@ -124,24 +124,24 @@ export class FilterGroupView extends WithDisposable(ShadowlessElement) {
       line-height: 22px;
       border-radius: 4px;
       cursor: pointer;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
     }
 
     .filter-group-button svg {
-      fill: var(--affine-text-secondary-color);
-      color: var(--affine-text-secondary-color);
+      fill: var(--pulsar-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       width: 20px;
       height: 20px;
     }
 
     .filter-group-button:hover {
-      background-color: var(--affine-hover-color);
-      color: var(--affine-text-primary-color);
+      background-color: var(--pulsar-hover-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-group-button:hover svg {
-      fill: var(--affine-text-primary-color);
-      color: var(--affine-text-primary-color);
+      fill: var(--pulsar-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-group-item {
@@ -161,44 +161,44 @@ export class FilterGroupView extends WithDisposable(ShadowlessElement) {
     }
 
     .filter-group-item-ops:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .filter-group-item-ops svg {
-      fill: var(--affine-text-secondary-color);
-      color: var(--affine-text-secondary-color);
+      fill: var(--pulsar-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       width: 18px;
       height: 18px;
     }
 
     .filter-group-item-ops:hover svg {
-      fill: var(--affine-text-primary-color);
-      color: var(--affine-text-primary-color);
+      fill: var(--pulsar-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .delete-style {
-      background-color: var(--affine-background-error-color);
+      background-color: var(--pulsar-background-error-color);
     }
 
     .filter-group-border {
-      border: 1px dashed var(--affine-border-color);
+      border: 1px dashed var(--pulsar-border-color);
     }
 
     .filter-group-bg-1 {
-      background-color: var(--affine-background-secondary-color);
-      border: 1px solid var(--affine-border-color);
+      background-color: var(--pulsar-background-secondary-color);
+      border: 1px solid var(--pulsar-border-color);
     }
 
     .filter-group-bg-2 {
-      background-color: var(--affine-background-tertiary-color);
-      border: 1px solid var(--affine-border-color);
+      background-color: var(--pulsar-background-tertiary-color);
+      border: 1px solid var(--pulsar-border-color);
     }
     .hover-style {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .delete-style {
-      background-color: var(--affine-background-error-color);
+      background-color: var(--pulsar-background-error-color);
     }
   `;
 

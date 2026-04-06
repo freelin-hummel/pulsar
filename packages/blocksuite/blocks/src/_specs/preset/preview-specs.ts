@@ -1,13 +1,13 @@
-import { PageSurfaceBlockSpec } from '@blocksuite/affine-block-surface';
+import { PageSurfaceBlockSpec } from '@pulsar/block-surface';
 import {
   DocModeService,
   EmbedOptionService,
-} from '@blocksuite/affine-shared/services';
+} from '@pulsar/editor-shared/services';
 import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { LatexBlockSpec } from '../../latex-block/latex-spec.js';
@@ -16,11 +16,11 @@ import { PageSurfaceRefBlockSpec } from '../../surface-ref-block/surface-ref-spe
 import { CommonFirstPartyBlockSpecs } from '../common.js';
 
 const PreviewPageSpec: ExtensionType[] = [
-  FlavourExtension('affine:page'),
+  FlavourExtension('pulsar:page'),
   PageRootService,
   DocModeService,
   EmbedOptionService,
-  BlockViewExtension('affine:page', literal`affine-preview-root`),
+  BlockViewExtension('pulsar:page', literal`pulsar-preview-root`),
 ];
 
 export const PreviewEditorBlockSpecs: ExtensionType[] = [

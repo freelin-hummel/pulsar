@@ -1,13 +1,13 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { DatabaseBlockModel } from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
 
 import {
   CloseIcon,
   DatabaseKanbanViewIcon,
   DatabaseTableViewIcon,
-} from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -40,7 +40,7 @@ const databaseViews: DatabaseView[] = [
   },
 ];
 
-export const DATABASE_CONVERT_WHITE_LIST = ['affine:list', 'affine:paragraph'];
+export const DATABASE_CONVERT_WHITE_LIST = ['pulsar:list', 'pulsar:paragraph'];
 
 @customElement('database-convert-view')
 export class DatabaseConvertView extends WithDisposable(LitElement) {
@@ -48,7 +48,7 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
     :host {
       position: fixed;
       inset: 0;
-      z-index: var(--affine-z-index-modal);
+      z-index: var(--pulsar-z-index-modal);
     }
     .overlay-mask {
       position: absolute;
@@ -57,11 +57,11 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
       right: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.6);
-      z-index: var(--affine-z-index-modal);
+      z-index: var(--pulsar-z-index-modal);
     }
     .modal-container {
       position: absolute;
-      z-index: var(--affine-z-index-modal);
+      z-index: var(--pulsar-z-index-modal);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -71,7 +71,7 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
       width: 720px;
       padding: 24px 40px;
       border-radius: 24px;
-      background: var(--affine-background-overlay-panel-color);
+      background: var(--pulsar-background-overlay-panel-color);
     }
     .modal-header {
       display: flex;
@@ -79,7 +79,7 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
       align-items: center;
     }
     .modal-header-title {
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-size: 20px;
       font-weight: 600;
     }
@@ -87,14 +87,14 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
       display: flex;
       align-items: center;
       cursor: pointer;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
     .modal-header-close-icon svg {
       width: 24px;
       height: 24px;
     }
     .modal-footer {
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       font-size: 14px;
       text-align: center;
     }
@@ -103,7 +103,7 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
     }
     .modal-desc {
       margin-bottom: 38px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-size: 14px;
     }
     .modal-view-container {
@@ -124,12 +124,12 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
       pointer-events: none;
     }
     .modal-view-item-content:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
     .modal-view-item-content:hover .modal-view-item-text,
     .modal-view-item-content:hover svg {
-      fill: var(--affine-primary-color);
-      color: var(--affine-primary-color);
+      fill: var(--pulsar-primary-color);
+      color: var(--pulsar-primary-color);
     }
     .modal-view-item-content {
       display: flex;
@@ -138,7 +138,7 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
       padding: 18px 0;
       gap: 6px;
       width: 108px;
-      border: 2px solid var(--affine-border-color);
+      border: 2px solid var(--pulsar-border-color);
       border-radius: 8px;
     }
     .modal-view-item-icon {
@@ -148,15 +148,15 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
     .modal-view-item-icon svg {
       width: 42px;
       height: 42px;
-      fill: var(--affine-black-50);
+      fill: var(--pulsar-black-50);
     }
     .modal-view-item-text {
       font-size: 14px;
-      color: var(--affine-black-50);
+      color: var(--pulsar-black-50);
     }
     .modal-view-item-description {
       font-size: 12px;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       text-align: center;
     }
   `;
@@ -177,7 +177,7 @@ export class DatabaseConvertView extends WithDisposable(LitElement) {
     assertExists(parentModel);
 
     const id = this.doc.addBlock(
-      'affine:database',
+      'pulsar:database',
       {},
       parentModel,
       parentModel.children.indexOf(selectedModels[0])

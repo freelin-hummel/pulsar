@@ -1,21 +1,21 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { ShapeElementModel } from '@blocksuite/affine-model';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { ShapeElementModel } from '@pulsar/model';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
+import { CommonUtils } from '@pulsar/block-surface';
 import {
   TextUtils,
   MindmapElementModel,
-} from '@blocksuite/affine-block-surface';
-import { TextResizing } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+} from '@pulsar/block-surface';
+import { TextResizing } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   RANGE_SYNC_EXCLUDE_ATTR,
   ShadowlessElement,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { Bound, Vec } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { Bound, Vec } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 import { html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';

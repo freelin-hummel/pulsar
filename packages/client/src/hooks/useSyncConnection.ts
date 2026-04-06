@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { World } from '@pulsar/ecs'
 import type { SyncMessage } from '@pulsar/shared'
-import type { Doc } from '@blocksuite/store'
+import type { Doc } from '@pulsar/store'
 
 interface SyncConnectionOptions {
   roomId: string

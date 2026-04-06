@@ -1,4 +1,4 @@
-import type { IPoint } from '@blocksuite/global/utils';
+import type { IPoint } from '@pulsar/global/utils';
 
 export function isFarEnough(a: IPoint, b: IPoint) {
   const dx = a.x - b.x;

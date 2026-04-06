@@ -1,10 +1,10 @@
-import type { SurfaceRefBlockModel } from '@blocksuite/affine-model';
+import type { SurfaceRefBlockModel } from '@pulsar/model';
 
-import { BlockComponent } from '@blocksuite/block-std';
+import { BlockComponent } from '@pulsar/block-std';
 import { nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-@customElement('affine-edgeless-surface-ref')
+@customElement('pulsar-edgeless-surface-ref')
 export class EdgelessSurfaceRefBlockComponent extends BlockComponent<SurfaceRefBlockModel> {
   override render() {
     return nothing;
@@ -13,6 +13,6 @@ export class EdgelessSurfaceRefBlockComponent extends BlockComponent<SurfaceRefB
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-surface-ref': EdgelessSurfaceRefBlockComponent;
+    'pulsar-edgeless-surface-ref': EdgelessSurfaceRefBlockComponent;
   }
 }

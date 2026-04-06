@@ -61,7 +61,7 @@ function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
     case 'text':
       return { type: 'text' }
     case 'note':
-      return { type: 'affine:note', childFlavour: 'affine:paragraph', childType: 'text', tip: 'Note' }
+      return { type: 'pulsar:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }
     case 'image':
       // Image insertion is handled by triggering a file input, not a tool switch
       return null

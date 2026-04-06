@@ -1,9 +1,9 @@
-/// <reference types="@blocksuite/affine-shared/commands" />
+/// <reference types="@pulsar/editor-shared/commands" />
 import type {
   BlockComponent,
   Command,
   InitCommandCtx,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 
 import { isPeekable, peek } from './peekable.js';
 

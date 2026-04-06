@@ -1,12 +1,12 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
 import {
   CopyIcon,
   DeleteIcon,
   DownloadIcon,
-} from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
-import { downloadBlob } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
+import { downloadBlob } from '@pulsar/editor-shared/utils';
 
 import type { EdgelessRootPreviewBlockComponent } from '../../edgeless/edgeless-root-preview-block.js';
 import type { SurfaceRefToolbarContext } from './context.js';

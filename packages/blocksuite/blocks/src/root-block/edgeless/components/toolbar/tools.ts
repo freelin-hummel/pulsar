@@ -1,4 +1,4 @@
-import type { Menu } from '@blocksuite/affine-components/context-menu';
+import type { Menu } from '@pulsar/editor-components/context-menu';
 
 import { type TemplateResult, html } from 'lit';
 
@@ -102,7 +102,7 @@ export const getQuickTools = ({
   // 🔧 Note
   // if (!doc.readonly) {
   //   quickTools.push({
-  //     type: 'affine:note',
+  //     type: 'pulsar:note',
   //     content: html`
   //       <edgeless-note-tool-button
   //         .edgeless=${edgeless}

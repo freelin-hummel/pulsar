@@ -1,6 +1,6 @@
-import { PANEL_BASE } from '@blocksuite/affine-shared/styles';
-import { createButtonPopper } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { PANEL_BASE } from '@pulsar/editor-shared/styles';
+import { createButtonPopper } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import {
   LitElement,
   type PropertyValues,
@@ -180,14 +180,14 @@ export class EditorMenuAction extends LitElement {
       text-overflow: ellipsis;
       cursor: pointer;
       gap: 8px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       min-height: 30px; // 22 + 8
     }
 
     :host(:hover),
     :host([data-selected]) {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     :host([data-selected]) {
@@ -196,18 +196,18 @@ export class EditorMenuAction extends LitElement {
 
     :host(:hover.delete),
     :host(:hover.delete) ::slotted(svg) {
-      background-color: var(--affine-background-error-color);
-      color: var(--affine-error-color);
+      background-color: var(--pulsar-background-error-color);
+      color: var(--pulsar-error-color);
     }
 
     :host([disabled]) {
       pointer-events: none;
       cursor: not-allowed;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
     }
 
     ::slotted(svg) {
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
   `;
 

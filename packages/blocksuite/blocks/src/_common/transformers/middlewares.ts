@@ -1,14 +1,14 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
+import type { DatabaseBlockModel } from '@pulsar/model';
 import type {
   EmbedLinkedDocModel,
   EmbedSyncedDocModel,
   ListBlockModel,
   ParagraphBlockModel,
   SurfaceRefBlockModel,
-} from '@blocksuite/affine-model';
-import type { DeltaOperation, JobMiddleware } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { DeltaOperation, JobMiddleware } from '@pulsar/store';
 
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import { DEFAULT_IMAGE_PROXY_ENDPOINT } from '../consts.js';
 
@@ -17,7 +17,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
   slots.afterImport.on(payload => {
     if (
       payload.type === 'block' &&
-      payload.snapshot.flavour === 'affine:database'
+      payload.snapshot.flavour === 'pulsar:database'
     ) {
       const model = payload.model as DatabaseBlockModel;
       Object.keys(model.cells).forEach(cellId => {
@@ -31,7 +31,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
     // replace LinkedPage pageId with new id in paragraph blocks
     if (
       payload.type === 'block' &&
-      ['affine:list', 'affine:paragraph'].includes(payload.snapshot.flavour)
+      ['pulsar:list', 'pulsar:paragraph'].includes(payload.snapshot.flavour)
     ) {
       const model = payload.model as ParagraphBlockModel | ListBlockModel;
       let prev = 0;
@@ -69,7 +69,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
 
     if (
       payload.type === 'block' &&
-      payload.snapshot.flavour === 'affine:surface-ref'
+      payload.snapshot.flavour === 'pulsar:surface-ref'
     ) {
       const model = payload.model as SurfaceRefBlockModel;
       const original = model.reference;
@@ -79,7 +79,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
       // 2. If the reference is graph, keep the original id.
       if (idMap.has(original)) {
         model.reference = idMap.get(original)!;
-      } else if (model.refFlavour === 'affine:frame') {
+      } else if (model.refFlavour === 'pulsar:frame') {
         const newId = collection.idGenerator();
         idMap.set(original, newId);
         model.reference = newId;
@@ -89,7 +89,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
     // TODO(@fundon): process linked block/element
     if (
       payload.type === 'block' &&
-      payload.snapshot.flavour === 'affine:embed-linked-doc'
+      payload.snapshot.flavour === 'pulsar:embed-linked-doc'
     ) {
       const model = payload.model as EmbedLinkedDocModel;
       const original = model.pageId;
@@ -104,7 +104,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
 
     if (
       payload.type === 'block' &&
-      payload.snapshot.flavour === 'affine:embed-synced-doc'
+      payload.snapshot.flavour === 'pulsar:embed-synced-doc'
     ) {
       const model = payload.model as EmbedSyncedDocModel;
       const original = model.pageId;
@@ -131,9 +131,9 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
 
     if (payload.type === 'block') {
       const { snapshot } = payload;
-      if (snapshot.flavour === 'affine:page') {
+      if (snapshot.flavour === 'pulsar:page') {
         const index = snapshot.children.findIndex(
-          c => c.flavour === 'affine:surface'
+          c => c.flavour === 'pulsar:surface'
         );
         if (index !== -1) {
           const [surface] = snapshot.children.splice(index, 1);
@@ -151,7 +151,7 @@ export const replaceIdMiddleware: JobMiddleware = ({ slots, collection }) => {
       }
       snapshot.id = newId;
 
-      if (snapshot.flavour === 'affine:surface') {
+      if (snapshot.flavour === 'pulsar:surface') {
         // Generate new IDs for images and frames in advance.
         snapshot.children.forEach(child => {
           const original = child.id;

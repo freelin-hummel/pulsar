@@ -2,18 +2,18 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import './embed-edgeless-youtube-block.js';
 import { EmbedYoutubeBlockService } from './embed-youtube-service.js';
 
 export const EmbedYoutubeBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:embed-youtube'),
+  FlavourExtension('pulsar:embed-youtube'),
   EmbedYoutubeBlockService,
-  BlockViewExtension('affine:embed-youtube', model => {
-    return model.parent?.flavour === 'affine:surface'
-      ? literal`affine-embed-edgeless-youtube-block`
-      : literal`affine-embed-youtube-block`;
+  BlockViewExtension('pulsar:embed-youtube', model => {
+    return model.parent?.flavour === 'pulsar:surface'
+      ? literal`pulsar-embed-edgeless-youtube-block`
+      : literal`pulsar-embed-youtube-block`;
   }),
 ];

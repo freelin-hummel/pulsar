@@ -1,12 +1,12 @@
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   getClosestBlockComponentByElement,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { type Point, Rect } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { type Point, Rect } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { EditingState } from '../types.js';
 
@@ -38,7 +38,7 @@ export function calcDropTarget(
   scale: number = 1,
   flavour: string | null = null // for block-hub
 ): DropResult | null {
-  const schema = model.doc.getSchemaByFlavour('affine:database');
+  const schema = model.doc.getSchemaByFlavour('pulsar:database');
   assertExists(schema);
   const children = schema.model.children ?? [];
 
@@ -54,8 +54,8 @@ export function calcDropTarget(
     }
   }
 
-  if (!shouldAppendToDatabase && !matchFlavours(model, ['affine:database'])) {
-    const databaseBlockComponent = element.closest('affine-database');
+  if (!shouldAppendToDatabase && !matchFlavours(model, ['pulsar:database'])) {
+    const databaseBlockComponent = element.closest('pulsar-database');
     if (databaseBlockComponent) {
       element = databaseBlockComponent;
       model = databaseBlockComponent.model;

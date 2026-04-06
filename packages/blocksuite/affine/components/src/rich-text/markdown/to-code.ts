@@ -1,7 +1,7 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 import { focusTextModel } from '../dom.js';
 
@@ -11,7 +11,7 @@ export function toCode(
   prefixText: string,
   language: string | null
 ) {
-  if (matchFlavours(model, ['affine:paragraph']) && model.type === 'quote') {
+  if (matchFlavours(model, ['pulsar:paragraph']) && model.type === 'quote') {
     return;
   }
 
@@ -24,11 +24,11 @@ export function toCode(
   doc.captureSync();
   const index = parent.children.indexOf(model);
 
-  const codeId = doc.addBlock('affine:code', { language }, parent, index);
+  const codeId = doc.addBlock('pulsar:code', { language }, parent, index);
 
   if (model.text && model.text.length > prefixText.length) {
     const text = model.text.clone();
-    doc.addBlock('affine:paragraph', { text }, parent, index + 1);
+    doc.addBlock('pulsar:paragraph', { text }, parent, index + 1);
     text.delete(0, prefixText.length);
   }
   doc.deleteBlock(model, { bringChildrenTo: parent });

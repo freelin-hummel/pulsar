@@ -1,4 +1,4 @@
-import { FontFamily, FontStyle, FontWeight } from '@blocksuite/affine-model';
+import { FontFamily, FontStyle, FontWeight } from '@pulsar/model';
 
 export interface FontConfig {
   font: string;
@@ -24,7 +24,7 @@ export interface IModelCoord {
   y: number;
 }
 
-export const AffineCanvasTextFonts: FontConfig[] = [
+export const PulsarCanvasTextFonts: FontConfig[] = [
   // Inter, https://fonts.cdnfonts.com/css/inter?styles=29139,29134,29135,29136,29140,29141
   {
     font: FontFamily.Inter,

@@ -1,5 +1,5 @@
-import type { ParagraphType } from '@blocksuite/affine-model';
-import type { BlockModel } from '@blocksuite/store';
+import type { ParagraphType } from '@pulsar/model';
+import type { BlockModel } from '@pulsar/store';
 import type { TemplateResult } from 'lit';
 
 import {
@@ -19,7 +19,7 @@ import {
 export const getIcon = (
   model: BlockModel & { type?: string }
 ): TemplateResult => {
-  if (model.flavour === 'affine:paragraph') {
+  if (model.flavour === 'pulsar:paragraph') {
     const type = model.type as ParagraphType;
     return (
       {
@@ -34,7 +34,7 @@ export const getIcon = (
       } as Record<ParagraphType, TemplateResult>
     )[type];
   }
-  if (model.flavour === 'affine:list') {
+  if (model.flavour === 'pulsar:list') {
     return (
       {
         bulleted: BulletedListIcon(),

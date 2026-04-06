@@ -1,6 +1,6 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { on, once } from '@blocksuite/blocks';
+import { on, once } from '@pulsar/blocks';
 
 import type { OutlinePanelBody } from '../body/outline-panel-body.js';
 import type { OutlineNoteCard } from '../card/outline-card.js';
@@ -100,7 +100,7 @@ function createMaskElement(doc: Document) {
   mask.style.position = 'fixed';
   mask.style.left = '0';
   mask.style.top = '0';
-  mask.style.zIndex = 'calc(var(--affine-z-index-popover, 0) + 3)';
+  mask.style.zIndex = 'calc(var(--pulsar-z-index-popover, 0) + 3)';
   mask.style.cursor = 'grabbing';
 
   return mask;

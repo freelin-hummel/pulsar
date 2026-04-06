@@ -3,14 +3,14 @@ import type {
   IPoint,
   IVec,
   PointLocation,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import {
   CanvasElementType,
   CommonUtils,
   normalizeShapeBound,
   TextUtils,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   type BookmarkBlockModel,
   type EdgelessTextBlockModel,
@@ -21,20 +21,20 @@ import {
   TextElementModel,
   ShapeElementModel,
   ConnectorElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   clamp,
   requestThrottledConnectedFrame,
   stopPropagation,
-} from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import {
   Bound,
   Slot,
   assertType,
   deserializeXYWH,
   pickValues,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -519,7 +519,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       pointer-events: none;
       box-sizing: border-box;
       z-index: 1;
-      border-color: var(--affine-blue);
+      border-color: var(--pulsar-blue);
       border-width: 2px;
       border-style: solid;
       transform: translate(0, 0) rotate(0);
@@ -555,7 +555,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       height: 12px;
       box-sizing: border-box;
       border-radius: 50%;
-      border: 2px var(--affine-blue) solid;
+      border: 2px var(--pulsar-blue) solid;
       background: white;
     }
 
@@ -627,7 +627,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
     .affine-edgeless-selected-rect .handle[aria-label='right'] {
       border: 0;
       background: transparent;
-      border-color: var('--affine-blue');
+      border-color: var('--pulsar-blue');
     }
 
     .affine-edgeless-selected-rect .handle[aria-label='left'],
@@ -779,11 +779,11 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       content: attr(data-scale-percent);
       display: none;
       position: absolute;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
       font-feature-settings:
         'clig' off,
         'liga' off;
-      font-family: var(--affine-font-family);
+      font-family: var(--pulsar-font-family);
       font-size: 12px;
       font-style: normal;
       font-weight: 400;
@@ -1324,7 +1324,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
                 width: `${w * this.zoom}px`,
                 height: `${h * this.zoom}px`,
                 transform: `rotate(${element.rotate}deg)`,
-                border: `1px solid var(--affine-primary-color)`,
+                border: `1px solid var(--pulsar-primary-color)`,
               };
               return html`<div
                 class="element-handle"
@@ -1352,7 +1352,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
           left: 1.5px;
           width: 2px;
           height: 100%;
-          background: var(--affine-error-color);
+          background: var(--pulsar-error-color);
           filter: drop-shadow(-6px 0px 12px rgba(235, 67, 53, 0.35));
         }
 
@@ -1364,7 +1364,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
           left: 0px;
           width: 100%;
           height: 2px;
-          background: var(--affine-error-color);
+          background: var(--pulsar-error-color);
           filter: drop-shadow(-6px 0px 12px rgba(235, 67, 53, 0.35));
         }
       </style>
@@ -1379,7 +1379,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
         : nothing}
 
       <div
-        class="affine-edgeless-selected-rect"
+        class="pulsar-edgeless-selected-rect"
         style=${styleMap({
           width: `${_selectedRect.width}px`,
           height: `${_selectedRect.height}px`,

@@ -1,4 +1,4 @@
-import { BaseSelection } from '@blocksuite/block-std';
+import { BaseSelection } from '@pulsar/block-std';
 import z from 'zod';
 
 const ImageSelectionSchema = z.object({

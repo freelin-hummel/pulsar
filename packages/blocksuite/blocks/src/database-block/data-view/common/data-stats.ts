@@ -1,4 +1,4 @@
-import { assertEquals } from '@blocksuite/global/utils';
+import { assertEquals } from '@pulsar/global/utils';
 
 import type { SelectTag } from '../utils/tags/multi-tag-select.js';
 import type { Column } from '../view-manager/column.js';

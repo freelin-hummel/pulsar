@@ -4,33 +4,33 @@ import type {
   ConnectorElementModel,
   NoteBlockModel,
   ShapeType,
-} from '@blocksuite/affine-model';
-import type { Bound, IVec } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import type { Bound, IVec } from '@pulsar/global/utils';
 
 import {
   CanvasElementType,
   Overlay,
   type RoughCanvas,
-} from '@blocksuite/affine-block-surface';
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { LayoutType } from '@blocksuite/affine-block-surface';
-import { ConnectorPathGenerator } from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { LayoutType } from '@pulsar/block-surface';
+import { ConnectorPathGenerator } from '@pulsar/block-surface';
 import {
   AutoCompleteArrowIcon,
   MindMapChildIcon,
   MindMapSiblingIcon,
   NoteAutoCompleteIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   ConnectorMode,
   DEFAULT_CONNECTOR_COLOR,
   DEFAULT_SHAPE_STROKE_COLOR,
   shapeMethods,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
-import { handleNativeRangeAtPoint } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { DisposableGroup, Vec, assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { handleNativeRangeAtPoint } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { DisposableGroup, Vec, assertExists } from '@pulsar/global/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -178,23 +178,23 @@ export class EdgelessAutoComplete extends WithDisposable(LitElement) {
 
     .edgeless-auto-complete-arrow-wrapper:hover
       > .edgeless-auto-complete-arrow {
-      border: 1px solid var(--affine-border-color);
-      box-shadow: var(--affine-shadow-1);
-      background: var(--affine-white);
+      border: 1px solid var(--pulsar-border-color);
+      box-shadow: var(--pulsar-shadow-1);
+      background: var(--pulsar-white);
     }
 
     .edgeless-auto-complete-arrow-wrapper
       > .edgeless-auto-complete-arrow:hover {
-      border: 1px solid var(--affine-white-10);
-      box-shadow: var(--affine-shadow-1);
-      background: var(--affine-primary-color);
+      border: 1px solid var(--pulsar-white-10);
+      box-shadow: var(--pulsar-shadow-1);
+      background: var(--pulsar-primary-color);
     }
 
     .edgeless-auto-complete-arrow-wrapper.mindmap
       > .edgeless-auto-complete-arrow {
-      border: 1px solid var(--affine-border-color);
-      box-shadow: var(--affine-shadow-1);
-      background: var(--affine-white);
+      border: 1px solid var(--pulsar-border-color);
+      box-shadow: var(--pulsar-shadow-1);
+      background: var(--pulsar-white);
 
       transition:
         background 0.3s linear,
@@ -203,9 +203,9 @@ export class EdgelessAutoComplete extends WithDisposable(LitElement) {
 
     .edgeless-auto-complete-arrow-wrapper.mindmap
       > .edgeless-auto-complete-arrow:hover {
-      border: 1px solid var(--affine-white-10);
-      box-shadow: var(--affine-shadow-1);
-      background: var(--affine-primary-color);
+      border: 1px solid var(--pulsar-white-10);
+      box-shadow: var(--pulsar-shadow-1);
+      background: var(--pulsar-primary-color);
     }
 
     .edgeless-auto-complete-arrow svg {
@@ -234,7 +234,7 @@ export class EdgelessAutoComplete extends WithDisposable(LitElement) {
       } else {
         let tag = current.background.split('-').pop();
         if (!tag || tag === 'gray') tag = 'grey';
-        stroke = `--affine-palette-line-${tag}`;
+        stroke = `--pulsar-palette-line-${tag}`;
       }
     }
 

@@ -1,7 +1,7 @@
 import type { Doc } from 'yjs';
 
-import { type Logger, Slot } from '@blocksuite/global/utils';
-import { isEqual } from '@blocksuite/global/utils';
+import { type Logger, Slot } from '@pulsar/global/utils';
+import { isEqual } from '@pulsar/global/utils';
 import {
   applyUpdate,
   encodeStateAsUpdate,

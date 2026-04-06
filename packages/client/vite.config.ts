@@ -3,16 +3,16 @@ import react from '@vitejs/plugin-react'
 import { transform } from '@swc/core'
 
 /**
- * Vite plugin that uses SWC to transform BlockSuite source files.
- * BlockSuite uses TC39 stage-3 decorators (`accessor` keyword, standard
- * `@decorator` syntax) which esbuild cannot parse. SWC handles them fine.
+ * Vite plugin that uses SWC to transform Pulsar editor source files.
+ * The editor codebase uses TC39 stage-3 decorators (`accessor` keyword,
+ * standard `@decorator` syntax) which esbuild cannot parse. SWC handles them.
  */
-function blocksuiteSwcPlugin() {
+function pulsarSwcPlugin() {
   return {
-    name: 'blocksuite-swc',
+    name: 'pulsar-swc',
     enforce: 'pre' as const,
     async transform(code: string, id: string) {
-      // Only transform blocksuite .ts files (not .tsx, not node_modules)
+      // Only transform editor .ts files under packages/blocksuite/ (not .tsx, not node_modules)
       if (!id.includes('packages/blocksuite/') || !id.match(/\.ts$/)) return
       const result = await transform(code, {
         filename: id,
@@ -36,7 +36,7 @@ function blocksuiteSwcPlugin() {
 }
 
 export default defineConfig({
-  plugins: [blocksuiteSwcPlugin(), react()],
+  plugins: [pulsarSwcPlugin(), react()],
   build: {
     outDir: '../../dist',
     emptyOutDir: true,

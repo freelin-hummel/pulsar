@@ -1,4 +1,4 @@
-import type { ShapeElementModel } from '@blocksuite/affine-model';
+import type { ShapeElementModel } from '@pulsar/model';
 
 import {
   ConnectorMode,
@@ -7,8 +7,8 @@ import {
   LineColor,
   ShapeFillColor,
   StrokeStyle,
-} from '@blocksuite/affine-model';
-import { last } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { last } from '@pulsar/global/utils';
 
 import type { MindmapNode } from './layout.js';
 
@@ -77,10 +77,10 @@ export class StyleOne extends MindmapStyleGetter {
     fontFamily: FontFamily.Poppins,
     fontSize: 20,
     fontWeight: FontWeight.SemiBold,
-    color: '--affine-black',
+    color: '--pulsar-black',
 
     filled: true,
-    fillColor: '--affine-white',
+    fillColor: '--pulsar-white',
 
     padding: [11, 22] as [number, number],
 
@@ -119,10 +119,10 @@ export class StyleOne extends MindmapStyleGetter {
         fontFamily: FontFamily.Poppins,
         fontSize: 16,
         fontWeight: FontWeight.Medium,
-        color: '--affine-black',
+        color: '--pulsar-black',
 
         filled: true,
-        fillColor: '--affine-white',
+        fillColor: '--pulsar-white',
 
         padding: [6, 22] as [number, number],
 
@@ -149,7 +149,7 @@ export class StyleTwo extends MindmapStyleGetter {
     radius: 3,
 
     strokeWidth: 3,
-    strokeColor: '--affine-black',
+    strokeColor: '--pulsar-black',
 
     fontFamily: FontFamily.Poppins,
     fontSize: 18,
@@ -165,7 +165,7 @@ export class StyleTwo extends MindmapStyleGetter {
       blur: 0,
       offsetX: 3,
       offsetY: 3,
-      color: '--affine-black',
+      color: '--pulsar-black',
     },
   };
 
@@ -184,7 +184,7 @@ export class StyleTwo extends MindmapStyleGetter {
     return {
       connector: {
         strokeStyle: StrokeStyle.Solid,
-        stroke: '--affine-black',
+        stroke: '--pulsar-black',
         strokeWidth: 3,
 
         mode: ConnectorMode.Orthogonal,
@@ -193,7 +193,7 @@ export class StyleTwo extends MindmapStyleGetter {
         radius: 3,
 
         strokeWidth: 3,
-        strokeColor: '--affine-black',
+        strokeColor: '--pulsar-black',
 
         fontFamily: FontFamily.Poppins,
         fontSize: 16,
@@ -209,7 +209,7 @@ export class StyleTwo extends MindmapStyleGetter {
           blur: 0,
           offsetX: 3,
           offsetY: 3,
-          color: '--affine-black',
+          color: '--pulsar-black',
         },
       },
     };
@@ -309,7 +309,7 @@ export class StyleFour extends MindmapStyleGetter {
     fontFamily: FontFamily.Kalam,
     fontSize: 22,
     fontWeight: FontWeight.Bold,
-    color: '--affine-black',
+    color: '--pulsar-black',
 
     filled: true,
     fillColor: 'transparent',

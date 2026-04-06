@@ -1,7 +1,7 @@
-import { EdgelessIcon, PageIcon } from '@blocksuite/affine-components/icons';
-import { NoteDisplayMode } from '@blocksuite/affine-model';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { EdgelessIcon, PageIcon } from '@pulsar/editor-components/icons';
+import { NoteDisplayMode } from '@pulsar/model';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -36,11 +36,11 @@ export class NoteDisplayModePanel extends WithDisposable(LitElement) {
       justify-content: center;
       align-items: center;
       gap: 4px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
     .item:hover,
     .item.selected {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 

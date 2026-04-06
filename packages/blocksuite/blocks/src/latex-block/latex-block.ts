@@ -1,8 +1,8 @@
-import type { LatexBlockModel } from '@blocksuite/affine-model';
+import type { LatexBlockModel } from '@pulsar/model';
 import type { Placement } from '@floating-ui/dom';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
-import { createLitPortal } from '@blocksuite/affine-components/portal';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
+import { createLitPortal } from '@pulsar/editor-components/portal';
 import { effect } from '@lit-labs/preact-signals';
 import katex from 'katex';
 import { html, render } from 'lit';
@@ -12,7 +12,7 @@ import type { LatexBlockService } from './latex-service.js';
 
 import { latexBlockStyles } from './styles.js';
 
-@customElement('affine-latex')
+@customElement('pulsar-latex')
 export class LatexBlockComponent extends CaptionedBlockComponent<
   LatexBlockModel,
   LatexBlockService
@@ -108,7 +108,7 @@ export class LatexBlockComponent extends CaptionedBlockComponent<
       abortController: this._editorAbortController,
       shadowDom: false,
       portalStyles: {
-        zIndex: 'var(--affine-z-index-popover)',
+        zIndex: 'var(--pulsar-z-index-popover)',
       },
     });
 
@@ -156,6 +156,6 @@ export class LatexBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-latex': LatexBlockComponent;
+    'pulsar-latex': LatexBlockComponent;
   }
 }

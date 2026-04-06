@@ -1,4 +1,4 @@
-import type { GfxBlockElementModel, GfxModel } from '@blocksuite/block-std/gfx';
+import type { GfxBlockElementModel, GfxModel } from '@pulsar/block-std/gfx';
 
 import {
   type GfxContainerElement,
@@ -6,9 +6,9 @@ import {
   type PointTestOptions,
   SurfaceBlockModel,
   gfxContainerSymbol,
-} from '@blocksuite/block-std/gfx';
-import { Bound, type SerializedXYWH } from '@blocksuite/global/utils';
-import { BlockModel, type Text, defineBlockSchema } from '@blocksuite/store';
+} from '@pulsar/block-std/gfx';
+import { Bound, type SerializedXYWH } from '@pulsar/global/utils';
+import { BlockModel, type Text, defineBlockSchema } from '@pulsar/store';
 
 import type { Color } from '../../consts/index.js';
 
@@ -23,10 +23,10 @@ export type FrameBlockProps = {
 };
 
 export const FrameBlockSchema = defineBlockSchema({
-  flavour: 'affine:frame',
+  flavour: 'pulsar:frame',
   props: (internal): FrameBlockProps => ({
     title: internal.Text(),
-    background: '--affine-palette-transparent',
+    background: '--pulsar-palette-transparent',
     xywh: `[0,0,100,100]`,
     index: 'a0',
     childElementIds: Object.create(null),
@@ -34,7 +34,7 @@ export const FrameBlockSchema = defineBlockSchema({
   metadata: {
     version: 1,
     role: 'content',
-    parent: ['affine:surface'],
+    parent: ['pulsar:surface'],
     children: [],
   },
   toModel: () => {
@@ -111,10 +111,10 @@ export class FrameBlockModel
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:frame': FrameBlockModel;
+      'pulsar:frame': FrameBlockModel;
     }
     interface BlockModels {
-      'affine:frame': FrameBlockModel;
+      'pulsar:frame': FrameBlockModel;
     }
   }
 }

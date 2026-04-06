@@ -1,8 +1,8 @@
-import type { AttachmentBlockModel } from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { AttachmentBlockModel } from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { ConfirmIcon } from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
+import { ConfirmIcon } from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
 import { html } from 'lit';
 import { createRef, ref } from 'lit/directives/ref.js';
 
@@ -67,11 +67,11 @@ export const RenameModal = ({
       ${renameStyles}
     </style>
     <div
-      class="affine-attachment-rename-overlay-mask"
+      class="pulsar-attachment-rename-overlay-mask"
       @click="${() => abortController.abort()}"
     ></div>
-    <div class="affine-attachment-rename-container">
-      <div class="affine-attachment-rename-input-wrapper">
+    <div class="pulsar-attachment-rename-container">
+      <div class="pulsar-attachment-rename-input-wrapper">
         <input
           ${ref(inputRef)}
           type="text"
@@ -79,10 +79,10 @@ export const RenameModal = ({
           @input=${onInput}
           @keydown=${onKeydown}
         />
-        <span class="affine-attachment-rename-extension">${extension}</span>
+        <span class="pulsar-attachment-rename-extension">${extension}</span>
       </div>
       <editor-icon-button
-        class="affine-confirm-button"
+        class="pulsar-confirm-button"
         .iconSize=${'24px'}
         @click=${onConfirm}
       >

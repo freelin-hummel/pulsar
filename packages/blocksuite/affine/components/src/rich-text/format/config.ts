@@ -1,4 +1,4 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 import type { TemplateResult } from 'lit';
 
 import {
@@ -8,7 +8,7 @@ import {
   LinkIcon,
   StrikethroughIcon,
   UnderlineIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 
 export interface TextFormatConfig {
   id: string;

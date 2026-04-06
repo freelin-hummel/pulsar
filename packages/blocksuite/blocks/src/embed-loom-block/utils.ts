@@ -1,7 +1,7 @@
-import type { EmbedLoomModel } from '@blocksuite/affine-model';
-import type { EmbedLoomBlockUrlData } from '@blocksuite/affine-model';
+import type { EmbedLoomModel } from '@pulsar/model';
+import type { EmbedLoomBlockUrlData } from '@pulsar/model';
 
-import { isAbortError } from '@blocksuite/affine-shared/utils';
+import { isAbortError } from '@pulsar/editor-shared/utils';
 
 import type { EmbedLoomBlockComponent } from './embed-loom-block.js';
 

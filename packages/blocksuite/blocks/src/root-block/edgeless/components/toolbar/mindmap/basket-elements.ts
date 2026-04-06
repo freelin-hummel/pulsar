@@ -1,19 +1,19 @@
-import type { MindmapStyle } from '@blocksuite/affine-block-surface';
+import type { MindmapStyle } from '@pulsar/block-surface';
 import type { TemplateResult } from 'lit';
 
-import { LayoutType } from '@blocksuite/affine-block-surface';
+import { LayoutType } from '@pulsar/block-surface';
 import {
   CanvasElementType,
   type MindmapElementModel,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   type ShapeElementModel,
   TextElementModel,
-} from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { Bound } from '@blocksuite/global/utils';
-import { assertInstanceOf } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { Bound } from '@pulsar/global/utils';
+import { assertInstanceOf } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 
 import type { EdgelessRootBlockComponent } from '../../../edgeless-root-block.js';
 import type { EdgelessRootService } from '../../../edgeless-root-service.js';

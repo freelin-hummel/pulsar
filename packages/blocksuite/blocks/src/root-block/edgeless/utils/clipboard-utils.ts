@@ -4,9 +4,9 @@ import type {
   FrameBlockModel,
   ImageBlockModel,
   NoteBlockModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { groupBy } from '@blocksuite/global/utils';
+import { groupBy } from '@pulsar/global/utils';
 
 import type { EdgelessRootBlockComponent } from '../edgeless-root-block.js';
 

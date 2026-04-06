@@ -1,4 +1,4 @@
-import { BlockModel } from '@blocksuite/store';
+import { BlockModel } from '@pulsar/store';
 
 import type { EmbedCardStyle } from '../../../utils/index.js';
 
@@ -29,10 +29,10 @@ export class EmbedYoutubeModel extends defineEmbedModel<EmbedYoutubeBlockProps>(
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:embed-youtube': EmbedYoutubeModel;
+      'pulsar:embed-youtube': EmbedYoutubeModel;
     }
     interface BlockModels {
-      'affine:embed-youtube': EmbedYoutubeModel;
+      'pulsar:embed-youtube': EmbedYoutubeModel;
     }
   }
 }

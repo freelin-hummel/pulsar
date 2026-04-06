@@ -1,27 +1,27 @@
-import type { ReferenceInfo, RootBlockModel } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { Doc, DocMeta } from '@blocksuite/store';
+import type { ReferenceInfo, RootBlockModel } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { Doc, DocMeta } from '@pulsar/store';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
 import {
   getModelByElement,
   getRootByElement,
-} from '@blocksuite/affine-shared/utils';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+} from '@pulsar/editor-shared/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import {
   type DeltaInsert,
   INLINE_ROOT_ATTR,
   type InlineRootElement,
   ZERO_WIDTH_NON_JOINER,
   ZERO_WIDTH_SPACE,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 import { css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';
 import { ref } from 'lit/directives/ref.js';
 
-import type { AffineTextAttributes } from '../../affine-inline-specs.js';
+import type { PulsarTextAttributes } from '../../affine-inline-specs.js';
 import type { ReferenceNodeConfig } from './reference-config.js';
 import type { RefNodeSlots } from './types.js';
 
@@ -36,10 +36,10 @@ import { affineTextStyles } from '../affine-text.js';
 import { DEFAULT_DOC_NAME, REFERENCE_NODE } from '../consts.js';
 import { toggleReferencePopup } from './reference-popup.js';
 
-@customElement('affine-reference')
+@customElement('pulsar-reference')
 @Peekable({ action: false })
-export class AffineReference extends WithDisposable(ShadowlessElement) {
-  private _refAttribute: NonNullable<AffineTextAttributes['reference']> = {
+export class PulsarReference extends WithDisposable(ShadowlessElement) {
+  private _refAttribute: NonNullable<PulsarTextAttributes['reference']> = {
     type: 'LinkedPage',
     pageId: '0',
   };
@@ -106,8 +106,8 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
     .affine-reference {
       white-space: normal;
       word-break: break-word;
-      color: var(--affine-text-primary-color);
-      fill: var(--affine-icon-color);
+      color: var(--pulsar-text-primary-color);
+      fill: var(--pulsar-icon-color);
       border-radius: 4px;
       text-decoration: none;
       cursor: pointer;
@@ -115,20 +115,20 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
       padding: 1px 2px 1px 0;
     }
     .affine-reference:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .affine-reference[data-selected='true'] {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .affine-reference-title {
       margin-left: 4px;
-      border-bottom: 0.5px solid var(--affine-divider-color);
+      border-bottom: 0.5px solid var(--pulsar-divider-color);
       transition: border 0.2s ease-out;
     }
     .affine-reference-title:hover {
-      border-bottom: 0.5px solid var(--affine-icon-color);
+      border-bottom: 0.5px solid var(--pulsar-icon-color);
     }
   `;
 
@@ -231,16 +231,16 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
       attributes,
       isDeleted
         ? {
-            color: 'var(--affine-text-disable-color)',
+            color: 'var(--pulsar-text-disable-color)',
             textDecoration: 'line-through',
-            fill: 'var(--affine-text-disable-color)',
+            fill: 'var(--pulsar-text-disable-color)',
           }
         : {}
     );
 
     const content = this.customContent
       ? this.customContent(this)
-      : html`${icon}<span data-title=${title} class="affine-reference-title"
+      : html`${icon}<span data-title=${title} class="pulsar-reference-title"
             >${title}</span
           >`;
 
@@ -249,7 +249,7 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
     return html`<span
       ${this.config.interactable ? ref(this._whenHover.setReference) : ''}
       data-selected=${this.selected}
-      class="affine-reference"
+      class="pulsar-reference"
       style=${style}
       @click=${this._onClick}
       >${content}<v-text .str=${ZERO_WIDTH_NON_JOINER}></v-text
@@ -290,7 +290,7 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
   }
 
   get inlineEditor() {
-    const inlineRoot = this.closest<InlineRootElement<AffineTextAttributes>>(
+    const inlineRoot = this.closest<InlineRootElement<PulsarTextAttributes>>(
       `[${INLINE_ROOT_ATTR}]`
     );
     return inlineRoot?.inlineEditor;
@@ -333,7 +333,7 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
   accessor config!: ReferenceNodeConfig;
 
   @property({ type: Object })
-  accessor delta: DeltaInsert<AffineTextAttributes> = {
+  accessor delta: DeltaInsert<PulsarTextAttributes> = {
     insert: ZERO_WIDTH_SPACE,
     attributes: {},
   };
@@ -348,6 +348,6 @@ export class AffineReference extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-reference': AffineReference;
+    'pulsar-reference': PulsarReference;
   }
 }

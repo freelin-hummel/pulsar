@@ -1,12 +1,12 @@
-import type { Connection, GfxCompatibleProps } from '@blocksuite/affine-model';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { Connection, GfxCompatibleProps } from '@pulsar/model';
+import type { EditorHost } from '@pulsar/block-std';
 import type {
   BlockStdScope,
   SurfaceSelection,
   UIEventStateContext,
-} from '@blocksuite/block-std';
-import type { SerializedElement } from '@blocksuite/block-std/gfx';
-import type { IBound, IVec, SerializedXYWH } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import type { SerializedElement } from '@pulsar/block-std/gfx';
+import type { IBound, IVec, SerializedXYWH } from '@pulsar/global/utils';
 
 import {
   compareLayer,
@@ -15,19 +15,19 @@ import {
   CommonUtils,
   TextUtils,
   SortOrder,
-} from '@blocksuite/affine-block-surface';
-import { BookmarkStyles } from '@blocksuite/affine-model';
+} from '@pulsar/block-surface';
+import { BookmarkStyles } from '@pulsar/model';
 import {
   EmbedOptionProvider,
   QuickSearchProvider,
   TelemetryProvider,
-} from '@blocksuite/affine-shared/services';
+} from '@pulsar/editor-shared/services';
 import {
   isInsidePageEditor,
   isUrlInClipboard,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+} from '@pulsar/editor-shared/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import {
   Bound,
   DisposableGroup,
@@ -36,7 +36,7 @@ import {
   assertType,
   getCommonBound,
   nToLast,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import {
   type BlockSnapshot,
   BlockSnapshotSchema,
@@ -44,7 +44,7 @@ import {
   Job,
   type SliceSnapshot,
   fromJSON,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import DOMPurify from 'dompurify';
 
 import type { EdgelessRootBlockComponent } from '../edgeless-root-block.js';
@@ -268,13 +268,13 @@ export class EdgelessClipboardController extends PageClipboard {
       const pageId = doc && 'docId' in doc ? doc.docId : undefined;
       const options: Record<string, unknown> = {};
 
-      let flavour = 'affine:bookmark';
+      let flavour = 'pulsar:bookmark';
       let style = BookmarkStyles[0];
       let isLinkToNode = false;
 
       if (pageId) {
         options.pageId = pageId;
-        flavour = 'affine:embed-linked-doc';
+        flavour = 'pulsar:embed-linked-doc';
         style = 'vertical';
 
         const extracted = extractSearchParams(url);
@@ -377,25 +377,25 @@ export class EdgelessClipboardController extends PageClipboard {
   constructor(public override host: EdgelessRootBlockComponent) {
     super(host);
     // Register existing block creation functions
-    this.registerBlock('affine:note', this._createNoteBlock);
-    this.registerBlock('affine:edgeless-text', this._createEdgelessTextBlock);
-    this.registerBlock('affine:image', this._createImageBlock);
-    this.registerBlock('affine:frame', this._createFrameBlock);
-    this.registerBlock('affine:attachment', this._createAttachmentBlock);
-    this.registerBlock('affine:bookmark', this._createBookmarkBlock);
-    this.registerBlock('affine:embed-github', this._createGithubEmbedBlock);
-    this.registerBlock('affine:embed-youtube', this._createYoutubeEmbedBlock);
-    this.registerBlock('affine:embed-figma', this._createFigmaEmbedBlock);
+    this.registerBlock('pulsar:note', this._createNoteBlock);
+    this.registerBlock('pulsar:edgeless-text', this._createEdgelessTextBlock);
+    this.registerBlock('pulsar:image', this._createImageBlock);
+    this.registerBlock('pulsar:frame', this._createFrameBlock);
+    this.registerBlock('pulsar:attachment', this._createAttachmentBlock);
+    this.registerBlock('pulsar:bookmark', this._createBookmarkBlock);
+    this.registerBlock('pulsar:embed-github', this._createGithubEmbedBlock);
+    this.registerBlock('pulsar:embed-youtube', this._createYoutubeEmbedBlock);
+    this.registerBlock('pulsar:embed-figma', this._createFigmaEmbedBlock);
     this.registerBlock(
-      'affine:embed-linked-doc',
+      'pulsar:embed-linked-doc',
       this._createLinkedDocEmbedBlock
     );
     this.registerBlock(
-      'affine:embed-synced-doc',
+      'pulsar:embed-synced-doc',
       this._createSyncedDocEmbedBlock
     );
-    this.registerBlock('affine:embed-html', this._createHtmlEmbedBlock);
-    this.registerBlock('affine:embed-loom', this._createLoomEmbedBlock);
+    this.registerBlock('pulsar:embed-html', this._createHtmlEmbedBlock);
+    this.registerBlock('pulsar:embed-loom', this._createLoomEmbedBlock);
   }
 
   private _checkCanContinueToCanvas(
@@ -419,7 +419,7 @@ export class EdgelessClipboardController extends PageClipboard {
       return null;
     }
     const attachmentId = this.host.service.addBlock(
-      'affine:attachment',
+      'pulsar:attachment',
       {
         xywh,
         rotate,
@@ -440,7 +440,7 @@ export class EdgelessClipboardController extends PageClipboard {
       bookmark.props;
 
     const bookmarkId = this.host.service.addBlock(
-      'affine:bookmark',
+      'pulsar:bookmark',
       {
         xywh,
         style,
@@ -571,7 +571,7 @@ export class EdgelessClipboardController extends PageClipboard {
     const { xywh, style, url, caption, title, description } = figmaEmbed.props;
 
     const embedFigmaId = this.host.service.addBlock(
-      'affine:embed-figma',
+      'pulsar:embed-figma',
       {
         xywh,
         style,
@@ -603,7 +603,7 @@ export class EdgelessClipboardController extends PageClipboard {
     }
 
     const frameId = this.host.service.addBlock(
-      'affine:frame',
+      'pulsar:frame',
       {
         xywh,
         background,
@@ -635,7 +635,7 @@ export class EdgelessClipboardController extends PageClipboard {
     } = githubEmbed.props;
 
     const embedGithubId = this.host.service.addBlock(
-      'affine:embed-github',
+      'pulsar:embed-github',
       {
         xywh,
         style,
@@ -662,7 +662,7 @@ export class EdgelessClipboardController extends PageClipboard {
     const { xywh, style, caption, html, design } = htmlEmbed.props;
 
     const embedHtmlId = this.host.service.addBlock(
-      'affine:embed-html',
+      'pulsar:embed-html',
       {
         xywh,
         style,
@@ -683,7 +683,7 @@ export class EdgelessClipboardController extends PageClipboard {
       return null;
     }
     return this.host.service.addBlock(
-      'affine:image',
+      'pulsar:image',
       {
         caption,
         sourceId,
@@ -701,7 +701,7 @@ export class EdgelessClipboardController extends PageClipboard {
     const { xywh, style, caption, pageId } = linkedDocEmbed.props;
 
     return this.host.service.addBlock(
-      'affine:embed-linked-doc',
+      'pulsar:embed-linked-doc',
       {
         xywh,
         style,
@@ -717,7 +717,7 @@ export class EdgelessClipboardController extends PageClipboard {
       loomEmbed.props;
 
     const embedLoomId = this.host.service.addBlock(
-      'affine:embed-loom',
+      'pulsar:embed-loom',
       {
         xywh,
         style,
@@ -759,7 +759,7 @@ export class EdgelessClipboardController extends PageClipboard {
     const { xywh, style, caption, scale, pageId } = syncedDocEmbed.props;
 
     return this.host.service.addBlock(
-      'affine:embed-synced-doc',
+      'pulsar:embed-synced-doc',
       {
         xywh,
         style,
@@ -787,7 +787,7 @@ export class EdgelessClipboardController extends PageClipboard {
     } = youtubeEmbed.props;
 
     const embedYoutubeId = this.host.service.addBlock(
-      'affine:embed-youtube',
+      'pulsar:embed-youtube',
       {
         xywh,
         style,
@@ -923,7 +923,7 @@ export class EdgelessClipboardController extends PageClipboard {
     for (const nodeElement of nodeElements) {
       await _drawTopLevelBlock(nodeElement);
 
-      if (matchFlavours(nodeElement, ['affine:frame'])) {
+      if (matchFlavours(nodeElement, ['pulsar:frame'])) {
         const blocksInsideFrame: BlockSuite.EdgelessBlockModelType[] = [];
         this.edgeless.service.frame
           .getElementsInFrameBound(nodeElement, false)
@@ -1027,7 +1027,7 @@ export class EdgelessClipboardController extends PageClipboard {
     };
 
     const noteId = edgeless.service.addBlock(
-      'affine:note',
+      'pulsar:note',
       noteProps,
       this.doc.root!.id
     );
@@ -1043,7 +1043,7 @@ export class EdgelessClipboardController extends PageClipboard {
     if (typeof content === 'string') {
       TextUtils.splitIntoLines(content).forEach((line, idx) => {
         edgeless.service.addBlock(
-          'affine:paragraph',
+          'pulsar:paragraph',
           { text: new DocCollection.Y.Text(line) },
           noteId,
           idx
@@ -1081,7 +1081,7 @@ export class EdgelessClipboardController extends PageClipboard {
   }
 
   private get _rootService() {
-    return this.std.getService('affine:page');
+    return this.std.getService('pulsar:page');
   }
 
   private _updatePastedElementsIndex(

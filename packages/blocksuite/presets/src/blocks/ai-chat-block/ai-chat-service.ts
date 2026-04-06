@@ -1,4 +1,4 @@
-import { BlockService } from '@blocksuite/block-std';
+import { BlockService } from '@pulsar/block-std';
 
 import { AIChatBlockSchema } from './ai-chat-model.js';
 

@@ -2,17 +2,17 @@ import {
   type Menu,
   type NormalMenu,
   popMenu,
-} from '@blocksuite/affine-components/context-menu';
+} from '@pulsar/editor-components/context-menu';
 import {
   type InsertToPosition,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import {
   DeleteIcon,
   DuplicateIcon,
@@ -48,7 +48,7 @@ import {
   startDragWidthAdjustmentBar,
 } from './vertical-indicator.js';
 
-@customElement('affine-database-header-column')
+@customElement('pulsar-database-header-column')
 export class DatabaseHeaderColumn extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -89,7 +89,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
   };
 
   private _columnsOffset = (header: Element, _scale: number) => {
-    const columns = header.querySelectorAll('affine-database-header-column');
+    const columns = header.querySelectorAll('pulsar-database-header-column');
     const left: ColumnOffset[] = [];
     const right: ColumnOffset[] = [];
     let curr = left;
@@ -207,7 +207,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
 
   private moveColumn = (evt: PointerEvent) => {
     const tableContainer = getTableContainer(this);
-    const headerContainer = this.closest('affine-database-column-header');
+    const headerContainer = this.closest('pulsar-database-column-header');
     const scrollContainer = tableContainer?.parentElement;
     assertExists(headerContainer);
     assertExists(tableContainer);
@@ -247,7 +247,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
       },
     });
     const html = document.querySelector('html');
-    html?.classList.toggle('affine-database-header-column-grabbing', true);
+    html?.classList.toggle('pulsar-database-header-column-grabbing', true);
     const drag = startDrag<{
       insertPosition?: InsertToPosition;
     }>(evt, {
@@ -292,7 +292,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
       },
       onClear: () => {
         cancelScroll();
-        html?.classList.toggle('affine-database-header-column-grabbing', false);
+        html?.classList.toggle('pulsar-database-header-column-grabbing', false);
         dropPreview.remove();
         dragPreview.remove();
       },
@@ -355,7 +355,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
                               type: 'action',
                               isSelected: data.format === format.type,
                               icon: html`<span
-                                style="font-size: var(--affine-font-base); scale: 1.2;"
+                                style="font-size: var(--pulsar-font-base); scale: 1.2;"
                                 >${format.symbol}</span
                               >`,
                               name: format.label,
@@ -502,7 +502,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
 
   override connectedCallback() {
     super.connectedCallback();
-    const table = this.closest('affine-database-table');
+    const table = this.closest('pulsar-database-table');
     if (table) {
       this.disposables.add(
         table.handleEvent('dragStart', context => {
@@ -535,13 +535,13 @@ export class DatabaseHeaderColumn extends SignalWatcher(
       height: DEFAULT_COLUMN_TITLE_HEIGHT + 'px',
     });
     const classes = classMap({
-      'affine-database-column-move': true,
+      'pulsar-database-column-move': true,
       [this.grabStatus]: true,
     });
     return html`
       <div
         style=${style}
-        class="affine-database-column-content"
+        class="pulsar-database-column-content"
         @click="${this._clickColumn}"
         @contextmenu="${this._contextMenu}"
       >
@@ -553,15 +553,15 @@ export class DatabaseHeaderColumn extends SignalWatcher(
               <div class="control-l"></div>
               <div class="control-r"></div>
             </button>`}
-        <div class="affine-database-column-text ${column.type$.value}">
+        <div class="pulsar-database-column-text ${column.type$.value}">
           <div
-            class="affine-database-column-type-icon dv-hover"
+            class="pulsar-database-column-type-icon dv-hover"
             @click="${this._clickTypeIcon}"
           >
             <uni-lit .uni="${column.icon}"></uni-lit>
           </div>
-          <div class="affine-database-column-text-content">
-            <div class="affine-database-column-text-input">
+          <div class="pulsar-database-column-text-content">
+            <div class="pulsar-database-column-text-input">
               ${column.name$.value}
             </div>
           </div>
@@ -633,6 +633,6 @@ function numberFormatConfig(column: Column): NormalMenu {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-header-column': DatabaseHeaderColumn;
+    'pulsar-database-header-column': DatabaseHeaderColumn;
   }
 }

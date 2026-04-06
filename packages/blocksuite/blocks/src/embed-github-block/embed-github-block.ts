@@ -1,9 +1,9 @@
 import type {
   EmbedGithubModel,
   EmbedGithubStyles,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { OpenIcon } from '@blocksuite/affine-components/icons';
+import { OpenIcon } from '@pulsar/editor-components/icons';
 import { html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -23,7 +23,7 @@ import {
   refreshEmbedGithubUrlData,
 } from './utils.js';
 
-@customElement('affine-embed-github-block')
+@customElement('pulsar-embed-github-block')
 export class EmbedGithubBlockComponent extends EmbedBlockComponent<
   EmbedGithubModel,
   EmbedGithubBlockService
@@ -175,7 +175,7 @@ export class EmbedGithubBlockComponent extends EmbedBlockComponent<
         >
           <div
             class=${classMap({
-              'affine-embed-github-block': true,
+              'pulsar-embed-github-block': true,
               loading,
               [style]: true,
               selected: this._isSelected,
@@ -183,17 +183,17 @@ export class EmbedGithubBlockComponent extends EmbedBlockComponent<
             @click=${this._handleClick}
             @dblclick=${this._handleDoubleClick}
           >
-            <div class="affine-embed-github-content">
-              <div class="affine-embed-github-content-title">
-                <div class="affine-embed-github-content-title-icons">
-                  <div class="affine-embed-github-content-title-site-icon">
+            <div class="pulsar-embed-github-content">
+              <div class="pulsar-embed-github-content-title">
+                <div class="pulsar-embed-github-content-title-icons">
+                  <div class="pulsar-embed-github-content-title-site-icon">
                     ${titleIcon}
                   </div>
 
                   ${status && statusText
                     ? html`<div
                         class=${classMap({
-                          'affine-embed-github-content-title-status-icon': true,
+                          'pulsar-embed-github-content-title-status-icon': true,
                           [githubType]: true,
                           [status]: true,
                           success: statusReason === 'completed',
@@ -207,30 +207,30 @@ export class EmbedGithubBlockComponent extends EmbedBlockComponent<
                     : nothing}
                 </div>
 
-                <div class="affine-embed-github-content-title-text">
+                <div class="pulsar-embed-github-content-title-text">
                   ${titleText}
                 </div>
               </div>
 
-              <div class="affine-embed-github-content-description">
+              <div class="pulsar-embed-github-content-description">
                 ${descriptionText}
               </div>
 
               ${githubType === 'issue' && assignees
                 ? html`
-                    <div class="affine-embed-github-content-assignees">
+                    <div class="pulsar-embed-github-content-assignees">
                       <div
-                        class="affine-embed-github-content-assignees-text label"
+                        class="pulsar-embed-github-content-assignees-text label"
                       >
                         Assignees
                       </div>
 
                       <div
-                        class="affine-embed-github-content-assignees-text users"
+                        class="pulsar-embed-github-content-assignees-text users"
                       >
                         ${assignees.length === 0
                           ? html`<span
-                              class="affine-embed-github-content-assignees-text-users placeholder"
+                              class="pulsar-embed-github-content-assignees-text-users placeholder"
                               >No one</span
                             >`
                           : repeat(
@@ -238,7 +238,7 @@ export class EmbedGithubBlockComponent extends EmbedBlockComponent<
                               assignee => assignee,
                               (assignee, index) =>
                                 html`<span
-                                    class="affine-embed-github-content-assignees-text-users user"
+                                    class="pulsar-embed-github-content-assignees-text-users user"
                                     @click=${() =>
                                       this._handleAssigneeClick(assignee)}
                                     >${`@${assignee}`}</span
@@ -250,25 +250,25 @@ export class EmbedGithubBlockComponent extends EmbedBlockComponent<
                   `
                 : nothing}
 
-              <div class="affine-embed-github-content-url" @click=${this.open}>
-                <span class="affine-embed-github-content-repo"
+              <div class="pulsar-embed-github-content-url" @click=${this.open}>
+                <span class="pulsar-embed-github-content-repo"
                   >${`${owner}/${repo} |`}</span
                 >
 
                 ${createdAt
-                  ? html`<span class="affine-embed-github-content-date"
+                  ? html`<span class="pulsar-embed-github-content-date"
                       >${dateText} |</span
                     >`
                   : nothing}
                 <span>github.com</span>
 
-                <div class="affine-embed-github-content-url-icon">
+                <div class="pulsar-embed-github-content-url-icon">
                   ${OpenIcon}
                 </div>
               </div>
             </div>
 
-            <div class="affine-embed-github-banner">${bannerImage}</div>
+            <div class="pulsar-embed-github-banner">${bannerImage}</div>
           </div>
         </div>
       `
@@ -284,6 +284,6 @@ export class EmbedGithubBlockComponent extends EmbedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-embed-github-block': EmbedGithubBlockComponent;
+    'pulsar-embed-github-block': EmbedGithubBlockComponent;
   }
 }

@@ -1,8 +1,8 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { BlockComponent, EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { BlockComponent, EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { asyncGetRichText } from '@blocksuite/affine-components/rich-text';
+import { asyncGetRichText } from '@pulsar/editor-components/rich-text';
 
 export async function onModelTextUpdated(
   editorHost: EditorHost,

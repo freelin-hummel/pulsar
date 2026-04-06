@@ -10,11 +10,11 @@ export * from './types.js';
 declare global {
   namespace BlockSuite {
     interface BlocksModels {
-      'affine:embed-ai-chat': AIChatBlockModel;
+      'pulsar:embed-ai-chat': AIChatBlockModel;
     }
 
     interface EdgelessBlockModelMap {
-      'affine:embed-ai-chat': AIChatBlockModel;
+      'pulsar:embed-ai-chat': AIChatBlockModel;
     }
   }
 }

@@ -1,10 +1,10 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
-import type { UserInfo } from '@blocksuite/store';
+import type { RootBlockModel } from '@pulsar/model';
+import type { UserInfo } from '@pulsar/store';
 
-import { RemoteCursor } from '@blocksuite/affine-components/icons';
-import { requestThrottledConnectedFrame } from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { assertExists, pickValues } from '@blocksuite/global/utils';
+import { RemoteCursor } from '@pulsar/editor-components/icons';
+import { requestThrottledConnectedFrame } from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { assertExists, pickValues } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -18,10 +18,10 @@ import {
 } from '../../../root-block/edgeless/utils/query.js';
 import { RemoteColorManager } from '../../../root-block/remote-color-manager/remote-color-manager.js';
 
-export const AFFINE_EDGELESS_REMOTE_SELECTION_WIDGET =
-  'affine-edgeless-remote-selection-widget';
+export const PULSAR_EDGELESS_REMOTE_SELECTION_WIDGET =
+  'pulsar-edgeless-remote-selection-widget';
 
-@customElement(AFFINE_EDGELESS_REMOTE_SELECTION_WIDGET)
+@customElement(PULSAR_EDGELESS_REMOTE_SELECTION_WIDGET)
 export class EdgelessRemoteSelectionWidget extends WidgetComponent<
   RootBlockModel,
   EdgelessRootBlockComponent
@@ -148,7 +148,7 @@ export class EdgelessRemoteSelectionWidget extends WidgetComponent<
 
       max-width: 160px;
       padding: 0px 3px;
-      border: 1px solid var(--affine-pure-black-20);
+      border: 1px solid var(--pulsar-pure-black-20);
 
       box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.16);
       border-radius: 4px;
@@ -248,7 +248,7 @@ export class EdgelessRemoteSelectionWidget extends WidgetComponent<
     );
 
     return html`
-      <div class="affine-edgeless-remote-selection">${rects}${cursors}</div>
+      <div class="pulsar-edgeless-remote-selection">${rects}${cursors}</div>
     `;
   }
 
@@ -290,6 +290,6 @@ export class EdgelessRemoteSelectionWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_EDGELESS_REMOTE_SELECTION_WIDGET]: EdgelessRemoteSelectionWidget;
+    [PULSAR_EDGELESS_REMOTE_SELECTION_WIDGET]: EdgelessRemoteSelectionWidget;
   }
 }

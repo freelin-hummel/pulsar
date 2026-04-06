@@ -1,6 +1,6 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -36,10 +36,10 @@ export class AIPanelAnswer extends WithDisposable(LitElement) {
     .answer-head {
       align-self: stretch;
 
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
 
       /* light/xsMedium */
-      font-size: var(--affine-font-xs);
+      font-size: var(--pulsar-font-xs);
       font-style: normal;
       font-weight: 500;
       line-height: 20px; /* 166.667% */
@@ -49,13 +49,13 @@ export class AIPanelAnswer extends WithDisposable(LitElement) {
     .answer-body {
       align-self: stretch;
 
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-feature-settings:
         'clig' off,
         'liga' off;
 
       /* light/sm */
-      font-size: var(--affine-font-xs);
+      font-size: var(--pulsar-font-xs);
       font-style: normal;
       font-weight: 400;
       line-height: 22px; /* 157.143% */
@@ -80,8 +80,8 @@ export class AIPanelAnswer extends WithDisposable(LitElement) {
     }
 
     .response-list-container ai-item-list {
-      --item-icon-color: var(--affine-icon-secondary);
-      --item-icon-hover-color: var(--affine-icon-color);
+      --item-icon-color: var(--pulsar-icon-secondary);
+      --item-icon-hover-color: var(--pulsar-icon-color);
     }
   `;
 

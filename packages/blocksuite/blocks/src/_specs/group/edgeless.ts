@@ -1,4 +1,4 @@
-import { EdgelessSurfaceBlockSpec } from '@blocksuite/affine-block-surface';
+import { EdgelessSurfaceBlockSpec } from '@pulsar/block-surface';
 
 import { EdgelessTextBlockSpec } from '../../edgeless-text-block/index.js';
 import { FrameBlockSpec } from '../../frame-block/frame-spec.js';

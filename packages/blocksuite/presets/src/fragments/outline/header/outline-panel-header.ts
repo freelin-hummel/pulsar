@@ -1,5 +1,5 @@
-import { WithDisposable } from '@blocksuite/block-std';
-import { createButtonPopper } from '@blocksuite/blocks';
+import { WithDisposable } from '@pulsar/block-std';
+import { createButtonPopper } from '@pulsar/blocks';
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
@@ -39,7 +39,7 @@ const styles = css`
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
-    color: var(--affine-text-secondary-color, #8e8d91);
+    color: var(--pulsar-text-secondary-color, #8e8d91);
   }
 
   .note-sorting-button {
@@ -48,25 +48,25 @@ const styles = css`
 
   .note-setting-button svg,
   .note-sorting-button svg {
-    color: var(--affine-icon-secondary);
+    color: var(--pulsar-icon-secondary);
   }
 
   .note-setting-button:hover svg,
   .note-setting-button.active svg,
   .note-sorting-button:hover svg {
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
 
   .note-sorting-button.active svg {
-    color: var(--affine-primary-color);
+    color: var(--pulsar-primary-color);
   }
 
   .note-preview-setting-container {
     display: none;
     justify-content: center;
     align-items: center;
-    background: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-shadow-2);
+    background: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-shadow-2);
     border-radius: 8px;
   }
 
@@ -75,9 +75,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_OUTLINE_PANEL_HEADER = 'affine-outline-panel-header';
+export const PULSAR_OUTLINE_PANEL_HEADER = 'pulsar-outline-panel-header';
 
-@customElement(AFFINE_OUTLINE_PANEL_HEADER)
+@customElement(PULSAR_OUTLINE_PANEL_HEADER)
 export class OutlinePanelHeader extends WithDisposable(LitElement) {
   private _notePreviewSettingMenuPopper: ReturnType<
     typeof createButtonPopper
@@ -163,6 +163,6 @@ export class OutlinePanelHeader extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_PANEL_HEADER]: OutlinePanelHeader;
+    [PULSAR_OUTLINE_PANEL_HEADER]: OutlinePanelHeader;
   }
 }

@@ -1,6 +1,6 @@
-import type { SchemaToModel, Text } from '@blocksuite/store';
+import type { SchemaToModel, Text } from '@pulsar/store';
 
-import { defineBlockSchema } from '@blocksuite/store';
+import { defineBlockSchema } from '@pulsar/store';
 
 // `toggle` type has been deprecated, do not use it
 export type ListType = 'bulleted' | 'numbered' | 'todo' | 'toggle';
@@ -14,7 +14,7 @@ export interface ListProps {
 }
 
 export const ListBlockSchema = defineBlockSchema({
-  flavour: 'affine:list',
+  flavour: 'pulsar:list',
   props: internal =>
     ({
       type: 'bulleted',
@@ -29,11 +29,11 @@ export const ListBlockSchema = defineBlockSchema({
     version: 1,
     role: 'content',
     parent: [
-      'affine:note',
-      'affine:database',
-      'affine:list',
-      'affine:paragraph',
-      'affine:edgeless-text',
+      'pulsar:note',
+      'pulsar:database',
+      'pulsar:list',
+      'pulsar:paragraph',
+      'pulsar:edgeless-text',
     ],
   },
 });
@@ -43,7 +43,7 @@ export type ListBlockModel = SchemaToModel<typeof ListBlockSchema>;
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:list': ListBlockModel;
+      'pulsar:list': ListBlockModel;
     }
   }
 }

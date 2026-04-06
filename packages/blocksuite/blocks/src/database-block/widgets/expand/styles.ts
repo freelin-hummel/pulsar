@@ -4,21 +4,21 @@ import { css, unsafeCSS } from 'lit';
 export const fullScreenStyles = css`
   .table-view-full-modal-overlay {
     position: fixed;
-    z-index: var(--affine-z-index-modal);
+    z-index: var(--pulsar-z-index-modal);
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     padding: 24px;
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
     border-radius: 6px;
-    background: var(--affine-white);
-    box-shadow: var(--affine-shadow-2);
+    background: var(--pulsar-white);
+    box-shadow: var(--pulsar-shadow-2);
 
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-    font-size: var(--affine-font-base);
-    line-height: var(--affine-line-height);
-    color: var(--affine-text-primary-color);
+    font-size: var(--pulsar-font-base);
+    line-height: var(--pulsar-line-height);
+    color: var(--pulsar-text-primary-color);
     font-weight: 400;
   }
 
@@ -34,8 +34,8 @@ export const fullScreenStyles = css`
     align-items: center;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 0.5px solid var(--affine-divider-color);
-    color: var(--affine-text-secondary-color);
+    border-bottom: 0.5px solid var(--pulsar-divider-color);
+    color: var(--pulsar-text-secondary-color);
     font-size: 12px;
   }
 
@@ -67,7 +67,7 @@ export const fullScreenStyles = css`
   .table-view-full-header svg {
     width: 14px;
     height: 14px;
-    fill: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
   }
 
   .table-view-full-content {

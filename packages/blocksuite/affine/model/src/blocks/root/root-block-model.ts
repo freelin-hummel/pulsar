@@ -1,6 +1,6 @@
-import type { Text } from '@blocksuite/store';
+import type { Text } from '@pulsar/store';
 
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 type RootBlockProps = {
   title: Text;
@@ -26,7 +26,7 @@ export class RootBlockModel extends BlockModel<RootBlockProps> {
 }
 
 export const RootBlockSchema = defineBlockSchema({
-  flavour: 'affine:page',
+  flavour: 'pulsar:page',
   props: (internal): RootBlockProps => ({
     title: internal.Text(),
   }),
@@ -40,7 +40,7 @@ export const RootBlockSchema = defineBlockSchema({
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:page': RootBlockModel;
+      'pulsar:page': RootBlockModel;
     }
   }
 }

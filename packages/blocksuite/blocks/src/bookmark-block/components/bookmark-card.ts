@@ -1,7 +1,7 @@
-import { WebIcon16 } from '@blocksuite/affine-components/icons';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { getHostName } from '@blocksuite/affine-shared/utils';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { WebIcon16 } from '@pulsar/editor-components/icons';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { getHostName } from '@pulsar/editor-shared/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { OpenInNewIcon } from '@blocksuite/icons/lit';
 import { html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -20,7 +20,7 @@ export class BookmarkCard extends WithDisposable(ShadowlessElement) {
     event.stopPropagation();
     const model = this.bookmark.model;
 
-    if (model.parent?.flavour !== 'affine:surface') {
+    if (model.parent?.flavour !== 'pulsar:surface') {
       this._selectBlock();
     }
   }
@@ -116,26 +116,26 @@ export class BookmarkCard extends WithDisposable(ShadowlessElement) {
 
     return html`
       <div
-        class="affine-bookmark-card ${cardClassMap}"
+        class="pulsar-bookmark-card ${cardClassMap}"
         @click=${this._handleClick}
         @dblclick=${this._handleDoubleClick}
       >
-        <div class="affine-bookmark-content">
-          <div class="affine-bookmark-content-title">
-            <div class="affine-bookmark-content-title-icon">${titleIcon}</div>
-            <div class="affine-bookmark-content-title-text">${titleText}</div>
+        <div class="pulsar-bookmark-content">
+          <div class="pulsar-bookmark-content-title">
+            <div class="pulsar-bookmark-content-title-icon">${titleIcon}</div>
+            <div class="pulsar-bookmark-content-title-text">${titleText}</div>
           </div>
-          <div class="affine-bookmark-content-description">
+          <div class="pulsar-bookmark-content-description">
             ${descriptionText}
           </div>
-          <div class="affine-bookmark-content-url" @click=${this.bookmark.open}>
+          <div class="pulsar-bookmark-content-url" @click=${this.bookmark.open}>
             <span>${getHostName(url)}</span>
-            <div class="affine-bookmark-content-url-icon">
+            <div class="pulsar-bookmark-content-url-icon">
               ${OpenInNewIcon({ width: '12', height: '12' })}
             </div>
           </div>
         </div>
-        <div class="affine-bookmark-banner">${bannerImage}</div>
+        <div class="pulsar-bookmark-banner">${bannerImage}</div>
       </div>
     `;
   }

@@ -1,4 +1,4 @@
-import { IS_IOS, IS_MAC } from '@blocksuite/global/env';
+import { IS_IOS, IS_MAC } from '@pulsar/global/env';
 
 import type { InlineEditor } from '../inline-editor.js';
 import type { InlineRange } from '../types.js';

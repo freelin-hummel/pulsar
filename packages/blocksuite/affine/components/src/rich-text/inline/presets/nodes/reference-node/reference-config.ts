@@ -1,19 +1,19 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 import type { TemplateResult } from 'lit';
 
-import type { AffineReference } from './reference-node.js';
+import type { PulsarReference } from './reference-node.js';
 
 export class ReferenceNodeConfig {
   private _Doc: Doc | null = null;
 
   private _customContent:
-    | ((reference: AffineReference) => TemplateResult)
+    | ((reference: PulsarReference) => TemplateResult)
     | null = null;
 
-  private _customIcon: ((reference: AffineReference) => TemplateResult) | null =
+  private _customIcon: ((reference: PulsarReference) => TemplateResult) | null =
     null;
 
-  private _customTitle: ((reference: AffineReference) => string) | null = null;
+  private _customTitle: ((reference: PulsarReference) => string) | null = null;
 
   private _interactable = true;
 

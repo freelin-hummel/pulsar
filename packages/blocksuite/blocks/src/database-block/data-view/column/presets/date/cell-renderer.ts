@@ -1,4 +1,4 @@
-import { createLitPortal } from '@blocksuite/affine-components/portal';
+import { createLitPortal } from '@pulsar/editor-components/portal';
 import { flip, offset } from '@floating-ui/dom';
 import { baseTheme } from '@toeverything/theme';
 import { format } from 'date-fns/format';
@@ -11,7 +11,7 @@ import { BaseCellRenderer } from '../../base-cell.js';
 import { createFromBaseCellRenderer } from '../../renderer.js';
 import { dateColumnModelConfig } from './define.js';
 
-@customElement('affine-database-date-cell')
+@customElement('pulsar-database-date-cell')
 export class DateCell extends BaseCellRenderer<number> {
   static override styles = css`
     affine-database-date-cell {
@@ -25,7 +25,7 @@ export class DateCell extends BaseCellRenderer<number> {
       padding: 0;
       border: none;
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       background-color: transparent;
       font-size: var(--data-view-cell-text-size);
@@ -43,11 +43,11 @@ export class DateCell extends BaseCellRenderer<number> {
     if (!value) {
       return '';
     }
-    return html` <div class="affine-database-date date">${value}</div>`;
+    return html` <div class="pulsar-database-date date">${value}</div>`;
   }
 }
 
-@customElement('affine-database-date-cell-editing')
+@customElement('pulsar-database-date-cell-editing')
 export class DateCellEditing extends BaseCellRenderer<number> {
   private _prevPortalAbortController: AbortController | null = null;
 
@@ -92,7 +92,7 @@ export class DateCellEditing extends BaseCellRenderer<number> {
     // TODO: use z-index from variable,
     //       for now the slide-layout-modal's z-index is `1001`
     //       the z-index of popover should be higher than it
-    // root.style.zIndex = 'var(--affine-z-index-popover)';
+    // root.style.zIndex = 'var(--pulsar-z-index-popover)';
     root.style.zIndex = '1002';
   };
 
@@ -128,7 +128,7 @@ export class DateCellEditing extends BaseCellRenderer<number> {
 
   override render() {
     return html` <div
-      class="affine-database-date date"
+      class="pulsar-database-date date"
       @click="${this.openDatePicker}"
     >
       ${this.dateString}

@@ -15,7 +15,7 @@ export class EditorIconButton extends LitElement {
     :host(:disabled) {
       pointer-events: none;
       cursor: not-allowed;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
     }
 
     .icon-container {
@@ -23,7 +23,7 @@ export class EditorIconButton extends LitElement {
       display: flex;
       align-items: center;
       padding: var(--icon-container-padding);
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
       border-radius: 4px;
       cursor: pointer;
       white-space: nowrap;
@@ -34,16 +34,16 @@ export class EditorIconButton extends LitElement {
     }
 
     :host([active]) .icon-container.active-mode-color {
-      color: var(--affine-primary-color);
+      color: var(--pulsar-primary-color);
     }
 
     :host([active]) .icon-container.active-mode-background {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .icon-container[coming] {
       cursor: not-allowed;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
     }
 
     ::slotted(svg) {
@@ -72,7 +72,7 @@ export class EditorIconButton extends LitElement {
     .icon-container[with-hover]::before {
       content: '';
       display: block;
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
       position: absolute;
       width: 100%;
       height: 100%;
@@ -132,7 +132,7 @@ export class EditorIconButton extends LitElement {
       <style>
         .icon-container:hover,
         .icon-container.hovered {
-          background: ${this.hover ? `var(--affine-hover-color)` : 'inherit'};
+          background: ${this.hover ? `var(--pulsar-hover-color)` : 'inherit'};
         }
       </style>
       <div

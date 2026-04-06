@@ -1,6 +1,6 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
+import type { RootBlockModel } from '@pulsar/model';
 
-import { WidgetComponent } from '@blocksuite/block-std';
+import { WidgetComponent } from '@pulsar/block-std';
 import { css, html, nothing } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -9,11 +9,11 @@ import type { EdgelessRootBlockComponent } from '../../edgeless/edgeless-root-bl
 import './zoom-bar-toggle-button.js';
 import './zoom-toolbar.js';
 
-export const AFFINE_EDGELESS_ZOOM_TOOLBAR_WIDGET =
-  'affine-edgeless-zoom-toolbar-widget';
+export const PULSAR_EDGELESS_ZOOM_TOOLBAR_WIDGET =
+  'pulsar-edgeless-zoom-toolbar-widget';
 
-@customElement(AFFINE_EDGELESS_ZOOM_TOOLBAR_WIDGET)
-export class AffineEdgelessZoomToolbarWidget extends WidgetComponent<
+@customElement(PULSAR_EDGELESS_ZOOM_TOOLBAR_WIDGET)
+export class PulsarEdgelessZoomToolbarWidget extends WidgetComponent<
   RootBlockModel,
   EdgelessRootBlockComponent
 > {
@@ -22,7 +22,7 @@ export class AffineEdgelessZoomToolbarWidget extends WidgetComponent<
       position: absolute;
       bottom: 20px;
       left: 12px;
-      z-index: var(--affine-z-index-popover);
+      z-index: var(--pulsar-z-index-popover);
       display: flex;
       justify-content: center;
       -webkit-user-select: none;
@@ -87,6 +87,6 @@ export class AffineEdgelessZoomToolbarWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_EDGELESS_ZOOM_TOOLBAR_WIDGET]: AffineEdgelessZoomToolbarWidget;
+    [PULSAR_EDGELESS_ZOOM_TOOLBAR_WIDGET]: PulsarEdgelessZoomToolbarWidget;
   }
 }

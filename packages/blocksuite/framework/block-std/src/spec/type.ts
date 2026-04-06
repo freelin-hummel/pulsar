@@ -1,4 +1,4 @@
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockModel } from '@pulsar/store';
 import type { StaticValue } from 'lit/static-html.js';
 
 export type BlockCommands = Partial<BlockSuite.Commands>;

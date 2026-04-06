@@ -1,7 +1,7 @@
-import type { SurfaceBlockComponent } from '@blocksuite/affine-block-surface';
-import type { BlockModel } from '@blocksuite/store';
+import type { SurfaceBlockComponent } from '@pulsar/block-surface';
+import type { BlockModel } from '@pulsar/store';
 
-import { GfxPrimitiveElementModel } from '@blocksuite/block-std/gfx';
+import { GfxPrimitiveElementModel } from '@pulsar/block-std/gfx';
 
 import type { EdgelessRootBlockComponent } from '../../../edgeless/edgeless-root-block.js';
 import type { EdgelessRootService } from '../../../edgeless/edgeless-root-service.js';

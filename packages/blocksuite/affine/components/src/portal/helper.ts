@@ -1,4 +1,4 @@
-import { Slot, assertExists } from '@blocksuite/global/utils';
+import { Slot, assertExists } from '@pulsar/global/utils';
 import {
   type ComputePositionReturn,
   autoUpdate,

@@ -2,18 +2,18 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import './attachment-edgeless-block.js';
 import { AttachmentBlockService } from './attachment-service.js';
 
 export const AttachmentBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:attachment'),
+  FlavourExtension('pulsar:attachment'),
   AttachmentBlockService,
-  BlockViewExtension('affine:attachment', model => {
-    return model.parent?.flavour === 'affine:surface'
-      ? literal`affine-edgeless-attachment`
-      : literal`affine-attachment`;
+  BlockViewExtension('pulsar:attachment', model => {
+    return model.parent?.flavour === 'pulsar:surface'
+      ? literal`pulsar-edgeless-attachment`
+      : literal`pulsar-attachment`;
   }),
 ];

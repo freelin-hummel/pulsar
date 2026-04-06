@@ -5,17 +5,17 @@ import { createEnumMap } from '../utils/enum.js';
 export const NOTE_WIDTH = 800;
 
 export enum NoteBackgroundColor {
-  Black = '--affine-note-background-black',
-  Blue = '--affine-note-background-blue',
-  Green = '--affine-note-background-green',
-  Grey = '--affine-note-background-grey',
-  Magenta = '--affine-note-background-magenta',
-  Orange = '--affine-note-background-orange',
-  Purple = '--affine-note-background-purple',
-  Red = '--affine-note-background-red',
-  Teal = '--affine-note-background-teal',
-  White = '--affine-note-background-white',
-  Yellow = '--affine-note-background-yellow',
+  Black = '--pulsar-note-background-black',
+  Blue = '--pulsar-note-background-blue',
+  Green = '--pulsar-note-background-green',
+  Grey = '--pulsar-note-background-grey',
+  Magenta = '--pulsar-note-background-magenta',
+  Orange = '--pulsar-note-background-orange',
+  Purple = '--pulsar-note-background-purple',
+  Red = '--pulsar-note-background-red',
+  Teal = '--pulsar-note-background-teal',
+  White = '--pulsar-note-background-white',
+  Yellow = '--pulsar-note-background-yellow',
 }
 
 export const NoteBackgroundColorMap = createEnumMap(NoteBackgroundColor);
@@ -39,12 +39,12 @@ export const DEFAULT_NOTE_BACKGROUND_COLOR = NoteBackgroundColor.Blue;
 export const NoteBackgroundColorsSchema = z.nativeEnum(NoteBackgroundColor);
 
 export enum NoteShadow {
-  Box = '--affine-note-shadow-box',
-  Film = '--affine-note-shadow-film',
-  Float = '--affine-note-shadow-float',
+  Box = '--pulsar-note-shadow-box',
+  Film = '--pulsar-note-shadow-film',
+  Float = '--pulsar-note-shadow-float',
   None = '',
-  Paper = '--affine-note-shadow-paper',
-  Sticker = '--affine-note-shadow-sticker',
+  Paper = '--pulsar-note-shadow-paper',
+  Sticker = '--pulsar-note-shadow-sticker',
 }
 
 export const NoteShadowMap = createEnumMap(NoteShadow);

@@ -37,13 +37,13 @@ export class IconButton extends LitElement {
       cursor: pointer;
       user-select: none;
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       pointer-events: auto;
       padding: 4px;
     }
 
     :host(:hover) {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     :host(:active) {
@@ -53,13 +53,13 @@ export class IconButton extends LitElement {
     :host([disabled]),
     :host(:disabled) {
       background: transparent;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
       cursor: not-allowed;
     }
 
     /* You can add a 'hover' attribute to the button to show the hover style */
     :host([hover='true']) {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
     :host([hover='false']) {
       background: transparent;
@@ -84,17 +84,17 @@ export class IconButton extends LitElement {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      font-size: var(--affine-font-sm);
-      line-height: var(--affine-line-height);
+      font-size: var(--pulsar-font-sm);
+      line-height: var(--pulsar-line-height);
     }
 
     :host .sub-text {
-      font-size: var(--affine-font-xs);
+      font-size: var(--pulsar-font-xs);
       color: var(
         --light-textColor-textSecondaryColor,
         var(--textColor-textSecondaryColor, #8e8d91)
       );
-      line-height: var(--affine-line-height);
+      line-height: var(--pulsar-line-height);
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -166,14 +166,14 @@ export class IconButton extends LitElement {
   override render() {
     if (this.hidden) return nothing;
     if (this.disabled) {
-      const disabledColor = 'var(--affine-text-disable-color)';
+      const disabledColor = 'var(--pulsar-text-disable-color)';
       this.style.setProperty('--svg-icon-color', disabledColor);
       this.dataset.testDisabled = 'true';
     } else {
       this.dataset.testDisabled = 'false';
       const iconColor = this.active
-        ? 'var(--affine-primary-color)'
-        : 'var(--affine-icon-color)';
+        ? 'var(--pulsar-primary-color)'
+        : 'var(--pulsar-icon-color)';
       this.style.setProperty('--svg-icon-color', iconColor);
     }
 

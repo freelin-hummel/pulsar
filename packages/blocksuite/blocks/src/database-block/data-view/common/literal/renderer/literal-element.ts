@@ -1,4 +1,4 @@
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

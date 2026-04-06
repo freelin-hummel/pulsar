@@ -1,10 +1,10 @@
-import type { DocMode } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { Container } from '@blocksuite/global/di';
+import type { DocMode } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { Container } from '@pulsar/global/di';
 
-import { Extension, StdIdentifier } from '@blocksuite/block-std';
-import { createIdentifier } from '@blocksuite/global/di';
-import { type Disposable, noop, Slot } from '@blocksuite/global/utils';
+import { Extension, StdIdentifier } from '@pulsar/block-std';
+import { createIdentifier } from '@pulsar/global/di';
+import { type Disposable, noop, Slot } from '@pulsar/global/utils';
 
 const DEFAULT_MODE: DocMode = 'page';
 
@@ -57,7 +57,7 @@ export interface DocModeProvider {
 }
 
 export const DocModeProvider = createIdentifier<DocModeProvider>(
-  'AffineDocModeService'
+  'PulsarDocModeService'
 );
 
 const modeMap = new Map<string, DocMode>();

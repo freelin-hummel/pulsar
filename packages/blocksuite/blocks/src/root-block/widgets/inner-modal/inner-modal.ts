@@ -1,4 +1,4 @@
-import { WidgetComponent } from '@blocksuite/block-std';
+import { WidgetComponent } from '@pulsar/block-std';
 import {
   type FloatingElement,
   type ReferenceElement,
@@ -9,10 +9,10 @@ import {
 import { nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-export const AFFINE_INNER_MODAL_WIDGET = 'affine-inner-modal-widget';
+export const PULSAR_INNER_MODAL_WIDGET = 'pulsar-inner-modal-widget';
 
-@customElement(AFFINE_INNER_MODAL_WIDGET)
-export class AffineInnerModalWidget extends WidgetComponent {
+@customElement(PULSAR_INNER_MODAL_WIDGET)
+export class PulsarInnerModalWidget extends WidgetComponent {
   private _getTarget?: () => ReferenceElement;
 
   open(
@@ -61,6 +61,6 @@ export class AffineInnerModalWidget extends WidgetComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_INNER_MODAL_WIDGET]: AffineInnerModalWidget;
+    [PULSAR_INNER_MODAL_WIDGET]: PulsarInnerModalWidget;
   }
 }

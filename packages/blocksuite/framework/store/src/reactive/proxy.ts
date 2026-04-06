@@ -1,6 +1,6 @@
 import type { YArrayEvent, YMapEvent } from 'yjs';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import { Array as YArray, Map as YMap } from 'yjs';
 
 import type { UnRecord } from './utils.js';

@@ -1,5 +1,5 @@
-import type { BlockSelection } from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { BlockSelection } from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
 const getSelection = (blockComponent: BlockComponent) =>
   blockComponent.host.selection;

@@ -1,5 +1,5 @@
-import { clamp } from '@blocksuite/affine-shared/utils';
-import { Text, nanoid } from '@blocksuite/store';
+import { clamp } from '@pulsar/editor-shared/utils';
+import { Text, nanoid } from '@pulsar/store';
 
 import type { SelectTag } from '../../data-view/utils/tags/multi-tag-select.js';
 

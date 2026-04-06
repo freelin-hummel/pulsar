@@ -2,18 +2,18 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import './embed-edgeless-github-block.js';
 import { EmbedGithubBlockService } from './embed-github-service.js';
 
 export const EmbedGithubBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:embed-github'),
+  FlavourExtension('pulsar:embed-github'),
   EmbedGithubBlockService,
-  BlockViewExtension('affine:embed-github', model => {
-    return model.parent?.flavour === 'affine:surface'
-      ? literal`affine-embed-edgeless-github-block`
-      : literal`affine-embed-github-block`;
+  BlockViewExtension('pulsar:embed-github', model => {
+    return model.parent?.flavour === 'pulsar:surface'
+      ? literal`pulsar-embed-edgeless-github-block`
+      : literal`pulsar-embed-github-block`;
   }),
 ];

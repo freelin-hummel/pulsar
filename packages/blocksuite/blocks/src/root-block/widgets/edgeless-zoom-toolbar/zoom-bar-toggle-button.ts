@@ -1,7 +1,7 @@
-import { MoreIcon } from '@blocksuite/affine-components/icons';
-import { createLitPortal } from '@blocksuite/affine-components/portal';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { MoreIcon } from '@pulsar/editor-components/icons';
+import { createLitPortal } from '@pulsar/editor-components/portal';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { offset } from '@floating-ui/dom';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';

@@ -3,8 +3,8 @@ import { css } from 'lit';
 export const listPrefix = css`
   .affine-list-block__prefix {
     display: flex;
-    color: var(--affine-blue-700);
-    font-size: var(--affine-font-sm);
+    color: var(--pulsar-blue-700);
+    font-size: var(--pulsar-font-sm);
     user-select: none;
     position: relative;
   }
@@ -21,7 +21,7 @@ export const listPrefix = css`
     cursor: pointer;
     width: 24px;
     height: 24px;
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
 
   .affine-list-block__todo-prefix.readonly {
@@ -49,7 +49,7 @@ export const toggleStyles = css`
     transition: opacity 0.2s ease-in-out;
   }
   .toggle-icon:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
   .affine-list-rich-text-wrapper:hover .toggle-icon {
     opacity: 1;
@@ -73,7 +73,7 @@ export const toggleStyles = css`
 export const listBlockStyles = css`
   affine-list {
     display: block;
-    font-size: var(--affine-font-base);
+    font-size: var(--pulsar-font-base);
   }
 
   .affine-list-block-container {
@@ -93,7 +93,7 @@ export const listBlockStyles = css`
   }
 
   .affine-list--checked {
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
   }
 
   ${listPrefix}

@@ -1,5 +1,5 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { Command } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 export const indentBlocks: Command<
   never,

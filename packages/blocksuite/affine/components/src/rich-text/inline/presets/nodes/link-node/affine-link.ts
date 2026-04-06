@@ -1,26 +1,26 @@
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
-import { ShadowlessElement } from '@blocksuite/block-std';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
+import { ShadowlessElement } from '@pulsar/block-std';
 import {
   type DeltaInsert,
   INLINE_ROOT_ATTR,
   type InlineRootElement,
   ZERO_WIDTH_SPACE,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import type { AffineTextAttributes } from '../../affine-inline-specs.js';
+import type { PulsarTextAttributes } from '../../affine-inline-specs.js';
 
 import { HoverController } from '../../../../../hover/index.js';
 import { affineTextStyles } from '../affine-text.js';
 import { toggleLinkPopup } from './link-popup/toggle-link-popup.js';
 
-@customElement('affine-link')
-export class AffineLink extends ShadowlessElement {
+@customElement('pulsar-link')
+export class PulsarLink extends ShadowlessElement {
   private _whenHover = new HoverController(
     this,
     ({ abortController }) => {
@@ -79,8 +79,8 @@ export class AffineLink extends ShadowlessElement {
 
   override render() {
     const linkStyles = {
-      color: 'var(--affine-link-color)',
-      fill: 'var(--affine-link-color)',
+      color: 'var(--pulsar-link-color)',
+      fill: 'var(--pulsar-link-color)',
       'text-decoration': 'none',
       cursor: 'pointer',
     };
@@ -121,7 +121,7 @@ export class AffineLink extends ShadowlessElement {
   }
 
   get inlineEditor() {
-    const inlineRoot = this.closest<InlineRootElement<AffineTextAttributes>>(
+    const inlineRoot = this.closest<InlineRootElement<PulsarTextAttributes>>(
       `[${INLINE_ROOT_ATTR}]`
     );
     return inlineRoot?.inlineEditor;
@@ -146,13 +146,13 @@ export class AffineLink extends ShadowlessElement {
   }
 
   @property({ type: Object })
-  accessor delta: DeltaInsert<AffineTextAttributes> = {
+  accessor delta: DeltaInsert<PulsarTextAttributes> = {
     insert: ZERO_WIDTH_SPACE,
   };
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-link': AffineLink;
+    'pulsar-link': PulsarLink;
   }
 }

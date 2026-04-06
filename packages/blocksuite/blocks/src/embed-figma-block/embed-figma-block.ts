@@ -1,9 +1,9 @@
 import type {
   EmbedFigmaModel,
   EmbedFigmaStyles,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { OpenIcon } from '@blocksuite/affine-components/icons';
+import { OpenIcon } from '@pulsar/editor-components/icons';
 import { html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -14,7 +14,7 @@ import { EMBED_CARD_HEIGHT, EMBED_CARD_WIDTH } from '../_common/consts.js';
 import { EmbedBlockComponent } from '../_common/embed-block-helper/embed-block-element.js';
 import { FigmaIcon, styles } from './styles.js';
 
-@customElement('affine-embed-figma-block')
+@customElement('pulsar-embed-figma-block')
 export class EmbedFigmaBlockComponent extends EmbedBlockComponent<
   EmbedFigmaModel,
   EmbedFigmaBlockService
@@ -114,14 +114,14 @@ export class EmbedFigmaBlockComponent extends EmbedBlockComponent<
         <div>
           <div
             class=${classMap({
-              'affine-embed-figma-block': true,
+              'pulsar-embed-figma-block': true,
               selected: this._isSelected,
             })}
             @click=${this._handleClick}
             @dblclick=${this._handleDoubleClick}
           >
-            <div class="affine-embed-figma">
-              <div class="affine-embed-figma-iframe-container">
+            <div class="pulsar-embed-figma">
+              <div class="pulsar-embed-figma-iframe-container">
                 <iframe
                   src=${`https://www.figma.com/embed?embed_host=blocksuite&url=${url}`}
                   allowfullscreen
@@ -129,31 +129,31 @@ export class EmbedFigmaBlockComponent extends EmbedBlockComponent<
 
                 <div
                   class=${classMap({
-                    'affine-embed-figma-iframe-overlay': true,
+                    'pulsar-embed-figma-iframe-overlay': true,
                     hide: !this._showOverlay,
                   })}
                 ></div>
               </div>
             </div>
-            <div class="affine-embed-figma-content">
-              <div class="affine-embed-figma-content-header">
-                <div class="affine-embed-figma-content-title-icon">
+            <div class="pulsar-embed-figma-content">
+              <div class="pulsar-embed-figma-content-header">
+                <div class="pulsar-embed-figma-content-title-icon">
                   ${FigmaIcon}
                 </div>
 
-                <div class="affine-embed-figma-content-title-text">
+                <div class="pulsar-embed-figma-content-title-text">
                   ${titleText}
                 </div>
               </div>
 
-              <div class="affine-embed-figma-content-description">
+              <div class="pulsar-embed-figma-content-description">
                 ${descriptionText}
               </div>
 
-              <div class="affine-embed-figma-content-url" @click=${this.open}>
+              <div class="pulsar-embed-figma-content-url" @click=${this.open}>
                 <span>www.figma.com</span>
 
-                <div class="affine-embed-figma-content-url-icon">
+                <div class="pulsar-embed-figma-content-url-icon">
                   ${OpenIcon}
                 </div>
               </div>
@@ -173,6 +173,6 @@ export class EmbedFigmaBlockComponent extends EmbedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-embed-figma-block': EmbedFigmaBlockComponent;
+    'pulsar-embed-figma-block': EmbedFigmaBlockComponent;
   }
 }

@@ -2,9 +2,9 @@ import type {
   BookmarkBlockModel,
   EmbedGithubModel,
   EmbedLinkedDocModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -30,8 +30,8 @@ export class EmbedCardStyleMenu extends WithDisposable(LitElement) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-shadow-2);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-shadow-2);
     }
 
     .embed-card-style-menu-container > icon-button {
@@ -39,7 +39,7 @@ export class EmbedCardStyleMenu extends WithDisposable(LitElement) {
     }
 
     .embed-card-style-menu-container > icon-button.selected {
-      border: 1px solid var(--affine-brand-color);
+      border: 1px solid var(--pulsar-brand-color);
     }
   `;
 

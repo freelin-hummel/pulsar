@@ -19,7 +19,7 @@ const styles = css`
 
   .pie-node.child:not(.node-color)::after {
     content: attr(index);
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     position: absolute;
     font-size: 8px;
     bottom: 10%;
@@ -27,8 +27,8 @@ const styles = css`
   }
 
   .pie-node.child[hovering='true'] {
-    border-color: var(--affine-primary-color);
-    background-color: var(--affine-hover-color-filled);
+    border-color: var(--pulsar-primary-color);
+    background-color: var(--pulsar-hover-color-filled);
     scale: 1.06;
   }
 
@@ -40,7 +40,7 @@ const styles = css`
     transform: translateY(-50%);
     width: 5px;
     height: 5px;
-    background-color: var(--affine-primary-color);
+    background-color: var(--pulsar-primary-color);
     border-radius: 50%;
   }
 `;

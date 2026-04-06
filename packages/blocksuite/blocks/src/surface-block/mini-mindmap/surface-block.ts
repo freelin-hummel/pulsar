@@ -1,15 +1,15 @@
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { Color, ShapeElementModel } from '@blocksuite/affine-model';
-import type { Bound } from '@blocksuite/global/utils';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { Color, ShapeElementModel } from '@pulsar/model';
+import type { Bound } from '@pulsar/global/utils';
 
 import {
   CanvasRenderer,
   elementRenderers,
   fitContent,
-} from '@blocksuite/affine-block-surface';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { BlockComponent } from '@blocksuite/block-std';
-import { GfxControllerIdentifier } from '@blocksuite/block-std/gfx';
+} from '@pulsar/block-surface';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { BlockComponent } from '@pulsar/block-std';
+import { GfxControllerIdentifier } from '@pulsar/block-std/gfx';
 import { html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 
@@ -123,14 +123,14 @@ export class MindmapSurfaceBlock extends BlockComponent<SurfaceBlockModel> {
           height: 100%;
         }
       </style>
-      <div class="affine-mini-mindmap-surface">
+      <div class="pulsar-mini-mindmap-surface">
         <!-- attach cavnas later in renderer -->
       </div>
     `;
   }
 
   get mindmapService() {
-    return this.std.getService('affine:page') as unknown as MindmapService;
+    return this.std.getService('pulsar:page') as unknown as MindmapService;
   }
 
   get viewport() {

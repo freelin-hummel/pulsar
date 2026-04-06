@@ -9,7 +9,7 @@ export * from './paragraph-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:paragraph': ParagraphBlockService;
+      'pulsar:paragraph': ParagraphBlockService;
     }
   }
 }

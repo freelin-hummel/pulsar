@@ -1,8 +1,8 @@
-import type { NoteBlockModel } from '@blocksuite/affine-model';
-import type { Point } from '@blocksuite/global/utils';
+import type { NoteBlockModel } from '@pulsar/model';
+import type { Point } from '@pulsar/global/utils';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { handleNativeRangeAtPoint } from '@blocksuite/affine-shared/utils';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { handleNativeRangeAtPoint } from '@pulsar/editor-shared/utils';
 
 import type { NoteChildrenFlavour } from '../../../_common/utils/index.js';
 import type { EdgelessRootBlockComponent } from '../edgeless-root-block.js';
@@ -51,7 +51,7 @@ export function addNote(
   requestAnimationFrame(() => {
     const blocks =
       (doc.root?.children.filter(
-        child => child.flavour === 'affine:note'
+        child => child.flavour === 'pulsar:note'
       ) as BlockSuite.EdgelessBlockModelType[]) ?? [];
     const element = blocks.find(b => b.id === noteId);
     if (element) {

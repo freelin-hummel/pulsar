@@ -1,4 +1,4 @@
-import { FONT_XS, PANEL_BASE } from '@blocksuite/affine-shared/styles';
+import { FONT_XS, PANEL_BASE } from '@pulsar/editor-shared/styles';
 import { css } from 'lit';
 
 const editLinkStyle = css`
@@ -20,7 +20,7 @@ const editLinkStyle = css`
 
   .affine-link-edit-popover label {
     box-sizing: border-box;
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
     ${FONT_XS};
     font-weight: 400;
   }
@@ -30,18 +30,18 @@ const editLinkStyle = css`
     padding: 0;
     border: none;
     background: transparent;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
     ${FONT_XS};
   }
   .affine-link-edit-popover input::placeholder {
-    color: var(--affine-placeholder-color);
+    color: var(--pulsar-placeholder-color);
   }
   input:focus {
     outline: none;
   }
   .affine-link-edit-popover input:focus ~ label,
   .affine-link-edit-popover input:active ~ label {
-    color: var(--affine-primary-color);
+    color: var(--pulsar-primary-color);
   }
 
   .affine-edit-area {
@@ -55,7 +55,7 @@ const editLinkStyle = css`
     user-select: none;
     box-sizing: border-box;
 
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
     box-sizing: border-box;
 
     outline: none;
@@ -63,8 +63,8 @@ const editLinkStyle = css`
     background: transparent;
   }
   .affine-edit-area:focus-within {
-    border-color: var(--affine-blue-700);
-    box-shadow: var(--affine-active-shadow);
+    border-color: var(--pulsar-blue-700);
+    box-shadow: var(--pulsar-active-shadow);
   }
 
   .affine-edit-area.text {
@@ -100,7 +100,7 @@ export const linkPopupStyle = css`
   }
 
   .affine-link-popover-container {
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     animation: affine-popover-fade-in 0.2s ease;
     position: absolute;
   }
@@ -122,7 +122,7 @@ export const linkPopupStyle = css`
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .affine-link-preview {
@@ -136,12 +136,12 @@ export const linkPopupStyle = css`
     user-select: none;
     cursor: pointer;
 
-    color: var(--affine-link-color);
+    color: var(--pulsar-link-color);
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-sm);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-sm);
     font-style: normal;
     font-weight: 400;
     text-decoration: none;
@@ -163,7 +163,7 @@ export const linkPopupStyle = css`
     gap: 12px;
     padding: 12px;
 
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   .affine-link-popover-input {
@@ -171,20 +171,20 @@ export const linkPopupStyle = css`
     height: 30px;
     box-sizing: border-box;
     padding: 4px 10px;
-    background: var(--affine-white-10);
+    background: var(--pulsar-white-10);
     border-radius: 4px;
     border-width: 1px;
     border-style: solid;
-    border-color: var(--affine-border-color);
-    color: var(--affine-text-primary-color);
+    border-color: var(--pulsar-border-color);
+    color: var(--pulsar-text-primary-color);
     ${FONT_XS};
   }
   .affine-link-popover-input::placeholder {
-    color: var(--affine-placeholder-color);
+    color: var(--pulsar-placeholder-color);
   }
   .affine-link-popover-input:focus {
-    border-color: var(--affine-blue-700);
-    box-shadow: var(--affine-active-shadow);
+    border-color: var(--pulsar-blue-700);
+    box-shadow: var(--pulsar-active-shadow);
   }
 
   ${editLinkStyle}

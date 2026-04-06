@@ -2,10 +2,10 @@ import type {
   NoteDisplayMode,
   ParagraphBlockModel,
   RootBlockModel,
-} from '@blocksuite/blocks';
-import type { BlockModel, Doc } from '@blocksuite/store';
+} from '@pulsar/blocks';
+import type { BlockModel, Doc } from '@pulsar/store';
 
-import { BlocksUtils, type NoteBlockModel } from '@blocksuite/blocks';
+import { BlocksUtils, type NoteBlockModel } from '@pulsar/blocks';
 
 import { headingKeys } from '../config.js';
 
@@ -31,7 +31,7 @@ export function getNotesFromDoc(
   const notes: OutlineNoteItem[] = [];
 
   rootModel.children.forEach((block, index) => {
-    if (!['affine:note'].includes(block.flavour)) return;
+    if (!['pulsar:note'].includes(block.flavour)) return;
 
     const blockModel = block as NoteBlockModel;
     const OutlineNoteItem = {
@@ -49,14 +49,14 @@ export function getNotesFromDoc(
 }
 
 export function isRootBlock(block: BlockModel): block is RootBlockModel {
-  return BlocksUtils.matchFlavours(block, ['affine:page']);
+  return BlocksUtils.matchFlavours(block, ['pulsar:page']);
 }
 
 export function isHeadingBlock(
   block: BlockModel
 ): block is ParagraphBlockModel {
   return (
-    BlocksUtils.matchFlavours(block, ['affine:paragraph']) &&
+    BlocksUtils.matchFlavours(block, ['pulsar:paragraph']) &&
     headingKeys.has(block.type$.value)
   );
 }

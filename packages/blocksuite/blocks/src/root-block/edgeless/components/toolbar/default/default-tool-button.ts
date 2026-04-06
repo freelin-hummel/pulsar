@@ -2,7 +2,7 @@ import {
   ArrowUpIcon,
   HandIcon,
   SelectIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import { LitElement, css, html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 
@@ -27,7 +27,7 @@ export class EdgelessDefaultToolButton extends QuickToolMixin(LitElement) {
       top: 4px;
       right: 2px;
       font-size: 0;
-      color: var(--affine-icon-secondary);
+      color: var(--pulsar-icon-secondary);
     }
     .active .arrow-up-icon {
       color: inherit;

@@ -1,4 +1,4 @@
-import { BlockModel } from '@blocksuite/store';
+import { BlockModel } from '@pulsar/store';
 
 import type { ReferenceInfo } from '../../../consts/doc.js';
 import type { EmbedCardStyle } from '../../../utils/index.js';
@@ -25,10 +25,10 @@ export class EmbedLinkedDocModel extends defineEmbedModel<EmbedLinkedDocBlockPro
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:embed-linked-doc': EmbedLinkedDocModel;
+      'pulsar:embed-linked-doc': EmbedLinkedDocModel;
     }
     interface BlockModels {
-      'affine:embed-linked-doc': EmbedLinkedDocModel;
+      'pulsar:embed-linked-doc': EmbedLinkedDocModel;
     }
   }
 }

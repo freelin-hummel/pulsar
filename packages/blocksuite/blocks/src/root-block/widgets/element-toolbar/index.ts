@@ -1,4 +1,4 @@
-import type { MindmapElementModel } from '@blocksuite/affine-block-surface';
+import type { MindmapElementModel } from '@pulsar/block-surface';
 import type {
   AttachmentBlockModel,
   BookmarkBlockModel,
@@ -17,24 +17,24 @@ import type {
   BrushElementModel,
   ConnectorElementModel,
   TextElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { ConnectorCWithArrowIcon } from '@blocksuite/affine-components/icons';
+import { CommonUtils } from '@pulsar/block-surface';
+import { ConnectorCWithArrowIcon } from '@pulsar/editor-components/icons';
 import {
   type MenuItemGroup,
   cloneGroups,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/toolbar';
 import {
   ConnectorMode,
   GroupElementModel,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { requestConnectedFrame } from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { atLeastNMatches, groupBy, pickValues } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { requestConnectedFrame } from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { atLeastNMatches, groupBy, pickValues } from '@pulsar/global/utils';
 import { type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { join } from 'lit/directives/join.js';

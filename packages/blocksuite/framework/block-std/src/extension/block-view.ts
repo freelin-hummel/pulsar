@@ -13,10 +13,10 @@ import { BlockViewIdentifier } from '../identifier.js';
  *
  * @example
  * ```ts
- * import { BlockViewExtension } from '@blocksuite/block-std';
+ * import { BlockViewExtension } from '@pulsar/block-std';
  *
  * const MyListBlockViewExtension = BlockViewExtension(
- *   'affine:list',
+ *   'pulsar:list',
  *   literal`my-list-block`
  * );
  * ```

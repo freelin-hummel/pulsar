@@ -1,7 +1,7 @@
-import type { UIEventStateContext } from '@blocksuite/block-std';
+import type { UIEventStateContext } from '@pulsar/block-std';
 import type { ReactiveController } from 'lit';
 
-import { toast } from '@blocksuite/affine-components/toast';
+import { toast } from '@pulsar/editor-components/toast';
 
 import type { Cell } from '../../../../view-manager/cell.js';
 import type { Row } from '../../../../view-manager/row.js';

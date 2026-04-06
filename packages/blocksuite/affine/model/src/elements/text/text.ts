@@ -1,5 +1,5 @@
-import type { BaseElementProps } from '@blocksuite/block-std/gfx';
-import type { IVec, SerializedXYWH } from '@blocksuite/global/utils';
+import type { BaseElementProps } from '@pulsar/block-std/gfx';
+import type { IVec, SerializedXYWH } from '@pulsar/global/utils';
 
 import {
   type Color,
@@ -8,16 +8,16 @@ import {
   FontWeight,
   TextAlign,
   type TextStyleProps,
-} from '@blocksuite/affine-model';
-import { GfxPrimitiveElementModel, field } from '@blocksuite/block-std/gfx';
+} from '@pulsar/model';
+import { GfxPrimitiveElementModel, field } from '@pulsar/block-std/gfx';
 import {
   Bound,
   getPointsFromBoundsWithRotation,
   linePolygonIntersects,
   pointInPolygon,
   polygonNearestPoint,
-} from '@blocksuite/global/utils';
-import { DocCollection, type Y } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { DocCollection, type Y } from '@pulsar/store';
 
 export type TextElementProps = BaseElementProps & {
   text: Y.Text;

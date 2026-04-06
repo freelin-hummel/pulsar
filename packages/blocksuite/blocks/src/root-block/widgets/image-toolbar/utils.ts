@@ -1,8 +1,8 @@
 import {
   getBlockProps,
   isInsidePageEditor,
-} from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { ImageBlockComponent } from '../../../image-block/image-block.js';
 

@@ -1,10 +1,10 @@
-import type { ParagraphBlockModel } from '@blocksuite/affine-model';
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
-import type { BlockComponent, EditorHost } from '@blocksuite/block-std';
-import type { BaseSelection } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { ParagraphBlockModel } from '@pulsar/model';
+import type { EmbedCardStyle } from '@pulsar/model';
+import type { BlockComponent, EditorHost } from '@pulsar/block-std';
+import type { BaseSelection } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '@blocksuite/affine-shared/consts';
+import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '@pulsar/editor-shared/consts';
 import {
   findClosestBlockComponent,
   getBlockProps,
@@ -12,8 +12,8 @@ import {
   getClosestBlockComponentByPoint,
   isInsidePageEditor,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { Bound, Point, Rect, assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { Bound, Point, Rect, assertExists } from '@pulsar/global/utils';
 
 import type { EdgelessRootBlockComponent } from '../../edgeless/edgeless-root-block.js';
 
@@ -145,8 +145,8 @@ export const getClosestNoteBlock = (
   point: Point
 ) => {
   return isInsidePageEditor(editorHost)
-    ? findClosestBlockComponent(rootComponent, point, 'affine-note')
-    : getHoveringNote(point)?.closest('affine-edgeless-note');
+    ? findClosestBlockComponent(rootComponent, point, 'pulsar-note')
+    : getHoveringNote(point)?.closest('pulsar-edgeless-note');
 };
 
 export const getClosestBlockByPoint = (
@@ -245,7 +245,7 @@ export function calcDropTarget(
     const hasChild = (element as BlockComponent).childBlocks.length;
     if (
       allowSublist &&
-      matchFlavours(model, ['affine:list']) &&
+      matchFlavours(model, ['pulsar:list']) &&
       !hasChild &&
       point.x > domRect.x + BLOCK_CHILDREN_CONTAINER_PADDING_LEFT
     ) {
@@ -311,7 +311,7 @@ export const getDropResult = (
 
   const model = closestBlock.model;
 
-  const isDatabase = matchFlavours(model, ['affine:database']);
+  const isDatabase = matchFlavours(model, ['pulsar:database']);
   if (isDatabase) {
     return dropIndicator;
   }
@@ -327,7 +327,7 @@ export const getDropResult = (
 export function getDragHandleLeftPadding(blocks: BlockComponent[]) {
   const hasToggleList = blocks.some(
     block =>
-      matchFlavours(block.model, ['affine:list']) &&
+      matchFlavours(block.model, ['pulsar:list']) &&
       block.model.children.length > 0
   );
   const offsetLeft = hasToggleList
@@ -368,7 +368,7 @@ export function convertDragPreviewDocToEdgeless({
   style?: EmbedCardStyle;
 }): boolean {
   const edgelessRoot = blockComponent.closest(
-    'affine-edgeless-root'
+    'pulsar-edgeless-root'
   ) as EdgelessRootBlockComponent;
   if (!edgelessRoot) {
     return false;

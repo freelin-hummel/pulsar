@@ -1,9 +1,9 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
+import type { BlockStdScope } from '@pulsar/block-std';
 
 import {
   isMarkdownPrefix,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 import { getInlineEditorByModel } from '../dom.js';
 import { toDivider } from './divider.js';
@@ -32,10 +32,10 @@ export function markdownInput(
   const prefixText = getPrefixText(inline);
   if (!isMarkdownPrefix(prefixText)) return;
 
-  const isParagraph = matchFlavours(model, ['affine:paragraph']);
+  const isParagraph = matchFlavours(model, ['pulsar:paragraph']);
   const isHeading = isParagraph && model.type.startsWith('h');
   const isParagraphQuoteBlock = isParagraph && model.type === 'quote';
-  const isCodeBlock = matchFlavours(model, ['affine:code']);
+  const isCodeBlock = matchFlavours(model, ['pulsar:code']);
   if (isHeading || isParagraphQuoteBlock || isCodeBlock) return;
 
   const lineInfo = inline.getLine(range.index);

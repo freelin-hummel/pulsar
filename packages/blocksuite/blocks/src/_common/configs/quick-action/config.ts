@@ -1,14 +1,14 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
 import {
   CopyIcon,
   DatabaseTableViewIcon20,
   LinkedDocIcon,
-} from '@blocksuite/affine-components/icons';
-import { createSimplePortal } from '@blocksuite/affine-components/portal';
-import { toast } from '@blocksuite/affine-components/toast';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/icons';
+import { createSimplePortal } from '@pulsar/editor-components/portal';
+import { toast } from '@pulsar/editor-components/toast';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { type TemplateResult, html } from 'lit';
 
 import {
@@ -72,7 +72,7 @@ export const quickActionConfig: QuickActionConfig[] = [
 
       const firstBlock = selectedModels[0];
       assertExists(firstBlock);
-      if (matchFlavours(firstBlock, ['affine:database'])) {
+      if (matchFlavours(firstBlock, ['pulsar:database'])) {
         return false;
       }
 

@@ -1,6 +1,6 @@
-import type { GfxModel } from '@blocksuite/block-std/gfx';
+import type { GfxModel } from '@pulsar/block-std/gfx';
 
-import { ConnectorElementModel } from '@blocksuite/affine-model';
+import { ConnectorElementModel } from '@pulsar/model';
 
 export function isConnectorWithLabel(
   model: GfxModel | BlockSuite.SurfaceLocalModel

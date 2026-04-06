@@ -1,4 +1,4 @@
-import { type Color, ColorScheme } from '@blocksuite/affine-model';
+import { type Color, ColorScheme } from '@pulsar/model';
 import { signal } from '@lit-labs/preact-signals';
 
 const TRANSPARENT = 'transparent';
@@ -40,7 +40,7 @@ export class ThemeObserver {
    * `rgba(255,0,0)`
    * `#fff`
    * `light-dark(#fff, #000)`
-   * `var(--affine-palette-shape-blue)`
+   * `var(--pulsar-palette-shape-blue)`
    * ```
    */
   static generateColorProperty(color: Color, fallback = 'transparent') {
@@ -86,7 +86,7 @@ export class ThemeObserver {
    * ```
    * `rgba(255,0,0)`
    * `#fff`
-   * `--affine-palette-shape-blue`
+   * `--pulsar-palette-shape-blue`
    * ```
    */
   static getColorValue(color: Color, fallback = TRANSPARENT, real?: boolean) {

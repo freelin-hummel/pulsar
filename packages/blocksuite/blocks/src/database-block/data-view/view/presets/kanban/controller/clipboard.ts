@@ -1,4 +1,4 @@
-import type { UIEventStateContext } from '@blocksuite/block-std';
+import type { UIEventStateContext } from '@pulsar/block-std';
 import type { ReactiveController } from 'lit';
 
 import type { DataViewKanban } from '../kanban-view.js';

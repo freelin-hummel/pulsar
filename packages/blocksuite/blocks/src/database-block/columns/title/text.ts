@@ -1,13 +1,13 @@
-import type { RichText } from '@blocksuite/affine-components/rich-text';
-import type { Text } from '@blocksuite/store';
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { Text } from '@pulsar/store';
 
-import { QuickSearchProvider } from '@blocksuite/affine-shared/services';
+import { QuickSearchProvider } from '@pulsar/editor-shared/services';
 import {
   getViewportElement,
   isValidUrl,
-} from '@blocksuite/affine-shared/utils';
-import { IS_MAC } from '@blocksuite/global/env';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { IS_MAC } from '@pulsar/global/env';
+import { assertExists } from '@pulsar/global/utils';
 import { css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit/static-html.js';
@@ -65,14 +65,14 @@ const styles = css`
     padding: 2px;
     border-radius: 4px;
     margin-top: 2px;
-    background-color: var(--affine-background-secondary-color);
+    background-color: var(--pulsar-background-secondary-color);
   }
 
   .data-view-header-area-icon svg {
     width: 14px;
     height: 14px;
-    fill: var(--affine-icon-color);
-    color: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
+    color: var(--pulsar-icon-color);
   }
 `;
 
@@ -114,7 +114,7 @@ abstract class BaseTextCell extends BaseCellRenderer<Text> {
   get service() {
     return this.view
       .getContext(HostContextKey)
-      ?.std.getService('affine:database');
+      ?.std.getService('pulsar:database');
   }
 
   get titleColumn() {
@@ -125,7 +125,7 @@ abstract class BaseTextCell extends BaseCellRenderer<Text> {
 
   get topContenteditableElement() {
     const databaseBlock =
-      this.closest<DatabaseBlockComponent>('affine-database');
+      this.closest<DatabaseBlockComponent>('pulsar-database');
     return databaseBlock?.topContenteditableElement;
   }
 

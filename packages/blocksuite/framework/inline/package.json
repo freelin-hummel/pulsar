@@ -1,5 +1,5 @@
 {
-  "name": "@blocksuite/inline",
+  "name": "@pulsar/inline",
   "version": "0.17.0",
   "description": "A micro editor.",
   "type": "module",
@@ -39,7 +39,7 @@
     }
   },
   "dependencies": {
-    "@blocksuite/global": "workspace:*",
+    "@pulsar/global": "workspace:*",
     "zod": "^3.23.8"
   }
 }

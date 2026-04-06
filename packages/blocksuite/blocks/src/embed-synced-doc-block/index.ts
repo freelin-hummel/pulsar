@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { EmbedSyncedDocBlockService } from './embed-synced-doc-service.js';
 
@@ -12,7 +12,7 @@ export * from './embed-synced-doc-service.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:embed-synced-doc': EmbedSyncedDocBlockService;
+      'pulsar:embed-synced-doc': EmbedSyncedDocBlockService;
     }
   }
 }

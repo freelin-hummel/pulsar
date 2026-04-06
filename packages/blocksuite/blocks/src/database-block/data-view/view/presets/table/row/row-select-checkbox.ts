@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { CheckBoxCkeckSolidIcon, CheckBoxUnIcon } from '@blocksuite/icons/lit';
 import { type ReadonlySignal, computed } from '@lit-labs/preact-signals';
 import { css, html } from 'lit';
@@ -25,11 +25,11 @@ export class RowSelectCheckbox extends SignalWatcher(
     .row-select-checkbox {
       display: flex;
       align-items: center;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       opacity: 0;
       cursor: pointer;
       font-size: 20px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
     }
     .row-select-checkbox:hover {
       opacity: 1;
@@ -53,7 +53,7 @@ export class RowSelectCheckbox extends SignalWatcher(
   override connectedCallback() {
     super.connectedCallback();
     this.disposables.addFromEvent(this, 'click', () => {
-      this.closest('affine-database-table')?.selectionController.toggleRow(
+      this.closest('pulsar-database-table')?.selectionController.toggleRow(
         this.rowId,
         this.groupKey
       );

@@ -5,7 +5,7 @@ import './commands/reassociate-connectors.js';
 
 export { type IModelCoord, ZOOM_MAX, ZOOM_MIN, ZOOM_STEP } from './consts.js';
 export {
-  AffineCanvasTextFonts,
+  PulsarCanvasTextFonts,
   CommunityCanvasTextFonts,
   GRID_GAP_MAX,
   GRID_GAP_MIN,
@@ -105,7 +105,7 @@ import {
   sign,
   toDegree,
   toRadian,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import { generateKeyBetween } from 'fractional-indexing';
 
 import { generateElementId, normalizeWheelDeltaY } from './utils/index.js';
@@ -159,10 +159,10 @@ export const CommonUtils = {
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:surface': SurfaceBlockService;
+      'pulsar:surface': SurfaceBlockService;
     }
     interface BlockModels {
-      'affine:surface': SurfaceBlockModel;
+      'pulsar:surface': SurfaceBlockModel;
     }
   }
 }

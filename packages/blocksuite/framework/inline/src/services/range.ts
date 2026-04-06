@@ -1,5 +1,5 @@
-import { REQUEST_IDLE_CALLBACK_ENABLED } from '@blocksuite/global/env';
-import { assertExists } from '@blocksuite/global/utils';
+import { REQUEST_IDLE_CALLBACK_ENABLED } from '@pulsar/global/env';
+import { assertExists } from '@pulsar/global/utils';
 import * as Y from 'yjs';
 
 import type { VLine } from '../components/v-line.js';

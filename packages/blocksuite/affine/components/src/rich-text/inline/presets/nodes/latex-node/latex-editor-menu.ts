@@ -1,16 +1,16 @@
-import type { BaseTextAttributes } from '@blocksuite/inline/index';
-import type { Y } from '@blocksuite/store';
+import type { BaseTextAttributes } from '@pulsar/inline/index';
+import type { Y } from '@pulsar/store';
 
-import { ColorScheme } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { ColorScheme } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
-import { noop } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { noop } from '@pulsar/global/utils';
 import { DoneIcon } from '@blocksuite/icons/lit';
-import { DocCollection } from '@blocksuite/store';
+import { DocCollection } from '@pulsar/store';
 import { type Signal, effect, signal } from '@lit-labs/preact-signals';
 import { cssVar } from '@toeverything/theme';
 import { css, html, unsafeCSS } from 'lit';

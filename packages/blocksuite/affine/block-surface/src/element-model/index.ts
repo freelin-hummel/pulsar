@@ -4,7 +4,7 @@ import {
   GroupElementModel,
   ShapeElementModel,
   TextElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
 import { SurfaceElementModel } from './base.js';
 import { MindmapElementModel } from './mindmap.js';

@@ -1,26 +1,26 @@
-import type { CodeBlockModel } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { VLine } from '@blocksuite/inline';
+import type { CodeBlockModel } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { VLine } from '@pulsar/inline';
 import type { ThemedToken } from 'shiki';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
 import {
   type RichText,
   focusTextModel,
-} from '@blocksuite/affine-components/rich-text';
-import '@blocksuite/affine-components/rich-text';
-import { toast } from '@blocksuite/affine-components/toast';
-import { BRACKET_PAIRS, NOTE_SELECTOR } from '@blocksuite/affine-shared/consts';
-import { getViewportElement } from '@blocksuite/affine-shared/utils';
-import { getInlineRangeProvider } from '@blocksuite/block-std';
-import { IS_MAC } from '@blocksuite/global/env';
-import { noop } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/rich-text';
+import '@pulsar/editor-components/rich-text';
+import { toast } from '@pulsar/editor-components/toast';
+import { BRACKET_PAIRS, NOTE_SELECTOR } from '@pulsar/editor-shared/consts';
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { getInlineRangeProvider } from '@pulsar/block-std';
+import { IS_MAC } from '@pulsar/global/env';
+import { noop } from '@pulsar/global/utils';
 import {
   INLINE_ROOT_ATTR,
   type InlineRangeProvider,
   type InlineRootElement,
-} from '@blocksuite/inline';
-import { Slice } from '@blocksuite/store';
+} from '@pulsar/inline';
+import { Slice } from '@pulsar/store';
 import {
   type Signal,
   computed,
@@ -38,7 +38,7 @@ import { CodeClipboardController } from './clipboard/index.js';
 import './highlight/affine-code-unit.js';
 import { codeBlockStyles } from './styles.js';
 
-@customElement('affine-code')
+@customElement('pulsar-code')
 export class CodeBlockComponent extends CaptionedBlockComponent<
   CodeBlockModel,
   CodeBlockService
@@ -324,7 +324,7 @@ export class CodeBlockComponent extends CaptionedBlockComponent<
         if (!parent) return;
         const index = parent.children.indexOf(model);
         if (index === -1) return;
-        const id = this.doc.addBlock('affine:paragraph', {}, parent, index + 1);
+        const id = this.doc.addBlock('pulsar:paragraph', {}, parent, index + 1);
         focusTextModel(std, id);
         return true;
       },
@@ -362,7 +362,7 @@ export class CodeBlockComponent extends CaptionedBlockComponent<
     return html`
       <div
         class=${classMap({
-          'affine-code-block-container': true,
+          'pulsar-code-block-container': true,
           wrap: this.model.wrap,
         })}
       >
@@ -431,6 +431,6 @@ export class CodeBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-code': CodeBlockComponent;
+    'pulsar-code': CodeBlockComponent;
   }
 }

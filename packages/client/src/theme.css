@@ -1,5 +1,6 @@
-/* Pulsar — Dark theme */
+/* Pulsar — UI layer theme tokens */
 :root {
+  /* These extend the base dark theme from @pulsar/presets/themes/pulsar.css */
   --color-bg: #1e1e2e;
   --color-bg-surface: #252536;
   --color-bg-elevated: #2a2a3c;
@@ -21,16 +22,6 @@
   --z-toolbar: 1000;
   --z-menu: 1100;
   --z-overlay: 1200;
-
-  /* Override BlockSuite/Affine theme for dark canvas */
-  --affine-background-primary-color: #1e1e2e;
-  --affine-background-secondary-color: #252536;
-  --affine-background-tertiary-color: #2a2a3c;
-  --affine-background-overlay-panel-color: #2a2a3c;
-  --affine-text-primary-color: #cdd6f4;
-  --affine-text-secondary-color: #8888a8;
-  --affine-border-color: #3a3a52;
-  --affine-edgeless-grid-color: rgba(255, 255, 255, 0.06);
 }
 
 html, body, #root {
@@ -51,12 +42,12 @@ html, body, #root {
   transition: none !important;
 }
 
-/* Hide BlockSuite's built-in edgeless toolbar — replaced by our custom toolbar */
+/* Hide built-in edgeless toolbar — replaced by custom Pulsar toolbar */
 edgeless-toolbar {
   display: none !important;
 }
 
-/* Also hide the zoom toolbar and copilot widgets since we manage UI ourselves */
+/* Hide the zoom toolbar and copilot widgets since we manage UI ourselves */
 edgeless-zoom-toolbar-widget {
   display: none !important;
 }

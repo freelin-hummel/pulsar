@@ -1,4 +1,4 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import {
   ArrowRightSmallIcon,
   DeleteIcon,
@@ -32,17 +32,17 @@ const styles = css`
   }
 
   .affine-database-toolbar-item.more-action:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .affine-database-toolbar-item.more-action svg {
     width: 20px;
     height: 20px;
-    fill: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
   }
 
   .more-action.active {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 `;
 
@@ -67,7 +67,7 @@ export class DataViewHeaderToolsViewOptions extends WidgetBase {
       return;
     }
     return html` <div
-      class="affine-database-toolbar-item more-action dv-icon-20"
+      class="pulsar-database-toolbar-item more-action dv-icon-20"
       @click="${this.clickMoreAction}"
     >
       ${MoreHorizontalIcon()}

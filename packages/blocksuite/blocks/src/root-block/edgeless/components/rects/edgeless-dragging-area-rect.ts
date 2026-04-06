@@ -1,4 +1,4 @@
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { cssVarV2 } from '@toeverything/theme/v2';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -43,7 +43,7 @@ export class EdgelessDraggingAreaRect extends WithDisposable(LitElement) {
       height: rect.height + 'px',
     };
     return html`
-      <div class="affine-edgeless-dragging-area" style=${styleMap(style)}></div>
+      <div class="pulsar-edgeless-dragging-area" style=${styleMap(style)}></div>
     `;
   }
 

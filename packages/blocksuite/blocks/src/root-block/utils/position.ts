@@ -1,4 +1,4 @@
-import { clamp } from '@blocksuite/affine-shared/utils';
+import { clamp } from '@pulsar/editor-shared/utils';
 
 type CollisionBox = {
   /**

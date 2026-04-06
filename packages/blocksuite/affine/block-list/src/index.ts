@@ -9,7 +9,7 @@ export * from './list-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:list': ListBlockService;
+      'pulsar:list': ListBlockService;
     }
   }
 }

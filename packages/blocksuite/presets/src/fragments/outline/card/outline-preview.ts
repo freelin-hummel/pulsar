@@ -1,5 +1,5 @@
 import type {
-  AffineTextAttributes,
+  PulsarTextAttributes,
   AttachmentBlockModel,
   BookmarkBlockModel,
   CodeBlockModel,
@@ -8,11 +8,11 @@ import type {
   ListBlockModel,
   ParagraphBlockModel,
   RootBlockModel,
-} from '@blocksuite/blocks';
-import type { DeltaInsert } from '@blocksuite/inline';
+} from '@pulsar/blocks';
+import type { DeltaInsert } from '@pulsar/inline';
 
-import { WithDisposable, SignalWatcher } from '@blocksuite/block-std';
-import { noop } from '@blocksuite/global/utils';
+import { WithDisposable, SignalWatcher } from '@pulsar/block-std';
+import { noop } from '@pulsar/global/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -30,16 +30,16 @@ const styles = css`
   :host {
     display: block;
     width: 100%;
-    font-family: var(--affine-font-family);
+    font-family: var(--pulsar-font-family);
   }
 
   :host(:hover) {
     cursor: pointer;
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   :host(.active) {
-    color: var(--affine-text-emphasis-color);
+    color: var(--pulsar-text-emphasis-color);
   }
 
   .outline-block-preview {
@@ -61,13 +61,13 @@ const styles = css`
     height: 22px;
     box-sizing: border-box;
     padding: 4px;
-    background: var(--affine-background-secondary-color);
+    background: var(--pulsar-background-secondary-color);
     border-radius: 4px;
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
 
   .icon.disabled {
-    color: var(--affine-disabled-icon-color);
+    color: var(--pulsar-disabled-icon-color);
   }
 
   .text {
@@ -76,7 +76,7 @@ const styles = css`
     text-overflow: ellipsis;
     flex: 1;
 
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
     line-height: 22px;
     height: 22px;
   }
@@ -140,31 +140,31 @@ const styles = css`
 
   .linked-doc-text {
     font-size: inherit;
-    border-bottom: 0.5px solid var(--affine-divider-color);
+    border-bottom: 0.5px solid var(--pulsar-divider-color);
     white-space: break-spaces;
     margin-right: 2px;
   }
 
   .linked-doc-preview.unavailable svg {
-    color: var(--affine-text-disable-color);
+    color: var(--pulsar-text-disable-color);
   }
 
   .linked-doc-preview.unavailable .linked-doc-text {
-    color: var(--affine-text-disable-color);
+    color: var(--pulsar-text-disable-color);
     text-decoration: line-through;
   }
 `;
 
-export const AFFINE_OUTLINE_BLOCK_PREVIEW = 'affine-outline-block-preview';
+export const PULSAR_OUTLINE_BLOCK_PREVIEW = 'pulsar-outline-block-preview';
 
-@customElement(AFFINE_OUTLINE_BLOCK_PREVIEW)
+@customElement(PULSAR_OUTLINE_BLOCK_PREVIEW)
 export class OutlineBlockPreview extends SignalWatcher(
   WithDisposable(LitElement)
 ) {
   static override styles = styles;
 
   private _TextBlockPreview(block: ParagraphBlockModel | ListBlockModel) {
-    const deltas: DeltaInsert<AffineTextAttributes>[] =
+    const deltas: DeltaInsert<PulsarTextAttributes>[] =
       block.text.yText.toDelta();
     if (!block.text.length) return nothing;
     const iconClass = this.disabledIcon ? 'icon disabled' : 'icon';
@@ -217,20 +217,20 @@ export class OutlineBlockPreview extends SignalWatcher(
       return nothing;
 
     switch (block.flavour as keyof BlockSuite.BlockModels) {
-      case 'affine:page':
+      case 'pulsar:page':
         assertType<RootBlockModel>(block);
         return block.title.length > 0
           ? html`<span class="text subtype title">
               ${block.title$.value}
             </span>`
           : nothing;
-      case 'affine:paragraph':
+      case 'pulsar:paragraph':
         assertType<ParagraphBlockModel>(block);
         return this._TextBlockPreview(block);
-      case 'affine:list':
+      case 'pulsar:list':
         assertType<ListBlockModel>(block);
         return this._TextBlockPreview(block);
-      case 'affine:bookmark':
+      case 'pulsar:bookmark':
         assertType<BookmarkBlockModel>(block);
         return html`
           <span class="text general"
@@ -242,7 +242,7 @@ export class OutlineBlockPreview extends SignalWatcher(
               >`
             : nothing}
         `;
-      case 'affine:code':
+      case 'pulsar:code':
         assertType<CodeBlockModel>(block);
         return html`
           <span class="text general"
@@ -252,7 +252,7 @@ export class OutlineBlockPreview extends SignalWatcher(
             ? html`<span class=${iconClass}>${previewIconMap['code']}</span>`
             : nothing}
         `;
-      case 'affine:database':
+      case 'pulsar:database':
         assertType<DatabaseBlockModel>(block);
         return html`
           <span class="text general"
@@ -264,7 +264,7 @@ export class OutlineBlockPreview extends SignalWatcher(
             ? html`<span class=${iconClass}>${previewIconMap['table']}</span>`
             : nothing}
         `;
-      case 'affine:image':
+      case 'pulsar:image':
         assertType<ImageBlockModel>(block);
         return html`
           <span class="text general"
@@ -276,7 +276,7 @@ export class OutlineBlockPreview extends SignalWatcher(
             ? html`<span class=${iconClass}>${previewIconMap['image']}</span>`
             : nothing}
         `;
-      case 'affine:attachment':
+      case 'pulsar:attachment':
         assertType<AttachmentBlockModel>(block);
         return html`
           <span class="text general"
@@ -313,6 +313,6 @@ export class OutlineBlockPreview extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_BLOCK_PREVIEW]: OutlineBlockPreview;
+    [PULSAR_OUTLINE_BLOCK_PREVIEW]: OutlineBlockPreview;
   }
 }

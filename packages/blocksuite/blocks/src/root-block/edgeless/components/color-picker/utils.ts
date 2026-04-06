@@ -1,6 +1,6 @@
 // https://www.w3.org/TR/css-color-4/
 
-import type { Color, ColorScheme } from '@blocksuite/affine-model';
+import type { Color, ColorScheme } from '@pulsar/model';
 
 import type {
   Hsv,
@@ -219,7 +219,7 @@ export const keepColor = (color: string) =>
 export const parseStringToRgba = (value: string) => {
   value = value.trim();
 
-  // Compatible old format: `--affine-palette-transparent`
+  // Compatible old format: `--pulsar-palette-transparent`
   if (value.endsWith('transparent')) {
     return { r: 1, g: 1, b: 1, a: 0 };
   }
@@ -247,7 +247,7 @@ export const parseStringToRgba = (value: string) => {
 export const preprocessColor = (style: CSSStyleDeclaration) => {
   return ({ type, value }: { type: ModeType; value: string }) => {
     if (value.startsWith('--')) {
-      // Compatible old format: `--affine-palette-transparent`
+      // Compatible old format: `--pulsar-palette-transparent`
       value = value.endsWith('transparent')
         ? 'transparent'
         : style.getPropertyValue(value);
@@ -269,7 +269,7 @@ export const preprocessColor = (style: CSSStyleDeclaration) => {
  * @example
  *
  * ```json
- * { 'fillColor': '--affine-palette-shape-yellow' }
+ * { 'fillColor': '--pulsar-palette-shape-yellow' }
  * { 'fillColor': { normal: '#ffffffff' }}
  * { 'fillColor': { light: '#fff000ff', 'dark': '#0000fff00' }}
  * ```

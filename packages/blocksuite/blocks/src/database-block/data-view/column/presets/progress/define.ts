@@ -1,4 +1,4 @@
-import { Text } from '@blocksuite/store';
+import { Text } from '@pulsar/store';
 
 import { tNumber } from '../../../logical/data-type.js';
 import { columnType } from '../../column-config.js';

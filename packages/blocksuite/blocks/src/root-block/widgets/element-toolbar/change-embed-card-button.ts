@@ -7,7 +7,7 @@ import type {
   EmbedLoomModel,
   EmbedSyncedDocModel,
   EmbedYoutubeModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
 import {
   CaptionIcon,
@@ -18,18 +18,18 @@ import {
   OpenIcon,
   PaletteIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { isPeekable, peek } from '@blocksuite/affine-components/peek';
-import { toast } from '@blocksuite/affine-components/toast';
+} from '@pulsar/editor-components/icons';
+import { isPeekable, peek } from '@pulsar/editor-components/peek';
+import { toast } from '@pulsar/editor-components/toast';
 import {
   type MenuItem,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
-import { BookmarkStyles } from '@blocksuite/affine-model';
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
-import { getHostName } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/toolbar';
+import { BookmarkStyles } from '@pulsar/model';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
+import { getHostName } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -82,7 +82,7 @@ export class EdgelessChangeEmbedCardButton extends WithDisposable(LitElement) {
 
     const { id, url, xywh, style, caption } = this.model;
 
-    let targetFlavour = 'affine:bookmark',
+    let targetFlavour = 'pulsar:bookmark',
       targetStyle = style;
 
     if (this._embedOptions && this._embedOptions.viewType === 'card') {
@@ -207,12 +207,12 @@ export class EdgelessChangeEmbedCardButton extends WithDisposable(LitElement) {
       user-select: none;
       cursor: pointer;
 
-      color: var(--affine-link-color);
+      color: var(--pulsar-link-color);
       font-feature-settings:
         'clig' off,
         'liga' off;
-      font-family: var(--affine-font-family);
-      font-size: var(--affine-font-sm);
+      font-family: var(--pulsar-font-family);
+      font-size: var(--pulsar-font-sm);
       font-style: normal;
       font-weight: 400;
       text-decoration: none;
@@ -305,7 +305,7 @@ export class EdgelessChangeEmbedCardButton extends WithDisposable(LitElement) {
     return (
       isEmbedLinkedDocBlock(this.model) &&
       (isLinkToNode(this.model) ||
-        !!this._blockComponent?.closest('affine-embed-synced-doc-block') ||
+        !!this._blockComponent?.closest('pulsar-embed-synced-doc-block') ||
         this.model.pageId === this._doc.id)
     );
   }
@@ -565,7 +565,7 @@ export class EdgelessChangeEmbedCardButton extends WithDisposable(LitElement) {
       this._canShowUrlOptions && 'url' in model
         ? html`
             <a
-              class="affine-link-preview"
+              class="pulsar-link-preview"
               href=${model.url}
               rel="noopener noreferrer"
               target="_blank"

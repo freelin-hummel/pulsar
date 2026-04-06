@@ -6,11 +6,11 @@ import {
   ScissorsIcon,
   ShrinkIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   type EditorMenuButton,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/toolbar';
 import {
   type ColorScheme,
   DEFAULT_NOTE_BACKGROUND_COLOR,
@@ -18,10 +18,10 @@ import {
   type NoteBlockModel,
   NoteDisplayMode,
   type StrokeStyle,
-} from '@blocksuite/affine-model';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound, assertExists, countBy, maxBy } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound, assertExists, countBy, maxBy } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { join } from 'lit/directives/join.js';
@@ -109,7 +109,7 @@ export class EdgelessChangeNoteButton extends WithDisposable(LitElement) {
         this.doc.updateBlock(ele, packColor('background', { ...event.detail }))
       );
       this.edgeless.service.editPropsStore.recordLastProps(
-        'affine:note',
+        'pulsar:note',
         packColor('background', event.detail)
       );
       return;
@@ -135,7 +135,7 @@ export class EdgelessChangeNoteButton extends WithDisposable(LitElement) {
     this.notes.forEach(note => {
       this.doc.updateBlock(note, { background });
     });
-    this.edgeless.service.editPropsStore.recordLastProps('affine:note', {
+    this.edgeless.service.editPropsStore.recordLastProps('pulsar:note', {
       background,
     } as Record<string, unknown>);
   }
@@ -172,7 +172,7 @@ export class EdgelessChangeNoteButton extends WithDisposable(LitElement) {
     const noteParent = this.doc.getParent(note);
     assertExists(noteParent);
     const noteParentChildNotes = noteParent.children.filter(block =>
-      matchFlavours(block, ['affine:note'])
+      matchFlavours(block, ['pulsar:note'])
     ) as NoteBlockModel[];
     const noteParentLastNote =
       noteParentChildNotes[noteParentChildNotes.length - 1];

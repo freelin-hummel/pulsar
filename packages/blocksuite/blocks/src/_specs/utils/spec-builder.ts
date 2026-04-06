@@ -1,4 +1,4 @@
-import type { ExtensionType } from '@blocksuite/block-std';
+import type { ExtensionType } from '@pulsar/block-std';
 
 export class SpecBuilder {
   private _value: ExtensionType[];

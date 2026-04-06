@@ -1,8 +1,8 @@
-import type { EmbedGithubModel } from '@blocksuite/affine-model';
-import type { EmbedGithubBlockUrlData } from '@blocksuite/affine-model';
+import type { EmbedGithubModel } from '@pulsar/model';
+import type { EmbedGithubBlockUrlData } from '@pulsar/model';
 
-import { isAbortError } from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { isAbortError } from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { nothing } from 'lit';
 
 import type { LinkPreviewer } from '../_common/embed-block-helper/index.js';

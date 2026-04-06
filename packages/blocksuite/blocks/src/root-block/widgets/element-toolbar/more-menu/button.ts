@@ -1,7 +1,7 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
-import { renderGroups } from '@blocksuite/affine-components/toolbar';
-import { WithDisposable } from '@blocksuite/block-std';
+import { renderGroups } from '@pulsar/editor-components/toolbar';
+import { WithDisposable } from '@pulsar/block-std';
 import { MoreHorizontalIcon, MoreVerticalIcon } from '@blocksuite/icons/lit';
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';

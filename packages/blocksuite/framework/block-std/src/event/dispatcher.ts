@@ -1,5 +1,5 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { DisposableGroup } from '@pulsar/global/utils';
 
 import type { BlockComponent } from '../view/index.js';
 

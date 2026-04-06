@@ -1,11 +1,11 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { Doc } from '@blocksuite/store';
+import type { EditorHost } from '@pulsar/block-std';
+import type { Doc } from '@pulsar/store';
 
 import {
   MarkdownAdapter,
   defaultImageProxyMiddleware,
-} from '@blocksuite/blocks';
-import { DocCollection, Job } from '@blocksuite/store';
+} from '@pulsar/blocks';
+import { DocCollection, Job } from '@pulsar/store';
 
 export async function markDownToDoc(host: EditorHost, answer: string) {
   const schema = host.std.doc.collection.schema;

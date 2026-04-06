@@ -3,7 +3,7 @@ import { css } from 'lit';
 export const pieMenuStyles = css`
   .menu-container {
     user-select: none;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     isolation: isolate;
   }
 
@@ -13,7 +13,7 @@ export const pieMenuStyles = css`
     height: 100vh;
     width: 100vw;
     position: fixed;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .pie-menu {
@@ -22,7 +22,7 @@ export const pieMenuStyles = css`
     left: 0;
     box-sizing: border-box;
     z-index: calc(
-      var(--affine-z-index-popover) + 10
+      var(--pulsar-z-index-popover) + 10
     ); /* This is important or else will hover will not work  */
   }
 `;
@@ -30,10 +30,10 @@ export const pieMenuStyles = css`
 export const pieNodeStyles = css`
   .pie-node {
     position: absolute;
-    background: var(--affine-background-overlay-panel-color);
+    background: var(--pulsar-background-overlay-panel-color);
     user-select: none;
-    box-shadow: var(--affine-shadow-2);
-    border: 2px solid var(--affine-border-color);
+    box-shadow: var(--pulsar-shadow-2);
+    border: 2px solid var(--pulsar-border-color);
     border-radius: 50%;
     display: flex;
     font-size: 0.8rem;

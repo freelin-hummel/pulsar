@@ -1,6 +1,6 @@
-import type { Disposable } from '@blocksuite/global/utils';
-import type { Block } from '@blocksuite/store';
-import type { BlockModel } from '@blocksuite/store';
+import type { Disposable } from '@pulsar/global/utils';
+import type { Block } from '@pulsar/store';
+import type { BlockModel } from '@pulsar/store';
 
 import type { ColumnMeta } from '../../database-block/data-view/index.js';
 

@@ -1,8 +1,8 @@
-import type { CanvasRenderer } from '@blocksuite/affine-block-surface';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { CanvasRenderer } from '@pulsar/block-surface';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { SurfaceRefBlockComponent } from '../../../surface-ref-block/surface-ref-block.js';
 
@@ -17,7 +17,7 @@ export const edgelessToBlob = async (
   }
 ): Promise<Blob> => {
   const { edgelessElement } = options;
-  const rootService = host.std.getService('affine:page');
+  const rootService = host.std.getService('pulsar:page');
   const exportManager = rootService.exportManager;
   const bound = Bound.deserialize(edgelessElement.xywh);
   const isBlock = isTopLevelBlock(edgelessElement);

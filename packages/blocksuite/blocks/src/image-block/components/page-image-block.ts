@@ -1,6 +1,6 @@
-import type { BaseSelection, UIEventStateContext } from '@blocksuite/block-std';
+import type { BaseSelection, UIEventStateContext } from '@pulsar/block-std';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { type PropertyValues, css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -11,7 +11,7 @@ import { ImageResizeManager } from '../image-resize-manager.js';
 import { shouldResizeImage } from '../utils.js';
 import { ImageSelectedRect } from './image-selected-rect.js';
 
-@customElement('affine-page-image')
+@customElement('pulsar-page-image')
 export class ImageBlockPageComponent extends WithDisposable(ShadowlessElement) {
   private _isDragging = false;
 
@@ -46,7 +46,7 @@ export class ImageBlockPageComponent extends WithDisposable(ShadowlessElement) {
 
       const index = parent.children.indexOf(this._model);
       const blockId = this._doc.addBlock(
-        'affine:paragraph',
+        'pulsar:paragraph',
         {},
         parent,
         index + 1
@@ -346,6 +346,6 @@ export class ImageBlockPageComponent extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-page-image': ImageBlockPageComponent;
+    'pulsar-page-image': ImageBlockPageComponent;
   }
 }

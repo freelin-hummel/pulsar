@@ -1,17 +1,17 @@
-import type { UIEventStateContext } from '@blocksuite/block-std';
+import type { UIEventStateContext } from '@pulsar/block-std';
 
-import { getInlineEditorByModel } from '@blocksuite/affine-components/rich-text';
+import { getInlineEditorByModel } from '@pulsar/editor-components/rich-text';
 import {
   getCurrentNativeRange,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
 import {
   DisposableGroup,
   assertExists,
   debounce,
   throttle,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import { customElement } from 'lit/decorators.js';
 
 import type { RootBlockComponent } from '../../types.js';
@@ -32,12 +32,12 @@ import { filterEnabledSlashMenuItems } from './utils.js';
 
 export { insertContent } from './utils.js';
 
-export type AffineSlashMenuContext = SlashMenuContext;
-export type AffineSlashMenuItem = SlashMenuItem;
-export type AffineSlashMenuActionItem = SlashMenuActionItem;
-export type AffineSlashMenuItemGenerator = SlashMenuItemGenerator;
-export type AffineSlashSubMenu = SlashSubMenu;
-export type AffineSlashMenuGroupDivider = SlashMenuGroupDivider;
+export type PulsarSlashMenuContext = SlashMenuContext;
+export type PulsarSlashMenuItem = SlashMenuItem;
+export type PulsarSlashMenuActionItem = SlashMenuActionItem;
+export type PulsarSlashMenuItemGenerator = SlashMenuItemGenerator;
+export type PulsarSlashSubMenu = SlashSubMenu;
+export type PulsarSlashMenuGroupDivider = SlashMenuGroupDivider;
 
 let globalAbortController = new AbortController();
 
@@ -102,10 +102,10 @@ const showSlashMenu = debounce(
   100
 );
 
-export const AFFINE_SLASH_MENU_WIDGET = 'affine-slash-menu-widget';
+export const PULSAR_SLASH_MENU_WIDGET = 'pulsar-slash-menu-widget';
 
-@customElement(AFFINE_SLASH_MENU_WIDGET)
-export class AffineSlashMenuWidget extends WidgetComponent {
+@customElement(PULSAR_SLASH_MENU_WIDGET)
+export class PulsarSlashMenuWidget extends WidgetComponent {
   private _onBeforeInput = (ctx: UIEventStateContext) => {
     const eventState = ctx.get('defaultState');
     const event = eventState.event as InputEvent;
@@ -128,7 +128,7 @@ export class AffineSlashMenuWidget extends WidgetComponent {
 
     inlineEditor.slots.inlineRangeApply.once(() => {
       const rootComponent = this.block;
-      if (rootComponent.model.flavour !== 'affine:page') {
+      if (rootComponent.model.flavour !== 'pulsar:page') {
         console.error('SlashMenuWidget should be used in RootBlock');
         return;
       }
@@ -162,7 +162,7 @@ export class AffineSlashMenuWidget extends WidgetComponent {
 
   static DEFAULT_CONFIG = defaultSlashMenuConfig;
 
-  config = AffineSlashMenuWidget.DEFAULT_CONFIG;
+  config = PulsarSlashMenuWidget.DEFAULT_CONFIG;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -178,6 +178,6 @@ export class AffineSlashMenuWidget extends WidgetComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_SLASH_MENU_WIDGET]: AffineSlashMenuWidget;
+    [PULSAR_SLASH_MENU_WIDGET]: PulsarSlashMenuWidget;
   }
 }

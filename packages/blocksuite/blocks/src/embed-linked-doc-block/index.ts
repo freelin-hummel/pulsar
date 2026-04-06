@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import { EmbedLinkedDocBlockComponent } from './embed-linked-doc-block.js';
 noop(EmbedLinkedDocBlockComponent);

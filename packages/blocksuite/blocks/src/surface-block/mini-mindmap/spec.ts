@@ -1,24 +1,24 @@
-import type { BlockSchema } from '@blocksuite/store';
+import type { BlockSchema } from '@pulsar/store';
 import type { z } from 'zod';
 
-import { SurfaceBlockSchema } from '@blocksuite/affine-block-surface';
-import { RootBlockSchema } from '@blocksuite/affine-model';
+import { SurfaceBlockSchema } from '@pulsar/block-surface';
+import { RootBlockSchema } from '@pulsar/model';
 import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { MindmapService } from './service.js';
 
 export const MiniMindmapSpecs: ExtensionType[] = [
-  FlavourExtension('affine:page'),
+  FlavourExtension('pulsar:page'),
   MindmapService,
-  BlockViewExtension('affine:page', literal`mini-mindmap-root-block`),
+  BlockViewExtension('pulsar:page', literal`mini-mindmap-root-block`),
 
-  FlavourExtension('affine:surface'),
-  BlockViewExtension('affine:surface', literal`mini-mindmap-surface-block`),
+  FlavourExtension('pulsar:surface'),
+  BlockViewExtension('pulsar:surface', literal`mini-mindmap-surface-block`),
 ];
 
 export const MiniMindmapSchema: z.infer<typeof BlockSchema>[] = [

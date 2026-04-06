@@ -1,13 +1,13 @@
-import type { BlockService } from '@blocksuite/block-std';
+import type { BlockService } from '@pulsar/block-std';
 
-import { type ShapeProps, getShapeName } from '@blocksuite/affine-model';
-import { NodePropsSchema } from '@blocksuite/affine-shared/utils';
-import { ColorSchema } from '@blocksuite/affine-shared/utils';
+import { type ShapeProps, getShapeName } from '@pulsar/model';
+import { NodePropsSchema } from '@pulsar/editor-shared/utils';
+import { ColorSchema } from '@pulsar/editor-shared/utils';
 import {
   type DeepPartial,
   DisposableGroup,
   Slot,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 import { type Signal, computed, signal } from '@lit-labs/preact-signals';
 import clonedeep from 'lodash.clonedeep';
 import isPlainObject from 'lodash.isplainobject';
@@ -98,7 +98,7 @@ export class EditPropsStore {
 
     this.lastProps$ = computed(() => {
       const editorSetting$ =
-        this._service.std.getConfig('affine:page')?.editorSetting;
+        this._service.std.getConfig('pulsar:page')?.editorSetting;
       return merge(
         clonedeep(initProps),
         editorSetting$?.value,

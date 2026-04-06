@@ -1,8 +1,8 @@
-import type { FrameBlockModel } from '@blocksuite/affine-model';
+import type { FrameBlockModel } from '@pulsar/model';
 
-import { NavigatorSettingsIcon } from '@blocksuite/affine-components/icons';
-import { createButtonPopper } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { NavigatorSettingsIcon } from '@pulsar/editor-components/icons';
+import { createButtonPopper } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
@@ -32,9 +32,9 @@ export class EdgelessNavigatorSettingButton extends WithDisposable(LitElement) {
       border-radius: 8px;
       font-size: 12px;
       font-weight: 500;
-      background-color: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-menu-shadow);
-      color: var(--affine-text-primary-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-menu-shadow);
+      color: var(--pulsar-text-primary-color);
     }
 
     .navigator-setting-menu[data-show] {
@@ -59,15 +59,15 @@ export class EdgelessNavigatorSettingButton extends WithDisposable(LitElement) {
     .text {
       padding: 0px 4px;
       line-height: 22px;
-      font-size: var(--affine-font-sm);
-      color: var(--affine-text-primary-color);
+      font-size: var(--pulsar-font-sm);
+      color: var(--pulsar-text-primary-color);
     }
 
     .text.title {
       font-weight: 500;
       line-height: 20px;
-      font-size: var(--affine-font-xs);
-      color: var(--affine-text-secondary-color);
+      font-size: var(--pulsar-font-xs);
+      color: var(--pulsar-text-secondary-color);
     }
 
     .divider {
@@ -80,7 +80,7 @@ export class EdgelessNavigatorSettingButton extends WithDisposable(LitElement) {
       content: '';
       width: 100%;
       height: 1px;
-      background: var(--affine-border-color);
+      background: var(--pulsar-border-color);
     }
   `;
 

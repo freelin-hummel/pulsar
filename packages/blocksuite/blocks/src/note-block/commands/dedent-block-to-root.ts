@@ -1,6 +1,6 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const dedentBlockToRoot: Command<
   never,
@@ -23,7 +23,7 @@ export const dedentBlockToRoot: Command<
 
   let parent = doc.getParent(model);
   let changed = false;
-  while (parent && !matchFlavours(parent, ['affine:note'])) {
+  while (parent && !matchFlavours(parent, ['pulsar:note'])) {
     if (!changed) {
       if (stopCapture) doc.captureSync();
       changed = true;

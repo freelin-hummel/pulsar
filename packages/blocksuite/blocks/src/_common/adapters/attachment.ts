@@ -1,7 +1,7 @@
-import type { AssetsManager } from '@blocksuite/store';
+import type { AssetsManager } from '@pulsar/store';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { sha } from '@blocksuite/global/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { sha } from '@pulsar/global/utils';
 import {
   BaseAdapter,
   type BlockSnapshot,
@@ -16,7 +16,7 @@ import {
   type ToBlockSnapshotPayload,
   type ToDocSnapshotPayload,
   nanoid,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 export type Attachment = File[];
 
@@ -56,7 +56,7 @@ export class AttachmentAdapter extends BaseAdapter<Attachment> {
     for (const contentSlice of payload.snapshot.content) {
       if (contentSlice.type === 'block') {
         const { flavour, props } = contentSlice;
-        if (flavour === 'affine:attachment') {
+        if (flavour === 'pulsar:attachment') {
           const { sourceId } = props;
           const file = payload.assets?.getAssets().get(sourceId as string) as
             | File
@@ -98,7 +98,7 @@ export class AttachmentAdapter extends BaseAdapter<Attachment> {
       await payload.assets?.writeToBlob(blobId);
       content.push({
         type: 'block',
-        flavour: 'affine:attachment',
+        flavour: 'pulsar:attachment',
         id: nanoid(),
         props: {
           name: item.name,

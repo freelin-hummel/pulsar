@@ -1,6 +1,6 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
+import type { RootBlockModel } from '@pulsar/model';
 
-import { WidgetComponent } from '@blocksuite/block-std';
+import { WidgetComponent } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -8,10 +8,10 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 import type { PageRootBlockComponent } from '../../index.js';
 
-export const AFFINE_VIEWPORT_OVERLAY_WIDGET = 'affine-viewport-overlay-widget';
+export const PULSAR_VIEWPORT_OVERLAY_WIDGET = 'pulsar-viewport-overlay-widget';
 
-@customElement(AFFINE_VIEWPORT_OVERLAY_WIDGET)
-export class AffineViewportOverlayWidget extends WidgetComponent<
+@customElement(PULSAR_VIEWPORT_OVERLAY_WIDGET)
+export class PulsarViewportOverlayWidget extends WidgetComponent<
   RootBlockModel,
   PageRootBlockComponent
 > {
@@ -22,7 +22,7 @@ export class AffineViewportOverlayWidget extends WidgetComponent<
       left: 0;
       background: transparent;
       pointer-events: none;
-      z-index: calc(var(--affine-z-index-popover) - 1);
+      z-index: calc(var(--pulsar-z-index-popover) - 1);
     }
 
     .affine-viewport-overlay-widget.lock {
@@ -61,7 +61,7 @@ export class AffineViewportOverlayWidget extends WidgetComponent<
 
   override render() {
     const classes = classMap({
-      'affine-viewport-overlay-widget': true,
+      'pulsar-viewport-overlay-widget': true,
       lock: this._lockViewport,
     });
     const style = styleMap({
@@ -85,6 +85,6 @@ export class AffineViewportOverlayWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_VIEWPORT_OVERLAY_WIDGET]: AffineViewportOverlayWidget;
+    [PULSAR_VIEWPORT_OVERLAY_WIDGET]: PulsarViewportOverlayWidget;
   }
 }

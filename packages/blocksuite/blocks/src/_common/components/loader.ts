@@ -1,4 +1,4 @@
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockModel } from '@pulsar/store';
 
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -17,7 +17,7 @@ export class Loader extends LitElement {
     .load-container .load {
       width: 8px;
       height: 8px;
-      background-color: var(--affine-text-primary-color);
+      background-color: var(--pulsar-text-primary-color);
 
       border-radius: 100%;
       display: inline-block;

@@ -1,8 +1,8 @@
-import type { IVec } from '@blocksuite/global/utils';
+import type { IVec } from '@pulsar/global/utils';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { Bound, Vec } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { CommonUtils } from '@pulsar/block-surface';
+import { Bound, Vec } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 
 import {
@@ -22,11 +22,11 @@ export function getCommonRectStyle(
   rotate = 0
 ) {
   return {
-    '--affine-border-width': `${active ? 2 : 1}px`,
+    '--pulsar-border-width': `${active ? 2 : 1}px`,
     width: `${rect.width}px`,
     height: `${rect.height}px`,
     transform: `translate(${rect.x}px, ${rect.y}px) rotate(${rotate}deg)`,
-    backgroundColor: !active && selected ? 'var(--affine-hover-color)' : '',
+    backgroundColor: !active && selected ? 'var(--pulsar-hover-color)' : '',
   };
 }
 

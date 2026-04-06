@@ -1,18 +1,18 @@
-import type { ParagraphBlockModel } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { InlineRangeProvider } from '@blocksuite/inline';
+import type { ParagraphBlockModel } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { InlineRangeProvider } from '@pulsar/inline';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
 import {
   type RichText,
   markdownInput,
-} from '@blocksuite/affine-components/rich-text';
-import '@blocksuite/affine-components/rich-text';
-import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '@blocksuite/affine-shared/consts';
-import { NOTE_SELECTOR } from '@blocksuite/affine-shared/consts';
-import { getViewportElement } from '@blocksuite/affine-shared/utils';
-import { getInlineRangeProvider } from '@blocksuite/block-std';
-import { IS_MAC } from '@blocksuite/global/env';
+} from '@pulsar/editor-components/rich-text';
+import '@pulsar/editor-components/rich-text';
+import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '@pulsar/editor-shared/consts';
+import { NOTE_SELECTOR } from '@pulsar/editor-shared/consts';
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { getInlineRangeProvider } from '@pulsar/block-std';
+import { IS_MAC } from '@pulsar/global/env';
 import { effect, signal } from '@lit-labs/preact-signals';
 import { type TemplateResult, html, nothing } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
@@ -23,7 +23,7 @@ import { paragraphBlockStyles } from './styles.js';
 import { forwardDelete } from './utils/forward-delete.js';
 import { mergeWithPrev } from './utils/merge-with-prev.js';
 
-@customElement('affine-paragraph')
+@customElement('pulsar-paragraph')
 export class ParagraphBlockComponent extends CaptionedBlockComponent<
   ParagraphBlockModel,
   ParagraphBlockService
@@ -37,7 +37,7 @@ export class ParagraphBlockComponent extends CaptionedBlockComponent<
   private _isInDatabase = () => {
     let parent = this.parentElement;
     while (parent && parent !== document.body) {
-      if (parent.tagName.toLowerCase() === 'affine-database') {
+      if (parent.tagName.toLowerCase() === 'pulsar-database') {
         return true;
       }
       parent = parent.parentElement;
@@ -252,15 +252,15 @@ export class ParagraphBlockComponent extends CaptionedBlockComponent<
   override renderBlock(): TemplateResult<1> {
     const { type$ } = this.model;
     const children = html`<div
-      class="affine-block-children-container"
+      class="pulsar-block-children-container"
       style="padding-left: ${BLOCK_CHILDREN_CONTAINER_PADDING_LEFT}px"
     >
       ${this.renderChildren(this.model)}
     </div>`;
 
     return html`
-      <div class="affine-paragraph-block-container">
-        <div class="affine-paragraph-rich-text-wrapper ${type$.value}">
+      <div class="pulsar-paragraph-block-container">
+        <div class="pulsar-paragraph-rich-text-wrapper ${type$.value}">
           <rich-text
             .yText=${this.model.text.yText}
             .inlineEventSource=${this.topContenteditableElement ?? nothing}
@@ -281,7 +281,7 @@ export class ParagraphBlockComponent extends CaptionedBlockComponent<
             : html`
                 <div
                   contenteditable="false"
-                  class="affine-paragraph-placeholder ${this._displayPlaceholder
+                  class="pulsar-paragraph-placeholder ${this._displayPlaceholder
                     .value
                     ? 'visible'
                     : ''}"
@@ -311,7 +311,7 @@ export class ParagraphBlockComponent extends CaptionedBlockComponent<
   get inEdgelessText() {
     return (
       this.topContenteditableElement?.tagName.toLowerCase() ===
-      'affine-edgeless-text'
+      'pulsar-edgeless-text'
     );
   }
 
@@ -328,7 +328,7 @@ export class ParagraphBlockComponent extends CaptionedBlockComponent<
   }
 
   override get topContenteditableElement() {
-    if (this.rootComponent?.tagName.toLowerCase() === 'affine-edgeless-root') {
+    if (this.rootComponent?.tagName.toLowerCase() === 'pulsar-edgeless-root') {
       return this.closest<BlockComponent>(NOTE_SELECTOR);
     }
     return this.rootComponent;
@@ -342,6 +342,6 @@ export class ParagraphBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-paragraph': ParagraphBlockComponent;
+    'pulsar-paragraph': ParagraphBlockComponent;
   }
 }

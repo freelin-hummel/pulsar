@@ -1,9 +1,9 @@
 import type {
   AttachmentBlockModel,
   ImageBlockProps,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { withTempBlobData } from '@blocksuite/affine-shared/utils';
+import { withTempBlobData } from '@pulsar/editor-shared/utils';
 import { type TemplateResult, html } from 'lit';
 
 import { transformModel } from '../root-block/utils/operations/model.js';
@@ -34,7 +34,7 @@ const embedConfig: EmbedConfig[] = [
   {
     name: 'image',
     check: model =>
-      model.doc.schema.flavourSchemaMap.has('affine:image') &&
+      model.doc.schema.flavourSchemaMap.has('pulsar:image') &&
       model.type.startsWith('image/'),
     action: model => turnIntoImageBlock(model),
   },
@@ -113,7 +113,7 @@ export function renderEmbedView(
  * Turn the attachment block into an image block.
  */
 export function turnIntoImageBlock(model: AttachmentBlockModel) {
-  if (!model.doc.schema.flavourSchemaMap.has('affine:image')) {
+  if (!model.doc.schema.flavourSchemaMap.has('pulsar:image')) {
     console.error('The image flavour is not supported!');
     return;
   }
@@ -134,5 +134,5 @@ export function turnIntoImageBlock(model: AttachmentBlockModel) {
     size: model.size,
     ...imageConvertData,
   };
-  transformModel(model, 'affine:image', imageProp);
+  transformModel(model, 'pulsar:image', imageProp);
 }

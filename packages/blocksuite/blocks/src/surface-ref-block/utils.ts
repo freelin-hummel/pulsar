@@ -1,10 +1,10 @@
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { Doc } from '@blocksuite/store';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { Doc } from '@pulsar/store';
 
 import { html } from 'lit';
 
 export function getSurfaceBlock(doc: Doc) {
-  const blocks = doc.getBlocksByFlavour('affine:surface');
+  const blocks = doc.getBlocksByFlavour('pulsar:surface');
   return blocks.length !== 0 ? (blocks[0].model as SurfaceBlockModel) : null;
 }
 

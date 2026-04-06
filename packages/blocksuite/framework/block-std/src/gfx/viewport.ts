@@ -5,7 +5,7 @@ import {
   Slot,
   Vec,
   clamp,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 function cutoff(value: number, ref: number, sign: number) {
   if (sign > 0 && value > ref) return ref;

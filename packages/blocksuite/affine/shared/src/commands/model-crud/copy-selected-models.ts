@@ -1,6 +1,6 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { Slice } from '@blocksuite/store';
+import { Slice } from '@pulsar/store';
 
 export const copySelectedModelsCommand: Command<'draftedModels' | 'onCopy'> = (
   ctx,

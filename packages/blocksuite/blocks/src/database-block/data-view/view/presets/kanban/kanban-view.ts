@@ -1,4 +1,4 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import { AddCursorIcon } from '@blocksuite/icons/lit';
 import { css } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
@@ -64,11 +64,11 @@ const styles = css`
 
   .affine-data-view-kanban-groups:hover::-webkit-scrollbar-thumb {
     border-radius: 16px;
-    background-color: var(--affine-black-30);
+    background-color: var(--pulsar-black-30);
   }
 
   .affine-data-view-kanban-groups:hover::-webkit-scrollbar-track {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .add-group-icon {
@@ -80,18 +80,18 @@ const styles = css`
   }
 
   .add-group-icon:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .add-group-icon svg {
     width: 16px;
     height: 16px;
-    fill: var(--affine-icon-color);
-    color: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
+    color: var(--pulsar-icon-color);
   }
 `;
 
-@customElement('affine-data-view-kanban')
+@customElement('pulsar-data-view-kanban')
 export class DataViewKanban extends DataViewBase<
   KanbanSingleView,
   KanbanViewSelectionWithType
@@ -154,12 +154,12 @@ export class DataViewKanban extends DataViewBase<
     const sortable = Sortable.create(this.groups, {
       group: `kanban-group-drag-${this.view.id}`,
       handle: '.group-header',
-      draggable: 'affine-data-view-kanban-group',
+      draggable: 'pulsar-data-view-kanban-group',
       animation: 100,
       onEnd: evt => {
         if (evt.item instanceof KanbanGroup) {
           const groups = Array.from(
-            this.groups.querySelectorAll('affine-data-view-kanban-group')
+            this.groups.querySelectorAll('pulsar-data-view-kanban-group')
           );
 
           const key =
@@ -220,7 +220,7 @@ export class DataViewKanban extends DataViewBase<
         view: this.view,
         viewMethods: this,
       })}
-      <div class="affine-data-view-kanban-groups" @wheel="${this.onWheel}">
+      <div class="pulsar-data-view-kanban-groups" @wheel="${this.onWheel}">
         ${repeat(
           groups,
           group => group.key,
@@ -252,6 +252,6 @@ export class DataViewKanban extends DataViewBase<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-kanban': DataViewKanban;
+    'pulsar-data-view-kanban': DataViewKanban;
   }
 }

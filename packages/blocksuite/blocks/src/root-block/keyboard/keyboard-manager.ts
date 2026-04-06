@@ -1,9 +1,9 @@
-import type { BlockSelection } from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { BlockSelection } from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { IS_MAC, IS_WINDOWS } from '@blocksuite/global/env';
-import { assertExists } from '@blocksuite/global/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { IS_MAC, IS_WINDOWS } from '@pulsar/global/env';
+import { assertExists } from '@pulsar/global/utils';
 
 import {
   convertSelectedBlocksToLinkedDoc,
@@ -24,7 +24,7 @@ export class PageKeyboardManager {
     this._doc.transact(() => {
       const selection = this._replaceBlocksBySelection(
         blockSelections,
-        'affine:paragraph',
+        'pulsar:paragraph',
         {}
       );
 
@@ -95,8 +95,8 @@ export class PageKeyboardManager {
       .run();
     const selectedModels = ctx.selectedModels?.filter(
       block =>
-        !block.flavour.startsWith('affine:embed-') &&
-        matchFlavours(doc.getParent(block), ['affine:note'])
+        !block.flavour.startsWith('pulsar:embed-') &&
+        matchFlavours(doc.getParent(block), ['pulsar:note'])
     );
 
     if (!selectedModels?.length) {

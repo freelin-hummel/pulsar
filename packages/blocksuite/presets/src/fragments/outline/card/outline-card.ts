@@ -1,6 +1,6 @@
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { BlockModel, Doc } from '@pulsar/store';
 
-import { WithDisposable, SignalWatcher } from '@blocksuite/block-std';
+import { WithDisposable, SignalWatcher } from '@pulsar/block-std';
 import {
   type NoteBlockModel,
   NoteDisplayMode,
@@ -8,7 +8,7 @@ import {
   createButtonPopper,
   on,
   once,
-} from '@blocksuite/blocks';
+} from '@pulsar/blocks';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
@@ -46,7 +46,7 @@ const styles = css`
   }
 
   .card-preview.edgeless:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .card-header-container {
@@ -65,9 +65,9 @@ const styles = css`
 
   .card-header-container .card-number {
     text-align: center;
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-    color: var(--affine-brand-color, #1e96eb);
+    color: var(--pulsar-brand-color, #1e96eb);
     font-weight: 500;
     line-height: 14px;
     line-height: 20px;
@@ -82,7 +82,7 @@ const styles = css`
   .card-header-container .card-divider {
     height: 1px;
     flex: 1;
-    border-top: 1px dashed var(--affine-border-color);
+    border-top: 1px dashed var(--pulsar-border-color);
     transform: translateY(50%);
   }
 
@@ -102,13 +102,13 @@ const styles = css`
   }
 
   .display-mode-button-label {
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   .display-mode-button {
     display: flex;
     border-radius: 4px;
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
     align-items: center;
   }
 
@@ -121,13 +121,13 @@ const styles = css`
   note-display-mode-panel {
     position: absolute;
     display: none;
-    background: var(--affine-background-overlay-panel-color);
+    background: var(--pulsar-background-overlay-panel-color);
     border-radius: 8px;
-    box-shadow: var(--affine-shadow-2);
+    box-shadow: var(--pulsar-shadow-2);
     box-sizing: border-box;
     padding: 8px;
-    font-size: var(--affine-font-sm);
-    color: var(--affine-text-primary-color);
+    font-size: var(--pulsar-font-sm);
+    color: var(--pulsar-text-primary-color);
     line-height: 22px;
     font-weight: 400;
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
@@ -140,7 +140,7 @@ const styles = css`
   .card-content {
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
     user-select: none;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   .card-preview.edgeless .card-content:hover {
@@ -157,11 +157,11 @@ const styles = css`
   }
 
   .card-container.selected .card-preview.edgeless {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   .card-container.placeholder .card-preview.edgeless {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
     opacity: 0.9;
   }
 
@@ -174,18 +174,18 @@ const styles = css`
     .card-header-container
     .card-header-icon,
   .card-container[data-invisible='true'] .card-preview .card-content {
-    color: var(--affine-text-disable-color);
+    color: var(--pulsar-text-disable-color);
     pointer-events: none;
   }
 
   .card-preview.page outline-block-preview:hover {
-    color: var(--affine-brand-color);
+    color: var(--pulsar-brand-color);
   }
 `;
 
-export const AFFINE_OUTLINE_NOTE_CARD = 'affine-outline-note-card';
+export const PULSAR_OUTLINE_NOTE_CARD = 'pulsar-outline-note-card';
 
-@customElement(AFFINE_OUTLINE_NOTE_CARD)
+@customElement(PULSAR_OUTLINE_NOTE_CARD)
 export class OutlineNoteCard extends SignalWatcher(WithDisposable(LitElement)) {
   private _displayModePopper: ReturnType<typeof createButtonPopper> | null =
     null;
@@ -423,6 +423,6 @@ export class OutlineNoteCard extends SignalWatcher(WithDisposable(LitElement)) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_NOTE_CARD]: OutlineNoteCard;
+    [PULSAR_OUTLINE_NOTE_CARD]: OutlineNoteCard;
   }
 }

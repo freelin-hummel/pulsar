@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react'
-import type { AffineEditorContainer } from '@blocksuite/presets'
-import type { Doc, DocCollection } from '@blocksuite/store'
+import type { PulsarEditorContainer } from '@pulsar/presets'
+import type { Doc, DocCollection } from '@pulsar/store'
 
 export interface EditorContextValue {
-  editor: AffineEditorContainer
+  editor: PulsarEditorContainer
   collection: DocCollection
   doc: Doc
 }

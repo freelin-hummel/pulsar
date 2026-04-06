@@ -2,14 +2,14 @@ import {
   BlockViewExtension,
   FlavourExtension,
   type ExtensionType,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import './latex-block.js';
 import { LatexBlockService } from './latex-service.js';
 
 export const LatexBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:latex'),
+  FlavourExtension('pulsar:latex'),
   LatexBlockService,
-  BlockViewExtension('affine:latex', literal`affine-latex`),
+  BlockViewExtension('pulsar:latex', literal`pulsar-latex`),
 ];

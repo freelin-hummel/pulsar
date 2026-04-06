@@ -2,18 +2,18 @@ import type {
   BezierCurveParameters,
   IVec,
   PointLocation,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import {
   type ConnectorElementModel,
   ConnectorMode,
   type LocalConnectorElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   Vec,
   getBezierParameters,
   getBezierTangent,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { RoughCanvas } from '../../../utils/rough/canvas.js';
 

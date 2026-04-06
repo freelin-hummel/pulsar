@@ -1,5 +1,5 @@
-import { SHAPE_STROKE_COLORS, StrokeStyle } from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
+import { SHAPE_STROKE_COLORS, StrokeStyle } from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

@@ -1,7 +1,7 @@
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { GfxCompatible } from '@blocksuite/block-std/gfx';
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { GfxCompatible } from '@pulsar/block-std/gfx';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 type AIChatProps = {
   xywh: SerializedXYWH;
@@ -14,7 +14,7 @@ type AIChatProps = {
 };
 
 export const AIChatBlockSchema = defineBlockSchema({
-  flavour: 'affine:embed-ai-chat',
+  flavour: 'pulsar:embed-ai-chat',
   props: (): AIChatProps => ({
     xywh: '[0,0,0,0]',
     index: 'a0',
@@ -39,10 +39,10 @@ export class AIChatBlockModel extends GfxCompatible<AIChatProps>(BlockModel) {}
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:embed-ai-chat': AIChatBlockModel;
+      'pulsar:embed-ai-chat': AIChatBlockModel;
     }
     interface BlockModels {
-      'affine:embed-ai-chat': AIChatBlockModel;
+      'pulsar:embed-ai-chat': AIChatBlockModel;
     }
   }
 }

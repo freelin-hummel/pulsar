@@ -1,6 +1,6 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -21,9 +21,9 @@ export class BlockRenderer
       flex-direction: column;
       gap: 16px;
       margin-bottom: 12px;
-      border-bottom: 1px solid var(--affine-border-color);
-      font-size: var(--affine-font-base);
-      line-height: var(--affine-line-height);
+      border-bottom: 1px solid var(--pulsar-border-color);
+      font-size: var(--pulsar-font-base);
+      line-height: var(--pulsar-line-height);
     }
 
     database-datasource-block-renderer .tips-placeholder {
@@ -38,7 +38,7 @@ export class BlockRenderer
     database-datasource-block-renderer.empty rich-text::before {
       content: 'Untitled';
       position: absolute;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
       font-size: 15px;
       line-height: 24px;
       user-select: none;
@@ -50,7 +50,7 @@ export class BlockRenderer
       height: 20px;
       padding: 2px;
       border-radius: 4px;
-      background-color: var(--affine-background-secondary-color);
+      background-color: var(--pulsar-background-secondary-color);
     }
 
     .database-block-detail-header-icon svg {
@@ -145,7 +145,7 @@ export class BlockRenderer
   }
 
   get service() {
-    return this.host.std.getService('affine:database');
+    return this.host.std.getService('pulsar:database');
   }
 
   @property({ attribute: false })

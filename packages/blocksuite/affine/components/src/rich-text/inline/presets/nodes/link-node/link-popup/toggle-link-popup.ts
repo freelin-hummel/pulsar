@@ -1,12 +1,12 @@
-import type { InlineRange } from '@blocksuite/inline';
+import type { InlineRange } from '@pulsar/inline';
 
-import type { AffineInlineEditor } from '../../../affine-inline-specs.js';
+import type { PulsarInlineEditor } from '../../../affine-inline-specs.js';
 
 import './link-popup.js';
 import { LinkPopup } from './link-popup.js';
 
 export function toggleLinkPopup(
-  inlineEditor: AffineInlineEditor,
+  inlineEditor: PulsarInlineEditor,
   type: LinkPopup['type'],
   targetInlineRange: InlineRange,
   abortController: AbortController

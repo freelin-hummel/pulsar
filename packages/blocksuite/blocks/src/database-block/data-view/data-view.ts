@@ -1,11 +1,11 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
+import type { BlockStdScope } from '@pulsar/block-std';
 import type { ReferenceElement } from '@floating-ui/dom';
 
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { type ReadonlySignal, computed } from '@lit-labs/preact-signals';
 import { type TemplateResult, css, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -51,7 +51,7 @@ export type DataViewRendererConfig = {
   std: BlockStdScope;
 };
 
-@customElement('affine-data-view-renderer')
+@customElement('pulsar-data-view-renderer')
 export class DataViewRenderer extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -62,9 +62,9 @@ export class DataViewRenderer extends SignalWatcher(
   });
 
   static override styles = css`
-    ${unsafeCSS(dataViewCommonStyle('affine-data-view-renderer'))}
+    ${unsafeCSS(dataViewCommonStyle('pulsar-data-view-renderer'))}
     affine-data-view-renderer {
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       display: contents;
     }
   `;
@@ -205,7 +205,7 @@ export class DataViewRenderer extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-renderer': DataViewRenderer;
+    'pulsar-data-view-renderer': DataViewRenderer;
   }
 }
 

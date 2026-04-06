@@ -1,15 +1,15 @@
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
-import type { DocMode } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { EmbedCardStyle } from '@pulsar/model';
+import type { DocMode } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import {
   EMBED_CARD_HEIGHT,
   EMBED_CARD_WIDTH,
-} from '@blocksuite/affine-shared/consts';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
-import { getLastNoteBlock } from '@blocksuite/affine-shared/utils';
-import { Bound, Vec } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/consts';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
+import { getLastNoteBlock } from '@pulsar/editor-shared/utils';
+import { Bound, Vec } from '@pulsar/global/utils';
 
 import type { EdgelessRootBlockComponent } from '../../root-block/edgeless/index.js';
 
@@ -33,7 +33,7 @@ function getParentModelBySelection(
 
   if (currentMode === 'edgeless') {
     const surface =
-      root.children.find(child => child.flavour === 'affine:surface') ?? null;
+      root.children.find(child => child.flavour === 'pulsar:surface') ?? null;
     return { index: undefined, model: surface };
   }
 
@@ -46,7 +46,7 @@ function getParentModelBySelection(
       selectedBlock = getLastNoteBlock(doc);
     }
 
-    while (selectedBlock && selectedBlock.flavour !== 'affine:note') {
+    while (selectedBlock && selectedBlock.flavour !== 'pulsar:note') {
       // selectedBlock = this.doc.getParent(selectedBlock.id);
       const parent = doc.getParent(selectedBlock.id);
       index = parent?.children.indexOf(selectedBlock);
@@ -73,7 +73,7 @@ export function insertEmbedCard(
   properties: EmbedCardProperties
 ) {
   const { doc, host } = std;
-  const rootService = std.getService('affine:page');
+  const rootService = std.getService('pulsar:page');
   const mode = rootService.std.get(DocModeProvider).getEditorMode() ?? 'page';
   const selectedBlock = rootService.selectedBlocks[0]?.model;
 

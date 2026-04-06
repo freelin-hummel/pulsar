@@ -1,8 +1,8 @@
-import type { ListProps, ListType } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { ListProps, ListType } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { matchFlavours, toNumberedList } from '@blocksuite/affine-shared/utils';
+import { matchFlavours, toNumberedList } from '@pulsar/editor-shared/utils';
 
 import { focusTextModel } from '../dom.js';
 import { beforeConvert } from './utils.js';
@@ -14,7 +14,7 @@ export function toList(
   prefix: string,
   otherProperties?: Partial<ListProps>
 ) {
-  if (!matchFlavours(model, ['affine:paragraph'])) {
+  if (!matchFlavours(model, ['pulsar:paragraph'])) {
     return;
   }
   const { doc } = std;
@@ -35,7 +35,7 @@ export function toList(
       deleteChildren: false,
     });
 
-    const id = doc.addBlock('affine:list', blockProps, parent, index);
+    const id = doc.addBlock('pulsar:list', blockProps, parent, index);
     focusTextModel(std, id);
     return id;
   }

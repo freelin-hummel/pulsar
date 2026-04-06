@@ -3,20 +3,20 @@ import type {
   FrameBlockModel,
   ImageBlockModel,
   NoteBlockModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { NoteDisplayMode } from '@blocksuite/affine-model';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
-import { getBlockProps, matchFlavours } from '@blocksuite/affine-shared/utils';
-import { BlockStdScope, type EditorHost } from '@blocksuite/block-std';
-import { Bound, getCommonBound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { NoteDisplayMode } from '@pulsar/model';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
+import { getBlockProps, matchFlavours } from '@pulsar/editor-shared/utils';
+import { BlockStdScope, type EditorHost } from '@pulsar/block-std';
+import { Bound, getCommonBound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import {
   type BlockModel,
   BlockViewType,
   type Doc,
   type Query,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import { type TemplateResult, css, render } from 'lit';
 
 import type { EmbedLinkedDocBlockComponent } from '../../embed-linked-doc-block/embed-linked-doc-block.js';
@@ -57,7 +57,7 @@ export const embedNoteContentStyles = css`
     padding-top: 0;
     padding-bottom: 0;
     line-height: 20px;
-    font-size: var(--affine-font-xs);
+    font-size: var(--pulsar-font-xs);
     font-weight: 400;
   }
   .affine-embed-doc-content-note-blocks affine-list .affine-list-block__prefix {
@@ -89,7 +89,7 @@ export const embedNoteContentStyles = css`
     padding-top: 0;
     padding-bottom: 0;
     line-height: 20px;
-    font-size: var(--affine-font-xs);
+    font-size: var(--pulsar-font-xs);
     font-weight: 600;
   }
 
@@ -116,7 +116,7 @@ export const embedNoteContentStyles = css`
 `;
 
 export function promptDocTitle(host: EditorHost, autofill?: string) {
-  const notification = host.std.getService('affine:page').notificationService;
+  const notification = host.std.getService('pulsar:page').notificationService;
   if (!notification) return Promise.resolve(undefined);
 
   return notification.prompt({
@@ -132,7 +132,7 @@ export function promptDocTitle(host: EditorHost, autofill?: string) {
 export function getTitleFromSelectedModels(selectedModels: BlockModel[]) {
   const firstBlock = selectedModels[0];
   if (
-    matchFlavours(firstBlock, ['affine:paragraph']) &&
+    matchFlavours(firstBlock, ['pulsar:paragraph']) &&
     firstBlock.type.startsWith('h')
   ) {
     return firstBlock.text.toString();
@@ -141,7 +141,7 @@ export function getTitleFromSelectedModels(selectedModels: BlockModel[]) {
 }
 
 export function notifyDocCreated(host: EditorHost, doc: Doc) {
-  const notification = host.std.getService('affine:page').notificationService;
+  const notification = host.std.getService('pulsar:page').notificationService;
   if (!notification) return;
 
   const abortController = new AbortController();
@@ -197,7 +197,7 @@ export function renderLinkedDocInCard(
 export function getNotesFromDoc(doc: Doc) {
   const notes = doc.root?.children.filter(
     child =>
-      matchFlavours(child, ['affine:note']) &&
+      matchFlavours(child, ['pulsar:note']) &&
       child.displayMode !== NoteDisplayMode.EdgelessOnly
   );
 
@@ -231,17 +231,17 @@ export function isEmptyDoc(doc: Doc | null, mode: DocMode) {
 export function isEmptyNote(note: BlockModel) {
   return note.children.every(block => {
     return (
-      block.flavour === 'affine:paragraph' &&
+      block.flavour === 'pulsar:paragraph' &&
       (!block.text || block.text.length === 0)
     );
   });
 }
 
 function filterTextModel(model: BlockModel) {
-  if (matchFlavours(model, ['affine:divider'])) {
+  if (matchFlavours(model, ['pulsar:divider'])) {
     return true;
   }
-  if (!matchFlavours(model, ['affine:paragraph', 'affine:list'])) {
+  if (!matchFlavours(model, ['pulsar:paragraph', 'pulsar:list'])) {
     return false;
   }
   return !!model.text?.toString().length;
@@ -281,7 +281,7 @@ async function renderNoteContent(
   }
 
   const noteBlocksContainer = document.createElement('div');
-  noteBlocksContainer.classList.add('affine-embed-doc-content-note-blocks');
+  noteBlocksContainer.classList.add('pulsar-embed-doc-content-note-blocks');
   noteBlocksContainer.contentEditable = 'false';
   noteContainer.append(noteBlocksContainer);
 
@@ -351,7 +351,7 @@ function renderSurfaceRef(
 ) {
   card.isBannerEmpty = true;
 
-  const surfaceRefService = card.std.getService('affine:surface-ref');
+  const surfaceRefService = card.std.getService('pulsar:surface-ref');
   assertExists(surfaceRefService, `Surface ref service not found.`);
   card.surfaceRefService = surfaceRefService;
 
@@ -424,7 +424,7 @@ async function renderPageAbstract(
   }
 
   const target = notes.flatMap(note =>
-    note.children.filter(child => matchFlavours(child, ['affine:image']))
+    note.children.filter(child => matchFlavours(child, ['pulsar:image']))
   )[0];
 
   if (target) {
@@ -492,7 +492,7 @@ export function convertSelectedBlocksToLinkedDoc(
     firstBlock,
     [
       {
-        flavour: 'affine:embed-linked-doc',
+        flavour: 'pulsar:embed-linked-doc',
         pageId: linkedDoc.id,
       },
     ],
@@ -510,11 +510,11 @@ export function createLinkedDocFromBlocks(
 ) {
   const linkedDoc = doc.collection.createDoc({});
   linkedDoc.load(() => {
-    const rootId = linkedDoc.addBlock('affine:page', {
+    const rootId = linkedDoc.addBlock('pulsar:page', {
       title: new doc.Text(docTitle),
     });
-    linkedDoc.addBlock('affine:surface', {}, rootId);
-    const noteId = linkedDoc.addBlock('affine:note', {}, rootId);
+    linkedDoc.addBlock('pulsar:surface', {}, rootId);
+    const noteId = linkedDoc.addBlock('pulsar:note', {}, rootId);
     // Move blocks to linked doc recursively
     blocks.forEach(model => {
       addBlocksToDoc(linkedDoc, model, noteId);
@@ -530,14 +530,14 @@ export function createLinkedDocFromNote(
 ) {
   const linkedDoc = doc.collection.createDoc({});
   linkedDoc.load(() => {
-    const rootId = linkedDoc.addBlock('affine:page', {
+    const rootId = linkedDoc.addBlock('pulsar:page', {
       title: new doc.Text(docTitle),
     });
-    linkedDoc.addBlock('affine:surface', {}, rootId);
+    linkedDoc.addBlock('pulsar:surface', {}, rootId);
     const blockProps = getBlockProps(note);
     // keep note props & show in both mode
     const noteId = linkedDoc.addBlock(
-      'affine:note',
+      'pulsar:note',
       {
         ...blockProps,
         hidden: false,
@@ -561,10 +561,10 @@ export function createLinkedDocFromEdgelessElements(
 ) {
   const linkedDoc = host.doc.collection.createDoc({});
   linkedDoc.load(() => {
-    const rootId = linkedDoc.addBlock('affine:page', {
+    const rootId = linkedDoc.addBlock('pulsar:page', {
       title: new host.doc.Text(docTitle),
     });
-    const surfaceId = linkedDoc.addBlock('affine:surface', {}, rootId);
+    const surfaceId = linkedDoc.addBlock('pulsar:surface', {}, rootId);
     const surface = getSurfaceBlock(linkedDoc);
     if (!surface) return;
 
@@ -575,7 +575,7 @@ export function createLinkedDocFromEdgelessElements(
       if (model instanceof GfxBlockModel) {
         const blockProps = getBlockProps(model);
         if (isNoteBlock(model)) {
-          newId = linkedDoc.addBlock('affine:note', blockProps, rootId);
+          newId = linkedDoc.addBlock('pulsar:note', blockProps, rootId);
           // Add note children to linked doc recursively
           model.children.forEach(model => {
             addBlocksToDoc(linkedDoc, model, newId);

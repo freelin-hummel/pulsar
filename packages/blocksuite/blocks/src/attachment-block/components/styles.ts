@@ -1,4 +1,4 @@
-import { FONT_XS, PANEL_BASE } from '@blocksuite/affine-shared/styles';
+import { FONT_XS, PANEL_BASE } from '@pulsar/editor-shared/styles';
 import { css } from 'lit';
 
 export const renameStyles = css`
@@ -10,7 +10,7 @@ export const renameStyles = css`
     width: 320px;
     gap: 12px;
     padding: 12px;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .affine-attachment-rename-input-wrapper {
@@ -19,14 +19,14 @@ export const renameStyles = css`
     height: 30px;
     box-sizing: border-box;
     padding: 4px 10px;
-    background: var(--affine-white-10);
+    background: var(--pulsar-white-10);
     border-radius: 4px;
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
   }
 
   .affine-attachment-rename-input-wrapper:focus-within {
-    border-color: var(--affine-blue-700);
-    box-shadow: var(--affine-active-shadow);
+    border-color: var(--pulsar-blue-700);
+    box-shadow: var(--pulsar-active-shadow);
   }
 
   .affine-attachment-rename-input-wrapper input {
@@ -34,17 +34,17 @@ export const renameStyles = css`
     border: none;
     outline: none;
     background: transparent;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
     ${FONT_XS};
   }
 
   .affine-attachment-rename-input-wrapper input::placeholder {
-    color: var(--affine-placeholder-color);
+    color: var(--pulsar-placeholder-color);
   }
 
   .affine-attachment-rename-extension {
-    font-size: var(--affine-font-xs);
-    color: var(--affine-text-secondary-color);
+    font-size: var(--pulsar-font-xs);
+    color: var(--pulsar-text-secondary-color);
   }
 
   .affine-attachment-rename-overlay-mask {
@@ -53,7 +53,7 @@ export const renameStyles = css`
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 `;
 
@@ -67,12 +67,12 @@ export const moreMenuStyles = css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
 
     border-radius: 8px;
     padding: 8px;
-    background: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-shadow-2);
+    background: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-shadow-2);
   }
 
   .affine-attachment-options-more-container > icon-button {
@@ -86,11 +86,11 @@ export const moreMenuStyles = css`
   }
 
   .affine-attachment-options-more-container > icon-button:hover.danger {
-    background: var(--affine-background-error-color);
-    color: var(--affine-error-color);
+    background: var(--pulsar-background-error-color);
+    color: var(--pulsar-error-color);
   }
   .affine-attachment-options-more-container > icon-button:hover.danger > svg {
-    color: var(--affine-error-color);
+    color: var(--pulsar-error-color);
   }
 `;
 

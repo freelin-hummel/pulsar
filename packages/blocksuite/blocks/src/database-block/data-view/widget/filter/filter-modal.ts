@@ -1,5 +1,5 @@
-import { createPopup } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { createPopup } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -12,15 +12,15 @@ import './filter-root.js';
 export class AdvancedFilterModal extends WithDisposable(ShadowlessElement) {
   static override styles = css`
     advanced-filter-modal {
-      background-color: var(--affine-background-overlay-panel-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
       position: absolute;
       border-radius: 8px;
-      box-shadow: var(--affine-shadow-2);
+      box-shadow: var(--pulsar-shadow-2);
       min-width: 500px;
     }
 
     .filter-modal-bottom {
-      border-top: 1px solid var(--affine-border-color);
+      border-top: 1px solid var(--pulsar-border-color);
       padding: 8px;
     }
 
@@ -33,28 +33,28 @@ export class AdvancedFilterModal extends WithDisposable(ShadowlessElement) {
       line-height: 22px;
       border-radius: 4px;
       cursor: pointer;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
     }
 
     .filter-modal-button svg {
-      fill: var(--affine-text-secondary-color);
-      color: var(--affine-text-secondary-color);
+      fill: var(--pulsar-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       width: 20px;
       height: 20px;
     }
 
     .filter-modal-button:hover {
-      background-color: var(--affine-hover-color);
-      color: var(--affine-text-primary-color);
+      background-color: var(--pulsar-hover-color);
+      color: var(--pulsar-text-primary-color);
     }
     .filter-modal-button:hover svg {
-      fill: var(--affine-text-primary-color);
-      color: var(--affine-text-primary-color);
+      fill: var(--pulsar-text-primary-color);
+      color: var(--pulsar-text-primary-color);
     }
 
     .filter-delete-button:hover {
-      background-color: var(--affine-background-error-color);
-      color: var(--affine-error-color);
+      background-color: var(--pulsar-background-error-color);
+      color: var(--pulsar-error-color);
     }
 
     .filter-exactly-hover-container {
@@ -62,7 +62,7 @@ export class AdvancedFilterModal extends WithDisposable(ShadowlessElement) {
     }
 
     .filter-exactly-hover-background {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 

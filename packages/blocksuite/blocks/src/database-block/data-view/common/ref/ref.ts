@@ -1,5 +1,5 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { AddCursorIcon } from '@blocksuite/icons/lit';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -24,14 +24,14 @@ export class VariableRefView extends WithDisposable(ShadowlessElement) {
     }
 
     variable-ref-view:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     variable-ref-view svg {
       width: 16px;
       height: 16px;
-      fill: var(--affine-icon-color);
-      color: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
+      color: var(--pulsar-icon-color);
     }
   `;
 

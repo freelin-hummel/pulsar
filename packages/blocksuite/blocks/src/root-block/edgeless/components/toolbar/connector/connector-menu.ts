@@ -2,13 +2,13 @@ import {
   ConnectorCWithArrowIcon,
   ConnectorLWithArrowIcon,
   ConnectorXWithArrowIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   DEFAULT_CONNECTOR_COLOR,
   ConnectorMode,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { SignalWatcher } from '@blocksuite/block-std';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { SignalWatcher } from '@pulsar/block-std';
 import { computed } from '@lit-labs/preact-signals';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -92,14 +92,14 @@ export class EdgelessConnectorMenu extends EdgelessToolbarToolMixin(
     }
 
     .connector-mode-button-group > edgeless-tool-icon-button svg {
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
     }
 
     .submenu-divider {
       width: 1px;
       height: 24px;
       margin: 0 16px;
-      background-color: var(--affine-border-color);
+      background-color: var(--pulsar-border-color);
       display: inline-block;
     }
   `;

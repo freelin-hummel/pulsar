@@ -5,7 +5,7 @@ export const styles = css`
     position: absolute;
     top: 0;
     right: 0;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .affine-image-toolbar-container {
@@ -16,9 +16,9 @@ export const styles = css`
   }
 
   .image-toolbar-button {
-    color: var(--affine-icon-color);
-    background-color: var(--affine-background-primary-color);
-    box-shadow: var(--affine-shadow-1);
+    color: var(--pulsar-icon-color);
+    background-color: var(--pulsar-background-primary-color);
+    box-shadow: var(--pulsar-shadow-1);
     border-radius: 4px;
   }
 `;

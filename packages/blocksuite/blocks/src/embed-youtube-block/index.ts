@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { EmbedYoutubeBlockService } from './embed-youtube-service.js';
 
@@ -13,7 +13,7 @@ export * from './embed-youtube-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:embed-youtube': EmbedYoutubeBlockService;
+      'pulsar:embed-youtube': EmbedYoutubeBlockService;
     }
   }
 }

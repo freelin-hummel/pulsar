@@ -1,6 +1,6 @@
-import type { SurfaceRefBlockModel } from '@blocksuite/affine-model';
+import type { SurfaceRefBlockModel } from '@pulsar/model';
 
-import { HoverController } from '@blocksuite/affine-components/hover';
+import { HoverController } from '@pulsar/editor-components/hover';
 import {
   CaptionIcon,
   CenterPeekIcon,
@@ -8,16 +8,16 @@ import {
   MoreVerticalIcon,
   OpenIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { isPeekable, peek } from '@blocksuite/affine-components/peek';
+} from '@pulsar/editor-components/icons';
+import { isPeekable, peek } from '@pulsar/editor-components/peek';
 import {
   type MenuItem,
   type MenuItemGroup,
   cloneGroups,
   renderGroups,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
-import { WidgetComponent } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/toolbar';
+import { WidgetComponent } from '@pulsar/block-std';
 import { offset, shift } from '@floating-ui/dom';
 import { html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -32,10 +32,10 @@ import { getMoreMenuConfig } from '../../configs/toolbar.js';
 import { BUILT_IN_GROUPS } from './config.js';
 import { SurfaceRefToolbarContext } from './context.js';
 
-export const AFFINE_SURFACE_REF_TOOLBAR = 'affine-surface-ref-toolbar';
+export const PULSAR_SURFACE_REF_TOOLBAR = 'pulsar-surface-ref-toolbar';
 
-@customElement(AFFINE_SURFACE_REF_TOOLBAR)
-export class AffineSurfaceRefToolbar extends WidgetComponent<
+@customElement(PULSAR_SURFACE_REF_TOOLBAR)
+export class PulsarSurfaceRefToolbar extends WidgetComponent<
   SurfaceRefBlockModel,
   SurfaceRefBlockComponent
 > {
@@ -107,7 +107,7 @@ export class AffineSurfaceRefToolbar extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_SURFACE_REF_TOOLBAR]: AffineSurfaceRefToolbar;
+    [PULSAR_SURFACE_REF_TOOLBAR]: PulsarSurfaceRefToolbar;
   }
 }
 

@@ -12,7 +12,7 @@ const playCheckAnimation = async (
   { left = 0, size = 20 }: { left?: number; size?: number } = {}
 ) => {
   const sparkingEl = document.createElement('div');
-  sparkingEl.classList.add('affine-check-animation');
+  sparkingEl.classList.add('pulsar-check-animation');
   if (size < 20) {
     console.warn('If the size is less than 20, the animation may be abnormal.');
   }
@@ -47,7 +47,7 @@ const playCheckAnimation = async (
   sparkingEl.remove();
 };
 
-@customElement('affine-database-checkbox-cell')
+@customElement('pulsar-database-checkbox-cell')
 export class CheckboxCell extends BaseCellRenderer<boolean> {
   static override styles = css`
     affine-database-checkbox-cell {
@@ -100,9 +100,9 @@ export class CheckboxCell extends BaseCellRenderer<boolean> {
     const icon = checked
       ? CheckBoxCkeckSolidIcon({ style: `color:#1E96EB` })
       : CheckBoxUnIcon();
-    return html` <div class="affine-database-checkbox-container">
+    return html` <div class="pulsar-database-checkbox-container">
       <div
-        class="affine-database-checkbox checkbox ${checked ? 'checked' : ''}"
+        class="pulsar-database-checkbox checkbox ${checked ? 'checked' : ''}"
       >
         ${icon}
       </div>

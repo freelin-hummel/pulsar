@@ -1,6 +1,6 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
 
 /**
  * Add a paragraph next to the current block.
@@ -36,7 +36,7 @@ export const addParagraphCommand: Command<
     // aaa
     //   |
     //   bbb
-    id = doc.addBlock('affine:paragraph', {}, model, 0);
+    id = doc.addBlock('pulsar:paragraph', {}, model, 0);
   } else {
     const parent = doc.getParent(model);
     if (!parent) return;
@@ -48,7 +48,7 @@ export const addParagraphCommand: Command<
     // after:
     // aaa
     // |
-    id = doc.addBlock('affine:paragraph', {}, parent, index + 1);
+    id = doc.addBlock('pulsar:paragraph', {}, parent, index + 1);
   }
 
   focusTextModel(std, id);

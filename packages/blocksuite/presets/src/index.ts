@@ -1,4 +1,4 @@
-import '@blocksuite/affine-shared/commands';
+import '@pulsar/editor-shared/commands';
 
 export * from './blocks/index.js';
 export * from './editors/index.js';
@@ -21,7 +21,7 @@ const importIdentifier = '__ $BLOCKSUITE_EDITOR$ __';
 if (env[importIdentifier] === true) {
   // https://github.com/yjs/yjs/issues/438
   console.error(
-    '@blocksuite/presets was already imported. This breaks constructor checks and will lead to issues!'
+    '@pulsar/presets was already imported. This breaks constructor checks and will lead to issues!'
   );
 }
 

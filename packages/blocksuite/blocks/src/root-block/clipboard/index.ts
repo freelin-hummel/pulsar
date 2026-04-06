@@ -1,8 +1,8 @@
-import type { UIEventHandler } from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { BlockSnapshot, Doc } from '@blocksuite/store';
+import type { UIEventHandler } from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { BlockSnapshot, Doc } from '@pulsar/store';
 
-import { DisposableGroup, assertExists } from '@blocksuite/global/utils';
+import { DisposableGroup, assertExists } from '@pulsar/global/utils';
 
 import {
   AttachmentAdapter,

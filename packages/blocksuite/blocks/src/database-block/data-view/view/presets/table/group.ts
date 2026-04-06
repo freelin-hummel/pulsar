@@ -1,9 +1,9 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { PlusIcon } from '@blocksuite/icons/lit';
 import { type PropertyValues, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -34,7 +34,7 @@ const styles = css`
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
     padding: 4px 8px;
-    border-bottom: 1px solid var(--affine-border-color);
+    border-bottom: 1px solid var(--pulsar-border-color);
   }
 
   @media print {
@@ -53,11 +53,11 @@ const styles = css`
     user-select: none;
     font-size: 12px;
     line-height: 20px;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
   }
 `;
 
-@customElement('affine-data-view-table-group')
+@customElement('pulsar-data-view-table-group')
 export class TableGroup extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -149,7 +149,7 @@ export class TableGroup extends SignalWatcher(
         .renderGroupHeader="${this.renderGroupHeader}"
         .tableViewManager="${this.view}"
       ></affine-database-column-header>
-      <div class="affine-database-block-rows">
+      <div class="pulsar-database-block-rows">
         ${repeat(
           ids,
           id => id,
@@ -173,7 +173,7 @@ export class TableGroup extends SignalWatcher(
           >
             <div
               class="data-view-table-group-add-row-button dv-icon-16"
-              data-test-id="affine-database-add-row-button"
+              data-test-id="pulsar-database-add-row-button"
               role="button"
             >
               ${PlusIcon()}<span>New Record</span>
@@ -214,6 +214,6 @@ export class TableGroup extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-table-group': TableGroup;
+    'pulsar-data-view-table-group': TableGroup;
   }
 }

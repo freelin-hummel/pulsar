@@ -1,15 +1,15 @@
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
-import type { SurfaceBlockProps } from '@blocksuite/block-std/gfx';
-import type { MigrationRunner, Y } from '@blocksuite/store';
+import type { ConnectorElementModel } from '@pulsar/model';
+import type { SurfaceBlockProps } from '@pulsar/block-std/gfx';
+import type { MigrationRunner, Y } from '@pulsar/store';
 
-import { SurfaceBlockModel as BaseSurfaceModel } from '@blocksuite/block-std/gfx';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { SurfaceBlockModel as BaseSurfaceModel } from '@pulsar/block-std/gfx';
+import { DisposableGroup } from '@pulsar/global/utils';
 import {
   Boxed,
   DocCollection,
   Text,
   defineBlockSchema,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 import { elementsCtorMap } from './element-model/index.js';
 import { connectorMiddleware } from './middlewares/connector.js';
@@ -130,21 +130,21 @@ const migration = {
 } satisfies Record<string, MigrationRunner<typeof SurfaceBlockSchema>>;
 
 export const SurfaceBlockSchema = defineBlockSchema({
-  flavour: 'affine:surface',
+  flavour: 'pulsar:surface',
   props: (internalPrimitives): SurfaceBlockProps => ({
     elements: internalPrimitives.Boxed(new DocCollection.Y.Map()),
   }),
   metadata: {
     version: 5,
     role: 'hub',
-    parent: ['affine:page'],
+    parent: ['pulsar:page'],
     children: [
-      'affine:frame',
-      'affine:image',
-      'affine:bookmark',
-      'affine:attachment',
-      'affine:embed-*',
-      'affine:edgeless-text',
+      'pulsar:frame',
+      'pulsar:image',
+      'pulsar:bookmark',
+      'pulsar:attachment',
+      'pulsar:embed-*',
+      'pulsar:edgeless-text',
     ],
   },
   onUpgrade: (data, previousVersion, version) => {

@@ -14,16 +14,16 @@ export const styles = css`
     top: 0;
     box-sizing: border-box;
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-    font-size: var(--affine-font-base);
+    font-size: var(--pulsar-font-base);
     padding: 12px 8px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
 
-    background: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-shadow-2);
+    background: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-shadow-2);
     border-radius: 12px;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .linked-doc-popover icon-button {
@@ -33,14 +33,14 @@ export const styles = css`
   }
 
   .linked-doc-popover .group-title {
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     margin: 8px 12px;
   }
 
   .linked-doc-popover .divider {
     margin: 6px 12px;
     height: 1px;
-    background: var(--affine-border-color);
+    background: var(--pulsar-border-color);
   }
 
   .group icon-button svg {

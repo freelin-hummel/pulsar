@@ -1,8 +1,8 @@
-import type { ParagraphType } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { ParagraphType } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 import { focusTextModel } from '../dom.js';
 import { beforeConvert } from './utils.js';
@@ -14,7 +14,7 @@ export function toParagraph(
   prefix: string
 ) {
   const { doc } = std;
-  if (!matchFlavours(model, ['affine:paragraph'])) {
+  if (!matchFlavours(model, ['pulsar:paragraph'])) {
     const parent = doc.getParent(model);
     if (!parent) return;
 
@@ -28,13 +28,13 @@ export function toParagraph(
       children: model.children,
     };
     doc.deleteBlock(model, { deleteChildren: false });
-    const id = doc.addBlock('affine:paragraph', blockProps, parent, index);
+    const id = doc.addBlock('pulsar:paragraph', blockProps, parent, index);
 
     focusTextModel(std, id);
     return id;
   }
 
-  if (matchFlavours(model, ['affine:paragraph']) && model.type !== type) {
+  if (matchFlavours(model, ['pulsar:paragraph']) && model.type !== type) {
     beforeConvert(std, model, prefix.length);
 
     doc.updateBlock(model, { type });

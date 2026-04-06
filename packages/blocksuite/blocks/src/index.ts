@@ -1,11 +1,11 @@
-/// <reference types="@blocksuite/global" />
-import '@blocksuite/affine-block-paragraph';
-import '@blocksuite/affine-block-list';
-import '@blocksuite/affine-block-surface';
-import '@blocksuite/affine-components/context-menu';
-import '@blocksuite/affine-components/rich-text';
-import '@blocksuite/affine-components/toolbar';
-import { Point, deserializeXYWH } from '@blocksuite/global/utils';
+/// <reference types="@pulsar/global" />
+import '@pulsar/block-paragraph';
+import '@pulsar/block-list';
+import '@pulsar/block-surface';
+import '@pulsar/editor-components/context-menu';
+import '@pulsar/editor-components/rich-text';
+import '@pulsar/editor-components/toolbar';
+import { Point, deserializeXYWH } from '@pulsar/global/utils';
 
 import { matchFlavours } from './_common/utils/index.js';
 import './code-block/highlight/affine-code-unit.js';
@@ -66,14 +66,14 @@ export {
   MiniMindmapPreview,
 } from './surface-block/mini-mindmap/mindmap-preview.js';
 export * from './surface-ref-block/index.js';
-export * from '@blocksuite/affine-block-list';
-export * from '@blocksuite/affine-block-paragraph';
-export * from '@blocksuite/affine-block-surface';
-export { type MenuOptions } from '@blocksuite/affine-components/context-menu';
+export * from '@pulsar/block-list';
+export * from '@pulsar/block-paragraph';
+export * from '@pulsar/block-surface';
+export { type MenuOptions } from '@pulsar/editor-components/context-menu';
 export {
   HoverController,
   whenHover,
-} from '@blocksuite/affine-components/hover';
+} from '@pulsar/editor-components/hover';
 export {
   ArrowDownSmallIcon,
   CloseIcon,
@@ -82,31 +82,31 @@ export {
   LinkedDocIcon,
   PlusIcon,
   TagsIcon,
-} from '@blocksuite/affine-components/icons';
-export * from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
+export * from '@pulsar/editor-components/icons';
 export {
   type PeekViewService,
   Peekable,
   PeekableController,
   isPeekable,
   peek,
-} from '@blocksuite/affine-components/peek';
+} from '@pulsar/editor-components/peek';
 export {
   createLitPortal,
   createSimplePortal,
-} from '@blocksuite/affine-components/portal';
+} from '@pulsar/editor-components/portal';
 export {
-  type AffineInlineEditor,
-  AffineReference,
-  type AffineTextAttributes,
+  type PulsarInlineEditor,
+  PulsarReference,
+  type PulsarTextAttributes,
   InlineManager,
   type InlineMarkdownMatch,
   type InlineSpecs,
   ReferenceNodeConfig,
   RichText,
-  getAffineInlineSpecsWithReference,
-} from '@blocksuite/affine-components/rich-text';
-export { toast } from '@blocksuite/affine-components/toast';
+  getPulsarInlineSpecsWithReference,
+} from '@pulsar/editor-components/rich-text';
+export { toast } from '@pulsar/editor-components/toast';
 export {
   type AdvancedMenuItem,
   type FatMenuItems,
@@ -117,16 +117,16 @@ export {
   renderActions,
   renderGroups,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
-export * from '@blocksuite/affine-model';
-export * from '@blocksuite/affine-shared/services';
+} from '@pulsar/editor-components/toolbar';
+export * from '@pulsar/model';
+export * from '@pulsar/editor-shared/services';
 export {
   ColorVariables,
   FontFamilyVariables,
   SizeVariables,
   StyleVariables,
   ThemeObserver,
-} from '@blocksuite/affine-shared/theme';
+} from '@pulsar/editor-shared/theme';
 
 export {
   createButtonPopper,
@@ -139,7 +139,7 @@ export {
   once,
   openFileOrFiles,
   printToPdf,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 export const BlocksUtils = {
   splitElements,
@@ -164,7 +164,7 @@ const importIdentifier = '__ $BLOCKSUITE_BLOCKS$ __';
 if (env[importIdentifier] === true) {
   // https://github.com/yjs/yjs/issues/438
   console.error(
-    '@blocksuite/blocks was already imported. This breaks constructor checks and will lead to issues!'
+    '@pulsar/blocks was already imported. This breaks constructor checks and will lead to issues!'
   );
 }
 

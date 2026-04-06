@@ -1,7 +1,7 @@
 import {
   type InsertToPosition,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 import { type ReadonlySignal, computed } from '@lit-labs/preact-signals';
 
 import type { TType } from '../../logical/typesystem.js';

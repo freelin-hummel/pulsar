@@ -1,14 +1,14 @@
-import type { Color } from '@blocksuite/affine-model';
-import type { EditorHost, SurfaceSelection } from '@blocksuite/block-std';
-import type { Slot } from '@blocksuite/global/utils';
+import type { Color } from '@pulsar/model';
+import type { EditorHost, SurfaceSelection } from '@pulsar/block-std';
+import type { Slot } from '@pulsar/global/utils';
 
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { BlockComponent, RANGE_SYNC_EXCLUDE_ATTR } from '@blocksuite/block-std';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { BlockComponent, RANGE_SYNC_EXCLUDE_ATTR } from '@pulsar/block-std';
 import {
   GfxControllerIdentifier,
   type Viewport,
-} from '@blocksuite/block-std/gfx';
-import { Bound, values } from '@blocksuite/global/utils';
+} from '@pulsar/block-std/gfx';
+import { Bound, values } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 
@@ -33,7 +33,7 @@ export interface SurfaceContext {
   };
 }
 
-@customElement('affine-surface')
+@customElement('pulsar-surface')
 export class SurfaceBlockComponent extends BlockComponent<
   SurfaceBlockModel,
   SurfaceBlockService
@@ -93,10 +93,10 @@ export class SurfaceBlockComponent extends BlockComponent<
       overflow: hidden;
       display: block;
       height: 100%;
-      font-family: var(--affine-font-family);
-      font-size: var(--affine-font-base);
-      line-height: var(--affine-line-height);
-      color: var(--affine-text-primary-color);
+      font-family: var(--pulsar-font-family);
+      font-size: var(--pulsar-font-base);
+      line-height: var(--pulsar-line-height);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
     }
 
@@ -112,10 +112,10 @@ export class SurfaceBlockComponent extends BlockComponent<
        * https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action
        */
       touch-action: none;
-      background-color: var(--affine-background-primary-color);
+      background-color: var(--pulsar-background-primary-color);
       background-image: radial-gradient(
-        var(--affine-edgeless-grid-color) 1px,
-        var(--affine-background-primary-color) 1px
+        var(--pulsar-edgeless-grid-color) 1px,
+        var(--pulsar-background-primary-color) 1px
       );
       z-index: 0;
     }
@@ -124,9 +124,9 @@ export class SurfaceBlockComponent extends BlockComponent<
       position: absolute;
       transform-origin: center;
       box-sizing: border-box;
-      border: 2px solid var(--affine-white-10);
+      border: 2px solid var(--pulsar-white-10);
       border-radius: 8px;
-      box-shadow: var(--affine-shadow-3);
+      box-shadow: var(--pulsar-shadow-3);
       pointer-events: all;
     }
   `;
@@ -149,7 +149,7 @@ export class SurfaceBlockComponent extends BlockComponent<
   };
 
   private get _edgelessService() {
-    return this.std.getService('affine:page') as unknown as SurfaceContext;
+    return this.std.getService('pulsar:page') as unknown as SurfaceContext;
   }
 
   private _getReversedTransform() {
@@ -250,7 +250,7 @@ export class SurfaceBlockComponent extends BlockComponent<
 
   override render() {
     return html`
-      <div class="affine-edgeless-surface-block-container">
+      <div class="pulsar-edgeless-surface-block-container">
         <!-- attach canvas later in renderer -->
       </div>
     `;
@@ -266,6 +266,6 @@ export class SurfaceBlockComponent extends BlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-surface': SurfaceBlockComponent;
+    'pulsar-surface': SurfaceBlockComponent;
   }
 }

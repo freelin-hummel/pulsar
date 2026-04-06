@@ -1,16 +1,16 @@
-import type { DocMode } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { DocMode } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel, Doc } from '@pulsar/store';
 
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
 import {
   ShadowlessElement,
   WithDisposable,
   docContext,
   modelContext,
   stdContext,
-} from '@blocksuite/block-std';
-import { Text } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { Text } from '@pulsar/store';
 import { consume } from '@lit/context';
 import { css, html, nothing } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
@@ -35,13 +35,13 @@ export class BlockCaptionEditor<
       outline: none;
       border: 0;
       background: transparent;
-      color: var(--affine-icon-color);
-      font-size: var(--affine-font-sm);
+      color: var(--pulsar-icon-color);
+      font-size: var(--pulsar-font-sm);
       font-family: inherit;
       text-align: center;
     }
     .block-caption-editor::placeholder {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
   `;
 
@@ -79,7 +79,7 @@ export class BlockCaptionEditor<
       const nextBlockText = value.slice(start);
       const index = parent.children.indexOf(model);
       const id = doc.addBlock(
-        'affine:paragraph',
+        'pulsar:paragraph',
         { text: new Text(nextBlockText) },
         parent,
         index + 1
@@ -148,7 +148,7 @@ export class BlockCaptionEditor<
   }
 
   get mode(): DocMode {
-    return this.doc.getParent(this.model)?.flavour === 'affine:surface'
+    return this.doc.getParent(this.model)?.flavour === 'pulsar:surface'
       ? 'edgeless'
       : 'page';
   }

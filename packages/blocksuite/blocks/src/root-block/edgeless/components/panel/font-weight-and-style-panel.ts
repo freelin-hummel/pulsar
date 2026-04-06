@@ -1,11 +1,11 @@
-import { TextUtils } from '@blocksuite/affine-block-surface';
-import { CheckIcon } from '@blocksuite/affine-components/icons';
+import { TextUtils } from '@pulsar/block-surface';
+import { CheckIcon } from '@pulsar/editor-components/icons';
 import {
   FontFamily,
   FontFamilyMap,
   FontStyle,
   FontWeight,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';

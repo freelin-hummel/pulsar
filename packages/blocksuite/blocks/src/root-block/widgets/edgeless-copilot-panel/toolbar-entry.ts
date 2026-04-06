@@ -1,5 +1,5 @@
-import { AIStarIcon } from '@blocksuite/affine-components/icons';
-import { type EditorHost, WithDisposable } from '@blocksuite/block-std';
+import { AIStarIcon } from '@pulsar/editor-components/icons';
+import { type EditorHost, WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -16,7 +16,7 @@ export class EdgelessCopilotToolbarEntry extends WithDisposable(LitElement) {
       line-height: 20px;
 
       .label.medium {
-        color: var(--affine-brand-color);
+        color: var(--pulsar-brand-color);
       }
     }
   `;

@@ -1,11 +1,11 @@
-import type { BaseSelection } from '@blocksuite/block-std';
+import type { BaseSelection } from '@pulsar/block-std';
 
 import {
   getPageRootByElement,
   stopPropagation,
-} from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import {
   type ComputePositionConfig,
   type Rect,
@@ -23,20 +23,20 @@ import { choose } from 'lit/directives/choose.js';
 import type { AIError } from '../../../_common/components/index.js';
 import type { EdgelessRootService } from '../../edgeless/edgeless-root-service.js';
 import type { AIPanelGenerating } from './components/index.js';
-import type { AffineAIPanelState, AffineAIPanelWidgetConfig } from './type.js';
+import type { PulsarAIPanelState, PulsarAIPanelWidgetConfig } from './type.js';
 
 import { PageRootService } from '../../page/page-root-service.js';
-import { AFFINE_FORMAT_BAR_WIDGET } from '../format-bar/format-bar.js';
+import { PULSAR_FORMAT_BAR_WIDGET } from '../format-bar/format-bar.js';
 import {
-  AFFINE_VIEWPORT_OVERLAY_WIDGET,
-  type AffineViewportOverlayWidget,
+  PULSAR_VIEWPORT_OVERLAY_WIDGET,
+  type PulsarViewportOverlayWidget,
 } from '../viewport-overlay/viewport-overlay.js';
 import './components/index.js';
 
-export const AFFINE_AI_PANEL_WIDGET = 'affine-ai-panel-widget';
+export const PULSAR_AI_PANEL_WIDGET = 'pulsar-ai-panel-widget';
 
-@customElement(AFFINE_AI_PANEL_WIDGET)
-export class AffineAIPanelWidget extends WidgetComponent {
+@customElement(PULSAR_AI_PANEL_WIDGET)
+export class PulsarAIPanelWidget extends WidgetComponent {
   private _abortController = new AbortController();
 
   private _answer: string | null = null;
@@ -138,9 +138,9 @@ export class AffineAIPanelWidget extends WidgetComponent {
       display: flex;
       outline: none;
       border-radius: var(--8, 8px);
-      border: 1px solid var(--affine-border-color);
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-overlay-shadow);
+      border: 1px solid var(--pulsar-border-color);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-overlay-shadow);
 
       position: absolute;
       width: max-content;
@@ -149,7 +149,7 @@ export class AffineAIPanelWidget extends WidgetComponent {
       left: 0;
       overflow-y: auto;
       scrollbar-width: none !important;
-      z-index: var(--affine-z-index-popover);
+      z-index: var(--pulsar-z-index-popover);
     }
 
     .ai-panel-container {
@@ -259,7 +259,7 @@ export class AffineAIPanelWidget extends WidgetComponent {
 
   showDiscardModal = () => {
     const notification =
-      this.host.std.getService('affine:page').notificationService;
+      this.host.std.getService('pulsar:page').notificationService;
     if (!notification) {
       return Promise.resolve(true);
     }
@@ -326,7 +326,7 @@ export class AffineAIPanelWidget extends WidgetComponent {
   ): Partial<ComputePositionConfig> {
     let rootBoundary: Rect | undefined;
     {
-      const rootService = this.host.std.getService('affine:page');
+      const rootService = this.host.std.getService('pulsar:page');
       if (rootService instanceof PageRootService) {
         rootBoundary = undefined;
       } else {
@@ -529,7 +529,7 @@ export class AffineAIPanelWidget extends WidgetComponent {
       // tell format bar to show or hide
       const rootBlockId = this.host.doc.root?.id;
       const formatBar = rootBlockId
-        ? this.host.view.getWidget(AFFINE_FORMAT_BAR_WIDGET, rootBlockId)
+        ? this.host.view.getWidget(PULSAR_FORMAT_BAR_WIDGET, rootBlockId)
         : null;
 
       if (formatBar) {
@@ -558,18 +558,18 @@ export class AffineAIPanelWidget extends WidgetComponent {
     const rootId = this.host.doc.root?.id;
     return rootId
       ? (this.host.view.getWidget(
-          AFFINE_VIEWPORT_OVERLAY_WIDGET,
+          PULSAR_VIEWPORT_OVERLAY_WIDGET,
           rootId
-        ) as AffineViewportOverlayWidget)
+        ) as PulsarViewportOverlayWidget)
       : null;
   }
 
   @property({ attribute: false })
-  accessor config: AffineAIPanelWidgetConfig | null = null;
+  accessor config: PulsarAIPanelWidgetConfig | null = null;
 
   @query('ai-panel-generating')
   accessor generatingElement: AIPanelGenerating | null = null;
 
   @property()
-  accessor state: AffineAIPanelState = 'hidden';
+  accessor state: PulsarAIPanelState = 'hidden';
 }

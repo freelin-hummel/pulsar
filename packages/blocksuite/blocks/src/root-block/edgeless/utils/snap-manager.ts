@@ -1,11 +1,11 @@
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { SurfaceBlockComponent } from '@blocksuite/affine-block-surface';
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { SurfaceBlockComponent } from '@pulsar/block-surface';
+import type { ConnectorElementModel } from '@pulsar/model';
 
-import { Overlay, CommonUtils } from '@blocksuite/affine-block-surface';
-import { deserializeXYWH } from '@blocksuite/global/utils';
-import { Point } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
+import { Overlay, CommonUtils } from '@pulsar/block-surface';
+import { deserializeXYWH } from '@pulsar/global/utils';
+import { Point } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
 
 import type { EdgelessRootService } from '../edgeless-root-service.js';
 
@@ -280,7 +280,7 @@ export class EdgelessSnapManager extends Overlay {
 
   private get _surface() {
     const surfaceModel = this._rootService.doc.getBlockByFlavour(
-      'affine:surface'
+      'pulsar:surface'
     )[0] as SurfaceBlockModel;
 
     return this._rootService.std.view.getBlock(

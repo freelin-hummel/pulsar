@@ -1,5 +1,5 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
-import type { DeltaInsert } from '@blocksuite/inline/types';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
+import type { DeltaInsert } from '@pulsar/inline/types';
 import type {
   FromBlockSnapshotPayload,
   FromBlockSnapshotResult,
@@ -9,16 +9,16 @@ import type {
   FromSliceSnapshotResult,
   ToBlockSnapshotPayload,
   ToDocSnapshotPayload,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import type { Heading, Root, RootContentMap, TableRow } from 'mdast';
 
 import {
   type Column,
   NoteDisplayMode,
   type SerializedCells,
-} from '@blocksuite/affine-model';
-import { getFilenameFromContentDisposition } from '@blocksuite/affine-shared/utils';
-import { assertExists, sha } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { getFilenameFromContentDisposition } from '@pulsar/editor-shared/utils';
+import { assertExists, sha } from '@pulsar/global/utils';
 import {
   ASTWalker,
   type AssetsManager,
@@ -29,7 +29,7 @@ import {
   type SliceSnapshot,
   getAssetName,
   nanoid,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import { format } from 'date-fns/format';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
@@ -79,7 +79,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: 'text',
                   text: {
@@ -104,7 +104,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:code',
+                flavour: 'pulsar:code',
                 props: {
                   language: o.node.lang ?? 'Plain Text',
                   text: {
@@ -129,7 +129,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: 'text',
                   text: {
@@ -150,7 +150,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: `h${o.node.depth}`,
                   text: {
@@ -171,7 +171,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: 'quote',
                   text: {
@@ -196,7 +196,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:list',
+              flavour: 'pulsar:list',
               props: {
                 type:
                   o.node.checked !== null
@@ -230,7 +230,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:divider',
+                flavour: 'pulsar:divider',
                 props: {},
                 children: [],
               },
@@ -287,7 +287,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:image',
+                flavour: 'pulsar:image',
                 props: {
                   sourceId: blobId,
                 },
@@ -335,7 +335,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:database',
+              flavour: 'pulsar:database',
               props: {
                 views: [
                   {
@@ -365,7 +365,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             },
             'children'
           );
-          context.setNodeContext('affine:table:rowid', Object.keys(cells));
+          context.setNodeContext('pulsar:table:rowid', Object.keys(cells));
           context.skipChildren(1);
           break;
         }
@@ -375,9 +375,9 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               type: 'block',
               id:
                 (
-                  context.getNodeContext('affine:table:rowid') as Array<string>
+                  context.getNodeContext('pulsar:table:rowid') as Array<string>
                 ).shift() ?? nanoid(),
-              flavour: 'affine:paragraph',
+              flavour: 'pulsar:paragraph',
               props: {
                 text: {
                   '$blocksuite:internal:text$': true,
@@ -425,7 +425,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
       };
       const currentTNode = context.currentNode();
       switch (o.node.flavour) {
-        case 'affine:code': {
+        case 'pulsar:code': {
           context
             .openNode(
               {
@@ -439,9 +439,9 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             .closeNode();
           break;
         }
-        case 'affine:paragraph': {
+        case 'pulsar:paragraph': {
           const paragraphDepth = (context.getGlobalContext(
-            'affine:paragraph:depth'
+            'pulsar:paragraph:depth'
           ) ?? 0) as number;
           switch (o.node.props.type) {
             case 'h1':
@@ -496,17 +496,17 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             }
           }
           context.setGlobalContext(
-            'affine:paragraph:depth',
+            'pulsar:paragraph:depth',
             paragraphDepth + 1
           );
           break;
         }
-        case 'affine:list': {
+        case 'pulsar:list': {
           // check if the list is of the same type
           // if true, add the list item to the list
           // if false, create a new list
           if (
-            context.getNodeContext('affine:list:parent') === o.parent &&
+            context.getNodeContext('pulsar:list:parent') === o.parent &&
             currentTNode.type === 'list' &&
             currentTNode.ordered === (o.node.props.type === 'numbered') &&
             isNullish(currentTNode.children[0].checked) ===
@@ -548,7 +548,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
                 },
                 'children'
               )
-              .setNodeContext('affine:list:parent', o.parent)
+              .setNodeContext('pulsar:list:parent', o.parent)
               .openNode(
                 {
                   type: 'listItem',
@@ -572,7 +572,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
           }
           break;
         }
-        case 'affine:divider': {
+        case 'pulsar:divider': {
           context
             .openNode(
               {
@@ -583,7 +583,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             .closeNode();
           break;
         }
-        case 'affine:image': {
+        case 'pulsar:image': {
           const blobId = (o.node.props.sourceId ?? '') as string;
           if (!assets) {
             break;
@@ -616,7 +616,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             .closeNode();
           break;
         }
-        case 'affine:page': {
+        case 'pulsar:page': {
           const title = (o.node.props.title ?? { delta: [] }) as {
             delta: DeltaInsert[];
           };
@@ -633,7 +633,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
             .closeNode();
           break;
         }
-        case 'affine:database': {
+        case 'pulsar:database': {
           const rows: TableRow[] = [];
           const columns = o.node.props.columns as Array<Column>;
           const children = o.node.children;
@@ -744,7 +744,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
           context.skipAllChildren();
           break;
         }
-        case 'affine:embed-synced-doc': {
+        case 'pulsar:embed-synced-doc': {
           const type = this.configs.get('embedSyncedDocExportType');
 
           // this context is used for nested sync block
@@ -785,11 +785,11 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
 
           break;
         }
-        case 'affine:embed-loom':
-        case 'affine:embed-github':
-        case 'affine:embed-youtube':
-        case 'affine:embed-figma':
-        case 'affine:bookmark': {
+        case 'pulsar:embed-loom':
+        case 'pulsar:embed-github':
+        case 'pulsar:embed-youtube':
+        case 'pulsar:embed-figma':
+        case 'pulsar:bookmark': {
           // Parse as link
           if (
             typeof o.node.props.title !== 'string' ||
@@ -828,16 +828,16 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
       const currentTNode = context.currentNode();
       const previousTNode = context.previousNode();
       switch (o.node.flavour) {
-        case 'affine:paragraph': {
+        case 'pulsar:paragraph': {
           context.setGlobalContext(
-            'affine:paragraph:depth',
-            (context.getGlobalContext('affine:paragraph:depth') as number) - 1
+            'pulsar:paragraph:depth',
+            (context.getGlobalContext('pulsar:paragraph:depth') as number) - 1
           );
           break;
         }
-        case 'affine:list': {
+        case 'pulsar:list': {
           if (
-            context.getPreviousNodeContext('affine:list:parent') === o.parent &&
+            context.getPreviousNodeContext('pulsar:list:parent') === o.parent &&
             currentTNode.type === 'listItem' &&
             previousTNode?.type === 'list' &&
             previousTNode.ordered === (o.node.props.type === 'numbered') &&
@@ -849,7 +849,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
               )
           ) {
             context.closeNode();
-            if (o.next?.flavour !== 'affine:list') {
+            if (o.next?.flavour !== 'pulsar:list') {
               // If the next node is not a list, close the list
               context.closeNode();
             }
@@ -858,7 +858,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
           }
           break;
         }
-        case 'affine:embed-synced-doc': {
+        case 'pulsar:embed-synced-doc': {
           const counter = context.getGlobalContext(
             'embed-synced-doc-counter'
           ) as number;
@@ -884,7 +884,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
   }
 
   private _deltaToMdAST(
-    deltas: DeltaInsert<AffineTextAttributes>[],
+    deltas: DeltaInsert<PulsarTextAttributes>[],
     depth = 0
   ) {
     if (depth > 0) {
@@ -1072,10 +1072,10 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -1096,10 +1096,10 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -1117,7 +1117,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
       blocks: {
         type: 'block',
         id: nanoid(),
-        flavour: 'affine:page',
+        flavour: 'pulsar:page',
         props: {
           title: {
             '$blocksuite:internal:text$': true,
@@ -1132,7 +1132,7 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
           {
             type: 'block',
             id: nanoid(),
-            flavour: 'affine:surface',
+            flavour: 'pulsar:surface',
             props: {
               elements: {},
             },
@@ -1196,10 +1196,10 @@ export class MarkdownAdapter extends BaseAdapter<Markdown> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,

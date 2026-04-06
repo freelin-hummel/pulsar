@@ -1,4 +1,4 @@
-import type { AttachmentBlockModel } from '@blocksuite/affine-model';
+import type { AttachmentBlockModel } from '@pulsar/model';
 
 import {
   CaptionIcon,
@@ -6,13 +6,13 @@ import {
   EditIcon,
   MoreVerticalIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { createLitPortal } from '@blocksuite/affine-components/portal';
+} from '@pulsar/editor-components/icons';
+import { createLitPortal } from '@pulsar/editor-components/portal';
 import {
   cloneGroups,
   renderGroups,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/toolbar';
 import { flip, offset } from '@floating-ui/dom';
 import { html, nothing } from 'lit';
 import { join } from 'lit/directives/join.js';
@@ -185,7 +185,7 @@ export function AttachmentOptionsTemplate({
     <style>
       ${styles}
     </style>
-    <editor-toolbar class="affine-attachment-toolbar">
+    <editor-toolbar class="pulsar-attachment-toolbar">
       ${join(
         buttons.filter(button => button !== nothing),
         renderToolbarSeparator

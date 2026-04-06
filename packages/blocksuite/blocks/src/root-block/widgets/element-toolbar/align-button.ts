@@ -1,4 +1,4 @@
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
+import { MindmapElementModel } from '@pulsar/block-surface';
 import {
   AlignBottomIcon,
   AlignDistributeHorizontallyIcon,
@@ -9,13 +9,13 @@ import {
   AlignTopIcon,
   AlignVerticallyIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   ConnectorElementModel,
   GroupElementModel,
-} from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';

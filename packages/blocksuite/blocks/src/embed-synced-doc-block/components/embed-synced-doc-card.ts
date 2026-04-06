@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   isGfxBlockComponent,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { html, nothing } from 'lit';
 import { customElement, property, queryAsync } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -15,7 +15,7 @@ import { renderLinkedDocInCard } from '../../_common/utils/render-linked-doc.js'
 import { cardStyles } from '../styles.js';
 import { getSyncedDocIcons } from '../utils.js';
 
-@customElement('affine-embed-synced-doc-card')
+@customElement('pulsar-embed-synced-doc-card')
 export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
   private _dragging = false;
 
@@ -180,32 +180,32 @@ export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
 
     return html`
       <div
-        class="affine-embed-synced-doc-card ${cardClassMap}"
+        class="pulsar-embed-synced-doc-card ${cardClassMap}"
         @click=${this._handleClick}
       >
-        <div class="affine-embed-synced-doc-card-content">
-          <div class="affine-embed-synced-doc-card-content-title">
-            <div class="affine-embed-synced-doc-card-content-title-icon">
+        <div class="pulsar-embed-synced-doc-card-content">
+          <div class="pulsar-embed-synced-doc-card-content-title">
+            <div class="pulsar-embed-synced-doc-card-content-title-icon">
               ${titleIcon}
             </div>
 
-            <div class="affine-embed-synced-doc-card-content-title-text">
+            <div class="pulsar-embed-synced-doc-card-content-title-text">
               ${titleText}
             </div>
           </div>
 
           ${showDefaultNoteContent
-            ? html`<div class="affine-embed-synced-doc-content-note default">
+            ? html`<div class="pulsar-embed-synced-doc-content-note default">
                 ${defaultNoteContent}
               </div>`
             : nothing}
-          <div class="affine-embed-synced-doc-content-note render"></div>
+          <div class="pulsar-embed-synced-doc-content-note render"></div>
 
           ${error
             ? html`
-                <div class="affine-embed-synced-doc-card-content-reload">
+                <div class="pulsar-embed-synced-doc-card-content-reload">
                   <div
-                    class="affine-embed-synced-doc-card-content-reload-button"
+                    class="pulsar-embed-synced-doc-card-content-reload-button"
                     @click=${() => this.block.refreshData()}
                   >
                     ${ReloadIcon} <span>Reload</span>
@@ -213,7 +213,7 @@ export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
                 </div>
               `
             : html`
-                <div class="affine-embed-synced-doc-card-content-date">
+                <div class="pulsar-embed-synced-doc-card-content-date">
                   <span>Updated</span>
 
                   <span>${dateText}</span>
@@ -221,11 +221,11 @@ export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
               `}
         </div>
 
-        <div class="affine-embed-synced-doc-card-banner render"></div>
+        <div class="pulsar-embed-synced-doc-card-banner render"></div>
 
         ${showDefaultBanner
           ? html`
-              <div class="affine-embed-synced-doc-card-banner default">
+              <div class="pulsar-embed-synced-doc-card-banner default">
                 ${defaultBanner}
               </div>
             `
@@ -285,6 +285,6 @@ export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-embed-synced-doc-card': EmbedSyncedDocCard;
+    'pulsar-embed-synced-doc-card': EmbedSyncedDocCard;
   }
 }

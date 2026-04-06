@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -21,7 +21,7 @@ const styles = css`
   }
 `;
 
-@customElement('affine-database-column-stats')
+@customElement('pulsar-database-column-stats')
 export class DataBaseColumnStats extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -31,7 +31,7 @@ export class DataBaseColumnStats extends SignalWatcher(
     const cols = this.view.columnManagerList$.value;
 
     return html`
-      <div class="affine-database-column-stats">
+      <div class="pulsar-database-column-stats">
         ${repeat(
           cols,
           col => col.id,
@@ -55,6 +55,6 @@ export class DataBaseColumnStats extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-column-stats': DataBaseColumnStats;
+    'pulsar-database-column-stats': DataBaseColumnStats;
   }
 }

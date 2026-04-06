@@ -1,6 +1,6 @@
-import type { EditorMenuButton } from '@blocksuite/affine-components/toolbar';
+import type { EditorMenuButton } from '@pulsar/editor-components/toolbar';
 
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { choose } from 'lit/directives/choose.js';
@@ -131,7 +131,7 @@ export class EdgelessColorPickerButton extends WithDisposable(LitElement) {
     let b = 'transparent';
     let c = 'transparent';
     if (!this.isCSSVariable) {
-      b = 'var(--affine-background-overlay-panel-color)';
+      b = 'var(--pulsar-background-overlay-panel-color)';
       c = keepColor(this.color);
     }
     return { '--b': b, '--c': c };

@@ -1,4 +1,4 @@
-import { FONT_SM, FONT_XS } from '@blocksuite/affine-shared/styles';
+import { FONT_SM, FONT_XS } from '@pulsar/editor-shared/styles';
 import { css } from 'lit';
 
 export const COLOR_PICKER_STYLE = css`
@@ -18,7 +18,7 @@ export const COLOR_PICKER_STYLE = css`
     gap: 4px;
     align-self: stretch;
     border-radius: 8px;
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
   }
 
   nav button {
@@ -30,7 +30,7 @@ export const COLOR_PICKER_STYLE = css`
     flex: 1 0 0;
 
     ${FONT_XS};
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     font-weight: 600;
 
     border-radius: 8px;
@@ -39,9 +39,9 @@ export const COLOR_PICKER_STYLE = css`
   }
 
   nav button[active] {
-    color: var(--affine-text-primary-color, #121212);
-    background: var(--affine-white);
-    box-shadow: var(--affine-shadow-1);
+    color: var(--pulsar-text-primary-color, #121212);
+    background: var(--pulsar-white);
+    box-shadow: var(--pulsar-shadow-1);
     pointer-events: none;
   }
 
@@ -72,7 +72,7 @@ export const COLOR_PICKER_STYLE = css`
     gap: 4px;
     align-self: stretch;
     border-radius: 8px;
-    border: 1px solid var(--affine-border-color);
+    border: 1px solid var(--pulsar-border-color);
     box-sizing: border-box;
 
     ${FONT_XS};
@@ -95,7 +95,7 @@ export const COLOR_PICKER_STYLE = css`
   }
   .modes .mode button[active] {
     pointer-events: none;
-    outline: 2px solid var(--affine-brand-color);
+    outline: 2px solid var(--pulsar-brand-color);
   }
 
   .content {
@@ -254,8 +254,8 @@ export const COLOR_PICKER_STYLE = css`
     align-items: center;
     gap: 4px;
     border-radius: 8px;
-    border: 1px solid var(--affine-border-color);
-    background: var(--affine-white-30);
+    border: 1px solid var(--pulsar-border-color);
+    background: var(--pulsar-white-30);
     box-sizing: border-box;
   }
 
@@ -277,7 +277,7 @@ export const COLOR_PICKER_STYLE = css`
     outline: none;
     ${FONT_SM};
     font-weight: 400;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   /* Chrome, Safari, Edge, Opera */

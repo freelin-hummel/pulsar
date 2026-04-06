@@ -1,9 +1,9 @@
-import { popFilterableSimpleMenu } from '@blocksuite/affine-components/context-menu';
+import { popFilterableSimpleMenu } from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import {
   ArrowDownBigIcon,
   ArrowUpBigIcon,
@@ -26,7 +26,7 @@ import './field.js';
 import { DetailSelection } from './selection.js';
 
 const styles = css`
-  ${unsafeCSS(dataViewCommonStyle('affine-data-view-record-detail'))}
+  ${unsafeCSS(dataViewCommonStyle('pulsar-data-view-record-detail'))}
   affine-data-view-record-detail {
     position: relative;
     display: flex;
@@ -34,7 +34,7 @@ const styles = css`
     flex-direction: column;
     padding: 20px;
     gap: 12px;
-    background-color: var(--affine-background-primary-color);
+    background-color: var(--pulsar-background-primary-color);
     border-radius: 8px;
     height: 100%;
     width: 100%;
@@ -48,7 +48,7 @@ const styles = css`
     font-style: normal;
     font-weight: 400;
     line-height: var(--data-view-cell-text-line-height);
-    color: var(--affine-text-disable-color);
+    color: var(--pulsar-text-disable-color);
     border-radius: 4px;
     padding: 6px 8px 6px 4px;
     cursor: pointer;
@@ -57,7 +57,7 @@ const styles = css`
   }
 
   .add-property:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .add-property .icon {
@@ -66,7 +66,7 @@ const styles = css`
   }
 
   .add-property .icon svg {
-    fill: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
     width: 20px;
     height: 20px;
   }
@@ -78,10 +78,10 @@ const styles = css`
     border-radius: 4px;
     cursor: pointer;
     font-size: 22px;
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
   .switch-row:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
   .switch-row.disable {
     cursor: default;
@@ -90,7 +90,7 @@ const styles = css`
   }
 `;
 
-@customElement('affine-data-view-record-detail')
+@customElement('pulsar-data-view-record-detail')
 export class RecordDetail extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
@@ -156,7 +156,7 @@ export class RecordDetail extends SignalWatcher(
       this.selection.selection = undefined;
     });
     //FIXME: simulate as a widget
-    this.dataset.widgetId = 'affine-detail-widget';
+    this.dataset.widgetId = 'pulsar-detail-widget';
     this.detailSlots = this.view.detailSlots;
   }
 
@@ -208,7 +208,7 @@ export class RecordDetail extends SignalWatcher(
         </div>
       </div>
       <div
-        style="max-width: var(--affine-editor-width);display: flex;flex-direction: column;margin: 0 auto"
+        style="max-width: var(--pulsar-editor-width);display: flex;flex-direction: column;margin: 0 auto"
       >
         ${keyed(this.rowId, this.renderHeader())}
         ${repeat(
@@ -232,7 +232,7 @@ export class RecordDetail extends SignalWatcher(
               Add Property
             </div>`
           : nothing}
-        <div style="width: var(--affine-editor-width)"></div>
+        <div style="width: var(--pulsar-editor-width)"></div>
       </div>
       ${keyed(this.rowId, this.renderNote())}
     `;
@@ -250,6 +250,6 @@ export class RecordDetail extends SignalWatcher(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-data-view-record-detail': RecordDetail;
+    'pulsar-data-view-record-detail': RecordDetail;
   }
 }

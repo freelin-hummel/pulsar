@@ -1,12 +1,12 @@
-import { ImageBlockSchema } from '@blocksuite/affine-model';
-import { ImageSelection } from '@blocksuite/affine-shared/selection';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
+import { ImageBlockSchema } from '@pulsar/model';
+import { ImageSelection } from '@pulsar/editor-shared/selection';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
 import {
   isInsideEdgelessEditor,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { BlockService } from '@blocksuite/block-std';
-import { Bound, Point } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { BlockService } from '@pulsar/block-std';
+import { Bound, Point } from '@pulsar/global/utils';
 import { render } from 'lit';
 
 import type { EdgelessRootService } from '../root-block/edgeless/edgeless-root-service.js';
@@ -21,8 +21,8 @@ import {
 import { setImageProxyMiddlewareURL } from '../_common/transformers/middlewares.js';
 import { EdgelessRootBlockComponent } from '../root-block/edgeless/edgeless-root-block.js';
 import {
-  AFFINE_DRAG_HANDLE_WIDGET,
-  AffineDragHandleWidget,
+  PULSAR_DRAG_HANDLE_WIDGET,
+  PulsarDragHandleWidget,
 } from '../root-block/widgets/drag-handle/drag-handle.js';
 import {
   captureEventTarget,
@@ -53,7 +53,7 @@ export class ImageBlockService extends BlockService {
         | ImageEdgelessBlockComponent;
 
       const isDraggingByDragHandle = !!element?.closest(
-        AFFINE_DRAG_HANDLE_WIDGET
+        PULSAR_DRAG_HANDLE_WIDGET
       );
       const isDraggingByComponent = blockComponent.contains(element);
       const isInSurface = blockComponent instanceof ImageEdgelessBlockComponent;
@@ -68,7 +68,7 @@ export class ImageBlockService extends BlockService {
         return true;
       } else if (isInSurface && isDraggingByDragHandle) {
         const edgelessService = editorHost.std.getService(
-          'affine:page'
+          'pulsar:page'
         ) as EdgelessRootService;
         const scale = edgelessService.viewport.zoom || 1;
         const width = blockComponent.getBoundingClientRect().width;
@@ -128,7 +128,7 @@ export class ImageBlockService extends BlockService {
       const imageFiles = files.filter(file => file.type.startsWith('image/'));
       if (!imageFiles.length) return false;
 
-      if (targetModel && !matchFlavours(targetModel, ['affine:surface'])) {
+      if (targetModel && !matchFlavours(targetModel, ['pulsar:surface'])) {
         addSiblingImageBlock(
           this.host,
           imageFiles,
@@ -171,7 +171,7 @@ export class ImageBlockService extends BlockService {
     this.fileDropManager = new FileDropManager(this, this._fileDropOptions);
 
     this.disposables.add(
-      AffineDragHandleWidget.registerOption(this._dragHandleOption)
+      PulsarDragHandleWidget.registerOption(this._dragHandleOption)
     );
   }
 

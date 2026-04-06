@@ -1,6 +1,6 @@
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockModel } from '@pulsar/store';
 
-import { throttle } from '@blocksuite/global/utils';
+import { throttle } from '@pulsar/global/utils';
 
 import type { BaseSelection, TextSelection } from '../selection/index.js';
 import type { BlockComponent } from '../view/element/block-component.js';

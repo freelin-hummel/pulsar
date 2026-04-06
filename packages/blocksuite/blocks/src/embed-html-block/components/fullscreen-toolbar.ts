@@ -1,4 +1,4 @@
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import {
   CopyIcon,
   DoneIcon,
@@ -80,9 +80,9 @@ export class EmbedHtmlFullscreenToolbar extends LitElement {
     }
 
     .fullscreen-toolbar-container {
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-menu-shadow);
-      border: 1px solid var(--affine-border-color);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-menu-shadow);
+      border: 1px solid var(--pulsar-border-color);
       border-radius: 40px;
 
       display: flex;
@@ -97,7 +97,7 @@ export class EmbedHtmlFullscreenToolbar extends LitElement {
 
     .short-v-divider {
       display: inline-block;
-      background-color: var(--affine-border-color);
+      background-color: var(--pulsar-border-color);
       width: 1px;
       height: 36px;
     }

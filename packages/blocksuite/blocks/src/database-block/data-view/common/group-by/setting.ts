@@ -4,12 +4,12 @@ import {
   type Menu,
   type MenuOptions,
   popMenu,
-} from '@blocksuite/affine-components/context-menu';
+} from '@pulsar/editor-components/context-menu';
 import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { ArrowRightSmallIcon, DeleteIcon } from '@blocksuite/icons/lit';
 import { css, html, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -108,7 +108,7 @@ export class GroupSetting extends SignalWatcher(
     return html`
       <div style="padding: 7px 12px;">
         <div
-          style="padding: 0 4px; font-size: 12px;color: var(--affine-text-secondary-color);line-height: 20px;"
+          style="padding: 0 4px; font-size: 12px;color: var(--pulsar-text-secondary-color);line-height: 20px;"
         >
           Groups
         </div>
@@ -252,7 +252,7 @@ export const popGroupSetting = (
               name: 'Group By',
               postfix: html`
                 <div
-                  style="display:flex;align-items:center;gap: 4px;font-size: 12px;line-height: 20px;color: var(--affine-text-secondary-color);margin-right: 4px;margin-left: 8px;"
+                  style="display:flex;align-items:center;gap: 4px;font-size: 12px;line-height: 20px;color: var(--pulsar-text-secondary-color);margin-right: 4px;margin-left: 8px;"
                   class="dv-icon-16"
                 >
                   ${renderUniLit(icon, {})}

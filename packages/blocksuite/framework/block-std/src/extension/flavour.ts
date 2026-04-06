@@ -10,7 +10,7 @@ import { BlockFlavourIdentifier } from '../identifier.js';
  *
  * @example
  * ```ts
- * import { FlavourExtension } from '@blocksuite/block-std';
+ * import { FlavourExtension } from '@pulsar/block-std';
  *
  * const MyFlavourExtension = FlavourExtension('my-flavour');
  * ```

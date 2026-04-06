@@ -2,21 +2,21 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { AIChatBlockService } from './ai-chat-service.js';
 
 export const AIChatBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:embed-ai-chat'),
+  FlavourExtension('pulsar:embed-ai-chat'),
   AIChatBlockService,
-  BlockViewExtension('affine:embed-ai-chat', model => {
+  BlockViewExtension('pulsar:embed-ai-chat', model => {
     const parent = model.doc.getParent(model.id);
 
-    if (parent?.flavour === 'affine:surface') {
-      return literal`affine-edgeless-ai-chat`;
+    if (parent?.flavour === 'pulsar:surface') {
+      return literal`pulsar-edgeless-ai-chat`;
     }
 
-    return literal`affine-ai-chat`;
+    return literal`pulsar-ai-chat`;
   }),
 ];

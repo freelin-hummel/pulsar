@@ -2,9 +2,9 @@ import type {
   FromSnapshotPayload,
   SnapshotReturn,
   ToSnapshotPayload,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
-import { BaseBlockTransformer } from '@blocksuite/store';
+import { BaseBlockTransformer } from '@pulsar/store';
 
 import type { AttachmentBlockProps } from './attachment-model.js';
 

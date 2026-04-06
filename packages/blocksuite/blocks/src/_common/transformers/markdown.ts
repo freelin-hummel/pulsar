@@ -1,8 +1,8 @@
-import type { Doc } from '@blocksuite/store';
+import type { Doc } from '@pulsar/store';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { assertExists } from '@blocksuite/global/utils';
-import { Job } from '@blocksuite/store';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { assertExists } from '@pulsar/global/utils';
+import { Job } from '@pulsar/store';
 
 import { MarkdownAdapter } from '../adapters/index.js';
 import { defaultImageProxyMiddleware } from './middlewares.js';

@@ -2,8 +2,8 @@ import {
   BanIcon,
   DashLineIcon,
   StraightLineIcon,
-} from '@blocksuite/affine-components/icons';
-import { type LineWidth, StrokeStyle } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/icons';
+import { type LineWidth, StrokeStyle } from '@pulsar/model';
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { repeat } from 'lit/directives/repeat.js';

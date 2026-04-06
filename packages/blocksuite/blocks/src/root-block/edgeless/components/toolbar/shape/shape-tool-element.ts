@@ -1,13 +1,13 @@
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
+import { CanvasElementType } from '@pulsar/block-surface';
 import {
   type ShapeName,
   type ShapeStyle,
   getShapeRadius,
   getShapeType,
-} from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
-import { sleep } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
+import { sleep } from '@pulsar/global/utils';
 import {
   LitElement,
   type PropertyValues,

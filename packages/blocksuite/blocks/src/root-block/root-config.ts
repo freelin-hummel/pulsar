@@ -1,4 +1,4 @@
-import type { DeepPartial } from '@blocksuite/global/utils';
+import type { DeepPartial } from '@pulsar/global/utils';
 import type { Signal } from '@lit-labs/preact-signals';
 
 import type { DatabaseOptionsConfig } from '../database-block/config.js';
@@ -17,7 +17,7 @@ export interface RootBlockConfig {
 declare global {
   namespace BlockSuite {
     interface BlockConfigs {
-      'affine:page': RootBlockConfig;
+      'pulsar:page': RootBlockConfig;
     }
   }
 }

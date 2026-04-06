@@ -13,11 +13,11 @@ type ModalOptions = {
   footer: null | ModalButton[];
 };
 
-@customElement('affine-custom-modal')
-export class AffineCustomModal extends LitElement {
+@customElement('pulsar-custom-modal')
+export class PulsarCustomModal extends LitElement {
   static override styles = css`
     :host {
-      z-index: calc(var(--affine-z-index-modal) + 3);
+      z-index: calc(var(--pulsar-z-index-modal) + 3);
       position: fixed;
       top: 0;
       left: 0;
@@ -30,7 +30,7 @@ export class AffineCustomModal extends LitElement {
       height: 100%;
       box-sizing: border-box;
       align-items: center;
-      background-color: var(--affine-background-modal-color);
+      background-color: var(--pulsar-background-modal-color);
       justify-content: center;
       display: flex;
     }
@@ -40,9 +40,9 @@ export class AffineCustomModal extends LitElement {
       min-width: 500px;
       height: 80%;
       overflow-y: scroll;
-      background-color: var(--affine-background-overlay-panel-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
       border-radius: 12px;
-      box-shadow: var(--affine-shadow-3);
+      box-shadow: var(--pulsar-shadow-3);
       position: relative;
     }
 
@@ -63,14 +63,14 @@ export class AffineCustomModal extends LitElement {
 
     .modal-footer .button {
       align-items: center;
-      background: var(--affine-white);
+      background: var(--pulsar-white);
       border: 1px solid;
-      border-color: var(--affine-border-color);
+      border-color: var(--pulsar-border-color);
       border-radius: 8px;
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       cursor: pointer;
       display: inline-flex;
-      font-size: var(--affine-font-sm);
+      font-size: var(--pulsar-font-sm);
       font-weight: 500;
       justify-content: center;
       outline: 0;
@@ -81,10 +81,10 @@ export class AffineCustomModal extends LitElement {
     }
 
     .modal-footer .primary {
-      background: var(--affine-primary-color);
-      border-color: var(--affine-black-10);
-      box-shadow: var(--affine-button-inner-shadow);
-      color: var(--affine-pure-white);
+      background: var(--pulsar-primary-color);
+      border-color: var(--pulsar-black-10);
+      box-shadow: var(--pulsar-button-inner-shadow);
+      color: var(--pulsar-pure-white);
     }
   `;
 
@@ -135,7 +135,7 @@ export function createCustomModal(
   options: CreateModalOption,
   container: HTMLElement = document.body
 ) {
-  const modal = new AffineCustomModal();
+  const modal = new PulsarCustomModal();
 
   modal.onOpen = options.entry;
   modal.options = options;

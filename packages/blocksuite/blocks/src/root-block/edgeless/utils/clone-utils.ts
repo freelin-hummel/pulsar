@@ -1,24 +1,24 @@
 import type {
   NodeDetail,
   SerializedMindmapElement,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import type {
   FrameBlockProps,
   SerializedConnectorElement,
   SerializedGroupElement,
-} from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
+} from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
 
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
+import { MindmapElementModel } from '@pulsar/block-surface';
 import {
   ConnectorElementModel,
   GroupElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   type SerializedElement,
   isGfxContainerElm,
-} from '@blocksuite/block-std/gfx';
-import { type BlockSnapshot, Job } from '@blocksuite/store';
+} from '@pulsar/block-std/gfx';
+import { type BlockSnapshot, Job } from '@pulsar/store';
 
 import { GfxBlockModel } from '../block-model.js';
 import { getAllDescendantElements, getTopElements } from './tree.js';

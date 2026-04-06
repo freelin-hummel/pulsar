@@ -3,8 +3,8 @@ import type { ReactiveController, ReactiveElement } from 'lit';
 import {
   type AdvancedPortalOptions,
   createLitPortal,
-} from '@blocksuite/affine-components/portal';
-import { DisposableGroup } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/portal';
+import { DisposableGroup } from '@pulsar/global/utils';
 
 import type { HoverOptions } from './types.js';
 

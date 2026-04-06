@@ -1,7 +1,7 @@
 import {
   popFilterableSimpleMenu,
   popMenu,
-} from '@blocksuite/affine-components/context-menu';
+} from '@pulsar/editor-components/context-menu';
 import {
   AddCursorIcon,
   DeleteIcon,
@@ -103,7 +103,7 @@ export class DataViewHeaderViews extends WidgetBase {
       font-size: 14px;
       display: flex;
       align-items: center;
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       white-space: nowrap;
     }
 
@@ -126,8 +126,8 @@ export class DataViewHeaderViews extends WidgetBase {
     }
 
     .database-view-button.active {
-      color: var(--affine-text-primary-color);
-      background-color: var(--affine-hover-color-filled);
+      color: var(--pulsar-text-primary-color);
+      background-color: var(--pulsar-hover-color-filled);
     }
   `;
 
@@ -157,7 +157,7 @@ export class DataViewHeaderViews extends WidgetBase {
             name: 'Edit View',
             icon: renderUniLit(this.getRenderer(id).icon, {}),
             select: () => {
-              this.closest('affine-data-view-renderer')
+              this.closest('pulsar-data-view-renderer')
                 ?.querySelector('data-view-header-tools-view-options')
                 ?.openMoreAction(target);
             },

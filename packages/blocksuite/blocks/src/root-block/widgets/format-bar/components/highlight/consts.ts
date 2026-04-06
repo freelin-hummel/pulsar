@@ -23,7 +23,7 @@ export const backgroundConfig: HighlightConfig[] = [
   },
   ...colors.map(color => ({
     name: `${color[0].toUpperCase()}${color.slice(1)} Background`,
-    color: `var(--affine-text-highlight-${color})`,
+    color: `var(--pulsar-text-highlight-${color})`,
     hotkey: null,
   })),
 ];
@@ -36,7 +36,7 @@ export const foregroundConfig: HighlightConfig[] = [
   },
   ...colors.map(color => ({
     name: `${color[0].toUpperCase()}${color.slice(1)}`,
-    color: `var(--affine-text-highlight-foreground-${color})`,
+    color: `var(--pulsar-text-highlight-foreground-${color})`,
     hotkey: null,
   })),
 ];

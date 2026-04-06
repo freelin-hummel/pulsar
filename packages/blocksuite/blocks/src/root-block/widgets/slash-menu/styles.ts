@@ -11,7 +11,7 @@ export const styles = css`
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .slash-menu {
@@ -24,10 +24,10 @@ export const styles = css`
     overflow-y: auto;
     font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
 
-    background: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-shadow-2);
+    background: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-shadow-2);
     border-radius: 8px;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     user-select: none;
     /* transition: max-height 0.2s ease-in-out; */
   }
@@ -38,9 +38,9 @@ export const styles = css`
     box-sizing: border-box;
     padding: 2px 8px;
 
-    font-size: var(--affine-font-xs);
+    font-size: var(--pulsar-font-xs);
     font-weight: 500;
-    line-height: var(--affine-line-height);
+    line-height: var(--pulsar-line-height);
     text-align: left;
     color: var(
       --light-textColor-textSecondaryColor,
@@ -59,10 +59,10 @@ export const styles = css`
     width: 28px;
     height: 28px;
     padding: 4px;
-    border: 1px solid var(--affine-border-color, #e3e2e4);
+    border: 1px solid var(--pulsar-border-color, #e3e2e4);
     border-radius: 4px;
-    color: var(--affine-icon-color);
-    background: var(--affine-background-overlay-panel-color);
+    color: var(--pulsar-icon-color);
+    background: var(--pulsar-background-overlay-panel-color);
 
     display: flex;
     justify-content: center;
@@ -74,10 +74,10 @@ export const styles = css`
   }
 
   .slash-menu-item.ask-ai {
-    color: var(--affine-brand-color);
+    color: var(--pulsar-brand-color);
   }
   .slash-menu-item.github .github-icon {
-    color: var(--affine-black);
+    color: var(--pulsar-black);
   }
 `;
 
@@ -100,8 +100,8 @@ export const slashItemToolTipStyle = css`
       --light-textColor-textSecondaryColor,
       var(--textColor-textSecondaryColor, #8e8d91)
     );
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-xs);
-    line-height: var(--affine-line-height);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-xs);
+    line-height: var(--pulsar-line-height);
   }
 `;

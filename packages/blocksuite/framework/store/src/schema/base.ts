@@ -1,7 +1,7 @@
 import type { Signal } from '@preact/signals-core';
 import type * as Y from 'yjs';
 
-import { type Disposable, Slot } from '@blocksuite/global/utils';
+import { type Disposable, Slot } from '@pulsar/global/utils';
 import { computed, signal } from '@preact/signals-core';
 import { z } from 'zod';
 

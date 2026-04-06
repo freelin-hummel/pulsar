@@ -10,7 +10,7 @@ import {
 export const styles = css`
     affine-database-column-header {
         display: block;
-        background-color: var(--affine-background-primary-color);
+        background-color: var(--pulsar-background-primary-color);
         position: relative;
         z-index: 2;
     }
@@ -19,11 +19,11 @@ export const styles = css`
         position: relative;
         display: flex;
         flex-direction: row;
-        border-bottom: 1px solid var(--affine-border-color);
-        border-top: 1px solid var(--affine-border-color);
+        border-bottom: 1px solid var(--pulsar-border-color);
+        border-top: 1px solid var(--pulsar-border-color);
         box-sizing: border-box;
         user-select: none;
-        background-color: var(--affine-background-primary-color);
+        background-color: var(--pulsar-background-primary-color);
     }
 
     .affine-database-column {
@@ -56,7 +56,7 @@ export const styles = css`
 
     .affine-database-column-content:hover,
     .affine-database-column-content.edit {
-        background: var(--affine-hover-color);
+        background: var(--pulsar-hover-color);
     }
 
     .affine-database-column-content.edit .affine-database-column-text-icon {
@@ -70,7 +70,7 @@ export const styles = css`
         gap: 6px;
         /* https://stackoverflow.com/a/36247448/15443637 */
         overflow: hidden;
-        color: var(--affine-text-secondary-color);
+        color: var(--pulsar-text-secondary-color);
         font-size: 14px;
         position: relative;
     }
@@ -85,7 +85,7 @@ export const styles = css`
     .affine-database-column-type-icon svg {
         width: 16px;
         height: 16px;
-        fill: var(--affine-icon-color);
+        fill: var(--pulsar-icon-color);
     }
 
     .affine-database-column-text-content {
@@ -111,8 +111,8 @@ export const styles = css`
         align-items: center;
         width: 16px;
         height: 16px;
-        background: var(--affine-white);
-        border: 1px solid var(--affine-border-color);
+        background: var(--pulsar-white);
+        border: 1px solid var(--pulsar-border-color);
         border-radius: 4px;
         opacity: 0;
     }
@@ -124,16 +124,16 @@ export const styles = css`
         height: 16px;
         border: 1px solid transparent;
         border-radius: 4px;
-        fill: var(--affine-icon-color);
+        fill: var(--pulsar-icon-color);
     }
 
     .affine-database-column-text-save-icon:hover {
-        background: var(--affine-white);
-        border-color: var(--affine-border-color);
+        background: var(--pulsar-white);
+        border-color: var(--pulsar-border-color);
     }
 
     .affine-database-column-text-icon svg {
-        fill: var(--affine-icon-color);
+        fill: var(--pulsar-icon-color);
     }
 
     .affine-database-column-input {
@@ -160,7 +160,7 @@ export const styles = css`
     .affine-database-column-move svg {
         width: 10px;
         height: 14px;
-        color: var(--affine-black-10);
+        color: var(--pulsar-black-10);
         cursor: grab;
         opacity: 0;
     }
@@ -182,7 +182,7 @@ export const styles = css`
 
     .header-add-column-button {
         height: ${DEFAULT_COLUMN_TITLE_HEIGHT}px;
-        background-color: var(--affine-background-primary-color);
+        background-color: var(--pulsar-background-primary-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -197,18 +197,18 @@ export const styles = css`
     }
 
     .header-add-column-button svg {
-        color: var(--affine-icon-color);
+        color: var(--pulsar-icon-color);
     }
 
     .affine-database-column-type-menu-icon {
-        border: 1px solid var(--affine-border-color);
+        border: 1px solid var(--pulsar-border-color);
         border-radius: 4px;
         padding: 4px;
-        background-color: var(--affine-background-secondary-color);
+        background-color: var(--pulsar-background-secondary-color);
     }
 
     .affine-database-column-type-menu-icon svg {
-        color: var(--affine-text-secondary-color);
+        color: var(--pulsar-text-secondary-color);
         width: 24px;
         height: 24px;
 
@@ -219,12 +219,12 @@ export const styles = css`
         z-index: 100;
         width: 100px;
         height: 100px;
-        background: var(--affine-text-emphasis-color);
+        background: var(--pulsar-text-emphasis-color);
     }
 
     .affine-database-column-move {
-        --color: var(--affine-placeholder-color);
-        --active: var(--affine-black-10);
+        --color: var(--pulsar-placeholder-color);
+        --active: var(--pulsar-black-10);
         --bw: 1px;
         --bw2: -1px;
         cursor: grab;

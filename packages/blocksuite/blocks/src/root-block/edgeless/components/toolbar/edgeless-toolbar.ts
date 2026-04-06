@@ -1,18 +1,18 @@
 import {
   type MenuHandler,
   popMenu,
-} from '@blocksuite/affine-components/context-menu';
+} from '@pulsar/editor-components/context-menu';
 import {
   ArrowLeftSmallIcon,
   ArrowRightSmallIcon,
   MoreHorizontalIcon,
-} from '@blocksuite/affine-components/icons';
-import { ColorScheme } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { debounce } from '@blocksuite/global/utils';
-import { Slot } from '@blocksuite/store';
+} from '@pulsar/editor-components/icons';
+import { ColorScheme } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { debounce } from '@pulsar/global/utils';
+import { Slot } from '@pulsar/store';
 import { offset } from '@floating-ui/dom';
 import { ContextProvider } from '@lit/context';
 import { baseTheme, cssVar } from '@toeverything/theme';
@@ -179,7 +179,7 @@ export class EdgelessToolbar extends WithDisposable(LitElement) {
       display: block;
       width: 1px;
       height: 100%;
-      background-color: var(--affine-border-color);
+      background-color: var(--pulsar-border-color);
     }
     .brush-and-eraser {
       display: flex;
@@ -598,8 +598,8 @@ export class EdgelessToolbar extends WithDisposable(LitElement) {
             .borderRadius=${16}
             .smooth=${0.7}
             .borderWidth=${1}
-            .bgColor=${'var(--affine-background-overlay-panel-color)'}
-            .borderColor=${'var(--affine-border-color)'}
+            .bgColor=${'var(--pulsar-background-overlay-panel-color)'}
+            .borderColor=${'var(--pulsar-border-color)'}
             style="filter: drop-shadow(${cssVar('toolbarShadow')})"
           >
             <div

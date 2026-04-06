@@ -1,8 +1,8 @@
 import {
   type AdvancedPortalOptions,
   createLitPortal,
-} from '@blocksuite/affine-components/portal';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/portal';
+import { WithDisposable } from '@pulsar/block-std';
 import { DoneIcon, SearchIcon } from '@blocksuite/icons/lit';
 import { type Placement, autoPlacement, offset, size } from '@floating-ui/dom';
 import { LitElement, html, nothing } from 'lit';
@@ -16,7 +16,7 @@ import { filterableListStyles } from './styles.js';
 
 export * from './types.js';
 
-@customElement('affine-filterable-list')
+@customElement('pulsar-filterable-list')
 export class FilterableListComponent<Props = unknown> extends WithDisposable(
   LitElement
 ) {
@@ -128,7 +128,7 @@ export class FilterableListComponent<Props = unknown> extends WithDisposable(
 
     return html`
       <div
-        class=${classMap({ 'affine-filterable-list': true, flipped: isFlip })}
+        class=${classMap({ 'pulsar-filterable-list': true, flipped: isFlip })}
       >
         <div class="input-wrapper">
           ${SearchIcon()}
@@ -257,6 +257,6 @@ export function showPopFilterableList({
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-filterable-list': FilterableListComponent;
+    'pulsar-filterable-list': FilterableListComponent;
   }
 }

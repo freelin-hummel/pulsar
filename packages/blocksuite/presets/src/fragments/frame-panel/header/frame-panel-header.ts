@@ -1,10 +1,10 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { EdgelessRootBlockComponent } from '@blocksuite/blocks';
+import type { EditorHost } from '@pulsar/block-std';
+import type { EdgelessRootBlockComponent } from '@pulsar/blocks';
 
-import { WithDisposable } from '@blocksuite/block-std';
-import { DocModeProvider, type NavigatorMode } from '@blocksuite/blocks';
-import { createButtonPopper } from '@blocksuite/blocks';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { DocModeProvider, type NavigatorMode } from '@pulsar/blocks';
+import { createButtonPopper } from '@pulsar/blocks';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { LitElement, type PropertyValues, css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
@@ -38,18 +38,18 @@ const styles = css`
   }
 
   .all-frames-setting-button svg {
-    color: var(--affine-icon-secondary);
+    color: var(--pulsar-icon-secondary);
   }
 
   .all-frames-setting-button:hover svg,
   .all-frames-setting-button.active svg {
-    color: var(--affine-icon-color);
+    color: var(--pulsar-icon-color);
   }
 
   .all-frames-setting-label {
     width: 68px;
     height: 22px;
-    font-size: var(--affine-font-sm);
+    font-size: var(--pulsar-font-sm);
     font-weight: 500;
     line-height: 22px;
     color: var(--light-text-color-text-secondary-color, #8e8d91);
@@ -59,8 +59,8 @@ const styles = css`
     display: none;
     justify-content: center;
     align-items: center;
-    background: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-shadow-2);
+    background: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-shadow-2);
     border-radius: 8px;
   }
 
@@ -78,17 +78,17 @@ const styles = css`
     padding: 4px 8px;
     border-radius: 8px;
     margin: 4px 0;
-    border: 1px solid var(--affine-border-color);
-    background: var(--affine-white);
+    border: 1px solid var(--pulsar-border-color);
+    background: var(--pulsar-white);
   }
 
   .presentation-button:hover {
-    background: var(--affine-hover-color);
+    background: var(--pulsar-hover-color);
     cursor: pointer;
   }
 
   .presentation-button svg {
-    fill: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
     margin-right: 4px;
   }
 
@@ -99,9 +99,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAME_PANEL_HEADER = 'affine-frame-panel-header';
+export const PULSAR_FRAME_PANEL_HEADER = 'pulsar-frame-panel-header';
 
-@customElement(AFFINE_FRAME_PANEL_HEADER)
+@customElement(PULSAR_FRAME_PANEL_HEADER)
 export class FramePanelHeader extends WithDisposable(LitElement) {
   private _clearEdgelessDisposables = () => {
     this._edgelessDisposables?.dispose();
@@ -149,7 +149,7 @@ export class FramePanelHeader extends WithDisposable(LitElement) {
 
   private _tryLoadNavigatorStateLocalRecord() {
     this._navigatorMode = this.editorHost.std
-      .getService('affine:page')
+      .getService('pulsar:page')
       .editPropsStore.getStorage('presentFillScreen')
       ? 'fill'
       : 'fit';
@@ -226,7 +226,7 @@ export class FramePanelHeader extends WithDisposable(LitElement) {
   }
 
   get rootService() {
-    return this.editorHost.std.getService('affine:page');
+    return this.editorHost.std.getService('pulsar:page');
   }
 
   @query('.all-frames-setting-button')
@@ -247,6 +247,6 @@ export class FramePanelHeader extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAME_PANEL_HEADER]: FramePanelHeader;
+    [PULSAR_FRAME_PANEL_HEADER]: FramePanelHeader;
   }
 }

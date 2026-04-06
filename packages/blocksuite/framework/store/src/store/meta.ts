@@ -1,14 +1,14 @@
 import type * as Y from 'yjs';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { Slot } from '@blocksuite/global/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { Slot } from '@pulsar/global/utils';
 
 import type { BlockSuiteDoc } from '../yjs/index.js';
 import type { DocCollection } from './collection.js';
 
 import { COLLECTION_VERSION, PAGE_VERSION } from '../consts.js';
 
-// please use `declare module '@blocksuite/store'` to extend this interface
+// please use `declare module '@pulsar/store'` to extend this interface
 export interface DocMeta {
   id: string;
   title: string;

@@ -1,10 +1,10 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { RichText } from '@blocksuite/blocks';
-import type { RootBlockModel } from '@blocksuite/blocks';
-import type { Doc } from '@blocksuite/store';
+import type { EditorHost } from '@pulsar/block-std';
+import type { RichText } from '@pulsar/blocks';
+import type { RootBlockModel } from '@pulsar/blocks';
+import type { Doc } from '@pulsar/store';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
@@ -45,10 +45,10 @@ export class DocTitle extends WithDisposable(ShadowlessElement) {
   static override styles = css`
     .doc-title-container {
       box-sizing: border-box;
-      font-family: var(--affine-font-family);
-      font-size: var(--affine-font-base);
-      line-height: var(--affine-line-height);
-      color: var(--affine-text-primary-color);
+      font-family: var(--pulsar-font-family);
+      font-size: var(--pulsar-font-base);
+      line-height: var(--pulsar-line-height);
+      color: var(--pulsar-text-primary-color);
       font-size: 40px;
       line-height: 50px;
       font-weight: 700;
@@ -56,17 +56,17 @@ export class DocTitle extends WithDisposable(ShadowlessElement) {
       resize: none;
       border: 0;
       width: 100%;
-      max-width: var(--affine-editor-width);
+      max-width: var(--pulsar-editor-width);
       margin-left: auto;
       margin-right: auto;
       padding: 38px 0;
 
       padding-left: var(
-        --affine-editor-side-padding,
+        --pulsar-editor-side-padding,
         ${DOC_BLOCK_CHILD_PADDING}px
       );
       padding-right: var(
-        --affine-editor-side-padding,
+        --pulsar-editor-side-padding,
         ${DOC_BLOCK_CHILD_PADDING}px
       );
     }
@@ -81,7 +81,7 @@ export class DocTitle extends WithDisposable(ShadowlessElement) {
 
     .doc-title-container-empty::before {
       content: 'Title';
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
       position: absolute;
       opacity: 0.5;
       pointer-events: none;
@@ -97,7 +97,7 @@ export class DocTitle extends WithDisposable(ShadowlessElement) {
   }
 
   private get _pageRoot() {
-    const pageRoot = this._viewport.querySelector('affine-page-root');
+    const pageRoot = this._viewport.querySelector('pulsar-page-root');
     assertExists(pageRoot);
     return pageRoot;
   }

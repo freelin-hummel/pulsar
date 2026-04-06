@@ -1,6 +1,6 @@
-import type { DeltaInsert } from '@blocksuite/inline';
+import type { DeltaInsert } from '@pulsar/inline';
 
-import { isEqual } from '@blocksuite/global/utils';
+import { isEqual } from '@pulsar/global/utils';
 
 export const fetchImage = async (
   url: string,

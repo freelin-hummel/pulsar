@@ -1,10 +1,10 @@
-import type { BrushElementModel } from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IVec } from '@blocksuite/global/utils';
+import type { BrushElementModel } from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IVec } from '@pulsar/global/utils';
 
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { assertExists, noop } from '@blocksuite/global/utils';
+import { CanvasElementType } from '@pulsar/block-surface';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { assertExists, noop } from '@pulsar/global/utils';
 
 import { EdgelessToolController } from './edgeless-tool.js';
 

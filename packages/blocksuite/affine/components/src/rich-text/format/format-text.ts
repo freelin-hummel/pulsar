@@ -1,8 +1,8 @@
-import type { Command, TextSelection } from '@blocksuite/block-std';
+import type { Command, TextSelection } from '@pulsar/block-std';
 
-import { INLINE_ROOT_ATTR, type InlineRootElement } from '@blocksuite/inline';
+import { INLINE_ROOT_ATTR, type InlineRootElement } from '@pulsar/inline';
 
-import type { AffineTextAttributes } from '../inline/index.js';
+import type { PulsarTextAttributes } from '../inline/index.js';
 
 import { FORMAT_TEXT_SUPPORT_FLAVOURS } from './consts.js';
 import { clearMarksOnDiscontinuousInput } from './utils.js';
@@ -13,7 +13,7 @@ export const formatTextCommand: Command<
   never,
   {
     textSelection?: TextSelection;
-    styles: AffineTextAttributes;
+    styles: PulsarTextAttributes;
     mode?: 'replace' | 'merge';
   }
 > = (ctx, next) => {
@@ -38,7 +38,7 @@ export const formatTextCommand: Command<
 
       const selectedInlineEditors = selectedBlocks.flatMap(el => {
         const inlineRoot = el.querySelector<
-          InlineRootElement<AffineTextAttributes>
+          InlineRootElement<PulsarTextAttributes>
         >(`[${INLINE_ROOT_ATTR}]`);
         if (inlineRoot && inlineRoot.inlineEditor.getInlineRange()) {
           return inlineRoot.inlineEditor;
@@ -62,9 +62,9 @@ export const formatTextCommand: Command<
                   return [
                     key,
                     (inlineEditor.marks &&
-                      inlineEditor.marks[key as keyof AffineTextAttributes]) ||
+                      inlineEditor.marks[key as keyof PulsarTextAttributes]) ||
                     (delta.attributes &&
-                      delta.attributes[key as keyof AffineTextAttributes])
+                      delta.attributes[key as keyof PulsarTextAttributes])
                       ? null
                       : value,
                   ];

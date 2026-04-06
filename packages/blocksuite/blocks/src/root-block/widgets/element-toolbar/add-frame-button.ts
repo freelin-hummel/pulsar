@@ -1,8 +1,8 @@
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { FrameIcon } from '@blocksuite/affine-components/icons';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { FrameIcon } from '@pulsar/editor-components/icons';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { WithDisposable } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

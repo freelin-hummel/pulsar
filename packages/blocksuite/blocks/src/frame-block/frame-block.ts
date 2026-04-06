@@ -1,8 +1,8 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { Doc } from '@blocksuite/store';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { Doc } from '@pulsar/store';
 
-import { ColorScheme, FrameBlockModel } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { ColorScheme, FrameBlockModel } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   GfxBlockComponent,
   ShadowlessElement,
@@ -11,9 +11,9 @@ import {
   modelContext,
   stdContext,
   SignalWatcher,
-} from '@blocksuite/block-std';
-import { GfxControllerIdentifier } from '@blocksuite/block-std/gfx';
-import { Bound, type SerializedXYWH } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import { GfxControllerIdentifier } from '@pulsar/block-std/gfx';
+import { Bound, type SerializedXYWH } from '@pulsar/global/utils';
 import { consume } from '@lit/context';
 import { cssVarV2 } from '@toeverything/theme/v2';
 import { css, html, nothing, unsafeCSS } from 'lit';
@@ -60,7 +60,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
       background-color: var(--bg-color);
 
       span {
-        font-family: var(--affine-font-family);
+        font-family: var(--pulsar-font-family);
         font-size: ${frameTitleStyleVars.fontSize}px;
         cursor: default;
         white-space: nowrap;
@@ -118,7 +118,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
           (payload.type === 'update' &&
             payload.props.key === 'xywh' &&
             doc.getBlock(payload.id)?.model instanceof FrameBlockModel) ||
-          (payload.type === 'add' && payload.flavour === 'affine:frame')
+          (payload.type === 'add' && payload.flavour === 'pulsar:frame')
         ) {
           this._nestedFrame = this._isInsideFrame();
         }
@@ -210,7 +210,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
                 transformOrigin: nestedFrame ? 'top left' : 'bottom left',
                 color: this.colors.text,
               })}
-              class="affine-frame-title"
+              class="pulsar-frame-title"
             >
               <span>${this._frameTitle}</span>
             </div>
@@ -253,7 +253,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 
   get colors() {
@@ -330,7 +330,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
   accessor std!: BlockStdScope;
 }
 
-@customElement('affine-frame')
+@customElement('pulsar-frame')
 export class FrameBlockComponent extends GfxBlockComponent<FrameBlockModel> {
   override connectedCallback() {
     super.connectedCallback();
@@ -354,7 +354,7 @@ export class FrameBlockComponent extends GfxBlockComponent<FrameBlockModel> {
     const { model, _isNavigator, showBorder, rootService } = this;
     const backgroundColor = ThemeObserver.generateColorProperty(
       model.background,
-      '--affine-platte-transparent'
+      '--pulsar-platte-transparent'
     );
     const frameIndex = rootService.layer.getZIndex(model);
 
@@ -365,7 +365,7 @@ export class FrameBlockComponent extends GfxBlockComponent<FrameBlockModel> {
         })}
       ></edgeless-frame-title>
       <div
-        class="affine-frame-container"
+        class="pulsar-frame-container"
         style=${styleMap({
           zIndex: `${frameIndex}`,
           backgroundColor,
@@ -386,7 +386,7 @@ export class FrameBlockComponent extends GfxBlockComponent<FrameBlockModel> {
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 
   @state()
@@ -401,6 +401,6 @@ export class FrameBlockComponent extends GfxBlockComponent<FrameBlockModel> {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-frame': FrameBlockComponent;
+    'pulsar-frame': FrameBlockComponent;
   }
 }

@@ -1,13 +1,13 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
+import type { RootBlockModel } from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
 import {
   getScrollContainer,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { BlockComponent, WidgetComponent } from '@blocksuite/block-std';
-import { assertInstanceOf } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { BlockComponent, WidgetComponent } from '@pulsar/block-std';
+import { assertInstanceOf } from '@pulsar/global/utils';
 import { html, nothing } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -28,11 +28,11 @@ type BlockInfo = {
   rect: Rect;
 };
 
-export const AFFINE_PAGE_DRAGGING_AREA_WIDGET =
-  'affine-page-dragging-area-widget';
+export const PULSAR_PAGE_DRAGGING_AREA_WIDGET =
+  'pulsar-page-dragging-area-widget';
 
-@customElement(AFFINE_PAGE_DRAGGING_AREA_WIDGET)
-export class AffinePageDraggingAreaWidget extends WidgetComponent<
+@customElement(PULSAR_PAGE_DRAGGING_AREA_WIDGET)
+export class PulsarPageDraggingAreaWidget extends WidgetComponent<
   RootBlockModel,
   PageRootBlockComponent
 > {
@@ -122,7 +122,7 @@ export class AffinePageDraggingAreaWidget extends WidgetComponent<
     }
   };
 
-  static excludeFlavours: string[] = ['affine:note', 'affine:surface'];
+  static excludeFlavours: string[] = ['pulsar:note', 'pulsar:surface'];
 
   private get _allBlocksWithRect(): BlockInfo[] {
     if (!this._viewport) {
@@ -139,7 +139,7 @@ export class AffinePageDraggingAreaWidget extends WidgetComponent<
         }
         if (
           view.model.role !== 'root' &&
-          !AffinePageDraggingAreaWidget.excludeFlavours.includes(
+          !PulsarPageDraggingAreaWidget.excludeFlavours.includes(
             view.model.flavour
           )
         ) {
@@ -314,12 +314,12 @@ export class AffinePageDraggingAreaWidget extends WidgetComponent<
       <style>
         .affine-page-dragging-area {
           position: absolute;
-          background: var(--affine-hover-color);
+          background: var(--pulsar-hover-color);
           z-index: 1;
           pointer-events: none;
         }
       </style>
-      <div class="affine-page-dragging-area" style=${styleMap(style)}></div>
+      <div class="pulsar-page-dragging-area" style=${styleMap(style)}></div>
     `;
   }
 
@@ -442,11 +442,11 @@ function isDragArea(e: PointerEventState) {
   const el = e.raw.target;
   assertInstanceOf(el, Element);
   const block = el.closest<BlockComponent>(`[${BLOCK_ID_ATTR}]`);
-  return block && matchFlavours(block.model, ['affine:page', 'affine:note']);
+  return block && matchFlavours(block.model, ['pulsar:page', 'pulsar:note']);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_PAGE_DRAGGING_AREA_WIDGET]: AffinePageDraggingAreaWidget;
+    [PULSAR_PAGE_DRAGGING_AREA_WIDGET]: PulsarPageDraggingAreaWidget;
   }
 }

@@ -1,4 +1,4 @@
-import type { Constructor } from '@blocksuite/global/utils';
+import type { Constructor } from '@pulsar/global/utils';
 import type { LitElement } from 'lit';
 
 import {

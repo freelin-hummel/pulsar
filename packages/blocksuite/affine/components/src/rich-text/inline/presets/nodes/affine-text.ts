@@ -1,13 +1,13 @@
-import { ShadowlessElement } from '@blocksuite/block-std';
-import { type DeltaInsert, ZERO_WIDTH_SPACE } from '@blocksuite/inline';
+import { ShadowlessElement } from '@pulsar/block-std';
+import { type DeltaInsert, ZERO_WIDTH_SPACE } from '@pulsar/inline';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
-import type { AffineTextAttributes } from '../affine-inline-specs.js';
+import type { PulsarTextAttributes } from '../affine-inline-specs.js';
 
 export function affineTextStyles(
-  props: AffineTextAttributes,
+  props: PulsarTextAttributes,
   override?: Readonly<StyleInfo>
 ): ReturnType<typeof styleMap> {
   let textDecorations = '';
@@ -21,11 +21,11 @@ export function affineTextStyles(
   let inlineCodeStyle = {};
   if (props.code) {
     inlineCodeStyle = {
-      'font-family': 'var(--affine-font-code-family)',
-      background: 'var(--affine-background-code-block)',
-      border: '1px solid var(--affine-border-color)',
+      'font-family': 'var(--pulsar-font-code-family)',
+      background: 'var(--pulsar-background-code-block)',
+      border: '1px solid var(--pulsar-border-color)',
       'border-radius': '4px',
-      color: 'var(--affine-text-primary-color)',
+      color: 'var(--pulsar-text-primary-color)',
       'font-variant-ligatures': 'none',
       'line-height': 'auto',
     };
@@ -42,8 +42,8 @@ export function affineTextStyles(
   });
 }
 
-@customElement('affine-text')
-export class AffineText extends ShadowlessElement {
+@customElement('pulsar-text')
+export class PulsarText extends ShadowlessElement {
   override render() {
     const style = this.delta.attributes
       ? affineTextStyles(this.delta.attributes)
@@ -65,13 +65,13 @@ export class AffineText extends ShadowlessElement {
   }
 
   @property({ type: Object })
-  accessor delta: DeltaInsert<AffineTextAttributes> = {
+  accessor delta: DeltaInsert<PulsarTextAttributes> = {
     insert: ZERO_WIDTH_SPACE,
   };
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-text': AffineText;
+    'pulsar-text': PulsarText;
   }
 }

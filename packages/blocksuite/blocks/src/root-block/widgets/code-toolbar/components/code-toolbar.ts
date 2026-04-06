@@ -1,13 +1,13 @@
 import type {
   EditorIconButton,
   MenuItemGroup,
-} from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/toolbar';
 
-import { MoreVerticalIcon } from '@blocksuite/affine-components/icons';
-import { createLitPortal } from '@blocksuite/affine-components/portal';
-import { renderGroups } from '@blocksuite/affine-components/toolbar';
-import { WithDisposable } from '@blocksuite/block-std';
-import { assertExists, noop } from '@blocksuite/global/utils';
+import { MoreVerticalIcon } from '@pulsar/editor-components/icons';
+import { createLitPortal } from '@pulsar/editor-components/portal';
+import { renderGroups } from '@pulsar/editor-components/toolbar';
+import { WithDisposable } from '@pulsar/block-std';
+import { assertExists, noop } from '@pulsar/global/utils';
 import { flip, offset } from '@floating-ui/dom';
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
@@ -15,8 +15,8 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 import type { CodeBlockToolbarContext } from '../context.js';
 
-@customElement('affine-code-toolbar')
-export class AffineCodeToolbar extends WithDisposable(LitElement) {
+@customElement('pulsar-code-toolbar')
+export class PulsarCodeToolbar extends WithDisposable(LitElement) {
   private _currentOpenMenu: AbortController | null = null;
 
   private _popMenuAbortController: AbortController | null = null;
@@ -36,9 +36,9 @@ export class AffineCodeToolbar extends WithDisposable(LitElement) {
     }
 
     .code-toolbar-button {
-      color: var(--affine-icon-color);
-      background-color: var(--affine-background-primary-color);
-      box-shadow: var(--affine-shadow-1);
+      color: var(--pulsar-icon-color);
+      background-color: var(--pulsar-background-primary-color);
+      box-shadow: var(--pulsar-shadow-1);
       border-radius: 4px;
     }
   `;
@@ -90,7 +90,7 @@ export class AffineCodeToolbar extends WithDisposable(LitElement) {
       `,
       // should be greater than block-selection z-index as selection and popover wil share the same stacking context(editor-host)
       portalStyles: {
-        zIndex: 'var(--affine-z-index-popover)',
+        zIndex: 'var(--pulsar-z-index-popover)',
       },
       container: this.context.host,
       computePosition: {
@@ -151,6 +151,6 @@ export class AffineCodeToolbar extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-code-toolbar': AffineCodeToolbar;
+    'pulsar-code-toolbar': PulsarCodeToolbar;
   }
 }

@@ -1,7 +1,7 @@
-import type { GfxModel } from '@blocksuite/block-std/gfx';
-import type { Doc } from '@blocksuite/store';
+import type { GfxModel } from '@pulsar/block-std/gfx';
+import type { Doc } from '@pulsar/store';
 
-import { nToLast } from '@blocksuite/global/utils';
+import { nToLast } from '@pulsar/global/utils';
 
 import type { SurfaceBlockModel } from '../surface-model.js';
 import type { Layer } from './layer-manager.js';

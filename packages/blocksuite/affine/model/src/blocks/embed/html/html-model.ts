@@ -1,4 +1,4 @@
-import { BlockModel } from '@blocksuite/store';
+import { BlockModel } from '@pulsar/store';
 
 import type { EmbedCardStyle } from '../../../utils/index.js';
 
@@ -20,10 +20,10 @@ export class EmbedHtmlModel extends defineEmbedModel<EmbedHtmlBlockProps>(
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:embed-html': EmbedHtmlModel;
+      'pulsar:embed-html': EmbedHtmlModel;
     }
     interface BlockModels {
-      'affine:embed-html': EmbedHtmlModel;
+      'pulsar:embed-html': EmbedHtmlModel;
     }
   }
 }

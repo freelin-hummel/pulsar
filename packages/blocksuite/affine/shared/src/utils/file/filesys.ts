@@ -1,7 +1,7 @@
 // Polyfill for `showOpenFilePicker` API
 // See https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wicg-file-system-access/index.d.ts
 // See also https://caniuse.com/?search=showOpenFilePicker
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 interface OpenFilePickerOptions {
   types?:
@@ -174,7 +174,7 @@ export async function openFileOrFiles({
   return new Promise(resolve => {
     // Append a new `<input type="file" multiple? />` and hide it.
     const input = document.createElement('input');
-    input.classList.add('affine-upload-input');
+    input.classList.add('pulsar-upload-input');
     input.style.display = 'none';
     input.type = 'file';
     if (multiple) {

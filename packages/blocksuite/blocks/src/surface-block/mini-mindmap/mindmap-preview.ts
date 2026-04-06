@@ -1,28 +1,28 @@
 import type {
   MindmapElementModel,
   SurfaceBlockModel,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 
-import { MindmapStyle } from '@blocksuite/affine-block-surface';
+import { MindmapStyle } from '@pulsar/block-surface';
 import {
   MindmapStyleFour,
   MindmapStyleOne,
   MindmapStyleThree,
   MindmapStyleTwo,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   BlockStdScope,
   type EditorHost,
   WithDisposable,
-} from '@blocksuite/block-std';
-import { noop } from '@blocksuite/global/utils';
-import { type Doc, Job } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { noop } from '@pulsar/global/utils';
+import { type Doc, Job } from '@pulsar/store';
 import {
   DocCollection,
   type DocCollectionOptions,
   IdGeneratorType,
   Schema,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -80,14 +80,14 @@ export class MiniMindmapPreview extends WithDisposable(LitElement) {
 
     .template-item {
       box-sizing: border-box;
-      border: 2px solid var(--affine-border-color);
+      border: 2px solid var(--pulsar-border-color);
       border-radius: 4px;
       padding: 4px 6px;
     }
 
     .template-item.active,
     .template-item:hover {
-      border-color: var(--affine-brand-color);
+      border-color: var(--pulsar-brand-color);
     }
 
     .template-item > svg {
@@ -116,8 +116,8 @@ export class MiniMindmapPreview extends WithDisposable(LitElement) {
     collection.start();
 
     const doc = collection.createDoc({ id: 'doc:home' }).load();
-    const rootId = doc.addBlock('affine:page', {});
-    const surfaceId = doc.addBlock('affine:surface', {}, rootId);
+    const rootId = doc.addBlock('pulsar:page', {});
+    const surfaceId = doc.addBlock('pulsar:surface', {}, rootId);
     const surface = doc.getBlockById(surfaceId) as SurfaceBlockModel;
     doc.resetHistory();
 
@@ -191,7 +191,7 @@ export class MiniMindmapPreview extends WithDisposable(LitElement) {
       <div
         style=${styleMap({
           height: this.height + 'px',
-          border: '1px solid var(--affine-border-color)',
+          border: '1px solid var(--pulsar-border-color)',
           borderRadius: '4px',
         })}
       >

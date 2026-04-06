@@ -1,11 +1,11 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { Slot } from '@blocksuite/global/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { Slot } from '@pulsar/global/utils';
 import {
   INLINE_ROOT_ATTR,
   type InlineRange,
   type InlineRangeProvider,
   type InlineRangeUpdatedProp,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 
 import type { TextSelection } from '../selection/index.js';
 import type { BlockComponent } from '../view/element/block-component.js';

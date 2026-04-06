@@ -2,16 +2,16 @@ import type {
   EmbedLinkedDocModel,
   EmbedLinkedDocStyles,
   ReferenceInfo,
-} from '@blocksuite/affine-model';
-import type { DocMode } from '@blocksuite/affine-model';
+} from '@pulsar/model';
+import type { DocMode } from '@pulsar/model';
 
-import { BlockLinkIcon } from '@blocksuite/affine-components/icons';
-import { Peekable, isPeekable } from '@blocksuite/affine-components/peek';
-import { REFERENCE_NODE } from '@blocksuite/affine-components/rich-text';
-import { DocModeProvider } from '@blocksuite/affine-shared/services';
-import { Bound } from '@blocksuite/global/utils';
-import { assertExists } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+import { BlockLinkIcon } from '@pulsar/editor-components/icons';
+import { Peekable, isPeekable } from '@pulsar/editor-components/peek';
+import { REFERENCE_NODE } from '@pulsar/editor-components/rich-text';
+import { DocModeProvider } from '@pulsar/editor-shared/services';
+import { Bound } from '@pulsar/global/utils';
+import { assertExists } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 import { html, nothing } from 'lit';
 import { customElement, property, queryAsync, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -29,7 +29,7 @@ import { SyncedDocErrorIcon } from '../embed-synced-doc-block/styles.js';
 import { styles } from './styles.js';
 import { getEmbedLinkedDocIcons, isLinkToNode } from './utils.js';
 
-@customElement('affine-embed-linked-doc-block')
+@customElement('pulsar-embed-linked-doc-block')
 @Peekable({
   enableOn: ({ doc }: EmbedLinkedDocBlockComponent) => !doc.readonly,
 })
@@ -128,7 +128,7 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
     assertExists(parent);
     const index = parent.children.indexOf(this.model);
 
-    doc.addBlock('affine:embed-synced-doc', { pageId, caption }, parent, index);
+    doc.addBlock('pulsar:embed-synced-doc', { pageId, caption }, parent, index);
 
     this.std.selection.setGroup('note', []);
     doc.deleteBlock(this.model);
@@ -151,7 +151,7 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
     const text = new doc.Text(yText);
 
     doc.addBlock(
-      'affine:paragraph',
+      'pulsar:paragraph',
       {
         text,
       },
@@ -366,34 +366,34 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
       () => html`
         <div>
           <div
-            class="affine-embed-linked-doc-block ${cardClassMap}"
+            class="pulsar-embed-linked-doc-block ${cardClassMap}"
             @click=${this._handleClick}
             @dblclick=${this._handleDoubleClick}
           >
-            <div class="affine-embed-linked-doc-content">
-              <div class="affine-embed-linked-doc-content-title">
-                <div class="affine-embed-linked-doc-content-title-icon">
+            <div class="pulsar-embed-linked-doc-content">
+              <div class="pulsar-embed-linked-doc-content-title">
+                <div class="pulsar-embed-linked-doc-content-title-icon">
                   ${titleIcon}
                 </div>
 
-                <div class="affine-embed-linked-doc-content-title-text">
+                <div class="pulsar-embed-linked-doc-content-title-text">
                   ${titleText}
                 </div>
               </div>
 
-              <div class="affine-embed-linked-doc-content-note render"></div>
+              <div class="pulsar-embed-linked-doc-content-note render"></div>
               ${showDefaultNoteContent
                 ? html`<div
-                    class="affine-embed-linked-doc-content-note default"
+                    class="pulsar-embed-linked-doc-content-note default"
                   >
                     ${defaultNoteContent}
                   </div>`
                 : nothing}
               ${isError
                 ? html`
-                    <div class="affine-embed-linked-doc-card-content-reload">
+                    <div class="pulsar-embed-linked-doc-card-content-reload">
                       <div
-                        class="affine-embed-linked-doc-card-content-reload-button"
+                        class="pulsar-embed-linked-doc-card-content-reload-button"
                         @click=${this.refreshData}
                       >
                         ${ReloadIcon} <span>Reload</span>
@@ -401,7 +401,7 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
                     </div>
                   `
                 : html`
-                    <div class="affine-embed-linked-doc-content-date">
+                    <div class="pulsar-embed-linked-doc-content-date">
                       <span>Updated</span>
 
                       <span>${dateText}</span>
@@ -409,16 +409,16 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
                   `}
             </div>
 
-            <div class="affine-embed-linked-doc-banner render"></div>
+            <div class="pulsar-embed-linked-doc-banner render"></div>
 
             ${showDefaultBanner
               ? html`
-                  <div class="affine-embed-linked-doc-banner default">
+                  <div class="pulsar-embed-linked-doc-banner default">
                     ${defaultBanner}
                   </div>
                 `
               : nothing}
-            <div class="affine-embed-linked-doc-block-overlay"></div>
+            <div class="pulsar-embed-linked-doc-block-overlay"></div>
           </div>
         </div>
       `
@@ -452,7 +452,7 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
   }
 
   get config(): EmbedLinkedDocBlockConfig {
-    return this.std.getConfig('affine:embed-linked-doc') || {};
+    return this.std.getConfig('pulsar:embed-linked-doc') || {};
   }
 
   get docTitle() {

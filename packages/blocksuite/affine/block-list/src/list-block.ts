@@ -1,25 +1,25 @@
 /// <reference types="vite/client" />
-import type { ListBlockModel } from '@blocksuite/affine-model';
-import type { BaseSelection, BlockComponent } from '@blocksuite/block-std';
-import type { InlineRange, InlineRangeProvider } from '@blocksuite/inline';
+import type { ListBlockModel } from '@pulsar/model';
+import type { BaseSelection, BlockComponent } from '@pulsar/block-std';
+import type { InlineRange, InlineRangeProvider } from '@pulsar/inline';
 
-import { CaptionedBlockComponent } from '@blocksuite/affine-components/caption';
+import { CaptionedBlockComponent } from '@pulsar/editor-components/caption';
 import {
   playCheckAnimation,
   toggleDown,
   toggleRight,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   type RichText,
   markdownInput,
-} from '@blocksuite/affine-components/rich-text';
-import '@blocksuite/affine-components/rich-text';
-import '@blocksuite/affine-shared/commands';
-import { NOTE_SELECTOR } from '@blocksuite/affine-shared/consts';
-import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '@blocksuite/affine-shared/consts';
-import { getViewportElement } from '@blocksuite/affine-shared/utils';
-import { getInlineRangeProvider } from '@blocksuite/block-std';
-import { IS_MAC } from '@blocksuite/global/env';
+} from '@pulsar/editor-components/rich-text';
+import '@pulsar/editor-components/rich-text';
+import '@pulsar/editor-shared/commands';
+import { NOTE_SELECTOR } from '@pulsar/editor-shared/consts';
+import { BLOCK_CHILDREN_CONTAINER_PADDING_LEFT } from '@pulsar/editor-shared/consts';
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { getInlineRangeProvider } from '@pulsar/block-std';
+import { IS_MAC } from '@pulsar/global/env';
 import { effect } from '@lit-labs/preact-signals';
 import { type TemplateResult, html, nothing } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
@@ -31,7 +31,7 @@ import { listBlockStyles } from './styles.js';
 import { forwardDelete } from './utils/forward-delete.js';
 import { getListIcon } from './utils/get-list-icon.js';
 
-@customElement('affine-list')
+@customElement('pulsar-list')
 export class ListBlockComponent extends CaptionedBlockComponent<
   ListBlockModel,
   ListBlockService
@@ -251,12 +251,12 @@ export class ListBlockComponent extends CaptionedBlockComponent<
 
     const checked =
       this.model.type === 'todo' && this.model.checked
-        ? 'affine-list--checked'
+        ? 'pulsar-list--checked'
         : '';
 
     const children = html`<div
-      class="affine-block-children-container ${collapsed
-        ? 'affine-list__collapsed'
+      class="pulsar-block-children-container ${collapsed
+        ? 'pulsar-list__collapsed'
         : ''}"
       style="padding-left: ${BLOCK_CHILDREN_CONTAINER_PADDING_LEFT}px;"
     >
@@ -264,8 +264,8 @@ export class ListBlockComponent extends CaptionedBlockComponent<
     </div>`;
 
     return html`
-      <div class=${'affine-list-block-container'}>
-        <div class=${`affine-list-rich-text-wrapper ${checked}`}>
+      <div class=${'pulsar-list-block-container'}>
+        <div class=${`pulsar-list-rich-text-wrapper ${checked}`}>
           ${this._toggleTemplate(collapsed)} ${listIcon}
           <rich-text
             .yText=${this.model.text.yText}
@@ -310,7 +310,7 @@ export class ListBlockComponent extends CaptionedBlockComponent<
   }
 
   override get topContenteditableElement() {
-    if (this.rootComponent?.tagName.toLowerCase() === 'affine-edgeless-root') {
+    if (this.rootComponent?.tagName.toLowerCase() === 'pulsar-edgeless-root') {
       return this.closest<BlockComponent>(NOTE_SELECTOR);
     }
     return this.rootComponent;
@@ -329,6 +329,6 @@ export class ListBlockComponent extends CaptionedBlockComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-list': ListBlockComponent;
+    'pulsar-list': ListBlockComponent;
   }
 }

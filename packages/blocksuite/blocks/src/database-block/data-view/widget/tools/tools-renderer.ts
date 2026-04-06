@@ -49,7 +49,7 @@ export class DataViewHeaderTools extends WidgetBase {
   override render() {
     const classList = classMap({
       'show-toolbar': this.showToolBar,
-      'affine-database-toolbar': true,
+      'pulsar-database-toolbar': true,
     });
     const tools = this.toolsMap[this.view.type];
     return html` <div class="${classList}">

@@ -1,7 +1,7 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { Bound } from '@blocksuite/global/utils';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { Bound } from '@pulsar/global/utils';
 
 import { EdgelessRootService } from '../../root-block/edgeless/edgeless-root-service.js';
 import { getSurfaceBlock } from '../../surface-ref-block/utils.js';
@@ -21,7 +21,7 @@ export const insertEdgelessTextCommand: Command<
   const { std, x, y } = ctx;
   const host = std.host;
   const doc = host.doc;
-  const edgelessService = std.getService('affine:page');
+  const edgelessService = std.getService('pulsar:page');
   const surface = getSurfaceBlock(doc);
   if (!(edgelessService instanceof EdgelessRootService) || !surface) {
     next();
@@ -30,7 +30,7 @@ export const insertEdgelessTextCommand: Command<
 
   const zoom = edgelessService.zoom;
   const textId = edgelessService.addBlock(
-    'affine:edgeless-text',
+    'pulsar:edgeless-text',
     {
       xywh: new Bound(
         x - (EDGELESS_TEXT_BLOCK_MIN_WIDTH * zoom) / 2,
@@ -42,7 +42,7 @@ export const insertEdgelessTextCommand: Command<
     surface.id
   );
 
-  const blockId = doc.addBlock('affine:paragraph', { type: 'text' }, textId);
+  const blockId = doc.addBlock('pulsar:paragraph', { type: 'text' }, textId);
   host.updateComplete
     .then(() => {
       edgelessService.selection.set({

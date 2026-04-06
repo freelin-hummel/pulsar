@@ -1,10 +1,10 @@
 /** Legacy entry used for AFFiNE ESM module compat */
-/// <reference types="@blocksuite/global" />
+/// <reference types="@pulsar/global" />
 // Import models only, the bundled file should not include anything else.
-import type { BlockSchema } from '@blocksuite/store';
+import type { BlockSchema } from '@pulsar/store';
 import type { z } from 'zod';
 
-import { SurfaceBlockSchema } from '@blocksuite/affine-block-surface';
+import { SurfaceBlockSchema } from '@pulsar/block-surface';
 import {
   AttachmentBlockSchema,
   BookmarkBlockSchema,
@@ -27,12 +27,12 @@ import {
   ParagraphBlockSchema,
   RootBlockSchema,
   SurfaceRefBlockSchema,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
 import { DataViewBlockSchema } from './data-view-block/data-view-model.js';
 
 /** Built-in first party block models built for affine */
-export const AffineSchemas: z.infer<typeof BlockSchema>[] = [
+export const PulsarSchemas: z.infer<typeof BlockSchema>[] = [
   CodeBlockSchema,
   ParagraphBlockSchema,
   RootBlockSchema,

@@ -14,7 +14,7 @@ import { BaseCellRenderer } from '../../base-cell.js';
 import { createFromBaseCellRenderer } from '../../renderer.js';
 import { selectColumnModelConfig } from './define.js';
 
-@customElement('affine-database-select-cell')
+@customElement('pulsar-database-select-cell')
 export class SelectCell extends BaseCellRenderer<string[], SelectColumnData> {
   override render() {
     const value = this.value ? [this.value] : [];
@@ -27,7 +27,7 @@ export class SelectCell extends BaseCellRenderer<string[], SelectColumnData> {
   }
 }
 
-@customElement('affine-database-select-cell-editing')
+@customElement('pulsar-database-select-cell-editing')
 export class SelectCellEditing extends BaseCellRenderer<
   string,
   SelectColumnData
@@ -52,7 +52,7 @@ export class SelectCellEditing extends BaseCellRenderer<
   private popTagSelect = () => {
     this._disposables.add({
       dispose: popTagSelect(
-        this.querySelector('affine-multi-tag-view') ?? this,
+        this.querySelector('pulsar-multi-tag-view') ?? this,
         {
           mode: 'single',
           options: this._options,

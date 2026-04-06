@@ -1,7 +1,7 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const dedentParagraphCommand: Command<
   never,
@@ -34,7 +34,7 @@ export const dedentParagraphCommand: Command<
   }
 
   const model = std.doc.getBlock(blockId)?.model;
-  if (!model || !matchFlavours(model, ['affine:paragraph'])) {
+  if (!model || !matchFlavours(model, ['pulsar:paragraph'])) {
     console.error(`block ${blockId} is not a paragraph block`);
     return;
   }

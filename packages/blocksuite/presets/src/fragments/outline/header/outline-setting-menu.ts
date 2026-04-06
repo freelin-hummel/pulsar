@@ -1,4 +1,4 @@
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -31,7 +31,7 @@ const styles = css`
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     padding: 0 4px;
   }
 
@@ -46,7 +46,7 @@ const styles = css`
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;
-    color: var(--affine-text-primary-color);
+    color: var(--pulsar-text-primary-color);
   }
 
   .note-preview-setting-menu-item .toggle-button {
@@ -54,10 +54,10 @@ const styles = css`
   }
 `;
 
-export const AFFINE_OUTLINE_NOTE_PREVIEW_SETTING_MENU =
-  'affine-outline-note-preview-setting-menu';
+export const PULSAR_OUTLINE_NOTE_PREVIEW_SETTING_MENU =
+  'pulsar-outline-note-preview-setting-menu';
 
-@customElement(AFFINE_OUTLINE_NOTE_PREVIEW_SETTING_MENU)
+@customElement(PULSAR_OUTLINE_NOTE_PREVIEW_SETTING_MENU)
 export class OutlineNotePreviewSettingMenu extends WithDisposable(LitElement) {
   static override styles = styles;
 
@@ -90,6 +90,6 @@ export class OutlineNotePreviewSettingMenu extends WithDisposable(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_NOTE_PREVIEW_SETTING_MENU]: OutlineNotePreviewSettingMenu;
+    [PULSAR_OUTLINE_NOTE_PREVIEW_SETTING_MENU]: OutlineNotePreviewSettingMenu;
   }
 }

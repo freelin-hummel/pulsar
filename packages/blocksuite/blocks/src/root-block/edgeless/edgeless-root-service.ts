@@ -1,37 +1,37 @@
-import type { SurfaceContext } from '@blocksuite/affine-block-surface';
+import type { SurfaceContext } from '@pulsar/block-surface';
 import type {
   Overlay,
   SurfaceBlockModel,
-} from '@blocksuite/affine-block-surface';
-import type { ReorderingDirection } from '@blocksuite/affine-block-surface';
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
-import type { BlockStdScope } from '@blocksuite/block-std';
+} from '@pulsar/block-surface';
+import type { ReorderingDirection } from '@pulsar/block-surface';
+import type { ConnectorElementModel } from '@pulsar/model';
+import type { BlockStdScope } from '@pulsar/block-std';
 import type {
   GfxController,
   GfxModel,
   LayerManager,
   PointTestOptions,
-} from '@blocksuite/block-std/gfx';
-import type { IBound } from '@blocksuite/global/utils';
+} from '@pulsar/block-std/gfx';
+import type { IBound } from '@pulsar/global/utils';
 
-import { SurfaceGroupLikeModel } from '@blocksuite/affine-block-surface';
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { ConnectionOverlay } from '@blocksuite/affine-block-surface';
+import { SurfaceGroupLikeModel } from '@pulsar/block-surface';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { ConnectionOverlay } from '@pulsar/block-surface';
 import {
   type ElementRenderer,
   elementRenderers,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   type FrameBlockModel,
   type GroupElementModel,
   type ReferenceInfo,
   RootBlockSchema,
-} from '@blocksuite/affine-model';
-import { clamp } from '@blocksuite/affine-shared/utils';
-import { GfxControllerIdentifier } from '@blocksuite/block-std/gfx';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { Bound, getCommonBound, last } from '@blocksuite/global/utils';
-import { type BlockModel, Slot } from '@blocksuite/store';
+} from '@pulsar/model';
+import { clamp } from '@pulsar/editor-shared/utils';
+import { GfxControllerIdentifier } from '@pulsar/block-std/gfx';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { Bound, getCommonBound, last } from '@pulsar/global/utils';
+import { type BlockModel, Slot } from '@pulsar/store';
 
 import type { EdgelessToolConstructor } from './services/tools-manager.js';
 import type { EdgelessTool } from './types.js';
@@ -270,7 +270,7 @@ export class EdgelessRootService extends RootService implements SurfaceContext {
     if (type === 'sticker') {
       middlewares.push(
         createStickerMiddleware(this.viewport.center, () =>
-          this.layer.generateIndex('affine:image')
+          this.layer.generateIndex('pulsar:image')
         )
       );
     }
@@ -567,7 +567,7 @@ export class EdgelessRootService extends RootService implements SurfaceContext {
 
   get frames() {
     return this.layer.blocks.filter(
-      block => block.flavour === 'affine:frame'
+      block => block.flavour === 'pulsar:frame'
     ) as FrameBlockModel[];
   }
 

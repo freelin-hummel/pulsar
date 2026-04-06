@@ -1,5 +1,5 @@
 {
-  "name": "@blocksuite/store",
+  "name": "@pulsar/store",
   "version": "0.17.0",
   "description": "BlockSuite data store built for general purpose state management.",
   "type": "module",
@@ -12,9 +12,9 @@
   "author": "toeverything",
   "license": "MPL-2.0",
   "dependencies": {
-    "@blocksuite/global": "workspace:*",
-    "@blocksuite/inline": "workspace:*",
-    "@blocksuite/sync": "workspace:*",
+    "@pulsar/global": "workspace:*",
+    "@pulsar/inline": "workspace:*",
+    "@pulsar/sync": "workspace:*",
     "@preact/signals-core": "^1.8.0",
     "@types/flexsearch": "^0.7.6",
     "@types/lodash.ismatch": "^4.4.9",

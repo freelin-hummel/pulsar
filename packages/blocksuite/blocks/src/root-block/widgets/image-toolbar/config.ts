@@ -1,4 +1,4 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
 import {
   BookmarkIcon,
@@ -7,7 +7,7 @@ import {
   DeleteIcon,
   DownloadIcon,
   DuplicateIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -111,7 +111,7 @@ export const conversionsGroup: MenuItemGroup<ImageToolbarContext> = {
       icon: BookmarkIcon,
       when: ({ doc, blockComponent }) => {
         const supportAttachment =
-          doc.schema.flavourSchemaMap.has('affine:attachment');
+          doc.schema.flavourSchemaMap.has('pulsar:attachment');
         const readonly = doc.readonly;
         return supportAttachment && !readonly && !!blockComponent.blob;
       },

@@ -1,4 +1,4 @@
-import type { BlockModel, Doc } from '@blocksuite/store';
+import type { BlockModel, Doc } from '@pulsar/store';
 
 import { minimatch } from 'minimatch';
 

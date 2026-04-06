@@ -5,7 +5,7 @@ export const embedCardToolbarStyle = css`
     position: absolute;
     top: 0;
     left: 0;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
   }
 
   .affine-link-preview {
@@ -19,12 +19,12 @@ export const embedCardToolbarStyle = css`
     user-select: none;
     cursor: pointer;
 
-    color: var(--affine-link-color);
+    color: var(--pulsar-link-color);
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-sm);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-sm);
     font-style: normal;
     font-weight: 400;
     text-decoration: none;
@@ -42,6 +42,6 @@ export const embedCardToolbarStyle = css`
   }
 
   .card-style-select icon-button.selected {
-    border: 1px solid var(--affine-brand-color);
+    border: 1px solid var(--pulsar-brand-color);
   }
 `;

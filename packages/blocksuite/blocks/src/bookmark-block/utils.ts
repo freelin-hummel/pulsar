@@ -1,5 +1,5 @@
-import { isAbortError } from '@blocksuite/affine-shared/utils';
-import { assertExists } from '@blocksuite/global/utils';
+import { isAbortError } from '@pulsar/editor-shared/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import type { BookmarkBlockComponent } from './bookmark-block.js';
 

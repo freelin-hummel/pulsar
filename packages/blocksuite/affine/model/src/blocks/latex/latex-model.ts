@@ -1,10 +1,10 @@
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
 import {
   GfxCompatible,
   type GfxElementGeometry,
-} from '@blocksuite/block-std/gfx';
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+} from '@pulsar/block-std/gfx';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 type LatexProps = {
   xywh: SerializedXYWH;
@@ -15,7 +15,7 @@ type LatexProps = {
 };
 
 export const LatexBlockSchema = defineBlockSchema({
-  flavour: 'affine:latex',
+  flavour: 'pulsar:latex',
   props: (): LatexProps => ({
     xywh: '[0,0,16,16]',
     index: 'a0',
@@ -27,10 +27,10 @@ export const LatexBlockSchema = defineBlockSchema({
     version: 1,
     role: 'content',
     parent: [
-      'affine:note',
-      'affine:edgeless-text',
-      'affine:paragraph',
-      'affine:list',
+      'pulsar:note',
+      'pulsar:edgeless-text',
+      'pulsar:paragraph',
+      'pulsar:list',
     ],
   },
   toModel: () => {
@@ -45,11 +45,11 @@ export class LatexBlockModel
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:latex': LatexBlockModel;
+      'pulsar:latex': LatexBlockModel;
     }
 
     interface EdgelessBlockModelMap {
-      'affine:latex': LatexBlockModel;
+      'pulsar:latex': LatexBlockModel;
     }
   }
 }

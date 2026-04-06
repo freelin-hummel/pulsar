@@ -6,7 +6,7 @@ export * from './bookmark-service.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:bookmark': BookmarkBlockService;
+      'pulsar:bookmark': BookmarkBlockService;
     }
   }
 }

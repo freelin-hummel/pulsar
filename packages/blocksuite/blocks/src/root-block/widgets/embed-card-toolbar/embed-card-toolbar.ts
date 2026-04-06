@@ -1,4 +1,4 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
+import type { RootBlockModel } from '@pulsar/model';
 
 import {
   CaptionIcon,
@@ -10,27 +10,27 @@ import {
   OpenIcon,
   PaletteIcon,
   SmallArrowDownIcon,
-} from '@blocksuite/affine-components/icons';
-import { isPeekable, peek } from '@blocksuite/affine-components/peek';
-import { toast } from '@blocksuite/affine-components/toast';
+} from '@pulsar/editor-components/icons';
+import { isPeekable, peek } from '@pulsar/editor-components/peek';
+import { toast } from '@pulsar/editor-components/toast';
 import {
   type MenuItem,
   type MenuItemGroup,
   cloneGroups,
   renderGroups,
   renderToolbarSeparator,
-} from '@blocksuite/affine-components/toolbar';
+} from '@pulsar/editor-components/toolbar';
 import {
   type BookmarkBlockModel,
   BookmarkStyles,
   type EmbedGithubModel,
   type EmbedLinkedDocModel,
-} from '@blocksuite/affine-model';
-import { EmbedOptionProvider } from '@blocksuite/affine-shared/services';
-import { getHostName } from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
-import { type BlockModel, DocCollection } from '@blocksuite/store';
+} from '@pulsar/model';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
+import { getHostName } from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
+import { type BlockModel, DocCollection } from '@pulsar/store';
 import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom';
 import { type TemplateResult, html, nothing } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
@@ -64,9 +64,9 @@ import { BUILT_IN_GROUPS } from './config.js';
 import { EmbedCardToolbarContext } from './context.js';
 import { embedCardToolbarStyle } from './styles.js';
 
-export const AFFINE_EMBED_CARD_TOOLBAR_WIDGET = 'affine-embed-card-toolbar';
+export const PULSAR_EMBED_CARD_TOOLBAR_WIDGET = 'pulsar-embed-card-toolbar';
 
-@customElement(AFFINE_EMBED_CARD_TOOLBAR_WIDGET)
+@customElement(PULSAR_EMBED_CARD_TOOLBAR_WIDGET)
 export class EmbedCardToolbar extends WidgetComponent<
   RootBlockModel,
   RootBlockComponent
@@ -203,7 +203,7 @@ export class EmbedCardToolbar extends WidgetComponent<
 
     const { doc, url, style, caption } = this.focusModel;
 
-    let targetFlavour = 'affine:bookmark',
+    let targetFlavour = 'pulsar:bookmark',
       targetStyle = style;
 
     if (this._embedOptions && this._embedOptions.viewType === 'card') {
@@ -294,7 +294,7 @@ export class EmbedCardToolbar extends WidgetComponent<
       this.focusBlock &&
       isEmbedLinkedDocBlock(this.focusModel) &&
       (isLinkToNode(this.focusModel) ||
-        !!this.focusBlock.closest('affine-embed-synced-doc-block') ||
+        !!this.focusBlock.closest('pulsar-embed-synced-doc-block') ||
         this.focusModel.pageId === this.doc.id)
     );
   }
@@ -474,7 +474,7 @@ export class EmbedCardToolbar extends WidgetComponent<
     yText.format(0, insert.length, { link: this.focusModel.url });
     const text = new doc.Text(yText);
     doc.addBlock(
-      'affine:paragraph',
+      'pulsar:paragraph',
       {
         text,
       },
@@ -606,7 +606,7 @@ export class EmbedCardToolbar extends WidgetComponent<
       this._canShowUrlOptions && model && 'url' in model
         ? html`
             <a
-              class="affine-link-preview"
+              class="pulsar-link-preview"
               href=${model.url}
               rel="noopener noreferrer"
               target="_blank"
@@ -701,6 +701,6 @@ export class EmbedCardToolbar extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_EMBED_CARD_TOOLBAR_WIDGET]: EmbedCardToolbar;
+    [PULSAR_EMBED_CARD_TOOLBAR_WIDGET]: EmbedCardToolbar;
   }
 }

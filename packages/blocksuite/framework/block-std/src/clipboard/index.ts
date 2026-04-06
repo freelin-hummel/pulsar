@@ -4,11 +4,11 @@ import type {
   Doc,
   JobMiddleware,
   Slice,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import type { RootContentMap } from 'hast';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { Job } from '@blocksuite/store';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { Job } from '@pulsar/store';
 import * as lz from 'lz-string';
 import rehypeParse from 'rehype-parse';
 import { unified } from 'unified';

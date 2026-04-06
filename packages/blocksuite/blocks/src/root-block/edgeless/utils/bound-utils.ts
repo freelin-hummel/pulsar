@@ -1,7 +1,7 @@
-import type { SerializedElement } from '@blocksuite/block-std/gfx';
+import type { SerializedElement } from '@pulsar/block-std/gfx';
 
-import { Bound, getBoundsWithRotation } from '@blocksuite/global/utils';
-import { type BlockSnapshot, BlockSnapshotSchema } from '@blocksuite/store';
+import { Bound, getBoundsWithRotation } from '@pulsar/global/utils';
+import { type BlockSnapshot, BlockSnapshotSchema } from '@pulsar/store';
 
 export function edgelessElementsBound(elements: BlockSuite.EdgelessModel[]) {
   if (elements.length === 0) return new Bound();

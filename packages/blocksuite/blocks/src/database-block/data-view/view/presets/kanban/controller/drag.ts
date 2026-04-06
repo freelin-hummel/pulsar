@@ -1,7 +1,7 @@
-import type { InsertToPosition } from '@blocksuite/affine-shared/utils';
+import type { InsertToPosition } from '@pulsar/editor-shared/utils';
 import type { ReactiveController } from 'lit';
 
-import { Point, Rect, assertExists } from '@blocksuite/global/utils';
+import { Point, Rect, assertExists } from '@pulsar/global/utils';
 
 import type { DataViewKanban } from '../kanban-view.js';
 
@@ -20,7 +20,7 @@ export class KanbanDragController implements ReactiveController {
       evt.x - offsetLeft,
       evt.y - offsetTop
     );
-    const currentGroup = ele.closest('affine-data-view-kanban-group');
+    const currentGroup = ele.closest('pulsar-data-view-kanban-group');
     const cancelScroll = autoScrollOnBoundary(this.scrollContainer);
     startDrag<
       | { type: 'out'; callback: () => void }
@@ -136,12 +136,12 @@ export class KanbanDragController implements ReactiveController {
         const event = context.get('pointerState').raw;
         const target = event.target;
         if (target instanceof Element) {
-          const cell = target.closest('affine-data-view-kanban-cell');
+          const cell = target.closest('pulsar-data-view-kanban-cell');
           if (cell?.editing) {
             return;
           }
           cell?.selectCurrentCell(false);
-          const card = target.closest('affine-data-view-kanban-card');
+          const card = target.closest('pulsar-data-view-kanban-card');
           if (card) {
             this.dragStart(card, event);
           }
@@ -168,7 +168,7 @@ const createDragPreview = (card: KanbanCard, x: number, y: number) => {
   kanbanCard.cardId = card.cardId;
   kanbanCard.view = card.view;
   kanbanCard.isFocus = true;
-  kanbanCard.style.backgroundColor = 'var(--affine-background-primary-color)';
+  kanbanCard.style.backgroundColor = 'var(--pulsar-background-primary-color)';
   div.append(kanbanCard);
   div.className = 'with-data-view-css-variable';
   div.style.width = `${card.getBoundingClientRect().width}px`;
@@ -194,7 +194,7 @@ const createDropPreview = () => {
   const div = document.createElement('div');
   div.style.height = '2px';
   div.style.borderRadius = '1px';
-  div.style.backgroundColor = 'var(--affine-primary-color)';
+  div.style.backgroundColor = 'var(--pulsar-primary-color)';
   div.style.boxShadow = '0px 0px 8px 0px rgba(30, 150, 235, 0.35)';
   return {
     display(
@@ -224,7 +224,7 @@ const getCardByPoint = (
   y: number
 ): KanbanCard | undefined => {
   const cards = Array.from(
-    group.querySelectorAll('affine-data-view-kanban-card')
+    group.querySelectorAll('pulsar-data-view-kanban-card')
   );
   const positions = cards.map(v => {
     const rect = v.getBoundingClientRect();

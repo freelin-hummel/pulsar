@@ -1,21 +1,21 @@
-import type { CanvasRenderer } from '@blocksuite/affine-block-surface';
-import type { NoteBlockModel } from '@blocksuite/affine-model';
-import type { Query } from '@blocksuite/store';
+import type { CanvasRenderer } from '@pulsar/block-surface';
+import type { NoteBlockModel } from '@pulsar/model';
+import type { Query } from '@pulsar/store';
 
 import {
   DEFAULT_NOTE_BACKGROUND_COLOR,
   NoteDisplayMode,
   NoteShadow,
-} from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+} from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 import {
   BlockStdScope,
   type EditorHost,
   RANGE_QUERY_EXCLUDE_ATTR,
-} from '@blocksuite/block-std';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { deserializeXYWH } from '@blocksuite/global/utils';
-import { type BlockModel, BlockViewType } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { deserializeXYWH } from '@pulsar/global/utils';
+import { type BlockModel, BlockViewType } from '@pulsar/store';
 import { css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -90,7 +90,7 @@ export class SurfaceRefNotePortal extends WithDisposable(ShadowlessElement) {
           : undefined,
       transform: `translate(${modelX}px, ${modelY}px)`,
       padding: `${EDGELESS_BLOCK_CHILD_PADDING}px`,
-      border: `${EDGELESS_BLOCK_CHILD_BORDER_WIDTH}px none var(--affine-black-10)`,
+      border: `${EDGELESS_BLOCK_CHILD_BORDER_WIDTH}px none var(--pulsar-black-10)`,
       backgroundColor,
       boxShadow: `var(${NoteShadow.Sticker})`,
       position: 'absolute',

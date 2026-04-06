@@ -1,6 +1,6 @@
 import type { LitElement } from 'lit';
 
-import { type Constructor, DisposableGroup } from '@blocksuite/global/utils';
+import { type Constructor, DisposableGroup } from '@pulsar/global/utils';
 
 // See https://lit.dev/docs/composition/mixins/#mixins-in-typescript
 // This definition should be exported, see https://github.com/microsoft/TypeScript/issues/30355#issuecomment-839834550

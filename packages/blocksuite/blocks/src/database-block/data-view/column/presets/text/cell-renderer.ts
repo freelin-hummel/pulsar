@@ -7,7 +7,7 @@ import { BaseCellRenderer } from '../../base-cell.js';
 import { createFromBaseCellRenderer } from '../../renderer.js';
 import { textColumnModelConfig } from './define.js';
 
-@customElement('affine-database-text-cell')
+@customElement('pulsar-database-text-cell')
 export class TextCell extends BaseCellRenderer<string> {
   static override styles = css`
     affine-database-text-cell {
@@ -27,19 +27,19 @@ export class TextCell extends BaseCellRenderer<string> {
       padding: 0;
       border: none;
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      font-size: var(--affine-font-base);
-      line-height: var(--affine-line-height);
-      color: var(--affine-text-primary-color);
+      font-size: var(--pulsar-font-base);
+      line-height: var(--pulsar-line-height);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       background-color: transparent;
     }
   `;
 
   override render() {
-    return html` <div class="affine-database-text">${this.value ?? ''}</div>`;
+    return html` <div class="pulsar-database-text">${this.value ?? ''}</div>`;
   }
 }
-@customElement('affine-database-text-cell-editing')
+@customElement('pulsar-database-text-cell-editing')
 export class TextCellEditing extends BaseCellRenderer<string> {
   private _keydown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' && !e.isComposing) {
@@ -74,9 +74,9 @@ export class TextCellEditing extends BaseCellRenderer<string> {
       padding: 0;
       border: none;
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      font-size: var(--affine-font-base);
-      line-height: var(--affine-line-height);
-      color: var(--affine-text-primary-color);
+      font-size: var(--pulsar-font-base);
+      line-height: var(--pulsar-line-height);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       background-color: transparent;
     }
@@ -104,7 +104,7 @@ export class TextCellEditing extends BaseCellRenderer<string> {
     return html`<input
       .value="${this.value ?? ''}"
       @keydown="${this._keydown}"
-      class="affine-database-text"
+      class="pulsar-database-text"
     />`;
   }
 

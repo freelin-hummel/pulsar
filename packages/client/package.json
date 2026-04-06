@@ -11,9 +11,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@blocksuite/blocks": "workspace:*",
-    "@blocksuite/presets": "workspace:*",
-    "@blocksuite/store": "workspace:*",
+    "@pulsar/blocks": "workspace:*",
+    "@pulsar/presets": "workspace:*",
+    "@pulsar/store": "workspace:*",
     "@pulsar/ecs": "workspace:*",
     "@pulsar/shared": "workspace:*",
     "lucide-react": "^1.7.0",

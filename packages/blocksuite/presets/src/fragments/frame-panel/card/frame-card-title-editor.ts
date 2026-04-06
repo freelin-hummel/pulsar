@@ -1,6 +1,6 @@
-import type { FrameBlockModel, RichText } from '@blocksuite/blocks';
+import type { FrameBlockModel, RichText } from '@pulsar/blocks';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -11,9 +11,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAME_TITLE_EDITOR = 'affine-frame-card-title-editor';
+export const PULSAR_FRAME_TITLE_EDITOR = 'pulsar-frame-card-title-editor';
 
-@customElement(AFFINE_FRAME_TITLE_EDITOR)
+@customElement(PULSAR_FRAME_TITLE_EDITOR)
 export class FrameCardTitleEditor extends WithDisposable(ShadowlessElement) {
   private _isComposing = false;
 
@@ -75,15 +75,15 @@ export class FrameCardTitleEditor extends WithDisposable(ShadowlessElement) {
       maxHeight: '20px',
       width: 'fit-content',
       height: '20px',
-      fontSize: 'var(--affine-font-sm)',
+      fontSize: 'var(--pulsar-font-sm)',
       lineHeight: '20px',
       position: 'absolute',
       left: `${this.left}px`,
       top: '0px',
       minWidth: '8px',
-      background: 'var(--affine-background-primary-color)',
-      border: '1px solid var(--affine-primary-color)',
-      color: 'var(--affine-text-primary-color)',
+      background: 'var(--pulsar-background-primary-color)',
+      border: '1px solid var(--pulsar-primary-color)',
+      color: 'var(--pulsar-text-primary-color)',
       boxShadow: '0px 0px 0px 2px rgba(30, 150, 235, 0.30)',
       zIndex: '1',
       display: 'block',
@@ -120,6 +120,6 @@ export class FrameCardTitleEditor extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAME_TITLE_EDITOR]: FrameCardTitleEditor;
+    [PULSAR_FRAME_TITLE_EDITOR]: FrameCardTitleEditor;
   }
 }

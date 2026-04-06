@@ -2,23 +2,23 @@ import type {
   ConnectorMode,
   Connection,
   ConnectorElementModel,
-} from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IBound, IVec } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IBound, IVec } from '@pulsar/global/utils';
 
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
+import { CanvasElementType } from '@pulsar/block-surface';
 import {
   ConnectorEndpointLocations,
   ConnectorEndpointLocationsOnTriangle,
   calculateNearestLocation,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   ShapeType,
   GroupElementModel,
   ShapeElementModel,
-} from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { Bound, noop } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { Bound, noop } from '@pulsar/global/utils';
 
 import type { EdgelessTool } from '../types.js';
 

@@ -1,8 +1,8 @@
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
+import type { ConnectorElementModel } from '@pulsar/model';
 
-import { WithDisposable } from '@blocksuite/block-std';
-import { Vec } from '@blocksuite/global/utils';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { Vec } from '@pulsar/global/utils';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -23,8 +23,8 @@ export class EdgelessConnectorHandle extends WithDisposable(LitElement) {
       height: ${SIZE}px;
       box-sizing: border-box;
       border-radius: 50%;
-      border: 2px solid var(--affine-text-emphasis-color);
-      background-color: var(--affine-background-primary-color);
+      border: 2px solid var(--pulsar-text-emphasis-color);
+      background-color: var(--pulsar-background-primary-color);
       cursor: pointer;
       z-index: 10;
       pointer-events: all;

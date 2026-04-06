@@ -1,7 +1,7 @@
 import {
   ArrowUpIcon,
   LargeFrameIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -40,7 +40,7 @@ export class EdgelessFrameToolButton extends QuickToolMixin(LitElement) {
   override render() {
     const type = this.edgelessTool?.type;
     const arrowColor =
-      type === 'frame' ? 'currentColor' : 'var(--affine-icon-secondary)';
+      type === 'frame' ? 'currentColor' : 'var(--pulsar-icon-secondary)';
     return html`
       <edgeless-tool-icon-button
         class="edgeless-frame-button"

@@ -1,10 +1,10 @@
 import {
   InlineManager,
   textKeymap,
-} from '@blocksuite/affine-components/rich-text';
-import { CodeBlockSchema, ColorScheme } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { BlockService } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/rich-text';
+import { CodeBlockSchema, ColorScheme } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { BlockService } from '@pulsar/block-std';
 import { type Signal, signal } from '@lit-labs/preact-signals';
 import {
   type HighlighterCore,
@@ -44,7 +44,7 @@ export class CodeBlockService extends BlockService {
       loadWasm: getWasm,
     })
       .then(async highlighter => {
-        const config = this.std.getConfig('affine:code');
+        const config = this.std.getConfig('pulsar:code');
         const darkTheme = config?.theme?.dark ?? CODE_BLOCK_DEFAULT_DARK_THEME;
         const lightTheme =
           config?.theme?.light ?? CODE_BLOCK_DEFAULT_LIGHT_THEME;
@@ -64,7 +64,7 @@ export class CodeBlockService extends BlockService {
   }
 
   get langs() {
-    return this.std.getConfig('affine:code')?.langs ?? bundledLanguagesInfo;
+    return this.std.getConfig('pulsar:code')?.langs ?? bundledLanguagesInfo;
   }
 
   get themeKey() {

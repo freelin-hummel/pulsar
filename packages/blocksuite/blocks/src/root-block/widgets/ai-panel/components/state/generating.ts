@@ -1,8 +1,8 @@
 import {
   AIStarIconWithAnimation,
   AIStopIcon,
-} from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -28,7 +28,7 @@ export class AIPanelGenerating extends WithDisposable(LitElement) {
       align-items: center;
       gap: 8px;
 
-      color: var(--affine-brand-color);
+      color: var(--pulsar-brand-color);
 
       .text {
         display: flex;
@@ -37,7 +37,7 @@ export class AIPanelGenerating extends WithDisposable(LitElement) {
         flex: 1 0 0;
 
         /* light/smMedium */
-        font-size: var(--affine-font-sm);
+        font-size: var(--pulsar-font-sm);
         font-style: normal;
         font-weight: 500;
         line-height: 22px; /* 157.143% */
@@ -64,7 +64,7 @@ export class AIPanelGenerating extends WithDisposable(LitElement) {
         width: 20px;
       }
       .esc-label {
-        font-size: var(--affine-font-xs);
+        font-size: var(--pulsar-font-xs);
         font-weight: 500;
         line-height: 20px;
       }

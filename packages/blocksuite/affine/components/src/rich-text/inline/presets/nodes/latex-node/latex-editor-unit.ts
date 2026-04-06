@@ -1,7 +1,7 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
 
-import { ShadowlessElement } from '@blocksuite/block-std';
-import { type DeltaInsert, ZERO_WIDTH_SPACE } from '@blocksuite/inline';
+import { ShadowlessElement } from '@pulsar/block-std';
+import { type DeltaInsert, ZERO_WIDTH_SPACE } from '@pulsar/inline';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -46,7 +46,7 @@ export class LatexEditorUnit extends ShadowlessElement {
   }
 
   @property({ attribute: false })
-  accessor delta: DeltaInsert<AffineTextAttributes> = {
+  accessor delta: DeltaInsert<PulsarTextAttributes> = {
     insert: ZERO_WIDTH_SPACE,
   };
 }

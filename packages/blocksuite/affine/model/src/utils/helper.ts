@@ -1,11 +1,11 @@
-import type { Constructor } from '@blocksuite/global/utils';
+import type { Constructor } from '@pulsar/global/utils';
 
 import {
   type BaseBlockTransformer,
   type BlockModel,
   type InternalPrimitives,
   defineBlockSchema,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 import { GfxCompatible, type GfxCompatibleProps } from './gfx-compatible.js';
 
@@ -42,7 +42,7 @@ export function createEmbedBlockSchema<
   transformer?: () => Transformer;
 }) {
   return defineBlockSchema({
-    flavour: `affine:embed-${name}`,
+    flavour: `pulsar:embed-${name}`,
     props: internalPrimitives => {
       const userProps = props?.(internalPrimitives);
 

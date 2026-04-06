@@ -1,8 +1,8 @@
 import {
   EMBED_CARD_HEIGHT,
   EMBED_CARD_WIDTH,
-} from '@blocksuite/affine-shared/consts';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/consts';
+import { Bound } from '@pulsar/global/utils';
 import { customElement } from 'lit/decorators.js';
 
 import type { EdgelessRootService } from '../root-block/index.js';
@@ -10,7 +10,7 @@ import type { EdgelessRootService } from '../root-block/index.js';
 import { toEdgelessEmbedBlock } from '../_common/embed-block-helper/embed-block-element.js';
 import { EmbedLinkedDocBlockComponent } from './embed-linked-doc-block.js';
 
-@customElement('affine-embed-edgeless-linked-doc-block')
+@customElement('pulsar-embed-edgeless-linked-doc-block')
 export class EmbedEdgelessLinkedDocBlockComponent extends toEdgelessEmbedBlock(
   EmbedLinkedDocBlockComponent
 ) {
@@ -37,7 +37,7 @@ export class EmbedEdgelessLinkedDocBlockComponent extends toEdgelessEmbedBlock(
     }
 
     const newId = edgelessService.addBlock(
-      'affine:embed-synced-doc',
+      'pulsar:embed-synced-doc',
       { pageId, xywh: bound.serialize(), caption },
       edgelessService.surface
     );
@@ -63,6 +63,6 @@ export class EmbedEdgelessLinkedDocBlockComponent extends toEdgelessEmbedBlock(
   }
 
   get rootService() {
-    return this.std.getService('affine:page') as EdgelessRootService;
+    return this.std.getService('pulsar:page') as EdgelessRootService;
   }
 }

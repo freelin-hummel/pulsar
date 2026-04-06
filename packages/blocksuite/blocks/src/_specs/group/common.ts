@@ -1,5 +1,5 @@
-import { ListBlockSpec } from '@blocksuite/affine-block-list';
-import { ParagraphBlockSpec } from '@blocksuite/affine-block-paragraph';
+import { ListBlockSpec } from '@pulsar/block-list';
+import { ParagraphBlockSpec } from '@pulsar/block-paragraph';
 
 import { AttachmentBlockSpec } from '../../attachment-block/attachment-spec.js';
 import { BookmarkBlockSpec } from '../../bookmark-block/bookmark-spec.js';

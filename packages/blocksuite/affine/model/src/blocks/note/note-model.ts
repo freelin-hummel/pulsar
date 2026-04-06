@@ -1,8 +1,8 @@
-import type { GfxElementGeometry } from '@blocksuite/block-std/gfx';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { GfxElementGeometry } from '@pulsar/block-std/gfx';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { Bound } from '@blocksuite/global/utils';
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { Bound } from '@pulsar/global/utils';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 import {
   type Color,
@@ -15,7 +15,7 @@ import {
 import { GfxCompatible } from '../../utils/index.js';
 
 export const NoteBlockSchema = defineBlockSchema({
-  flavour: 'affine:note',
+  flavour: 'pulsar:note',
   props: (): NoteProps => ({
     xywh: `[0,0,${NOTE_WIDTH},95]`,
     background: DEFAULT_NOTE_BACKGROUND_COLOR,
@@ -34,20 +34,20 @@ export const NoteBlockSchema = defineBlockSchema({
   metadata: {
     version: 1,
     role: 'hub',
-    parent: ['affine:page'],
+    parent: ['pulsar:page'],
     children: [
-      'affine:paragraph',
-      'affine:list',
-      'affine:code',
-      'affine:divider',
-      'affine:database',
-      'affine:data-view',
-      'affine:image',
-      'affine:bookmark',
-      'affine:attachment',
-      'affine:surface-ref',
-      'affine:embed-*',
-      'affine:latex',
+      'pulsar:paragraph',
+      'pulsar:list',
+      'pulsar:code',
+      'pulsar:divider',
+      'pulsar:database',
+      'pulsar:data-view',
+      'pulsar:image',
+      'pulsar:bookmark',
+      'pulsar:attachment',
+      'pulsar:surface-ref',
+      'pulsar:embed-*',
+      'pulsar:latex',
     ],
   },
   toModel: () => {
@@ -113,10 +113,10 @@ export class NoteBlockModel
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:note': NoteBlockModel;
+      'pulsar:note': NoteBlockModel;
     }
     interface EdgelessBlockModelMap {
-      'affine:note': NoteBlockModel;
+      'pulsar:note': NoteBlockModel;
     }
   }
 }

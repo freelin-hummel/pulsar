@@ -3,9 +3,9 @@ import {
   ConnectorCWithArrowIcon,
   ConnectorLWithArrowIcon,
   ConnectorXWithArrowIcon,
-} from '@blocksuite/affine-components/icons';
-import { ConnectorMode, getConnectorModeName } from '@blocksuite/affine-model';
-import { SignalWatcher } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { ConnectorMode, getConnectorModeName } from '@pulsar/model';
+import { SignalWatcher } from '@pulsar/block-std';
 import { computed } from '@lit-labs/preact-signals';
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -65,7 +65,7 @@ export class EdgelessConnectorToolButton extends QuickToolMixin(
   override render() {
     const { active } = this;
     const mode = this._mode$.value;
-    const arrowColor = active ? 'currentColor' : 'var(--affine-icon-secondary)';
+    const arrowColor = active ? 'currentColor' : 'var(--pulsar-icon-secondary)';
     return html`
       <edgeless-tool-icon-button
         .tooltip=${this.popper

@@ -1,7 +1,7 @@
-import type { GfxElementGeometry } from '@blocksuite/block-std/gfx';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { GfxElementGeometry } from '@pulsar/block-std/gfx';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 import type { EmbedCardStyle, LinkPreviewData } from '../../utils/index.js';
 
@@ -43,17 +43,17 @@ const defaultBookmarkProps: BookmarkBlockProps = {
 };
 
 export const BookmarkBlockSchema = defineBlockSchema({
-  flavour: 'affine:bookmark',
+  flavour: 'pulsar:bookmark',
   props: (): BookmarkBlockProps => defaultBookmarkProps,
   metadata: {
     version: 1,
     role: 'content',
     parent: [
-      'affine:note',
-      'affine:surface',
-      'affine:edgeless-text',
-      'affine:paragraph',
-      'affine:list',
+      'pulsar:note',
+      'pulsar:surface',
+      'pulsar:edgeless-text',
+      'pulsar:paragraph',
+      'pulsar:list',
     ],
   },
   toModel: () => new BookmarkBlockModel(),
@@ -66,10 +66,10 @@ export class BookmarkBlockModel
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:bookmark': BookmarkBlockModel;
+      'pulsar:bookmark': BookmarkBlockModel;
     }
     interface BlockModels {
-      'affine:bookmark': BookmarkBlockModel;
+      'pulsar:bookmark': BookmarkBlockModel;
     }
   }
 }

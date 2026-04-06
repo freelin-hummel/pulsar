@@ -1,4 +1,4 @@
-import { IS_IPAD } from '@blocksuite/global/env';
+import { IS_IPAD } from '@pulsar/global/env';
 
 import type { UIEventDispatcher } from '../dispatcher.js';
 

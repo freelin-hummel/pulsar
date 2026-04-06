@@ -1,12 +1,12 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { InlineRange } from '@blocksuite/inline';
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { EditorHost } from '@pulsar/block-std';
+import type { InlineRange } from '@pulsar/inline';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   asyncGetBlockComponent,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 import type { RichText } from './rich-text.js';
 
@@ -37,8 +37,8 @@ export function getInlineEditorByModel(
     typeof model === 'string'
       ? editorHost.std.doc.getBlock(model)?.model
       : model;
-  // @ts-ignore TODO: migrate database model to `@blocksuite/affine-model`
-  if (!blockModel || matchFlavours(blockModel, ['affine:database'])) {
+  // @ts-ignore TODO: migrate database model to `@pulsar/model`
+  if (!blockModel || matchFlavours(blockModel, ['pulsar:database'])) {
     // Not support database model since it's may be have multiple inline editor instances.
     // Support to enter the editing state through the Enter key in the database.
     return null;

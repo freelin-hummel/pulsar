@@ -1,7 +1,7 @@
-import type { TextSelection } from '@blocksuite/block-std';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { TextSelection } from '@pulsar/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { DocCollection, type Y } from '@blocksuite/store';
+import { DocCollection, type Y } from '@pulsar/store';
 
 export interface CommentMeta {
   id: string;

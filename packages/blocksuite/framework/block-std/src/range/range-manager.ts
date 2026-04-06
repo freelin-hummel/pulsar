@@ -1,7 +1,7 @@
-import type { TextSelection } from '@blocksuite/block-std';
+import type { TextSelection } from '@pulsar/block-std';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { INLINE_ROOT_ATTR, type InlineRootElement } from '@blocksuite/inline';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { INLINE_ROOT_ATTR, type InlineRootElement } from '@pulsar/inline';
 
 import type { BlockComponent } from '../view/element/block-component.js';
 

@@ -1,4 +1,4 @@
-import { deserializeXYWH } from '@blocksuite/global/utils';
+import { deserializeXYWH } from '@pulsar/global/utils';
 
 import type { GfxBlockModel } from '../block-model.js';
 

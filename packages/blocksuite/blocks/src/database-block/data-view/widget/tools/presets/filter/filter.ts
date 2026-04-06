@@ -20,7 +20,7 @@ const styles = css`
   }
 
   .affine-database-filter-button:hover {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .affine-database-filter-button svg {
@@ -66,7 +66,7 @@ export class DataViewHeaderToolsFilter extends WidgetBase {
     if (this.readonly) return nothing;
     return html`<div
       @click="${this.addFilter}"
-      class="affine-database-filter-button dv-icon-20"
+      class="pulsar-database-filter-button dv-icon-20"
     >
       ${FilterIcon()} Filter
     </div>`;

@@ -1,6 +1,6 @@
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { Rect } from '@blocksuite/global/utils';
-import type { Point } from '@blocksuite/global/utils';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { Rect } from '@pulsar/global/utils';
+import type { Point } from '@pulsar/global/utils';
 
 import {
   BLOCK_CHILDREN_CONTAINER_PADDING_LEFT,
@@ -11,7 +11,7 @@ import { matchFlavours } from '../model/checker.js';
 
 const ATTR_SELECTOR = `[${BLOCK_ID_ATTR}]`;
 
-// margin-top: calc(var(--affine-paragraph-space) + 24px);
+// margin-top: calc(var(--pulsar-paragraph-space) + 24px);
 // h1.margin-top = 8px + 24px = 32px;
 const MAX_SPACE = 32;
 const STEPS = MAX_SPACE / 2 / 2;
@@ -38,10 +38,10 @@ function hasBlockId(element: Element): element is BlockComponent {
  */
 function isRootOrNoteOrSurface(element: BlockComponent) {
   return matchFlavours(element.model, [
-    'affine:page',
-    'affine:note',
-    // @ts-ignore TODO: migrate surface model to @blocksuite/affine-model
-    'affine:surface',
+    'pulsar:page',
+    'pulsar:note',
+    // @ts-ignore TODO: migrate surface model to @pulsar/model
+    'pulsar:surface',
   ]);
 }
 
@@ -293,7 +293,7 @@ export function getBlockComponentsExcludeSubtrees(
 
 /**
  * Find block element from an `Element[]`.
- * In Chrome/Safari, `document.elementsFromPoint` does not include `affine-image`.
+ * In Chrome/Safari, `document.elementsFromPoint` does not include `pulsar-image`.
  */
 function findBlockComponent(elements: Element[], parent?: Element) {
   const len = elements.length;

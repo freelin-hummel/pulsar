@@ -2,13 +2,13 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { FrameBlockService } from './frame-service.js';
 
 export const FrameBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:frame'),
+  FlavourExtension('pulsar:frame'),
   FrameBlockService,
-  BlockViewExtension('affine:frame', literal`affine-frame`),
+  BlockViewExtension('pulsar:frame', literal`pulsar-frame`),
 ];

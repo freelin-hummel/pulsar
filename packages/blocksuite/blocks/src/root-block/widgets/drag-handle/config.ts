@@ -2,9 +2,9 @@ import type {
   BlockComponent,
   EditorHost,
   PointerEventState,
-} from '@blocksuite/block-std';
-import type { Disposable, Rect } from '@blocksuite/global/utils';
-import type { Point } from '@blocksuite/global/utils';
+} from '@pulsar/block-std';
+import type { Disposable, Rect } from '@pulsar/global/utils';
+import type { Point } from '@pulsar/global/utils';
 
 import type { DragPreview } from './components/drag-preview.js';
 

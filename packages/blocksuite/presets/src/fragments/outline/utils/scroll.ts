@@ -1,14 +1,14 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { NoteDisplayMode } from '@blocksuite/blocks';
-import { DisposableGroup, clamp } from '@blocksuite/global/utils';
+import { NoteDisplayMode } from '@pulsar/blocks';
+import { DisposableGroup, clamp } from '@pulsar/global/utils';
 
-import type { AffineEditorContainer } from '../../../editors/editor-container.js';
+import type { PulsarEditorContainer } from '../../../editors/editor-container.js';
 
 import { getDocTitleByEditorHost } from '../../doc-title/doc-title.js';
 import { getHeadingBlocksFromDoc } from './query.js';
 
-export function scrollToBlock(editor: AffineEditorContainer, blockId: string) {
+export function scrollToBlock(editor: PulsarEditorContainer, blockId: string) {
   const { host, mode } = editor;
   if (mode === 'edgeless' || !host) return;
 
@@ -52,7 +52,7 @@ export function isBlockBeforeViewportCenter(
 }
 
 export const observeActiveHeadingDuringScroll = (
-  getEditor: () => AffineEditorContainer, // workaround for editor changed
+  getEditor: () => PulsarEditorContainer, // workaround for editor changed
   update: (activeHeading: string | null) => void
 ) => {
   const editor = getEditor();
@@ -89,7 +89,7 @@ export const observeActiveHeadingDuringScroll = (
 let highlightMask: HTMLDivElement | null = null;
 let highlightTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
-function highlightBlock(editor: AffineEditorContainer, blockId: string) {
+function highlightBlock(editor: PulsarEditorContainer, blockId: string) {
   const emptyClear = () => {};
 
   const { host } = editor;
@@ -97,7 +97,7 @@ function highlightBlock(editor: AffineEditorContainer, blockId: string) {
 
   if (editor.doc.root?.id === blockId) return emptyClear;
 
-  const rootComponent = host.querySelector('affine-page-root');
+  const rootComponent = host.querySelector('pulsar-page-root');
   if (!rootComponent) return emptyClear;
 
   if (!rootComponent.viewport) {
@@ -129,7 +129,7 @@ function highlightBlock(editor: AffineEditorContainer, blockId: string) {
     left: `${left - offsetX + scrollLeft}px`,
     width: `${width}px`,
     height: `${height}px`,
-    background: 'var(--affine-hover-color)',
+    background: 'var(--pulsar-hover-color)',
     borderRadius: '4px',
     display: 'block',
   });
@@ -160,7 +160,7 @@ function highlightBlock(editor: AffineEditorContainer, blockId: string) {
 // this function is useful when the scroll need smooth animation
 let highlightIntervalId: ReturnType<typeof setInterval> | null = null;
 export async function scrollToBlockWithHighlight(
-  editor: AffineEditorContainer,
+  editor: PulsarEditorContainer,
   blockId: string,
   timeout = 3000
 ) {

@@ -1,7 +1,7 @@
-import type { IVec3 } from '@blocksuite/global/utils';
-import type { Bound } from '@blocksuite/global/utils';
+import type { IVec3 } from '@pulsar/global/utils';
+import type { Bound } from '@pulsar/global/utils';
 
-import { almostEqual, assertExists } from '@blocksuite/global/utils';
+import { almostEqual, assertExists } from '@pulsar/global/utils';
 
 import { Graph } from './graph.js';
 import { PriorityQueue } from './priority-queue.js';

@@ -1,9 +1,9 @@
 import {
   DarkLoadingIcon,
   LightLoadingIcon,
-} from '@blocksuite/affine-components/icons';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { WithDisposable } from '@pulsar/block-std';
 import { baseTheme } from '@toeverything/theme';
 import {
   LitElement,
@@ -29,7 +29,7 @@ class GeneratingPlaceholder extends WithDisposable(LitElement) {
 
     .generating-header {
       width: 100%;
-      font-size: var(--affine-font-xs);
+      font-size: var(--pulsar-font-xs);
       font-style: normal;
       font-weight: 500;
       line-height: 20px;
@@ -38,7 +38,7 @@ class GeneratingPlaceholder extends WithDisposable(LitElement) {
 
     .generating-header,
     .loading-progress {
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
     }
 
@@ -50,9 +50,9 @@ class GeneratingPlaceholder extends WithDisposable(LitElement) {
       box-sizing: border-box;
       width: 100%;
       border-radius: 4px;
-      border: 2px solid var(--affine-primary-color, #1e96eb);
-      background: var(--affine-blue-50, #effaff);
-      color: var(--affine-brand-color);
+      border: 2px solid var(--pulsar-primary-color, #1e96eb);
+      background: var(--pulsar-blue-50, #effaff);
+      color: var(--pulsar-brand-color);
       gap: 4px;
     }
 
@@ -77,13 +77,13 @@ class GeneratingPlaceholder extends WithDisposable(LitElement) {
     }
 
     .loading-text {
-      font-size: var(--affine-font-base);
+      font-size: var(--pulsar-font-base);
       height: 24px;
       line-height: 24px;
     }
 
     .loading-stage {
-      font-size: var(--affine-font-xs);
+      font-size: var(--pulsar-font-xs);
       height: 20px;
       line-height: 20px;
     }

@@ -3,11 +3,11 @@ import {
   ConnectorMode,
   type LocalConnectorElementModel,
   type PointStyle,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   type PointLocation,
   getBezierParameters,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { RoughCanvas } from '../../../utils/rough/canvas.js';
 import type { CanvasRenderer } from '../../canvas-renderer.js';

@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { property } from 'lit/decorators.js';
 
 import type { DataViewExpose } from '../view/data-view.js';

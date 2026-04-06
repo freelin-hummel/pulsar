@@ -1,4 +1,4 @@
-import { getSvgPath } from '@blocksuite/global/utils';
+import { getSvgPath } from '@pulsar/global/utils';
 import { LitElement, type TemplateResult, css, html, svg } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 

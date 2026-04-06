@@ -1,10 +1,10 @@
-import type { FrameBlockModel } from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IPoint, IVec } from '@blocksuite/global/utils';
+import type { FrameBlockModel } from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IPoint, IVec } from '@pulsar/global/utils';
 
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { Bound, Vec, noop } from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { Bound, Vec, noop } from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 
 import { getTopElements } from '../utils/tree.js';
 import { EdgelessToolController } from './edgeless-tool.js';
@@ -81,7 +81,7 @@ export class FrameToolController extends EdgelessToolController<FrameTool> {
       const frames = this._service.frames;
 
       const id = this._service.addBlock(
-        'affine:frame',
+        'pulsar:frame',
         {
           title: new DocCollection.Y.Text(`Frame ${frames.length + 1}`),
           xywh: Bound.fromPoints([this._startPoint, currentPoint]).serialize(),

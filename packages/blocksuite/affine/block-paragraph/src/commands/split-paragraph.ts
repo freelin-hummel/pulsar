@@ -1,10 +1,10 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
 import {
   focusTextModel,
   getInlineEditorByModel,
-} from '@blocksuite/affine-components/rich-text';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-components/rich-text';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const splitParagraphCommand: Command<
   never,
@@ -23,7 +23,7 @@ export const splitParagraphCommand: Command<
   if (!blockId) return;
 
   const model = doc.getBlock(blockId)?.model;
-  if (!model || !matchFlavours(model, ['affine:paragraph'])) return;
+  if (!model || !matchFlavours(model, ['pulsar:paragraph'])) return;
 
   const inlineEditor = getInlineEditorByModel(host, model);
   const range = inlineEditor?.getInlineRange();

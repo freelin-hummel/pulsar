@@ -1,8 +1,8 @@
-import type { CodeBlockModel } from '@blocksuite/affine-model';
+import type { CodeBlockModel } from '@pulsar/model';
 
-import { HoverController } from '@blocksuite/affine-components/hover';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { sleep } from '@blocksuite/global/utils';
+import { HoverController } from '@pulsar/editor-components/hover';
+import { WidgetComponent } from '@pulsar/block-std';
+import { sleep } from '@pulsar/global/utils';
 import { offset } from '@floating-ui/dom';
 import { computed } from '@lit-labs/preact-signals';
 import { html } from 'lit';
@@ -12,11 +12,11 @@ import type { CodeBlockComponent } from '../../../code-block/index.js';
 
 import './components/lang-button.js';
 
-export const AFFINE_CODE_LANGUAGE_LIST_WIDGET =
-  'affine-code-language-list-widget';
+export const PULSAR_CODE_LANGUAGE_LIST_WIDGET =
+  'pulsar-code-language-list-widget';
 
-@customElement(AFFINE_CODE_LANGUAGE_LIST_WIDGET)
-export class AffineCodeLanguageListWidget extends WidgetComponent<
+@customElement(PULSAR_CODE_LANGUAGE_LIST_WIDGET)
+export class PulsarCodeLanguageListWidget extends WidgetComponent<
   CodeBlockModel,
   CodeBlockComponent
 > {
@@ -47,7 +47,7 @@ export class AffineCodeLanguageListWidget extends WidgetComponent<
         </language-list-button>`,
         // stacking-context(editor-host)
         portalStyles: {
-          zIndex: 'var(--affine-z-index-popover)',
+          zIndex: 'var(--pulsar-z-index-popover)',
         },
         container: this.block,
         computePosition: {
@@ -103,6 +103,6 @@ export class AffineCodeLanguageListWidget extends WidgetComponent<
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_CODE_LANGUAGE_LIST_WIDGET]: AffineCodeLanguageListWidget;
+    [PULSAR_CODE_LANGUAGE_LIST_WIDGET]: PulsarCodeLanguageListWidget;
   }
 }

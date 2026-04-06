@@ -1,12 +1,12 @@
-import { toGfxBlockComponent } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+import { toGfxBlockComponent } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
 import { AIChatBlockComponent } from './ai-chat-block.js';
 
-@customElement('affine-edgeless-ai-chat')
+@customElement('pulsar-edgeless-ai-chat')
 export class EdgelessAIChatBlockComponent extends toGfxBlockComponent(
   AIChatBlockComponent
 ) {
@@ -20,8 +20,8 @@ export class EdgelessAIChatBlockComponent extends toGfxBlockComponent(
       height: `${height}px`,
       borderRadius: '8px',
       transformOrigin: '0 0',
-      boxShadow: 'var(--affine-shadow-1)',
-      border: '1px solid var(--affine-border-color)',
+      boxShadow: 'var(--pulsar-shadow-1)',
+      border: '1px solid var(--pulsar-border-color)',
       transform: `scale(${scale})`,
     };
 
@@ -35,6 +35,6 @@ export class EdgelessAIChatBlockComponent extends toGfxBlockComponent(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-edgeless-ai-chat': EdgelessAIChatBlockComponent;
+    'pulsar-edgeless-ai-chat': EdgelessAIChatBlockComponent;
   }
 }

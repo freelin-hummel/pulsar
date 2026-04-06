@@ -2,13 +2,13 @@ import {
   BlockViewExtension,
   type ExtensionType,
   FlavourExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { PageRootService } from '../page/page-root-service.js';
 
 export const PreviewPageSpec: ExtensionType[] = [
-  FlavourExtension('affine:page'),
+  FlavourExtension('pulsar:page'),
   PageRootService,
-  BlockViewExtension('affine:page', literal`affine-preview-root`),
+  BlockViewExtension('pulsar:page', literal`pulsar-preview-root`),
 ];

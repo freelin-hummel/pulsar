@@ -3,11 +3,11 @@ import type {
   BlockSelection,
   UIEventHandler,
   UIEventStateContext,
-} from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 import type { ReactiveController, ReactiveControllerHost } from 'lit';
 
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 
 import { moveBlockConfigs } from '../_common/configs/move-block.js';
 import { quickActionConfig } from '../_common/configs/quick-action/config.js';
@@ -70,7 +70,7 @@ export class KeymapController implements ReactiveController {
                   return;
                 }
 
-                if (item.flavour !== 'affine:code') {
+                if (item.flavour !== 'pulsar:code') {
                   return;
                 }
 
@@ -131,9 +131,9 @@ export class KeymapController implements ReactiveController {
 
             if (
               !matchFlavours(nextBlock.model, [
-                'affine:paragraph',
-                'affine:list',
-                'affine:code',
+                'pulsar:paragraph',
+                'pulsar:list',
+                'pulsar:code',
               ])
             ) {
               this._std.command
@@ -170,9 +170,9 @@ export class KeymapController implements ReactiveController {
             event.preventDefault();
             if (
               matchFlavours(nextBlock.model, [
-                'affine:paragraph',
-                'affine:list',
-                'affine:code',
+                'pulsar:paragraph',
+                'pulsar:list',
+                'pulsar:code',
               ])
             ) {
               this._std.command
@@ -225,9 +225,9 @@ export class KeymapController implements ReactiveController {
 
             if (
               !matchFlavours(prevBlock.model, [
-                'affine:paragraph',
-                'affine:list',
-                'affine:code',
+                'pulsar:paragraph',
+                'pulsar:list',
+                'pulsar:code',
               ])
             ) {
               this._std.command
@@ -262,9 +262,9 @@ export class KeymapController implements ReactiveController {
 
             if (
               matchFlavours(prevBlock.model, [
-                'affine:paragraph',
-                'affine:list',
-                'affine:code',
+                'pulsar:paragraph',
+                'pulsar:list',
+                'pulsar:code',
               ])
             ) {
               event.preventDefault();
@@ -387,7 +387,7 @@ export class KeymapController implements ReactiveController {
 
         const index = parent.children.indexOf(model) ?? undefined;
 
-        const blockId = doc.addBlock('affine:paragraph', {}, parent, index + 1);
+        const blockId = doc.addBlock('pulsar:paragraph', {}, parent, index + 1);
 
         const sel = selection.create('text', {
           from: {

@@ -1,9 +1,9 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { CopyIcon } from '@blocksuite/affine-components/icons';
-import { AIDoneIcon } from '@blocksuite/affine-components/icons';
-import { WarningIcon } from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
+import { CopyIcon } from '@pulsar/editor-components/icons';
+import { AIDoneIcon } from '@pulsar/editor-components/icons';
+import { WarningIcon } from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
@@ -22,7 +22,7 @@ export class AIFinishTip extends WithDisposable(LitElement) {
       padding: 0 12px;
       gap: 4px;
 
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
 
       .text {
         display: flex;
@@ -30,7 +30,7 @@ export class AIFinishTip extends WithDisposable(LitElement) {
         flex: 1 0 0;
 
         /* light/xs */
-        font-size: var(--affine-font-xs);
+        font-size: var(--pulsar-font-xs);
         font-style: normal;
         font-weight: 400;
         line-height: 20px; /* 166.667% */
@@ -51,12 +51,12 @@ export class AIFinishTip extends WithDisposable(LitElement) {
           user-select: none;
         }
         .copy:hover {
-          color: var(--affine-icon-color);
-          background: var(--affine-hover-color);
+          color: var(--pulsar-icon-color);
+          background: var(--pulsar-hover-color);
           cursor: pointer;
         }
         .copied {
-          color: var(--affine-brand-color);
+          color: var(--pulsar-brand-color);
         }
       }
     }
@@ -76,7 +76,7 @@ export class AIFinishTip extends WithDisposable(LitElement) {
                     this.copied = !!(await this.copy?.onCopy());
                     if (this.copied) {
                       const rootService =
-                        this.host.std.getService('affine:page');
+                        this.host.std.getService('pulsar:page');
                       const { notificationService } = rootService;
                       notificationService?.toast('Copied to clipboard');
                     }

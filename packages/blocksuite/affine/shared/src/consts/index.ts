@@ -1,4 +1,4 @@
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
+import type { EmbedCardStyle } from '@pulsar/model';
 
 export const BLOCK_ID_ATTR = 'data-block-id';
 
@@ -37,13 +37,13 @@ export const EMBED_CARD_HEIGHT: Record<EmbedCardStyle, number> = {
 };
 
 export const EMBED_BLOCK_FLAVOUR_LIST = [
-  'affine:embed-github',
-  'affine:embed-youtube',
-  'affine:embed-figma',
-  'affine:embed-linked-doc',
-  'affine:embed-synced-doc',
-  'affine:embed-html',
-  'affine:embed-loom',
+  'pulsar:embed-github',
+  'pulsar:embed-youtube',
+  'pulsar:embed-figma',
+  'pulsar:embed-linked-doc',
+  'pulsar:embed-synced-doc',
+  'pulsar:embed-html',
+  'pulsar:embed-loom',
 ] as const;
 
 export const DEFAULT_IMAGE_PROXY_ENDPOINT =

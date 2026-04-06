@@ -1,8 +1,8 @@
-import type { AffineInlineEditor } from '@blocksuite/affine-components/rich-text';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { PulsarInlineEditor } from '@pulsar/editor-components/rich-text';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { MoreHorizontalIcon } from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
+import { MoreHorizontalIcon } from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, query, queryAll, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -18,7 +18,7 @@ import {
 } from '../../../_common/components/utils.js';
 import { styles } from './styles.js';
 
-@customElement('affine-linked-doc-popover')
+@customElement('pulsar-linked-doc-popover')
 export class LinkedDocPopover extends WithDisposable(LitElement) {
   private _abort = () => {
     // remove popover dom
@@ -43,10 +43,10 @@ export class LinkedDocPopover extends WithDisposable(LitElement) {
       query: string,
       abort: () => void,
       editorHost: EditorHost,
-      inlineEditor: AffineInlineEditor
+      inlineEditor: PulsarInlineEditor
     ) => Promise<LinkedMenuGroup[]>,
     private editorHost: EditorHost,
-    private inlineEditor: AffineInlineEditor,
+    private inlineEditor: PulsarInlineEditor,
     private abortController: AbortController
   ) {
     super();

@@ -1,4 +1,4 @@
-import type { IVec, IVec3 } from '@blocksuite/global/utils';
+import type { IVec, IVec3 } from '@pulsar/global/utils';
 
 import type { StrokeOptions, StrokePoint } from './types.js';
 

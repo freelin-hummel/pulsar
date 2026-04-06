@@ -1,11 +1,11 @@
 import type {
   FrameBlockModel,
   ParagraphBlockModel,
-} from '@blocksuite/affine-model';
-import type { BlockModel } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { BlockModel } from '@pulsar/store';
 import type { TemplateResult } from 'lit';
 
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
+import { CanvasElementType } from '@pulsar/block-surface';
 import {
   ArrowDownBigIcon,
   ArrowUpBigIcon,
@@ -25,26 +25,26 @@ import {
   TodayIcon,
   TomorrowIcon,
   YesterdayIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   REFERENCE_NODE,
   clearMarksOnDiscontinuousInput,
   getInlineEditorByModel,
   textFormatConfigs,
-} from '@blocksuite/affine-components/rich-text';
-import { toast } from '@blocksuite/affine-components/toast';
+} from '@pulsar/editor-components/rich-text';
+import { toast } from '@pulsar/editor-components/toast';
 import {
   createDefaultDoc,
   getImageFilesFromLocal,
   matchFlavours,
   openFileOrFiles,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 import { GroupingIcon, TeXIcon } from '@blocksuite/icons/lit';
-import { Slice, Text } from '@blocksuite/store';
+import { Slice, Text } from '@pulsar/store';
 
 import type { DataViewBlockComponent } from '../../../data-view-block/index.js';
 import type { RootBlockComponent } from '../../types.js';
-import type { AffineLinkedDocWidget } from '../linked-doc/index.js';
+import type { PulsarLinkedDocWidget } from '../linked-doc/index.js';
 
 import { toggleEmbedCardCreateModal } from '../../../_common/components/embed-card/modal/embed-card-create-modal.js';
 import { textConversionConfigs } from '../../../_common/configs/text-conversion.js';
@@ -126,7 +126,7 @@ export type SlashMenuContext = {
 
 export const defaultSlashMenuConfig: SlashMenuConfig = {
   triggerKeys: ['/', '、'],
-  ignoreBlockTypes: ['affine:code'],
+  ignoreBlockTypes: ['pulsar:code'],
   maxHeight: 344,
   tooltipTimeout: 800,
   items: [
@@ -146,7 +146,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       ],
     },
     ...textConversionConfigs
-      .filter(i => i.flavour === 'affine:code')
+      .filter(i => i.flavour === 'pulsar:code')
       .map<SlashMenuActionItem>(config => ({
         ...createConversionItem(config),
         showWhen: ({ model }) =>
@@ -165,7 +165,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
               if (!newModels) return false;
 
               // Reset selection if the target is code block
-              if (flavour === 'affine:code') {
+              if (flavour === 'pulsar:code') {
                 if (newModels.length !== 1) {
                   console.error(
                     "Failed to reset selection! New model length isn't 1"
@@ -250,7 +250,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
             );
             if (!textPoint) return;
             const [text] = textPoint;
-            const latexNode = text.parentElement?.closest('affine-latex-node');
+            const latexNode = text.parentElement?.closest('pulsar-latex-node');
             if (!latexNode) return;
             latexNode.toggleEditor();
           })
@@ -261,7 +261,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
     // ---------------------------------------------------------
     { groupName: 'List' },
     ...textConversionConfigs
-      .filter(i => i.flavour === 'affine:list')
+      .filter(i => i.flavour === 'pulsar:list')
       .map(createConversionItem),
 
     // ---------------------------------------------------------
@@ -299,7 +299,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
     {
       groupName: 'Page',
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:embed-linked-doc'),
+        model.doc.schema.flavourSchemaMap.has('pulsar:embed-linked-doc'),
     },
     {
       name: 'New Doc',
@@ -307,7 +307,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: NewDocIcon,
       tooltip: slashMenuToolTips['New Doc'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:embed-linked-doc'),
+        model.doc.schema.flavourSchemaMap.has('pulsar:embed-linked-doc'),
       action: ({ rootComponent, model }) => {
         const newDoc = createDefaultDoc(rootComponent.doc.collection);
         insertContent(rootComponent.host, model, REFERENCE_NODE, {
@@ -326,11 +326,11 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       alias: ['dual link'],
       showWhen: ({ rootComponent, model }) => {
         const linkedDocWidgetEle =
-          rootComponent.widgetComponents['affine-linked-doc-widget'];
+          rootComponent.widgetComponents['pulsar-linked-doc-widget'];
         if (!linkedDocWidgetEle) return false;
 
         const hasLinkedDocSchema = model.doc.schema.flavourSchemaMap.has(
-          'affine:embed-linked-doc'
+          'pulsar:embed-linked-doc'
         );
         if (!hasLinkedDocSchema) return false;
 
@@ -347,10 +347,10 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         insertContent(rootComponent.host, model, triggerKey);
         if (!model.doc.root) return;
         const widgetEle =
-          rootComponent.widgetComponents['affine-linked-doc-widget'];
+          rootComponent.widgetComponents['pulsar-linked-doc-widget'];
         if (!widgetEle) return;
         // We have checked the existence of showLinkedDoc method in the showWhen
-        const linkedDocWidget = widgetEle as AffineLinkedDocWidget;
+        const linkedDocWidget = widgetEle as PulsarLinkedDocWidget;
         // Wait for range to be updated
         setTimeout(() => {
           const inlineEditor = getInlineEditorByModel(
@@ -371,7 +371,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: ImageIcon20,
       tooltip: slashMenuToolTips['Image'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:image') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:image') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const parent = rootComponent.doc.getParent(model);
@@ -382,7 +382,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         const imageFiles = await getImageFilesFromLocal();
         if (!imageFiles.length) return;
 
-        const imageService = rootComponent.std.getService('affine:image');
+        const imageService = rootComponent.std.getService('pulsar:image');
         const maxFileSize = imageService.maxFileSize;
 
         addSiblingImageBlock(
@@ -400,7 +400,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: LinkIcon,
       tooltip: slashMenuToolTips['Link'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:bookmark') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:bookmark') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const parentModel = rootComponent.doc.getParent(model);
@@ -424,14 +424,14 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       tooltip: slashMenuToolTips['Attachment'],
       alias: ['file'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:attachment') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:attachment') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const file = await openFileOrFiles();
         if (!file) return;
 
         const attachmentService =
-          rootComponent.std.getService('affine:attachment');
+          rootComponent.std.getService('pulsar:attachment');
         if (!attachmentService) return;
         const maxFileSize = attachmentService.maxFileSize;
 
@@ -450,7 +450,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: YoutubeIcon,
       tooltip: slashMenuToolTips['YouTube'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:embed-youtube') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:embed-youtube') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const parentModel = rootComponent.doc.getParent(model);
@@ -473,7 +473,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: GithubIcon,
       tooltip: slashMenuToolTips['Github'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:embed-github') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:embed-github') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const parentModel = rootComponent.doc.getParent(model);
@@ -498,7 +498,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: FigmaIcon,
       tooltip: slashMenuToolTips['Figma'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:embed-figma') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:embed-figma') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const parentModel = rootComponent.doc.getParent(model);
@@ -520,7 +520,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       name: 'Loom',
       icon: LoomIcon,
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:embed-loom') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:embed-loom') &&
         !insideDatabase(model),
       action: async ({ rootComponent, model }) => {
         const parentModel = rootComponent.doc.getParent(model);
@@ -555,7 +555,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         if (index === -1) return;
 
         const id = doc.addBlock(
-          'affine:latex',
+          'pulsar:latex',
           {
             latex: '',
           },
@@ -590,7 +590,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       if (!parent) return [];
 
       const frameModels = doc
-        .getBlocksByFlavour('affine:frame')
+        .getBlocksByFlavour('pulsar:frame')
         .map(block => block.model) as FrameBlockModel[];
       const frameItems = frameModels.map<SlashMenuActionItem>(frameModel => ({
         name: 'Frame: ' + frameModel.title,
@@ -599,9 +599,9 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         action: () => {
           const insertIdx = parent.children.indexOf(model);
           const surfaceRefProps = {
-            flavour: 'affine:surface-ref',
+            flavour: 'pulsar:surface-ref',
             reference: frameModel.id,
-            refFlavour: 'affine:frame',
+            refFlavour: 'pulsar:frame',
           };
 
           doc.addSiblingBlocks(
@@ -611,7 +611,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
           );
 
           if (
-            matchFlavours(model, ['affine:paragraph', 'affine:list']) &&
+            matchFlavours(model, ['pulsar:paragraph', 'pulsar:list']) &&
             model.text.length === 0
           ) {
             doc.deleteBlock(model);
@@ -630,7 +630,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
           const { doc } = rootComponent;
           const insertIdx = parent.children.indexOf(model);
           const surfaceRefProps = {
-            flavour: 'affine:surface-ref',
+            flavour: 'pulsar:surface-ref',
             reference: element.get('id'),
             refFlavour: 'group',
           };
@@ -642,7 +642,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
           );
 
           if (
-            matchFlavours(model, ['affine:paragraph', 'affine:list']) &&
+            matchFlavours(model, ['pulsar:paragraph', 'pulsar:list']) &&
             model.text.length === 0
           ) {
             doc.deleteBlock(model);
@@ -726,7 +726,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: DatabaseTableViewIcon20,
       tooltip: slashMenuToolTips['Table View'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:database') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:database') &&
         !insideDatabase(model) &&
         !insideEdgelessText(model),
       action: ({ rootComponent, model }) => {
@@ -734,7 +734,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         if (!id) {
           return;
         }
-        const service = rootComponent.std.getService('affine:database');
+        const service = rootComponent.std.getService('pulsar:database');
         service.initDatabaseBlock(
           rootComponent.doc,
           model,
@@ -751,7 +751,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: DatabaseTableViewIcon20,
       tooltip: slashMenuToolTips['Todo'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:database') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:database') &&
         !insideDatabase(model) &&
         !insideEdgelessText(model) &&
         !!model.doc.awarenessStore.getFlag('enable_block_query'),
@@ -761,7 +761,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         if (!parent) return;
         const index = parent.children.indexOf(model);
         const id = rootComponent.doc.addBlock(
-          'affine:data-view',
+          'pulsar:data-view',
           {},
           rootComponent.doc.getParent(model),
           index + 1
@@ -784,7 +784,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
       icon: DatabaseKanbanViewIcon20,
       tooltip: slashMenuToolTips['Kanban View'],
       showWhen: ({ model }) =>
-        model.doc.schema.flavourSchemaMap.has('affine:database') &&
+        model.doc.schema.flavourSchemaMap.has('pulsar:database') &&
         !insideDatabase(model) &&
         !insideEdgelessText(model),
       action: ({ model, rootComponent }) => {
@@ -792,7 +792,7 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         if (!id) {
           return;
         }
-        const service = rootComponent.std.getService('affine:database');
+        const service = rootComponent.std.getService('pulsar:database');
         service.initDatabaseBlock(
           rootComponent.doc,
           model,

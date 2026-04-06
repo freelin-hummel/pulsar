@@ -1,4 +1,4 @@
-import { type SchemaToModel, defineBlockSchema } from '@blocksuite/store';
+import { type SchemaToModel, defineBlockSchema } from '@pulsar/store';
 
 export type ParagraphType =
   | 'text'
@@ -11,7 +11,7 @@ export type ParagraphType =
   | 'h6';
 
 export const ParagraphBlockSchema = defineBlockSchema({
-  flavour: 'affine:paragraph',
+  flavour: 'pulsar:paragraph',
   props: internal => ({
     type: 'text' as ParagraphType,
     text: internal.Text(),
@@ -20,11 +20,11 @@ export const ParagraphBlockSchema = defineBlockSchema({
     version: 1,
     role: 'content',
     parent: [
-      'affine:note',
-      'affine:database',
-      'affine:paragraph',
-      'affine:list',
-      'affine:edgeless-text',
+      'pulsar:note',
+      'pulsar:database',
+      'pulsar:paragraph',
+      'pulsar:list',
+      'pulsar:edgeless-text',
     ],
   },
 });
@@ -34,7 +34,7 @@ export type ParagraphBlockModel = SchemaToModel<typeof ParagraphBlockSchema>;
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:paragraph': ParagraphBlockModel;
+      'pulsar:paragraph': ParagraphBlockModel;
     }
   }
 }

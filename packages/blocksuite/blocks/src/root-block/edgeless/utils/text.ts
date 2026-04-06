@@ -2,23 +2,23 @@ import type {
   FrameBlockModel,
   GroupElementModel,
   ConnectorElementModel,
-} from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IVec } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IVec } from '@pulsar/global/utils';
 
 import {
   CanvasElementType,
   TextUtils,
   type IModelCoord,
-} from '@blocksuite/affine-block-surface';
-import { TextElementModel, ShapeElementModel } from '@blocksuite/affine-model';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+} from '@pulsar/block-surface';
+import { TextElementModel, ShapeElementModel } from '@pulsar/model';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import {
   Bound,
   assertExists,
   assertInstanceOf,
-} from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 
 import type { EdgelessRootBlockComponent } from '../edgeless-root-block.js';
 

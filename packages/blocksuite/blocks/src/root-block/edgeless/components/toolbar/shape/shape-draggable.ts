@@ -1,18 +1,18 @@
-import { CanvasElementType } from '@blocksuite/affine-block-surface';
+import { CanvasElementType } from '@pulsar/block-surface';
 import {
   ellipseSvg,
   roundedSvg,
   triangleSvg,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
   ShapeType,
   getShapeRadius,
   getShapeType,
-} from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { SignalWatcher } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { SignalWatcher } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';

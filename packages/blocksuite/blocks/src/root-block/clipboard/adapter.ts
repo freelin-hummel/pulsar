@@ -11,11 +11,11 @@ import type {
   ToBlockSnapshotPayload,
   ToDocSnapshotPayload,
   ToSliceSnapshotPayload,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { assertExists } from '@blocksuite/global/utils';
-import { BaseAdapter } from '@blocksuite/store';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { assertExists } from '@pulsar/global/utils';
+import { BaseAdapter } from '@pulsar/store';
 
 import { decodeClipboardBlobs, encodeClipboardBlobs } from './utils.js';
 

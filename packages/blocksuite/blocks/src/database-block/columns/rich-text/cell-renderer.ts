@@ -1,13 +1,13 @@
 import type {
-  AffineInlineEditor,
-  AffineTextAttributes,
+  PulsarInlineEditor,
+  PulsarTextAttributes,
   RichText,
-} from '@blocksuite/affine-components/rich-text';
+} from '@pulsar/editor-components/rich-text';
 
-import { getViewportElement } from '@blocksuite/affine-shared/utils';
-import { IS_MAC } from '@blocksuite/global/env';
-import { assertExists } from '@blocksuite/global/utils';
-import { Text } from '@blocksuite/store';
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { IS_MAC } from '@pulsar/global/env';
+import { assertExists } from '@pulsar/global/utils';
+import { Text } from '@pulsar/store';
 import { css, nothing } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 import { keyed } from 'lit/directives/keyed.js';
@@ -22,8 +22,8 @@ import { createIcon } from '../../data-view/utils/uni-icon.js';
 import { richTextColumnModelConfig } from './define.js';
 
 function toggleStyle(
-  inlineEditor: AffineInlineEditor,
-  attrs: AffineTextAttributes
+  inlineEditor: PulsarInlineEditor,
+  attrs: PulsarTextAttributes
 ): void {
   const inlineRange = inlineEditor.getInlineRange();
   if (!inlineRange) return;
@@ -34,7 +34,7 @@ function toggleStyle(
   }
 
   const deltas = inlineEditor.getDeltasByInlineRange(inlineRange);
-  let oldAttributes: AffineTextAttributes = {};
+  let oldAttributes: PulsarTextAttributes = {};
 
   for (const [delta] of deltas) {
     const attributes = delta.attributes;
@@ -67,7 +67,7 @@ function toggleStyle(
   inlineEditor.syncInlineRange();
 }
 
-@customElement('affine-database-rich-text-cell')
+@customElement('pulsar-database-rich-text-cell')
 export class RichTextCell extends BaseCellRenderer<Text> {
   static override styles = css`
     affine-database-rich-text-cell {
@@ -104,7 +104,7 @@ export class RichTextCell extends BaseCellRenderer<Text> {
   override render() {
     if (!this.service) return nothing;
     if (!this.value || !(this.value instanceof Text)) {
-      return html`<div class="affine-database-rich-text"></div>`;
+      return html`<div class="pulsar-database-rich-text"></div>`;
     }
     return keyed(
       this.value,
@@ -115,7 +115,7 @@ export class RichTextCell extends BaseCellRenderer<Text> {
         .embedChecker=${this.inlineManager?.embedChecker}
         .markdownShortcutHandler=${this.inlineManager?.markdownShortcutHandler}
         .readonly=${true}
-        class="affine-database-rich-text inline-editor"
+        class="pulsar-database-rich-text inline-editor"
       ></rich-text>`
     );
   }
@@ -142,12 +142,12 @@ export class RichTextCell extends BaseCellRenderer<Text> {
   get service() {
     return this.view
       .getContext(HostContextKey)
-      ?.std.getService('affine:database');
+      ?.std.getService('pulsar:database');
   }
 
   get topContenteditableElement() {
     const databaseBlock =
-      this.closest<DatabaseBlockComponent>('affine-database');
+      this.closest<DatabaseBlockComponent>('pulsar-database');
     return databaseBlock?.topContenteditableElement;
   }
 
@@ -155,7 +155,7 @@ export class RichTextCell extends BaseCellRenderer<Text> {
   private accessor _richTextElement: RichText | null = null;
 }
 
-@customElement('affine-database-rich-text-cell-editing')
+@customElement('pulsar-database-rich-text-cell-editing')
 export class RichTextCellEditing extends BaseCellRenderer<Text> {
   private _handleKeyDown = (event: KeyboardEvent) => {
     if (event.key !== 'Escape') {
@@ -318,7 +318,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
         this.topContenteditableElement?.host
           ? getViewportElement(this.topContenteditableElement.host)
           : null}
-      class="affine-database-rich-text inline-editor"
+      class="pulsar-database-rich-text inline-editor"
     ></rich-text>`;
   }
 
@@ -344,12 +344,12 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
   get service() {
     return this.view
       .getContext(HostContextKey)
-      ?.std.getService('affine:database');
+      ?.std.getService('pulsar:database');
   }
 
   get topContenteditableElement() {
     const databaseBlock =
-      this.closest<DatabaseBlockComponent>('affine-database');
+      this.closest<DatabaseBlockComponent>('pulsar-database');
     return databaseBlock?.topContenteditableElement;
   }
 
@@ -359,7 +359,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-rich-text-cell-editing': RichTextCellEditing;
+    'pulsar-database-rich-text-cell-editing': RichTextCellEditing;
   }
 }
 

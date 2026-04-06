@@ -1,10 +1,10 @@
 import {
   NoteNoShadowIcon,
   NoteShadowSampleIcon,
-} from '@blocksuite/affine-components/icons';
-import { NoteShadow } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { NoteShadow } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -94,7 +94,7 @@ export class EdgelessNoteShadowPanel extends WithDisposable(LitElement) {
     }
 
     .item:hover {
-      background-color: var(--affine-hover-color);
+      background-color: var(--pulsar-hover-color);
     }
   `;
 
@@ -118,7 +118,7 @@ export class EdgelessNoteShadowPanel extends WithDisposable(LitElement) {
             style=${styleMap({
               border:
                 this.value === shadow.type
-                  ? '1px solid var(--affine-brand-color)'
+                  ? '1px solid var(--pulsar-brand-color)'
                   : 'none',
             })}
           >

@@ -1,4 +1,4 @@
-import type { PointerEventState } from '@blocksuite/block-std';
+import type { PointerEventState } from '@pulsar/block-std';
 
 import type { GfxBlockModel } from '../block-model.js';
 import type { EdgelessRootBlockComponent } from '../edgeless-root-block.js';

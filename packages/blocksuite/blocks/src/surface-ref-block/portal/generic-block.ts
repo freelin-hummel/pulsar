@@ -1,4 +1,4 @@
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+import type { ImageBlockModel } from '@pulsar/model';
 import type {
   AttachmentBlockModel,
   BookmarkBlockModel,
@@ -9,11 +9,11 @@ import type {
   EmbedLoomModel,
   EmbedSyncedDocModel,
   EmbedYoutubeModel,
-} from '@blocksuite/affine-model';
-import type { BlockModel } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { BlockModel } from '@pulsar/store';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { Bound } from '@blocksuite/global/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { Bound } from '@pulsar/global/utils';
 import { type TemplateResult, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';

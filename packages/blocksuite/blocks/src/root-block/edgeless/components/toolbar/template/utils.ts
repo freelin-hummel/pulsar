@@ -1,4 +1,4 @@
-import { on } from '@blocksuite/affine-shared/utils';
+import { on } from '@pulsar/editor-shared/utils';
 
 export function onClickOutside(target: HTMLElement, fn: () => void) {
   return on(document, 'click', (evt: MouseEvent) => {

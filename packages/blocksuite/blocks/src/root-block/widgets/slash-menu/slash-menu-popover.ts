@@ -1,15 +1,15 @@
-import type { AffineInlineEditor } from '@blocksuite/affine-components/rich-text';
+import type { PulsarInlineEditor } from '@pulsar/editor-components/rich-text';
 
-import { ArrowDownIcon } from '@blocksuite/affine-components/icons';
-import { createLitPortal } from '@blocksuite/affine-components/portal';
-import { getInlineEditorByModel } from '@blocksuite/affine-components/rich-text';
+import { ArrowDownIcon } from '@pulsar/editor-components/icons';
+import { createLitPortal } from '@pulsar/editor-components/portal';
+import { getInlineEditorByModel } from '@pulsar/editor-components/rich-text';
 import {
   isControlledKeyboardEvent,
   isFuzzyMatch,
   substringMatchScore,
-} from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { autoPlacement, offset } from '@floating-ui/dom';
 import { LitElement, type PropertyValues, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
@@ -46,7 +46,7 @@ type InnerSlashMenuContext = SlashMenuContext & {
   onClickItem: (item: SlashMenuActionItem) => void;
 };
 
-@customElement('affine-slash-menu')
+@customElement('pulsar-slash-menu')
 export class SlashMenu extends WithDisposable(LitElement) {
   private _handleClickItem = (item: SlashMenuActionItem) => {
     // Need to remove the search string
@@ -143,7 +143,7 @@ export class SlashMenu extends WithDisposable(LitElement) {
   };
 
   constructor(
-    private inlineEditor: AffineInlineEditor,
+    private inlineEditor: PulsarInlineEditor,
     private abortController = new AbortController()
   ) {
     super();
@@ -336,7 +336,7 @@ export class InnerSlashMenu extends WithDisposable(LitElement) {
       abortController: this._subMenuAbortController,
     });
 
-    subMenuElement.style.zIndex = `calc(var(--affine-z-index-popover) + ${this.depth})`;
+    subMenuElement.style.zIndex = `calc(var(--pulsar-z-index-popover) + ${this.depth})`;
     subMenuElement.focus();
   };
 

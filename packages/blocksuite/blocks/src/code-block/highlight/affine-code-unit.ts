@@ -1,14 +1,14 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
 import type { ThemedToken } from 'shiki';
 
-import { ShadowlessElement } from '@blocksuite/block-std';
-import { type DeltaInsert, ZERO_WIDTH_SPACE } from '@blocksuite/inline';
+import { ShadowlessElement } from '@pulsar/block-std';
+import { type DeltaInsert, ZERO_WIDTH_SPACE } from '@pulsar/inline';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-@customElement('affine-code-unit')
-export class AffineCodeUnit extends ShadowlessElement {
+@customElement('pulsar-code-unit')
+export class PulsarCodeUnit extends ShadowlessElement {
   override render() {
     const plainContent = html`<span
       ><v-text .str=${this.delta.insert}></v-text
@@ -82,7 +82,7 @@ export class AffineCodeUnit extends ShadowlessElement {
   }
 
   get codeBlock() {
-    return this.closest('affine-code');
+    return this.closest('pulsar-code');
   }
 
   get vElement() {
@@ -90,13 +90,13 @@ export class AffineCodeUnit extends ShadowlessElement {
   }
 
   @property({ type: Object })
-  accessor delta: DeltaInsert<AffineTextAttributes> = {
+  accessor delta: DeltaInsert<PulsarTextAttributes> = {
     insert: ZERO_WIDTH_SPACE,
   };
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-code-unit': AffineCodeUnit;
+    'pulsar-code-unit': PulsarCodeUnit;
   }
 }

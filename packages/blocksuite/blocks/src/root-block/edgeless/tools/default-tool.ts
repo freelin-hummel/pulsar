@@ -1,35 +1,35 @@
-import type { MindmapNode } from '@blocksuite/affine-block-surface';
+import type { MindmapNode } from '@pulsar/block-surface';
 import type {
   EdgelessTextBlockModel,
   FrameBlockModel,
   NoteBlockModel,
-} from '@blocksuite/affine-model';
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { PointTestOptions } from '@blocksuite/block-std/gfx';
-import type { IVec } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { PointTestOptions } from '@pulsar/block-std/gfx';
+import type { IVec } from '@pulsar/global/utils';
 
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { ConnectorUtils, MindmapUtils } from '@blocksuite/affine-block-surface';
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { ConnectorUtils, MindmapUtils } from '@pulsar/block-surface';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
 import {
   ConnectorElementModel,
   GroupElementModel,
   ShapeElementModel,
   TextElementModel,
-} from '@blocksuite/affine-model';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
+} from '@pulsar/model';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
 import {
   clamp,
   handleNativeRangeAtPoint,
   resetNativeSelection,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 import {
   Bound,
   DisposableGroup,
   Vec,
   intersects,
   noop,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { EdgelessTool } from '../types.js';
 
@@ -250,7 +250,7 @@ export class DefaultToolController extends EdgelessToolController<DefaultTool> {
     block: NoteBlockModel | EdgelessTextBlockModel
   ) {
     const blockId = this._doc.addBlock(
-      'affine:paragraph',
+      'pulsar:paragraph',
       { type: 'text' },
       block.id
     );
@@ -830,7 +830,7 @@ export class DefaultToolController extends EdgelessToolController<DefaultTool> {
     if (
       e.raw.target &&
       e.raw.target instanceof HTMLElement &&
-      e.raw.target.classList.contains('affine-note-mask')
+      e.raw.target.classList.contains('pulsar-note-mask')
     ) {
       this.onContainerClick(e);
       this._isDoubleClickedOnMask = true;

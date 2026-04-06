@@ -1,4 +1,4 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
 /**
  * Re-associate bindings for block that have been converted.
@@ -12,7 +12,7 @@ export const reassociateConnectorsCommand: Command<
   { oldId: string; newId: string }
 > = (ctx, next) => {
   const { oldId, newId } = ctx;
-  const service = ctx.std.getService('affine:surface');
+  const service = ctx.std.getService('pulsar:surface');
   if (!oldId || !newId || !service) {
     next();
     return;

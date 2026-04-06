@@ -1,2 +1,2 @@
 export * from './config.js';
-export { AffineFormatBarWidget } from './format-bar.js';
+export { PulsarFormatBarWidget } from './format-bar.js';

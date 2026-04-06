@@ -1,19 +1,19 @@
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { FrameBlockModel, NoteBlockModel } from '@blocksuite/affine-model';
-import type { Doc } from '@blocksuite/store';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { FrameBlockModel, NoteBlockModel } from '@pulsar/model';
+import type { Doc } from '@pulsar/store';
 
-import { Overlay } from '@blocksuite/affine-block-surface';
-import { renderableInEdgeless } from '@blocksuite/affine-block-surface';
-import { GroupElementModel } from '@blocksuite/affine-model';
-import { isGfxContainerElm } from '@blocksuite/block-std/gfx';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { Overlay } from '@pulsar/block-surface';
+import { renderableInEdgeless } from '@pulsar/block-surface';
+import { GroupElementModel } from '@pulsar/model';
+import { isGfxContainerElm } from '@pulsar/block-std/gfx';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 import {
   Bound,
   DisposableGroup,
   type IVec,
   deserializeXYWH,
-} from '@blocksuite/global/utils';
-import { DocCollection } from '@blocksuite/store';
+} from '@pulsar/global/utils';
+import { DocCollection } from '@pulsar/store';
 
 import type { EdgelessRootService } from '../../index.js';
 
@@ -113,11 +113,11 @@ export class EdgelessFrameManager {
 
   private _addFrameBlock(bound: Bound) {
     const surfaceModel = this._rootService.doc.getBlocksByFlavour(
-      'affine:surface'
+      'pulsar:surface'
     )[0].model as SurfaceBlockModel;
 
     const id = this._rootService.addBlock(
-      'affine:frame',
+      'pulsar:frame',
       {
         title: new DocCollection.Y.Text(`Frame ${this.frames.length + 1}`),
         xywh: bound.serialize(),
@@ -384,7 +384,7 @@ export function getNotesInFrameBound(
 ) {
   const bound = Bound.deserialize(frame.xywh);
 
-  return (doc.getBlockByFlavour('affine:note') as NoteBlockModel[]).filter(
+  return (doc.getBlockByFlavour('pulsar:note') as NoteBlockModel[]).filter(
     ele => {
       const xywh = Bound.deserialize(ele.xywh);
 
@@ -402,7 +402,7 @@ export function getBlocksInFrameBound(
 ) {
   const bound = Bound.deserialize(model.xywh);
   const surfaceModel = doc.getBlockByFlavour([
-    'affine:surface',
+    'pulsar:surface',
   ]) as SurfaceBlockModel[];
 
   return (

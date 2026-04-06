@@ -1,4 +1,4 @@
-import { keys } from '@blocksuite/global/utils';
+import { keys } from '@pulsar/global/utils';
 
 import type {
   Template,

@@ -1,5 +1,5 @@
-import { ArrowDownSmallIcon } from '@blocksuite/affine-components/icons';
-import { once } from '@blocksuite/affine-shared/utils';
+import { ArrowDownSmallIcon } from '@pulsar/editor-components/icons';
+import { once } from '@pulsar/editor-shared/utils';
 import {
   arrow,
   autoUpdate,
@@ -60,7 +60,7 @@ export class EdgelessTemplateButton extends EdgelessToolbarToolMixin(
 
     .arrow-icon {
       --y: 17px;
-      background: var(--affine-black-10);
+      background: var(--pulsar-black-10);
       width: 24px;
       height: 24px;
       border-radius: 50%;
@@ -69,7 +69,7 @@ export class EdgelessTemplateButton extends EdgelessToolbarToolMixin(
       align-items: center;
     }
     .arrow-icon > svg {
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
       fill: currentColor;
       width: 20px;
       height: 20px;

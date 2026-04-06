@@ -3,15 +3,15 @@ import {
   WithDisposable,
   requiredProperties,
   SignalWatcher,
-} from '@blocksuite/block-std';
-import { NoteDisplayMode, scrollbarStyle } from '@blocksuite/blocks';
+} from '@pulsar/block-std';
+import { NoteDisplayMode, scrollbarStyle } from '@pulsar/blocks';
 import { signal } from '@lit-labs/preact-signals';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { repeat } from 'lit/directives/repeat.js';
 
-import type { AffineEditorContainer } from '../../editors/editor-container.js';
+import type { PulsarEditorContainer } from '../../editors/editor-container.js';
 
 import { TocIcon } from '../_common/icons.js';
 import { getHeadingBlocksFromDoc } from './utils/query.js';
@@ -20,12 +20,12 @@ import {
   scrollToBlockWithHighlight,
 } from './utils/scroll.js';
 
-export const AFFINE_OUTLINE_VIEWER = 'affine-outline-viewer';
+export const PULSAR_OUTLINE_VIEWER = 'pulsar-outline-viewer';
 
 @requiredProperties({
   editor: PropTypes.object,
 })
-@customElement(AFFINE_OUTLINE_VIEWER)
+@customElement(PULSAR_OUTLINE_VIEWER)
 export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
   private _activeHeadingId$ = signal<string | null>(null);
 
@@ -76,12 +76,12 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
       height: 2px;
       border-radius: 1px;
       overflow: hidden;
-      background: var(--affine-black-10, rgba(0, 0, 0, 0.1));
+      background: var(--pulsar-black-10, rgba(0, 0, 0, 0.1));
     }
 
     .outline-viewer-indicator.active {
       width: 24px;
-      background: var(--affine-text-primary-color);
+      background: var(--pulsar-text-primary-color);
     }
 
     .outline-viewer-panel {
@@ -96,8 +96,8 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
       border-radius: 8px;
       border-width: 0px;
       border-style: solid;
-      border-color: var(--affine-border-color);
-      background: var(--affine-background-overlay-panel-color);
+      border-color: var(--pulsar-border-color);
+      background: var(--pulsar-background-overlay-panel-color);
       box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.14);
 
       overflow-y: auto;
@@ -124,10 +124,10 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
       span {
         flex: 1;
         overflow: hidden;
-        color: var(--affine-text-secondary-color);
+        color: var(--pulsar-text-secondary-color);
         text-overflow: ellipsis;
 
-        font-family: var(--affine-font-family);
+        font-family: var(--pulsar-font-family);
         font-size: 12px;
         font-style: normal;
         font-weight: 500;
@@ -276,7 +276,7 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
   private accessor _showViewer: boolean = false;
 
   @property({ attribute: false })
-  accessor editor!: AffineEditorContainer;
+  accessor editor!: PulsarEditorContainer;
 
   @property({ attribute: false })
   accessor toggleOutlinePanel: (() => void) | null = null;
@@ -284,6 +284,6 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_OUTLINE_VIEWER]: OutlineViewer;
+    [PULSAR_OUTLINE_VIEWER]: OutlineViewer;
   }
 }

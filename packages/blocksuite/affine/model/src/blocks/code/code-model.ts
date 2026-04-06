@@ -1,6 +1,6 @@
-import type { Text } from '@blocksuite/store';
+import type { Text } from '@pulsar/store';
 
-import { type SchemaToModel, defineBlockSchema } from '@blocksuite/store';
+import { type SchemaToModel, defineBlockSchema } from '@pulsar/store';
 
 interface CodeBlockProps {
   text: Text;
@@ -10,7 +10,7 @@ interface CodeBlockProps {
 }
 
 export const CodeBlockSchema = defineBlockSchema({
-  flavour: 'affine:code',
+  flavour: 'pulsar:code',
   props: internal =>
     ({
       text: internal.Text(),
@@ -22,10 +22,10 @@ export const CodeBlockSchema = defineBlockSchema({
     version: 1,
     role: 'content',
     parent: [
-      'affine:note',
-      'affine:paragraph',
-      'affine:list',
-      'affine:edgeless-text',
+      'pulsar:note',
+      'pulsar:paragraph',
+      'pulsar:list',
+      'pulsar:edgeless-text',
     ],
     children: [],
   },
@@ -36,7 +36,7 @@ export type CodeBlockModel = SchemaToModel<typeof CodeBlockSchema>;
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:code': CodeBlockModel;
+      'pulsar:code': CodeBlockModel;
     }
   }
 }

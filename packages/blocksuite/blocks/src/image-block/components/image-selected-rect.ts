@@ -3,7 +3,7 @@ import { html } from 'lit';
 const styles = html`<style>
   .affine-page-selected-embed-rects-container {
     position: absolute;
-    border: 2px solid var(--affine-primary-color);
+    border: 2px solid var(--pulsar-primary-color);
     left: 0;
     top: 0;
     width: 100%;
@@ -26,7 +26,7 @@ const styles = html`<style>
     height: 10px;
     border-radius: 50%;
     background: white;
-    border: 2px solid var(--affine-primary-color);
+    border: 2px solid var(--pulsar-primary-color);
     pointer-events: none;
   }
 
@@ -60,12 +60,12 @@ export function ImageSelectedRect(readonly: boolean) {
   if (readonly) {
     return html`${styles}
       <div
-        class="affine-page-selected-embed-rects-container resizable resizes"
+        class="pulsar-page-selected-embed-rects-container resizable resizes"
       ></div> `;
   }
   return html`
     ${styles}
-    <div class="affine-page-selected-embed-rects-container resizable resizes">
+    <div class="pulsar-page-selected-embed-rects-container resizable resizes">
       <div class="resize top-left">
         <div class="resize-inner"></div>
       </div>

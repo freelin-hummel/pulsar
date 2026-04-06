@@ -1,4 +1,4 @@
-import type { TextElementModel } from '@blocksuite/affine-model';
+import type { TextElementModel } from '@pulsar/model';
 
 import { html, nothing } from 'lit';
 

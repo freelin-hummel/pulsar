@@ -1,6 +1,6 @@
-import type { ExtensionType } from '@blocksuite/block-std';
+import type { ExtensionType } from '@pulsar/block-std';
 
-import { PageSurfaceBlockSpec } from '@blocksuite/affine-block-surface';
+import { PageSurfaceBlockSpec } from '@pulsar/block-surface';
 
 import { LatexBlockSpec } from '../../latex-block/latex-spec.js';
 import { PageRootBlockSpec } from '../../root-block/page/page-root-spec.js';

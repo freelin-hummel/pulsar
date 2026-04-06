@@ -1,14 +1,14 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { Doc } from '@blocksuite/store';
+import type { EditorHost } from '@pulsar/block-std';
+import type { Doc } from '@pulsar/store';
 
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import {
   type EdgelessRootBlockComponent,
   type FrameBlockModel,
   on,
   once,
-} from '@blocksuite/blocks';
-import { DisposableGroup } from '@blocksuite/global/utils';
+} from '@pulsar/blocks';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { type PropertyValues, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -62,8 +62,8 @@ const styles = css`
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid var(--affine-border-color);
-    background: var(--affine-background-primary-color);
+    border: 1px solid var(--pulsar-border-color);
+    background: var(--pulsar-background-primary-color);
     box-shadow: 0px 0px 12px 0px rgba(66, 65, 73, 0.18);
     cursor: pointer;
     position: relative;
@@ -79,7 +79,7 @@ const styles = css`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: calc(var(--affine-z-index-popover, 0) + 3);
+    z-index: calc(var(--pulsar-z-index-popover, 0) + 3);
   }
 
   .frame-card-container.dragging frame-card-title {
@@ -98,8 +98,8 @@ const styles = css`
     min-width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: var(--affine-black);
-    color: var(--affine-white);
+    background: var(--pulsar-black);
+    color: var(--pulsar-white);
     font-size: 15px;
     line-height: 24px;
     text-align: center;
@@ -111,9 +111,9 @@ const styles = css`
   }
 `;
 
-export const AFFINE_FRAME_CARD = 'affine-frame-card';
+export const PULSAR_FRAME_CARD = 'pulsar-frame-card';
 
-@customElement(AFFINE_FRAME_CARD)
+@customElement(PULSAR_FRAME_CARD)
 export class FrameCard extends WithDisposable(ShadowlessElement) {
   private _clearFrameDisposables = () => {
     this._frameDisposables?.dispose();
@@ -299,6 +299,6 @@ export class FrameCard extends WithDisposable(ShadowlessElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FRAME_CARD]: FrameCard;
+    [PULSAR_FRAME_CARD]: FrameCard;
   }
 }

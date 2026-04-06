@@ -1,4 +1,4 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 import type { TemplateResult } from 'lit';
 
 import {
@@ -6,20 +6,20 @@ import {
   LinkedDocIcon,
   LinkedEdgelessIcon,
   NewDocIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import {
-  type AffineInlineEditor,
+  type PulsarInlineEditor,
   insertLinkedNode,
-} from '@blocksuite/affine-components/rich-text';
-import { toast } from '@blocksuite/affine-components/toast';
+} from '@pulsar/editor-components/rich-text';
+import { toast } from '@pulsar/editor-components/toast';
 import {
   DocModeProvider,
   TelemetryProvider,
-} from '@blocksuite/affine-shared/services';
+} from '@pulsar/editor-shared/services';
 import {
   createDefaultDoc,
   isFuzzyMatch,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 import { showImportModal } from './import-doc/index.js';
 
@@ -49,7 +49,7 @@ export function createLinkedDocMenuGroup(
   query: string,
   abort: () => void,
   editorHost: EditorHost,
-  inlineEditor: AffineInlineEditor
+  inlineEditor: PulsarInlineEditor
 ) {
   const doc = editorHost.doc;
   const { docMetas } = doc.collection.meta;
@@ -93,7 +93,7 @@ export function createNewDocMenuGroup(
   query: string,
   abort: () => void,
   editorHost: EditorHost,
-  inlineEditor: AffineInlineEditor
+  inlineEditor: PulsarInlineEditor
 ): LinkedMenuGroup {
   const doc = editorHost.doc;
   const docName = query || DEFAULT_DOC_NAME;
@@ -174,7 +174,7 @@ export function getMenus(
   query: string,
   abort: () => void,
   editorHost: EditorHost,
-  inlineEditor: AffineInlineEditor
+  inlineEditor: PulsarInlineEditor
 ): Promise<LinkedMenuGroup[]> {
   return Promise.resolve([
     createLinkedDocMenuGroup(query, abort, editorHost, inlineEditor),

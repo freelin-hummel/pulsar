@@ -1,4 +1,4 @@
-import type { Y } from '@blocksuite/store';
+import type { Y } from '@pulsar/store';
 
 import type { GfxPrimitiveElementModel } from '../element-model.js';
 

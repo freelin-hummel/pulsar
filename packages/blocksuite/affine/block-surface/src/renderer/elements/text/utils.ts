@@ -3,14 +3,14 @@ import type {
   FontStyle,
   FontWeight,
   TextElementModel,
-} from '@blocksuite/affine-model';
-import type { Bound } from '@blocksuite/global/utils';
-import type { Y } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { Bound } from '@pulsar/global/utils';
+import type { Y } from '@pulsar/store';
 
 import {
   getPointsFromBoundsWithRotation,
   rotatePoints,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import {
   getFontFacesByFontFamily,

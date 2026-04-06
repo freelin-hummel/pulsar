@@ -1,7 +1,7 @@
 import {
   createPopup,
   popMenu,
-} from '@blocksuite/affine-components/context-menu';
+} from '@pulsar/editor-components/context-menu';
 import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 

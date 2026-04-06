@@ -1,4 +1,4 @@
-import { type ListBlockModel, ListBlockSchema } from '@blocksuite/affine-model';
+import { type ListBlockModel, ListBlockSchema } from '@pulsar/model';
 
 import { columnPresets } from '../../database-block/index.js';
 import { richTextColumnConfig } from '../columns/rich-text/cell-renderer.js';

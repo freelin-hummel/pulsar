@@ -1,4 +1,4 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
 import { multiPlayersColor } from './color-picker.js';
 
@@ -21,7 +21,7 @@ export class RemoteColorManager {
   }
 
   private get rootService() {
-    return this.host.std.getService('affine:page');
+    return this.host.std.getService('pulsar:page');
   }
 
   get(id: number) {

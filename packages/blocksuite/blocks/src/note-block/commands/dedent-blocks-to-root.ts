@@ -1,6 +1,6 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const dedentBlocksToRoot: Command<
   never,
@@ -33,7 +33,7 @@ export const dedentBlocksToRoot: Command<
   for (let i = blockIds.length - 1; i >= 0; i--) {
     const model = blockIds[i];
     const parent = doc.getParent(model);
-    if (parent && !matchFlavours(parent, ['affine:note'])) {
+    if (parent && !matchFlavours(parent, ['pulsar:note'])) {
       std.command.exec('dedentBlockToRoot', {
         blockId: model,
         stopCapture: false,

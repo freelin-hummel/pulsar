@@ -1,22 +1,22 @@
 import type {
-  AffineTextAttributes,
+  PulsarTextAttributes,
   RichText,
-} from '@blocksuite/affine-components/rich-text';
+} from '@pulsar/editor-components/rich-text';
 import type {
   BaseSelection,
   BlockComponent,
   CursorSelection,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 
-import { HoverController } from '@blocksuite/affine-components/hover';
-import { isFormatSupported } from '@blocksuite/affine-components/rich-text';
+import { HoverController } from '@pulsar/editor-components/hover';
+import { isFormatSupported } from '@pulsar/editor-components/rich-text';
 import {
   type MenuItemGroup,
   cloneGroups,
-} from '@blocksuite/affine-components/toolbar';
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
-import { WidgetComponent } from '@blocksuite/block-std';
-import { DisposableGroup, assertExists } from '@blocksuite/global/utils';
+} from '@pulsar/editor-components/toolbar';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
+import { WidgetComponent } from '@pulsar/block-std';
+import { DisposableGroup, assertExists } from '@pulsar/global/utils';
 import {
   type Placement,
   type ReferenceElement,
@@ -44,10 +44,10 @@ import {
 } from './config.js';
 import { formatBarStyle } from './styles.js';
 
-export const AFFINE_FORMAT_BAR_WIDGET = 'affine-format-bar-widget';
+export const PULSAR_FORMAT_BAR_WIDGET = 'pulsar-format-bar-widget';
 
-@customElement(AFFINE_FORMAT_BAR_WIDGET)
-export class AffineFormatBarWidget extends WidgetComponent {
+@customElement(PULSAR_FORMAT_BAR_WIDGET)
+export class PulsarFormatBarWidget extends WidgetComponent {
   private _abortController = new AbortController();
 
   private _floatDisposables: DisposableGroup | null = null;
@@ -337,7 +337,7 @@ export class AffineFormatBarWidget extends WidgetComponent {
 
     if (
       this.displayType === 'block' &&
-      this._selectedBlocks?.[0]?.flavour === 'affine:surface-ref'
+      this._selectedBlocks?.[0]?.flavour === 'pulsar:surface-ref'
     ) {
       return false;
     }
@@ -346,10 +346,10 @@ export class AffineFormatBarWidget extends WidgetComponent {
       const selectedBlock = this._selectedBlocks[0];
       if (
         !matchFlavours(selectedBlock.model, [
-          'affine:paragraph',
-          'affine:list',
-          'affine:code',
-          'affine:image',
+          'pulsar:paragraph',
+          'pulsar:list',
+          'pulsar:code',
+          'pulsar:image',
         ])
       ) {
         return false;
@@ -394,7 +394,7 @@ export class AffineFormatBarWidget extends WidgetComponent {
     // do not display if AI panel is open
     const rootBlockId = this.host.doc.root?.id;
     const aiPanel = rootBlockId
-      ? this.host.view.getWidget('affine-ai-panel-widget', rootBlockId)
+      ? this.host.view.getWidget('pulsar-ai-panel-widget', rootBlockId)
       : null;
 
     // @ts-ignore
@@ -465,7 +465,7 @@ export class AffineFormatBarWidget extends WidgetComponent {
   addTextStyleToggle(config: {
     icon: InlineActionConfigItem['icon'];
     key: Exclude<
-      keyof AffineTextAttributes,
+      keyof PulsarTextAttributes,
       'color' | 'background' | 'reference'
     >;
     action: InlineActionConfigItem['action'];
@@ -501,12 +501,12 @@ export class AffineFormatBarWidget extends WidgetComponent {
     const widgets = rootComponent.widgets;
 
     // check if the host use the format bar widget
-    if (!Object.hasOwn(widgets, AFFINE_FORMAT_BAR_WIDGET)) {
+    if (!Object.hasOwn(widgets, PULSAR_FORMAT_BAR_WIDGET)) {
       return;
     }
 
     // check if format bar widget support the host
-    if (rootComponent.model.flavour !== 'affine:page') {
+    if (rootComponent.model.flavour !== 'pulsar:page') {
       console.error(
         `format bar not support rootComponent: ${rootComponent.constructor.name} but its widgets has format bar`
       );
@@ -537,7 +537,7 @@ export class AffineFormatBarWidget extends WidgetComponent {
     const items = ConfigRenderer(this);
 
     return html`
-      <editor-toolbar class="${AFFINE_FORMAT_BAR_WIDGET}">
+      <editor-toolbar class="${PULSAR_FORMAT_BAR_WIDGET}">
         ${items}
         <editor-toolbar-separator></editor-toolbar-separator>
         ${toolbarMoreButton(this)}
@@ -588,7 +588,7 @@ export class AffineFormatBarWidget extends WidgetComponent {
   @state()
   accessor configItems: FormatBarConfigItem[] = [];
 
-  @query(`.${AFFINE_FORMAT_BAR_WIDGET}`)
+  @query(`.${PULSAR_FORMAT_BAR_WIDGET}`)
   accessor formatBarElement: HTMLElement | null = null;
 }
 
@@ -599,6 +599,6 @@ function camelCaseToWords(s: string) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [AFFINE_FORMAT_BAR_WIDGET]: AffineFormatBarWidget;
+    [PULSAR_FORMAT_BAR_WIDGET]: PulsarFormatBarWidget;
   }
 }

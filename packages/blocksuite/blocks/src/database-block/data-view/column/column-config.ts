@@ -1,4 +1,4 @@
-import type { Disposable } from '@blocksuite/global/utils';
+import type { Disposable } from '@pulsar/global/utils';
 
 import type { TType } from '../logical/typesystem.js';
 import type {

@@ -1,5 +1,5 @@
-import { assertExists, assertNotExists } from '@blocksuite/global/utils';
-import { Slot } from '@blocksuite/store';
+import { assertExists, assertNotExists } from '@pulsar/global/utils';
+import { Slot } from '@pulsar/store';
 
 import type { EdgelessRootBlockComponent } from '../../edgeless/edgeless-root-block.js';
 import type { PieMenuId } from '../../types.js';

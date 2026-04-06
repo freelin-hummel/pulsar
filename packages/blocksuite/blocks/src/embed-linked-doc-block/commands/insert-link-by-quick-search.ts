@@ -1,6 +1,6 @@
-import type { Command } from '@blocksuite/block-std';
+import type { Command } from '@pulsar/block-std';
 
-import { QuickSearchProvider } from '@blocksuite/affine-shared/services';
+import { QuickSearchProvider } from '@pulsar/editor-shared/services';
 
 export const insertLinkByQuickSearchCommand: Command<
   never,
@@ -25,7 +25,7 @@ export const insertLinkByQuickSearchCommand: Command<
       if (result && 'docId' in result) {
         std.command.exec('insertEmbedLinkedDoc', { docId: result.docId });
         return {
-          flavour: 'affine:embed-linked-doc',
+          flavour: 'pulsar:embed-linked-doc',
           isNewDoc: !!result.isNewDoc,
         };
       }
@@ -34,7 +34,7 @@ export const insertLinkByQuickSearchCommand: Command<
       if (result && 'userInput' in result) {
         std.command.exec('insertBookmark', { url: result.userInput });
         return {
-          flavour: 'affine:bookmark',
+          flavour: 'pulsar:bookmark',
         };
       }
       return {};

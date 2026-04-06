@@ -1,6 +1,6 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { RootBlockModel } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 import { BLOCK_ID_ATTR } from '../../consts/index.js';
 
@@ -31,11 +31,11 @@ export function getRootByElement(
 export function getPageRootByElement(
   element: Element
 ): BlockComponent<RootBlockModel> | null {
-  return element.closest('affine-page-root');
+  return element.closest('pulsar-page-root');
 }
 
 export function getEdgelessRootByElement(
   element: Element
 ): BlockComponent<RootBlockModel> | null {
-  return element.closest('affine-edgeless-root');
+  return element.closest('pulsar-edgeless-root');
 }

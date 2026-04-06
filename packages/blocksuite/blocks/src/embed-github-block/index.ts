@@ -1,4 +1,4 @@
-import { noop } from '@blocksuite/global/utils';
+import { noop } from '@pulsar/global/utils';
 
 import type { EmbedGithubBlockService } from './embed-github-service.js';
 
@@ -12,7 +12,7 @@ export * from './embed-github-spec.js';
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:embed-github': EmbedGithubBlockService;
+      'pulsar:embed-github': EmbedGithubBlockService;
     }
   }
 }

@@ -1,5 +1,5 @@
-import { DividerBlockSchema } from '@blocksuite/affine-model';
-import { BlockService } from '@blocksuite/block-std';
+import { DividerBlockSchema } from '@pulsar/model';
+import { BlockService } from '@pulsar/block-std';
 
 export class DividerBlockService extends BlockService {
   static override readonly flavour = DividerBlockSchema.model.flavour;

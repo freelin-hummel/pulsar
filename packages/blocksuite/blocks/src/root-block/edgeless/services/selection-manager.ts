@@ -1,14 +1,14 @@
-import type { SurfaceBlockModel } from '@blocksuite/affine-block-surface';
-import type { CursorSelection, SurfaceSelection } from '@blocksuite/block-std';
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { CursorSelection, SurfaceSelection } from '@pulsar/block-std';
 
-import { MindmapElementModel } from '@blocksuite/affine-block-surface';
-import { GroupElementModel } from '@blocksuite/affine-model';
+import { MindmapElementModel } from '@pulsar/block-surface';
+import { GroupElementModel } from '@pulsar/model';
 import {
   DisposableGroup,
   Slot,
   assertType,
   groupBy,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import type { EdgelessRootService } from '../edgeless-root-service.js';
 

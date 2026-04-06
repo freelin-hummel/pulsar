@@ -1,6 +1,6 @@
 import type { CSSResult } from 'lit';
 
-import { assertExists } from '@blocksuite/global/utils';
+import { assertExists } from '@pulsar/global/utils';
 import {
   type ComputePositionReturn,
   type Placement,
@@ -19,12 +19,12 @@ const styles = css`
     box-sizing: border-box;
     max-width: 280px;
     min-height: 32px;
-    font-family: var(--affine-font-family);
-    font-size: var(--affine-font-sm);
+    font-family: var(--pulsar-font-family);
+    font-size: var(--pulsar-font-sm);
     border-radius: 4px;
     padding: 6px 12px;
-    color: var(--affine-white);
-    background: var(--affine-tooltip);
+    color: var(--pulsar-white);
+    background: var(--pulsar-tooltip);
 
     display: flex;
     justify-content: center;
@@ -46,25 +46,25 @@ const triangleMap = {
     bottom: '-6px',
     borderStyle: 'solid',
     borderWidth: '6px 5px 0 5px',
-    borderColor: 'var(--affine-tooltip) transparent transparent transparent',
+    borderColor: 'var(--pulsar-tooltip) transparent transparent transparent',
   },
   right: {
     left: '-6px',
     borderStyle: 'solid',
     borderWidth: '5px 6px 5px 0',
-    borderColor: 'transparent var(--affine-tooltip) transparent transparent',
+    borderColor: 'transparent var(--pulsar-tooltip) transparent transparent',
   },
   bottom: {
     top: '-6px',
     borderStyle: 'solid',
     borderWidth: '0 5px 6px 5px',
-    borderColor: 'transparent transparent var(--affine-tooltip) transparent',
+    borderColor: 'transparent transparent var(--pulsar-tooltip) transparent',
   },
   left: {
     right: '-6px',
     borderStyle: 'solid',
     borderWidth: '5px 0 5px 6px',
-    borderColor: 'transparent transparent transparent var(--affine-tooltip)',
+    borderColor: 'transparent transparent transparent var(--pulsar-tooltip)',
   },
 };
 
@@ -107,7 +107,7 @@ const updateArrowStyles = ({
  *   .offset=${4}
  *   .autoFlip=${true}
  *   .arrow=${true}
- *   .tooltipStyle=${css`:host { z-index: 0; --affine-tooltip: #fff; }`}
+ *   .tooltipStyle=${css`:host { z-index: 0; --pulsar-tooltip: #fff; }`}
  *   .allowInteractive=${false}
  * >
  *   Content
@@ -115,7 +115,7 @@ const updateArrowStyles = ({
  * `
  * ```
  */
-@customElement('affine-tooltip')
+@customElement('pulsar-tooltip')
 export class Tooltip extends LitElement {
   private _hoverController!: HoverController;
 
@@ -153,7 +153,7 @@ export class Tooltip extends LitElement {
               <style>
                 ${this._getStyles()}
               </style>
-              <div class="affine-tooltip" role="tooltip">${children}</div>
+              <div class="pulsar-tooltip" role="tooltip">${children}</div>
               <div class="arrow" style=${styleMap(arrowStyles)}></div>
             `;
           },
@@ -269,11 +269,11 @@ export class Tooltip extends LitElement {
   accessor tooltipStyle: CSSResult = css``;
 
   @property({ attribute: false })
-  accessor zIndex: number | string = 'var(--affine-z-index-popover)';
+  accessor zIndex: number | string = 'var(--pulsar-z-index-popover)';
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-tooltip': Tooltip;
+    'pulsar-tooltip': Tooltip;
   }
 }

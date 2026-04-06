@@ -2,11 +2,11 @@ import type {
   BrushElementModel,
   BrushProps,
   ColorScheme,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 
-import { LINE_COLORS, LineWidth } from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
-import { countBy, maxBy } from '@blocksuite/global/utils';
+import { LINE_COLORS, LineWidth } from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
+import { countBy, maxBy } from '@pulsar/global/utils';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';

@@ -1,4 +1,4 @@
-import { ShadowlessElement } from '@blocksuite/block-std';
+import { ShadowlessElement } from '@pulsar/block-std';
 import * as icons from '@blocksuite/icons/lit';
 import { type TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -6,8 +6,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { map } from './uni-component/operation.js';
 import { createUniComponentFromWebComponent } from './uni-component/uni-component.js';
 
-@customElement('affine-lit-icon')
-export class AffineLitIcon extends ShadowlessElement {
+@customElement('pulsar-lit-icon')
+export class PulsarLitIcon extends ShadowlessElement {
   static override styles = css`
     affine-lit-icon {
       display: flex;
@@ -16,7 +16,7 @@ export class AffineLitIcon extends ShadowlessElement {
     }
 
     affine-lit-icon svg {
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
     }
   `;
 
@@ -30,7 +30,7 @@ export class AffineLitIcon extends ShadowlessElement {
 }
 
 const litIcon = createUniComponentFromWebComponent<{ name: string }>(
-  AffineLitIcon
+  PulsarLitIcon
 );
 export const createIcon = (name: keyof typeof icons) => {
   return map(litIcon, () => ({ name }));

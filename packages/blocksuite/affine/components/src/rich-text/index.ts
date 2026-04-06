@@ -20,11 +20,11 @@ export {
   textFormatConfigs,
 } from './format/index.js';
 export {
-  type AffineInlineEditor,
-  type AffineInlineRootElement,
-  AffineLink,
-  AffineReference,
-  type AffineTextAttributes,
+  type PulsarInlineEditor,
+  type PulsarInlineRootElement,
+  PulsarLink,
+  PulsarReference,
+  type PulsarTextAttributes,
   DEFAULT_DOC_NAME,
   InlineManager,
   type InlineMarkdownMatch,
@@ -34,8 +34,8 @@ export {
   type RefNodeSlots,
   ReferenceNodeConfig,
   affineInlineMarkdownMatches,
-  basicAffineInlineSpecs,
-  getAffineInlineSpecsWithReference,
+  basicPulsarInlineSpecs,
+  getPulsarInlineSpecsWithReference,
   toggleLinkPopup,
 } from './inline/index.js';
 export { textKeymap } from './keymap/index.js';

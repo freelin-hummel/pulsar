@@ -1,11 +1,11 @@
-import type { TextRangePoint } from '@blocksuite/block-std';
-import type { EditorHost } from '@blocksuite/block-std';
+import type { TextRangePoint } from '@pulsar/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 import type {
   BlockSnapshot,
   DraftModel,
   JobMiddleware,
   JobSlots,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 
 import { matchFlavours } from '../../../_common/utils/index.js';
 
@@ -16,7 +16,7 @@ const handlePoint = (
 ) => {
   const { index, length } = point;
   // @ts-expect-error TODO: add match flavour type for draft model
-  if (matchFlavours(model, ['affine:page'])) {
+  if (matchFlavours(model, ['pulsar:page'])) {
     if (length === 0) return;
     (snapshot.props.title as Record<string, unknown>).delta =
       model.title.sliceToDelta(index, length + index);

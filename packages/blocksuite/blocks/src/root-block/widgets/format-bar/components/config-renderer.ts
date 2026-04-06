@@ -1,13 +1,13 @@
-import { isFormatSupported } from '@blocksuite/affine-components/rich-text';
-import { renderToolbarSeparator } from '@blocksuite/affine-components/toolbar';
+import { isFormatSupported } from '@pulsar/editor-components/rich-text';
+import { renderToolbarSeparator } from '@pulsar/editor-components/toolbar';
 import { type TemplateResult, html } from 'lit';
 
-import type { AffineFormatBarWidget } from '../format-bar.js';
+import type { PulsarFormatBarWidget } from '../format-bar.js';
 
 import { HighlightButton } from './highlight/highlight-button.js';
 import { ParagraphButton } from './paragraph-button.js';
 
-export function ConfigRenderer(formatBar: AffineFormatBarWidget) {
+export function ConfigRenderer(formatBar: PulsarFormatBarWidget) {
   return (
     formatBar.configItems
       .filter(item => {

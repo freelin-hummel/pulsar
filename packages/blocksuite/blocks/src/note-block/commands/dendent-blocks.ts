@@ -1,7 +1,7 @@
-import type { Command } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { Command } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 export const dedentBlocks: Command<
   never,
@@ -32,7 +32,7 @@ export const dedentBlocks: Command<
   let firstParent: BlockModel | null;
   for (let i = 0; i < blockIds.length; i++) {
     firstParent = doc.getParent(blockIds[i]);
-    if (firstParent && !matchFlavours(firstParent, ['affine:note'])) {
+    if (firstParent && !matchFlavours(firstParent, ['pulsar:note'])) {
       firstOutdentIndex = i;
       break;
     }

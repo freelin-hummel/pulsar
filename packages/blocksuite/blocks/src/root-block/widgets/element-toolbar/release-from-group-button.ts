@@ -1,6 +1,6 @@
-import { ReleaseFromGroupButtonIcon } from '@blocksuite/affine-components/icons';
-import { GroupElementModel } from '@blocksuite/affine-model';
-import { WithDisposable } from '@blocksuite/block-std';
+import { ReleaseFromGroupButtonIcon } from '@pulsar/editor-components/icons';
+import { GroupElementModel } from '@pulsar/model';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

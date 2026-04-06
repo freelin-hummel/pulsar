@@ -1,7 +1,7 @@
-import type { ImageBlockModel } from '@blocksuite/affine-model';
+import type { ImageBlockModel } from '@pulsar/model';
 
-import { CaptionIcon, DownloadIcon } from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
+import { CaptionIcon, DownloadIcon } from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

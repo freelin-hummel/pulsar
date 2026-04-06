@@ -5,43 +5,43 @@ export type SelectOptionColor = {
 
 export const selectOptionColors: SelectOptionColor[] = [
   {
-    color: 'var(--affine-tag-red)',
+    color: 'var(--pulsar-tag-red)',
     name: 'Red',
   },
   {
-    color: 'var(--affine-tag-pink)',
+    color: 'var(--pulsar-tag-pink)',
     name: 'Pink',
   },
   {
-    color: 'var(--affine-tag-orange)',
+    color: 'var(--pulsar-tag-orange)',
     name: 'Orange',
   },
   {
-    color: 'var(--affine-tag-yellow)',
+    color: 'var(--pulsar-tag-yellow)',
     name: 'Yellow',
   },
   {
-    color: 'var(--affine-tag-green)',
+    color: 'var(--pulsar-tag-green)',
     name: 'Green',
   },
   {
-    color: 'var(--affine-tag-teal)',
+    color: 'var(--pulsar-tag-teal)',
     name: 'Teal',
   },
   {
-    color: 'var(--affine-tag-blue)',
+    color: 'var(--pulsar-tag-blue)',
     name: 'Blue',
   },
   {
-    color: 'var(--affine-tag-purple)',
+    color: 'var(--pulsar-tag-purple)',
     name: 'Purple',
   },
   {
-    color: 'var(--affine-tag-gray)',
+    color: 'var(--pulsar-tag-gray)',
     name: 'Gray',
   },
   {
-    color: 'var(--affine-tag-white)',
+    color: 'var(--pulsar-tag-white)',
     name: 'White',
   },
 ];

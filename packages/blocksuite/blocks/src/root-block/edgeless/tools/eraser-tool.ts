@@ -1,8 +1,8 @@
-import type { PointerEventState } from '@blocksuite/block-std';
-import type { IPoint, IVec } from '@blocksuite/global/utils';
+import type { PointerEventState } from '@pulsar/block-std';
+import type { IPoint, IVec } from '@pulsar/global/utils';
 
-import { Overlay, CommonUtils } from '@blocksuite/affine-block-surface';
-import { Bound, noop } from '@blocksuite/global/utils';
+import { Overlay, CommonUtils } from '@pulsar/block-surface';
+import { Bound, noop } from '@pulsar/global/utils';
 
 import { deleteElements } from '../utils/crud.js';
 import { isTopLevelBlock } from '../utils/query.js';

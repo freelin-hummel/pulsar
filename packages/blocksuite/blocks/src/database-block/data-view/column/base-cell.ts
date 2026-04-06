@@ -2,7 +2,7 @@ import {
   ShadowlessElement,
   WithDisposable,
   SignalWatcher,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { computed } from '@lit-labs/preact-signals';
 import { property } from 'lit/decorators.js';
 

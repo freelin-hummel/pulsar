@@ -1,20 +1,20 @@
-import type { RootBlockModel } from '@blocksuite/affine-model';
-import type { ExtendedModel } from '@blocksuite/affine-shared/types';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
-import type { Text } from '@blocksuite/store';
+import type { RootBlockModel } from '@pulsar/model';
+import type { ExtendedModel } from '@pulsar/editor-shared/types';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
+import type { Text } from '@pulsar/store';
 
 import {
   asyncSetInlineRange,
   focusTextModel,
-} from '@blocksuite/affine-components/rich-text';
-import { EMBED_BLOCK_FLAVOUR_LIST } from '@blocksuite/affine-shared/consts';
+} from '@pulsar/editor-components/rich-text';
+import { EMBED_BLOCK_FLAVOUR_LIST } from '@pulsar/editor-shared/consts';
 import {
   focusTitle,
   getDocTitleInlineEditor,
   getPrevContentBlock,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 /**
  * Merge the paragraph with prev block
@@ -39,7 +39,7 @@ export function mergeWithPrev(editorHost: EditorHost, model: BlockModel) {
     return handleNoPreviousSibling(editorHost, model);
   }
 
-  if (matchFlavours(prevBlock, ['affine:paragraph', 'affine:list'])) {
+  if (matchFlavours(prevBlock, ['pulsar:paragraph', 'pulsar:list'])) {
     const modelIndex = parent.children.indexOf(model);
     if (
       (modelIndex === -1 || modelIndex === parent.children.length - 1) &&
@@ -61,11 +61,11 @@ export function mergeWithPrev(editorHost: EditorHost, model: BlockModel) {
 
   if (
     matchFlavours(prevBlock, [
-      'affine:attachment',
-      'affine:bookmark',
-      'affine:code',
-      'affine:image',
-      'affine:divider',
+      'pulsar:attachment',
+      'pulsar:bookmark',
+      'pulsar:code',
+      'pulsar:image',
+      'pulsar:divider',
       ...EMBED_BLOCK_FLAVOUR_LIST,
     ])
   ) {
@@ -83,12 +83,12 @@ export function mergeWithPrev(editorHost: EditorHost, model: BlockModel) {
     return true;
   }
 
-  if (matchFlavours(prevBlock, ['affine:edgeless-text'])) {
+  if (matchFlavours(prevBlock, ['pulsar:edgeless-text'])) {
     return true;
   }
 
   // @ts-ignore TODO: should be fixed after database model is migrated to affine-models
-  if (matchFlavours(parent, ['affine:database'])) {
+  if (matchFlavours(parent, ['pulsar:database'])) {
     doc.deleteBlock(model);
     focusTextModel(editorHost.std, prevBlock.id, prevBlock.text?.yText.length);
     return true;
@@ -106,7 +106,7 @@ function handleNoPreviousSibling(editorHost: EditorHost, model: ExtendedModel) {
   // Probably no title, e.g. in edgeless mode
   if (!titleEditor) {
     if (
-      matchFlavours(parent, ['affine:edgeless-text']) ||
+      matchFlavours(parent, ['pulsar:edgeless-text']) ||
       model.children.length > 0
     ) {
       doc.deleteBlock(model, {

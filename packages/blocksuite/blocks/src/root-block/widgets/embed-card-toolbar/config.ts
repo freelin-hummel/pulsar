@@ -1,14 +1,14 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 
 import {
   CopyIcon,
   DeleteIcon,
   DuplicateIcon,
   RefreshIcon,
-} from '@blocksuite/affine-components/icons';
-import { toast } from '@blocksuite/affine-components/toast';
-import { getBlockProps } from '@blocksuite/affine-shared/utils';
-import { Slice } from '@blocksuite/store';
+} from '@pulsar/editor-components/icons';
+import { toast } from '@pulsar/editor-components/toast';
+import { getBlockProps } from '@pulsar/editor-shared/utils';
+import { Slice } from '@pulsar/store';
 
 import type { EmbedCardToolbarContext } from './context.js';
 

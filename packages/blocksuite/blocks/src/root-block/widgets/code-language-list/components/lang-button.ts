@@ -1,6 +1,6 @@
-import { ArrowDownIcon } from '@blocksuite/affine-components/icons';
-import { WithDisposable, SignalWatcher } from '@blocksuite/block-std';
-import { noop } from '@blocksuite/global/utils';
+import { ArrowDownIcon } from '@pulsar/editor-components/icons';
+import { WithDisposable, SignalWatcher } from '@pulsar/block-std';
+import { noop } from '@pulsar/global/utils';
 import { LitElement, css, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit/static-html.js';
@@ -57,7 +57,7 @@ export class LanguageListButton extends WithDisposable(
       abortController: this._abortController,
       // stacking-context(editor-host)
       portalStyles: {
-        zIndex: 'var(--affine-z-index-popover)',
+        zIndex: 'var(--pulsar-z-index-popover)',
       },
     });
   };
@@ -73,19 +73,19 @@ export class LanguageListButton extends WithDisposable(
     }
 
     .lang-button {
-      background-color: var(--affine-background-primary-color);
-      box-shadow: var(--affine-shadow-1);
+      background-color: var(--pulsar-background-primary-color);
+      box-shadow: var(--pulsar-shadow-1);
       display: flex;
       gap: 4px;
       padding: 2px 4px;
     }
 
     .lang-button:hover {
-      background: var(--affine-hover-color-filled);
+      background: var(--pulsar-hover-color-filled);
     }
 
     .lang-button[hover] {
-      background: var(--affine-hover-color-filled);
+      background: var(--pulsar-hover-color-filled);
     }
   `;
 

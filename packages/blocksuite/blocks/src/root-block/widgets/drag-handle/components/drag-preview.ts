@@ -1,13 +1,13 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 import type { TemplateResult } from 'lit';
 
-import { ShadowlessElement } from '@blocksuite/block-std';
-import { Point } from '@blocksuite/global/utils';
+import { ShadowlessElement } from '@pulsar/block-std';
+import { Point } from '@pulsar/global/utils';
 import { baseTheme } from '@toeverything/theme';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-@customElement('affine-drag-preview')
+@customElement('pulsar-drag-preview')
 export class DragPreview extends ShadowlessElement {
   offset: Point;
 
@@ -31,9 +31,9 @@ export class DragPreview extends ShadowlessElement {
           display: block;
           height: auto;
           font-family: ${baseTheme.fontSansFamily};
-          font-size: var(--affine-font-base);
-          line-height: var(--affine-line-height);
-          color: var(--affine-text-primary-color);
+          font-size: var(--pulsar-font-base);
+          line-height: var(--pulsar-line-height);
+          color: var(--pulsar-text-primary-color);
           font-weight: 400;
           top: 0;
           left: 0;
@@ -60,6 +60,6 @@ export class DragPreview extends ShadowlessElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-drag-preview': DragPreview;
+    'pulsar-drag-preview': DragPreview;
   }
 }

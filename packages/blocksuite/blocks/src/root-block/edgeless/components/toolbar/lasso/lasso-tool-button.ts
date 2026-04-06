@@ -2,8 +2,8 @@ import {
   ArrowUpIcon,
   LassoFreeHandIcon,
   LassoPolygonalIcon,
-} from '@blocksuite/affine-components/icons';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -80,7 +80,7 @@ export class EdgelessDefaultToolButton extends QuickToolMixin(
     const mode = this.curMode === LassoMode.FreeHand ? 'freehand' : 'polygonal';
 
     const arrowColor =
-      type === 'lasso' ? 'currentColor' : 'var(--affine-icon-secondary)';
+      type === 'lasso' ? 'currentColor' : 'var(--pulsar-icon-secondary)';
     return html`
       <edgeless-tool-icon-button
         class="edgeless-lasso-button ${mode}"

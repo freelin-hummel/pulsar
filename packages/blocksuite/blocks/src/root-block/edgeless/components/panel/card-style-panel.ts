@@ -1,4 +1,4 @@
-import { WithDisposable } from '@blocksuite/block-std';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, type TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -24,7 +24,7 @@ export class CardStylePanel extends WithDisposable(LitElement) {
     }
 
     icon-button.selected {
-      border: 1px solid var(--affine-brand-color);
+      border: 1px solid var(--pulsar-brand-color);
     }
   `;
 

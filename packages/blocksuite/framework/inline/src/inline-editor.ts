@@ -1,5 +1,5 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { DisposableGroup, Slot, assertExists } from '@blocksuite/global/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { DisposableGroup, Slot, assertExists } from '@pulsar/global/utils';
 import { type TemplateResult, nothing, render } from 'lit';
 import * as Y from 'yjs';
 

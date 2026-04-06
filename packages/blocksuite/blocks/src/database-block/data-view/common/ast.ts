@@ -1,4 +1,4 @@
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
 
 import type { TType } from '../logical/typesystem.js';
 import type { UniComponent } from '../utils/uni-component/uni-component.js';

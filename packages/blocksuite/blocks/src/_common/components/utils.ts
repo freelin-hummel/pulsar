@@ -1,13 +1,13 @@
-import type { AffineInlineEditor } from '@blocksuite/affine-components/rich-text';
-import type { EditorHost } from '@blocksuite/block-std';
-import type { InlineEditor, InlineRange } from '@blocksuite/inline';
+import type { PulsarInlineEditor } from '@pulsar/editor-components/rich-text';
+import type { EditorHost } from '@pulsar/block-std';
+import type { InlineEditor, InlineRange } from '@pulsar/inline';
 
-import { getInlineEditorByModel } from '@blocksuite/affine-components/rich-text';
+import { getInlineEditorByModel } from '@pulsar/editor-components/rich-text';
 import {
   getCurrentNativeRange,
   isControlledKeyboardEvent,
-} from '@blocksuite/affine-shared/utils';
-import { BlockModel } from '@blocksuite/store';
+} from '@pulsar/editor-shared/utils';
+import { BlockModel } from '@pulsar/store';
 import { css, unsafeCSS } from 'lit';
 
 export function getQuery(
@@ -216,7 +216,7 @@ export const createKeydownObserver = ({
  */
 export function cleanSpecifiedTail(
   editorHost: EditorHost,
-  inlineEditorOrModel: AffineInlineEditor | BlockModel,
+  inlineEditorOrModel: PulsarInlineEditor | BlockModel,
   str: string
 ) {
   if (!str) {

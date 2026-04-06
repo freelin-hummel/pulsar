@@ -1,5 +1,5 @@
-import type { PointTestOptions } from '@blocksuite/block-std/gfx';
-import type { IBound } from '@blocksuite/global/utils';
+import type { PointTestOptions } from '@pulsar/block-std/gfx';
+import type { IBound } from '@pulsar/global/utils';
 
 import {
   type IVec,
@@ -10,10 +10,10 @@ import {
   pointInPolygon,
   rotatePoints,
   toRadian,
-} from '@blocksuite/global/utils';
-import { Vec } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
-import { PointLocation } from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
+import { Vec } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
+import { PointLocation } from '@pulsar/global/utils';
 
 import type { ShapeElementModel } from '../shape.js';
 

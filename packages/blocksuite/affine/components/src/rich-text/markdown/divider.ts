@@ -1,7 +1,7 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
-import { matchFlavours } from '@blocksuite/affine-shared/utils';
+import { matchFlavours } from '@pulsar/editor-shared/utils';
 
 import { focusTextModel } from '../dom.js';
 import { beforeConvert } from './utils.js';
@@ -13,8 +13,8 @@ export function toDivider(
 ) {
   const { doc } = std;
   if (
-    matchFlavours(model, ['affine:divider']) ||
-    (matchFlavours(model, ['affine:paragraph']) && model.type === 'quote')
+    matchFlavours(model, ['pulsar:divider']) ||
+    (matchFlavours(model, ['pulsar:paragraph']) && model.type === 'quote')
   ) {
     return;
   }
@@ -27,12 +27,12 @@ export function toDivider(
   const blockProps = {
     children: model.children,
   };
-  doc.addBlock('affine:divider', blockProps, parent, index);
+  doc.addBlock('pulsar:divider', blockProps, parent, index);
 
   const nextBlock = parent.children[index + 1];
   let id = nextBlock?.id;
   if (!id) {
-    id = doc.addBlock('affine:paragraph', {}, parent);
+    id = doc.addBlock('pulsar:paragraph', {}, parent);
   }
   focusTextModel(std, id);
   return id;

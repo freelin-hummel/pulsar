@@ -24,7 +24,7 @@ const paragraphButtonStyle = css`
 
   .highligh-panel-heading {
     display: flex;
-    color: var(--affine-text-secondary-color);
+    color: var(--pulsar-text-secondary-color);
     padding: 4px;
   }
 
@@ -32,7 +32,7 @@ const paragraphButtonStyle = css`
     display: none;
     position: absolute;
     padding: 0;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     --packed-height: 6px;
   }
 
@@ -48,7 +48,7 @@ export const formatBarStyle = css`
   .affine-format-bar-widget {
     position: absolute;
     display: none;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     user-select: none;
   }
 

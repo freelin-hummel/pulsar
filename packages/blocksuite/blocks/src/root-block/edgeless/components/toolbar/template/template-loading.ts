@@ -1,8 +1,8 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-@customElement('affine-template-loading')
-export class AffineTemplateLoading extends LitElement {
+@customElement('pulsar-template-loading')
+export class PulsarTemplateLoading extends LitElement {
   static override styles = css`
     @keyframes affine-template-block-rotate {
       from {
@@ -45,14 +45,14 @@ export class AffineTemplateLoading extends LitElement {
   `;
 
   override render() {
-    return html`<div class="affine-template-block-container">
-      <div class="affine-template-block-loading"></div>
+    return html`<div class="pulsar-template-block-container">
+      <div class="pulsar-template-block-loading"></div>
     </div>`;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-template-loading': AffineTemplateLoading;
+    'pulsar-template-loading': PulsarTemplateLoading;
   }
 }

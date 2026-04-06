@@ -1,4 +1,4 @@
-import type { InsertToPosition } from '@blocksuite/affine-shared/utils';
+import type { InsertToPosition } from '@pulsar/editor-shared/utils';
 
 import { PlusIcon } from '@blocksuite/icons/lit';
 import { css, html } from 'lit';
@@ -19,7 +19,7 @@ const styles = css`
     padding: 6px 8px;
     border-radius: 8px;
     font-size: 14px;
-    background: var(--affine-white);
+    background: var(--pulsar-white);
     box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.1);
     cursor: grab;
   }
@@ -27,7 +27,7 @@ const styles = css`
   .new-record svg {
     width: 16px;
     height: 16px;
-    fill: var(--affine-icon-color);
+    fill: var(--pulsar-icon-color);
   }
 `;
 
@@ -36,9 +36,9 @@ export class DataViewHeaderToolsAddRow extends WidgetBase {
   _dragStart = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    const container = this.closest('affine-data-view-renderer');
+    const container = this.closest('pulsar-data-view-renderer');
     const tableRect = container
-      ?.querySelector('affine-database-table')
+      ?.querySelector('pulsar-database-table')
       ?.getBoundingClientRect();
     const rows: NodeListOf<HTMLElement> | undefined =
       container?.querySelectorAll('.affine-database-block-row');
@@ -158,7 +158,7 @@ export class DataViewHeaderToolsAddRow extends WidgetBase {
       return;
     }
     return html` <div
-      class="affine-database-toolbar-item new-record"
+      class="pulsar-database-toolbar-item new-record"
       draggable="true"
       @click="${this._onAddNewRecord}"
     >
@@ -183,7 +183,7 @@ const createDropPreview = () => {
   div.style.zIndex = '9999';
   div.style.height = '4px';
   div.style.borderRadius = '2px';
-  div.style.backgroundColor = 'var(--affine-primary-color)';
+  div.style.backgroundColor = 'var(--pulsar-primary-color)';
   div.style.boxShadow = '0px 0px 8px 0px rgba(30, 150, 235, 0.35)';
   return {
     display(x: number, y: number, width: number) {

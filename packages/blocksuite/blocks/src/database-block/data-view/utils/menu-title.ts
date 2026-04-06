@@ -1,4 +1,4 @@
-import type { Menu } from '@blocksuite/affine-components/context-menu';
+import type { Menu } from '@pulsar/editor-components/context-menu';
 import type { TemplateResult } from 'lit';
 
 import { ArrowLeftBigIcon } from '@blocksuite/icons/lit';
@@ -33,7 +33,7 @@ export const menuTitle = (name: string, onBack: () => void) => {
         ${ArrowLeftBigIcon()}
       </div>
       <div
-        style="font-size: 12px;line-height: 20px;color: var(--affine-text-secondary-color)"
+        style="font-size: 12px;line-height: 20px;color: var(--pulsar-text-secondary-color)"
       >
         ${name}
       </div>

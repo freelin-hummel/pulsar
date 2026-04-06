@@ -1,6 +1,6 @@
-import type { Viewport } from '@blocksuite/block-std/gfx';
-import type { PointLocation } from '@blocksuite/global/utils';
-import type { BlockModel } from '@blocksuite/store';
+import type { Viewport } from '@pulsar/block-std/gfx';
+import type { PointLocation } from '@pulsar/global/utils';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   type CanvasElementWithText,
@@ -8,7 +8,7 @@ import {
   GRID_GAP_MIN,
   MindmapElementModel,
   CommonUtils,
-} from '@blocksuite/affine-block-surface';
+} from '@pulsar/block-surface';
 import {
   type AttachmentBlockModel,
   type BookmarkBlockModel,
@@ -27,9 +27,9 @@ import {
   type FrameBlockModel,
   type ImageBlockModel,
   type NoteBlockModel,
-} from '@blocksuite/affine-model';
-import { deserializeXYWH } from '@blocksuite/global/utils';
-import { Bound } from '@blocksuite/global/utils';
+} from '@pulsar/model';
+import { deserializeXYWH } from '@pulsar/global/utils';
+import { Bound } from '@pulsar/global/utils';
 
 import type { Connectable } from '../../../_common/utils/index.js';
 import type { GfxBlockModel } from '../block-model.js';
@@ -54,7 +54,7 @@ export function isTopLevelBlock(
 export function isNoteBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is NoteBlockModel {
-  return !!element && 'flavour' in element && element.flavour === 'affine:note';
+  return !!element && 'flavour' in element && element.flavour === 'pulsar:note';
 }
 
 export function isEdgelessTextBlock(
@@ -63,7 +63,7 @@ export function isEdgelessTextBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:edgeless-text'
+    element.flavour === 'pulsar:edgeless-text'
   );
 }
 
@@ -71,7 +71,7 @@ export function isFrameBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is FrameBlockModel {
   return (
-    !!element && 'flavour' in element && element.flavour === 'affine:frame'
+    !!element && 'flavour' in element && element.flavour === 'pulsar:frame'
   );
 }
 
@@ -79,7 +79,7 @@ export function isImageBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is ImageBlockModel {
   return (
-    !!element && 'flavour' in element && element.flavour === 'affine:image'
+    !!element && 'flavour' in element && element.flavour === 'pulsar:image'
   );
 }
 
@@ -87,7 +87,7 @@ export function isAttachmentBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is AttachmentBlockModel {
   return (
-    !!element && 'flavour' in element && element.flavour === 'affine:attachment'
+    !!element && 'flavour' in element && element.flavour === 'pulsar:attachment'
   );
 }
 
@@ -95,7 +95,7 @@ export function isBookmarkBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is BookmarkBlockModel {
   return (
-    !!element && 'flavour' in element && element.flavour === 'affine:bookmark'
+    !!element && 'flavour' in element && element.flavour === 'pulsar:bookmark'
   );
 }
 
@@ -120,7 +120,7 @@ export function isAIChatBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:embed-ai-chat'
+    element.flavour === 'pulsar:embed-ai-chat'
   );
 }
 
@@ -140,7 +140,7 @@ export function isEmbedGithubBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:embed-github'
+    element.flavour === 'pulsar:embed-github'
   );
 }
 
@@ -150,7 +150,7 @@ export function isEmbedYoutubeBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:embed-youtube'
+    element.flavour === 'pulsar:embed-youtube'
   );
 }
 
@@ -158,7 +158,7 @@ export function isEmbedLoomBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is EmbedLoomModel {
   return (
-    !!element && 'flavour' in element && element.flavour === 'affine:embed-loom'
+    !!element && 'flavour' in element && element.flavour === 'pulsar:embed-loom'
   );
 }
 
@@ -168,7 +168,7 @@ export function isEmbedFigmaBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:embed-figma'
+    element.flavour === 'pulsar:embed-figma'
   );
 }
 
@@ -178,7 +178,7 @@ export function isEmbedLinkedDocBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:embed-linked-doc'
+    element.flavour === 'pulsar:embed-linked-doc'
   );
 }
 
@@ -188,7 +188,7 @@ export function isEmbedSyncedDocBlock(
   return (
     !!element &&
     'flavour' in element &&
-    element.flavour === 'affine:embed-synced-doc'
+    element.flavour === 'pulsar:embed-synced-doc'
   );
 }
 
@@ -196,7 +196,7 @@ export function isEmbedHtmlBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is EmbedHtmlModel {
   return (
-    !!element && 'flavour' in element && element.flavour === 'affine:embed-html'
+    !!element && 'flavour' in element && element.flavour === 'pulsar:embed-html'
   );
 }
 
@@ -254,7 +254,7 @@ export function getBackgroundGrid(zoom: number, showGrid: boolean) {
   return {
     gap,
     grid: showGrid
-      ? 'radial-gradient(var(--affine-edgeless-grid-color) 1px, var(--affine-background-primary-color) 1px)'
+      ? 'radial-gradient(var(--pulsar-edgeless-grid-color) 1px, var(--pulsar-background-primary-color) 1px)'
       : 'unset',
   };
 }

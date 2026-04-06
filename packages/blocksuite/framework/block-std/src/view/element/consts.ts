@@ -1,4 +1,4 @@
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockModel } from '@pulsar/store';
 
 import { createContext } from '@lit/context';
 

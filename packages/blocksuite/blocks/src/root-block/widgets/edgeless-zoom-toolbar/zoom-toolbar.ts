@@ -2,9 +2,9 @@ import {
   MinusIcon,
   PlusIcon,
   ViewBarIcon,
-} from '@blocksuite/affine-components/icons';
-import { stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-components/icons';
+import { stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -37,9 +37,9 @@ export class EdgelessZoomToolbar extends WithDisposable(LitElement) {
     .edgeless-zoom-toolbar-container.vertical {
       flex-direction: column;
       width: 40px;
-      background-color: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-shadow-2);
-      border: 1px solid var(--affine-border-color);
+      background-color: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-shadow-2);
+      border: 1px solid var(--pulsar-border-color);
       border-radius: 8px;
     }
 
@@ -62,7 +62,7 @@ export class EdgelessZoomToolbar extends WithDisposable(LitElement) {
       border: none;
       box-sizing: border-box;
       padding: 4px;
-      color: var(--affine-icon-color);
+      color: var(--pulsar-icon-color);
       background-color: transparent;
       border-radius: 4px;
       cursor: pointer;
@@ -74,14 +74,14 @@ export class EdgelessZoomToolbar extends WithDisposable(LitElement) {
     }
 
     .zoom-percent:hover {
-      color: var(--affine-primary-color);
-      background-color: var(--affine-hover-color);
+      color: var(--pulsar-primary-color);
+      background-color: var(--pulsar-hover-color);
     }
 
     .zoom-percent[disabled] {
       pointer-events: none;
       cursor: not-allowed;
-      color: var(--affine-text-disable-color);
+      color: var(--pulsar-text-disable-color);
     }
   `;
 

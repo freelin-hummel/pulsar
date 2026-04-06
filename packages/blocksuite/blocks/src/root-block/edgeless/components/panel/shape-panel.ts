@@ -1,5 +1,5 @@
-import { ShapeStyle } from '@blocksuite/affine-model';
-import { Slot } from '@blocksuite/global/utils';
+import { ShapeStyle } from '@pulsar/model';
+import { Slot } from '@pulsar/global/utils';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';

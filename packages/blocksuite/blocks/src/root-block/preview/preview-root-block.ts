@@ -1,9 +1,9 @@
 // import { PageRootBlockComponent } from '../page/page-root-block.js';
-import { BlockComponent } from '@blocksuite/block-std';
+import { BlockComponent } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-@customElement('affine-preview-root')
+@customElement('pulsar-preview-root')
 export class PreviewRootBlockComponent extends BlockComponent {
   static override styles = css`
     affine-preview-root {
@@ -12,7 +12,7 @@ export class PreviewRootBlockComponent extends BlockComponent {
   `;
 
   override renderBlock() {
-    return html`<div class="affine-preview-root">
+    return html`<div class="pulsar-preview-root">
       ${this.host.renderChildren(this.model)}
     </div>`;
   }

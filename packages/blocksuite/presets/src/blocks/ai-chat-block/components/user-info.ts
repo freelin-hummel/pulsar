@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import type { MessageRole, MessageUserInfo } from '../types.js';
 
-import { AffineAIIcon } from '../../_common/icon.js';
+import { PulsarAIIcon } from '../../_common/icon.js';
 
 @customElement('user-info')
 export class UserInfo extends LitElement {
@@ -20,7 +20,7 @@ export class UserInfo extends LitElement {
       .user-avatar-container {
         width: 24px;
         height: 24px;
-        color: var(--affine-brand-color);
+        color: var(--pulsar-brand-color);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -39,14 +39,14 @@ export class UserInfo extends LitElement {
 
       .default-avatar,
       .avatar-image {
-        background-color: var(--affine-primary-color);
+        background-color: var(--pulsar-primary-color);
       }
 
       .user-name {
-        color: var(--affine-text-primary-color);
+        color: var(--pulsar-text-primary-color);
         text-align: justify;
         font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-        font-size: var(--affine-font-sm);
+        font-size: var(--pulsar-font-sm);
         font-style: normal;
         font-weight: 500;
         line-height: 22px;
@@ -109,7 +109,7 @@ export function UserInfoTemplate(
       ></user-info>`
     : html`<user-info
         .userName=${'AFFiNE AI'}
-        .avatarIcon=${AffineAIIcon}
+        .avatarIcon=${PulsarAIIcon}
       ></user-info>`;
 
   return userInfoTemplate;

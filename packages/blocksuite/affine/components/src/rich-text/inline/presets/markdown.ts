@@ -1,14 +1,14 @@
 /* eslint-disable no-useless-escape */
 
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
 import {
   KEYBOARD_ALLOW_DEFAULT,
   KEYBOARD_PREVENT_DEFAULT,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 
 import type { InlineMarkdownMatch } from '../inline-manager.js';
-import type { AffineTextAttributes } from './affine-inline-specs.js';
+import type { PulsarTextAttributes } from './affine-inline-specs.js';
 
 // inline markdown match rules:
 // covert: ***test*** + space
@@ -16,7 +16,7 @@ import type { AffineTextAttributes } from './affine-inline-specs.js';
 // not convert: *** test*** + space
 // not convert: ***test *** + space
 // not convert: *** test *** + space
-export const affineInlineMarkdownMatches: InlineMarkdownMatch<AffineTextAttributes>[] =
+export const affineInlineMarkdownMatches: InlineMarkdownMatch<PulsarTextAttributes>[] =
   [
     {
       name: 'bolditalic',
@@ -514,7 +514,7 @@ export const affineInlineMarkdownMatches: InlineMarkdownMatch<AffineTextAttribut
           });
 
           const id = doc.addBlock(
-            'affine:latex',
+            'pulsar:latex',
             {
               latex: '',
             },
@@ -524,7 +524,7 @@ export const affineInlineMarkdownMatches: InlineMarkdownMatch<AffineTextAttribut
           blockComponent.host.updateComplete
             .then(() => {
               const latexBlock = blockComponent.std.view.getBlock(id);
-              if (!latexBlock || latexBlock.flavour !== 'affine:latex') return;
+              if (!latexBlock || latexBlock.flavour !== 'pulsar:latex') return;
 
               //FIXME(@Flrande): wait for refactor
               // @ts-ignore
@@ -583,7 +583,7 @@ export const affineInlineMarkdownMatches: InlineMarkdownMatch<AffineTextAttribut
 
               const [text] = textPoint;
               const latexNode =
-                text.parentElement?.closest('affine-latex-node');
+                text.parentElement?.closest('pulsar-latex-node');
               if (!latexNode) return;
 
               latexNode.toggleEditor();

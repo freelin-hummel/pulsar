@@ -1,7 +1,7 @@
-import type { PointerEventState } from '@blocksuite/block-std';
+import type { PointerEventState } from '@pulsar/block-std';
 
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { noop } from '@blocksuite/global/utils';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { noop } from '@pulsar/global/utils';
 
 import { addText } from '../utils/text.js';
 import { EdgelessToolController } from './edgeless-tool.js';

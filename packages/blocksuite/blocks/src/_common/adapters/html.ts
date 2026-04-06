@@ -1,5 +1,5 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
-import type { DeltaInsert } from '@blocksuite/inline';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
+import type { DeltaInsert } from '@pulsar/inline';
 import type {
   FromBlockSnapshotPayload,
   FromBlockSnapshotResult,
@@ -9,25 +9,25 @@ import type {
   FromSliceSnapshotResult,
   ToBlockSnapshotPayload,
   ToDocSnapshotPayload,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import type {
   BlockSnapshot,
   DocSnapshot,
   SliceSnapshot,
-} from '@blocksuite/store';
+} from '@pulsar/store';
 import type { Root } from 'hast';
 
-import { ColorScheme, NoteDisplayMode } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { getFilenameFromContentDisposition } from '@blocksuite/affine-shared/utils';
-import { sha } from '@blocksuite/global/utils';
+import { ColorScheme, NoteDisplayMode } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { getFilenameFromContentDisposition } from '@pulsar/editor-shared/utils';
+import { sha } from '@pulsar/global/utils';
 import {
   type AssetsManager,
   BlockSnapshotSchema,
   getAssetName,
   nanoid,
-} from '@blocksuite/store';
-import { ASTWalker, BaseAdapter } from '@blocksuite/store';
+} from '@pulsar/store';
+import { ASTWalker, BaseAdapter } from '@pulsar/store';
 import { collapseWhiteSpace } from 'collapse-white-space';
 import rehypeParse from 'rehype-parse';
 import rehypeStringify from 'rehype-stringify';
@@ -62,7 +62,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
     return unified().use(rehypeStringify).stringify(ast);
   };
 
-  private _deltaToHast = (deltas: DeltaInsert<AffineTextAttributes>[]) => {
+  private _deltaToHast = (deltas: DeltaInsert<PulsarTextAttributes>[]) => {
     return deltas.map(delta => {
       let hast: HtmlAST = {
         type: 'text',
@@ -345,7 +345,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:image',
+                  flavour: 'pulsar:image',
                   props: {
                     sourceId: blobId,
                   },
@@ -383,7 +383,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:code',
+                flavour: 'pulsar:code',
                 props: {
                   language: codeLang ?? 'Plain Text',
                   text: {
@@ -414,7 +414,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:paragraph',
+                  flavour: 'pulsar:paragraph',
                   props: {
                     type: 'quote',
                     text: {
@@ -467,7 +467,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:paragraph',
+                  flavour: 'pulsar:paragraph',
                   props: {
                     type: 'text',
                     text: {
@@ -489,7 +489,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:paragraph',
+              flavour: 'pulsar:paragraph',
               props: {
                 type: context.getGlobalContext('hast:blockquote')
                   ? 'quote'
@@ -532,7 +532,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
             {
               type: 'block',
               id: nanoid(),
-              flavour: 'affine:list',
+              flavour: 'pulsar:list',
               props: {
                 type: listType,
                 text: {
@@ -571,7 +571,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:divider',
+                flavour: 'pulsar:divider',
                 props: {},
                 children: [],
               },
@@ -591,7 +591,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
               {
                 type: 'block',
                 id: nanoid(),
-                flavour: 'affine:paragraph',
+                flavour: 'pulsar:paragraph',
                 props: {
                   type: o.node.tagName,
                   text: {
@@ -621,7 +621,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                 {
                   type: 'block',
                   id: nanoid(),
-                  flavour: 'affine:embed-youtube',
+                  flavour: 'pulsar:embed-youtube',
                   props: {
                     url: `https://www.youtube.com/watch?v=${videoId}`,
                   },
@@ -648,10 +648,10 @@ export class HtmlAdapter extends BaseAdapter<Html> {
           ) {
             if (
               o.node.properties.className.includes(
-                'affine-paragraph-block-container'
+                'pulsar-paragraph-block-container'
               ) ||
               o.node.properties.className.includes(
-                'affine-block-children-container'
+                'pulsar-block-children-container'
               ) ||
               o.node.properties.className.includes('indented')
             ) {
@@ -670,7 +670,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
             o.next.tagName === 'div' &&
             Array.isArray(o.next.properties?.className) &&
             (o.next.properties.className.includes(
-              'affine-block-children-container'
+              'pulsar-block-children-container'
             ) ||
               o.next.properties.className.includes('indented'))
           ) {
@@ -705,7 +705,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
         delta: DeltaInsert[];
       };
       switch (o.node.flavour) {
-        case 'affine:page': {
+        case 'pulsar:page': {
           context
             .openNode(
               {
@@ -794,7 +794,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
             .closeNode();
           break;
         }
-        case 'affine:code': {
+        case 'pulsar:code': {
           const rawLang = o.node.props.language as string | null;
           const matchedLang = rawLang
             ? (bundledLanguagesInfo.find(
@@ -820,7 +820,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
           context.openNode(hast, 'children').closeNode();
           break;
         }
-        case 'affine:paragraph': {
+        case 'pulsar:paragraph': {
           switch (o.node.props.type) {
             case 'text': {
               context
@@ -829,7 +829,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                     type: 'element',
                     tagName: 'div',
                     properties: {
-                      className: ['affine-paragraph-block-container'],
+                      className: ['pulsar-paragraph-block-container'],
                     },
                     children: [],
                   },
@@ -850,7 +850,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                     type: 'element',
                     tagName: 'div',
                     properties: {
-                      className: ['affine-block-children-container'],
+                      className: ['pulsar-block-children-container'],
                       style: 'padding-left: 26px;',
                     },
                     children: [],
@@ -871,7 +871,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                     type: 'element',
                     tagName: 'div',
                     properties: {
-                      className: ['affine-paragraph-block-container'],
+                      className: ['pulsar-paragraph-block-container'],
                     },
                     children: [],
                   },
@@ -892,7 +892,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                     type: 'element',
                     tagName: 'div',
                     properties: {
-                      className: ['affine-block-children-container'],
+                      className: ['pulsar-block-children-container'],
                       style: 'padding-left: 26px;',
                     },
                     children: [],
@@ -908,7 +908,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                     type: 'element',
                     tagName: 'div',
                     properties: {
-                      className: ['affine-paragraph-block-container'],
+                      className: ['pulsar-paragraph-block-container'],
                     },
                     children: [],
                   },
@@ -941,7 +941,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                     type: 'element',
                     tagName: 'div',
                     properties: {
-                      className: ['affine-block-children-container'],
+                      className: ['pulsar-block-children-container'],
                       style: 'padding-left: 26px;',
                     },
                     children: [],
@@ -953,14 +953,14 @@ export class HtmlAdapter extends BaseAdapter<Html> {
           }
           break;
         }
-        case 'affine:list': {
+        case 'pulsar:list': {
           context
             .openNode(
               {
                 type: 'element',
                 tagName: 'div',
                 properties: {
-                  className: ['affine-list-block-container'],
+                  className: ['pulsar-list-block-container'],
                 },
                 children: [],
               },
@@ -1016,7 +1016,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                 type: 'element',
                 tagName: 'div',
                 properties: {
-                  className: ['affine-block-children-container'],
+                  className: ['pulsar-block-children-container'],
                   style: 'padding-left: 26px;',
                 },
                 children: [],
@@ -1025,7 +1025,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
             );
           break;
         }
-        case 'affine:divider': {
+        case 'pulsar:divider': {
           context
             .openNode(
               {
@@ -1039,7 +1039,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
             .closeNode();
           break;
         }
-        case 'affine:image': {
+        case 'pulsar:image': {
           const blobId = (o.node.props.sourceId ?? '') as string;
           if (!assets) {
             break;
@@ -1065,7 +1065,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
                 type: 'element',
                 tagName: 'figure',
                 properties: {
-                  className: ['affine-image-block-container'],
+                  className: ['pulsar-image-block-container'],
                 },
                 children: [],
               },
@@ -1093,15 +1093,15 @@ export class HtmlAdapter extends BaseAdapter<Html> {
     });
     walker.setLeave((o, context) => {
       switch (o.node.flavour) {
-        case 'affine:page': {
+        case 'pulsar:page': {
           context.closeNode().closeNode().closeNode();
           break;
         }
-        case 'affine:paragraph': {
+        case 'pulsar:paragraph': {
           context.closeNode().closeNode();
           break;
         }
-        case 'affine:list': {
+        case 'pulsar:list': {
           context.closeNode().closeNode();
           break;
         }
@@ -1187,10 +1187,10 @@ export class HtmlAdapter extends BaseAdapter<Html> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -1212,10 +1212,10 @@ export class HtmlAdapter extends BaseAdapter<Html> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,
@@ -1233,7 +1233,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
       blocks: {
         type: 'block',
         id: nanoid(),
-        flavour: 'affine:page',
+        flavour: 'pulsar:page',
         props: {
           title: {
             '$blocksuite:internal:text$': true,
@@ -1249,7 +1249,7 @@ export class HtmlAdapter extends BaseAdapter<Html> {
           {
             type: 'block',
             id: nanoid(),
-            flavour: 'affine:surface',
+            flavour: 'pulsar:surface',
             props: {
               elements: {},
             },
@@ -1272,10 +1272,10 @@ export class HtmlAdapter extends BaseAdapter<Html> {
     const blockSnapshotRoot = {
       type: 'block',
       id: nanoid(),
-      flavour: 'affine:note',
+      flavour: 'pulsar:note',
       props: {
         xywh: '[0,0,800,95]',
-        background: '--affine-background-secondary-color',
+        background: '--pulsar-background-secondary-color',
         index: 'a0',
         hidden: false,
         displayMode: NoteDisplayMode.DocAndEdgeless,

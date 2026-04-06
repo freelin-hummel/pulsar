@@ -1,7 +1,7 @@
-import type { GfxElementGeometry } from '@blocksuite/block-std/gfx';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { GfxElementGeometry } from '@pulsar/block-std/gfx';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 import {
   FontFamily,
@@ -21,7 +21,7 @@ type EdgelessTextProps = {
 } & Omit<TextStyleProps, 'fontSize'>;
 
 export const EdgelessTextBlockSchema = defineBlockSchema({
-  flavour: 'affine:edgeless-text',
+  flavour: 'pulsar:edgeless-text',
   props: (): EdgelessTextProps => ({
     xywh: '[0,0,16,16]',
     index: 'a0',
@@ -37,16 +37,16 @@ export const EdgelessTextBlockSchema = defineBlockSchema({
   metadata: {
     version: 1,
     role: 'hub',
-    parent: ['affine:surface'],
+    parent: ['pulsar:surface'],
     children: [
-      'affine:paragraph',
-      'affine:list',
-      'affine:code',
-      'affine:image',
-      'affine:bookmark',
-      'affine:attachment',
-      'affine:embed-!(synced-doc)',
-      'affine:latex',
+      'pulsar:paragraph',
+      'pulsar:list',
+      'pulsar:code',
+      'pulsar:image',
+      'pulsar:bookmark',
+      'pulsar:attachment',
+      'pulsar:embed-!(synced-doc)',
+      'pulsar:latex',
     ],
   },
   toModel: () => {
@@ -61,11 +61,11 @@ export class EdgelessTextBlockModel
 declare global {
   namespace BlockSuite {
     interface BlockModels {
-      'affine:edgeless-text': EdgelessTextBlockModel;
+      'pulsar:edgeless-text': EdgelessTextBlockModel;
     }
 
     interface EdgelessBlockModelMap {
-      'affine:edgeless-text': EdgelessTextBlockModel;
+      'pulsar:edgeless-text': EdgelessTextBlockModel;
     }
 
     interface EdgelessTextModelMap {

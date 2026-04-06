@@ -1,6 +1,6 @@
-import type { FontConfig } from '@blocksuite/affine-block-surface';
+import type { FontConfig } from '@pulsar/block-surface';
 
-import { IS_FIREFOX } from '@blocksuite/global/env';
+import { IS_FIREFOX } from '@pulsar/global/env';
 
 const initFontFace = IS_FIREFOX
   ? ({ font, weight, url, style }: FontConfig) =>

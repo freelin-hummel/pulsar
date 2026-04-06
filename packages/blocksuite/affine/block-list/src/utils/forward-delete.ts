@@ -1,10 +1,10 @@
-import type { BlockStdScope } from '@blocksuite/block-std';
-import type { Text } from '@blocksuite/store';
+import type { BlockStdScope } from '@pulsar/block-std';
+import type { Text } from '@pulsar/store';
 
 import {
   getNextContentBlock,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 
 // When deleting at line end of a list block,
 // check current block's children and siblings
@@ -26,7 +26,7 @@ export function forwardDelete(std: BlockStdScope): true | undefined {
   const isCollapsed = text.isCollapsed();
   const doc = std.doc;
   const model = doc.getBlock(text.from.blockId)?.model;
-  if (!model || !matchFlavours(model, ['affine:list'])) return;
+  if (!model || !matchFlavours(model, ['pulsar:list'])) return;
   const isEnd = isCollapsed && text.from.index === model.text.length;
   if (!isEnd) return;
   // Has children in list

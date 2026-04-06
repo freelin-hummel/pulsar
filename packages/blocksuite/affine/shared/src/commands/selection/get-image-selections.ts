@@ -1,5 +1,5 @@
-import type { ImageSelection } from '@blocksuite/affine-shared/selection';
-import type { Command } from '@blocksuite/block-std';
+import type { ImageSelection } from '@pulsar/editor-shared/selection';
+import type { Command } from '@pulsar/block-std';
 
 export const getImageSelectionsCommand: Command<
   never,

@@ -14,7 +14,7 @@ import {
   NumberedListIcon,
   QuoteIcon,
   TextIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 
 /**
  * Text primitive entries used in slash menu and format bar,
@@ -31,7 +31,7 @@ export interface TextConversionConfig {
 
 export const textConversionConfigs: TextConversionConfig[] = [
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'text',
     name: 'Text',
     description: 'Start typing with plain text.',
@@ -39,7 +39,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: TextIcon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h1',
     name: 'Heading 1',
     description: 'Headings in the largest font.',
@@ -47,7 +47,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: Heading1Icon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h2',
     name: 'Heading 2',
     description: 'Headings in the 2nd font size.',
@@ -55,7 +55,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: Heading2Icon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h3',
     name: 'Heading 3',
     description: 'Headings in the 3rd font size.',
@@ -63,7 +63,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: Heading3Icon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h4',
     name: 'Heading 4',
     description: 'Headings in the 4th font size.',
@@ -71,7 +71,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: Heading4Icon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h5',
     name: 'Heading 5',
     description: 'Headings in the 5th font size.',
@@ -79,7 +79,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: Heading5Icon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h6',
     name: 'Heading 6',
     description: 'Headings in the 6th font size.',
@@ -87,7 +87,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: Heading6Icon,
   },
   {
-    flavour: 'affine:list',
+    flavour: 'pulsar:list',
     type: 'bulleted',
     name: 'Bulleted List',
     description: 'Create a bulleted list.',
@@ -95,7 +95,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: BulletedListIcon,
   },
   {
-    flavour: 'affine:list',
+    flavour: 'pulsar:list',
     type: 'numbered',
     name: 'Numbered List',
     description: 'Create a numbered list.',
@@ -103,7 +103,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: NumberedListIcon,
   },
   {
-    flavour: 'affine:list',
+    flavour: 'pulsar:list',
     type: 'todo',
     name: 'To-do List',
     description: 'Add tasks to a to-do list.',
@@ -111,7 +111,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: CheckBoxIcon,
   },
   {
-    flavour: 'affine:code',
+    flavour: 'pulsar:code',
     type: undefined,
     name: 'Code Block',
     description: 'Code snippet with formatting.',
@@ -119,7 +119,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: CodeBlockIcon,
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'quote',
     name: 'Quote',
     description: 'Add a blockquote for emphasis.',
@@ -127,7 +127,7 @@ export const textConversionConfigs: TextConversionConfig[] = [
     icon: QuoteIcon,
   },
   {
-    flavour: 'affine:divider',
+    flavour: 'pulsar:divider',
     type: 'divider',
     name: 'Divider',
     description: 'Visually separate content.',

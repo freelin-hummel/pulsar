@@ -1,5 +1,5 @@
-import { WithDisposable } from '@blocksuite/block-std';
-import { DualLinkIcon16, scrollbarStyle } from '@blocksuite/blocks';
+import { WithDisposable } from '@pulsar/block-std';
+import { DualLinkIcon16, scrollbarStyle } from '@pulsar/blocks';
 import { baseTheme } from '@toeverything/theme';
 import { LitElement, css, html, unsafeCSS } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
@@ -37,10 +37,10 @@ export class BacklinkButton extends WithDisposable(LitElement) {
       cursor: pointer;
 
       user-select: none;
-      font-size: var(--affine-font-sm);
+      font-size: var(--pulsar-font-sm);
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
-      fill: var(--affine-text-secondary-color);
-      color: var(--affine-text-secondary-color);
+      fill: var(--pulsar-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       pointer-events: auto;
     }
 
@@ -51,11 +51,11 @@ export class BacklinkButton extends WithDisposable(LitElement) {
     }
 
     .btn:hover {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .btn:active {
-      background: var(--affine-hover-color);
+      background: var(--pulsar-hover-color);
     }
 
     .backlink-popover {
@@ -71,13 +71,13 @@ export class BacklinkButton extends WithDisposable(LitElement) {
       display: flex;
       flex-direction: column;
       padding: 8px 4px;
-      background: var(--affine-white);
-      box-shadow: var(--affine-menu-shadow);
+      background: var(--pulsar-white);
+      box-shadow: var(--pulsar-menu-shadow);
       border-radius: 12px;
     }
 
     .backlink-popover .group-title {
-      color: var(--affine-text-secondary-color);
+      color: var(--pulsar-text-secondary-color);
       margin: 8px 12px;
     }
 

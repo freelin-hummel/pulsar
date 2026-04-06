@@ -1,8 +1,8 @@
 import {
   GeneralStyleIcon,
   ScribbledStyleIcon,
-} from '@blocksuite/affine-components/icons';
-import { ShapeStyle } from '@blocksuite/affine-model';
+} from '@pulsar/editor-components/icons';
+import { ShapeStyle } from '@pulsar/model';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';

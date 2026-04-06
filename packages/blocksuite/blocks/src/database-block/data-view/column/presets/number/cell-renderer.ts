@@ -1,4 +1,4 @@
-import { IS_MAC } from '@blocksuite/global/env';
+import { IS_MAC } from '@pulsar/global/env';
 import { baseTheme } from '@toeverything/theme';
 import { css, html, unsafeCSS } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
@@ -17,7 +17,7 @@ import {
   parseNumber,
 } from './utils/formatter.js';
 
-@customElement('affine-database-number-cell')
+@customElement('pulsar-database-number-cell')
 export class NumberCell extends BaseCellRenderer<number, NumberColumnDataType> {
   static override styles = css`
     affine-database-number-cell {
@@ -35,7 +35,7 @@ export class NumberCell extends BaseCellRenderer<number, NumberColumnDataType> {
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
       font-size: var(--data-view-cell-text-size);
       line-height: var(--data-view-cell-text-line-height);
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       background-color: transparent;
     }
@@ -55,13 +55,13 @@ export class NumberCell extends BaseCellRenderer<number, NumberColumnDataType> {
   }
 
   override render() {
-    return html` <div class="affine-database-number number">
+    return html` <div class="pulsar-database-number number">
       ${this._getFormattedString()}
     </div>`;
   }
 }
 
-@customElement('affine-database-number-cell-editing')
+@customElement('pulsar-database-number-cell-editing')
 export class NumberCellEditing extends BaseCellRenderer<
   number,
   NumberColumnDataType
@@ -128,7 +128,7 @@ export class NumberCellEditing extends BaseCellRenderer<
       font-family: ${unsafeCSS(baseTheme.fontSansFamily)};
       font-size: var(--data-view-cell-text-size);
       line-height: var(--data-view-cell-text-line-height);
-      color: var(--affine-text-primary-color);
+      color: var(--pulsar-text-primary-color);
       font-weight: 400;
       background-color: transparent;
       text-align: right;
@@ -175,7 +175,7 @@ export class NumberCellEditing extends BaseCellRenderer<
       @keydown="${this._keydown}"
       @blur="${this._blur}"
       @focus="${this._focus}"
-      class="affine-database-number number"
+      class="pulsar-database-number number"
       @pointerdown="${stopPropagation}"
     />`;
   }

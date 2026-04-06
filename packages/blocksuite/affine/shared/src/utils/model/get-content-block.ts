@@ -1,5 +1,5 @@
-import type { EditorHost } from '@blocksuite/block-std';
-import type { BlockModel } from '@blocksuite/store';
+import type { EditorHost } from '@pulsar/block-std';
+import type { BlockModel } from '@pulsar/store';
 
 import { matchFlavours } from './checker.js';
 
@@ -63,7 +63,7 @@ export function getPrevContentBlock(
 
     const prev = getPrev(model);
     if (prev) {
-      if (prev.role === 'content' && !matchFlavours(prev, ['affine:frame'])) {
+      if (prev.role === 'content' && !matchFlavours(prev, ['pulsar:frame'])) {
         return prev;
       } else {
         return iterate(prev);
@@ -89,7 +89,7 @@ export function getPrevContentBlock(
  *   - paragraph <- 4
  * ```
  *
- * NOTE: this method will skip the `affine:note` block
+ * NOTE: this method will skip the `pulsar:note` block
  */
 export function getNextContentBlock(
   editorHost: EditorHost,
@@ -110,7 +110,7 @@ export function getNextContentBlock(
   while (currentBlock) {
     const nextSibling = doc.getNext(currentBlock);
     if (nextSibling) {
-      // Assert nextSibling is not possible to be `affine:page`
+      // Assert nextSibling is not possible to be `pulsar:page`
       if (model.role === 'hub') {
         // in edgeless mode, limit search for the next block within the same note
         if (isInsideEdgelessEditor(editorHost)) {
@@ -128,6 +128,6 @@ export function getNextContentBlock(
 
 function isInsideEdgelessEditor(host: EditorHost) {
   return Array.from(host.children).some(
-    v => v.tagName.toLowerCase() === 'affine-edgeless-root'
+    v => v.tagName.toLowerCase() === 'pulsar-edgeless-root'
   );
 }

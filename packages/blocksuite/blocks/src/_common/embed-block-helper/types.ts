@@ -1,8 +1,8 @@
-import type { GfxCompatibleProps } from '@blocksuite/affine-model';
+import type { GfxCompatibleProps } from '@pulsar/model';
 
 export type EmbedProps<Props = object> = Props & GfxCompatibleProps;
 
-export type { LinkPreviewData } from '@blocksuite/affine-model';
+export type { LinkPreviewData } from '@pulsar/model';
 
 export type LinkPreviewResponseData = {
   url: string;

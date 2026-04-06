@@ -1,4 +1,4 @@
-import type { Container } from '@blocksuite/global/di';
+import type { Container } from '@pulsar/global/di';
 
 /**
  * Generic extension.

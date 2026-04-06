@@ -1,18 +1,18 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
+import type { DatabaseBlockModel } from '@pulsar/model';
 
-import { BlockComponent } from '@blocksuite/block-std';
+import { BlockComponent } from '@pulsar/block-std';
 import { CloseIcon, DatabaseTableViewIcon } from '@blocksuite/icons/lit';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit/static-html.js';
 
 import { fullScreenStyles } from './styles.js';
 
-@customElement('affine-database-table-view-full-screen')
+@customElement('pulsar-database-table-view-full-screen')
 export class DatabaseTableViewFullScreen extends BlockComponent<DatabaseBlockModel> {
   _renderView = () => {
     return html`
       <affine-database
-        class="affine-block-element"
+        class="pulsar-block-element"
         .modalMode=${true}
         .host=${this.host}
         .model=${this.model}
@@ -50,6 +50,6 @@ export class DatabaseTableViewFullScreen extends BlockComponent<DatabaseBlockMod
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-table-view-full-screen': DatabaseTableViewFullScreen;
+    'pulsar-database-table-view-full-screen': DatabaseTableViewFullScreen;
   }
 }

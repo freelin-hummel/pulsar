@@ -1,6 +1,6 @@
-import type { BrushElementModel } from '@blocksuite/affine-model';
-import type { GfxController, GfxModel } from '@blocksuite/block-std/gfx';
-import type { IBound, IVec, IVec3 } from '@blocksuite/global/utils';
+import type { BrushElementModel } from '@pulsar/model';
+import type { GfxController, GfxModel } from '@pulsar/block-std/gfx';
+import type { IBound, IVec, IVec3 } from '@pulsar/global/utils';
 
 import {
   type Connection,
@@ -8,7 +8,7 @@ import {
   ConnectorMode,
   GroupElementModel,
   type LocalConnectorElementModel,
-} from '@blocksuite/affine-model';
+} from '@pulsar/model';
 import {
   Bound,
   PI2,
@@ -30,7 +30,7 @@ import {
   lineIntersects,
   sign,
   toRadian,
-} from '@blocksuite/global/utils';
+} from '@pulsar/global/utils';
 
 import { isConnectorWithLabel } from '../element-model/utils/connector.js';
 import { Overlay } from '../renderer/canvas-renderer.js';
@@ -849,7 +849,7 @@ export class ConnectionOverlay extends Overlay {
     const zoom = this._gfx.viewport.zoom;
     const radius = 5 / zoom;
     const color = getComputedStyle(this._gfx.std.host).getPropertyValue(
-      '--affine-text-emphasis-color'
+      '--pulsar-text-emphasis-color'
     );
 
     ctx.globalAlpha = 0.6;

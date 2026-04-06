@@ -4,16 +4,16 @@ import type {
   ColumnUpdater,
   DatabaseBlockModel,
   ViewBasicDataType,
-} from '@blocksuite/affine-model';
-import type { BlockModel } from '@blocksuite/store';
+} from '@pulsar/model';
+import type { BlockModel } from '@pulsar/store';
 
 import {
   type InsertToPosition,
   arrayMove,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
-import { BlockSuiteError, ErrorCode } from '@blocksuite/global/exceptions';
-import { nanoid } from '@blocksuite/store';
+} from '@pulsar/editor-shared/utils';
+import { BlockSuiteError, ErrorCode } from '@pulsar/global/exceptions';
+import { nanoid } from '@pulsar/store';
 
 import type {
   ColumnMeta,
@@ -170,7 +170,7 @@ export const databaseViewInitTemplate = (
   );
   for (let i = 0; i < 4; i++) {
     const rowId = model.doc.addBlock(
-      'affine:paragraph',
+      'pulsar:paragraph',
       {
         text: new model.doc.Text(`Task ${i + 1}`),
       },

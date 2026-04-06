@@ -1,9 +1,9 @@
-import type { MenuItemGroup } from '@blocksuite/affine-components/toolbar';
+import type { MenuItemGroup } from '@pulsar/editor-components/toolbar';
 import type {
   Chain,
   CommandKeyToData,
   InitCommandCtx,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 
 import {
   BoldIcon,
@@ -29,16 +29,16 @@ import {
   StrikethroughIcon,
   TextIcon,
   UnderlineIcon,
-} from '@blocksuite/affine-components/icons';
-import { createSimplePortal } from '@blocksuite/affine-components/portal';
-import { toast } from '@blocksuite/affine-components/toast';
-import { renderGroups } from '@blocksuite/affine-components/toolbar';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { assertExists } from '@blocksuite/global/utils';
-import { Slice } from '@blocksuite/store';
+} from '@pulsar/editor-components/icons';
+import { createSimplePortal } from '@pulsar/editor-components/portal';
+import { toast } from '@pulsar/editor-components/toast';
+import { renderGroups } from '@pulsar/editor-components/toolbar';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { assertExists } from '@pulsar/global/utils';
+import { Slice } from '@pulsar/store';
 import { type TemplateResult, html } from 'lit';
 
-import type { AffineFormatBarWidget } from './format-bar.js';
+import type { PulsarFormatBarWidget } from './format-bar.js';
 
 import { DATABASE_CONVERT_WHITE_LIST } from '../../../_common/configs/quick-action/database-convert-view.js';
 import {
@@ -64,16 +64,16 @@ export type InlineActionConfigItem = {
   type: 'inline-action';
   action: (
     chain: Chain<InitCommandCtx>,
-    formatBar: AffineFormatBarWidget
+    formatBar: PulsarFormatBarWidget
   ) => void;
   icon: TemplateResult | (() => HTMLElement);
   isActive: (
     chain: Chain<InitCommandCtx>,
-    formatBar: AffineFormatBarWidget
+    formatBar: PulsarFormatBarWidget
   ) => boolean;
   showWhen: (
     chain: Chain<InitCommandCtx>,
-    formatBar: AffineFormatBarWidget
+    formatBar: PulsarFormatBarWidget
   ) => boolean;
 };
 export type ParagraphActionConfigItem = {
@@ -82,7 +82,7 @@ export type ParagraphActionConfigItem = {
   name: string;
   action: (
     chain: Chain<InitCommandCtx>,
-    formatBar: AffineFormatBarWidget
+    formatBar: PulsarFormatBarWidget
   ) => void;
   icon: TemplateResult | (() => HTMLElement);
   flavour: string;
@@ -90,7 +90,7 @@ export type ParagraphActionConfigItem = {
 
 export type CustomConfigItem = {
   type: 'custom';
-  render: (formatBar: AffineFormatBarWidget) => TemplateResult | null;
+  render: (formatBar: PulsarFormatBarWidget) => TemplateResult | null;
 };
 
 export type FormatBarConfigItem =
@@ -101,7 +101,7 @@ export type FormatBarConfigItem =
   | InlineActionConfigItem
   | CustomConfigItem;
 
-export function toolbarDefaultConfig(toolbar: AffineFormatBarWidget) {
+export function toolbarDefaultConfig(toolbar: PulsarFormatBarWidget) {
   toolbar
     .clearConfig()
     .addParagraphDropdown()
@@ -244,72 +244,72 @@ export function toolbarDefaultConfig(toolbar: AffineFormatBarWidget) {
       },
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'text',
       name: 'Text',
       icon: TextIcon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'h1',
       name: 'Heading 1',
       icon: Heading1Icon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'h2',
       name: 'Heading 2',
       icon: Heading2Icon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'h3',
       name: 'Heading 3',
       icon: Heading3Icon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'h4',
       name: 'Heading 4',
       icon: Heading4Icon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'h5',
       name: 'Heading 5',
       icon: Heading5Icon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'h6',
       name: 'Heading 6',
       icon: Heading6Icon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:list',
+      flavour: 'pulsar:list',
       type: 'bulleted',
       name: 'Bulleted List',
       icon: BulletedListIcon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:list',
+      flavour: 'pulsar:list',
       type: 'numbered',
       name: 'Numbered List',
       icon: NumberedListIcon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:list',
+      flavour: 'pulsar:list',
       type: 'todo',
       name: 'To-do List',
       icon: CheckBoxIcon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:code',
+      flavour: 'pulsar:code',
       name: 'Code Block',
       icon: CodeIcon,
     })
     .addBlockTypeSwitch({
-      flavour: 'affine:paragraph',
+      flavour: 'pulsar:paragraph',
       type: 'quote',
       name: 'Quote',
       icon: QuoteIcon,
@@ -434,7 +434,7 @@ export const BUILT_IN_GROUPS: MenuItemGroup<FormatBarContext>[] = [
   },
 ];
 
-export function toolbarMoreButton(toolbar: AffineFormatBarWidget) {
+export function toolbarMoreButton(toolbar: PulsarFormatBarWidget) {
   const context = new FormatBarContext(toolbar);
   const actions = renderGroups(toolbar.moreGroups, context);
 

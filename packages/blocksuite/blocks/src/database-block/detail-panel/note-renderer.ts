@@ -1,12 +1,12 @@
-import type { DatabaseBlockModel } from '@blocksuite/affine-model';
+import type { DatabaseBlockModel } from '@pulsar/model';
 
-import { focusTextModel } from '@blocksuite/affine-components/rich-text';
+import { focusTextModel } from '@pulsar/editor-components/rich-text';
 import {
   createDefaultDoc,
   matchFlavours,
-} from '@blocksuite/affine-shared/utils';
-import { BlockStdScope, type EditorHost } from '@blocksuite/block-std';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
+} from '@pulsar/editor-shared/utils';
+import { BlockStdScope, type EditorHost } from '@pulsar/block-std';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
 import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
@@ -21,7 +21,7 @@ export class NoteRenderer
   static override styles = css`
     database-datasource-note-renderer {
       width: 100%;
-      --affine-editor-side-padding: 0;
+      --pulsar-editor-side-padding: 0;
       flex: 1;
     }
   `;
@@ -40,12 +40,12 @@ export class NoteRenderer
       this.requestUpdate();
       requestAnimationFrame(() => {
         const block = note.root?.children
-          .find(child => child.flavour === 'affine:note')
+          .find(child => child.flavour === 'pulsar:note')
           ?.children.find(block =>
             matchFlavours(block, [
-              'affine:paragraph',
-              'affine:list',
-              'affine:code',
+              'pulsar:paragraph',
+              'pulsar:list',
+              'pulsar:code',
             ])
           );
         if (this.subHost && block) {
@@ -72,7 +72,7 @@ export class NoteRenderer
     }
     return html`
       <div
-        style="height: 1px;max-width: var(--affine-editor-width);background-color: var(--affine-border-color);margin: auto;margin-bottom: 16px"
+        style="height: 1px;max-width: var(--pulsar-editor-width);background-color: var(--pulsar-border-color);margin: auto;margin-bottom: 16px"
       ></div>
       ${this.renderNote()}
     `;
@@ -89,7 +89,7 @@ export class NoteRenderer
       return html` <div>
         <div
           @click="${this.addNote}"
-          style="max-width: var(--affine-editor-width);margin: auto;cursor: pointer;color: var(--affine-text-disable-color)"
+          style="max-width: var(--pulsar-editor-width);margin: auto;cursor: pointer;color: var(--pulsar-text-disable-color)"
         >
           Click to add note
         </div>

@@ -1,10 +1,10 @@
-import type { EventName, UIEventHandler } from '@blocksuite/block-std';
-import type { Disposable } from '@blocksuite/global/utils';
+import type { EventName, UIEventHandler } from '@pulsar/block-std';
+import type { Disposable } from '@pulsar/global/utils';
 import type { PropertyValues } from 'lit';
 
-import { createModal } from '@blocksuite/affine-components/context-menu';
-import { ShadowlessElement, WithDisposable } from '@blocksuite/block-std';
-import { Slot, assertExists } from '@blocksuite/global/utils';
+import { createModal } from '@pulsar/editor-components/context-menu';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { Slot, assertExists } from '@pulsar/global/utils';
 import { CloseIcon, ExpandWideIcon } from '@blocksuite/icons/lit';
 import { computed } from '@lit-labs/preact-signals';
 import { css, html } from 'lit';
@@ -40,8 +40,8 @@ export function showDatabasePreviewModal(database: DatabaseBlockComponent) {
           margin: 20px auto auto;
           width: calc(100% - 300px);
           max-height: calc(100% - 40px);
-          box-shadow: var(--affine-shadow-1);
-          background-color: var(--affine-background-primary-color);
+          box-shadow: var(--pulsar-shadow-1);
+          background-color: var(--pulsar-background-primary-color);
         }
         .database-block-preview-close {
           position: absolute;
@@ -51,15 +51,15 @@ export function showDatabasePreviewModal(database: DatabaseBlockComponent) {
           border-radius: 8px;
           cursor: pointer;
           display: flex;
-          background-color: var(--affine-background-primary-color);
+          background-color: var(--pulsar-background-primary-color);
         }
         .database-block-preview-close svg {
-          color: var(--affine-icon-color);
+          color: var(--pulsar-icon-color);
           width: 16px;
           height: 16px;
         }
         .database-block-preview-close:hover {
-          background-color: var(--affine-hover-color-filled);
+          background-color: var(--pulsar-hover-color-filled);
         }
       </style>
       <div class="database-block-preview-container">
@@ -76,14 +76,14 @@ export function showDatabasePreviewModal(database: DatabaseBlockComponent) {
     e.stopPropagation();
   };
   modal.onclick = close;
-  modal.style.backgroundColor = 'var(--affine-black-60)';
+  modal.style.backgroundColor = 'var(--pulsar-black-60)';
   modal.append(container);
 }
 
 @customElement('expand-database-block-modal')
 export class ExpandDatabaseBlockModal extends WidgetBase {
   expandDatabase = () => {
-    const database = this.closest('affine-database');
+    const database = this.closest('pulsar-database');
     if (database) {
       showDatabasePreviewModal(database);
     }
@@ -106,7 +106,7 @@ export class ExpandDatabaseBlockModal extends WidgetBase {
   }
 
   get database() {
-    return this.closest('affine-database');
+    return this.closest('pulsar-database');
   }
 }
 
@@ -171,7 +171,7 @@ export class DatabaseBlockModalPreview extends WithDisposable(
   protected override firstUpdated(_changedProperties: PropertyValues) {
     super.firstUpdated(_changedProperties);
     requestAnimationFrame(() => {
-      this.querySelector('affine-data-view-renderer')?.focusFirstCell();
+      this.querySelector('pulsar-data-view-renderer')?.focusFirstCell();
     });
   }
 

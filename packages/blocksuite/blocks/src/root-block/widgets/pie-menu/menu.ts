@@ -1,16 +1,16 @@
-import type { IVec } from '@blocksuite/global/utils';
+import type { IVec } from '@pulsar/global/utils';
 
-import { CommonUtils } from '@blocksuite/affine-block-surface';
-import { WithDisposable } from '@blocksuite/block-std';
-import { Vec } from '@blocksuite/global/utils';
-import { Slot, assertEquals, assertExists } from '@blocksuite/global/utils';
+import { CommonUtils } from '@pulsar/block-surface';
+import { WithDisposable } from '@pulsar/block-std';
+import { Vec } from '@pulsar/global/utils';
+import { Slot, assertEquals, assertExists } from '@pulsar/global/utils';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
 import type { EdgelessRootBlockComponent } from '../../edgeless/edgeless-root-block.js';
 import type { PieMenuSchema, PieNodeModel } from './base.js';
-import type { AffinePieMenuWidget } from './index.js';
+import type { PulsarPieMenuWidget } from './index.js';
 
 import { PieNode } from './node.js';
 import { PieManager } from './pie-manager.js';
@@ -27,7 +27,7 @@ import {
 
 const { toDegree, toRadian } = CommonUtils;
 
-@customElement('affine-pie-menu')
+@customElement('pulsar-pie-menu')
 export class PieMenu extends WithDisposable(LitElement) {
   private _handleKeyDown = (ev: KeyboardEvent) => {
     const { key } = ev;
@@ -291,5 +291,5 @@ export class PieMenu extends WithDisposable(LitElement) {
   accessor schema!: PieMenuSchema;
 
   @property({ attribute: false })
-  accessor widgetComponent!: AffinePieMenuWidget;
+  accessor widgetComponent!: PulsarPieMenuWidget;
 }

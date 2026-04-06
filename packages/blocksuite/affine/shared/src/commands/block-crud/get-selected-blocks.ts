@@ -1,12 +1,12 @@
-import type { ImageSelection } from '@blocksuite/affine-shared/selection';
+import type { ImageSelection } from '@pulsar/editor-shared/selection';
 import type {
   BlockSelection,
   Command,
   TextSelection,
-} from '@blocksuite/block-std';
-import type { RoleType } from '@blocksuite/store';
+} from '@pulsar/block-std';
+import type { RoleType } from '@pulsar/store';
 
-import { BlockComponent } from '@blocksuite/block-std';
+import { BlockComponent } from '@pulsar/block-std';
 
 export const getSelectedBlocksCommand: Command<
   'currentTextSelection' | 'currentBlockSelections' | 'currentImageSelections',

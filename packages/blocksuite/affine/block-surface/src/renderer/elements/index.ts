@@ -1,4 +1,4 @@
-import type { IBound } from '@blocksuite/global/utils';
+import type { IBound } from '@pulsar/global/utils';
 
 import type { RoughCanvas, SurfaceElementModel } from '../../index.js';
 import type { CanvasRenderer } from '../canvas-renderer.js';

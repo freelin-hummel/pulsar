@@ -1,4 +1,4 @@
-import { createIdentifier } from '@blocksuite/global/di';
+import { createIdentifier } from '@pulsar/global/di';
 
 import type { Command } from './command/index.js';
 import type { BlockService, LifeCycleWatcher } from './extension/index.js';

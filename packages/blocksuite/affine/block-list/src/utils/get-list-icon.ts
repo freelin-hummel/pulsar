@@ -1,4 +1,4 @@
-import type { ListBlockModel } from '@blocksuite/affine-model';
+import type { ListBlockModel } from '@pulsar/model';
 
 import {
   BulletIcons,
@@ -6,7 +6,7 @@ import {
   checkboxUnchecked,
   toggleDown,
   toggleRight,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 import { html } from 'lit';
 
 import { getNumberPrefix } from './get-number-prefix.js';
@@ -31,7 +31,7 @@ export function getListIcon(
     case 'bulleted':
       return html`<div
         contenteditable="false"
-        class="affine-list-block__prefix"
+        class="pulsar-list-block__prefix"
         @click=${onClick}
       >
         ${BulletIcons[deep % BulletIcons.length]}
@@ -39,7 +39,7 @@ export function getListIcon(
     case 'numbered':
       return html`<div
         contenteditable="false"
-        class="affine-list-block__prefix affine-list-block__numbered"
+        class="pulsar-list-block__prefix affine-list-block__numbered"
         @click=${onClick}
       >
         ${model.order ? getNumberPrefix(model.order, deep) : '1.'}
@@ -47,7 +47,7 @@ export function getListIcon(
     case 'todo':
       return html`<div
         contenteditable="false"
-        class=${`affine-list-block__prefix affine-list-block__todo-prefix ${model.doc.readonly ? 'readonly' : ''}`}
+        class=${`pulsar-list-block__prefix affine-list-block__todo-prefix ${model.doc.readonly ? 'readonly' : ''}`}
         @click=${onClick}
       >
         ${model.checked ? checkboxChecked() : checkboxUnchecked()}
@@ -55,7 +55,7 @@ export function getListIcon(
     case 'toggle':
       return html`<div
         contenteditable="false"
-        class="affine-list-block__prefix"
+        class="pulsar-list-block__prefix"
         @click=${onClick}
       >
         ${showChildren ? toggleDown : toggleRight}

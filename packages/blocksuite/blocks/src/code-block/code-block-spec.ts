@@ -3,17 +3,17 @@ import {
   type ExtensionType,
   FlavourExtension,
   WidgetViewMapExtension,
-} from '@blocksuite/block-std';
+} from '@pulsar/block-std';
 import { literal } from 'lit/static-html.js';
 
 import { CodeBlockService } from './code-block-service.js';
 
 export const CodeBlockSpec: ExtensionType[] = [
-  FlavourExtension('affine:code'),
+  FlavourExtension('pulsar:code'),
   CodeBlockService,
-  BlockViewExtension('affine:code', literal`affine-code`),
-  WidgetViewMapExtension('affine:code', {
-    codeToolbar: literal`affine-code-toolbar-widget`,
-    codeLangList: literal`affine-code-language-list-widget`,
+  BlockViewExtension('pulsar:code', literal`pulsar-code`),
+  WidgetViewMapExtension('pulsar:code', {
+    codeToolbar: literal`pulsar-code-toolbar-widget`,
+    codeLangList: literal`pulsar-code-language-list-widget`,
   }),
 ];

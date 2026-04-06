@@ -1,5 +1,5 @@
-import type { ConnectorElementModel } from '@blocksuite/affine-model';
-import type { GfxModel } from '@blocksuite/block-std/gfx';
+import type { ConnectorElementModel } from '@pulsar/model';
+import type { GfxModel } from '@pulsar/block-std/gfx';
 
 import type { SurfaceBlockModel, SurfaceMiddleware } from '../surface-model.js';
 

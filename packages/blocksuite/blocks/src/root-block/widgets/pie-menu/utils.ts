@@ -1,6 +1,6 @@
-import type { IVec } from '@blocksuite/global/utils';
+import type { IVec } from '@pulsar/global/utils';
 
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 
 import type { EdgelessTool } from '../../edgeless/types.js';
 import type {

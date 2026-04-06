@@ -1,7 +1,7 @@
-import type { EditorHost } from '@blocksuite/block-std';
+import type { EditorHost } from '@pulsar/block-std';
 
-import { on, stopPropagation } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
+import { on, stopPropagation } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -25,15 +25,15 @@ export class EdgelessCopilotPanel extends WithDisposable(LitElement) {
       min-width: 330px;
       max-height: 374px;
       overflow-y: auto;
-      background: var(--affine-background-overlay-panel-color);
-      box-shadow: var(--affine-shadow-2);
+      background: var(--pulsar-background-overlay-panel-color);
+      box-shadow: var(--pulsar-shadow-2);
       border-radius: 8px;
-      z-index: var(--affine-z-index-popover);
+      z-index: var(--pulsar-z-index-popover);
     }
 
     ${scrollbarStyle('.edgeless-copilot-panel')}
     .edgeless-copilot-panel:hover::-webkit-scrollbar-thumb {
-      background-color: var(--affine-black-30);
+      background-color: var(--pulsar-black-30);
     }
   `;
 

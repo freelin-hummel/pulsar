@@ -14,7 +14,7 @@ import {
   NumberedListIcon,
   QuoteIcon,
   TextIcon,
-} from '@blocksuite/affine-components/icons';
+} from '@pulsar/editor-components/icons';
 
 import type { NoteChildrenFlavour } from '../../../../../_common/utils/index.js';
 
@@ -29,7 +29,7 @@ export type NoteMenuItem = {
 
 const LIST_ITEMS = [
   {
-    flavour: 'affine:list',
+    flavour: 'pulsar:list',
     type: 'bulleted',
     name: 'Bulleted List',
     description: 'A simple bulleted list.',
@@ -37,7 +37,7 @@ const LIST_ITEMS = [
     tooltip: 'Drag/Click to insert Bulleted List',
   },
   {
-    flavour: 'affine:list',
+    flavour: 'pulsar:list',
     type: 'numbered',
     name: 'Numbered List',
     description: 'A list with numbering.',
@@ -45,7 +45,7 @@ const LIST_ITEMS = [
     tooltip: 'Drag/Click to insert Numbered List',
   },
   {
-    flavour: 'affine:list',
+    flavour: 'pulsar:list',
     type: 'todo',
     name: 'To-do List',
     description: 'Track tasks with a to-do list.',
@@ -56,7 +56,7 @@ const LIST_ITEMS = [
 
 const TEXT_ITEMS = [
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'text',
     name: 'Text',
     description: 'Start typing with plain text.',
@@ -64,7 +64,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Text block',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h1',
     name: 'Heading 1',
     description: 'Headings in the largest font.',
@@ -72,7 +72,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Heading 1',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h2',
     name: 'Heading 2',
     description: 'Headings in the 2nd font size.',
@@ -80,7 +80,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Heading 2',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h3',
     name: 'Heading 3',
     description: 'Headings in the 3rd font size.',
@@ -88,7 +88,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Heading 3',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h4',
     name: 'Heading 4',
     description: 'Heading in the 4th font size.',
@@ -96,7 +96,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Heading 4',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h5',
     name: 'Heading 5',
     description: 'Heading in the 5th font size.',
@@ -104,7 +104,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Heading 5',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'h6',
     name: 'Heading 6',
     description: 'Heading in the 6th font size.',
@@ -112,7 +112,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Heading 6',
   },
   {
-    flavour: 'affine:code',
+    flavour: 'pulsar:code',
     type: 'code',
     name: 'Code Block',
     description: 'Capture a code snippet.',
@@ -120,7 +120,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Code Block',
   },
   {
-    flavour: 'affine:paragraph',
+    flavour: 'pulsar:paragraph',
     type: 'quote',
     name: 'Quote',
     description: 'Capture a quote.',
@@ -128,7 +128,7 @@ const TEXT_ITEMS = [
     tooltip: 'Drag/Click to insert Quote',
   },
   {
-    flavour: 'affine:divider',
+    flavour: 'pulsar:divider',
     type: null,
     name: 'Divider',
     description: 'A visual divider.',

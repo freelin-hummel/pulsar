@@ -1,11 +1,11 @@
-import type { ReferenceInfo } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
-import type { InlineRange } from '@blocksuite/inline';
+import type { ReferenceInfo } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
+import type { InlineRange } from '@pulsar/inline';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
-import { isInsideBlockByFlavour } from '@blocksuite/affine-shared/utils';
-import { WithDisposable } from '@blocksuite/block-std';
-import { assertExists } from '@blocksuite/global/utils';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
+import { isInsideBlockByFlavour } from '@pulsar/editor-shared/utils';
+import { WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
 import { computePosition, inline, offset, shift } from '@floating-ui/dom';
 import { effect } from '@lit-labs/preact-signals';
 import { LitElement, html, nothing } from 'lit';
@@ -14,7 +14,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { join } from 'lit/directives/join.js';
 import { repeat } from 'lit/directives/repeat.js';
 
-import type { AffineInlineEditor } from '../../affine-inline-specs.js';
+import type { PulsarInlineEditor } from '../../affine-inline-specs.js';
 import type { RefNodeSlots } from './types.js';
 
 import {
@@ -46,7 +46,7 @@ export class ReferencePopup extends WithDisposable(LitElement) {
     const index = parent.children.indexOf(block.model);
 
     doc.addBlock(
-      'affine:embed-linked-doc',
+      'pulsar:embed-linked-doc',
       this.referenceInfo,
       parent,
       index + 1
@@ -72,7 +72,7 @@ export class ReferencePopup extends WithDisposable(LitElement) {
     const index = parent.children.indexOf(block.model);
     const docId = this.referenceDocId;
     doc.addBlock(
-      'affine:embed-synced-doc',
+      'pulsar:embed-synced-doc',
       { pageId: docId },
       parent,
       index + 1
@@ -102,13 +102,13 @@ export class ReferencePopup extends WithDisposable(LitElement) {
       isInsideBlockByFlavour(
         this.block.doc,
         this.block.model,
-        'affine:edgeless-text'
+        'pulsar:edgeless-text'
       )
     ) {
       return true;
     }
     return (
-      !!this.block.closest('affine-embed-synced-doc-block') ||
+      !!this.block.closest('pulsar-embed-synced-doc-block') ||
       this.referenceDocId === this.doc.id
     );
   }
@@ -316,8 +316,8 @@ export class ReferencePopup extends WithDisposable(LitElement) {
 
     return html`
       <div class="overlay-root">
-        <div class="affine-reference-popover-container">
-          <editor-toolbar class="affine-reference-popover view">
+        <div class="pulsar-reference-popover-container">
+          <editor-toolbar class="pulsar-reference-popover view">
             ${join(
               buttons.filter(button => button !== nothing),
               renderToolbarSeparator
@@ -389,7 +389,7 @@ export class ReferencePopup extends WithDisposable(LitElement) {
   accessor docTitle!: string;
 
   @property({ attribute: false })
-  accessor inlineEditor!: AffineInlineEditor;
+  accessor inlineEditor!: PulsarInlineEditor;
 
   @property({ attribute: false })
   accessor isLinkedNode!: boolean;
@@ -417,7 +417,7 @@ export function toggleReferencePopup(
   target: LitElement,
   isLinkedNode: boolean,
   referenceInfo: ReferenceInfo,
-  inlineEditor: AffineInlineEditor,
+  inlineEditor: PulsarInlineEditor,
   targetInlineRange: InlineRange,
   docTitle: string,
   abortController: AbortController

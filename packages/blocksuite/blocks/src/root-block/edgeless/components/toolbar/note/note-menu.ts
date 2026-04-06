@@ -1,5 +1,5 @@
-import { AttachmentIcon, LinkIcon } from '@blocksuite/affine-components/icons';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
+import { AttachmentIcon, LinkIcon } from '@pulsar/editor-components/icons';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -37,7 +37,7 @@ export class EdgelessNoteMenu extends EdgelessToolbarToolMixin(LitElement) {
       justify-content: center;
       align-items: center;
       gap: 14px;
-      fill: var(--affine-icon-color);
+      fill: var(--pulsar-icon-color);
     }
     .button-group-container svg {
       width: 20px;
@@ -46,13 +46,13 @@ export class EdgelessNoteMenu extends EdgelessToolbarToolMixin(LitElement) {
     .divider {
       width: 1px;
       height: 24px;
-      background: var(--affine-border-color);
+      background: var(--pulsar-border-color);
       transform: scaleX(0.5);
       margin: 0 14px;
     }
   `;
 
-  override type: EdgelessTool['type'] = 'affine:note';
+  override type: EdgelessTool['type'] = 'pulsar:note';
 
   private async _addImages() {
     this._imageLoading = true;
@@ -103,7 +103,7 @@ export class EdgelessNoteMenu extends EdgelessToolbarToolMixin(LitElement) {
   override firstUpdated() {
     this.disposables.add(
       this.edgeless.slots.edgelessToolUpdated.on(tool => {
-        if (tool.type !== 'affine:note') return;
+        if (tool.type !== 'pulsar:note') return;
         this.childFlavour = tool.childFlavour;
         this.childType = tool.childType;
         this.tip = tool.tip;

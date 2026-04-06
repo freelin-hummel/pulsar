@@ -3,21 +3,21 @@ import type {
   Command,
   CommandKeyToData,
   InitCommandCtx,
-} from '@blocksuite/block-std';
-import type { BlockComponent } from '@blocksuite/block-std';
+} from '@pulsar/block-std';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { BLOCK_ID_ATTR } from '@blocksuite/affine-shared/consts';
-import { assertExists } from '@blocksuite/global/utils';
+import { BLOCK_ID_ATTR } from '@pulsar/editor-shared/consts';
+import { assertExists } from '@pulsar/global/utils';
 import {
   INLINE_ROOT_ATTR,
   type InlineEditor,
   type InlineRange,
   type InlineRootElement,
-} from '@blocksuite/inline';
+} from '@pulsar/inline';
 
 import type {
-  AffineInlineEditor,
-  AffineTextAttributes,
+  PulsarInlineEditor,
+  PulsarTextAttributes,
 } from '../inline/index.js';
 
 import {
@@ -26,7 +26,7 @@ import {
   FORMAT_TEXT_SUPPORT_FLAVOURS,
 } from './consts.js';
 
-function isActive(std: BlockSuite.Std, key: keyof AffineTextAttributes) {
+function isActive(std: BlockSuite.Std, key: keyof PulsarTextAttributes) {
   const [result] = std.command.chain().isTextStyleActive({ key }).run();
   return result;
 }
@@ -34,13 +34,13 @@ function isActive(std: BlockSuite.Std, key: keyof AffineTextAttributes) {
 function handleCommonStyle(
   std: BlockSuite.Std,
   key: Extract<
-    keyof AffineTextAttributes,
+    keyof PulsarTextAttributes,
     'bold' | 'italic' | 'underline' | 'strike' | 'code'
   >
 ) {
   const active = isActive(std, key);
   const payload: {
-    styles: AffineTextAttributes;
+    styles: PulsarTextAttributes;
     mode?: 'replace' | 'merge';
   } = {
     styles: {
@@ -59,7 +59,7 @@ function handleCommonStyle(
 
 export function generateTextStyleCommand(
   key: Extract<
-    keyof AffineTextAttributes,
+    keyof PulsarTextAttributes,
     'bold' | 'italic' | 'underline' | 'strike' | 'code'
   >
 ): Command {
@@ -75,9 +75,9 @@ export function generateTextStyleCommand(
 }
 
 function getCombinedFormatFromInlineEditors(
-  inlineEditors: [AffineInlineEditor, InlineRange | null][]
-): AffineTextAttributes {
-  const formatArr: AffineTextAttributes[] = [];
+  inlineEditors: [PulsarInlineEditor, InlineRange | null][]
+): PulsarTextAttributes {
+  const formatArr: PulsarTextAttributes[] = [];
   inlineEditors.forEach(([inlineEditor, inlineRange]) => {
     if (!inlineRange) return;
 
@@ -89,9 +89,9 @@ function getCombinedFormatFromInlineEditors(
 
   // format will be active only when all inline editors have the same format.
   return formatArr.reduce((acc, cur) => {
-    const newFormat: AffineTextAttributes = {};
+    const newFormat: PulsarTextAttributes = {};
     for (const key in acc) {
-      const typedKey = key as keyof AffineTextAttributes;
+      const typedKey = key as keyof PulsarTextAttributes;
       if (acc[typedKey] === cur[typedKey]) {
         // This cast is secure because we have checked that the value of the key is the same.
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -105,12 +105,12 @@ function getCombinedFormatFromInlineEditors(
 function getSelectedInlineEditors(
   blocks: BlockComponent[],
   filter: (
-    inlineRoot: InlineRootElement<AffineTextAttributes>
-  ) => InlineEditor<AffineTextAttributes> | []
+    inlineRoot: InlineRootElement<PulsarTextAttributes>
+  ) => InlineEditor<PulsarTextAttributes> | []
 ) {
   return blocks.flatMap(el => {
     const inlineRoot = el.querySelector<
-      InlineRootElement<AffineTextAttributes>
+      InlineRootElement<PulsarTextAttributes>
     >(`[${INLINE_ROOT_ATTR}]`);
 
     if (inlineRoot) {
@@ -126,7 +126,7 @@ function handleCurrentSelection<
   chain: Chain<InitCommandCtx>,
   handler: (
     type: 'text' | 'block' | 'native',
-    inlineEditors: InlineEditor<AffineTextAttributes>[]
+    inlineEditors: InlineEditor<PulsarTextAttributes>[]
   ) => CommandKeyToData<InlineOut> | boolean | void
 ) {
   return chain.try<InlineOut>(chain => [
@@ -205,7 +205,7 @@ function handleCurrentSelection<
           }
           return false;
         })
-        .map((el): AffineInlineEditor => el.inlineEditor);
+        .map((el): PulsarInlineEditor => el.inlineEditor);
 
       const result = handler('native', selectedInlineEditors);
       if (!result) return false;

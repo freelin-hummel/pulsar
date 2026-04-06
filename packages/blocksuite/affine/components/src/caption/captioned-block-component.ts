@@ -1,6 +1,6 @@
-import type { BlockModel } from '@blocksuite/store';
+import type { BlockModel } from '@pulsar/store';
 
-import { BlockComponent, type BlockService } from '@blocksuite/block-std';
+import { BlockComponent, type BlockService } from '@pulsar/block-std';
 import { html, nothing } from 'lit';
 import { type Ref, createRef, ref } from 'lit/directives/ref.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
@@ -23,7 +23,7 @@ export class CaptionedBlockComponent<
       ...this.blockContainerStyles,
     });
 
-    return html`<div style=${style} class="affine-block-component">
+    return html`<div style=${style} class="pulsar-block-component">
       ${content}
       ${this.useCaptionEditor
         ? html`<block-caption-editor

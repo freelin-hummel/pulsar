@@ -1,8 +1,8 @@
-import type { AffineTextAttributes } from '@blocksuite/affine-components/rich-text';
-import type { BlockSelection, Command } from '@blocksuite/block-std';
+import type { PulsarTextAttributes } from '@pulsar/editor-components/rich-text';
+import type { BlockSelection, Command } from '@pulsar/block-std';
 
-import { assertExists } from '@blocksuite/global/utils';
-import { INLINE_ROOT_ATTR, type InlineRootElement } from '@blocksuite/inline';
+import { assertExists } from '@pulsar/global/utils';
+import { INLINE_ROOT_ATTR, type InlineRootElement } from '@pulsar/inline';
 
 import { FORMAT_BLOCK_SUPPORT_FLAVOURS } from './consts.js';
 
@@ -12,7 +12,7 @@ export const formatBlockCommand: Command<
   never,
   {
     blockSelections?: BlockSelection[];
-    styles: AffineTextAttributes;
+    styles: PulsarTextAttributes;
     mode?: 'replace' | 'merge';
   }
 > = (ctx, next) => {
@@ -43,7 +43,7 @@ export const formatBlockCommand: Command<
 
       const selectedInlineEditors = selectedBlocks.flatMap(el => {
         const inlineRoot = el.querySelector<
-          InlineRootElement<AffineTextAttributes>
+          InlineRootElement<PulsarTextAttributes>
         >(`[${INLINE_ROOT_ATTR}]`);
         if (inlineRoot) {
           return inlineRoot.inlineEditor;

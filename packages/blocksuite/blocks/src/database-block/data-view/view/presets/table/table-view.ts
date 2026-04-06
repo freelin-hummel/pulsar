@@ -1,9 +1,9 @@
 // related component
-import { popMenu } from '@blocksuite/affine-components/context-menu';
+import { popMenu } from '@pulsar/editor-components/context-menu';
 import {
   type InsertToPosition,
   insertPositionToIndex,
-} from '@blocksuite/affine-shared/utils';
+} from '@pulsar/editor-shared/utils';
 import { AddCursorIcon } from '@blocksuite/icons/lit';
 import { css } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -84,11 +84,11 @@ const styles = css`
 
   .affine-database-block-table:hover::-webkit-scrollbar-thumb {
     border-radius: 16px;
-    background-color: var(--affine-black-30);
+    background-color: var(--pulsar-black-30);
   }
 
   .affine-database-block-table:hover::-webkit-scrollbar-track {
-    background-color: var(--affine-hover-color);
+    background-color: var(--pulsar-hover-color);
   }
 
   .affine-database-table-container {
@@ -113,7 +113,7 @@ const styles = css`
   }
 
   .database-cell {
-    border-left: 1px solid var(--affine-border-color);
+    border-left: 1px solid var(--pulsar-border-color);
   }
   .data-view-table-left-bar {
     display: flex;
@@ -132,7 +132,7 @@ const styles = css`
   }
 `;
 
-@customElement('affine-database-table')
+@customElement('pulsar-database-table')
 export class DataViewTable extends DataViewBase<
   TableSingleView,
   TableViewSelectionWithType
@@ -211,7 +211,7 @@ export class DataViewTable extends DataViewBase<
     return html` <div style="display:flex;">
       <div
         class="dv-hover dv-round-8"
-        style="display:flex;align-items:center;gap: 10px;padding: 6px 12px 6px 8px;color: var(--affine-text-secondary-color);font-size: 12px;line-height: 20px;position: sticky;left: ${LEFT_TOOL_BAR_WIDTH}px;"
+        style="display:flex;align-items:center;gap: 10px;padding: 6px 12px 6px 8px;color: var(--pulsar-text-secondary-color);font-size: 12px;line-height: 20px;position: sticky;left: ${LEFT_TOOL_BAR_WIDTH}px;"
         @click="${add}"
       >
         <div class="dv-icon-16" style="display:flex;">${AddCursorIcon()}</div>
@@ -276,9 +276,9 @@ export class DataViewTable extends DataViewBase<
         view: this.view,
         viewMethods: this,
       })}
-      <div class="affine-database-table">
-        <div class="affine-database-block-table" @wheel="${this.onWheel}">
-          <div class="affine-database-table-container">
+      <div class="pulsar-database-table">
+        <div class="pulsar-database-block-table" @wheel="${this.onWheel}">
+          <div class="pulsar-database-table-container">
             ${this.renderTable()}
           </div>
         </div>
@@ -293,6 +293,6 @@ export class DataViewTable extends DataViewBase<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'affine-database-table': DataViewTable;
+    'pulsar-database-table': DataViewTable;
   }
 }

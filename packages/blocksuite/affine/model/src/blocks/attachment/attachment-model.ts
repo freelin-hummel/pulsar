@@ -1,7 +1,7 @@
-import type { GfxElementGeometry } from '@blocksuite/block-std/gfx';
-import type { SerializedXYWH } from '@blocksuite/global/utils';
+import type { GfxElementGeometry } from '@pulsar/block-std/gfx';
+import type { SerializedXYWH } from '@pulsar/global/utils';
 
-import { BlockModel, defineBlockSchema } from '@blocksuite/store';
+import { BlockModel, defineBlockSchema } from '@pulsar/store';
 
 import { type EmbedCardStyle, GfxCompatible } from '../../utils/index.js';
 import { AttachmentBlockTransformer } from './attachment-transformer.js';
@@ -70,17 +70,17 @@ export const defaultAttachmentProps: AttachmentBlockProps = {
 };
 
 export const AttachmentBlockSchema = defineBlockSchema({
-  flavour: 'affine:attachment',
+  flavour: 'pulsar:attachment',
   props: (): AttachmentBlockProps => defaultAttachmentProps,
   metadata: {
     version: 1,
     role: 'content',
     parent: [
-      'affine:note',
-      'affine:surface',
-      'affine:edgeless-text',
-      'affine:paragraph',
-      'affine:list',
+      'pulsar:note',
+      'pulsar:surface',
+      'pulsar:edgeless-text',
+      'pulsar:paragraph',
+      'pulsar:list',
     ],
   },
   transformer: () => new AttachmentBlockTransformer(),
@@ -94,10 +94,10 @@ export class AttachmentBlockModel
 declare global {
   namespace BlockSuite {
     interface EdgelessBlockModelMap {
-      'affine:attachment': AttachmentBlockModel;
+      'pulsar:attachment': AttachmentBlockModel;
     }
     interface BlockModels {
-      'affine:attachment': AttachmentBlockModel;
+      'pulsar:attachment': AttachmentBlockModel;
     }
   }
 }

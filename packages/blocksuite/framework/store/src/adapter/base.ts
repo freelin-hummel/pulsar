@@ -1,4 +1,4 @@
-import { assertEquals } from '@blocksuite/global/utils';
+import { assertEquals } from '@pulsar/global/utils';
 
 import type { Doc } from '../store/index.js';
 import type { AssetsManager } from '../transformer/assets.js';

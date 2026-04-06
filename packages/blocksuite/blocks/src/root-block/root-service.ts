@@ -1,12 +1,12 @@
-import type { PeekViewService } from '@blocksuite/affine-components/peek';
-import type { RefNodeSlots } from '@blocksuite/affine-components/rich-text';
-import type { EmbedCardStyle } from '@blocksuite/affine-model';
-import type { BlockComponent } from '@blocksuite/block-std';
+import type { PeekViewService } from '@pulsar/editor-components/peek';
+import type { RefNodeSlots } from '@pulsar/editor-components/rich-text';
+import type { EmbedCardStyle } from '@pulsar/model';
+import type { BlockComponent } from '@pulsar/block-std';
 
-import { CommunityCanvasTextFonts } from '@blocksuite/affine-block-surface';
-import { RootBlockSchema } from '@blocksuite/affine-model';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
-import { BlockService } from '@blocksuite/block-std';
+import { CommunityCanvasTextFonts } from '@pulsar/block-surface';
+import { RootBlockSchema } from '@pulsar/model';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { BlockService } from '@pulsar/block-std';
 
 import type { NotificationService } from '../_common/components/index.js';
 import type { RootBlockComponent } from './types.js';
@@ -137,7 +137,7 @@ export abstract class RootService extends BlockService {
 declare global {
   namespace BlockSuite {
     interface BlockServices {
-      'affine:page': RootService;
+      'pulsar:page': RootService;
     }
   }
 }

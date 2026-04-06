@@ -1,9 +1,9 @@
-import { SmallScissorsIcon } from '@blocksuite/affine-components/icons';
-import { TelemetryProvider } from '@blocksuite/affine-shared/services';
-import { WithDisposable } from '@blocksuite/block-std';
-import { deserializeXYWH, serializeXYWH } from '@blocksuite/global/utils';
-import { Point } from '@blocksuite/global/utils';
-import { DisposableGroup } from '@blocksuite/global/utils';
+import { SmallScissorsIcon } from '@pulsar/editor-components/icons';
+import { TelemetryProvider } from '@pulsar/editor-shared/services';
+import { WithDisposable } from '@pulsar/block-std';
+import { deserializeXYWH, serializeXYWH } from '@pulsar/global/utils';
+import { Point } from '@pulsar/global/utils';
+import { DisposableGroup } from '@pulsar/global/utils';
 import { LitElement, type PropertyValues, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -40,15 +40,15 @@ const styles = css`
     border-radius: 4px;
     justify-content: center;
     align-items: center;
-    color: var(--affine-icon-color);
-    border: 1px solid var(--affine-border-color);
-    background-color: var(--affine-background-overlay-panel-color);
-    box-shadow: var(--affine-menu-shadow);
+    color: var(--pulsar-icon-color);
+    border: 1px solid var(--pulsar-border-color);
+    background-color: var(--pulsar-background-overlay-panel-color);
+    box-shadow: var(--pulsar-menu-shadow);
     cursor: pointer;
     width: 24px;
     height: 24px;
     transform-origin: left top;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     opacity: 0;
     transition: opacity 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
   }
@@ -67,10 +67,10 @@ const styles = css`
     display: block;
     height: 1px;
     width: 100%;
-    z-index: var(--affine-z-index-popover);
+    z-index: var(--pulsar-z-index-popover);
     background-image: linear-gradient(
       to right,
-      var(--affine-black-10) 50%,
+      var(--pulsar-black-10) 50%,
       transparent 50%
     );
     background-size: 4px 100%;
@@ -78,7 +78,7 @@ const styles = css`
   .note-slicer-dividing-line-container.active .note-slicer-dividing-line {
     background-image: linear-gradient(
       to right,
-      var(--affine-black-60) 50%,
+      var(--pulsar-black-60) 50%,
       transparent 50%
     );
     animation: slide 0.3s linear infinite;
@@ -148,7 +148,7 @@ export class NoteSlicer extends WithDisposable(LitElement) {
       sliceVerticalPos
     )[1];
     const newNoteId = this.edgeless.service.addBlock(
-      'affine:note',
+      'pulsar:note',
       {
         background,
         displayMode,

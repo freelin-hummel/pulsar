@@ -1,5 +1,5 @@
-import { CheckIcon } from '@blocksuite/affine-components/icons';
-import { clamp, stopPropagation } from '@blocksuite/affine-shared/utils';
+import { CheckIcon } from '@pulsar/editor-components/icons';
+import { clamp, stopPropagation } from '@pulsar/editor-shared/utils';
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -53,18 +53,18 @@ export class EdgelessSizePanel extends LitElement {
       display: flex;
       align-self: stretch;
       width: 100%;
-      border: 0.5px solid var(--affine-border-color);
+      border: 0.5px solid var(--pulsar-border-color);
       border-radius: 8px;
       padding: 4px 8px;
       box-sizing: border-box;
     }
 
     .size-input::placeholder {
-      color: var(--affine-placeholder-color);
+      color: var(--pulsar-placeholder-color);
     }
 
     .size-input:focus {
-      outline-color: var(--affine-primary-color);
+      outline-color: var(--pulsar-primary-color);
       outline-width: 0.5px;
     }
 

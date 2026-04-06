@@ -6,8 +6,8 @@ import {
   EmbedPageIcon,
   LightLoadingIcon,
   ReloadIcon,
-} from '@blocksuite/affine-components/icons';
-import { ThemeObserver } from '@blocksuite/affine-shared/theme';
+} from '@pulsar/editor-components/icons';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
 
 import {
   DarkSyncedDocDeletedBanner,
