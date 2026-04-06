@@ -1,0 +1,41 @@
+{
+  "name": "@pulsar/sync",
+  "version": "0.17.0",
+  "description": "BlockSuite data synchronization engine abstraction and implementation.",
+  "type": "module",
+  "repository": "toeverything/blocksuite",
+  "keywords": [],
+  "author": "toeverything",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@pulsar/global": "workspace:*",
+    "idb": "^8.0.0",
+    "idb-keyval": "^6.2.1",
+    "y-protocols": "^1.0.6"
+  },
+  "peerDependencies": {
+    "yjs": "^13.6.15"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./impl/*": "./src/impl/*"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "module": "./dist/index.js",
+        "import": "./dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "src",
+    "dist",
+    "!src/__tests__",
+    "!dist/__tests__"
+  ]
+}

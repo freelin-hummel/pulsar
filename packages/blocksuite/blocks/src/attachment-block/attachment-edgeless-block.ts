@@ -1,0 +1,79 @@
+import type { HoverController } from '@pulsar/editor-components/hover';
+
+import { AttachmentBlockStyles } from '@pulsar/model';
+import {
+  EMBED_CARD_HEIGHT,
+  EMBED_CARD_WIDTH,
+} from '@pulsar/editor-shared/consts';
+import { toGfxBlockComponent } from '@pulsar/block-std';
+import { customElement } from 'lit/decorators.js';
+import { styleMap } from 'lit/directives/style-map.js';
+
+import type { EdgelessRootService } from '../root-block/index.js';
+
+import { AttachmentBlockComponent } from './attachment-block.js';
+
+@customElement('pulsar-edgeless-attachment')
+export class AttachmentEdgelessBlockComponent extends toGfxBlockComponent(
+  AttachmentBlockComponent
+) {
+  protected override _whenHover: HoverController | null = null;
+
+  override connectedCallback(): void {
+    super.connectedCallback();
+
+    const rootService = this.rootService;
+
+    this._disposables.add(
+      rootService.slots.elementResizeStart.on(() => {
+        this._isResizing = true;
+        this._showOverlay = true;
+      })
+    );
+
+    this._disposables.add(
+      rootService.slots.elementResizeEnd.on(() => {
+        this._isResizing = false;
+        this._showOverlay =
+          this._isResizing || this._isDragging || !this._isSelected;
+      })
+    );
+  }
+
+  override onClick(_: MouseEvent) {
+    return;
+  }
+
+  override renderGfxBlock() {
+    const { style$ } = this.model;
+    const cardStyle = style$.value ?? AttachmentBlockStyles[1];
+    const width = EMBED_CARD_WIDTH[cardStyle];
+    const height = EMBED_CARD_HEIGHT[cardStyle];
+    const bound = this.model.elementBound;
+    const scaleX = bound.w / width;
+    const scaleY = bound.h / height;
+
+    this.containerStyleMap = styleMap({
+      width: `${width}px`,
+      height: `${height}px`,
+      transform: `scale(${scaleX}, ${scaleY})`,
+      transformOrigin: '0 0',
+    });
+
+    return this.renderPageContent();
+  }
+
+  protected override get embedView() {
+    return undefined;
+  }
+
+  get rootService() {
+    return this.std.getService('pulsar:page') as EdgelessRootService;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'pulsar-edgeless-attachment': AttachmentEdgelessBlockComponent;
+  }
+}

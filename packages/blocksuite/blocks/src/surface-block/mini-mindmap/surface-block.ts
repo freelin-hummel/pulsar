@@ -1,0 +1,142 @@
+import type { SurfaceBlockModel } from '@pulsar/block-surface';
+import type { Color, ShapeElementModel } from '@pulsar/model';
+import type { Bound } from '@pulsar/global/utils';
+
+import {
+  CanvasRenderer,
+  elementRenderers,
+  fitContent,
+} from '@pulsar/block-surface';
+import { ThemeObserver } from '@pulsar/editor-shared/theme';
+import { BlockComponent } from '@pulsar/block-std';
+import { GfxControllerIdentifier } from '@pulsar/block-std/gfx';
+import { html } from 'lit';
+import { customElement, query } from 'lit/decorators.js';
+
+import type { MindmapService } from './service.js';
+
+@customElement('mini-mindmap-surface-block')
+export class MindmapSurfaceBlock extends BlockComponent<SurfaceBlockModel> {
+  private _renderer?: CanvasRenderer;
+
+  constructor() {
+    super();
+  }
+
+  private _adjustNodeWidth() {
+    this.model.doc.transact(() => {
+      this.model.elementModels.forEach(element => {
+        if (element.type === 'shape') {
+          fitContent(element as ShapeElementModel);
+        }
+      });
+    });
+  }
+
+  private get _grid() {
+    return this.std.get(GfxControllerIdentifier).grid;
+  }
+
+  private get _layer() {
+    return this.std.get(GfxControllerIdentifier).layer;
+  }
+
+  private _resizeEffect() {
+    const observer = new ResizeObserver(() => {
+      this.viewport.onResize();
+    });
+
+    observer.observe(this.editorContainer);
+    this._disposables.add(() => {
+      observer.disconnect();
+    });
+  }
+
+  private _setupCenterEffect() {
+    this._disposables.add(
+      this.mindmapService.requestCenter.on(() => {
+        let bound: Bound;
+
+        this.model.elementModels.forEach(el => {
+          if (!bound) {
+            bound = el.elementBound;
+          } else {
+            bound = bound.unite(el.elementBound);
+          }
+        });
+
+        if (bound!) {
+          this.viewport.setViewportByBound(bound, [10, 10, 10, 10]);
+        }
+      })
+    );
+  }
+
+  private _setupRenderer() {
+    this._disposables.add(
+      this.model.elementUpdated.on(() => {
+        this._renderer?.refresh();
+        this.mindmapService.center();
+      })
+    );
+
+    this.viewport.ZOOM_MIN = 0.01;
+  }
+
+  override connectedCallback(): void {
+    super.connectedCallback();
+
+    this._renderer = new CanvasRenderer({
+      viewport: this.viewport,
+      layerManager: this._layer,
+      gridManager: this._grid,
+      enableStackingCanvas: true,
+      provider: {
+        selectedElements: () => [],
+        getColorScheme: () => ThemeObserver.mode,
+        getColorValue: (color: Color, fallback?: string, real?: boolean) =>
+          ThemeObserver.getColorValue(color, fallback, real),
+        generateColorProperty: (color: Color, fallback: string) =>
+          ThemeObserver.generateColorProperty(color, fallback),
+        getPropertyValue: (property: string) =>
+          ThemeObserver.getPropertyValue(property),
+      },
+      elementRenderers,
+    });
+  }
+
+  override firstUpdated(_changedProperties: Map<PropertyKey, unknown>): void {
+    this._renderer?.attach(this.editorContainer);
+
+    this._resizeEffect();
+    this._setupCenterEffect();
+    this._setupRenderer();
+    this._adjustNodeWidth();
+    this.mindmapService.center();
+  }
+
+  override render() {
+    return html`
+      <style>
+        .affine-mini-mindmap-surface {
+          width: 100%;
+          height: 100%;
+        }
+      </style>
+      <div class="pulsar-mini-mindmap-surface">
+        <!-- attach cavnas later in renderer -->
+      </div>
+    `;
+  }
+
+  get mindmapService() {
+    return this.std.getService('pulsar:page') as unknown as MindmapService;
+  }
+
+  get viewport() {
+    return this.std.get(GfxControllerIdentifier).viewport;
+  }
+
+  @query('.affine-mini-mindmap-surface')
+  accessor editorContainer!: HTMLDivElement;
+}

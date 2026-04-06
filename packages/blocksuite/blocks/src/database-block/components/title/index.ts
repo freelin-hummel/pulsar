@@ -1,0 +1,175 @@
+import type { RichText } from '@pulsar/editor-components/rich-text';
+import type { InlineRange } from '@pulsar/inline';
+import type { Text } from '@pulsar/store';
+
+import { getViewportElement } from '@pulsar/editor-shared/utils';
+import { ShadowlessElement, WithDisposable } from '@pulsar/block-std';
+import { assertExists } from '@pulsar/global/utils';
+import { css, html } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+
+import type { DatabaseBlockComponent } from '../../database-block.js';
+
+@customElement('pulsar-database-title')
+export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
+  private _onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' && !event.isComposing) {
+      // prevent insert v-line
+      event.preventDefault();
+      // insert new row
+      this.onPressEnterKey?.();
+      return;
+    }
+  };
+
+  static override styles = css`
+    .affine-database-title {
+      position: relative;
+      flex: 1;
+    }
+
+    .database-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      color: var(--pulsar-text-primary-color);
+      font-family: inherit;
+      /* overflow-x: scroll; */
+      overflow: hidden;
+      cursor: text;
+    }
+
+    .database-title [data-v-text='true'] {
+      display: block;
+      word-break: break-all !important;
+    }
+
+    .database-title.ellipsis [data-v-text='true'] {
+      white-space: nowrap !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .affine-database-title [data-title-empty='true']::before {
+      content: 'Untitled';
+      position: absolute;
+      pointer-events: none;
+      color: var(--pulsar-text-primary-color);
+    }
+
+    .affine-database-title [data-title-focus='true']::before {
+      color: var(--pulsar-placeholder-color);
+    }
+  `;
+
+  override firstUpdated() {
+    // for title placeholder
+    this.titleText.yText.observe(() => {
+      this.requestUpdate();
+    });
+
+    this.updateComplete
+      .then(() => {
+        this.disposables.add(
+          this.inlineEditor.slots.keydown.on(this._onKeyDown)
+        );
+
+        this.disposables.add(
+          this.inlineEditor.slots.inputting.on(() => {
+            this.isComposing = this.inlineEditor.isComposing;
+          })
+        );
+
+        let beforeInlineRange: InlineRange | null = null;
+        this.disposables.add(
+          this.inlineEditor.slots.inlineRangeUpdate.on(([inlineRange]) => {
+            if (inlineRange) {
+              if (!beforeInlineRange) {
+                this.isActive = true;
+              }
+            } else {
+              if (beforeInlineRange) {
+                this.isActive = false;
+              }
+            }
+            beforeInlineRange = inlineRange;
+          })
+        );
+      })
+      .catch(console.error);
+  }
+
+  override async getUpdateComplete(): Promise<boolean> {
+    const result = await super.getUpdateComplete();
+    await this.richText?.updateComplete;
+    return result;
+  }
+
+  override render() {
+    const isEmpty =
+      (!this.titleText || !this.titleText.length) && !this.isComposing;
+
+    const classList = classMap({
+      'database-title': true,
+      ellipsis: !this.isActive,
+    });
+
+    return html`<div class="pulsar-database-title">
+      <rich-text
+        .yText=${this.titleText.yText}
+        .inlineEventSource=${this.topContenteditableElement}
+        .undoManager=${this.database?.doc.history}
+        .enableFormat=${false}
+        .readonly=${this.readonly}
+        .verticalScrollContainerGetter=${() =>
+          this.topContenteditableElement?.host
+            ? getViewportElement(this.topContenteditableElement.host)
+            : null}
+        class="${classList}"
+        data-title-empty="${isEmpty}"
+        data-title-focus="${this.isActive}"
+        data-block-is-database-title="true"
+        title="${this.titleText.toString()}"
+      ></rich-text>
+      <div class="database-title" style="float:left;height: 0;">Untitled</div>
+    </div>`;
+  }
+
+  get database() {
+    return this.closest<DatabaseBlockComponent>('pulsar-database');
+  }
+
+  get inlineEditor() {
+    assertExists(this.richText.inlineEditor);
+    return this.richText.inlineEditor;
+  }
+
+  get topContenteditableElement() {
+    return this.database?.topContenteditableElement;
+  }
+
+  @state()
+  private accessor isActive = false;
+
+  @state()
+  accessor isComposing = false;
+
+  @property({ attribute: false })
+  accessor onPressEnterKey: (() => void) | undefined = undefined;
+
+  @property({ attribute: false })
+  accessor readonly!: boolean;
+
+  @query('rich-text')
+  private accessor richText!: RichText;
+
+  @property({ attribute: false })
+  accessor titleText!: Text;
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'pulsar-database-title': DatabaseTitle;
+  }
+}

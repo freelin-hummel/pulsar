@@ -9,8 +9,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@pulsar/ecs": "workspace:*",
-    "@pulsar/shared": "workspace:*",
     "@rivetkit/cloudflare-workers": "^2.2.1",
     "rivetkit": "^2.2.1"
   },

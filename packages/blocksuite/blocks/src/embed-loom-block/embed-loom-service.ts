@@ -1,0 +1,35 @@
+import {
+  EmbedLoomBlockSchema,
+  type EmbedLoomModel,
+} from '@pulsar/model';
+import { EmbedLoomStyles } from '@pulsar/model';
+import { EmbedOptionProvider } from '@pulsar/editor-shared/services';
+import { BlockService } from '@pulsar/block-std';
+
+import { LinkPreviewer } from '../_common/embed-block-helper/index.js';
+import { loomUrlRegex } from './embed-loom-model.js';
+import { queryEmbedLoomData } from './utils.js';
+
+export class EmbedLoomBlockService extends BlockService {
+  private static readonly linkPreviewer = new LinkPreviewer();
+
+  static override readonly flavour = EmbedLoomBlockSchema.model.flavour;
+
+  static setLinkPreviewEndpoint =
+    EmbedLoomBlockService.linkPreviewer.setEndpoint;
+
+  queryUrlData = (embedLoomModel: EmbedLoomModel, signal?: AbortSignal) => {
+    return queryEmbedLoomData(embedLoomModel, signal);
+  };
+
+  override mounted() {
+    super.mounted();
+
+    this.std.get(EmbedOptionProvider).registerEmbedBlockOptions({
+      flavour: this.flavour,
+      urlRegex: loomUrlRegex,
+      styles: EmbedLoomStyles,
+      viewType: 'embed',
+    });
+  }
+}

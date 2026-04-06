@@ -1,0 +1,92 @@
+@import '@toeverything/theme/style.css';
+
+@font-face {
+  font-family: 'color-emoji';
+  src: local('Apple Color Emoji'), local('Segoe UI Emoji'),
+    local('Segoe UI Symbol'), local('Noto Color Emoji');
+  unicode-range: U+1F000-1F644, U+203C-3299;
+}
+
+.dg > ul {
+  overflow: scroll;
+}
+
+/*
+ * Pulsar dark theme — integrated into base.
+ * Overrides the upstream @toeverything/theme light defaults so that
+ * the editor canvas, notes, toolbars, and panels all render dark.
+ */
+:root {
+  /* Canvas / editor surface */
+  --pulsar-background-primary-color: #1e1e2e;
+  --pulsar-background-secondary-color: #252536;
+  --pulsar-background-tertiary-color: #2a2a3c;
+  --pulsar-background-overlay-panel-color: #2a2a3c;
+  --pulsar-background-code-block: #1e1e2e;
+  --pulsar-background-modal-color: rgba(0, 0, 0, 0.6);
+  --pulsar-background-error-color: rgba(243, 139, 168, 0.1);
+  --pulsar-background-warning-color: rgba(249, 226, 175, 0.1);
+  --pulsar-background-success-color: rgba(166, 227, 161, 0.1);
+  --pulsar-background-processing-color: rgba(137, 180, 250, 0.1);
+
+  /* Text */
+  --pulsar-text-primary-color: #cdd6f4;
+  --pulsar-text-secondary-color: #8888a8;
+  --pulsar-placeholder-color: #585870;
+  --pulsar-link-color: #89b4fa;
+
+  /* Borders / dividers */
+  --pulsar-border-color: #3a3a52;
+  --pulsar-divider-color: #3a3a52;
+
+  /* Icons */
+  --pulsar-icon-color: #8888a8;
+  --pulsar-icon-secondary: #6a6a84;
+
+  /* Hover / interactive */
+  --pulsar-hover-color: rgba(255, 255, 255, 0.06);
+  --pulsar-hover-color-filled: #33334a;
+
+  /* Grid */
+  --pulsar-edgeless-grid-color: rgba(255, 255, 255, 0.06);
+
+  /* Note backgrounds — dark variants */
+  --pulsar-note-background-white: #252536;
+  --pulsar-note-background-yellow: #3d3520;
+  --pulsar-note-background-orange: #3d2e20;
+  --pulsar-note-background-red: #3d2024;
+  --pulsar-note-background-magenta: #3d2035;
+  --pulsar-note-background-purple: #302040;
+  --pulsar-note-background-blue: #1e2e4a;
+  --pulsar-note-background-teal: #1e3535;
+  --pulsar-note-background-green: #1e3520;
+  --pulsar-note-background-black: #181825;
+  --pulsar-note-background-grey: #2a2a3c;
+
+  /* Tooltips & shadows */
+  --pulsar-tooltip: #cdd6f4;
+  --pulsar-menu-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --pulsar-shadow-1: 0 1px 4px rgba(0, 0, 0, 0.3);
+  --pulsar-shadow-2: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --pulsar-shadow-3: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  /* Brand */
+  --pulsar-brand-color: #89b4fa;
+  --pulsar-primary-color: #89b4fa;
+
+  /* Black/white inversions for dark */
+  --pulsar-white: #1e1e2e;
+  --pulsar-black: #cdd6f4;
+  --pulsar-white-10: rgba(30, 30, 46, 0.1);
+  --pulsar-white-30: rgba(30, 30, 46, 0.3);
+  --pulsar-white-50: rgba(30, 30, 46, 0.5);
+  --pulsar-white-60: rgba(30, 30, 46, 0.6);
+  --pulsar-white-80: rgba(30, 30, 46, 0.8);
+  --pulsar-white-90: rgba(30, 30, 46, 0.9);
+  --pulsar-black-10: rgba(205, 214, 244, 0.1);
+  --pulsar-black-30: rgba(205, 214, 244, 0.3);
+  --pulsar-black-50: rgba(205, 214, 244, 0.5);
+  --pulsar-black-60: rgba(205, 214, 244, 0.6);
+  --pulsar-black-80: rgba(205, 214, 244, 0.8);
+  --pulsar-black-90: rgba(205, 214, 244, 0.9);
+}
