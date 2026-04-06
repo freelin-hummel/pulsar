@@ -1,5 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import type { MapTool, MapObjectType, GridPoint } from '../../shared/mapTypes.js'
+import type { GridConfig } from '../../shared/grid.js'
+import { snapToCell, snapToVertex, cellPixelSize } from '../../shared/grid.js'
 
 /**
  * MapEventOverlay — Transparent pointer event layer for map editing tools.
@@ -7,12 +9,15 @@ import type { MapTool, MapObjectType, GridPoint } from '../../shared/mapTypes.js
  * Sits between the BlockSuite canvas and the UI layer. Captures pointer events
  * when a map tool is active and translates screen coordinates to grid coordinates.
  * Dispatches tool-specific actions (paint terrain, draw wall, place object, etc.)
+ *
+ * Supports square, hex, and gridless grids via the shared grid coordinate library.
  */
 
 interface MapEventOverlayProps {
   active: boolean
   activeMapTool: MapTool | null
-  gridSize: number
+  gridConfig: GridConfig
+  snapEnabled: boolean
   selectedObject: MapObjectType
   onTerrainPaint: (cells: GridPoint[]) => void
   onWallDraw: (points: GridPoint[], wallType: 'standard' | 'diagonal' | 'cavern') => void
@@ -22,26 +27,40 @@ interface MapEventOverlayProps {
   onLegendPlace: (point: GridPoint) => void
 }
 
-/** Snap a screen coordinate to the nearest grid intersection */
-function snapToGrid(x: number, y: number, gridSize: number): GridPoint {
-  return {
-    x: Math.round(x / gridSize) * gridSize,
-    y: Math.round(y / gridSize) * gridSize,
-  }
+/** Convert a PixelPoint to the legacy GridPoint format used by entity handlers. */
+function toGridPoint(px: number, py: number): GridPoint {
+  return { x: px, y: py }
 }
 
-/** Snap to the center of a grid cell */
-function snapToCell(x: number, y: number, gridSize: number): GridPoint {
-  return {
-    x: Math.floor(x / gridSize) * gridSize + gridSize / 2,
-    y: Math.floor(y / gridSize) * gridSize + gridSize / 2,
-  }
+/** Snap a raw pointer position for cell-based tools (terrain, object, light, legend). */
+function snapCellTool(
+  rawX: number,
+  rawY: number,
+  cfg: GridConfig,
+  snap: boolean,
+): GridPoint {
+  if (!snap || cfg.type === 'gridless') return toGridPoint(rawX, rawY)
+  const snapped = snapToCell({ px: rawX, py: rawY }, cfg)
+  return toGridPoint(snapped.px, snapped.py)
+}
+
+/** Snap a raw pointer position for vertex-based tools (wall, door). */
+function snapVertexTool(
+  rawX: number,
+  rawY: number,
+  cfg: GridConfig,
+  snap: boolean,
+): GridPoint {
+  if (!snap || cfg.type === 'gridless') return toGridPoint(rawX, rawY)
+  const snapped = snapToVertex({ px: rawX, py: rawY }, cfg)
+  return toGridPoint(snapped.px, snapped.py)
 }
 
 export function MapEventOverlay({
   active,
   activeMapTool,
-  gridSize,
+  gridConfig,
+  snapEnabled,
   selectedObject,
   onTerrainPaint,
   onWallDraw,
@@ -55,7 +74,7 @@ export function MapEventOverlay({
   const [previewPoint, setPreviewPoint] = useState<GridPoint | null>(null)
 
   const getCanvasPoint = useCallback(
-    (e: React.PointerEvent<HTMLDivElement>): GridPoint => {
+    (e: React.PointerEvent<HTMLDivElement>): { x: number; y: number } => {
       const rect = e.currentTarget.getBoundingClientRect()
       return { x: e.clientX - rect.left, y: e.clientY - rect.top }
     },
@@ -72,7 +91,7 @@ export function MapEventOverlay({
       switch (activeMapTool) {
         case 'terrain': {
           isDrawing.current = true
-          const cell = snapToCell(raw.x, raw.y, gridSize)
+          const cell = snapCellTool(raw.x, raw.y, gridConfig, snapEnabled)
           drawnPoints.current = [cell]
           onTerrainPaint([cell])
           break
@@ -80,34 +99,32 @@ export function MapEventOverlay({
         case 'wall':
         case 'wall-diagonal':
         case 'wall-cavern': {
-          const pt = snapToGrid(raw.x, raw.y, gridSize)
+          const pt = snapVertexTool(raw.x, raw.y, gridConfig, snapEnabled)
           if (!isDrawing.current) {
-            // Start a new wall
             isDrawing.current = true
             drawnPoints.current = [pt]
           } else {
-            // Add point to current wall
             drawnPoints.current.push(pt)
           }
           break
         }
         case 'door': {
-          const pt = snapToGrid(raw.x, raw.y, gridSize)
+          const pt = snapVertexTool(raw.x, raw.y, gridConfig, snapEnabled)
           onDoorPlace(pt)
           break
         }
         case 'object': {
-          const pt = snapToCell(raw.x, raw.y, gridSize)
+          const pt = snapCellTool(raw.x, raw.y, gridConfig, snapEnabled)
           onObjectPlace(pt, selectedObject)
           break
         }
         case 'light': {
-          const pt = snapToCell(raw.x, raw.y, gridSize)
+          const pt = snapCellTool(raw.x, raw.y, gridConfig, snapEnabled)
           onLightPlace(pt)
           break
         }
         case 'legend': {
-          const pt = snapToCell(raw.x, raw.y, gridSize)
+          const pt = snapCellTool(raw.x, raw.y, gridConfig, snapEnabled)
           onLegendPlace(pt)
           break
         }
@@ -115,7 +132,8 @@ export function MapEventOverlay({
     },
     [
       activeMapTool,
-      gridSize,
+      gridConfig,
+      snapEnabled,
       selectedObject,
       getCanvasPoint,
       onTerrainPaint,
@@ -134,14 +152,16 @@ export function MapEventOverlay({
 
       // Show preview cursor
       if (activeMapTool === 'terrain' || activeMapTool === 'object' || activeMapTool === 'light' || activeMapTool === 'legend') {
-        setPreviewPoint(snapToCell(raw.x, raw.y, gridSize))
+        const snapped = snapCellTool(raw.x, raw.y, gridConfig, snapEnabled)
+        setPreviewPoint(snapped)
       } else {
-        setPreviewPoint(snapToGrid(raw.x, raw.y, gridSize))
+        const snapped = snapVertexTool(raw.x, raw.y, gridConfig, snapEnabled)
+        setPreviewPoint(snapped)
       }
 
       // Continue drawing for terrain
       if (activeMapTool === 'terrain' && isDrawing.current) {
-        const cell = snapToCell(raw.x, raw.y, gridSize)
+        const cell = snapCellTool(raw.x, raw.y, gridConfig, snapEnabled)
         const last = drawnPoints.current[drawnPoints.current.length - 1]
         if (!last || last.x !== cell.x || last.y !== cell.y) {
           drawnPoints.current.push(cell)
@@ -149,7 +169,7 @@ export function MapEventOverlay({
         }
       }
     },
-    [activeMapTool, gridSize, getCanvasPoint, onTerrainPaint],
+    [activeMapTool, gridConfig, snapEnabled, getCanvasPoint, onTerrainPaint],
   )
 
   const handlePointerUp = useCallback(
@@ -191,6 +211,9 @@ export function MapEventOverlay({
 
   if (!active || !activeMapTool) return null
 
+  // Determine cursor preview size based on grid type
+  const cursorSize = cellPixelSize(gridConfig)
+
   return (
     <div
       style={styles.overlay}
@@ -204,10 +227,11 @@ export function MapEventOverlay({
         <div
           style={{
             ...styles.cursor,
-            left: previewPoint.x - gridSize / 2,
-            top: previewPoint.y - gridSize / 2,
-            width: gridSize,
-            height: gridSize,
+            left: previewPoint.x - cursorSize.width / 2,
+            top: previewPoint.y - cursorSize.height / 2,
+            width: cursorSize.width,
+            height: cursorSize.height,
+            borderRadius: gridConfig.type === 'hex' ? '50%' : 'var(--radius-sm)',
           }}
         />
       )}

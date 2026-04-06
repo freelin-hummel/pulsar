@@ -12,6 +12,7 @@ import { MapEventOverlay } from './ui/MapEventOverlay.js'
 import { LegendPanel, type LegendEntry } from './ui/LegendPanel.js'
 import { LightProperties } from './ui/LightProperties.js'
 import { MapExtension } from '../lib/extensions/map/index.js'
+import { GridShader } from '../lib/shaders/programs/GridShader.js'
 import type { BoardDescriptor, BoardKind, BoardMode } from '../shared/board.js'
 import { createBoard } from '../shared/board.js'
 import type {
@@ -21,6 +22,7 @@ import type {
   GridPoint,
   LightFalloff,
 } from '../shared/mapTypes.js'
+import type { GridConfig } from '../shared/grid.js'
 
 interface PulsarCanvasProps {
   roomId: string
@@ -77,7 +79,8 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
   const [settings, setSettings] = useState<GlobalSettings>({
     showGrid: true,
     snapToGrid: true,
-    gridSize: 20,
+    gridSize: 40,
+    gridType: 'square',
   })
 
   // Derived state
@@ -118,7 +121,7 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
   const { world, syncWorldToDoc } = useECSWorld()
 
   // Initialize shader system
-  const { shaderManager: _shaderManager } = useShaderManager(canvasRef)
+  const { shaderManager: shaderManagerRef } = useShaderManager(canvasRef)
 
   // Initialize multiplayer sync
   const { isConnected } = useSyncConnection({
@@ -136,22 +139,37 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     }
   }, [isMapBoard, world])
 
+  // Derive grid configuration for the coordinate library
+  const gridConfig: GridConfig = useMemo(
+    () => ({ type: settings.gridType, cellSize: settings.gridSize }),
+    [settings.gridType, settings.gridSize]
+  )
+
   // Toggle between doc (page) and board (edgeless) view
   useEffect(() => {
     editor.mode = viewMode === 'page' ? 'page' : 'edgeless'
   }, [editor, viewMode])
 
-  // Apply grid visibility setting to the editor's CSS.
-  // BlockSuite's edgeless grid uses --pulsar-edgeless-grid-color for its radial-gradient dots.
+  // Disable BlockSuite's built-in CSS dot grid so our WebGL grid is the only one
   useEffect(() => {
     const el = editorContainerRef.current
     if (!el) return
-    if (settings.showGrid) {
-      el.style.setProperty('--pulsar-edgeless-grid-color', 'rgba(255, 255, 255, 0.06)')
-    } else {
-      el.style.setProperty('--pulsar-edgeless-grid-color', 'transparent')
+    el.style.setProperty('--pulsar-edgeless-grid-color', 'transparent')
+  }, [])
+
+  // Update WebGL grid shader when settings change
+  useEffect(() => {
+    const mgr = shaderManagerRef.current
+    if (!mgr) return
+    let shader = mgr.getProgram('grid') as GridShader | undefined
+    if (!shader) {
+      shader = new GridShader()
+      mgr.registerProgram('grid', shader)
     }
-  }, [settings.showGrid])
+    shader.gridType = settings.gridType
+    shader.cellSize = settings.gridSize
+    shader.visible = settings.showGrid
+  }, [settings.showGrid, settings.gridType, settings.gridSize, shaderManagerRef])
 
   // Handle board switch
   const handleBoardChange = useCallback(
@@ -415,7 +433,8 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
           <MapEventOverlay
             active={isMapBoard && boardMode === 'edit'}
             activeMapTool={activeMapTool}
-            gridSize={settings.gridSize}
+            gridConfig={gridConfig}
+            snapEnabled={settings.snapToGrid}
             selectedObject={selectedObject}
             onTerrainPaint={handleTerrainPaint}
             onWallDraw={handleWallDraw}

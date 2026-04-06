@@ -1,61 +1,13 @@
 import { describe, it, expect } from 'vitest'
 
 /**
- * Validates that the grid visibility implementation uses the correct
- * CSS variable name that BlockSuite's edgeless engine actually reads.
- *
- * BlockSuite's getBackgroundGrid() in edgeless-root-block.ts renders
- * the grid dots via:
- *   radial-gradient(var(--pulsar-edgeless-grid-color) 1px, ...)
- *
- * NOT --affine-edgeless-grid-color (which is the old/wrong name).
+ * Validates the grid rendering approach:
+ * 1. BlockSuite's CSS dot grid is disabled (transparent)
+ * 2. Grid is now rendered by the WebGL GridShader
+ * 3. GridShader supports square, hex, and gridless types
  */
-describe('Grid CSS variable', () => {
-  it('uses --pulsar-edgeless-grid-color (not --affine-edgeless-grid-color)', async () => {
-    // Import the PulsarCanvas source to verify the CSS variable name
-    const source = await import(
-      '../components/PulsarCanvas.js?raw' as string
-    ).catch(() => null)
-
-    // If raw import isn't available, read the file content from the test itself
-    // The key assertion: the source must contain --pulsar-edgeless-grid-color
-    // and must NOT contain --affine-edgeless-grid-color
-    if (source?.default) {
-      expect(source.default).toContain('--pulsar-edgeless-grid-color')
-      expect(source.default).not.toContain('--affine-edgeless-grid-color')
-    } else {
-      // Fallback: test the behavior by applying the variable to a DOM element
-      const el = document.createElement('div')
-      document.body.appendChild(el)
-
-      // Simulate what PulsarCanvas does for showGrid=true
-      el.style.setProperty('--pulsar-edgeless-grid-color', 'rgba(255, 255, 255, 0.06)')
-      expect(el.style.getPropertyValue('--pulsar-edgeless-grid-color')).toBe(
-        'rgba(255, 255, 255, 0.06)'
-      )
-
-      // Simulate showGrid=false
-      el.style.setProperty('--pulsar-edgeless-grid-color', 'transparent')
-      expect(el.style.getPropertyValue('--pulsar-edgeless-grid-color')).toBe('transparent')
-
-      document.body.removeChild(el)
-    }
-  })
-
-  it('sets grid visible value to rgba(255, 255, 255, 0.06)', () => {
-    // This matches the default from packages/blocksuite/presets/themes/pulsar.css
-    const el = document.createElement('div')
-    document.body.appendChild(el)
-
-    el.style.setProperty('--pulsar-edgeless-grid-color', 'rgba(255, 255, 255, 0.06)')
-    expect(el.style.getPropertyValue('--pulsar-edgeless-grid-color')).toBe(
-      'rgba(255, 255, 255, 0.06)'
-    )
-
-    document.body.removeChild(el)
-  })
-
-  it('sets grid hidden value to transparent', () => {
+describe('Grid rendering', () => {
+  it('disables BlockSuite CSS grid by setting --pulsar-edgeless-grid-color to transparent', () => {
     const el = document.createElement('div')
     document.body.appendChild(el)
 
@@ -63,5 +15,39 @@ describe('Grid CSS variable', () => {
     expect(el.style.getPropertyValue('--pulsar-edgeless-grid-color')).toBe('transparent')
 
     document.body.removeChild(el)
+  })
+
+  it('GridShader module can be imported', async () => {
+    const mod = await import('../lib/shaders/programs/GridShader.js')
+    expect(mod.GridShader).toBeDefined()
+    expect(typeof mod.GridShader).toBe('function')
+  })
+
+  it('GridShader has correct default properties', async () => {
+    const { GridShader } = await import('../lib/shaders/programs/GridShader.js')
+    const shader = new GridShader()
+    expect(shader.gridType).toBe('square')
+    expect(shader.cellSize).toBe(40)
+    expect(shader.visible).toBe(true)
+    expect(shader.opacity).toBe(0.15)
+    expect(shader.zoom).toBe(1.0)
+  })
+
+  it('GridShader properties can be updated for all grid types', async () => {
+    const { GridShader } = await import('../lib/shaders/programs/GridShader.js')
+    const shader = new GridShader()
+
+    shader.gridType = 'hex'
+    shader.cellSize = 60
+    shader.visible = false
+    expect(shader.gridType).toBe('hex')
+    expect(shader.cellSize).toBe(60)
+    expect(shader.visible).toBe(false)
+
+    shader.gridType = 'gridless'
+    expect(shader.gridType).toBe('gridless')
+
+    shader.gridType = 'square'
+    expect(shader.gridType).toBe('square')
   })
 })

@@ -2,17 +2,21 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import {
   File,
   Grid3x3,
+  Hexagon,
+  CircleDot,
   Magnet,
   Eye,
   EyeOff,
   Moon,
   Info,
 } from 'lucide-react'
+import type { GridType } from '../../shared/grid.js'
 
 export interface GlobalSettings {
   showGrid: boolean
   snapToGrid: boolean
   gridSize: number
+  gridType: GridType
 }
 
 interface MenuBarProps {
@@ -62,6 +66,31 @@ export function MenuBar({ settings, onSettingsChange }: MenuBarProps) {
       checked: settings.snapToGrid,
       onAction: () =>
         onSettingsChange({ ...settings, snapToGrid: !settings.snapToGrid }),
+    },
+    { label: '', type: 'separator' },
+    {
+      label: 'Square Grid',
+      icon: <Grid3x3 size={14} />,
+      type: 'toggle',
+      checked: settings.gridType === 'square',
+      onAction: () =>
+        onSettingsChange({ ...settings, gridType: 'square' }),
+    },
+    {
+      label: 'Hex Grid',
+      icon: <Hexagon size={14} />,
+      type: 'toggle',
+      checked: settings.gridType === 'hex',
+      onAction: () =>
+        onSettingsChange({ ...settings, gridType: 'hex' }),
+    },
+    {
+      label: 'Gridless',
+      icon: <CircleDot size={14} />,
+      type: 'toggle',
+      checked: settings.gridType === 'gridless',
+      onAction: () =>
+        onSettingsChange({ ...settings, gridType: 'gridless' }),
     },
     { label: '', type: 'separator' },
     {

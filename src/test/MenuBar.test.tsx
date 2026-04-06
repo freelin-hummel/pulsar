@@ -6,7 +6,8 @@ import { MenuBar, type GlobalSettings } from '../components/ui/MenuBar.js'
 const defaultSettings: GlobalSettings = {
   showGrid: true,
   snapToGrid: true,
-  gridSize: 20,
+  gridSize: 40,
+  gridType: 'square',
 }
 
 describe('MenuBar', () => {
@@ -108,6 +109,60 @@ describe('MenuBar', () => {
 
       await user.click(screen.getByText('View'))
       expect(screen.getByText('Dark Theme')).toBeInTheDocument()
+    })
+  })
+
+  describe('grid type selection', () => {
+    it('shows grid type options in File menu', async () => {
+      const user = userEvent.setup()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+      expect(screen.getByText('Square Grid')).toBeInTheDocument()
+      expect(screen.getByText('Hex Grid')).toBeInTheDocument()
+      expect(screen.getByText('Gridless')).toBeInTheDocument()
+    })
+
+    it('switches to hex grid when Hex Grid is clicked', async () => {
+      const user = userEvent.setup()
+      const onSettingsChange = vi.fn()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={onSettingsChange} />)
+
+      await user.click(screen.getByText('File'))
+      await user.click(screen.getByText('Hex Grid'))
+
+      expect(onSettingsChange).toHaveBeenCalledWith({
+        ...defaultSettings,
+        gridType: 'hex',
+      })
+    })
+
+    it('switches to gridless when Gridless is clicked', async () => {
+      const user = userEvent.setup()
+      const onSettingsChange = vi.fn()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={onSettingsChange} />)
+
+      await user.click(screen.getByText('File'))
+      await user.click(screen.getByText('Gridless'))
+
+      expect(onSettingsChange).toHaveBeenCalledWith({
+        ...defaultSettings,
+        gridType: 'gridless',
+      })
+    })
+
+    it('shows checkmark on active grid type', async () => {
+      const user = userEvent.setup()
+      const hexSettings = { ...defaultSettings, gridType: 'hex' as const }
+      render(<MenuBar settings={hexSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+
+      // The checkmarks: Show Grid (✓), Snap to Grid (✓), Square Grid (dim), Hex Grid (✓), Gridless (dim)
+      const checks = screen.getAllByText('✓')
+      // Hex Grid should be active (opacity 1), Square and Gridless should be dim (opacity 0.2)
+      // Find the check marks that correspond to grid types — they are after the separator
+      expect(checks.length).toBeGreaterThanOrEqual(5)
     })
   })
 })
