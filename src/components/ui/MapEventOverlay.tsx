@@ -27,7 +27,7 @@ interface MapEventOverlayProps {
   onLegendPlace: (point: GridPoint) => void
 }
 
-/** Convert a PixelPoint to the legacy GridPoint format used by entity handlers. */
+/** Convert a PixelPoint to the GridPoint format used by entity handlers. */
 function toGridPoint(px: number, py: number): GridPoint {
   return { x: px, y: py }
 }

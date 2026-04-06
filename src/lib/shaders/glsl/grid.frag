@@ -21,7 +21,9 @@ float squareGrid(vec2 p, float size) {
   return 1.0 - smoothstep(0.0, lineW * 1.5, d);
 }
 
-// hexDist must be declared before hexGrid which calls it
+// hexDist must be declared before hexGrid which calls it.
+// GLSL requires functions to be defined before they are referenced
+// (no hoisting, unlike JavaScript).
 float hexDist(vec2 p, float size) {
   p = abs(p);
   float c = dot(p, normalize(vec2(1.0, 1.7320508)));
