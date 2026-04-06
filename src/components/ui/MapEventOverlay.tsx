@@ -213,6 +213,10 @@ export function MapEventOverlay({
 
   // Determine cursor preview size based on grid type
   const cursorSize = cellPixelSize(gridConfig)
+  // For hex grids, use a square dimension (the larger axis) so border-radius: 50% makes a circle
+  const cursorDim = gridConfig.type === 'hex'
+    ? Math.max(cursorSize.width, cursorSize.height)
+    : 0 // unused for non-hex
 
   return (
     <div
@@ -227,10 +231,14 @@ export function MapEventOverlay({
         <div
           style={{
             ...styles.cursor,
-            left: previewPoint.x - cursorSize.width / 2,
-            top: previewPoint.y - cursorSize.height / 2,
-            width: cursorSize.width,
-            height: cursorSize.height,
+            left: gridConfig.type === 'hex'
+              ? previewPoint.x - cursorDim / 2
+              : previewPoint.x - cursorSize.width / 2,
+            top: gridConfig.type === 'hex'
+              ? previewPoint.y - cursorDim / 2
+              : previewPoint.y - cursorSize.height / 2,
+            width: gridConfig.type === 'hex' ? cursorDim : cursorSize.width,
+            height: gridConfig.type === 'hex' ? cursorDim : cursorSize.height,
             borderRadius: gridConfig.type === 'hex' ? '50%' : 'var(--radius-sm)',
           }}
         />
