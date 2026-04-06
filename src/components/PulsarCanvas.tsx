@@ -141,14 +141,15 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
     editor.mode = viewMode === 'page' ? 'page' : 'edgeless'
   }, [editor, viewMode])
 
-  // Apply grid visibility setting to the editor's CSS
+  // Apply grid visibility setting to the editor's CSS.
+  // BlockSuite's edgeless grid uses --pulsar-edgeless-grid-color for its radial-gradient dots.
   useEffect(() => {
     const el = editorContainerRef.current
     if (!el) return
     if (settings.showGrid) {
-      el.style.setProperty('--affine-edgeless-grid-color', 'var(--color-border)')
+      el.style.setProperty('--pulsar-edgeless-grid-color', 'rgba(255, 255, 255, 0.06)')
     } else {
-      el.style.setProperty('--affine-edgeless-grid-color', 'transparent')
+      el.style.setProperty('--pulsar-edgeless-grid-color', 'transparent')
     }
   }, [settings.showGrid])
 

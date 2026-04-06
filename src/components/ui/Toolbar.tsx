@@ -75,6 +75,24 @@ function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
   }
 }
 
+/**
+ * Safely retrieve the edgeless root block component from the mounted editor.
+ *
+ * BlockSuite's PulsarEditorContainer is a shadowless Lit element that renders
+ * `<pulsar-edgeless-root>` into the light DOM when in edgeless mode.  The
+ * private `_edgelessRoot` accessor created by the `@query` decorator is backed
+ * by a TC39 private field and is not accessible from outside the class.  We
+ * use a plain DOM querySelector instead which works identically.
+ */
+function getEdgelessRoot(editor: unknown): {
+  tools?: { setEdgelessTool: (tool: Record<string, unknown>) => void }
+  addImages?: (files: File[]) => Promise<string[]>
+} | null {
+  const el = editor as HTMLElement | null
+  if (!el || typeof el.querySelector !== 'function') return null
+  return el.querySelector('pulsar-edgeless-root') as unknown as ReturnType<typeof getEdgelessRoot>
+}
+
 interface ToolbarProps {
   activeTool?: Tool
   onToolChange?: (tool: Tool) => void
@@ -124,10 +142,7 @@ export function Toolbar({
         input.onchange = () => {
           const files = Array.from(input.files ?? [])
           if (files.length === 0) return
-          // Access the edgeless root and call addImages
-          const edgelessRoot = (editor as unknown as Record<string, unknown>)._edgelessRoot as
-            | { addImages?: (files: File[]) => Promise<string[]> }
-            | undefined
+          const edgelessRoot = getEdgelessRoot(editor)
           if (edgelessRoot?.addImages) {
             edgelessRoot.addImages(files)
           }
@@ -139,11 +154,7 @@ export function Toolbar({
       const edgelessTool = toEdgelessTool(tool)
       if (!edgelessTool) return
 
-      // Access the edgeless root component's tools manager
-      const edgelessRoot = (editor as unknown as Record<string, unknown>)._edgelessRoot as
-        | { tools?: { setEdgelessTool: (tool: Record<string, unknown>) => void } }
-        | undefined
-
+      const edgelessRoot = getEdgelessRoot(editor)
       if (edgelessRoot?.tools) {
         edgelessRoot.tools.setEdgelessTool(edgelessTool)
       }

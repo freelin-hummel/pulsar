@@ -4,16 +4,20 @@ import userEvent from '@testing-library/user-event'
 import { Toolbar } from '../components/ui/Toolbar.js'
 import { EditorContext } from '../editor/context.js'
 
-// Mock the editor context so we can test tool switching
+// Mock the editor context so we can test tool switching.
+// The Toolbar now accesses the edgeless root via editor.querySelector('pulsar-edgeless-root')
+// rather than the private _edgelessRoot accessor.
 function createMockEditorContext() {
   const mockSetEdgelessTool = vi.fn()
-  const mockEditor = {
-    _edgelessRoot: {
-      tools: {
-        setEdgelessTool: mockSetEdgelessTool,
-      },
-      addImages: vi.fn(),
+  const mockEdgelessRoot = {
+    tools: {
+      setEdgelessTool: mockSetEdgelessTool,
     },
+    addImages: vi.fn(),
+  }
+  const mockEditor = {
+    querySelector: (selector: string) =>
+      selector === 'pulsar-edgeless-root' ? mockEdgelessRoot : null,
   }
   return {
     editor: mockEditor as unknown as import('../editor/context.js').EditorContextValue['editor'],
@@ -197,6 +201,71 @@ describe('Toolbar', () => {
       ]
       for (const title of titles) {
         expect(screen.getByTitle(title)).toBeInTheDocument()
+      }
+    })
+  })
+
+  describe('edgeless root access', () => {
+    it('queries the edgeless root via querySelector, not _edgelessRoot', async () => {
+      const user = userEvent.setup()
+      const mockSetEdgelessTool = vi.fn()
+      const querySelectorSpy = vi.fn((selector: string) =>
+        selector === 'pulsar-edgeless-root'
+          ? { tools: { setEdgelessTool: mockSetEdgelessTool } }
+          : null
+      )
+      const ctx = {
+        editor: { querySelector: querySelectorSpy } as unknown as import('../editor/context.js').EditorContextValue['editor'],
+        collection: {} as import('../editor/context.js').EditorContextValue['collection'],
+        doc: {} as import('../editor/context.js').EditorContextValue['doc'],
+        _mock: { mockSetEdgelessTool },
+      }
+      renderToolbar({}, ctx)
+
+      await user.click(screen.getByTestId('tool-rect'))
+
+      // Verify querySelector was called with the correct selector
+      expect(querySelectorSpy).toHaveBeenCalledWith('pulsar-edgeless-root')
+      expect(mockSetEdgelessTool).toHaveBeenCalledWith({ type: 'shape', shapeName: 'rect' })
+    })
+
+    it('does not throw when edgeless root is not yet mounted', async () => {
+      const user = userEvent.setup()
+      const querySelectorSpy = vi.fn(() => null) // edgeless root not found
+      const ctx = {
+        editor: { querySelector: querySelectorSpy } as unknown as import('../editor/context.js').EditorContextValue['editor'],
+        collection: {} as import('../editor/context.js').EditorContextValue['collection'],
+        doc: {} as import('../editor/context.js').EditorContextValue['doc'],
+        _mock: { mockSetEdgelessTool: vi.fn() },
+      }
+      renderToolbar({}, ctx)
+
+      // Should not throw even when the edgeless root is missing
+      await user.click(screen.getByTestId('tool-rect'))
+      expect(querySelectorSpy).toHaveBeenCalledWith('pulsar-edgeless-root')
+    })
+
+    it('switches tools for all tool types when edgeless root is mounted', async () => {
+      const user = userEvent.setup()
+      const ctx = createMockEditorContext()
+      renderToolbar({}, ctx)
+
+      // Click through every non-image tool and verify each calls setEdgelessTool
+      const toolsAndExpected: [string, Record<string, unknown>][] = [
+        ['tool-select', { type: 'default' }],
+        ['tool-hand', { type: 'pan', panning: true }],
+        ['tool-rect', { type: 'shape', shapeName: 'rect' }],
+        ['tool-ellipse', { type: 'shape', shapeName: 'ellipse' }],
+        ['tool-line', { type: 'connector', mode: 0 }],
+        ['tool-pen', { type: 'brush' }],
+        ['tool-text', { type: 'text' }],
+        ['tool-note', { type: 'affine:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }],
+      ]
+
+      for (const [testId, expected] of toolsAndExpected) {
+        ctx._mock.mockSetEdgelessTool.mockClear()
+        await user.click(screen.getByTestId(testId))
+        expect(ctx._mock.mockSetEdgelessTool).toHaveBeenCalledWith(expected)
       }
     })
   })
