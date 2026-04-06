@@ -21,6 +21,14 @@ float squareGrid(vec2 p, float size) {
   return 1.0 - smoothstep(0.0, lineW * 1.5, d);
 }
 
+// hexDist must be declared before hexGrid which calls it
+float hexDist(vec2 p, float size) {
+  p = abs(p);
+  float c = dot(p, normalize(vec2(1.0, 1.7320508)));
+  c = max(c, p.x);
+  return c - size;
+}
+
 float hexGrid(vec2 p, float size) {
   // Flat-top hex tiling
   float h = size * 1.7320508;  // sqrt(3)
@@ -36,13 +44,6 @@ float hexGrid(vec2 p, float size) {
 
   float lineW = 1.0 / size;
   return 1.0 - smoothstep(0.0, lineW * 1.5, d);
-}
-
-float hexDist(vec2 p, float size) {
-  p = abs(p);
-  float c = dot(p, normalize(vec2(1.0, 1.7320508)));
-  c = max(c, p.x);
-  return c - size;
 }
 
 // ── main ──

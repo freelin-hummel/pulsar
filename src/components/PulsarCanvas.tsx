@@ -383,6 +383,20 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
 
     const disposables: Array<() => void> = []
 
+    // Prevent browser zoom (Ctrl+wheel) and page scroll from hijacking
+    // wheel events that should go to the BlockSuite edgeless canvas.
+    // BlockSuite's UIEventDispatcher adds its own passive:false wheel
+    // listener on the host element, but events on the outer React container
+    // may still trigger the browser's default zoom.
+    const preventPageZoom = (e: WheelEvent) => {
+      // Only prevent default when the event is inside the editor area
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault()
+      }
+    }
+    container.addEventListener('wheel', preventPageZoom, { passive: false })
+    disposables.push(() => container.removeEventListener('wheel', preventPageZoom))
+
     // Bridge block changes to ECS world
     const blockUpdated = doc.slots.blockUpdated.on((event) => {
       if (event.type === 'add') {
@@ -422,7 +436,7 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
         {/* Main canvas area */}
         <div
           ref={canvasRef}
-          style={{ flex: 1, position: 'relative', overflow: 'hidden' }}
+          style={{ flex: 1, position: 'relative', overflow: 'hidden', touchAction: 'none' }}
         >
           <div
             ref={editorContainerRef}
