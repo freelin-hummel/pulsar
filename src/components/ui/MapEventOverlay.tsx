@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
-import type { MapTool, TerrainTextureId, MapObjectType, GridPoint } from '../../shared/mapTypes.js'
+import type { MapTool, MapObjectType, GridPoint } from '../../shared/mapTypes.js'
 
 /**
  * MapEventOverlay — Transparent pointer event layer for map editing tools.
@@ -13,7 +13,6 @@ interface MapEventOverlayProps {
   active: boolean
   activeMapTool: MapTool | null
   gridSize: number
-  selectedTerrain: TerrainTextureId
   selectedObject: MapObjectType
   onTerrainPaint: (cells: GridPoint[]) => void
   onWallDraw: (points: GridPoint[], wallType: 'standard' | 'diagonal' | 'cavern') => void
@@ -43,7 +42,6 @@ export function MapEventOverlay({
   active,
   activeMapTool,
   gridSize,
-  selectedTerrain: _selectedTerrain,
   selectedObject,
   onTerrainPaint,
   onWallDraw,

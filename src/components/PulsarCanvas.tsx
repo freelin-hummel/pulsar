@@ -404,7 +404,6 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
             active={isMapBoard && boardMode === 'edit'}
             activeMapTool={activeMapTool}
             gridSize={settings.gridSize}
-            selectedTerrain={selectedTerrain}
             selectedObject={selectedObject}
             onTerrainPaint={handleTerrainPaint}
             onWallDraw={handleWallDraw}

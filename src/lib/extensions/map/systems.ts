@@ -13,7 +13,7 @@ import type { SystemDefinition, ComponentInstance, WorldAPI } from '../../../ecs
  * When a wall entity enters, checks if its endpoints overlap with
  * existing wall endpoints and merges connection points.
  */
-const wallSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
+const wallConnectSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
   name: 'wall-connect',
   query: { required: ['wall'] },
   priority: 10,
@@ -42,7 +42,7 @@ const wallSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
  * Door open/close/lock are game-semantic operations routed through
  * the authoritative server for validation.
  */
-const doorSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
+const doorStateSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
   name: 'door-state',
   query: { required: ['door'] },
   priority: 11,
@@ -57,7 +57,7 @@ const doorSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
  *
  * Render order: terrain (0) → floor details (5) → objects (10) → walls (20) → lighting (30)
  */
-const mapLayerSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
+const mapLayersSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
   name: 'map-layers',
   query: { required: ['object'] },
   priority: 5,
@@ -118,7 +118,7 @@ const lightingSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
  *
  * Keeps legend numbers sequential and syncs pin positions with their text entries.
  */
-const legendSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
+const legendNumberingSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
   name: 'legend-numbering',
   query: { required: ['legend'] },
   priority: 30,
@@ -144,9 +144,9 @@ const legendSystem: Omit<SystemDefinition, 'name'> & { name?: string } = {
 
 /** All systems provided by the map extension */
 export const mapSystems: Array<Omit<SystemDefinition, 'name'> & { name?: string }> = [
-  wallSystem,
-  doorSystem,
-  mapLayerSystem,
+  wallConnectSystem,
+  doorStateSystem,
+  mapLayersSystem,
   lightingSystem,
-  legendSystem,
+  legendNumberingSystem,
 ]
