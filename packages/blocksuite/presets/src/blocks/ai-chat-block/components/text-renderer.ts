@@ -129,7 +129,7 @@ export class TextRenderer extends WithDisposable(LitElement) {
   };
 
   static override styles = css`
-    .ai-answer-text-editor.affine-page-viewport {
+    .ai-answer-text-editor.pulsar-page-viewport {
       background: transparent;
       font-family: var(--pulsar-font-family);
       margin-top: 0;
@@ -242,7 +242,7 @@ export class TextRenderer extends WithDisposable(LitElement) {
       <div class=${classes} @wheel=${this._onWheel}>
         ${keyed(
           this._doc,
-          html`<div class="ai-answer-text-editor affine-page-viewport">
+          html`<div class="ai-answer-text-editor pulsar-page-viewport">
             ${new BlockStdScope({
               doc: this._doc,
               extensions: previewSpec.value,

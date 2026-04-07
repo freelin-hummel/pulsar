@@ -1,6 +1,6 @@
 export async function printToPdf(
   rootElement: HTMLElement | null = document.querySelector(
-    '.affine-page-viewport'
+    '.pulsar-page-viewport'
   ),
   options: {
     /**

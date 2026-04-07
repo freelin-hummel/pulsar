@@ -18,7 +18,7 @@ export const blockStyles = css`
   }
 
   .edgeless-block-portal-embed
-    .affine-embed-synced-doc-editor
+    .pulsar-embed-synced-doc-editor
     .affine-page-root-block-container {
     width: 100%;
   }
@@ -38,7 +38,7 @@ export const blockStyles = css`
     padding: 0 24px;
   }
 
-  .affine-embed-synced-doc-editor {
+  .pulsar-embed-synced-doc-editor {
     pointer-events: none;
   }
 
@@ -100,7 +100,7 @@ export const blockStyles = css`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .affine-embed-synced-doc-editor-overlay {
+  .pulsar-embed-synced-doc-editor-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -109,11 +109,11 @@ export const blockStyles = css`
     z-index: 1;
     cursor: pointer;
   }
-  .affine-embed-synced-doc-editor-overlay:hover {
+  .pulsar-embed-synced-doc-editor-overlay:hover {
     background: var(--pulsar-hover-color);
   }
 
-  .affine-embed-synced-doc-editor-empty {
+  .pulsar-embed-synced-doc-editor-empty {
     display: flex;
     align-items: center;
     width: 100%;
@@ -122,13 +122,13 @@ export const blockStyles = css`
   }
 
   .affine-embed-synced-doc-container.surface
-    > .affine-embed-synced-doc-editor
-    > .affine-embed-synced-doc-editor-empty {
+    > .pulsar-embed-synced-doc-editor
+    > .pulsar-embed-synced-doc-editor-empty {
     left: 0;
     justify-content: center;
   }
 
-  .affine-embed-synced-doc-editor-empty > span {
+  .pulsar-embed-synced-doc-editor-empty > span {
     color: var(--pulsar-placeholder-color);
     font-feature-settings:
       'clig' off,
@@ -145,16 +145,16 @@ export const blockStyles = css`
   }
 
   .affine-embed-synced-doc-container
-    > .affine-embed-synced-doc-editor.affine-page-viewport {
+    > .pulsar-embed-synced-doc-editor.pulsar-page-viewport {
     background: transparent;
   }
 
-  .affine-embed-synced-doc-container > .affine-embed-synced-doc-editor {
+  .affine-embed-synced-doc-container > .pulsar-embed-synced-doc-editor {
     width: 100%;
     height: 100%;
   }
 
-  .affine-embed-synced-doc-editor .affine-page-root-block-container {
+  .pulsar-embed-synced-doc-editor .affine-page-root-block-container {
     width: 100%;
     max-width: 100%;
   }

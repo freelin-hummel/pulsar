@@ -997,7 +997,7 @@ export class PulsarDragHandleWidget extends WidgetComponent<
     const outOfPageViewPort = element.classList.contains(
       'pulsar-page-viewport'
     );
-    const inPage = !!relatedElement?.closest('.affine-page-viewport');
+    const inPage = !!relatedElement?.closest('.pulsar-page-viewport');
 
     const inDragHandle = !!relatedElement?.closest(PULSAR_DRAG_HANDLE_WIDGET);
     if (outOfPageViewPort && !inDragHandle && !inPage) {

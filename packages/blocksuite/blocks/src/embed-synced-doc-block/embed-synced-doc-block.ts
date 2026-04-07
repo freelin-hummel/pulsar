@@ -543,7 +543,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
   accessor syncedDocCard: EmbedSyncedDocCard | null = null;
 
   @query(
-    ':scope > .affine-block-component > .embed-block-container > .affine-embed-synced-doc-container > .affine-embed-synced-doc-editor > div > editor-host'
+    ':scope > .affine-block-component > .embed-block-container > .affine-embed-synced-doc-container > .pulsar-embed-synced-doc-editor > div > editor-host'
   )
   accessor syncedDocEditorHost: EditorHost | null = null;
 

@@ -32,7 +32,7 @@ export class EdgelessEditor extends WithDisposable(ShadowlessElement) {
       }
     }
 
-    .affine-edgeless-viewport {
+    .pulsar-edgeless-viewport {
       display: block;
       height: 100%;
       position: relative;

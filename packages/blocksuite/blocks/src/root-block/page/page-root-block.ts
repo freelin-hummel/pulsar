@@ -429,7 +429,7 @@ export class PageRootBlockComponent extends BlockComponent<
   get viewportElement(): HTMLDivElement | null {
     if (this._viewportElement) return this._viewportElement;
     this._viewportElement = this.host.closest(
-      '.affine-page-viewport'
+      '.pulsar-page-viewport'
     ) as HTMLDivElement | null;
     return this._viewportElement;
   }

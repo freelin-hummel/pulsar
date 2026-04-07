@@ -250,7 +250,7 @@ export class EdgelessRootPreviewBlockComponent extends BlockComponent<
   accessor background!: HTMLDivElement;
 
   @state()
-  accessor editorViewportSelector = '.affine-edgeless-viewport';
+  accessor editorViewportSelector = '.pulsar-edgeless-viewport';
 
   @query('.edgeless-layer')
   accessor layer!: HTMLDivElement;
