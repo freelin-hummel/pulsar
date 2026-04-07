@@ -103,6 +103,15 @@ export class GfxViewportElement extends LitElement {
     return `translate3d(${translateX}px, ${translateY}px, 0) scale(${zoom})`;
   }
 
+  private _subscribeViewport() {
+    if (this.viewport) {
+      this.viewport.viewportUpdated.on(() => {
+        this._refreshViewport();
+        this._hideOutsideBlock();
+      });
+    }
+  }
+
   override connectedCallback(): void {
     super.connectedCallback();
 
@@ -110,20 +119,10 @@ export class GfxViewportElement extends LitElement {
     // applied AFTER the element is connected.  Defer the subscription so the
     // property is available.
     if (this.viewport) {
-      this.viewport.viewportUpdated.on(() => {
-        this._refreshViewport();
-        this._hideOutsideBlock();
-      });
+      this._subscribeViewport();
     } else {
       // Property binding hasn't been applied yet — wait for the first update
-      this.updateComplete.then(() => {
-        if (this.viewport) {
-          this.viewport.viewportUpdated.on(() => {
-            this._refreshViewport();
-            this._hideOutsideBlock();
-          });
-        }
-      });
+      this.updateComplete.then(() => this._subscribeViewport());
     }
   }
 
