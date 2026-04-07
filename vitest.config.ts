@@ -9,5 +9,10 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.test.{ts,tsx}'],
     css: true,
+    // BlockSuite's Lit custom elements trigger async rendering via
+    // requestAnimationFrame that touches Canvas/WebGL APIs unavailable
+    // in jsdom. These unhandled errors don't affect test correctness
+    // but cause vitest to report false failures.
+    dangerouslyIgnoreUnhandledErrors: true,
   },
 })
