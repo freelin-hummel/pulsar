@@ -9,7 +9,7 @@ import type { EdgelessRootBlockComponent } from '../../edgeless-root-block.js';
 @customElement('edgeless-dragging-area-rect')
 export class EdgelessDraggingAreaRect extends WithDisposable(LitElement) {
   static override styles = css`
-    .affine-edgeless-dragging-area {
+    .pulsar-edgeless-dragging-area {
       position: absolute;
       background: ${unsafeCSS(
         cssVarV2('edgeless/selection/selectionMarqueeBackground', '#1E96EB14')

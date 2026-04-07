@@ -56,18 +56,18 @@ export class CheckboxCell extends BaseCellRenderer<boolean> {
       cursor: pointer;
     }
 
-    .affine-database-checkbox-container {
+    .pulsar-database-checkbox-container {
       height: 100%;
     }
 
-    .affine-database-checkbox {
+    .pulsar-database-checkbox {
       display: flex;
       align-items: center;
       height: var(--data-view-cell-text-line-height);
       width: 100%;
       position: relative;
     }
-    .affine-database-checkbox svg {
+    .pulsar-database-checkbox svg {
       width: 16px;
       height: 16px;
     }
@@ -109,7 +109,7 @@ export class CheckboxCell extends BaseCellRenderer<boolean> {
     </div>`;
   }
 
-  @query('.affine-database-checkbox')
+  @query('.pulsar-database-checkbox')
   private accessor _checkbox!: HTMLDivElement;
 }
 

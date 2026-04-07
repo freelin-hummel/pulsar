@@ -1,7 +1,7 @@
 import { html } from 'lit';
 
 const styles = html`<style>
-  .affine-page-selected-embed-rects-container {
+  .pulsar-page-selected-embed-rects-container {
     position: absolute;
     border: 2px solid var(--pulsar-primary-color);
     left: 0;
@@ -14,14 +14,14 @@ const styles = html`<style>
     line-height: 0;
   }
 
-  .affine-page-selected-embed-rects-container .resize {
+  .pulsar-page-selected-embed-rects-container .resize {
     position: absolute;
     padding: 5px;
     pointer-events: auto;
     z-index: 1;
   }
 
-  .affine-page-selected-embed-rects-container .resize-inner {
+  .pulsar-page-selected-embed-rects-container .resize-inner {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -30,25 +30,25 @@ const styles = html`<style>
     pointer-events: none;
   }
 
-  .affine-page-selected-embed-rects-container .resize.top-left {
+  .pulsar-page-selected-embed-rects-container .resize.top-left {
     left: 0;
     top: 0;
     transform: translate(-50%, -50%);
     cursor: nwse-resize; /*resizer cursor*/
   }
-  .affine-page-selected-embed-rects-container .resize.top-right {
+  .pulsar-page-selected-embed-rects-container .resize.top-right {
     right: 0;
     top: 0;
     transform: translate(50%, -50%);
     cursor: nesw-resize;
   }
-  .affine-page-selected-embed-rects-container .resize.bottom-left {
+  .pulsar-page-selected-embed-rects-container .resize.bottom-left {
     left: 0;
     bottom: 0;
     transform: translate(-50%, 50%);
     cursor: nesw-resize;
   }
-  .affine-page-selected-embed-rects-container .resize.bottom-right {
+  .pulsar-page-selected-embed-rects-container .resize.bottom-right {
     right: 0;
     bottom: 0;
     transform: translate(50%, 50%);

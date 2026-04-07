@@ -82,7 +82,7 @@ export const styles = css`
 `;
 
 export const slashItemToolTipStyle = css`
-  .affine-tooltip {
+  .pulsar-tooltip {
     display: flex;
     padding: 4px 4px 2px 4px;
     flex-direction: column;

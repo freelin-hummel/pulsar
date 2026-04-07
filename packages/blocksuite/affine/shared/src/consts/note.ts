@@ -1,2 +1,2 @@
 export const NOTE_SELECTOR =
-  'pulsar-note, affine-edgeless-note .edgeless-note-page-content, affine-edgeless-text';
+  'pulsar-note, pulsar-edgeless-note .edgeless-note-page-content, pulsar-edgeless-text';

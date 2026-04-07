@@ -2,7 +2,7 @@ import { baseTheme } from '@toeverything/theme';
 import { css, unsafeCSS } from 'lit';
 
 export const AIChatBlockStyles = css`
-  .affine-ai-chat-block-container {
+  .pulsar-ai-chat-block-container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;

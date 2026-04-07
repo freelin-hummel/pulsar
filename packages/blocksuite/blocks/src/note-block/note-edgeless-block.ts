@@ -34,7 +34,7 @@ import { NoteBlockComponent } from './note-block.js';
 @customElement('edgeless-note-mask')
 export class EdgelessNoteMask extends WithDisposable(ShadowlessElement) {
   protected override firstUpdated() {
-    const maskDOM = this.renderRoot!.querySelector('.affine-note-mask');
+    const maskDOM = this.renderRoot!.querySelector('.pulsar-note-mask');
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         if (!this.model.edgeless.collapse) {
@@ -132,7 +132,7 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
       display: none;
     }
 
-    .edgeless-note-container:has(.affine-embed-synced-doc-container.editing)
+    .edgeless-note-container:has(.pulsar-embed-synced-doc-container.editing)
       > .note-background {
       left: ${-ACTIVE_NOTE_EXTRA_PADDING}px !important;
       top: ${-ACTIVE_NOTE_EXTRA_PADDING}px !important;
@@ -140,7 +140,7 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
       height: calc(100% + ${ACTIVE_NOTE_EXTRA_PADDING * 2}px) !important;
     }
 
-    .edgeless-note-container:has(.affine-embed-synced-doc-container.editing)
+    .edgeless-note-container:has(.pulsar-embed-synced-doc-container.editing)
       > edgeless-note-mask {
       display: none;
     }
@@ -514,7 +514,7 @@ export class EdgelessNoteBlockComponent extends toGfxBlockComponent(
   @state()
   private accessor _noteFullHeight = 0;
 
-  @query('.edgeless-note-page-content .affine-note-block-container')
+  @query('.edgeless-note-page-content .pulsar-note-block-container')
   private accessor _notePageContent: HTMLElement | null = null;
 }
 

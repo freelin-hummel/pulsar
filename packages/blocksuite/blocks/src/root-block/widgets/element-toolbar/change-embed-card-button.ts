@@ -197,7 +197,7 @@ export class EdgelessChangeEmbedCardButton extends WithDisposable(LitElement) {
   };
 
   static override styles = css`
-    .affine-link-preview {
+    .pulsar-link-preview {
       display: flex;
       justify-content: flex-start;
       width: 140px;
@@ -219,7 +219,7 @@ export class EdgelessChangeEmbedCardButton extends WithDisposable(LitElement) {
       text-wrap: nowrap;
     }
 
-    .affine-link-preview > span {
+    .pulsar-link-preview > span {
       display: inline-block;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;

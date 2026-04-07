@@ -45,7 +45,7 @@ export class DragPreview extends ShadowlessElement {
           z-index: 3;
         }
 
-        .affine-drag-preview-grabbing * {
+        .pulsar-drag-preview-grabbing * {
           cursor: grabbing !important;
         }</style
       >${this.template}`;

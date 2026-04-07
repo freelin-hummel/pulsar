@@ -13,7 +13,7 @@ import '../../../filter/filter-group.js';
 import { WidgetBase } from '../../../widget-base.js';
 
 const styles = css`
-  .affine-database-search-container {
+  .pulsar-database-search-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@ const styles = css`
     transition: all 0.3s ease;
     overflow: hidden;
   }
-  .affine-database-search-container svg {
+  .pulsar-database-search-container svg {
     width: 20px;
     height: 20px;
     fill: var(--pulsar-icon-color);
@@ -49,7 +49,7 @@ const styles = css`
     cursor: pointer;
   }
 
-  .affine-database-search-input-icon {
+  .pulsar-database-search-input-icon {
     position: absolute;
     left: 0;
     height: 100%;
@@ -62,16 +62,16 @@ const styles = css`
     border-radius: 4px;
     height: max-content;
   }
-  .affine-database-search-input-icon:hover {
+  .pulsar-database-search-input-icon:hover {
     background: var(--pulsar-hover-color);
   }
 
-  .search-container-expand .affine-database-search-input-icon {
+  .search-container-expand .pulsar-database-search-input-icon {
     left: 4px;
     pointer-events: none;
   }
 
-  .affine-database-search-input {
+  .pulsar-database-search-input {
     flex: 1;
     width: 100%;
     padding: 0 2px 0 30px;
@@ -84,7 +84,7 @@ const styles = css`
     outline: none;
   }
 
-  .affine-database-search-input::placeholder {
+  .pulsar-database-search-input::placeholder {
     color: var(--pulsar-placeholder-color);
     font-size: var(--pulsar-font-sm);
   }
@@ -186,7 +186,7 @@ export class DataViewHeaderToolsSearch extends WidgetBase {
     }
   }
 
-  @query('.affine-database-search-input')
+  @query('.pulsar-database-search-input')
   private accessor _searchInput!: HTMLInputElement;
 
   @state()

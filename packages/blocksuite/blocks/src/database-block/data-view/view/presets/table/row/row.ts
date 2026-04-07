@@ -28,14 +28,14 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
   };
 
   static override styles = css`
-    .affine-database-block-row:has(.row-select-checkbox.selected) {
+    .pulsar-database-block-row:has(.row-select-checkbox.selected) {
       background: var(--pulsar-primary-color-04);
     }
-    .affine-database-block-row:has(.row-select-checkbox.selected)
+    .pulsar-database-block-row:has(.row-select-checkbox.selected)
       .row-selected-bg {
       position: relative;
     }
-    .affine-database-block-row:has(.row-select-checkbox.selected)
+    .pulsar-database-block-row:has(.row-select-checkbox.selected)
       .row-selected-bg:before {
       content: '';
       position: absolute;
@@ -45,7 +45,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       bottom: 0;
       background: var(--pulsar-primary-color-04);
     }
-    .affine-database-block-row {
+    .pulsar-database-block-row {
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -53,7 +53,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       position: relative;
     }
 
-    .affine-database-block-row.selected > .database-cell {
+    .pulsar-database-block-row.selected > .database-cell {
       background: transparent;
     }
 
@@ -77,11 +77,11 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
       margin-right: 8px;
     }
 
-    .affine-database-block-row .show-on-hover-row {
+    .pulsar-database-block-row .show-on-hover-row {
       visibility: hidden;
       opacity: 0;
     }
-    .affine-database-block-row:hover .show-on-hover-row {
+    .pulsar-database-block-row:hover .show-on-hover-row {
       visibility: visible;
       opacity: 1;
     }

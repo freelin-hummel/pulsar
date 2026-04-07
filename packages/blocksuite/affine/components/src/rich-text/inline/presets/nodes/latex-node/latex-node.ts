@@ -31,11 +31,11 @@ export class PulsarLatexNode extends SignalWatcher(
   private _editorAbortController: AbortController | null = null;
 
   static override styles = css`
-    affine-latex-node {
+    pulsar-latex-node {
       display: inline-block;
     }
 
-    affine-latex-node .affine-latex {
+    pulsar-latex-node .pulsar-latex {
       white-space: nowrap;
       word-break: break-word;
       color: ${unsafeCSS(cssVar('textPrimaryColor'))};
@@ -51,14 +51,14 @@ export class PulsarLatexNode extends SignalWatcher(
       padding: 0 4px;
       margin: 0 2px;
     }
-    affine-latex-node .affine-latex:hover {
+    pulsar-latex-node .pulsar-latex:hover {
       background: ${unsafeCSS(cssVar('hoverColor'))};
     }
-    affine-latex-node .affine-latex[data-selected='true'] {
+    pulsar-latex-node .pulsar-latex[data-selected='true'] {
       background: ${unsafeCSS(cssVar('hoverColor'))};
     }
 
-    affine-latex-node .error-placeholder {
+    pulsar-latex-node .error-placeholder {
       display: flex;
       padding: 2px 4px;
       justify-content: center;
@@ -75,7 +75,7 @@ export class PulsarLatexNode extends SignalWatcher(
       line-height: normal;
     }
 
-    affine-latex-node .placeholder {
+    pulsar-latex-node .placeholder {
       display: flex;
       padding: 2px 4px;
       justify-content: center;

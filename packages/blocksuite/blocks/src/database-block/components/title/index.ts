@@ -24,7 +24,7 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
   };
 
   static override styles = css`
-    .affine-database-title {
+    .pulsar-database-title {
       position: relative;
       flex: 1;
     }
@@ -51,14 +51,14 @@ export class DatabaseTitle extends WithDisposable(ShadowlessElement) {
       overflow: hidden;
     }
 
-    .affine-database-title [data-title-empty='true']::before {
+    .pulsar-database-title [data-title-empty='true']::before {
       content: 'Untitled';
       position: absolute;
       pointer-events: none;
       color: var(--pulsar-text-primary-color);
     }
 
-    .affine-database-title [data-title-focus='true']::before {
+    .pulsar-database-title [data-title-focus='true']::before {
       color: var(--pulsar-placeholder-color);
     }
   `;

@@ -18,11 +18,11 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
       min-height: 22px;
     }
 
-    .affine-select-cell-container * {
+    .pulsar-select-cell-container * {
       box-sizing: border-box;
     }
 
-    .affine-select-cell-container {
+    .pulsar-select-cell-container {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -31,7 +31,7 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
       font-size: var(--pulsar-font-sm);
     }
 
-    .affine-select-cell-container .select-selected {
+    .pulsar-select-cell-container .select-selected {
       height: 22px;
       font-size: 14px;
       line-height: 22px;
@@ -68,7 +68,7 @@ export class MultiTagView extends WithDisposable(ShadowlessElement) {
   @property({ attribute: false })
   accessor options: SelectTag[] = [];
 
-  @query('.affine-select-cell-container')
+  @query('.pulsar-select-cell-container')
   accessor selectContainer!: HTMLElement;
 
   @property({ attribute: false })

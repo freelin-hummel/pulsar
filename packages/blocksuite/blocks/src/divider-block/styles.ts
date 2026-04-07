@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const dividerBlockStyles = css`
-  .affine-divider-block-container {
+  .pulsar-divider-block-container {
     position: relative;
     width: 100%;
     height: 1px;
@@ -11,7 +11,7 @@ export const dividerBlockStyles = css`
     padding: 18px 8px;
     margin-top: var(--pulsar-paragraph-space);
   }
-  .affine-divider-block-container hr {
+  .pulsar-divider-block-container hr {
     border: none;
     border-top: 1px solid var(--pulsar-divider-color);
     width: 100%;

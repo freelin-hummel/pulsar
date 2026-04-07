@@ -183,7 +183,7 @@ export class RecordField extends SignalWatcher(
       border: 1px solid transparent;
     }
 
-    .field-content .affine-database-number {
+    .field-content .pulsar-database-number {
       text-align: left;
       justify-content: start;
     }

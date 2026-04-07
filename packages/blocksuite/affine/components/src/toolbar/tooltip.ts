@@ -15,7 +15,7 @@ import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 import { HoverController, type HoverOptions } from '../hover/index.js';
 
 const styles = css`
-  .affine-tooltip {
+  .pulsar-tooltip {
     box-sizing: border-box;
     max-width: 280px;
     min-height: 32px;

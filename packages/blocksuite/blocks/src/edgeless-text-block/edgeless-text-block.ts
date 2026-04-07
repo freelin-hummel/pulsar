@@ -369,7 +369,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
   @query('.edgeless-text-block-container')
   private accessor _textContainer!: HTMLDivElement;
 
-  @query('.affine-block-children-container')
+  @query('.pulsar-block-children-container')
   accessor childrenContainer!: HTMLDivElement;
 }
 

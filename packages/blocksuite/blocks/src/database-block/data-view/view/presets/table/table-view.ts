@@ -39,11 +39,11 @@ const styles = css`
   affine-database-table * {
     box-sizing: border-box;
   }
-  .affine-database-table {
+  .pulsar-database-table {
     overflow-y: auto;
   }
 
-  .affine-database-block-title-container {
+  .pulsar-database-block-title-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,7 +51,7 @@ const styles = css`
     margin: 2px 0 2px;
   }
 
-  .affine-database-block-table {
+  .pulsar-database-block-table {
     position: relative;
     width: 100%;
     padding-bottom: 4px;
@@ -60,51 +60,51 @@ const styles = css`
     overflow-y: hidden;
   }
 
-  .affine-database-block-table:hover {
+  .pulsar-database-block-table:hover {
     padding-bottom: 0px;
   }
 
-  .affine-database-block-table::-webkit-scrollbar {
+  .pulsar-database-block-table::-webkit-scrollbar {
     -webkit-appearance: none;
     display: block;
   }
 
-  .affine-database-block-table::-webkit-scrollbar:horizontal {
+  .pulsar-database-block-table::-webkit-scrollbar:horizontal {
     height: 4px;
   }
 
-  .affine-database-block-table::-webkit-scrollbar-thumb {
+  .pulsar-database-block-table::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background-color: transparent;
   }
 
-  .affine-database-block-table:hover::-webkit-scrollbar:horizontal {
+  .pulsar-database-block-table:hover::-webkit-scrollbar:horizontal {
     height: 8px;
   }
 
-  .affine-database-block-table:hover::-webkit-scrollbar-thumb {
+  .pulsar-database-block-table:hover::-webkit-scrollbar-thumb {
     border-radius: 16px;
     background-color: var(--pulsar-black-30);
   }
 
-  .affine-database-block-table:hover::-webkit-scrollbar-track {
+  .pulsar-database-block-table:hover::-webkit-scrollbar-track {
     background-color: var(--pulsar-hover-color);
   }
 
-  .affine-database-table-container {
+  .pulsar-database-table-container {
     position: relative;
     width: fit-content;
     min-width: 100%;
   }
 
-  .affine-database-block-tag-circle {
+  .pulsar-database-block-tag-circle {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     display: inline-block;
   }
 
-  .affine-database-block-tag {
+  .pulsar-database-block-tag {
     display: inline-flex;
     border-radius: 11px;
     align-items: center;
@@ -124,7 +124,7 @@ const styles = css`
     width: ${LEFT_TOOL_BAR_WIDTH}px;
     flex-shrink: 0;
   }
-  .affine-database-block-rows {
+  .pulsar-database-block-rows {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -538,12 +538,12 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
   accessor depth = 0;
 
   @query(
-    ':scope > .affine-block-component > .embed-block-container > affine-embed-synced-doc-card'
+    ':scope > .pulsar-block-component > .embed-block-container > affine-embed-synced-doc-card'
   )
   accessor syncedDocCard: EmbedSyncedDocCard | null = null;
 
   @query(
-    ':scope > .affine-block-component > .embed-block-container > .affine-embed-synced-doc-container > .pulsar-embed-synced-doc-editor > div > editor-host'
+    ':scope > .pulsar-block-component > .embed-block-container > .pulsar-embed-synced-doc-container > .pulsar-embed-synced-doc-editor > div > editor-host'
   )
   accessor syncedDocEditorHost: EditorHost | null = null;
 

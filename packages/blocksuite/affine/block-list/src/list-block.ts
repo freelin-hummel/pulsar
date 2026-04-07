@@ -58,7 +58,7 @@ export class ListBlockComponent extends CaptionedBlockComponent<
       const checkedPropObj = { checked: !this.model.checked };
       this.doc.updateBlock(this.model, checkedPropObj);
       if (this.model.checked) {
-        const checkEl = this.querySelector('.affine-list-block__todo-prefix');
+        const checkEl = this.querySelector('.pulsar-list-block__todo-prefix');
         if (checkEl) {
           playCheckAnimation(checkEl).catch(console.error);
         }

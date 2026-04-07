@@ -3,7 +3,7 @@ import { css, html } from 'lit';
 import { EMBED_CARD_HEIGHT, EMBED_CARD_WIDTH } from '../_common/consts.js';
 
 export const styles = css`
-  .affine-embed-github-block {
+  .pulsar-embed-github-block {
     margin: 0 auto;
     box-sizing: border-box;
     display: flex;
@@ -18,7 +18,7 @@ export const styles = css`
     user-select: none;
   }
 
-  .affine-embed-github-content {
+  .pulsar-embed-github-content {
     width: calc(100% - 204px);
     height: 100%;
     display: flex;
@@ -30,7 +30,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-github-content-title {
+  .pulsar-embed-github-content-title {
     display: flex;
     min-height: 22px;
     flex-direction: row;
@@ -43,22 +43,22 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-github-content-title-icons {
+  .pulsar-embed-github-content-title-icons {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
   }
 
-  .affine-embed-github-content-title-icons img,
-  .affine-embed-github-content-title-icons object,
-  .affine-embed-github-content-title-icons svg {
+  .pulsar-embed-github-content-title-icons img,
+  .pulsar-embed-github-content-title-icons object,
+  .pulsar-embed-github-content-title-icons svg {
     width: 16px;
     height: 16px;
     color: var(--pulsar-pure-white);
   }
 
-  .affine-embed-github-content-title-site-icon {
+  .pulsar-embed-github-content-title-site-icon {
     display: flex;
     width: 16px;
     height: 16px;
@@ -71,7 +71,7 @@ export const styles = css`
     }
   }
 
-  .affine-embed-github-content-title-status-icon {
+  .pulsar-embed-github-content-title-status-icon {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -92,39 +92,39 @@ export const styles = css`
     font-weight: 500;
     line-height: 16px;
   }
-  .affine-embed-github-content-title-status-icon.issue.open {
+  .pulsar-embed-github-content-title-status-icon.issue.open {
     background: #238636;
   }
-  .affine-embed-github-content-title-status-icon.issue.closed.success {
+  .pulsar-embed-github-content-title-status-icon.issue.closed.success {
     background: #8957e5;
   }
-  .affine-embed-github-content-title-status-icon.issue.closed.failure {
+  .pulsar-embed-github-content-title-status-icon.issue.closed.failure {
     background: #6e7681;
   }
-  .affine-embed-github-content-title-status-icon.pr.open {
+  .pulsar-embed-github-content-title-status-icon.pr.open {
     background: #238636;
   }
-  .affine-embed-github-content-title-status-icon.pr.draft {
+  .pulsar-embed-github-content-title-status-icon.pr.draft {
     background: #6e7681;
   }
-  .affine-embed-github-content-title-status-icon.pr.merged {
+  .pulsar-embed-github-content-title-status-icon.pr.merged {
     background: #8957e5;
   }
-  .affine-embed-github-content-title-status-icon.pr.closed {
+  .pulsar-embed-github-content-title-status-icon.pr.closed {
     background: #c03737;
   }
 
-  .affine-embed-github-content-title-status-icon > svg {
+  .pulsar-embed-github-content-title-status-icon > svg {
     height: 16px;
     width: 16px;
     padding: 2px;
   }
 
-  .affine-embed-github-content-title-status-icon > span {
+  .pulsar-embed-github-content-title-status-icon > span {
     padding: 0px 1.5px;
   }
 
-  .affine-embed-github-content-title-text {
+  .pulsar-embed-github-content-title-text {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -141,7 +141,7 @@ export const styles = css`
     line-height: 22px;
   }
 
-  .affine-embed-github-content-description {
+  .pulsar-embed-github-content-description {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -161,11 +161,11 @@ export const styles = css`
     line-height: 20px;
   }
 
-  .affine-embed-github-content-assignees {
+  .pulsar-embed-github-content-assignees {
     display: none;
   }
 
-  .affine-embed-github-content-url {
+  .pulsar-embed-github-content-url {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -174,7 +174,7 @@ export const styles = css`
     max-width: 100%;
     cursor: pointer;
   }
-  .affine-embed-github-content-url > span {
+  .pulsar-embed-github-content-url > span {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -191,27 +191,27 @@ export const styles = css`
     font-weight: 400;
     line-height: 20px;
   }
-  .affine-embed-github-content-url:hover > span {
+  .pulsar-embed-github-content-url:hover > span {
     color: var(--pulsar-link-color);
   }
-  .affine-embed-github-content-url:hover .open-icon {
+  .pulsar-embed-github-content-url:hover .open-icon {
     fill: var(--pulsar-link-color);
   }
 
-  .affine-embed-github-content-url-icon {
+  .pulsar-embed-github-content-url-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 12px;
     height: 12px;
   }
-  .affine-embed-github-content-url-icon .open-icon {
+  .pulsar-embed-github-content-url-icon .open-icon {
     height: 12px;
     width: 12px;
     fill: var(--pulsar-text-secondary-color);
   }
 
-  .affine-embed-github-banner {
+  .pulsar-embed-github-banner {
     margin: 12px 12px 0px 0px;
     width: 204px;
     height: 102px;
@@ -219,9 +219,9 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-github-banner img,
-  .affine-embed-github-banner object,
-  .affine-embed-github-banner svg {
+  .pulsar-embed-github-banner img,
+  .pulsar-embed-github-banner object,
+  .pulsar-embed-github-banner svg {
     width: 204px;
     max-width: 100%;
     height: 102px;
@@ -229,71 +229,71 @@ export const styles = css`
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
   }
 
-  .affine-embed-github-block.loading {
-    .affine-embed-github-content-title-text {
+  .pulsar-embed-github-block.loading {
+    .pulsar-embed-github-content-title-text {
       color: var(--pulsar-placeholder-color);
     }
   }
 
-  .affine-embed-github-block.selected {
-    .affine-embed-github-content-url > span {
+  .pulsar-embed-github-block.selected {
+    .pulsar-embed-github-content-url > span {
       color: var(--pulsar-link-color);
     }
-    .affine-embed-github-content-url .open-icon {
+    .pulsar-embed-github-content-url .open-icon {
       fill: var(--pulsar-link-color);
     }
   }
 
-  .affine-embed-github-block.list {
+  .pulsar-embed-github-block.list {
     height: ${EMBED_CARD_HEIGHT.list}px;
 
-    .affine-embed-github-content {
+    .pulsar-embed-github-content {
       width: 100%;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
     }
 
-    .affine-embed-github-content-title {
+    .pulsar-embed-github-content-title {
       width: 660px;
     }
 
-    .affine-embed-github-content-repo {
+    .pulsar-embed-github-content-repo {
       display: none;
     }
 
-    .affine-embed-github-content-date {
+    .pulsar-embed-github-content-date {
       display: none;
     }
 
-    .affine-embed-github-content-url {
+    .pulsar-embed-github-content-url {
       width: 90px;
       justify-content: flex-end;
     }
 
-    .affine-embed-github-content-description {
+    .pulsar-embed-github-content-description {
       display: none;
     }
 
-    .affine-embed-github-banner {
+    .pulsar-embed-github-banner {
       display: none;
     }
   }
 
-  .affine-embed-github-block.vertical {
+  .pulsar-embed-github-block.vertical {
     width: ${EMBED_CARD_WIDTH.vertical}px;
     height: ${EMBED_CARD_HEIGHT.vertical}px;
     flex-direction: column-reverse;
 
-    .affine-embed-github-content {
+    .pulsar-embed-github-content {
       width: 100%;
     }
 
-    .affine-embed-github-content-description {
+    .pulsar-embed-github-content-description {
       -webkit-line-clamp: 6;
     }
 
-    .affine-embed-github-content-assignees {
+    .pulsar-embed-github-content-assignees {
       display: flex;
       padding: var(--1, 0px);
       align-items: center;
@@ -302,7 +302,7 @@ export const styles = css`
       align-self: stretch;
     }
 
-    .affine-embed-github-content-assignees-text {
+    .pulsar-embed-github-content-assignees-text {
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
@@ -314,13 +314,13 @@ export const styles = css`
       line-height: 20px;
     }
 
-    .affine-embed-github-content-assignees-text.label {
+    .pulsar-embed-github-content-assignees-text.label {
       width: 72px;
       color: var(--pulsar-text-primary-color);
       font-weight: 600;
     }
 
-    .affine-embed-github-content-assignees-text.users {
+    .pulsar-embed-github-content-assignees-text.users {
       width: calc(100% - 72px);
       word-break: break-all;
       white-space: normal;
@@ -329,63 +329,63 @@ export const styles = css`
       font-weight: 400;
     }
 
-    .affine-embed-github-content-assignees-text-users.user {
+    .pulsar-embed-github-content-assignees-text-users.user {
       color: var(--pulsar-link-color);
       cursor: pointer;
     }
 
-    .affine-embed-github-content-assignees-text-users.placeholder {
+    .pulsar-embed-github-content-assignees-text-users.placeholder {
       color: var(--pulsar-placeholder-color);
     }
 
-    .affine-embed-github-banner {
+    .pulsar-embed-github-banner {
       width: 340px;
       height: 170px;
       margin-left: 12px;
     }
 
-    .affine-embed-github-banner img,
-    .affine-embed-github-banner object,
-    .affine-embed-github-banner svg {
+    .pulsar-embed-github-banner img,
+    .pulsar-embed-github-banner object,
+    .pulsar-embed-github-banner svg {
       width: 340px;
       height: 170px;
     }
   }
 
-  .affine-embed-github-block.cube {
+  .pulsar-embed-github-block.cube {
     width: ${EMBED_CARD_WIDTH.cube}px;
     height: ${EMBED_CARD_HEIGHT.cube}px;
 
-    .affine-embed-github-content {
+    .pulsar-embed-github-content {
       width: 100%;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
     }
 
-    .affine-embed-github-content-title {
+    .pulsar-embed-github-content-title {
       flex-direction: column;
       gap: 4px;
       align-items: flex-start;
     }
 
-    .affine-embed-github-content-title-text {
+    .pulsar-embed-github-content-title-text {
       -webkit-line-clamp: 2;
     }
 
-    .affine-embed-github-content-description {
+    .pulsar-embed-github-content-description {
       display: none;
     }
 
-    .affine-embed-github-banner {
+    .pulsar-embed-github-banner {
       display: none;
     }
 
-    .affine-embed-github-content-repo {
+    .pulsar-embed-github-content-repo {
       display: none;
     }
 
-    .affine-embed-github-content-date {
+    .pulsar-embed-github-content-date {
       display: none;
     }
   }

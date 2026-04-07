@@ -65,7 +65,7 @@ export class PageRootBlockComponent extends BlockComponent<
       height: 100%;
     }
 
-    .affine-page-root-block-container {
+    .pulsar-page-root-block-container {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -92,13 +92,13 @@ export class PageRootBlockComponent extends BlockComponent<
 
     /* Extra small devices (phones, 640px and down) */
     @container viewport (width <= 640px) {
-      .affine-page-root-block-container {
+      .pulsar-page-root-block-container {
         padding-left: ${DOC_BLOCK_CHILD_PADDING}px;
         padding-right: ${DOC_BLOCK_CHILD_PADDING}px;
       }
     }
 
-    .affine-block-element {
+    .pulsar-block-element {
       display: block;
     }
 
@@ -434,7 +434,7 @@ export class PageRootBlockComponent extends BlockComponent<
     return this._viewportElement;
   }
 
-  @query('.affine-page-root-block-container')
+  @query('.pulsar-page-root-block-container')
   accessor rootElementContainer!: HTMLDivElement;
 }
 

@@ -312,7 +312,7 @@ export class PulsarPageDraggingAreaWidget extends WidgetComponent<
     };
     return html`
       <style>
-        .affine-page-dragging-area {
+        .pulsar-page-dragging-area {
           position: absolute;
           background: var(--pulsar-hover-color);
           z-index: 1;

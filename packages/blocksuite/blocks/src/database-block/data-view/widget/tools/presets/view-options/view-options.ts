@@ -23,7 +23,7 @@ import { popFilterModal } from '../../../filter/filter-modal.js';
 import { WidgetBase } from '../../../widget-base.js';
 
 const styles = css`
-  .affine-database-toolbar-item.more-action {
+  .pulsar-database-toolbar-item.more-action {
     padding: 2px;
     border-radius: 4px;
     display: flex;
@@ -31,11 +31,11 @@ const styles = css`
     cursor: pointer;
   }
 
-  .affine-database-toolbar-item.more-action:hover {
+  .pulsar-database-toolbar-item.more-action:hover {
     background: var(--pulsar-hover-color);
   }
 
-  .affine-database-toolbar-item.more-action svg {
+  .pulsar-database-toolbar-item.more-action svg {
     width: 20px;
     height: 20px;
     fill: var(--pulsar-icon-color);

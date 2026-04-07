@@ -118,7 +118,7 @@ export class MindmapSurfaceBlock extends BlockComponent<SurfaceBlockModel> {
   override render() {
     return html`
       <style>
-        .affine-mini-mindmap-surface {
+        .pulsar-mini-mindmap-surface {
           width: 100%;
           height: 100%;
         }
@@ -137,6 +137,6 @@ export class MindmapSurfaceBlock extends BlockComponent<SurfaceBlockModel> {
     return this.std.get(GfxControllerIdentifier).viewport;
   }
 
-  @query('.affine-mini-mindmap-surface')
+  @query('.pulsar-mini-mindmap-surface')
   accessor editorContainer!: HTMLDivElement;
 }

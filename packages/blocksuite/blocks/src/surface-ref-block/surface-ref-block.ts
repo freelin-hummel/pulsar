@@ -71,7 +71,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
   private _referencedModel: BlockSuite.EdgelessModel | null = null;
 
   static override styles = css`
-    .affine-surface-ref {
+    .pulsar-surface-ref {
       position: relative;
       user-select: none;
       margin: 10px 0;
@@ -79,7 +79,7 @@ export class SurfaceRefBlockComponent extends BlockComponent<
     }
 
     @media print {
-      .affine-surface-ref {
+      .pulsar-surface-ref {
         outline: none !important;
       }
     }

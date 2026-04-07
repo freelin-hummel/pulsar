@@ -4,7 +4,7 @@ export const EMBED_HTML_MIN_WIDTH = 370;
 export const EMBED_HTML_MIN_HEIGHT = 80;
 
 export const styles = css`
-  .affine-embed-html-block {
+  .pulsar-embed-html-block {
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
@@ -23,22 +23,22 @@ export const styles = css`
     user-select: none;
   }
 
-  .affine-embed-html {
+  .pulsar-embed-html {
     width: 100%;
     height: calc(100% - 20px - 22px);
     opacity: var(--add, 1);
   }
 
-  .affine-embed-html img,
-  .affine-embed-html object,
-  .affine-embed-html svg {
+  .pulsar-embed-html img,
+  .pulsar-embed-html object,
+  .pulsar-embed-html svg {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
   }
 
-  .affine-embed-html-iframe-container {
+  .pulsar-embed-html-iframe-container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -78,7 +78,7 @@ export const styles = css`
     visibility: visible;
   }
 
-  .affine-embed-html-iframe-overlay {
+  .pulsar-embed-html-iframe-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -86,11 +86,11 @@ export const styles = css`
     height: 100%;
   }
 
-  .affine-embed-html-iframe-overlay.hide {
+  .pulsar-embed-html-iframe-overlay.hide {
     display: none;
   }
 
-  .affine-embed-html-title {
+  .pulsar-embed-html-title {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -100,7 +100,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-html-title-icon {
+  .pulsar-embed-html-title-icon {
     display: flex;
     width: 20px;
     height: 20px;
@@ -108,15 +108,15 @@ export const styles = css`
     align-items: center;
   }
 
-  .affine-embed-html-title-icon img,
-  .affine-embed-html-title-icon object,
-  .affine-embed-html-title-icon svg {
+  .pulsar-embed-html-title-icon img,
+  .pulsar-embed-html-title-icon object,
+  .pulsar-embed-html-title-icon svg {
     width: 20px;
     height: 20px;
     fill: var(--pulsar-background-primary-color);
   }
 
-  .affine-embed-html-title-text {
+  .pulsar-embed-html-title-text {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

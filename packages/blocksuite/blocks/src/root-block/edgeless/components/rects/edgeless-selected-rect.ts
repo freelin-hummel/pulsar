@@ -510,7 +510,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       z-index: 1;
     }
 
-    .affine-edgeless-selected-rect {
+    .pulsar-edgeless-selected-rect {
       position: absolute;
       top: 0;
       left: 0;
@@ -525,7 +525,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       transform: translate(0, 0) rotate(0);
     }
 
-    .affine-edgeless-selected-rect .handle {
+    .pulsar-edgeless-selected-rect .handle {
       position: absolute;
       user-select: none;
       outline: none;
@@ -540,16 +540,16 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       touch-action: none;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label^='top-'],
-    .affine-edgeless-selected-rect .handle[aria-label^='bottom-'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label^='top-'],
+    .pulsar-edgeless-selected-rect .handle[aria-label^='bottom-'] {
       width: 18px;
       height: 18px;
       box-sizing: border-box;
       z-index: 10;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label^='top-'] .resize,
-    .affine-edgeless-selected-rect .handle[aria-label^='bottom-'] .resize {
+    .pulsar-edgeless-selected-rect .handle[aria-label^='top-'] .resize,
+    .pulsar-edgeless-selected-rect .handle[aria-label^='bottom-'] .resize {
       position: absolute;
       width: 12px;
       height: 12px;
@@ -559,8 +559,8 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       background: white;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label^='top-'] .rotate,
-    .affine-edgeless-selected-rect .handle[aria-label^='bottom-'] .rotate {
+    .pulsar-edgeless-selected-rect .handle[aria-label^='top-'] .rotate,
+    .pulsar-edgeless-selected-rect .handle[aria-label^='bottom-'] .rotate {
       position: absolute;
       width: 12px;
       height: 12px;
@@ -569,77 +569,77 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
     }
 
     /* -18 + 6.5 */
-    .affine-edgeless-selected-rect .handle[aria-label='top-left'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top-left'] {
       left: -12px;
       top: -12px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='top-left'] .resize {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top-left'] .resize {
       right: 0;
       bottom: 0;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='top-left'] .rotate {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top-left'] .rotate {
       right: 6px;
       bottom: 6px;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='top-right'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top-right'] {
       top: -12px;
       right: -12px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='top-right'] .resize {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top-right'] .resize {
       left: 0;
       bottom: 0;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='top-right'] .rotate {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top-right'] .rotate {
       left: 6px;
       bottom: 6px;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='bottom-right'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom-right'] {
       right: -12px;
       bottom: -12px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='bottom-right'] .resize {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom-right'] .resize {
       left: 0;
       top: 0;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='bottom-right'] .rotate {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom-right'] .rotate {
       left: 6px;
       top: 6px;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='bottom-left'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom-left'] {
       bottom: -12px;
       left: -12px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='bottom-left'] .resize {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom-left'] .resize {
       right: 0;
       top: 0;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='bottom-left'] .rotate {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom-left'] .rotate {
       right: 6px;
       top: 6px;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='top'],
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'],
-    .affine-edgeless-selected-rect .handle[aria-label='left'],
-    .affine-edgeless-selected-rect .handle[aria-label='right'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'],
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'],
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'],
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] {
       border: 0;
       background: transparent;
       border-color: var('--pulsar-blue');
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='left'],
-    .affine-edgeless-selected-rect .handle[aria-label='right'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'],
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] {
       top: 0;
       bottom: 0;
       height: 100%;
       width: 6px;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='top'],
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'],
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'] {
       left: 0;
       right: 0;
       width: 100%;
@@ -647,31 +647,31 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
     }
 
     /* calc(-1px - (6px - 1px) / 2) = -3.5px */
-    .affine-edgeless-selected-rect .handle[aria-label='left'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'] {
       left: -3.5px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='right'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] {
       right: -3.5px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='top'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'] {
       top: -3.5px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'] {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'] {
       bottom: -3.5px;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='top'] .resize,
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'] .resize,
-    .affine-edgeless-selected-rect .handle[aria-label='left'] .resize,
-    .affine-edgeless-selected-rect .handle[aria-label='right'] .resize {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'] .resize,
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'] .resize,
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'] .resize,
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] .resize {
       width: 100%;
       height: 100%;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='top'] .resize:after,
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'] .resize:after,
-    .affine-edgeless-selected-rect .handle[aria-label='left'] .resize:after,
-    .affine-edgeless-selected-rect .handle[aria-label='right'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'] .resize:after,
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'] .resize:after,
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'] .resize:after,
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] .resize:after {
       position: absolute;
       width: 7px;
       height: 7px;
@@ -682,45 +682,45 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       background: white;
     }
 
-    .affine-edgeless-selected-rect
+    .pulsar-edgeless-selected-rect
       .handle[aria-label='top']
       .transparent-handle:after,
-    .affine-edgeless-selected-rect
+    .pulsar-edgeless-selected-rect
       .handle[aria-label='bottom']
       .transparent-handle:after,
-    .affine-edgeless-selected-rect
+    .pulsar-edgeless-selected-rect
       .handle[aria-label='left']
       .transparent-handle:after,
-    .affine-edgeless-selected-rect
+    .pulsar-edgeless-selected-rect
       .handle[aria-label='right']
       .transparent-handle:after {
       opacity: 0;
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='left'] .resize:after,
-    .affine-edgeless-selected-rect .handle[aria-label='right'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'] .resize:after,
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] .resize:after {
       top: calc(50% - 6px);
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='top'] .resize:after,
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'] .resize:after,
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'] .resize:after {
       left: calc(50% - 6px);
     }
 
-    .affine-edgeless-selected-rect .handle[aria-label='left'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='left'] .resize:after {
       left: -0.5px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='right'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='right'] .resize:after {
       right: -0.5px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='top'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='top'] .resize:after {
       top: -0.5px;
     }
-    .affine-edgeless-selected-rect .handle[aria-label='bottom'] .resize:after {
+    .pulsar-edgeless-selected-rect .handle[aria-label='bottom'] .resize:after {
       bottom: -0.5px;
     }
 
-    .affine-edgeless-selected-rect .handle .resize::before {
+    .pulsar-edgeless-selected-rect .handle .resize::before {
       content: '';
       display: none;
       position: absolute;
@@ -730,10 +730,10 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       background-size: contain;
       background-repeat: no-repeat;
     }
-    .affine-edgeless-selected-rect[data-mode='scale']
+    .pulsar-edgeless-selected-rect[data-mode='scale']
       .handle[aria-label='top-left']
       .resize:hover::before,
-    .affine-edgeless-selected-rect[data-scale-direction='top-left'][data-scale-percent]
+    .pulsar-edgeless-selected-rect[data-scale-direction='top-left'][data-scale-percent]
       .handle[aria-label='top-left']
       .resize::before {
       display: block;
@@ -741,10 +741,10 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       left: 0px;
       transform: translate(-100%, -100%);
     }
-    .affine-edgeless-selected-rect[data-mode='scale']
+    .pulsar-edgeless-selected-rect[data-mode='scale']
       .handle[aria-label='top-right']
       .resize:hover::before,
-    .affine-edgeless-selected-rect[data-scale-direction='top-right'][data-scale-percent]
+    .pulsar-edgeless-selected-rect[data-scale-direction='top-right'][data-scale-percent]
       .handle[aria-label='top-right']
       .resize::before {
       display: block;
@@ -752,10 +752,10 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       right: 0px;
       transform: translate(100%, -100%) rotate(90deg);
     }
-    .affine-edgeless-selected-rect[data-mode='scale']
+    .pulsar-edgeless-selected-rect[data-mode='scale']
       .handle[aria-label='bottom-right']
       .resize:hover::before,
-    .affine-edgeless-selected-rect[data-scale-direction='bottom-right'][data-scale-percent]
+    .pulsar-edgeless-selected-rect[data-scale-direction='bottom-right'][data-scale-percent]
       .handle[aria-label='bottom-right']
       .resize::before {
       display: block;
@@ -763,10 +763,10 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       right: 0px;
       transform: translate(100%, 100%) rotate(180deg);
     }
-    .affine-edgeless-selected-rect[data-mode='scale']
+    .pulsar-edgeless-selected-rect[data-mode='scale']
       .handle[aria-label='bottom-left']
       .resize:hover::before,
-    .affine-edgeless-selected-rect[data-scale-direction='bottom-left'][data-scale-percent]
+    .pulsar-edgeless-selected-rect[data-scale-direction='bottom-left'][data-scale-percent]
       .handle[aria-label='bottom-left']
       .resize::before {
       display: block;
@@ -775,7 +775,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       transform: translate(-100%, 100%) rotate(-90deg);
     }
 
-    .affine-edgeless-selected-rect::after {
+    .pulsar-edgeless-selected-rect::after {
       content: attr(data-scale-percent);
       display: none;
       position: absolute;
@@ -789,25 +789,25 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
       font-weight: 400;
       line-height: 24px;
     }
-    .affine-edgeless-selected-rect[data-scale-direction='top-left']::after {
+    .pulsar-edgeless-selected-rect[data-scale-direction='top-left']::after {
       display: block;
       top: -20px;
       left: -20px;
       transform: translate(-100%, -100%);
     }
-    .affine-edgeless-selected-rect[data-scale-direction='top-right']::after {
+    .pulsar-edgeless-selected-rect[data-scale-direction='top-right']::after {
       display: block;
       top: -20px;
       right: -20px;
       transform: translate(100%, -100%);
     }
-    .affine-edgeless-selected-rect[data-scale-direction='bottom-right']::after {
+    .pulsar-edgeless-selected-rect[data-scale-direction='bottom-right']::after {
       display: block;
       bottom: -20px;
       right: -20px;
       transform: translate(100%, 100%);
     }
-    .affine-edgeless-selected-rect[data-scale-direction='bottom-left']::after {
+    .pulsar-edgeless-selected-rect[data-scale-direction='bottom-left']::after {
       display: block;
       bottom: -20px;
       left: -20px;
@@ -1344,7 +1344,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
 
     return html`
       <style>
-        .affine-edgeless-selected-rect .handle[aria-label='right']::after {
+        .pulsar-edgeless-selected-rect .handle[aria-label='right']::after {
           content: '';
           display: ${this._isWidthLimit ? 'initial' : 'none'};
           position: absolute;
@@ -1356,7 +1356,7 @@ export class EdgelessSelectedRect extends WithDisposable(LitElement) {
           filter: drop-shadow(-6px 0px 12px rgba(235, 67, 53, 0.35));
         }
 
-        .affine-edgeless-selected-rect .handle[aria-label='bottom']::after {
+        .pulsar-edgeless-selected-rect .handle[aria-label='bottom']::after {
           content: '';
           display: ${this._isHeightLimit ? 'initial' : 'none'};
           position: absolute;

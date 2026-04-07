@@ -21,30 +21,30 @@ const styles = css`
     padding: 0 4px;
   }
 
-  .affine-database-progress {
+  .pulsar-database-progress {
     display: flex;
     align-items: center;
     height: var(--data-view-cell-text-line-height);
     gap: 4px;
   }
 
-  .affine-database-progress-bar {
+  .pulsar-database-progress-bar {
     position: relative;
     width: 104px;
   }
 
-  .affine-database-progress-bg {
+  .pulsar-database-progress-bg {
     overflow: hidden;
     width: 100%;
     height: 10px;
     border-radius: 22px;
   }
 
-  .affine-database-progress-fg {
+  .pulsar-database-progress-fg {
     height: 100%;
   }
 
-  .affine-database-progress-drag-handle {
+  .pulsar-database-progress-drag-handle {
     position: absolute;
     top: 0;
     left: 0;
@@ -208,7 +208,7 @@ export class ProgressCellEditing extends BaseCellRenderer<number> {
     </div>`;
   }
 
-  @query('.affine-database-progress-bg')
+  @query('.pulsar-database-progress-bg')
   private accessor _progressBg!: HTMLElement;
 
   @state()

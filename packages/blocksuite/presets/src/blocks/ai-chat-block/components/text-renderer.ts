@@ -136,20 +136,20 @@ export class TextRenderer extends WithDisposable(LitElement) {
       margin-bottom: 0;
     }
 
-    .ai-answer-text-editor .affine-page-root-block-container {
+    .ai-answer-text-editor .pulsar-page-root-block-container {
       padding: 0;
       line-height: var(--pulsar-line-height);
       color: var(--pulsar-text-primary-color);
       font-weight: 400;
     }
 
-    .affine-paragraph-block-container {
+    .pulsar-paragraph-block-container {
       line-height: 22px;
     }
 
     .ai-answer-text-editor {
-      .affine-note-block-container {
-        > .affine-block-children-container {
+      .pulsar-note-block-container {
+        > .pulsar-block-children-container {
           > :first-child,
           > :first-child * {
             margin-top: 0 !important;

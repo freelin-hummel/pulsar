@@ -15,7 +15,7 @@ export type StatCalcOpType = string | undefined;
 
 export const getTableContainer = (ele: HTMLElement) => {
   const element = ele.closest(
-    '.affine-database-table-container'
+    '.pulsar-database-table-container'
   ) as HTMLElement;
   assertExists(element);
   return element;

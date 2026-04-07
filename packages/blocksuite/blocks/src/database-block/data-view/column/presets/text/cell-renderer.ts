@@ -19,7 +19,7 @@ export class TextCell extends BaseCellRenderer<string> {
       white-space: nowrap;
     }
 
-    .affine-database-text {
+    .pulsar-database-text {
       display: flex;
       align-items: center;
       height: 100%;
@@ -66,7 +66,7 @@ export class TextCellEditing extends BaseCellRenderer<string> {
       white-space: nowrap;
     }
 
-    .affine-database-text {
+    .pulsar-database-text {
       display: flex;
       align-items: center;
       height: 100%;
@@ -81,7 +81,7 @@ export class TextCellEditing extends BaseCellRenderer<string> {
       background-color: transparent;
     }
 
-    .affine-database-text:focus {
+    .pulsar-database-text:focus {
       outline: none;
     }
   `;

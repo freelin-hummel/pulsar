@@ -335,7 +335,7 @@ export class TableSelectionController implements ReactiveController {
     const row = cell.closest('data-view-table-row');
     const rows = Array.from(
       row
-        ?.closest('.affine-database-table-container')
+        ?.closest('.pulsar-database-table-container')
         ?.querySelectorAll('data-view-table-row') ?? []
     );
     const cells = Array.from(
@@ -890,7 +890,7 @@ export class TableSelectionController implements ReactiveController {
   }
 
   get tableContainer() {
-    return this.host.querySelector('.affine-database-table-container');
+    return this.host.querySelector('.pulsar-database-table-container');
   }
 
   get view() {

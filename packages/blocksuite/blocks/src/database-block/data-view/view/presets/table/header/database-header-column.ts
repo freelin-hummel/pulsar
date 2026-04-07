@@ -306,7 +306,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
       display: flex;
     }
 
-    .affine-database-header-column-grabbing * {
+    .pulsar-database-header-column-grabbing * {
       cursor: grabbing;
     }
   `;

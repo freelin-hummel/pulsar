@@ -15,10 +15,10 @@ export class NoteBlockComponent extends BlockComponent<
   NoteBlockService
 > {
   static override styles = css`
-    .affine-note-block-container {
+    .pulsar-note-block-container {
       display: flow-root;
     }
-    .affine-note-block-container.selected {
+    .pulsar-note-block-container.selected {
       background-color: var(--pulsar-hover-color);
     }
   `;

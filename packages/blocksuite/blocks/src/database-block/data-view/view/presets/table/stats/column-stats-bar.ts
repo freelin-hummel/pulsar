@@ -13,7 +13,7 @@ import type { TableSingleView } from '../table-view-manager.js';
 import { LEFT_TOOL_BAR_WIDTH, STATS_BAR_HEIGHT } from '../consts.js';
 
 const styles = css`
-  .affine-database-column-stats {
+  .pulsar-database-column-stats {
     width: 100%;
     margin-left: ${LEFT_TOOL_BAR_WIDTH}px;
     height: ${STATS_BAR_HEIGHT}px;

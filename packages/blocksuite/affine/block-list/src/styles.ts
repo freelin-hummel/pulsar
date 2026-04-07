@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const listPrefix = css`
-  .affine-list-block__prefix {
+  .pulsar-list-block__prefix {
     display: flex;
     color: var(--pulsar-blue-700);
     font-size: var(--pulsar-font-sm);
@@ -9,13 +9,13 @@ export const listPrefix = css`
     position: relative;
   }
 
-  .affine-list-block__numbered {
+  .pulsar-list-block__numbered {
     min-width: 22px;
     height: 24px;
     margin-left: 2px;
   }
 
-  .affine-list-block__todo-prefix {
+  .pulsar-list-block__todo-prefix {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -24,11 +24,11 @@ export const listPrefix = css`
     color: var(--pulsar-icon-color);
   }
 
-  .affine-list-block__todo-prefix.readonly {
+  .pulsar-list-block__todo-prefix.readonly {
     cursor: default;
   }
 
-  .affine-list-block__todo-prefix > svg {
+  .pulsar-list-block__todo-prefix > svg {
     width: 20px;
     height: 20px;
   }
@@ -51,21 +51,21 @@ export const toggleStyles = css`
   .toggle-icon:hover {
     background: var(--pulsar-hover-color);
   }
-  .affine-list-rich-text-wrapper:hover .toggle-icon {
+  .pulsar-list-rich-text-wrapper:hover .toggle-icon {
     opacity: 1;
   }
   .toggle-icon__collapsed {
     opacity: 1;
   }
 
-  .with-drag-handle .affine-list-rich-text-wrapper .toggle-icon {
+  .with-drag-handle .pulsar-list-rich-text-wrapper .toggle-icon {
     opacity: 1;
   }
-  .with-drag-handle .affine-block-children-container .toggle-icon {
+  .with-drag-handle .pulsar-block-children-container .toggle-icon {
     opacity: 0;
   }
 
-  .affine-list__collapsed {
+  .pulsar-list__collapsed {
     display: none;
   }
 `;
@@ -76,23 +76,23 @@ export const listBlockStyles = css`
     font-size: var(--pulsar-font-base);
   }
 
-  .affine-list-block-container {
+  .pulsar-list-block-container {
     box-sizing: border-box;
     border-radius: 4px;
     position: relative;
   }
-  .affine-list-block-container .affine-list-block-container {
+  .pulsar-list-block-container .pulsar-list-block-container {
     margin-top: 0;
   }
-  .affine-list-rich-text-wrapper {
+  .pulsar-list-rich-text-wrapper {
     position: relative;
     display: flex;
   }
-  .affine-list-rich-text-wrapper rich-text {
+  .pulsar-list-rich-text-wrapper rich-text {
     flex: 1;
   }
 
-  .affine-list--checked {
+  .pulsar-list--checked {
     color: var(--pulsar-text-secondary-color);
   }
 

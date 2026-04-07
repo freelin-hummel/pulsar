@@ -9,7 +9,7 @@ export class MindmapRootBlock extends BlockComponent<RootBlockModel> {
   override render() {
     return html`
       <style>
-        .affine-mini-mindmap-root {
+        .pulsar-mini-mindmap-root {
           display: block;
           width: 100%;
           height: 100%;

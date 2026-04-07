@@ -14,12 +14,12 @@ export const styles = css`
     max-width: 720px;
   }
 
-  .affine-select-cell-select {
+  .pulsar-select-cell-select {
     font-size: var(--pulsar-font-sm);
   }
 
   @media print {
-    .affine-select-cell-select {
+    .pulsar-select-cell-select {
       display: none;
     }
   }

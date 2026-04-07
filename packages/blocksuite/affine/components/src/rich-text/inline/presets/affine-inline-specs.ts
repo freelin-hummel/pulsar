@@ -104,13 +104,13 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
     schema: z.string().optional().nullable().catch(undefined),
     match: delta => typeof delta.attributes?.latex === 'string',
     renderer: ({ delta, selected, editor, startOffset, endOffset }) => {
-      return html`<affine-latex-node
+      return html`<pulsar-latex-node
         .delta=${delta}
         .selected=${selected}
         .editor=${editor}
         .startOffset=${startOffset}
         .endOffset=${endOffset}
-      ></affine-latex-node>`;
+      ></pulsar-latex-node>`;
     },
     embed: true,
   },

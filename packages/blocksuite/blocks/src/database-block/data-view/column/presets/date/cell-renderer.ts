@@ -18,7 +18,7 @@ export class DateCell extends BaseCellRenderer<number> {
       width: 100%;
     }
 
-    .affine-database-date {
+    .pulsar-database-date {
       display: flex;
       align-items: center;
       width: 100%;
@@ -33,7 +33,7 @@ export class DateCell extends BaseCellRenderer<number> {
       height: var(--data-view-cell-text-line-height);
     }
 
-    input.affine-database-date[type='date']::-webkit-calendar-picker-indicator {
+    input.pulsar-database-date[type='date']::-webkit-calendar-picker-indicator {
       display: none;
     }
   `;
@@ -112,7 +112,7 @@ export class DateCellEditing extends BaseCellRenderer<number> {
       cursor: text;
     }
 
-    .affine-database-date:focus {
+    .pulsar-database-date:focus {
       outline: none;
     }
   `;

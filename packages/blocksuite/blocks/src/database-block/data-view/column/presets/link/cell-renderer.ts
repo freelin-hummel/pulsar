@@ -51,11 +51,11 @@ export class LinkCell extends BaseCellRenderer<string> {
       user-select: none;
     }
 
-    affine-database-link-cell:hover .affine-database-link-icon {
+    affine-database-link-cell:hover .pulsar-database-link-icon {
       visibility: visible;
     }
 
-    .affine-database-link {
+    .pulsar-database-link {
       display: flex;
       position: relative;
       align-items: center;
@@ -73,7 +73,7 @@ export class LinkCell extends BaseCellRenderer<string> {
       word-break: break-all;
     }
 
-    .affine-database-link-icon {
+    .pulsar-database-link-icon {
       position: absolute;
       right: 0;
       display: flex;
@@ -83,11 +83,11 @@ export class LinkCell extends BaseCellRenderer<string> {
       background: var(--pulsar-background-primary-color);
       border-radius: 4px;
     }
-    .affine-database-link-icon:hover {
+    .pulsar-database-link-icon:hover {
       background: var(--pulsar-hover-color);
     }
 
-    .affine-database-link-icon svg {
+    .pulsar-database-link-icon svg {
       width: 16px;
       height: 16px;
       fill: var(--pulsar-icon-color);
@@ -213,7 +213,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
       cursor: text;
     }
 
-    .affine-database-link-editing {
+    .pulsar-database-link-editing {
       display: flex;
       align-items: center;
       width: 100%;
@@ -228,7 +228,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
       word-break: break-all;
     }
 
-    .affine-database-link-editing:focus {
+    .pulsar-database-link-editing:focus {
       outline: none;
     }
   `;
@@ -252,7 +252,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
     />`;
   }
 
-  @query('.affine-database-link-editing')
+  @query('.pulsar-database-link-editing')
   private accessor _container!: HTMLInputElement;
 }
 

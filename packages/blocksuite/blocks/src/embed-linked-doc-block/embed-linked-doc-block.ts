@@ -495,7 +495,7 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
   @state()
   private accessor _loading = false;
 
-  @queryAsync('.affine-embed-linked-doc-banner.render')
+  @queryAsync('.pulsar-embed-linked-doc-banner.render')
   accessor bannerContainer!: Promise<HTMLDivElement>;
 
   @property({ attribute: false })
@@ -507,7 +507,7 @@ export class EmbedLinkedDocBlockComponent extends EmbedBlockComponent<
   @property({ attribute: false })
   accessor isNoteContentEmpty = false;
 
-  @queryAsync('.affine-embed-linked-doc-content-note.render')
+  @queryAsync('.pulsar-embed-linked-doc-content-note.render')
   accessor noteContainer!: Promise<HTMLDivElement>;
 
   @property({ attribute: false })

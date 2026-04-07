@@ -3,7 +3,7 @@ import { css } from 'lit';
 import { EMBED_CARD_HEIGHT, EMBED_CARD_WIDTH } from '../_common/consts.js';
 
 export const styles = css`
-  .affine-attachment-card {
+  .pulsar-attachment-card {
     margin: 0 auto;
     box-sizing: border-box;
     display: flex;
@@ -21,7 +21,7 @@ export const styles = css`
     user-select: none;
   }
 
-  .affine-attachment-content {
+  .pulsar-attachment-content {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-attachment-content-title {
+  .pulsar-attachment-content-title {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -45,7 +45,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-attachment-content-title-icon {
+  .pulsar-attachment-content-title-icon {
     display: flex;
     width: 16px;
     height: 16px;
@@ -53,13 +53,13 @@ export const styles = css`
     justify-content: center;
   }
 
-  .affine-attachment-content-title-icon svg {
+  .pulsar-attachment-content-title-icon svg {
     width: 16px;
     height: 16px;
     fill: var(--pulsar-background-primary-color);
   }
 
-  .affine-attachment-content-title-text {
+  .pulsar-attachment-content-title-text {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -76,7 +76,7 @@ export const styles = css`
     line-height: 22px;
   }
 
-  .affine-attachment-content-info {
+  .pulsar-attachment-content-info {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
@@ -94,55 +94,55 @@ export const styles = css`
     line-height: 20px;
   }
 
-  .affine-attachment-banner {
+  .pulsar-attachment-banner {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .affine-attachment-banner svg {
+  .pulsar-attachment-banner svg {
     width: 40px;
     height: 40px;
   }
 
-  .affine-attachment-card.loading {
+  .pulsar-attachment-card.loading {
     background: var(--pulsar-background-secondary-color);
 
-    .affine-attachment-content-title-text {
+    .pulsar-attachment-content-title-text {
       color: var(--pulsar-placeholder-color);
     }
   }
 
-  .affine-attachment-card.error,
-  .affine-attachment-card.unsynced {
+  .pulsar-attachment-card.error,
+  .pulsar-attachment-card.unsynced {
     background: var(--pulsar-background-secondary-color);
   }
 
-  .affine-attachment-card.cubeThick {
+  .pulsar-attachment-card.cubeThick {
     width: ${EMBED_CARD_WIDTH.cubeThick}px;
     height: ${EMBED_CARD_HEIGHT.cubeThick}px;
 
     flex-direction: column-reverse;
 
-    .affine-attachment-content {
+    .pulsar-attachment-content {
       width: 100%;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
     }
 
-    .affine-attachment-banner {
+    .pulsar-attachment-banner {
       justify-content: flex-start;
     }
   }
 
-  .affine-attachment-embed-container {
+  .pulsar-attachment-embed-container {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  .affine-attachment-iframe-overlay {
+  .pulsar-attachment-iframe-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -150,7 +150,7 @@ export const styles = css`
     height: 100%;
   }
 
-  .affine-attachment-iframe-overlay.hide {
+  .pulsar-attachment-iframe-overlay.hide {
     display: none;
   }
 `;

@@ -25,7 +25,7 @@ export class NumberCell extends BaseCellRenderer<number, NumberColumnDataType> {
       width: 100%;
     }
 
-    .affine-database-number {
+    .pulsar-database-number {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -119,7 +119,7 @@ export class NumberCellEditing extends BaseCellRenderer<
       cursor: text;
     }
 
-    .affine-database-number {
+    .pulsar-database-number {
       display: flex;
       align-items: center;
       width: 100%;
@@ -134,7 +134,7 @@ export class NumberCellEditing extends BaseCellRenderer<
       text-align: right;
     }
 
-    .affine-database-number:focus {
+    .pulsar-database-number:focus {
       outline: none;
     }
   `;

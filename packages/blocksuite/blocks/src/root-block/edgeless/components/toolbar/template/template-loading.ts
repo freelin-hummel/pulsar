@@ -13,13 +13,13 @@ export class PulsarTemplateLoading extends LitElement {
       }
     }
 
-    .affine-template-block-container {
+    .pulsar-template-block-container {
       width: 20px;
       height: 20px;
       overflow: hidden;
     }
 
-    .affine-template-block-loading {
+    .pulsar-template-block-loading {
       display: inline-block;
       width: 20px;
       height: 20px;
@@ -32,7 +32,7 @@ export class PulsarTemplateLoading extends LitElement {
       animation: affine-template-block-rotate 1s infinite ease-in;
     }
 
-    .affine-template-block-loading::before {
+    .pulsar-template-block-loading::before {
       content: '';
       width: 14px;
       height: 14px;

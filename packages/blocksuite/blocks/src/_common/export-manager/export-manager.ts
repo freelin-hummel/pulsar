@@ -190,7 +190,7 @@ export class ExportManager {
     const viewportElement = rootComponent.viewportElement;
     assertExists(viewportElement);
     const pageContainer = viewportElement.querySelector(
-      '.affine-page-root-block-container'
+      '.pulsar-page-root-block-container'
     );
     const rect = pageContainer?.getBoundingClientRect();
     const { viewport } = rootComponent;
@@ -331,7 +331,7 @@ export class ExportManager {
       onclone: async (documentClone: Document, element: HTMLElement) => {
         // html2canvas can't support transform feature
         element.style.setProperty('transform', 'none');
-        const layer = element.classList.contains('.affine-edgeless-layer')
+        const layer = element.classList.contains('.pulsar-edgeless-layer')
           ? element
           : null;
 
@@ -420,7 +420,7 @@ export class ExportManager {
         backgroundColor: containerComputedStyle.backgroundColor,
       });
     const container = rootComponent.querySelector(
-      '.affine-block-children-container'
+      '.pulsar-block-children-container'
     );
 
     if (!container) return;

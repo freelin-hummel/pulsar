@@ -16,7 +16,7 @@ import './presets/table-add-row/add-row.js';
 import './presets/view-options/view-options.js';
 
 const styles = css`
-  .affine-database-toolbar {
+  .pulsar-database-toolbar {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -25,7 +25,7 @@ const styles = css`
     transition: opacity 150ms cubic-bezier(0.42, 0, 1, 1);
   }
 
-  .toolbar-hover-container:hover .affine-database-toolbar {
+  .toolbar-hover-container:hover .pulsar-database-toolbar {
     visibility: visible;
     opacity: 1;
   }
@@ -36,7 +36,7 @@ const styles = css`
   }
 
   @media print {
-    .affine-database-toolbar {
+    .pulsar-database-toolbar {
       display: none;
     }
   }

@@ -16,7 +16,7 @@ export class PulsarViewportOverlayWidget extends WidgetComponent<
   PageRootBlockComponent
 > {
   static override styles = css`
-    .affine-viewport-overlay-widget {
+    .pulsar-viewport-overlay-widget {
       position: absolute;
       top: 0;
       left: 0;
@@ -25,7 +25,7 @@ export class PulsarViewportOverlayWidget extends WidgetComponent<
       z-index: calc(var(--pulsar-z-index-popover) - 1);
     }
 
-    .affine-viewport-overlay-widget.lock {
+    .pulsar-viewport-overlay-widget.lock {
       pointer-events: auto;
     }
   `;

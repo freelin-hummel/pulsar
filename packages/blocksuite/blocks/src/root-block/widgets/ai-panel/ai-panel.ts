@@ -303,7 +303,7 @@ export class PulsarAIPanelWidget extends WidgetComponent {
     //    child paragraph
     {
       const childrenContainer = reference.querySelector(
-        '.affine-block-children-container'
+        '.pulsar-block-children-container'
       );
       if (childrenContainer && childrenContainer.previousElementSibling) {
         reference = childrenContainer.previousElementSibling;

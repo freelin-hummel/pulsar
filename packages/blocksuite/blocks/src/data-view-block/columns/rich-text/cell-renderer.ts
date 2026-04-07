@@ -81,7 +81,7 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
       user-select: none;
     }
 
-    .affine-data-view-rich-text {
+    .pulsar-data-view-rich-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -93,14 +93,14 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
       word-break: break-all;
     }
 
-    .affine-data-view-rich-text v-line {
+    .pulsar-data-view-rich-text v-line {
       display: flex !important;
       align-items: center;
       height: 100%;
       width: 100%;
     }
 
-    .affine-data-view-rich-text v-line > div {
+    .pulsar-data-view-rich-text v-line > div {
       flex-grow: 1;
     }
   `;
@@ -263,7 +263,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
       cursor: text;
     }
 
-    .affine-data-view-rich-text {
+    .pulsar-data-view-rich-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -272,14 +272,14 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
       outline: none;
     }
 
-    .affine-data-view-rich-text v-line {
+    .pulsar-data-view-rich-text v-line {
       display: flex !important;
       align-items: center;
       height: 100%;
       width: 100%;
     }
 
-    .affine-data-view-rich-text v-line > div {
+    .pulsar-data-view-rich-text v-line > div {
       flex-grow: 1;
     }
   `;

@@ -5,7 +5,7 @@ export const codeBlockStyles = css`
     position: relative;
   }
 
-  .affine-code-block-container {
+  .pulsar-code-block-container {
     font-size: var(--pulsar-font-sm);
     line-height: var(--pulsar-line-height);
     position: relative;
@@ -16,22 +16,22 @@ export const codeBlockStyles = css`
     box-sizing: border-box;
   }
 
-  .affine-code-block-container .inline-editor {
+  .pulsar-code-block-container .inline-editor {
     font-family: var(--pulsar-font-code-family);
     font-variant-ligatures: none;
   }
 
-  .affine-code-block-container v-line {
+  .pulsar-code-block-container v-line {
     position: relative;
     display: inline-grid !important;
     grid-template-columns: auto minmax(0, 1fr);
   }
 
-  .affine-code-block-container div:has(> v-line) {
+  .pulsar-code-block-container div:has(> v-line) {
     display: grid;
   }
 
-  .affine-code-block-container .line-number {
+  .pulsar-code-block-container .line-number {
     position: sticky;
     text-align: right;
     padding-right: 10px;
