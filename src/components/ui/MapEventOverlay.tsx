@@ -84,7 +84,12 @@ export function MapEventOverlay({
   const handlePointerDown = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
       if (!activeMapTool) return
+
+      // Allow middle-click and right-click to pass through for panning
+      if (e.button !== 0) return
+
       e.stopPropagation()
+      e.preventDefault()
 
       const raw = getCanvasPoint(e)
 
@@ -175,6 +180,10 @@ export function MapEventOverlay({
   const handlePointerUp = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
       if (!activeMapTool) return
+
+      // Only consume left-click events
+      if (e.button !== 0) return
+
       e.stopPropagation()
 
       if (activeMapTool === 'terrain') {
@@ -188,6 +197,10 @@ export function MapEventOverlay({
   const handleDoubleClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (!activeMapTool) return
+
+      // Only consume left double-click
+      if (e.button !== 0) return
+
       e.stopPropagation()
 
       // Finish wall drawing on double-click

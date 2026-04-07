@@ -120,8 +120,12 @@ export function Toolbar({
       if (!edgelessTool) return
 
       const edgelessRoot = getEdgelessRoot(editor)
-      if (edgelessRoot?.tools) {
-        edgelessRoot.tools.setEdgelessTool(edgelessTool)
+      try {
+        if (edgelessRoot?.tools) {
+          edgelessRoot.tools.setEdgelessTool(edgelessTool)
+        }
+      } catch {
+        // Service not yet available — std context hasn't been injected
       }
     },
     [editorCtx, onToolChange]

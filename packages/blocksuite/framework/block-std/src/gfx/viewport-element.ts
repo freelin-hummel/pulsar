@@ -106,10 +106,25 @@ export class GfxViewportElement extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    this.viewport.viewportUpdated.on(() => {
-      this._refreshViewport();
-      this._hideOutsideBlock();
-    });
+    // viewport is set via a Lit property binding (.viewport=${...}) which is
+    // applied AFTER the element is connected.  Defer the subscription so the
+    // property is available.
+    if (this.viewport) {
+      this.viewport.viewportUpdated.on(() => {
+        this._refreshViewport();
+        this._hideOutsideBlock();
+      });
+    } else {
+      // Property binding hasn't been applied yet — wait for the first update
+      this.updateComplete.then(() => {
+        if (this.viewport) {
+          this.viewport.viewportUpdated.on(() => {
+            this._refreshViewport();
+            this._hideOutsideBlock();
+          });
+        }
+      });
+    }
   }
 
   override render() {

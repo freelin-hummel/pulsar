@@ -34,7 +34,16 @@ export function useSyncConnection({
     // For now, operate in local mode
     setIsConnected(false)
 
+    let retryCount = 0
+    const MAX_RETRIES = 5
+    let retryTimer: ReturnType<typeof setTimeout> | null = null
+
     const tryConnect = () => {
+      if (retryCount >= MAX_RETRIES) {
+        // Stop retrying — operate in local-only mode
+        return
+      }
+
       try {
         const serverUrl = import.meta.env.VITE_RIVET_SERVER_URL as string | undefined
         const wsUrl = serverUrl
@@ -45,6 +54,7 @@ export function useSyncConnection({
         ws.addEventListener('open', () => {
           wsRef.current = ws
           setIsConnected(true)
+          retryCount = 0 // Reset on successful connection
 
           // Send connect message
           const msg: SyncMessage = {
@@ -68,8 +78,12 @@ export function useSyncConnection({
           wsRef.current = null
           setIsConnected(false)
 
-          // Reconnect after delay
-          setTimeout(tryConnect, 3000)
+          // Reconnect with exponential backoff
+          retryCount++
+          if (retryCount < MAX_RETRIES) {
+            const delay = Math.min(1000 * Math.pow(2, retryCount), 30000)
+            retryTimer = setTimeout(tryConnect, delay)
+          }
         })
 
         ws.addEventListener('error', () => {
@@ -108,6 +122,7 @@ export function useSyncConnection({
     })
 
     return () => {
+      if (retryTimer) clearTimeout(retryTimer)
       unsubAdd()
       unsubRemove()
       if (wsRef.current) {
