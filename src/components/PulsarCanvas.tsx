@@ -11,8 +11,17 @@ import { StatusBar } from './ui/StatusBar.js'
 import { MapEventOverlay } from './ui/MapEventOverlay.js'
 import { LegendPanel, type LegendEntry } from './ui/LegendPanel.js'
 import { LightProperties } from './ui/LightProperties.js'
+import { ZoomControls } from './ui/ZoomControls.js'
 import { MapExtension } from '../lib/extensions/map/index.js'
 import { GridShader } from '../lib/shaders/programs/GridShader.js'
+import {
+  createTerrainElement,
+  createWallElement,
+  createDoorElement,
+  createObjectElement,
+  createLightElement,
+  createLegendElement,
+} from '../lib/mapSurfaceBridge.js'
 import type { BoardDescriptor, BoardKind, BoardMode } from '../shared/board.js'
 import { createBoard } from '../shared/board.js'
 import type {
@@ -216,9 +225,12 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
         }
         const terrainType = { name: 'map:terrain', defaults: () => ({ textureId: selectedTerrain, elevation: 0 }) }
         world.addComponent(entityId, terrainType, { textureId: selectedTerrain })
+
+        // Create a visible surface element on the BlockSuite canvas
+        createTerrainElement(editor, cell, selectedTerrain, settings.gridSize)
       }
     },
-    [world, selectedTerrain]
+    [world, selectedTerrain, editor, settings.gridSize]
   )
 
   const handleWallDraw = useCallback(
@@ -240,8 +252,11 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
         wallType,
         seed: wallType === 'cavern' ? Math.floor(Math.random() * 100000) : 0,
       })
+
+      // Create a visible surface element on the BlockSuite canvas
+      createWallElement(editor, points, wallType)
     },
-    [world]
+    [world, editor]
   )
 
   const handleDoorPlace = useCallback(
@@ -260,8 +275,11 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
         defaults: () => ({ x: 0, y: 0, rotation: 0, scaleX: 1, scaleY: 1 }),
       }
       world.addComponent(entityId, transformType, { x: point.x, y: point.y })
+
+      // Create a visible surface element on the BlockSuite canvas
+      createDoorElement(editor, point)
     },
-    [world]
+    [world, editor]
   )
 
   const handleObjectPlace = useCallback(
@@ -279,8 +297,11 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
         defaults: () => ({ x: 0, y: 0, rotation: 0, scaleX: 1, scaleY: 1 }),
       }
       world.addComponent(entityId, transformType, { x: point.x, y: point.y })
+
+      // Create a visible surface element on the BlockSuite canvas
+      createObjectElement(editor, point, objectType)
     },
-    [world]
+    [world, editor]
   )
 
   const handleLightPlace = useCallback(
@@ -305,10 +326,13 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
       }
       world.addComponent(entityId, transformType, { x: point.x, y: point.y })
 
+      // Create a visible surface element on the BlockSuite canvas
+      createLightElement(editor, point, lightProps.radius, lightProps.color)
+
       // Show light properties for the newly placed light
       setSelectedLightEntity(entityId)
     },
-    [world]
+    [world, editor, lightProps.radius, lightProps.color]
   )
 
   const handleLegendPlace = useCallback(
@@ -332,13 +356,16 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
       }
       world.addComponent(entityId, transformType, { x: point.x, y: point.y })
 
+      // Create a visible surface element on the BlockSuite canvas
+      createLegendElement(editor, point, nextNumber)
+
       setLegendEntries((prev) => [
         ...prev,
         { entityId, number: nextNumber, text: `Location ${nextNumber}` },
       ])
       setShowLegend(true)
     },
-    [world, legendEntries.length]
+    [world, legendEntries.length, editor]
   )
 
   const handleLegendEntryRemove = useCallback(
@@ -510,6 +537,9 @@ export function PulsarCanvas({ roomId, userId }: PulsarCanvasProps) {
 
           {/* Status bar — bottom right */}
           <StatusBar isConnected={isConnected} roomId={roomId} />
+
+          {/* Zoom controls — bottom right, next to status bar */}
+          <ZoomControls />
         </div>
       </div>
     </EditorContext.Provider>

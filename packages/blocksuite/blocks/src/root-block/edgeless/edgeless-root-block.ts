@@ -124,7 +124,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   private _viewportElement: HTMLElement | null = null;
 
   static override styles = css`
-    affine-edgeless-root {
+    pulsar-edgeless-root {
       -webkit-user-select: none;
       user-select: none;
       display: block;

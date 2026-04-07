@@ -55,12 +55,12 @@ export class PageRootBlockComponent extends BlockComponent<
   private _viewportElement: HTMLDivElement | null = null;
 
   static override styles = css`
-    editor-host:has(> affine-page-root, * > affine-page-root) {
+    editor-host:has(> pulsar-page-root, * > pulsar-page-root) {
       display: block;
       height: 100%;
     }
 
-    affine-page-root {
+    pulsar-page-root {
       display: block;
       height: 100%;
     }

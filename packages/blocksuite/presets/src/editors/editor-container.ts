@@ -85,7 +85,12 @@ export class PulsarEditorContainer
   });
 
   static override styles = css`
-    .affine-page-viewport {
+    pulsar-editor-container {
+      display: block;
+      height: 100%;
+    }
+
+    .pulsar-page-viewport {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -95,12 +100,12 @@ export class PulsarEditorContainer
       container-type: inline-size;
       font-family: var(--pulsar-font-family);
     }
-    .affine-page-viewport * {
+    .pulsar-page-viewport * {
       box-sizing: border-box;
     }
 
     @media print {
-      .affine-page-viewport {
+      .pulsar-page-viewport {
         height: auto;
       }
     }
@@ -140,7 +145,7 @@ export class PulsarEditorContainer
       }
     }
 
-    .affine-edgeless-viewport {
+    .pulsar-edgeless-viewport {
       display: block;
       height: 100%;
       position: relative;

@@ -209,6 +209,36 @@ export function MapEventOverlay({
     [activeMapTool, onWallDraw],
   )
 
+  // Allow wheel events (zoom/pan) to pass through to the BlockSuite editor
+  // underneath. The overlay is a sibling of the editor container, so wheel
+  // events on the overlay won't reach BlockSuite's dispatcher. We re-dispatch
+  // them directly onto the editor container.
+  const handleWheel = useCallback(
+    (e: React.WheelEvent<HTMLDivElement>) => {
+      const editorContainer = e.currentTarget.previousElementSibling
+      if (editorContainer) {
+        const cloned = new WheelEvent('wheel', {
+          deltaX: e.deltaX,
+          deltaY: e.deltaY,
+          deltaZ: e.deltaZ,
+          deltaMode: e.deltaMode,
+          clientX: e.clientX,
+          clientY: e.clientY,
+          screenX: e.screenX,
+          screenY: e.screenY,
+          ctrlKey: e.ctrlKey,
+          altKey: e.altKey,
+          shiftKey: e.shiftKey,
+          metaKey: e.metaKey,
+          bubbles: true,
+          cancelable: true,
+        })
+        editorContainer.dispatchEvent(cloned)
+      }
+    },
+    [],
+  )
+
   if (!active || !activeMapTool) return null
 
   // Determine cursor preview size based on grid type
@@ -225,6 +255,7 @@ export function MapEventOverlay({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onDoubleClick={handleDoubleClick}
+      onWheel={handleWheel}
     >
       {/* Preview cursor indicator */}
       {previewPoint && (
