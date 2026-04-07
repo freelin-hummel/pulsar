@@ -45,7 +45,7 @@ export class EmbedBlockComponent<
   protected _cardStyle: EmbedCardStyle = 'horizontal';
 
   private _dragHandleOption: DragHandleOption = {
-    flavour: /affine:embed-*/,
+    flavour: /pulsar:embed-*/,
     edgeless: true,
     onDragStart: ({ state, startDragging, anchorBlockId, editorHost }) => {
       if (!anchorBlockId) return false;

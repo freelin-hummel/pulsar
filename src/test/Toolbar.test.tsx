@@ -164,7 +164,7 @@ describe('Toolbar', () => {
 
       await user.click(screen.getByTestId('tool-note'))
       expect(ctx._mock.mockSetEdgelessTool).toHaveBeenCalledWith({
-        type: 'affine:note',
+        type: 'pulsar:note',
         childFlavour: 'pulsar:paragraph',
         childType: 'text',
         tip: 'Note',
@@ -321,7 +321,7 @@ describe('Toolbar', () => {
         ['tool-line', { type: 'connector', mode: 0 }],
         ['tool-pen', { type: 'brush' }],
         ['tool-text', { type: 'text' }],
-        ['tool-note', { type: 'affine:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }],
+        ['tool-note', { type: 'pulsar:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }],
       ]
 
       for (const [testId, expected] of toolsAndExpected) {

@@ -319,7 +319,7 @@ export class PageRootBlockComponent extends BlockComponent<
             'pulsar:attachment',
             'pulsar:surface-ref',
           ]) ||
-          /affine:embed-*/.test(last.flavour)
+          /pulsar:embed-*/.test(last.flavour)
         ) {
           if (readonly) return;
           const paragraphId = this.doc.addBlock(

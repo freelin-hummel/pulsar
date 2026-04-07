@@ -150,7 +150,7 @@ describe('toEdgelessTool (imported from Toolbar)', () => {
 
   it('all type strings are valid BlockSuite edgeless tool types', () => {
     const valid = new Set([
-      'default', 'pan', 'shape', 'brush', 'text', 'affine:note', 'connector', 'eraser',
+      'default', 'pan', 'shape', 'brush', 'text', 'pulsar:note', 'connector', 'eraser',
     ])
     const allTools: Tool[] = ['select', 'hand', 'rect', 'ellipse', 'line', 'pen', 'text', 'note']
     for (const t of allTools) {

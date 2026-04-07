@@ -275,7 +275,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
       transform: `rotate(${rotate}deg)`,
       transformOrigin: 'center',
       padding: '5px 10px',
-      border: `1px solid ${this._editing ? 'var(--affine—primary—color, #1e96eb)' : 'transparent'}`,
+      border: `1px solid ${this._editing ? 'var(--pulsar-primary-color, #1e96eb)' : 'transparent'}`,
       borderRadius: '4px',
       boxSizing: 'border-box',
       boxShadow: this._editing

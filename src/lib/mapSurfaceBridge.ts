@@ -229,7 +229,7 @@ export function createLegendElement(
       filled: true,
       radius: 0,
       text: {
-        'affine:surface:text': true,
+        'pulsar:surface:text': true,
         delta: [{ insert: String(number) }],
       },
       color: '#ffffff',
