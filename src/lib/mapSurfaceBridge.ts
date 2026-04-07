@@ -4,8 +4,14 @@
  * When map tools (terrain, wall, door, object, light, legend) are used,
  * this module creates BlockSuite surface elements (shapes, lines, text)
  * that are rendered on the edgeless canvas. This makes placeables visible.
+ *
+ * Elements are created via the EdgelessRootService accessed through the
+ * editor's BlockStdScope DI container (`editor.std`), bypassing the Lit
+ * component tree entirely.
  */
 
+import type { PulsarEditorContainer } from '@pulsar/presets'
+import { getEdgelessService } from '../editor/edgelessService.js'
 import type { GridPoint } from '../shared/mapTypes.js'
 import type { TerrainTextureId, MapObjectType } from '../shared/mapTypes.js'
 
@@ -34,56 +40,16 @@ const OBJECT_COLORS: Record<MapObjectType, string> = {
   chair: '#7a5c3a',
 }
 
-interface EdgelessService {
-  addElement: <T extends Record<string, unknown>>(type: string, props: T) => string
-}
-
-interface EdgelessRoot {
-  service?: EdgelessService & {
-    viewport: {
-      zoom: number
-      toModelCoord: (x: number, y: number) => [number, number]
-    }
-  }
-}
-
-/**
- * Get the edgeless root element from the editor for surface element creation.
- */
-function getEdgelessRoot(editor: unknown): EdgelessRoot | null {
-  const el = editor as HTMLElement | null
-  if (!el || typeof el.querySelector !== 'function') return null
-  try {
-    return el.querySelector('pulsar-edgeless-root') as unknown as EdgelessRoot
-  } catch {
-    return null
-  }
-}
-
-/**
- * Safely access the edgeless root's service, which may throw if the Lit
- * context (`std`) has not yet been injected into the BlockComponent.
- */
-function getService(root: EdgelessRoot): EdgelessRoot['service'] | null {
-  try {
-    return root.service ?? null
-  } catch {
-    return null
-  }
-}
-
 /**
  * Create a terrain shape element on the BlockSuite surface.
  */
 export function createTerrainElement(
-  editor: unknown,
+  editor: PulsarEditorContainer,
   cell: GridPoint,
   textureId: TerrainTextureId,
   cellSize: number,
 ): string | null {
-  const root = getEdgelessRoot(editor)
-  if (!root) return null
-  const svc = getService(root)
+  const svc = getEdgelessService(editor)
   if (!svc) return null
 
   const color = TERRAIN_COLORS[textureId] ?? '#6b7280'
@@ -106,14 +72,12 @@ export function createTerrainElement(
  * Create wall line elements on the BlockSuite surface.
  */
 export function createWallElement(
-  editor: unknown,
+  editor: PulsarEditorContainer,
   points: GridPoint[],
   wallType: 'standard' | 'diagonal' | 'cavern',
 ): string | null {
   if (points.length < 2) return null
-  const root = getEdgelessRoot(editor)
-  if (!root) return null
-  const svc = getService(root)
+  const svc = getEdgelessService(editor)
   if (!svc) return null
 
   const strokeColor = wallType === 'cavern' ? '#8b6914' : '#4b5563'
@@ -148,12 +112,10 @@ export function createWallElement(
  * Create a door element on the BlockSuite surface.
  */
 export function createDoorElement(
-  editor: unknown,
+  editor: PulsarEditorContainer,
   point: GridPoint,
 ): string | null {
-  const root = getEdgelessRoot(editor)
-  if (!root) return null
-  const svc = getService(root)
+  const svc = getEdgelessService(editor)
   if (!svc) return null
 
   const size = 16
@@ -176,13 +138,11 @@ export function createDoorElement(
  * Create an object element on the BlockSuite surface.
  */
 export function createObjectElement(
-  editor: unknown,
+  editor: PulsarEditorContainer,
   point: GridPoint,
   objectType: MapObjectType,
 ): string | null {
-  const root = getEdgelessRoot(editor)
-  if (!root) return null
-  const svc = getService(root)
+  const svc = getEdgelessService(editor)
   if (!svc) return null
 
   const color = OBJECT_COLORS[objectType] ?? '#6b7280'
@@ -206,14 +166,12 @@ export function createObjectElement(
  * Create a light element on the BlockSuite surface (rendered as a circle).
  */
 export function createLightElement(
-  editor: unknown,
+  editor: PulsarEditorContainer,
   point: GridPoint,
   radius: number,
   color: string,
 ): string | null {
-  const root = getEdgelessRoot(editor)
-  if (!root) return null
-  const svc = getService(root)
+  const svc = getEdgelessService(editor)
   if (!svc) return null
 
   const displaySize = Math.min(radius, 40)
@@ -236,13 +194,11 @@ export function createLightElement(
  * Create a legend pin element on the BlockSuite surface.
  */
 export function createLegendElement(
-  editor: unknown,
+  editor: PulsarEditorContainer,
   point: GridPoint,
   number: number,
 ): string | null {
-  const root = getEdgelessRoot(editor)
-  if (!root) return null
-  const svc = getService(root)
+  const svc = getEdgelessService(editor)
   if (!svc) return null
 
   const size = 24

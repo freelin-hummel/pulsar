@@ -1,41 +1,16 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ZoomIn, ZoomOut, Maximize } from 'lucide-react'
 import { useEditorContext } from '../../editor/context.js'
+import { getViewport } from '../../editor/edgelessService.js'
 
 /**
  * ZoomControls — Bottom-right zoom buttons for the edgeless canvas.
  *
  * Provides Zoom In (+), Zoom Out (−), and Fit to Screen controls.
- * Reads the current zoom level from BlockSuite's viewport and applies
- * changes via the viewport API.
+ * Reads the current zoom level from the GfxController's viewport
+ * (accessed via the editor's DI container) and applies changes via
+ * the viewport API.
  */
-
-interface EdgelessViewport {
-  zoom: number
-  setZoom: (zoom: number, center?: { x: number; y: number }) => void
-  center: [number, number]
-}
-
-/**
- * Safely retrieve the edgeless root's viewport from the editor container.
- *
- * The BlockSuite `service` getter throws when the Lit context (`std`) has not
- * yet been injected (e.g. during initial mount or if the WebComponent hasn't
- * fully connected). We catch that and return null so callers don't need to
- * deal with unhandled errors on every poll tick.
- */
-function getEdgelessViewport(editor: unknown): EdgelessViewport | null {
-  const el = editor as HTMLElement | null
-  if (!el || typeof el.querySelector !== 'function') return null
-  const root = el.querySelector('pulsar-edgeless-root') as { service?: { viewport?: EdgelessViewport } } | null
-  if (!root) return null
-  try {
-    return root.service?.viewport ?? null
-  } catch {
-    // service getter throws if Lit context is not yet available
-    return null
-  }
-}
 
 interface ZoomControlsProps {
   /** Override the positioning style */
@@ -46,13 +21,12 @@ export function ZoomControls({ style }: ZoomControlsProps) {
   const editorCtx = useEditorContext()
   const [zoomLevel, setZoomLevel] = useState(100)
 
-  // Poll the zoom level from the viewport (BlockSuite doesn't expose a
-  // reactive signal we can subscribe to from React)
+  // Poll the zoom level from the viewport
   useEffect(() => {
     if (!editorCtx) return
 
     const interval = setInterval(() => {
-      const vp = getEdgelessViewport(editorCtx.editor)
+      const vp = getViewport(editorCtx.editor)
       if (vp) {
         setZoomLevel(Math.round(vp.zoom * 100))
       }
@@ -63,7 +37,7 @@ export function ZoomControls({ style }: ZoomControlsProps) {
 
   const handleZoomIn = useCallback(() => {
     if (!editorCtx) return
-    const vp = getEdgelessViewport(editorCtx.editor)
+    const vp = getViewport(editorCtx.editor)
     if (!vp) return
     const newZoom = Math.min(vp.zoom * 1.25, 5)
     vp.setZoom(newZoom)
@@ -71,7 +45,7 @@ export function ZoomControls({ style }: ZoomControlsProps) {
 
   const handleZoomOut = useCallback(() => {
     if (!editorCtx) return
-    const vp = getEdgelessViewport(editorCtx.editor)
+    const vp = getViewport(editorCtx.editor)
     if (!vp) return
     const newZoom = Math.max(vp.zoom / 1.25, 0.1)
     vp.setZoom(newZoom)
@@ -79,7 +53,7 @@ export function ZoomControls({ style }: ZoomControlsProps) {
 
   const handleFitToScreen = useCallback(() => {
     if (!editorCtx) return
-    const vp = getEdgelessViewport(editorCtx.editor)
+    const vp = getViewport(editorCtx.editor)
     if (!vp) return
     vp.setZoom(1)
   }, [editorCtx])

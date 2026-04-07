@@ -11,6 +11,7 @@ import {
   Minus,
 } from 'lucide-react'
 import { useEditorContext } from '../../editor/context.js'
+import { getEdgelessService } from '../../editor/edgelessService.js'
 import type { MapTool, TerrainTextureId, MapObjectType } from '../../shared/mapTypes.js'
 import type { BoardMode } from '../../shared/board.js'
 import { MapToolbar } from './MapToolbar.js'
@@ -35,28 +36,6 @@ const tools: ToolDef[] = [
   { id: 'note', label: 'Note', icon: <StickyNote size={16} /> },
   { id: 'image', label: 'Image', icon: <Image size={16} /> },
 ]
-
-/**
- * Safely retrieve the edgeless root block component from the mounted editor.
- *
- * BlockSuite's PulsarEditorContainer is a shadowless Lit element that renders
- * `<pulsar-edgeless-root>` into the light DOM when in edgeless mode.  The
- * private `_edgelessRoot` accessor created by the `@query` decorator is backed
- * by a TC39 private field and is not accessible from outside the class.  We
- * use a plain DOM querySelector instead which works identically.
- */
-function getEdgelessRoot(editor: unknown): {
-  tools?: { setEdgelessTool: (tool: Record<string, unknown>) => void }
-  addImages?: (files: File[]) => Promise<string[]>
-} | null {
-  const el = editor as HTMLElement | null
-  if (!el || typeof el.querySelector !== 'function') return null
-  try {
-    return el.querySelector('pulsar-edgeless-root') as unknown as ReturnType<typeof getEdgelessRoot>
-  } catch {
-    return null
-  }
-}
 
 interface ToolbarProps {
   activeTool?: Tool
@@ -107,7 +86,10 @@ export function Toolbar({
         input.onchange = () => {
           const files = Array.from(input.files ?? [])
           if (files.length === 0) return
-          const edgelessRoot = getEdgelessRoot(editor)
+          // Image upload via edgeless root (needs Lit component tree)
+          const el = editor as HTMLElement
+          const edgelessRoot = el?.querySelector?.('pulsar-edgeless-root') as
+            { addImages?: (files: File[]) => Promise<string[]> } | null
           if (edgelessRoot?.addImages) {
             edgelessRoot.addImages(files)
           }
@@ -119,13 +101,13 @@ export function Toolbar({
       const edgelessTool = toEdgelessTool(tool)
       if (!edgelessTool) return
 
-      const edgelessRoot = getEdgelessRoot(editor)
-      try {
-        if (edgelessRoot?.tools) {
-          edgelessRoot.tools.setEdgelessTool(edgelessTool)
+      const svc = getEdgelessService(editor)
+      if (svc?.tool) {
+        try {
+          svc.tool.setEdgelessTool(edgelessTool)
+        } catch {
+          // Tool controllers may not be registered yet
         }
-      } catch {
-        // Service not yet available — std context hasn't been injected
       }
     },
     [editorCtx, onToolChange]

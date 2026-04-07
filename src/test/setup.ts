@@ -47,6 +47,22 @@ if (typeof globalThis.FontFace === 'undefined') {
   } as unknown as typeof globalThis.FontFace
 }
 
+// jsdom does not implement document.fonts (FontFaceSet); stub it for font-loader
+if (typeof document !== 'undefined' && !document.fonts) {
+  const fontSet = new Set()
+  Object.defineProperty(document, 'fonts', {
+    value: {
+      add: (face: unknown) => fontSet.add(face),
+      delete: (face: unknown) => fontSet.delete(face),
+      has: (face: unknown) => fontSet.has(face),
+      forEach: (cb: (face: unknown) => void) => fontSet.forEach(cb),
+      get size() { return fontSet.size },
+      ready: Promise.resolve(),
+    },
+    configurable: true,
+  })
+}
+
 // jsdom does not implement matchMedia; stub it for theme detection
 if (typeof window !== 'undefined' && typeof window.matchMedia !== 'function') {
   window.matchMedia = (query: string) => ({

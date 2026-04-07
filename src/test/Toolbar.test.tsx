@@ -5,19 +5,28 @@ import { Toolbar } from '../components/ui/Toolbar.js'
 import { EditorContext } from '../editor/context.js'
 
 // Mock the editor context so we can test tool switching.
-// The Toolbar now accesses the edgeless root via editor.querySelector('pulsar-edgeless-root')
-// rather than the private _edgelessRoot accessor.
+// The Toolbar now accesses the edgeless service via editor.std.getService('pulsar:page')
+// rather than querySelector('pulsar-edgeless-root').
 function createMockEditorContext() {
   const mockSetEdgelessTool = vi.fn()
-  const mockEdgelessRoot = {
-    tools: {
+  const mockService = {
+    tool: {
       setEdgelessTool: mockSetEdgelessTool,
+      edgelessTool: { type: 'default' },
     },
-    addImages: vi.fn(),
+    viewport: { zoom: 1, setZoom: vi.fn(), center: [0, 0] },
+    addElement: vi.fn(),
   }
   const mockEditor = {
+    std: {
+      getService: (flavour: string) =>
+        flavour === 'pulsar:page' ? mockService : null,
+    },
+    // Still needed for image upload (querySelector for addImages)
     querySelector: (selector: string) =>
-      selector === 'pulsar-edgeless-root' ? mockEdgelessRoot : null,
+      selector === 'pulsar-edgeless-root'
+        ? { addImages: vi.fn() }
+        : null,
   }
   return {
     editor: mockEditor as unknown as import('../editor/context.js').EditorContextValue['editor'],
@@ -267,17 +276,20 @@ describe('Toolbar', () => {
       }
     })
   })
-  describe('edgeless root access', () => {
-    it('queries the edgeless root via querySelector, not _edgelessRoot', async () => {
+  describe('edgeless service access', () => {
+    it('accesses tools via editor.std.getService, not querySelector', async () => {
       const user = userEvent.setup()
       const mockSetEdgelessTool = vi.fn()
-      const querySelectorSpy = vi.fn((selector: string) =>
-        selector === 'pulsar-edgeless-root'
-          ? { tools: { setEdgelessTool: mockSetEdgelessTool } }
+      const getServiceSpy = vi.fn((flavour: string) =>
+        flavour === 'pulsar:page'
+          ? { tool: { setEdgelessTool: mockSetEdgelessTool, edgelessTool: { type: 'default' } } }
           : null
       )
       const ctx = {
-        editor: { querySelector: querySelectorSpy } as unknown as import('../editor/context.js').EditorContextValue['editor'],
+        editor: {
+          std: { getService: getServiceSpy },
+          querySelector: () => null,
+        } as unknown as import('../editor/context.js').EditorContextValue['editor'],
         collection: {} as import('../editor/context.js').EditorContextValue['collection'],
         doc: {} as import('../editor/context.js').EditorContextValue['doc'],
         _mock: { mockSetEdgelessTool },
@@ -286,28 +298,31 @@ describe('Toolbar', () => {
 
       await user.click(screen.getByTestId('tool-rect'))
 
-      // Verify querySelector was called with the correct selector
-      expect(querySelectorSpy).toHaveBeenCalledWith('pulsar-edgeless-root')
+      // Verify getService was called with the correct flavour
+      expect(getServiceSpy).toHaveBeenCalledWith('pulsar:page')
       expect(mockSetEdgelessTool).toHaveBeenCalledWith({ type: 'shape', shapeName: 'rect' })
     })
 
-    it('does not throw when edgeless root is not yet mounted', async () => {
+    it('does not throw when service is not available', async () => {
       const user = userEvent.setup()
-      const querySelectorSpy = vi.fn(() => null) // edgeless root not found
       const ctx = {
-        editor: { querySelector: querySelectorSpy } as unknown as import('../editor/context.js').EditorContextValue['editor'],
+        editor: {
+          std: {
+            getService: () => { throw new Error('not available') },
+          },
+          querySelector: () => null,
+        } as unknown as import('../editor/context.js').EditorContextValue['editor'],
         collection: {} as import('../editor/context.js').EditorContextValue['collection'],
         doc: {} as import('../editor/context.js').EditorContextValue['doc'],
         _mock: { mockSetEdgelessTool: vi.fn() },
       }
       renderToolbar({}, ctx)
 
-      // Should not throw even when the edgeless root is missing
+      // Should not throw even when the service can't be created
       await user.click(screen.getByTestId('tool-rect'))
-      expect(querySelectorSpy).toHaveBeenCalledWith('pulsar-edgeless-root')
     })
 
-    it('switches tools for all tool types when edgeless root is mounted', async () => {
+    it('switches tools for all tool types when service is available', async () => {
       const user = userEvent.setup()
       const ctx = createMockEditorContext()
       renderToolbar({}, ctx)
