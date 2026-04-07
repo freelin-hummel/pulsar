@@ -36,7 +36,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.bold;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -46,7 +46,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.italic;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -56,7 +56,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.underline;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -66,7 +66,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.strike;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -76,7 +76,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.code;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -86,7 +86,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.background;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -96,7 +96,7 @@ export const basicPulsarInlineSpecs: InlineSpecs<PulsarTextAttributes>[] = [
       return !!delta.attributes?.color;
     },
     renderer: ({ delta }) => {
-      return html`<affine-text .delta=${delta}></affine-text>`;
+      return html`<pulsar-text .delta=${delta}></pulsar-text>`;
     },
   },
   {
@@ -139,11 +139,11 @@ export function getPulsarInlineSpecsWithReference(
         return !!delta.attributes?.reference;
       },
       renderer: ({ delta, selected }) => {
-        return html`<affine-reference
+        return html`<pulsar-reference
           .delta=${delta}
           .selected=${selected}
           .config=${referenceNodeConfig}
-        ></affine-reference>`;
+        ></pulsar-reference>`;
       },
       embed: true,
     },
@@ -154,7 +154,7 @@ export function getPulsarInlineSpecsWithReference(
         return !!delta.attributes?.link;
       },
       renderer: ({ delta }) => {
-        return html`<affine-link .delta=${delta}></affine-link>`;
+        return html`<pulsar-link .delta=${delta}></pulsar-link>`;
       },
     },
   ];

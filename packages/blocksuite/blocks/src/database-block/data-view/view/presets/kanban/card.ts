@@ -185,14 +185,14 @@ export class KanbanCard extends SignalWatcher(
           if (this.view.isInHeader(column.id)) {
             return '';
           }
-          return html` <affine-data-view-kanban-cell
+          return html` <pulsar-data-view-kanban-cell
             .contentOnly="${false}"
             data-column-id="${column.id}"
             .view="${this.view}"
             .groupKey="${this.groupKey}"
             .column="${column}"
             .cardId="${this.cardId}"
-          ></affine-data-view-kanban-cell>`;
+          ></pulsar-data-view-kanban-cell>`;
         }
       )}
     </div>`;
@@ -243,14 +243,14 @@ export class KanbanCard extends SignalWatcher(
       return;
     }
     return html` <div class="card-header-title">
-      <affine-data-view-kanban-cell
+      <pulsar-data-view-kanban-cell
         .contentOnly="${true}"
         data-column-id="${title.id}"
         .view="${this.view}"
         .groupKey="${this.groupKey}"
         .column="${title}"
         .cardId="${this.cardId}"
-      ></affine-data-view-kanban-cell>
+      ></pulsar-data-view-kanban-cell>
     </div>`;
   }
 

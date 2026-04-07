@@ -91,18 +91,18 @@ const updateArrowStyles = ({
  * ```ts
  * // Simple usage
  * html`
- * <affine-tooltip>Content</affine-tooltip>
+ * <pulsar-tooltip>Content</pulsar-tooltip>
  * `
  * // With placement
  * html`
- * <affine-tooltip tip-position="top">
+ * <pulsar-tooltip tip-position="top">
  *   Content
- * </affine-tooltip>
+ * </pulsar-tooltip>
  * `
  *
  * // With custom properties
  * html`
- * <affine-tooltip
+ * <pulsar-tooltip
  *   .zIndex=${0}
  *   .offset=${4}
  *   .autoFlip=${true}
@@ -111,7 +111,7 @@ const updateArrowStyles = ({
  *   .allowInteractive=${false}
  * >
  *   Content
- * </affine-tooltip>
+ * </pulsar-tooltip>
  * `
  * ```
  */

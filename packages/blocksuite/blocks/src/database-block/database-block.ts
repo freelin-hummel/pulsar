@@ -123,12 +123,12 @@ export class DatabaseBlockComponent extends CaptionedBlockComponent<
 
   private renderTitle = (dataViewMethod: DataViewExpose) => {
     const addRow = () => dataViewMethod.addRow?.('start');
-    return html` <affine-database-title
+    return html` <pulsar-database-title
       style="overflow: hidden"
       .titleText="${this.model.title}"
       .readonly="${this.doc.readonly}"
       .onPressEnterKey="${addRow}"
-    ></affine-database-title>`;
+    ></pulsar-database-title>`;
   };
 
   static override styles = css`

@@ -36,10 +36,10 @@ export class DataBaseColumnStats extends SignalWatcher(
           cols,
           col => col.id,
           col => {
-            return html`<affine-database-column-stats-cell
+            return html`<pulsar-database-column-stats-cell
               .column=${col}
               .group=${this.group}
-            ></affine-database-column-stats-cell>`;
+            ></pulsar-database-column-stats-cell>`;
           }
         )}
       </div>

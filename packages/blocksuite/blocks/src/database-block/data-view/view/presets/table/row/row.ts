@@ -216,7 +216,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
           };
           return html`
             <div>
-              <affine-database-cell-container
+              <pulsar-database-cell-container
                 class="database-cell"
                 style=${styleMap({
                   width: `${column.width$.value}px`,
@@ -233,7 +233,7 @@ export class TableRow extends SignalWatcher(WithDisposable(ShadowlessElement)) {
                 .columnIndex="${i}"
                 data-column-index="${i}"
               >
-              </affine-database-cell-container>
+              </pulsar-database-cell-container>
             </div>
             ${!column.readonly$.value &&
             column.view.header$.value.titleColumn === column.id

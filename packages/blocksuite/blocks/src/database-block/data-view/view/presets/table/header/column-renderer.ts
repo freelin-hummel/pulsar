@@ -29,10 +29,10 @@ export class DataViewColumnPreview extends SignalWatcher(
       <div
         style="background-color: var(--pulsar-background-primary-color);border-top: 1px solid var(--pulsar-border-color);box-shadow: var(--pulsar-shadow-2);"
       >
-        <affine-database-header-column
+        <pulsar-database-header-column
           .tableViewManager="${this.tableViewManager}"
           .column="${this.column}"
-        ></affine-database-header-column>
+        ></pulsar-database-header-column>
         ${repeat(rows, (id, index) => {
           const height = this.table.querySelector(
             `pulsar-database-cell-container[data-row-id="${id}"]`
@@ -44,14 +44,14 @@ export class DataViewColumnPreview extends SignalWatcher(
             style="border-top: 1px solid var(--pulsar-border-color)"
           >
             <div style="${style}">
-              <affine-database-cell-container
+              <pulsar-database-cell-container
                 .column="${this.column}"
                 .view="${this.tableViewManager}"
                 .rowId="${id}"
                 .columnId="${this.column.id}"
                 .rowIndex="${index}"
                 .columnIndex="${columnIndex}"
-              ></affine-database-cell-container>
+              ></pulsar-database-cell-container>
             </div>
           </div>`;
         })}

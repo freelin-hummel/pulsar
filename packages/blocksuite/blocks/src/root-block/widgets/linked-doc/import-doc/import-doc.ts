@@ -414,9 +414,9 @@ export class ImportDoc extends WithDisposable(LitElement) {
               @click="${this._openLearnImportLink}"
             >
               ${HelpIcon}
-              <affine-tooltip>
+              <pulsar-tooltip>
                 Learn how to Import your Notion pages into AFFiNE.
-              </affine-tooltip>
+              </pulsar-tooltip>
             </div>
           </icon-button>
           <icon-button class="button-item" text="Coming soon..." disabled>

@@ -225,12 +225,12 @@ export class DataViewKanban extends DataViewBase<
           groups,
           group => group.key,
           group => {
-            return html` <affine-data-view-kanban-group
+            return html` <pulsar-data-view-kanban-group
               data-key="${group.key}"
               .dataViewEle="${this.dataViewEle}"
               .view="${this.view}"
               .group="${group}"
-            ></affine-data-view-kanban-group>`;
+            ></pulsar-data-view-kanban-group>`;
           }
         )}
         ${this.renderAddGroup()}

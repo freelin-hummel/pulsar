@@ -136,9 +136,9 @@ export const createRecordDetail = (ops: {
   view: SingleView;
   rowId: string;
 }) => {
-  return html`<affine-data-view-record-detail
+  return html`<pulsar-data-view-record-detail
     .view=${ops.view}
     .rowId=${ops.rowId}
     class="data-view-popup-container"
-  ></affine-data-view-record-detail>`;
+  ></pulsar-data-view-record-detail>`;
 };

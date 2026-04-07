@@ -16,7 +16,7 @@ export const codeBlockInlineSpecs: InlineSpecs<CodeBlockTextAttributes>[] = [
     schema: z.undefined(),
     match: () => true,
     renderer: ({ delta }) => {
-      return html`<affine-code-unit .delta=${delta}></affine-code-unit>`;
+      return html`<pulsar-code-unit .delta=${delta}></pulsar-code-unit>`;
     },
   },
   ...basicPulsarInlineSpecs,
@@ -27,7 +27,7 @@ export const codeBlockInlineSpecs: InlineSpecs<CodeBlockTextAttributes>[] = [
       return !!delta.attributes?.link;
     },
     renderer: ({ delta }) => {
-      return html`<affine-link .delta=${delta}></affine-link>`;
+      return html`<pulsar-link .delta=${delta}></pulsar-link>`;
     },
   },
 ];

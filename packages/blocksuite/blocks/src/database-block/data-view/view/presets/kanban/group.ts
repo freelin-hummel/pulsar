@@ -170,13 +170,13 @@ export class KanbanGroup extends SignalWatcher(
           id => id,
           id => {
             return html`
-              <affine-data-view-kanban-card
+              <pulsar-data-view-kanban-card
                 data-card-id="${id}"
                 .groupKey="${this.group.key}"
                 .dataViewEle="${this.dataViewEle}"
                 .view="${this.view}"
                 .cardId="${id}"
-              ></affine-data-view-kanban-card>
+              ></pulsar-data-view-kanban-card>
             `;
           }
         )}

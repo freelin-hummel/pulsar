@@ -186,9 +186,9 @@ export class DatabaseBlockModalPreview extends WithDisposable(
       std: this.database.std,
     };
     return html`
-      <affine-data-view-renderer
+      <pulsar-data-view-renderer
         .config="${config}"
-      ></affine-data-view-renderer>
+      ></pulsar-data-view-renderer>
     `;
   }
 

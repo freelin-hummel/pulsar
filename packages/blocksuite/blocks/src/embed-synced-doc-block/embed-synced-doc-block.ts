@@ -462,10 +462,10 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
     ) {
       return this.renderEmbed(
         () => html`
-          <affine-embed-synced-doc-card
+          <pulsar-embed-synced-doc-card
             style=${this.cardStyleMap}
             .block=${this}
-          ></affine-embed-synced-doc-card>
+          ></pulsar-embed-synced-doc-card>
         `
       );
     }

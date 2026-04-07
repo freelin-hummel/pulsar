@@ -21,10 +21,10 @@ export class MultiSelectCell extends BaseCellRenderer<
 > {
   override render() {
     return html`
-      <affine-multi-tag-view
+      <pulsar-multi-tag-view
         .value="${Array.isArray(this.value) ? this.value : []}"
         .options="${this.column.data$.value.options}"
-      ></affine-multi-tag-view>
+      ></pulsar-multi-tag-view>
     `;
   }
 }
@@ -81,10 +81,10 @@ export class MultiSelectCellEditing extends BaseCellRenderer<
 
   override render() {
     return html`
-      <affine-multi-tag-view
+      <pulsar-multi-tag-view
         .value="${this._value}"
         .options="${this._options}"
-      ></affine-multi-tag-view>
+      ></pulsar-multi-tag-view>
     `;
   }
 }

@@ -389,9 +389,9 @@ export class EdgelessToolbar extends WithDisposable(LitElement) {
             .some(tool => tool.type === this.edgelessTool?.type)}
         >
           ${MoreHorizontalIcon}
-          <affine-tooltip tip-position="top" .offset=${25}>
+          <pulsar-tooltip tip-position="top" .offset=${25}>
             More Tools
-          </affine-tooltip>
+          </pulsar-tooltip>
         </icon-button>
       </div>
       <div class="full-divider"></div>
@@ -405,9 +405,9 @@ export class EdgelessToolbar extends WithDisposable(LitElement) {
           ${ArrowLeftSmallIcon}
           ${cache(
             this._seniorPrevTooltip
-              ? html` <affine-tooltip tip-position="top" .offset=${4}>
+              ? html` <pulsar-tooltip tip-position="top" .offset=${4}>
                   ${this._seniorPrevTooltip}
-                </affine-tooltip>`
+                </pulsar-tooltip>`
               : nothing
           )}
         </icon-button>
@@ -432,9 +432,9 @@ export class EdgelessToolbar extends WithDisposable(LitElement) {
           ${ArrowRightSmallIcon}
           ${cache(
             this._seniorNextTooltip
-              ? html` <affine-tooltip tip-position="top" .offset=${4}>
+              ? html` <pulsar-tooltip tip-position="top" .offset=${4}>
                   ${this._seniorNextTooltip}
-                </affine-tooltip>`
+                </pulsar-tooltip>`
               : nothing
           )}
         </icon-button>

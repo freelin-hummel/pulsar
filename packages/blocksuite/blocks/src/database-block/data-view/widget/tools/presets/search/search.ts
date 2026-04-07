@@ -155,7 +155,7 @@ export class DataViewHeaderToolsSearch extends WidgetBase {
         />
         <div class="close-icon" @mousedown="${this._clearSearch}">
           ${CloseIcon()}
-          <affine-tooltip>
+          <pulsar-tooltip>
             <span
               style=${styleMap({
                 display: 'flex',
@@ -168,7 +168,7 @@ export class DataViewHeaderToolsSearch extends WidgetBase {
               >Esc</span
             >
             to clear all
-          </affine-tooltip>
+          </pulsar-tooltip>
         </div>
       </label>
     `;

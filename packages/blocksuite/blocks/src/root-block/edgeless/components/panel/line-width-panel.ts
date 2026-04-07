@@ -326,7 +326,7 @@ export class EdgelessLineWidthPanel extends WithDisposable(LitElement) {
         <div class="bottom-line"></div>
         <div class="line-width-overlay"></div>
         ${this.hasTooltip
-          ? html`<affine-tooltip .offset=${8}>Thickness</affine-tooltip>`
+          ? html`<pulsar-tooltip .offset=${8}>Thickness</pulsar-tooltip>`
           : nothing}
       </div>`;
   }

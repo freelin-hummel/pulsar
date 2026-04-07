@@ -141,9 +141,9 @@ export class EdgelessMindmapMenu extends EdgelessToolbarToolMixin(LitElement) {
           >
             ${textItem.icon}
           </button>
-          <affine-tooltip tip-position="top" .offset=${12}>
+          <pulsar-tooltip tip-position="top" .offset=${12}>
             ${getTooltipWithShortcut('Edgeless Text', 'T')}
-          </affine-tooltip>
+          </pulsar-tooltip>
         </div>
         <div class="thin-divider"></div>
         <!-- mind map -->
@@ -183,9 +183,9 @@ export class EdgelessMindmapMenu extends EdgelessToolbarToolMixin(LitElement) {
               >
                 ${mindMap.icon}
               </button>
-              <affine-tooltip tip-position="top" .offset=${12}>
+              <pulsar-tooltip tip-position="top" .offset=${12}>
                 ${getTooltipWithShortcut('Mind Map', 'M')}
-              </affine-tooltip>
+              </pulsar-tooltip>
             </div>
           `;
         })}

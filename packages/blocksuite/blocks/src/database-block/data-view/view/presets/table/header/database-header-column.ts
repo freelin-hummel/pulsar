@@ -625,9 +625,9 @@ function numberFormatConfig(column: Column): NormalMenu {
   return {
     type: 'custom',
     render: () =>
-      html` <affine-database-number-format-bar
+      html` <pulsar-database-number-format-bar
         .column="${column}"
-      ></affine-database-number-format-bar>`,
+      ></pulsar-database-number-format-bar>`,
   };
 }
 

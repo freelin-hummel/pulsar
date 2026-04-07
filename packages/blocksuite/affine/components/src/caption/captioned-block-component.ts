@@ -31,7 +31,7 @@ export class CaptionedBlockComponent<
           ></block-caption-editor>`
         : nothing}
       ${this.showBlockSelection
-        ? html`<affine-block-selection .block=${this}></affine-block-selection>`
+        ? html`<pulsar-block-selection .block=${this}></pulsar-block-selection>`
         : nothing}
       ${this.useZeroWidth
         ? html`<block-zero-width .block=${this}></block-zero-width>`

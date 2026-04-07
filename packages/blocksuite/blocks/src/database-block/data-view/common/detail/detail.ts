@@ -217,12 +217,12 @@ export class RecordDetail extends SignalWatcher(
           column => {
             return keyed(
               this.rowId,
-              html` <affine-data-view-record-field
+              html` <pulsar-data-view-record-field
                 .view="${this.view}"
                 .column="${column}"
                 .rowId="${this.rowId}"
                 data-column-id="${column.id}"
-              ></affine-data-view-record-field>`
+              ></pulsar-data-view-record-field>`
             );
           }
         )}

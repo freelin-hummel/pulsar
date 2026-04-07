@@ -135,9 +135,9 @@ export class LinkCell extends BaseCellRenderer<string> {
               @click="${this.openDoc}"
               >${docName}</span
             >`
-          : html`<affine-database-link-node
+          : html`<pulsar-database-link-node
               .link="${linkText}"
-            ></affine-database-link-node>`}
+            ></pulsar-database-link-node>`}
         <div class="pulsar-database-link-icon" @click="${this._onEdit}">
           ${PenIcon()}
         </div>

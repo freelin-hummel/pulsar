@@ -202,10 +202,10 @@ export class FramePanelHeader extends WithDisposable(LitElement) {
         </edgeless-tool-icon-button>
       </div>
       <div class="frames-setting-container">
-        <affine-frames-setting-menu
+        <pulsar-frames-setting-menu
           .edgeless=${this.edgeless}
           .editorHost=${this.editorHost}
-        ></affine-frames-setting-menu>
+        ></pulsar-frames-setting-menu>
       </div>
       <div class="presentation-button" @click=${this._enterPresentationMode}>
         ${SmallFrameNavigatorIcon}<span class="presentation-button-label"
