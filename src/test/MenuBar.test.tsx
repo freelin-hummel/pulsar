@@ -76,7 +76,7 @@ describe('MenuBar', () => {
       expect(checks[1]).toHaveStyle({ opacity: 1 })
     })
 
-    it('shows dimmed checkmark for disabled toggles', async () => {
+    it('hides checkmark for disabled toggles', async () => {
       const user = userEvent.setup()
       const disabledSettings = { ...defaultSettings, showGrid: false }
       render(<MenuBar settings={disabledSettings} onSettingsChange={() => {}} />)
@@ -84,8 +84,8 @@ describe('MenuBar', () => {
       await user.click(screen.getByText('File'))
 
       const checks = screen.getAllByText('✓')
-      // Show Grid is disabled → dimmed checkmark
-      expect(checks[0]).toHaveStyle({ opacity: 0.2 })
+      // Show Grid is disabled → hidden checkmark (opacity 0)
+      expect(checks[0]).toHaveStyle({ opacity: 0 })
       // Snap to Grid is enabled → full checkmark
       expect(checks[1]).toHaveStyle({ opacity: 1 })
     })
@@ -151,18 +151,144 @@ describe('MenuBar', () => {
       })
     })
 
-    it('shows checkmark on active grid type', async () => {
+    it('shows checkmark on active grid type only', async () => {
       const user = userEvent.setup()
       const hexSettings = { ...defaultSettings, gridType: 'hex' as const }
       render(<MenuBar settings={hexSettings} onSettingsChange={() => {}} />)
 
       await user.click(screen.getByText('File'))
 
-      // The checkmarks: Show Grid (✓), Snap to Grid (✓), Square Grid (dim), Hex Grid (✓), Gridless (dim)
       const checks = screen.getAllByText('✓')
-      // Hex Grid should be active (opacity 1), Square and Gridless should be dim (opacity 0.2)
-      // Find the check marks that correspond to grid types — they are after the separator
-      expect(checks.length).toBeGreaterThanOrEqual(5)
+      // checks[0] = Show Grid (on), checks[1] = Snap to Grid (on)
+      // checks[2] = Square Grid, checks[3] = Hex Grid, checks[4] = Gridless
+      expect(checks.length).toBe(5)
+      expect(checks[0]).toHaveStyle({ opacity: 1 })  // Show Grid on
+      expect(checks[1]).toHaveStyle({ opacity: 1 })  // Snap to Grid on
+      expect(checks[2]).toHaveStyle({ opacity: 0 })  // Square Grid off (not active)
+      expect(checks[3]).toHaveStyle({ opacity: 1 })  // Hex Grid on (active)
+      expect(checks[4]).toHaveStyle({ opacity: 0 })  // Gridless off (not active)
+    })
+
+    it('only square grid has visible checkmark when grid type is square', async () => {
+      const user = userEvent.setup()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+
+      const checks = screen.getAllByText('✓')
+      // checks[2] = Square Grid, checks[3] = Hex Grid, checks[4] = Gridless
+      expect(checks[2]).toHaveStyle({ opacity: 1 })  // Square Grid on
+      expect(checks[3]).toHaveStyle({ opacity: 0 })  // Hex Grid off
+      expect(checks[4]).toHaveStyle({ opacity: 0 })  // Gridless off
+    })
+
+    it('only gridless has visible checkmark when grid type is gridless', async () => {
+      const user = userEvent.setup()
+      const gridlessSettings = { ...defaultSettings, gridType: 'gridless' as const }
+      render(<MenuBar settings={gridlessSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+
+      const checks = screen.getAllByText('✓')
+      expect(checks[2]).toHaveStyle({ opacity: 0 })  // Square Grid off
+      expect(checks[3]).toHaveStyle({ opacity: 0 })  // Hex Grid off
+      expect(checks[4]).toHaveStyle({ opacity: 1 })  // Gridless on
+    })
+
+    it('switches back to square grid when Square Grid is clicked', async () => {
+      const user = userEvent.setup()
+      const onSettingsChange = vi.fn()
+      const hexSettings = { ...defaultSettings, gridType: 'hex' as const }
+      render(<MenuBar settings={hexSettings} onSettingsChange={onSettingsChange} />)
+
+      await user.click(screen.getByText('File'))
+      await user.click(screen.getByText('Square Grid'))
+
+      expect(onSettingsChange).toHaveBeenCalledWith({
+        ...hexSettings,
+        gridType: 'square',
+      })
+    })
+  })
+
+  describe('menu close behaviour', () => {
+    it('closes menu when About Pulsar is clicked (action type)', async () => {
+      const user = userEvent.setup()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+      expect(screen.getByText('About Pulsar')).toBeInTheDocument()
+      await user.click(screen.getByText('About Pulsar'))
+
+      // Non-toggle items close the menu
+      expect(screen.queryByText('About Pulsar')).not.toBeInTheDocument()
+    })
+
+    it('grid type clicks keep menu open (toggle type)', async () => {
+      const user = userEvent.setup()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+      await user.click(screen.getByText('Hex Grid'))
+
+      // Toggle items should NOT close the menu
+      expect(screen.getByText('Hex Grid')).toBeInTheDocument()
+    })
+
+    it('clicking File again closes the menu', async () => {
+      const user = userEvent.setup()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+      expect(screen.getByText('Show Grid')).toBeInTheDocument()
+
+      await user.click(screen.getByText('File'))
+      expect(screen.queryByText('Show Grid')).not.toBeInTheDocument()
+    })
+
+    it('opening View closes File menu', async () => {
+      const user = userEvent.setup()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={() => {}} />)
+
+      await user.click(screen.getByText('File'))
+      expect(screen.getByText('Show Grid')).toBeInTheDocument()
+
+      await user.click(screen.getByText('View'))
+      expect(screen.queryByText('Show Grid')).not.toBeInTheDocument()
+      expect(screen.getByText('Dark Theme')).toBeInTheDocument()
+    })
+  })
+
+  describe('combined settings changes', () => {
+    it('can toggle snap off while keeping grid visible', async () => {
+      const user = userEvent.setup()
+      const onSettingsChange = vi.fn()
+      render(<MenuBar settings={defaultSettings} onSettingsChange={onSettingsChange} />)
+
+      await user.click(screen.getByText('File'))
+      await user.click(screen.getByText('Snap to Grid'))
+
+      expect(onSettingsChange).toHaveBeenCalledWith({
+        ...defaultSettings,
+        snapToGrid: false,
+      })
+    })
+
+    it('preserves other settings when changing grid type', async () => {
+      const user = userEvent.setup()
+      const onSettingsChange = vi.fn()
+      const customSettings = { ...defaultSettings, showGrid: false, snapToGrid: false }
+      render(<MenuBar settings={customSettings} onSettingsChange={onSettingsChange} />)
+
+      await user.click(screen.getByText('File'))
+      await user.click(screen.getByText('Hex Grid'))
+
+      expect(onSettingsChange).toHaveBeenCalledWith({
+        showGrid: false,
+        snapToGrid: false,
+        gridSize: 40,
+        gridType: 'hex',
+      })
     })
   })
 })

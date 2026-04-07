@@ -205,6 +205,68 @@ describe('Toolbar', () => {
     })
   })
 
+  describe('map tools integration', () => {
+    it('shows map tools when isMapBoard is true and in edit mode', () => {
+      renderToolbar({ isMapBoard: true, boardMode: 'edit' })
+      // MapToolbar renders terrain, wall, etc. within the toolbar
+      expect(screen.getByLabelText('Terrain')).toBeInTheDocument()
+      expect(screen.getByLabelText('Wall')).toBeInTheDocument()
+    })
+
+    it('hides map tools when isMapBoard is true but in view mode', () => {
+      renderToolbar({ isMapBoard: true, boardMode: 'view' })
+      expect(screen.queryByLabelText('Terrain')).not.toBeInTheDocument()
+    })
+
+    it('hides map tools when boardMode is edit but isMapBoard is false', () => {
+      renderToolbar({ isMapBoard: false, boardMode: 'edit' })
+      expect(screen.queryByLabelText('Terrain')).not.toBeInTheDocument()
+    })
+
+    it('passes map tool callbacks through to MapToolbar', async () => {
+      const user = userEvent.setup()
+      const onMapToolChange = vi.fn()
+      renderToolbar({
+        isMapBoard: true,
+        boardMode: 'edit',
+        onMapToolChange,
+      })
+
+      await user.click(screen.getByLabelText('Wall'))
+      expect(onMapToolChange).toHaveBeenCalledWith('wall')
+    })
+  })
+
+  describe('view mode tool restrictions', () => {
+    it('select and hand tools work in view mode', async () => {
+      const user = userEvent.setup()
+      const ctx = createMockEditorContext()
+      renderToolbar({ boardMode: 'view' }, ctx)
+
+      await user.click(screen.getByTestId('tool-hand'))
+      expect(ctx._mock.mockSetEdgelessTool).toHaveBeenCalledWith({ type: 'pan', panning: true })
+
+      ctx._mock.mockSetEdgelessTool.mockClear()
+      await user.click(screen.getByTestId('tool-select'))
+      expect(ctx._mock.mockSetEdgelessTool).toHaveBeenCalledWith({ type: 'default' })
+    })
+
+    it('drawing tools are completely absent in view mode (not just disabled)', () => {
+      renderToolbar({ boardMode: 'view' })
+      const editOnly = ['tool-rect', 'tool-ellipse', 'tool-line', 'tool-pen', 'tool-text', 'tool-note', 'tool-image']
+      for (const testId of editOnly) {
+        expect(screen.queryByTestId(testId)).not.toBeInTheDocument()
+      }
+    })
+
+    it('all 9 tools render in edit mode', () => {
+      renderToolbar({ boardMode: 'edit' })
+      const allTools = ['tool-select', 'tool-hand', 'tool-rect', 'tool-ellipse', 'tool-line', 'tool-pen', 'tool-text', 'tool-note', 'tool-image']
+      for (const testId of allTools) {
+        expect(screen.getByTestId(testId)).toBeInTheDocument()
+      }
+    })
+  })
   describe('edgeless root access', () => {
     it('queries the edgeless root via querySelector, not _edgelessRoot', async () => {
       const user = userEvent.setup()

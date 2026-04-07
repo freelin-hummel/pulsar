@@ -73,6 +73,51 @@ describe('MapToolbar', () => {
       await user.click(screen.getByLabelText('Terrain'))
       expect(screen.getByText('Terrain')).toBeInTheDocument()
     })
+
+    it('renders all 9 terrain swatches when terrain tool is active', async () => {
+      const user = userEvent.setup()
+      render(<MapToolbar {...defaultProps} />)
+      // Must click Terrain to open the internal palette state
+      await user.click(screen.getByLabelText('Terrain'))
+      // TERRAIN_SWATCHES has 9 entries
+      const swatches = ['Stone', 'Grass', 'Wood', 'Water', 'Sand', 'Dirt', 'Snow', 'Lava', 'Void']
+      for (const label of swatches) {
+        expect(screen.getByLabelText(label)).toBeInTheDocument()
+      }
+    })
+
+    it('calls onTerrainChange when a terrain swatch is clicked', async () => {
+      const user = userEvent.setup()
+      const onTerrainChange = vi.fn<(t: TerrainTextureId) => void>()
+      render(<MapToolbar {...defaultProps} onTerrainChange={onTerrainChange} />)
+
+      await user.click(screen.getByLabelText('Terrain'))
+      await user.click(screen.getByLabelText('Grass'))
+      expect(onTerrainChange).toHaveBeenCalledWith('grass')
+    })
+
+    it('highlights the selected terrain swatch', async () => {
+      const user = userEvent.setup()
+      render(<MapToolbar {...defaultProps} selectedTerrain="water" />)
+      // Open terrain palette
+      await user.click(screen.getByLabelText('Terrain'))
+      const waterBtn = screen.getByLabelText('Water')
+      // Selected swatch has accent outline
+      expect(waterBtn).toHaveStyle({ outline: '2px solid var(--color-accent)' })
+    })
+
+    it('hides terrain palette when switching to wall tool', async () => {
+      const user = userEvent.setup()
+      const onMapToolChange = vi.fn<(tool: MapTool | null) => void>()
+      render(<MapToolbar {...defaultProps} onMapToolChange={onMapToolChange} />)
+
+      await user.click(screen.getByLabelText('Terrain'))
+      expect(screen.getByText('Terrain')).toBeInTheDocument()
+
+      await user.click(screen.getByLabelText('Wall'))
+      // Terrain palette should close because wall doesn't have a palette
+      expect(screen.queryByText('Terrain')).not.toBeInTheDocument()
+    })
   })
 
   describe('object palette', () => {
@@ -83,6 +128,34 @@ describe('MapToolbar', () => {
 
       await user.click(screen.getByLabelText('Object'))
       expect(screen.getByText('Objects')).toBeInTheDocument()
+    })
+
+    it('renders all 8 object types when object tool is active', async () => {
+      const user = userEvent.setup()
+      render(<MapToolbar {...defaultProps} />)
+      await user.click(screen.getByLabelText('Object'))
+      const objects = ['Crate', 'Table', 'Barrel', 'Bookshelf', 'Chair', 'Chest', 'Pillar', 'Statue']
+      for (const label of objects) {
+        expect(screen.getByLabelText(label)).toBeInTheDocument()
+      }
+    })
+
+    it('calls onObjectChange when an object type is clicked', async () => {
+      const user = userEvent.setup()
+      const onObjectChange = vi.fn<(o: MapObjectType) => void>()
+      render(<MapToolbar {...defaultProps} onObjectChange={onObjectChange} />)
+
+      await user.click(screen.getByLabelText('Object'))
+      await user.click(screen.getByLabelText('Barrel'))
+      expect(onObjectChange).toHaveBeenCalledWith('barrel')
+    })
+
+    it('highlights the selected object type', async () => {
+      const user = userEvent.setup()
+      render(<MapToolbar {...defaultProps} selectedObject="chest" />)
+      await user.click(screen.getByLabelText('Object'))
+      const chestBtn = screen.getByLabelText('Chest')
+      expect(chestBtn).toHaveStyle({ background: 'var(--color-bg-active)' })
     })
   })
 

@@ -193,7 +193,7 @@ function MenuButton({
                   <span
                     style={{
                       ...styles.check,
-                      opacity: item.checked ? 1 : 0.2,
+                      opacity: item.checked ? 1 : 0,
                     }}
                   >
                     ✓
