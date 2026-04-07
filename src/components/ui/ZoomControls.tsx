@@ -10,18 +10,31 @@ import { useEditorContext } from '../../editor/context.js'
  * changes via the viewport API.
  */
 
-function getEdgelessRoot(editor: unknown): {
-  service?: {
-    viewport: {
-      zoom: number
-      setZoom: (zoom: number, center?: { x: number; y: number }) => void
-      center: [number, number]
-    }
-  }
-} | null {
+interface EdgelessViewport {
+  zoom: number
+  setZoom: (zoom: number, center?: { x: number; y: number }) => void
+  center: [number, number]
+}
+
+/**
+ * Safely retrieve the edgeless root's viewport from the editor container.
+ *
+ * The BlockSuite `service` getter throws when the Lit context (`std`) has not
+ * yet been injected (e.g. during initial mount or if the WebComponent hasn't
+ * fully connected). We catch that and return null so callers don't need to
+ * deal with unhandled errors on every poll tick.
+ */
+function getEdgelessViewport(editor: unknown): EdgelessViewport | null {
   const el = editor as HTMLElement | null
   if (!el || typeof el.querySelector !== 'function') return null
-  return el.querySelector('pulsar-edgeless-root') as unknown as ReturnType<typeof getEdgelessRoot>
+  const root = el.querySelector('pulsar-edgeless-root') as { service?: { viewport?: EdgelessViewport } } | null
+  if (!root) return null
+  try {
+    return root.service?.viewport ?? null
+  } catch {
+    // service getter throws if Lit context is not yet available
+    return null
+  }
 }
 
 interface ZoomControlsProps {
@@ -39,9 +52,9 @@ export function ZoomControls({ style }: ZoomControlsProps) {
     if (!editorCtx) return
 
     const interval = setInterval(() => {
-      const root = getEdgelessRoot(editorCtx.editor)
-      if (root?.service?.viewport) {
-        setZoomLevel(Math.round(root.service.viewport.zoom * 100))
+      const vp = getEdgelessViewport(editorCtx.editor)
+      if (vp) {
+        setZoomLevel(Math.round(vp.zoom * 100))
       }
     }, 200)
 
@@ -50,25 +63,25 @@ export function ZoomControls({ style }: ZoomControlsProps) {
 
   const handleZoomIn = useCallback(() => {
     if (!editorCtx) return
-    const root = getEdgelessRoot(editorCtx.editor)
-    if (!root?.service?.viewport) return
-    const newZoom = Math.min(root.service.viewport.zoom * 1.25, 5)
-    root.service.viewport.setZoom(newZoom)
+    const vp = getEdgelessViewport(editorCtx.editor)
+    if (!vp) return
+    const newZoom = Math.min(vp.zoom * 1.25, 5)
+    vp.setZoom(newZoom)
   }, [editorCtx])
 
   const handleZoomOut = useCallback(() => {
     if (!editorCtx) return
-    const root = getEdgelessRoot(editorCtx.editor)
-    if (!root?.service?.viewport) return
-    const newZoom = Math.max(root.service.viewport.zoom / 1.25, 0.1)
-    root.service.viewport.setZoom(newZoom)
+    const vp = getEdgelessViewport(editorCtx.editor)
+    if (!vp) return
+    const newZoom = Math.max(vp.zoom / 1.25, 0.1)
+    vp.setZoom(newZoom)
   }, [editorCtx])
 
   const handleFitToScreen = useCallback(() => {
     if (!editorCtx) return
-    const root = getEdgelessRoot(editorCtx.editor)
-    if (!root?.service?.viewport) return
-    root.service.viewport.setZoom(1)
+    const vp = getEdgelessViewport(editorCtx.editor)
+    if (!vp) return
+    vp.setZoom(1)
   }, [editorCtx])
 
   return (

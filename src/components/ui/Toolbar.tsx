@@ -51,7 +51,11 @@ function getEdgelessRoot(editor: unknown): {
 } | null {
   const el = editor as HTMLElement | null
   if (!el || typeof el.querySelector !== 'function') return null
-  return el.querySelector('pulsar-edgeless-root') as unknown as ReturnType<typeof getEdgelessRoot>
+  try {
+    return el.querySelector('pulsar-edgeless-root') as unknown as ReturnType<typeof getEdgelessRoot>
+  } catch {
+    return null
+  }
 }
 
 interface ToolbarProps {

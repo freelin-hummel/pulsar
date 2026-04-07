@@ -53,7 +53,23 @@ interface EdgelessRoot {
 function getEdgelessRoot(editor: unknown): EdgelessRoot | null {
   const el = editor as HTMLElement | null
   if (!el || typeof el.querySelector !== 'function') return null
-  return el.querySelector('pulsar-edgeless-root') as unknown as EdgelessRoot
+  try {
+    return el.querySelector('pulsar-edgeless-root') as unknown as EdgelessRoot
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Safely access the edgeless root's service, which may throw if the Lit
+ * context (`std`) has not yet been injected into the BlockComponent.
+ */
+function getService(root: EdgelessRoot): EdgelessRoot['service'] | null {
+  try {
+    return root.service ?? null
+  } catch {
+    return null
+  }
 }
 
 /**
@@ -66,11 +82,13 @@ export function createTerrainElement(
   cellSize: number,
 ): string | null {
   const root = getEdgelessRoot(editor)
-  if (!root?.service) return null
+  if (!root) return null
+  const svc = getService(root)
+  if (!svc) return null
 
   const color = TERRAIN_COLORS[textureId] ?? '#6b7280'
   try {
-    return root.service.addElement('shape', {
+    return svc.addElement('shape', {
       shapeType: 'rect',
       xywh: `[${cell.x - cellSize / 2},${cell.y - cellSize / 2},${cellSize},${cellSize}]`,
       fillColor: color,
@@ -94,7 +112,9 @@ export function createWallElement(
 ): string | null {
   if (points.length < 2) return null
   const root = getEdgelessRoot(editor)
-  if (!root?.service) return null
+  if (!root) return null
+  const svc = getService(root)
+  if (!svc) return null
 
   const strokeColor = wallType === 'cavern' ? '#8b6914' : '#4b5563'
   const strokeWidth = wallType === 'standard' ? 4 : 3
@@ -110,7 +130,7 @@ export function createWallElement(
     const w = Math.max(maxX - minX, strokeWidth)
     const h = Math.max(maxY - minY, strokeWidth)
 
-    return root.service.addElement('shape', {
+    return svc.addElement('shape', {
       shapeType: 'rect',
       xywh: `[${minX},${minY},${w},${h}]`,
       fillColor: strokeColor,
@@ -132,11 +152,13 @@ export function createDoorElement(
   point: GridPoint,
 ): string | null {
   const root = getEdgelessRoot(editor)
-  if (!root?.service) return null
+  if (!root) return null
+  const svc = getService(root)
+  if (!svc) return null
 
   const size = 16
   try {
-    return root.service.addElement('shape', {
+    return svc.addElement('shape', {
       shapeType: 'rect',
       xywh: `[${point.x - size / 2},${point.y - size / 2},${size},${size}]`,
       fillColor: '#f59e0b',
@@ -159,12 +181,14 @@ export function createObjectElement(
   objectType: MapObjectType,
 ): string | null {
   const root = getEdgelessRoot(editor)
-  if (!root?.service) return null
+  if (!root) return null
+  const svc = getService(root)
+  if (!svc) return null
 
   const color = OBJECT_COLORS[objectType] ?? '#6b7280'
   const size = 20
   try {
-    return root.service.addElement('shape', {
+    return svc.addElement('shape', {
       shapeType: 'rect',
       xywh: `[${point.x - size / 2},${point.y - size / 2},${size},${size}]`,
       fillColor: color,
@@ -188,11 +212,13 @@ export function createLightElement(
   color: string,
 ): string | null {
   const root = getEdgelessRoot(editor)
-  if (!root?.service) return null
+  if (!root) return null
+  const svc = getService(root)
+  if (!svc) return null
 
   const displaySize = Math.min(radius, 40)
   try {
-    return root.service.addElement('shape', {
+    return svc.addElement('shape', {
       shapeType: 'ellipse',
       xywh: `[${point.x - displaySize / 2},${point.y - displaySize / 2},${displaySize},${displaySize}]`,
       fillColor: color,
@@ -215,12 +241,14 @@ export function createLegendElement(
   number: number,
 ): string | null {
   const root = getEdgelessRoot(editor)
-  if (!root?.service) return null
+  if (!root) return null
+  const svc = getService(root)
+  if (!svc) return null
 
   const size = 24
   try {
     // Create a circle shape as the legend pin
-    return root.service.addElement('shape', {
+    return svc.addElement('shape', {
       shapeType: 'ellipse',
       xywh: `[${point.x - size / 2},${point.y - size / 2},${size},${size}]`,
       fillColor: '#dc2626',
