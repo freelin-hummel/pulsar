@@ -21,7 +21,7 @@ import './stats/column-stats-column.js';
 import { TableAreaSelection } from './types.js';
 
 const styles = css`
-  affine-data-view-table-group:hover .group-header-op {
+  pulsar-data-view-table-group:hover .group-header-op {
     visibility: visible;
     opacity: 1;
   }

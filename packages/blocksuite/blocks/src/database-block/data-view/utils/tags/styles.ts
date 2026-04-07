@@ -2,7 +2,7 @@ import { baseTheme } from '@toeverything/theme';
 import { css, unsafeCSS } from 'lit';
 
 export const styles = css`
-  affine-multi-tag-select {
+  pulsar-multi-tag-select {
     position: absolute;
     z-index: 2;
     border: 1px solid var(--pulsar-border-color);

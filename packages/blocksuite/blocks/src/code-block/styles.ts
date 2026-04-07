@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const codeBlockStyles = css`
-  affine-code {
+  pulsar-code {
     position: relative;
   }
 

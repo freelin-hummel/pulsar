@@ -27,7 +27,7 @@ import { DetailSelection } from './selection.js';
 
 const styles = css`
   ${unsafeCSS(dataViewCommonStyle('pulsar-data-view-record-detail'))}
-  affine-data-view-record-detail {
+  pulsar-data-view-record-detail {
     position: relative;
     display: flex;
     flex: 1;

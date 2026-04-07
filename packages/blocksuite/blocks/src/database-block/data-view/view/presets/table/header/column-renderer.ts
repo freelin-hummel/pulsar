@@ -17,7 +17,7 @@ export class DataViewColumnPreview extends SignalWatcher(
   WithDisposable(ShadowlessElement)
 ) {
   static override styles = css`
-    affine-data-view-column-preview {
+    pulsar-data-view-column-preview {
       pointer-events: none;
       display: block;
     }

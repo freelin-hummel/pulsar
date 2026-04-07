@@ -6,13 +6,13 @@ import { BaseCellRenderer } from '../../data-view/column/index.js';
 @customElement('data-view-header-area-icon')
 export class IconCell extends BaseCellRenderer<string> {
   static override styles = css`
-    affine-database-image-cell {
+    pulsar-database-image-cell {
       width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
     }
-    affine-database-image-cell img {
+    pulsar-database-image-cell img {
       width: 20px;
       height: 20px;
     }

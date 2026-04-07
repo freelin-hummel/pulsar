@@ -205,10 +205,10 @@ function getCellRect(element: Element, bounds?: DOMRect) {
     assertExists(table);
     bounds = table.getBoundingClientRect();
   }
-  // affine-database-block-row-cell
+  // pulsar-database-block-row-cell
   const col = element.parentElement;
   assertExists(col);
-  // affine-database-block-row
+  // pulsar-database-block-row
   const row = col.parentElement;
   assertExists(row);
   const colRect = col.getBoundingClientRect();

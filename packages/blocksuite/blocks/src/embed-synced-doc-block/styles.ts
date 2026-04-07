@@ -8,7 +8,7 @@ export const SYNCED_MIN_HEIGHT = 64;
 
 export const blockStyles = css`
   .edgeless-block-portal-embed
-    > affine-embed-synced-doc-block[data-nested-editor] {
+    > pulsar-embed-synced-doc-block[data-nested-editor] {
     position: relative;
     display: block;
     left: 0px;
@@ -33,7 +33,7 @@ export const blockStyles = css`
     border: 1px solid var(--pulsar-border-color);
   }
 
-  affine-embed-synced-doc-block[data-nested-editor]
+  pulsar-embed-synced-doc-block[data-nested-editor]
     .pulsar-embed-synced-doc-container.page {
     padding: 0 24px;
   }

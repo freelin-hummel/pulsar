@@ -50,7 +50,7 @@ const playCheckAnimation = async (
 @customElement('pulsar-database-checkbox-cell')
 export class CheckboxCell extends BaseCellRenderer<boolean> {
   static override styles = css`
-    affine-database-checkbox-cell {
+    pulsar-database-checkbox-cell {
       display: block;
       width: 100%;
       cursor: pointer;

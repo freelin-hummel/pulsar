@@ -59,11 +59,11 @@ export const styles = css`
     border: none;
   }
 
-  .embed-html-block-iframe-wrapper affine-menu {
+  .embed-html-block-iframe-wrapper pulsar-menu {
     min-width: 296px;
   }
 
-  .embed-html-block-iframe-wrapper affine-menu .settings-header {
+  .embed-html-block-iframe-wrapper pulsar-menu .settings-header {
     padding: 7px 12px;
     font-weight: 500;
     font-size: var(--pulsar-font-xs);

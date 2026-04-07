@@ -101,11 +101,11 @@ export const linkPopupStyle = css`
 
   .pulsar-link-popover-container {
     z-index: var(--pulsar-z-index-popover);
-    animation: affine-popover-fade-in 0.2s ease;
+    animation: pulsar-popover-fade-in 0.2s ease;
     position: absolute;
   }
 
-  @keyframes affine-popover-fade-in {
+  @keyframes pulsar-popover-fade-in {
     from {
       opacity: 0;
       transform: translateY(-3px);

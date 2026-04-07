@@ -330,7 +330,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
 
   tryFocusEnd() {
     const paragraphOrLists = Array.from(
-      this.querySelectorAll<BlockComponent>('pulsar-paragraph, affine-list')
+      this.querySelectorAll<BlockComponent>('pulsar-paragraph, pulsar-list')
     );
     const last = paragraphOrLists.at(-1);
     if (last) {

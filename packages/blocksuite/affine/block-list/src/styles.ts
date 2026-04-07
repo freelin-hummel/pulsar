@@ -71,7 +71,7 @@ export const toggleStyles = css`
 `;
 
 export const listBlockStyles = css`
-  affine-list {
+  pulsar-list {
     display: block;
     font-size: var(--pulsar-font-base);
   }

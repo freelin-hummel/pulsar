@@ -538,7 +538,7 @@ export class EmbedSyncedDocBlockComponent extends EmbedBlockComponent<
   accessor depth = 0;
 
   @query(
-    ':scope > .pulsar-block-component > .embed-block-container > affine-embed-synced-doc-card'
+    ':scope > .pulsar-block-component > .embed-block-container > pulsar-embed-synced-doc-card'
   )
   accessor syncedDocCard: EmbedSyncedDocCard | null = null;
 

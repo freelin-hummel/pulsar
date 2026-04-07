@@ -22,7 +22,7 @@ import { KanbanGroup } from './group.js';
 import './header.js';
 
 const styles = css`
-  affine-data-view-kanban {
+  pulsar-data-view-kanban {
     user-select: none;
     overflow: hidden;
     display: flex;

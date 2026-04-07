@@ -21,7 +21,7 @@ import type { KanbanViewSelection } from './types.js';
 import { renderUniLit } from '../../../utils/uni-component/uni-component.js';
 
 const styles = css`
-  affine-data-view-kanban-cell {
+  pulsar-data-view-kanban-cell {
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -31,11 +31,11 @@ const styles = css`
     box-sizing: border-box;
   }
 
-  affine-data-view-kanban-cell:hover {
+  pulsar-data-view-kanban-cell:hover {
     background-color: var(--pulsar-hover-color);
   }
 
-  affine-data-view-kanban-cell .icon {
+  pulsar-data-view-kanban-cell .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@ const styles = css`
     height: var(--data-view-cell-text-line-height);
   }
 
-  affine-data-view-kanban-cell .icon svg {
+  pulsar-data-view-kanban-cell .icon svg {
     width: 16px;
     height: 16px;
     fill: var(--pulsar-icon-color);

@@ -130,7 +130,7 @@ export class RecordField extends SignalWatcher(
   };
 
   static override styles = css`
-    affine-data-view-record-field {
+    pulsar-data-view-record-field {
       display: flex;
       gap: 12px;
     }
@@ -154,14 +154,14 @@ export class RecordField extends SignalWatcher(
       background-color: var(--pulsar-hover-color);
     }
 
-    affine-data-view-record-field .icon {
+    pulsar-data-view-record-field .icon {
       display: flex;
       align-items: center;
       width: 16px;
       height: 16px;
     }
 
-    affine-data-view-record-field .icon svg {
+    pulsar-data-view-record-field .icon svg {
       width: 16px;
       height: 16px;
       fill: var(--pulsar-icon-color);

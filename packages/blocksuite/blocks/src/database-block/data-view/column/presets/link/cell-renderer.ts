@@ -46,12 +46,12 @@ export class LinkCell extends BaseCellRenderer<string> {
   private preValue?: string;
 
   static override styles = css`
-    affine-database-link-cell {
+    pulsar-database-link-cell {
       width: 100%;
       user-select: none;
     }
 
-    affine-database-link-cell:hover .pulsar-database-link-icon {
+    pulsar-database-link-cell:hover .pulsar-database-link-icon {
       visibility: visible;
     }
 
@@ -68,7 +68,7 @@ export class LinkCell extends BaseCellRenderer<string> {
       word-break: break-all;
     }
 
-    affine-database-link-node {
+    pulsar-database-link-node {
       flex: 1;
       word-break: break-all;
     }
@@ -208,7 +208,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
   };
 
   static override styles = css`
-    affine-database-link-cell-editing {
+    pulsar-database-link-cell-editing {
       width: 100%;
       cursor: text;
     }

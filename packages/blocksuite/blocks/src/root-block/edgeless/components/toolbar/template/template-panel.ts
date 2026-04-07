@@ -176,7 +176,7 @@ export class EdgelessTemplatePanel extends WithDisposable(LitElement) {
       display: none;
     }
 
-    .template-item.loading > affine-template-loading {
+    .template-item.loading > pulsar-template-loading {
       position: absolute;
       left: 50%;
       top: 50%;

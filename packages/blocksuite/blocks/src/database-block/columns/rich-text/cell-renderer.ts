@@ -70,7 +70,7 @@ function toggleStyle(
 @customElement('pulsar-database-rich-text-cell')
 export class RichTextCell extends BaseCellRenderer<Text> {
   static override styles = css`
-    affine-database-rich-text-cell {
+    pulsar-database-rich-text-cell {
       display: flex;
       align-items: center;
       width: 100%;
@@ -246,7 +246,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
   };
 
   static override styles = css`
-    affine-database-rich-text-cell-editing {
+    pulsar-database-rich-text-cell-editing {
       display: flex;
       align-items: center;
       width: 100%;

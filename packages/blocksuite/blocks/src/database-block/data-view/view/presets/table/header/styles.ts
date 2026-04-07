@@ -8,7 +8,7 @@ import {
 } from '../consts.js';
 
 export const styles = css`
-    affine-database-column-header {
+    pulsar-database-column-header {
         display: block;
         background-color: var(--pulsar-background-primary-color);
         position: relative;

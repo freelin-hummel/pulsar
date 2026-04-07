@@ -63,7 +63,7 @@ export class DataViewRenderer extends SignalWatcher(
 
   static override styles = css`
     ${unsafeCSS(dataViewCommonStyle('pulsar-data-view-renderer'))}
-    affine-data-view-renderer {
+    pulsar-data-view-renderer {
       background-color: var(--pulsar-background-primary-color);
       display: contents;
     }

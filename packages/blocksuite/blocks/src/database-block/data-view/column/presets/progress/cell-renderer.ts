@@ -9,13 +9,13 @@ import { createFromBaseCellRenderer } from '../../renderer.js';
 import { progressColumnModelConfig } from './define.js';
 
 const styles = css`
-  affine-database-progress-cell-editing {
+  pulsar-database-progress-cell-editing {
     display: block;
     width: 100%;
     padding: 0 4px;
   }
 
-  affine-database-progress-cell {
+  pulsar-database-progress-cell {
     display: block;
     width: 100%;
     padding: 0 4px;

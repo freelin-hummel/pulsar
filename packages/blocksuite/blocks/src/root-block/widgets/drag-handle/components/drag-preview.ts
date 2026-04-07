@@ -25,7 +25,7 @@ export class DragPreview extends ShadowlessElement {
 
   override render() {
     return html`<style>
-        affine-drag-preview {
+        pulsar-drag-preview {
           box-sizing: border-box;
           position: absolute;
           display: block;

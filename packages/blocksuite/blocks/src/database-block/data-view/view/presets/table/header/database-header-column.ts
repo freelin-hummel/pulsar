@@ -302,7 +302,7 @@ export class DatabaseHeaderColumn extends SignalWatcher(
   private widthDragBar = createRef();
 
   static override styles = css`
-    affine-database-header-column {
+    pulsar-database-header-column {
       display: flex;
     }
 

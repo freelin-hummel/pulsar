@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const paragraphBlockStyles = css`
-  affine-paragraph {
+  pulsar-paragraph {
     box-sizing: border-box;
     display: block;
     font-size: var(--pulsar-font-base);
@@ -15,7 +15,7 @@ export const paragraphBlockStyles = css`
     position: relative;
   }
 
-  affine-paragraph code {
+  pulsar-paragraph code {
     font-size: calc(var(--pulsar-font-base) - 3px);
     padding: 0px 4px 2px;
   }

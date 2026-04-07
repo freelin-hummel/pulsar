@@ -28,8 +28,8 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
   ImageBlockService
 > {
   static override styles = css`
-    affine-edgeless-image .resizable-img,
-    affine-edgeless-image .resizable-img img {
+    pulsar-edgeless-image .resizable-img,
+    pulsar-edgeless-image .resizable-img img {
       width: 100%;
       height: 100%;
     }

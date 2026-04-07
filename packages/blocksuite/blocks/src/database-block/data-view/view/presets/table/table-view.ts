@@ -29,14 +29,14 @@ import {
 } from './types.js';
 
 const styles = css`
-  affine-database-table {
+  pulsar-database-table {
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
-  affine-database-table * {
+  pulsar-database-table * {
     box-sizing: border-box;
   }
   .pulsar-database-table {

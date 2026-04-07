@@ -15,7 +15,7 @@ export function createDefaultDoc(
     title,
   });
 
-  // @ts-ignore FIXME: will be fixed when surface model migrated to affine-model
+  // @ts-ignore FIXME: will be fixed when surface model migrated to pulsar-model
   doc.addBlock('pulsar:surface', {}, rootId);
   const noteId = doc.addBlock('pulsar:note', {}, rootId);
   doc.addBlock('pulsar:paragraph', {}, noteId);

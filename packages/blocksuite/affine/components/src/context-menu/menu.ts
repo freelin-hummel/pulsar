@@ -340,7 +340,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
   private subMenu?: HTMLElement;
 
   static override styles = css`
-    affine-menu {
+    pulsar-menu {
       font-family: var(--pulsar-font-family);
       display: flex;
       flex-direction: column;
@@ -354,7 +354,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       z-index: 999;
     }
 
-    affine-menu * {
+    pulsar-menu * {
       box-sizing: border-box;
     }
 

@@ -16,7 +16,7 @@ export class ImageBlockPageComponent extends WithDisposable(ShadowlessElement) {
   private _isDragging = false;
 
   static override styles = css`
-    affine-page-image {
+    pulsar-page-image {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -26,12 +26,12 @@ export class ImageBlockPageComponent extends WithDisposable(ShadowlessElement) {
       cursor: pointer;
     }
 
-    affine-page-image .resizable-img {
+    pulsar-page-image .resizable-img {
       position: relative;
       max-width: 100%;
     }
 
-    affine-page-image .resizable-img img {
+    pulsar-page-image .resizable-img img {
       width: 100%;
       height: 100%;
     }

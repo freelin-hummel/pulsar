@@ -10,7 +10,7 @@ import type { SelectTag } from './multi-tag-select.js';
 @customElement('pulsar-multi-tag-view')
 export class MultiTagView extends WithDisposable(ShadowlessElement) {
   static override styles = css`
-    affine-multi-tag-view {
+    pulsar-multi-tag-view {
       display: flex;
       align-items: center;
       width: 100%;

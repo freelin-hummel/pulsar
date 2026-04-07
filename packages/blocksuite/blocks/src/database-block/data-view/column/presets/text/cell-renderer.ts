@@ -10,7 +10,7 @@ import { textColumnModelConfig } from './define.js';
 @customElement('pulsar-database-text-cell')
 export class TextCell extends BaseCellRenderer<string> {
   static override styles = css`
-    affine-database-text-cell {
+    pulsar-database-text-cell {
       display: block;
       width: 100%;
       height: 100%;
@@ -56,7 +56,7 @@ export class TextCellEditing extends BaseCellRenderer<string> {
   };
 
   static override styles = css`
-    affine-database-text-cell-editing {
+    pulsar-database-text-cell-editing {
       display: block;
       width: 100%;
       height: 100%;

@@ -29,7 +29,7 @@ export class DatabaseCellContainer extends SignalWatcher(
   private _cell = createRef<DataViewCellLifeCycle>();
 
   static override styles = css`
-    affine-database-cell-container {
+    pulsar-database-cell-container {
       display: flex;
       align-items: start;
       width: 100%;
@@ -38,11 +38,11 @@ export class DatabaseCellContainer extends SignalWatcher(
       outline: none;
     }
 
-    affine-database-cell-container * {
+    pulsar-database-cell-container * {
       box-sizing: border-box;
     }
 
-    affine-database-cell-container uni-lit > *:first-child {
+    pulsar-database-cell-container uni-lit > *:first-child {
       padding: 8px;
     }
   `;

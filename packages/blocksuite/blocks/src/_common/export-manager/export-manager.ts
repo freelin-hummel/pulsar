@@ -214,7 +214,7 @@ export class ExportManager {
           (element.classList.contains('expand') &&
             element.parentElement?.classList.contains('meta-data'))
         ) {
-          // the close and expand buttons in affine-doc-meta-data is not needed to be showed
+          // the close and expand buttons in pulsar-doc-meta-data is not needed to be showed
           return true;
         } else {
           return false;

@@ -670,7 +670,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   }
 
   /**
-   * Adds a new note with the given point on the affine-editor-container.
+   * Adds a new note with the given point on the pulsar-editor-container.
    *
    * @param: point Point
    * @returns: The id of new note

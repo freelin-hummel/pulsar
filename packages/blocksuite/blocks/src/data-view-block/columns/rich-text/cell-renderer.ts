@@ -74,7 +74,7 @@ export class RichTextCell extends BaseCellRenderer<Y.Text> {
   };
 
   static override styles = css`
-    affine-data-view-rich-text-cell {
+    pulsar-data-view-rich-text-cell {
       display: flex;
       align-items: center;
       width: 100%;
@@ -255,7 +255,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
   };
 
   static override styles = css`
-    affine-data-view-rich-text-cell-editing {
+    pulsar-data-view-rich-text-cell-editing {
       display: flex;
       align-items: center;
       width: 100%;
