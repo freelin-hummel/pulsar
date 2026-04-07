@@ -103,7 +103,7 @@ export function isEmbeddedBlock(
   element: BlockModel | BlockSuite.EdgelessModel | null
 ): element is EmbedBlockModel {
   return (
-    !!element && 'flavour' in element && /affine:embed-*/.test(element.flavour)
+    !!element && 'flavour' in element && /pulsar:embed-*/.test(element.flavour)
   );
 }
 

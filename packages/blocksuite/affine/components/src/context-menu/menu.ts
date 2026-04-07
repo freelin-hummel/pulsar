@@ -340,7 +340,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
   private subMenu?: HTMLElement;
 
   static override styles = css`
-    affine-menu {
+    pulsar-menu {
       font-family: var(--pulsar-font-family);
       display: flex;
       flex-direction: column;
@@ -354,26 +354,26 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       z-index: 999;
     }
 
-    affine-menu * {
+    pulsar-menu * {
       box-sizing: border-box;
     }
 
-    .affine-menu-body {
+    .pulsar-menu-body {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
 
-    .affine-menu-header {
+    .pulsar-menu-header {
       display: flex;
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
     }
 
-    /* .affine-menu-header .icon {
+    /* .pulsar-menu-header .icon {
     } */
-    .affine-menu-header input {
+    .pulsar-menu-header input {
       flex: 1;
       border-radius: 4px;
       outline: none;
@@ -383,15 +383,15 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       border: 1px solid var(--pulsar-border-color);
     }
 
-    .affine-menu-header input::placeholder {
+    .pulsar-menu-header input::placeholder {
       color: var(--pulsar-placeholder-color);
     }
 
-    .affine-menu-header input:focus {
+    .pulsar-menu-header input:focus {
       border: 1px solid var(--pulsar-primary-color);
     }
 
-    .affine-menu-action {
+    .pulsar-menu-action {
       padding: 4px 12px;
       cursor: pointer;
       display: flex;
@@ -399,12 +399,12 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       border-radius: 4px;
     }
 
-    .affine-menu-action svg {
+    .pulsar-menu-action svg {
       width: 20px;
       height: 20px;
     }
 
-    .affine-menu-action .icon {
+    .pulsar-menu-action .icon {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -412,7 +412,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       fill: var(--pulsar-icon-color);
     }
 
-    .affine-menu-action .content {
+    .pulsar-menu-action .content {
       border-radius: 4px;
       cursor: pointer;
       white-space: nowrap;
@@ -425,24 +425,24 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       gap: 8px;
     }
 
-    .affine-menu-action.selected {
+    .pulsar-menu-action.selected {
       background-color: var(--pulsar-hover-color);
     }
 
-    .affine-menu-action.selected.delete-item {
+    .pulsar-menu-action.selected.delete-item {
       background-color: var(--pulsar-background-error-color);
       color: var(--pulsar-error-color);
     }
 
-    .affine-menu-action.selected.delete-item .icon > svg {
+    .pulsar-menu-action.selected.delete-item .icon > svg {
       color: var(--pulsar-error-color);
     }
 
-    .affine-menu-action.selected-item {
+    .pulsar-menu-action.selected-item {
       color: var(--pulsar-text-emphasis-color);
     }
 
-    .affine-menu-action.selected-item .icon {
+    .pulsar-menu-action.selected-item .icon {
       color: var(--pulsar-text-emphasis-color);
       fill: currentColor;
     }
@@ -461,7 +461,7 @@ export class MenuComponent<_T> extends WithDisposable(ShadowlessElement) {
       margin-top: 8px;
     }
 
-    .affine-menu-action-text {
+    .pulsar-menu-action-text {
       flex: 1;
       padding: 0 4px;
     }

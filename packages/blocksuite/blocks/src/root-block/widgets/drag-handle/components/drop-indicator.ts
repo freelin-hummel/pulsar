@@ -7,7 +7,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 @customElement('pulsar-drop-indicator')
 export class DropIndicator extends LitElement {
   static override styles = css`
-    .affine-drop-indicator {
+    .pulsar-drop-indicator {
       position: absolute;
       top: 0;
       left: 0;

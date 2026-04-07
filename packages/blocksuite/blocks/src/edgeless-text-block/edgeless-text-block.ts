@@ -275,7 +275,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
       transform: `rotate(${rotate}deg)`,
       transformOrigin: 'center',
       padding: '5px 10px',
-      border: `1px solid ${this._editing ? 'var(--affine—primary—color, #1e96eb)' : 'transparent'}`,
+      border: `1px solid ${this._editing ? 'var(--pulsar-primary-color, #1e96eb)' : 'transparent'}`,
       borderRadius: '4px',
       boxSizing: 'border-box',
       boxShadow: this._editing
@@ -330,7 +330,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
 
   tryFocusEnd() {
     const paragraphOrLists = Array.from(
-      this.querySelectorAll<BlockComponent>('pulsar-paragraph, affine-list')
+      this.querySelectorAll<BlockComponent>('pulsar-paragraph, pulsar-list')
     );
     const last = paragraphOrLists.at(-1);
     if (last) {
@@ -369,7 +369,7 @@ export class EdgelessTextBlockComponent extends GfxBlockComponent<
   @query('.edgeless-text-block-container')
   private accessor _textContainer!: HTMLDivElement;
 
-  @query('.affine-block-children-container')
+  @query('.pulsar-block-children-container')
   accessor childrenContainer!: HTMLDivElement;
 }
 

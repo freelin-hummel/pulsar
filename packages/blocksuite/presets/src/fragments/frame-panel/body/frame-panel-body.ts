@@ -248,7 +248,7 @@ export class FramePanelBody extends WithDisposable(ShadowlessElement) {
       frameItem => [frameItem.frame.id, frameItem.cardIndex].join('-'),
       frameItem => {
         const { frame, frameIndex, cardIndex } = frameItem;
-        return html`<affine-frame-card
+        return html`<pulsar-frame-card
           data-frame-id=${frame.id}
           .edgeless=${this.edgeless}
           .doc=${this.doc}
@@ -264,7 +264,7 @@ export class FramePanelBody extends WithDisposable(ShadowlessElement) {
           @select=${this._selectFrame}
           @fitview=${this._fitToElement}
           @drag=${this._drag}
-        ></affine-frame-card>`;
+        ></pulsar-frame-card>`;
       }
     )}`;
 

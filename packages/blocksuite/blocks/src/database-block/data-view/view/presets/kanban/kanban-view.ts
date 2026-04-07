@@ -22,14 +22,14 @@ import { KanbanGroup } from './group.js';
 import './header.js';
 
 const styles = css`
-  affine-data-view-kanban {
+  pulsar-data-view-kanban {
     user-select: none;
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
 
-  .affine-data-view-kanban-groups {
+  .pulsar-data-view-kanban-groups {
     position: relative;
     z-index: 1;
     display: flex;
@@ -40,34 +40,34 @@ const styles = css`
     overflow-y: hidden;
   }
 
-  .affine-data-view-kanban-groups:hover {
+  .pulsar-data-view-kanban-groups:hover {
     padding-bottom: 0px;
   }
 
-  .affine-data-view-kanban-groups::-webkit-scrollbar {
+  .pulsar-data-view-kanban-groups::-webkit-scrollbar {
     -webkit-appearance: none;
     display: block;
   }
 
-  .affine-data-view-kanban-groups::-webkit-scrollbar:horizontal {
+  .pulsar-data-view-kanban-groups::-webkit-scrollbar:horizontal {
     height: 4px;
   }
 
-  .affine-data-view-kanban-groups::-webkit-scrollbar-thumb {
+  .pulsar-data-view-kanban-groups::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background-color: transparent;
   }
 
-  .affine-data-view-kanban-groups:hover::-webkit-scrollbar:horizontal {
+  .pulsar-data-view-kanban-groups:hover::-webkit-scrollbar:horizontal {
     height: 8px;
   }
 
-  .affine-data-view-kanban-groups:hover::-webkit-scrollbar-thumb {
+  .pulsar-data-view-kanban-groups:hover::-webkit-scrollbar-thumb {
     border-radius: 16px;
     background-color: var(--pulsar-black-30);
   }
 
-  .affine-data-view-kanban-groups:hover::-webkit-scrollbar-track {
+  .pulsar-data-view-kanban-groups:hover::-webkit-scrollbar-track {
     background-color: var(--pulsar-hover-color);
   }
 
@@ -225,12 +225,12 @@ export class DataViewKanban extends DataViewBase<
           groups,
           group => group.key,
           group => {
-            return html` <affine-data-view-kanban-group
+            return html` <pulsar-data-view-kanban-group
               data-key="${group.key}"
               .dataViewEle="${this.dataViewEle}"
               .view="${this.view}"
               .group="${group}"
-            ></affine-data-view-kanban-group>`;
+            ></pulsar-data-view-kanban-group>`;
           }
         )}
         ${this.renderAddGroup()}
@@ -246,7 +246,7 @@ export class DataViewKanban extends DataViewBase<
     return this.view.groupManager;
   }
 
-  @query('.affine-data-view-kanban-groups')
+  @query('.pulsar-data-view-kanban-groups')
   accessor groups!: HTMLElement;
 }
 

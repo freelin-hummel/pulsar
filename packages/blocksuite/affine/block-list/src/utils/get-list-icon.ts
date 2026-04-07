@@ -39,7 +39,7 @@ export function getListIcon(
     case 'numbered':
       return html`<div
         contenteditable="false"
-        class="pulsar-list-block__prefix affine-list-block__numbered"
+        class="pulsar-list-block__prefix pulsar-list-block__numbered"
         @click=${onClick}
       >
         ${model.order ? getNumberPrefix(model.order, deep) : '1.'}
@@ -47,7 +47,7 @@ export function getListIcon(
     case 'todo':
       return html`<div
         contenteditable="false"
-        class=${`pulsar-list-block__prefix affine-list-block__todo-prefix ${model.doc.readonly ? 'readonly' : ''}`}
+        class=${`pulsar-list-block__prefix pulsar-list-block__todo-prefix ${model.doc.readonly ? 'readonly' : ''}`}
         @click=${onClick}
       >
         ${model.checked ? checkboxChecked() : checkboxUnchecked()}

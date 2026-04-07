@@ -125,7 +125,7 @@ export class AttachmentBlockService extends BlockService {
 
         return convertDragPreviewDocToEdgeless({
           blockComponent,
-          cssSelector: '.affine-attachment-container',
+          cssSelector: '.pulsar-attachment-container',
           width: EMBED_CARD_WIDTH[style],
           height: EMBED_CARD_HEIGHT[style],
           ...props,

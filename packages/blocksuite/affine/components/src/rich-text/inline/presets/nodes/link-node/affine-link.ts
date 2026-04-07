@@ -55,7 +55,7 @@ export class PulsarLink extends ShadowlessElement {
   );
 
   static override styles = css`
-    affine-link a:hover [data-v-text='true'] {
+    pulsar-link a:hover [data-v-text='true'] {
       text-decoration: underline;
     }
   `;

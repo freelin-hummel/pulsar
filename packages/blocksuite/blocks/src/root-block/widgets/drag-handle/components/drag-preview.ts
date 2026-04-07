@@ -25,7 +25,7 @@ export class DragPreview extends ShadowlessElement {
 
   override render() {
     return html`<style>
-        affine-drag-preview {
+        pulsar-drag-preview {
           box-sizing: border-box;
           position: absolute;
           display: block;
@@ -45,7 +45,7 @@ export class DragPreview extends ShadowlessElement {
           z-index: 3;
         }
 
-        .affine-drag-preview-grabbing * {
+        .pulsar-drag-preview-grabbing * {
           cursor: grabbing !important;
         }</style
       >${this.template}`;

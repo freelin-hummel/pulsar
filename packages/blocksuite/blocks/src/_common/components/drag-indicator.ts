@@ -7,7 +7,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 @customElement('pulsar-drag-indicator')
 export class DragIndicator extends LitElement {
   static override styles = css`
-    .affine-drag-indicator {
+    .pulsar-drag-indicator {
       position: absolute;
       top: 0;
       left: 0;

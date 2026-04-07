@@ -145,13 +145,13 @@ export class OutlinePanel extends SignalWatcher(WithDisposable(LitElement)) {
 
     return html`
       <div class="outline-panel-container">
-        <affine-outline-panel-header
+        <pulsar-outline-panel-header
           .showPreviewIcon=${this._showPreviewIcon}
           .enableNotesSorting=${this._enableNotesSorting}
           .toggleShowPreviewIcon=${this._toggleShowPreviewIcon}
           .toggleNotesSorting=${this._toggleNotesSorting}
-        ></affine-outline-panel-header>
-        <affine-outline-panel-body
+        ></pulsar-outline-panel-header>
+        <pulsar-outline-panel-body
           class="outline-panel-body"
           .doc=${this.doc}
           .fitPadding=${this.fitPadding}
@@ -164,12 +164,12 @@ export class OutlinePanel extends SignalWatcher(WithDisposable(LitElement)) {
           .noticeVisible=${this._noticeVisible}
           .setNoticeVisibility=${this._setNoticeVisibility}
         >
-        </affine-outline-panel-body>
-        <affine-outline-notice
+        </pulsar-outline-panel-body>
+        <pulsar-outline-notice
           .noticeVisible=${this._noticeVisible}
           .toggleNotesSorting=${this._toggleNotesSorting}
           .setNoticeVisibility=${this._setNoticeVisibility}
-        ></affine-outline-notice>
+        ></pulsar-outline-notice>
       </div>
     `;
   }

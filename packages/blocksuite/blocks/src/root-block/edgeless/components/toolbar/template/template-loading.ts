@@ -4,7 +4,7 @@ import { customElement } from 'lit/decorators.js';
 @customElement('pulsar-template-loading')
 export class PulsarTemplateLoading extends LitElement {
   static override styles = css`
-    @keyframes affine-template-block-rotate {
+    @keyframes pulsar-template-block-rotate {
       from {
         rotate: 0deg;
       }
@@ -13,13 +13,13 @@ export class PulsarTemplateLoading extends LitElement {
       }
     }
 
-    .affine-template-block-container {
+    .pulsar-template-block-container {
       width: 20px;
       height: 20px;
       overflow: hidden;
     }
 
-    .affine-template-block-loading {
+    .pulsar-template-block-loading {
       display: inline-block;
       width: 20px;
       height: 20px;
@@ -29,10 +29,10 @@ export class PulsarTemplateLoading extends LitElement {
         rgba(0, 0, 0, 0.1) 90deg 360deg
       );
       border-radius: 50%;
-      animation: affine-template-block-rotate 1s infinite ease-in;
+      animation: pulsar-template-block-rotate 1s infinite ease-in;
     }
 
-    .affine-template-block-loading::before {
+    .pulsar-template-block-loading::before {
       content: '';
       width: 14px;
       height: 14px;

@@ -94,4 +94,29 @@ export const BuiltInComponents = {
       properties: {} as Record<string, unknown>,
     }),
   }),
+
+  /**
+   * BoardType component - identifies the board kind and relationships.
+   * Attached to the root page entity of each board.
+   */
+  BoardType: defineComponent({
+    name: 'board-type',
+    defaults: () => ({
+      kind: 'scene' as string,
+      parentRefs: [] as string[],
+      childRefs: [] as string[],
+    }),
+  }),
+
+  /**
+   * BoardMode component - edit/view mode and user role.
+   * Server-authoritative — only the GM can toggle mode.
+   */
+  BoardMode: defineComponent({
+    name: 'board-mode',
+    defaults: () => ({
+      mode: 'edit' as string,
+      role: 'gm' as string,
+    }),
+  }),
 } as const

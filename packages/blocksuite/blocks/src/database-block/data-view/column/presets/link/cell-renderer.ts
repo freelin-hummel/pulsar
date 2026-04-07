@@ -46,16 +46,16 @@ export class LinkCell extends BaseCellRenderer<string> {
   private preValue?: string;
 
   static override styles = css`
-    affine-database-link-cell {
+    pulsar-database-link-cell {
       width: 100%;
       user-select: none;
     }
 
-    affine-database-link-cell:hover .affine-database-link-icon {
+    pulsar-database-link-cell:hover .pulsar-database-link-icon {
       visibility: visible;
     }
 
-    .affine-database-link {
+    .pulsar-database-link {
       display: flex;
       position: relative;
       align-items: center;
@@ -68,12 +68,12 @@ export class LinkCell extends BaseCellRenderer<string> {
       word-break: break-all;
     }
 
-    affine-database-link-node {
+    pulsar-database-link-node {
       flex: 1;
       word-break: break-all;
     }
 
-    .affine-database-link-icon {
+    .pulsar-database-link-icon {
       position: absolute;
       right: 0;
       display: flex;
@@ -83,11 +83,11 @@ export class LinkCell extends BaseCellRenderer<string> {
       background: var(--pulsar-background-primary-color);
       border-radius: 4px;
     }
-    .affine-database-link-icon:hover {
+    .pulsar-database-link-icon:hover {
       background: var(--pulsar-hover-color);
     }
 
-    .affine-database-link-icon svg {
+    .pulsar-database-link-icon svg {
       width: 16px;
       height: 16px;
       fill: var(--pulsar-icon-color);
@@ -135,9 +135,9 @@ export class LinkCell extends BaseCellRenderer<string> {
               @click="${this.openDoc}"
               >${docName}</span
             >`
-          : html`<affine-database-link-node
+          : html`<pulsar-database-link-node
               .link="${linkText}"
-            ></affine-database-link-node>`}
+            ></pulsar-database-link-node>`}
         <div class="pulsar-database-link-icon" @click="${this._onEdit}">
           ${PenIcon()}
         </div>
@@ -208,12 +208,12 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
   };
 
   static override styles = css`
-    affine-database-link-cell-editing {
+    pulsar-database-link-cell-editing {
       width: 100%;
       cursor: text;
     }
 
-    .affine-database-link-editing {
+    .pulsar-database-link-editing {
       display: flex;
       align-items: center;
       width: 100%;
@@ -228,7 +228,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
       word-break: break-all;
     }
 
-    .affine-database-link-editing:focus {
+    .pulsar-database-link-editing:focus {
       outline: none;
     }
   `;
@@ -252,7 +252,7 @@ export class LinkCellEditing extends BaseCellRenderer<string> {
     />`;
   }
 
-  @query('.affine-database-link-editing')
+  @query('.pulsar-database-link-editing')
   private accessor _container!: HTMLInputElement;
 }
 

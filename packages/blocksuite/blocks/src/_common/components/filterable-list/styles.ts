@@ -16,7 +16,7 @@ export const filterableListStyles = css`
     z-index: var(--pulsar-z-index-popover);
   }
 
-  .affine-filterable-list {
+  .pulsar-filterable-list {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -27,7 +27,7 @@ export const filterableListStyles = css`
     overflow: hidden;
   }
 
-  .affine-filterable-list.flipped {
+  .pulsar-filterable-list.flipped {
     flex-direction: column-reverse;
   }
 

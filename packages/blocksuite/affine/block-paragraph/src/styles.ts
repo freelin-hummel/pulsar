@@ -1,21 +1,21 @@
 import { css } from 'lit';
 
 export const paragraphBlockStyles = css`
-  affine-paragraph {
+  pulsar-paragraph {
     box-sizing: border-box;
     display: block;
     font-size: var(--pulsar-font-base);
   }
 
-  .affine-paragraph-block-container {
+  .pulsar-paragraph-block-container {
     position: relative;
     border-radius: 4px;
   }
-  .affine-paragraph-rich-text-wrapper {
+  .pulsar-paragraph-rich-text-wrapper {
     position: relative;
   }
 
-  affine-paragraph code {
+  pulsar-paragraph code {
     font-size: calc(var(--pulsar-font-base) - 3px);
     padding: 0px 4px 2px;
   }
@@ -123,7 +123,7 @@ export const paragraphBlockStyles = css`
     border-radius: 18px;
   }
 
-  .affine-paragraph-placeholder {
+  .pulsar-paragraph-placeholder {
     position: absolute;
     display: none;
     left: 0;
@@ -133,15 +133,15 @@ export const paragraphBlockStyles = css`
     fill: var(--pulsar-black-30);
   }
   @media print {
-    .affine-paragraph-placeholder {
+    .pulsar-paragraph-placeholder {
       display: none !important;
     }
   }
-  .affine-paragraph-placeholder.visible {
+  .pulsar-paragraph-placeholder.visible {
     display: block;
   }
   @media print {
-    .affine-paragraph-placeholder.visible {
+    .pulsar-paragraph-placeholder.visible {
       display: none;
     }
   }

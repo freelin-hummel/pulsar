@@ -63,7 +63,7 @@ export class DataViewRenderer extends SignalWatcher(
 
   static override styles = css`
     ${unsafeCSS(dataViewCommonStyle('pulsar-data-view-renderer'))}
-    affine-data-view-renderer {
+    pulsar-data-view-renderer {
       background-color: var(--pulsar-background-primary-color);
       display: contents;
     }
@@ -213,10 +213,10 @@ export class DataView {
   private _ref = createRef<DataViewRenderer>();
 
   render(props: DataViewRendererConfig) {
-    return html` <affine-data-view-renderer
+    return html` <pulsar-data-view-renderer
       ${ref(this._ref)}
       .config="${props}"
-    ></affine-data-view-renderer>`;
+    ></pulsar-data-view-renderer>`;
   }
 
   get expose() {

@@ -3,7 +3,7 @@ import { css, html } from 'lit';
 import { EMBED_CARD_HEIGHT } from '../_common/consts.js';
 
 export const styles = css`
-  .affine-embed-figma-block {
+  .pulsar-embed-figma-block {
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
@@ -21,33 +21,33 @@ export const styles = css`
     user-select: none;
   }
 
-  .affine-embed-figma {
+  .pulsar-embed-figma {
     width: 100%;
     height: 100%;
     opacity: var(--add, 1);
   }
 
-  .affine-embed-figma img,
-  .affine-embed-figma object,
-  .affine-embed-figma svg {
+  .pulsar-embed-figma img,
+  .pulsar-embed-figma object,
+  .pulsar-embed-figma svg {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
   }
 
-  .affine-embed-figma-iframe-container {
+  .pulsar-embed-figma-iframe-container {
     position: relative;
   }
 
-  .affine-embed-figma-iframe-container > iframe {
+  .pulsar-embed-figma-iframe-container > iframe {
     width: 100%;
     height: 410px;
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
     border: none;
   }
 
-  .affine-embed-figma-iframe-overlay {
+  .pulsar-embed-figma-iframe-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -55,11 +55,11 @@ export const styles = css`
     height: 100%;
   }
 
-  .affine-embed-figma-iframe-overlay.hide {
+  .pulsar-embed-figma-iframe-overlay.hide {
     display: none;
   }
 
-  .affine-embed-figma-content {
+  .pulsar-embed-figma-content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -68,7 +68,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-figma-content-header {
+  .pulsar-embed-figma-content-header {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -80,7 +80,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-figma-content-title-icon {
+  .pulsar-embed-figma-content-title-icon {
     display: flex;
     width: 20px;
     height: 20px;
@@ -88,15 +88,15 @@ export const styles = css`
     align-items: center;
   }
 
-  .affine-embed-figma-content-title-icon img,
-  .affine-embed-figma-content-title-icon object,
-  .affine-embed-figma-content-title-icon svg {
+  .pulsar-embed-figma-content-title-icon img,
+  .pulsar-embed-figma-content-title-icon object,
+  .pulsar-embed-figma-content-title-icon svg {
     width: 20px;
     height: 20px;
     fill: var(--pulsar-background-primary-color);
   }
 
-  .affine-embed-figma-content-title-text {
+  .pulsar-embed-figma-content-title-text {
     flex: 1 0 0;
 
     display: -webkit-box;
@@ -115,7 +115,7 @@ export const styles = css`
     line-height: 22px;
   }
 
-  .affine-embed-figma-content-description {
+  .pulsar-embed-figma-content-description {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -136,7 +136,7 @@ export const styles = css`
     line-height: 20px;
   }
 
-  .affine-embed-figma-content-url {
+  .pulsar-embed-figma-content-url {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -145,7 +145,7 @@ export const styles = css`
     max-width: 100%;
     cursor: pointer;
   }
-  .affine-embed-figma-content-url > span {
+  .pulsar-embed-figma-content-url > span {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -162,31 +162,31 @@ export const styles = css`
     font-weight: 400;
     line-height: 20px;
   }
-  .affine-embed-figma-content-url:hover > span {
+  .pulsar-embed-figma-content-url:hover > span {
     color: var(--pulsar-link-color);
   }
-  .affine-embed-figma-content-url:hover .open-icon {
+  .pulsar-embed-figma-content-url:hover .open-icon {
     fill: var(--pulsar-link-color);
   }
 
-  .affine-embed-figma-content-url-icon {
+  .pulsar-embed-figma-content-url-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 12px;
     height: 12px;
   }
-  .affine-embed-figma-content-url-icon .open-icon {
+  .pulsar-embed-figma-content-url-icon .open-icon {
     height: 12px;
     width: 12px;
     fill: var(--pulsar-text-secondary-color);
   }
 
-  .affine-embed-figma-block.selected {
-    .affine-embed-figma-content-url > span {
+  .pulsar-embed-figma-block.selected {
+    .pulsar-embed-figma-content-url > span {
       color: var(--pulsar-link-color);
     }
-    .affine-embed-figma-content-url .open-icon {
+    .pulsar-embed-figma-content-url .open-icon {
       fill: var(--pulsar-link-color);
     }
   }

@@ -28,8 +28,8 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
   ImageBlockService
 > {
   static override styles = css`
-    affine-edgeless-image .resizable-img,
-    affine-edgeless-image .resizable-img img {
+    pulsar-edgeless-image .resizable-img,
+    pulsar-edgeless-image .resizable-img img {
       width: 100%;
       height: 100%;
     }
@@ -95,11 +95,11 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
         ${when(
           this.loading || this.error || !this.blobUrl,
           () =>
-            html`<affine-image-fallback-card
+            html`<pulsar-image-fallback-card
               .error=${this.error}
               .loading=${this.loading}
               .mode=${'page'}
-            ></affine-image-fallback-card>`,
+            ></pulsar-image-fallback-card>`,
           () =>
             html`<div class="resizable-img">
               <img
@@ -110,7 +110,7 @@ export class ImageEdgelessBlockComponent extends GfxBlockComponent<
               />
             </div>`
         )}
-        <affine-block-selection .block=${this}></affine-block-selection>
+        <pulsar-block-selection .block=${this}></pulsar-block-selection>
       </div>
       <block-caption-editor></block-caption-editor>
 

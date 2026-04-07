@@ -251,7 +251,7 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
                   active: this._activeHeadingId$.value === block.id,
                 })}
               >
-                <affine-outline-block-preview
+                <pulsar-outline-block-preview
                   class=${classMap({
                     active: this._activeHeadingId$.value === block.id,
                   })}
@@ -260,7 +260,7 @@ export class OutlineViewer extends SignalWatcher(WithDisposable(LitElement)) {
                     this._scrollToBlock(block.id).catch(console.error);
                   }}
                 >
-                </affine-outline-block-preview>
+                </pulsar-outline-block-preview>
               </div>`;
             }
           )}

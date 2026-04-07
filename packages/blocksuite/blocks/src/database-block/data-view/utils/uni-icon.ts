@@ -9,13 +9,13 @@ import { createUniComponentFromWebComponent } from './uni-component/uni-componen
 @customElement('pulsar-lit-icon')
 export class PulsarLitIcon extends ShadowlessElement {
   static override styles = css`
-    affine-lit-icon {
+    pulsar-lit-icon {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    affine-lit-icon svg {
+    pulsar-lit-icon svg {
       fill: var(--pulsar-icon-color);
     }
   `;

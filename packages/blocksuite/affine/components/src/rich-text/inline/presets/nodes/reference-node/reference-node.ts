@@ -103,7 +103,7 @@ export class PulsarReference extends WithDisposable(ShadowlessElement) {
   );
 
   static override styles = css`
-    .affine-reference {
+    .pulsar-reference {
       white-space: normal;
       word-break: break-word;
       color: var(--pulsar-text-primary-color);
@@ -114,20 +114,20 @@ export class PulsarReference extends WithDisposable(ShadowlessElement) {
       user-select: none;
       padding: 1px 2px 1px 0;
     }
-    .affine-reference:hover {
+    .pulsar-reference:hover {
       background: var(--pulsar-hover-color);
     }
 
-    .affine-reference[data-selected='true'] {
+    .pulsar-reference[data-selected='true'] {
       background: var(--pulsar-hover-color);
     }
 
-    .affine-reference-title {
+    .pulsar-reference-title {
       margin-left: 4px;
       border-bottom: 0.5px solid var(--pulsar-divider-color);
       transition: border 0.2s ease-out;
     }
-    .affine-reference-title:hover {
+    .pulsar-reference-title:hover {
       border-bottom: 0.5px solid var(--pulsar-icon-color);
     }
   `;

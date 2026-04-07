@@ -45,7 +45,7 @@ const paragraphButtonStyle = css`
 `;
 
 export const formatBarStyle = css`
-  .affine-format-bar-widget {
+  .pulsar-format-bar-widget {
     position: absolute;
     display: none;
     z-index: var(--pulsar-z-index-popover);

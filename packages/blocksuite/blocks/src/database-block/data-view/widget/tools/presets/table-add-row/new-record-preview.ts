@@ -8,7 +8,7 @@ export class NewRecordPreview extends ShadowlessElement {
   override render() {
     return html`
       <style>
-        affine-database-new-record-preview {
+        pulsar-database-new-record-preview {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -30,12 +30,12 @@ export class NewRecordPreview extends ShadowlessElement {
           z-index: 99999;
         }
 
-        affine-database-new-record-preview svg {
+        pulsar-database-new-record-preview svg {
           width: 16px;
           height: 16px;
         }
 
-        affine-database-new-record-preview path {
+        pulsar-database-new-record-preview path {
           fill: var(--pulsar-brand-color);
         }
       </style>

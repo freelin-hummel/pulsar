@@ -64,7 +64,7 @@ export class PulsarImageToolbarWidget extends WidgetComponent<
         const context = new ImageToolbarContext(imageBlock, abortController);
 
         return {
-          template: html`<affine-image-toolbar
+          template: html`<pulsar-image-toolbar
             .context=${context}
             .primaryGroups=${this.primaryGroups}
             .moreGroups=${this.moreGroups}
@@ -74,7 +74,7 @@ export class PulsarImageToolbarWidget extends WidgetComponent<
                 this._hoverController?.abort();
               }
             }}
-          ></affine-image-toolbar>`,
+          ></pulsar-image-toolbar>`,
           container: this.block,
           // stacking-context(editor-host)
           portalStyles: {

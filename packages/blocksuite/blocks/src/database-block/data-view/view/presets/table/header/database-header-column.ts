@@ -302,11 +302,11 @@ export class DatabaseHeaderColumn extends SignalWatcher(
   private widthDragBar = createRef();
 
   static override styles = css`
-    affine-database-header-column {
+    pulsar-database-header-column {
       display: flex;
     }
 
-    .affine-database-header-column-grabbing * {
+    .pulsar-database-header-column-grabbing * {
       cursor: grabbing;
     }
   `;
@@ -625,9 +625,9 @@ function numberFormatConfig(column: Column): NormalMenu {
   return {
     type: 'custom',
     render: () =>
-      html` <affine-database-number-format-bar
+      html` <pulsar-database-number-format-bar
         .column="${column}"
-      ></affine-database-number-format-bar>`,
+      ></pulsar-database-number-format-bar>`,
   };
 }
 

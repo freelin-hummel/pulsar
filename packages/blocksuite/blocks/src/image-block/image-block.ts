@@ -89,12 +89,12 @@ export class ImageBlockComponent extends CaptionedBlockComponent<
         ${when(
           this.loading || this.error,
           () =>
-            html`<affine-image-fallback-card
+            html`<pulsar-image-fallback-card
               .error=${this.error}
               .loading=${this.loading}
               .mode=${'page'}
-            ></affine-image-fallback-card>`,
-          () => html`<affine-page-image .block=${this}></affine-page-image>`
+            ></pulsar-image-fallback-card>`,
+          () => html`<pulsar-page-image .block=${this}></pulsar-page-image>`
         )}
       </div>
 

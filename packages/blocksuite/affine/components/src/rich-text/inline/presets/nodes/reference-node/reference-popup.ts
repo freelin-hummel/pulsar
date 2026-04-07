@@ -394,7 +394,7 @@ export class ReferencePopup extends WithDisposable(LitElement) {
   @property({ attribute: false })
   accessor isLinkedNode!: boolean;
 
-  @query('.affine-reference-popover-container')
+  @query('.pulsar-reference-popover-container')
   accessor popupContainer!: HTMLDivElement;
 
   @property({ type: Object })

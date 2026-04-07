@@ -124,7 +124,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   private _viewportElement: HTMLElement | null = null;
 
   static override styles = css`
-    affine-edgeless-root {
+    pulsar-edgeless-root {
       -webkit-user-select: none;
       user-select: none;
       display: block;
@@ -670,7 +670,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   }
 
   /**
-   * Adds a new note with the given point on the affine-editor-container.
+   * Adds a new note with the given point on the pulsar-editor-container.
    *
    * @param: point Point
    * @returns: The id of new note
@@ -974,7 +974,7 @@ export class EdgelessRootBlockComponent extends BlockComponent<
   get viewportElement(): HTMLElement {
     if (this._viewportElement) return this._viewportElement;
     this._viewportElement = this.host.closest(
-      '.affine-edgeless-viewport'
+      '.pulsar-edgeless-viewport'
     ) as HTMLElement | null;
     assertExists(this._viewportElement);
     return this._viewportElement;

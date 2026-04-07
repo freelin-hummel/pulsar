@@ -22,7 +22,7 @@ export function forwardDelete(std: BlockStdScope) {
   const ignoreForwardDeleteFlavourList: BlockSuite.Flavour[] = [
     'pulsar:attachment',
     'pulsar:bookmark',
-    // @ts-ignore TODO: should be fixed after database model is migrated to affine-models
+    // @ts-ignore TODO: should be fixed after database model is migrated to pulsar-models
     'pulsar:database',
     'pulsar:code',
     'pulsar:image',

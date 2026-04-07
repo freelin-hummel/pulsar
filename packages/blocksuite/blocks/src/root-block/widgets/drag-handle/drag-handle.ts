@@ -997,7 +997,7 @@ export class PulsarDragHandleWidget extends WidgetComponent<
     const outOfPageViewPort = element.classList.contains(
       'pulsar-page-viewport'
     );
-    const inPage = !!relatedElement?.closest('.affine-page-viewport');
+    const inPage = !!relatedElement?.closest('.pulsar-page-viewport');
 
     const inDragHandle = !!relatedElement?.closest(PULSAR_DRAG_HANDLE_WIDGET);
     if (outOfPageViewPort && !inDragHandle && !inPage) {
@@ -1250,7 +1250,7 @@ export class PulsarDragHandleWidget extends WidgetComponent<
     if (!element) return;
 
     // When pointer on drag handle, should do nothing
-    if (element.closest('.affine-drag-handle-container')) return;
+    if (element.closest('.pulsar-drag-handle-container')) return;
 
     // TODO: need to optimize
     // When pointer out of note block hover area or inside database, should hide drag handle
@@ -1653,10 +1653,10 @@ export class PulsarDragHandleWidget extends WidgetComponent<
       : this.host.selection.filter('block');
   }
 
-  @query('.affine-drag-handle-container')
+  @query('.pulsar-drag-handle-container')
   private accessor _dragHandleContainer!: HTMLDivElement;
 
-  @query('.affine-drag-handle-grabber')
+  @query('.pulsar-drag-handle-grabber')
   private accessor _dragHandleGrabber!: HTMLDivElement;
 
   @state()

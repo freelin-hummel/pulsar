@@ -110,17 +110,17 @@ export class FramePanel extends WithDisposable(ShadowlessElement) {
 
   override render() {
     return html`<div class="frame-panel-container">
-      <affine-frame-panel-header
+      <pulsar-frame-panel-header
         .edgeless=${this.edgeless}
         .editorHost=${this.host}
-      ></affine-frame-panel-header>
-      <affine-frame-panel-body
+      ></pulsar-frame-panel-header>
+      <pulsar-frame-panel-body
         class="frame-panel-body"
         .edgeless=${this.edgeless}
         .doc=${this.doc}
         .editorHost=${this.host}
         .fitPadding=${this.fitPadding}
-      ></affine-frame-panel-body>
+      ></pulsar-frame-panel-body>
     </div>`;
   }
 

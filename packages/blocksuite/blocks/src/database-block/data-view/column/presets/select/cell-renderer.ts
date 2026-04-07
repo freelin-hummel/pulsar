@@ -19,10 +19,10 @@ export class SelectCell extends BaseCellRenderer<string[], SelectColumnData> {
   override render() {
     const value = this.value ? [this.value] : [];
     return html`
-      <affine-multi-tag-view
+      <pulsar-multi-tag-view
         .value="${value}"
         .options="${this.column.data$.value.options}"
-      ></affine-multi-tag-view>
+      ></pulsar-multi-tag-view>
     `;
   }
 }
@@ -81,10 +81,10 @@ export class SelectCellEditing extends BaseCellRenderer<
 
   override render() {
     return html`
-      <affine-multi-tag-view
+      <pulsar-multi-tag-view
         .value="${this._value}"
         .options="${this._options}"
-      ></affine-multi-tag-view>
+      ></pulsar-multi-tag-view>
     `;
   }
 }

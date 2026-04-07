@@ -13,7 +13,7 @@ import type { KanbanSingleView } from './kanban-view-manager.js';
 import './card.js';
 
 const styles = css`
-  affine-data-view-kanban-header {
+  pulsar-data-view-kanban-header {
     display: flex;
     justify-content: space-between;
     padding: 4px;

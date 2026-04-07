@@ -153,7 +153,7 @@ export class KanbanDragController implements ReactiveController {
 
   get scrollContainer() {
     const scrollContainer = this.host.querySelector(
-      '.affine-data-view-kanban-groups'
+      '.pulsar-data-view-kanban-groups'
     ) as HTMLElement;
     assertExists(scrollContainer);
     return scrollContainer;

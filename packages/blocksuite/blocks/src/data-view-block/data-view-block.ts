@@ -109,7 +109,7 @@ export class DataViewBlockComponent extends CaptionedBlockComponent<DataViewBloc
 
   static override styles = css`
     ${unsafeCSS(dataViewCommonStyle('pulsar-database'))}
-    affine-database {
+    pulsar-database {
       display: block;
       border-radius: 8px;
       background-color: var(--pulsar-background-primary-color);

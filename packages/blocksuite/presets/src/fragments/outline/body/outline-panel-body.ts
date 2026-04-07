@@ -161,7 +161,7 @@ export class OutlinePanelBody extends SignalWatcher(
             this._pageVisibleNotes,
             note => note.note.id,
             (note, idx) => html`
-              <affine-outline-note-card
+              <pulsar-outline-note-card
                 data-note-id=${note.note.id}
                 .note=${note.note}
                 .number=${idx + 1}
@@ -183,7 +183,7 @@ export class OutlinePanelBody extends SignalWatcher(
                   this._scrollToBlock(e.detail.blockId).catch(console.error);
                 }}
                 @displaymodechange=${this._handleDisplayModeChange}
-              ></affine-outline-note-card>
+              ></pulsar-outline-note-card>
             `
           )
         : html`${nothing}`}
@@ -193,7 +193,7 @@ export class OutlinePanelBody extends SignalWatcher(
               this._edgelessOnlyNotes,
               note => note.note.id,
               (note, idx) =>
-                html`<affine-outline-note-card
+                html`<pulsar-outline-note-card
                   data-note-id=${note.note.id}
                   .note=${note.note}
                   .number=${idx + 1}
@@ -205,7 +205,7 @@ export class OutlinePanelBody extends SignalWatcher(
                   .enableNotesSorting=${this.enableNotesSorting}
                   @fitview=${this._fitToElement}
                   @displaymodechange=${this._handleDisplayModeChange}
-                ></affine-outline-note-card>`
+                ></pulsar-outline-note-card>`
             )} `
         : nothing}
     </div>`;
@@ -407,7 +407,7 @@ export class OutlinePanelBody extends SignalWatcher(
 
     if (!hasNotEmptyHeadings) return nothing;
 
-    return html`<affine-outline-block-preview
+    return html`<pulsar-outline-block-preview
       class=${classMap({
         active: this.doc.root.id === this._activeHeadingId$.value,
       })}
@@ -422,7 +422,7 @@ export class OutlinePanelBody extends SignalWatcher(
         if (!this.doc.root) return;
         this._scrollToBlock(this.doc.root.id).catch(console.error);
       }}
-    ></affine-outline-block-preview>`;
+    ></pulsar-outline-block-preview>`;
   }
 
   private async _scrollToBlock(blockId: string) {

@@ -2,17 +2,21 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import {
   File,
   Grid3x3,
+  Hexagon,
+  CircleDot,
   Magnet,
   Eye,
   EyeOff,
   Moon,
   Info,
 } from 'lucide-react'
+import type { GridType } from '../../shared/grid.js'
 
 export interface GlobalSettings {
   showGrid: boolean
   snapToGrid: boolean
   gridSize: number
+  gridType: GridType
 }
 
 interface MenuBarProps {
@@ -65,6 +69,31 @@ export function MenuBar({ settings, onSettingsChange }: MenuBarProps) {
     },
     { label: '', type: 'separator' },
     {
+      label: 'Square Grid',
+      icon: <Grid3x3 size={14} />,
+      type: 'toggle',
+      checked: settings.gridType === 'square',
+      onAction: () =>
+        onSettingsChange({ ...settings, gridType: 'square' }),
+    },
+    {
+      label: 'Hex Grid',
+      icon: <Hexagon size={14} />,
+      type: 'toggle',
+      checked: settings.gridType === 'hex',
+      onAction: () =>
+        onSettingsChange({ ...settings, gridType: 'hex' }),
+    },
+    {
+      label: 'Gridless',
+      icon: <CircleDot size={14} />,
+      type: 'toggle',
+      checked: settings.gridType === 'gridless',
+      onAction: () =>
+        onSettingsChange({ ...settings, gridType: 'gridless' }),
+    },
+    { label: '', type: 'separator' },
+    {
       label: 'About Pulsar',
       icon: <Info size={14} />,
       type: 'action',
@@ -79,7 +108,7 @@ export function MenuBar({ settings, onSettingsChange }: MenuBarProps) {
   }
 
   return (
-    <div ref={menuRef} className="menu-bar" style={styles.bar}>
+    <div ref={menuRef} className="menu-bar" data-testid="menu-bar" style={styles.bar}>
       <MenuButton
         label="File"
         icon={<File size={14} />}
@@ -164,7 +193,7 @@ function MenuButton({
                   <span
                     style={{
                       ...styles.check,
-                      opacity: item.checked ? 1 : 0.2,
+                      opacity: item.checked ? 1 : 0,
                     }}
                   >
                     ✓

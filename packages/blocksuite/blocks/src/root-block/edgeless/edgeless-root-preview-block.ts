@@ -48,7 +48,7 @@ export class EdgelessRootPreviewBlockComponent extends BlockComponent<
   private _viewportElement: HTMLElement | null = null;
 
   static override styles = css`
-    affine-edgeless-root {
+    pulsar-edgeless-root-preview {
       -webkit-user-select: none;
       user-select: none;
       display: block;
@@ -250,7 +250,7 @@ export class EdgelessRootPreviewBlockComponent extends BlockComponent<
   accessor background!: HTMLDivElement;
 
   @state()
-  accessor editorViewportSelector = '.affine-edgeless-viewport';
+  accessor editorViewportSelector = '.pulsar-edgeless-viewport';
 
   @query('.edgeless-layer')
   accessor layer!: HTMLDivElement;

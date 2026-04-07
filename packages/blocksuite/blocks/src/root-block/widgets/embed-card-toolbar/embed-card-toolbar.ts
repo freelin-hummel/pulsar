@@ -172,7 +172,7 @@ export class EmbedCardToolbar extends WidgetComponent<
                   @click=${() => this._setEmbedCardStyle(type)}
                 >
                   ${icon}
-                  <affine-tooltip .offset=${4}>${label}</affine-tooltip>
+                  <pulsar-tooltip .offset=${4}>${label}</pulsar-tooltip>
                 </icon-button>
               `
             )}

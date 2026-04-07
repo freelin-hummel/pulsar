@@ -13,7 +13,7 @@ import type { TableSingleView } from '../table-view-manager.js';
 import { LEFT_TOOL_BAR_WIDTH, STATS_BAR_HEIGHT } from '../consts.js';
 
 const styles = css`
-  .affine-database-column-stats {
+  .pulsar-database-column-stats {
     width: 100%;
     margin-left: ${LEFT_TOOL_BAR_WIDTH}px;
     height: ${STATS_BAR_HEIGHT}px;
@@ -36,10 +36,10 @@ export class DataBaseColumnStats extends SignalWatcher(
           cols,
           col => col.id,
           col => {
-            return html`<affine-database-column-stats-cell
+            return html`<pulsar-database-column-stats-cell
               .column=${col}
               .group=${this.group}
-            ></affine-database-column-stats-cell>`;
+            ></pulsar-database-column-stats-cell>`;
           }
         )}
       </div>

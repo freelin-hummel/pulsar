@@ -176,7 +176,7 @@ export class EdgelessTemplatePanel extends WithDisposable(LitElement) {
       display: none;
     }
 
-    .template-item.loading > affine-template-loading {
+    .template-item.loading > pulsar-template-loading {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -454,13 +454,13 @@ export class EdgelessTemplatePanel extends WithDisposable(LitElement) {
           <div class="template-scrollcontent" data-scrollable>
             <div class="template-list">
               ${this._loading
-                ? html`<affine-template-loading
+                ? html`<pulsar-template-loading
                     style=${styleMap({
                       position: 'absolute',
                       left: '50%',
                       top: '50%',
                     })}
-                  ></affine-template-loading>`
+                  ></pulsar-template-loading>`
                 : repeat(
                     _templates,
                     template => template.name,
@@ -500,15 +500,15 @@ export class EdgelessTemplatePanel extends WithDisposable(LitElement) {
                         >
                           ${preview}
                           ${template === this._loadingTemplate
-                            ? html`<affine-template-loading></affine-template-loading>`
+                            ? html`<pulsar-template-loading></pulsar-template-loading>`
                             : nothing}
                           ${template.name
-                            ? html`<affine-tooltip
+                            ? html`<pulsar-tooltip
                                 .offset=${12}
                                 tip-position="top"
                               >
                                 ${template.name}
-                              </affine-tooltip>`
+                              </pulsar-tooltip>`
                             : nothing}
                         </div>
                       `;

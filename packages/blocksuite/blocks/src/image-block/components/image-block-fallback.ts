@@ -21,7 +21,7 @@ export const NOTE_IMAGE_CARD_HEIGHT = 78;
 @customElement('pulsar-image-fallback-card')
 export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
   static override styles = css`
-    .affine-image-fallback-card-container {
+    .pulsar-image-fallback-card-container {
       width: 100%;
       height: 100%;
       display: flex;
@@ -29,7 +29,7 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
       justify-content: center;
     }
 
-    .affine-image-fallback-card {
+    .pulsar-image-fallback-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -39,7 +39,7 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
       padding: 12px;
     }
 
-    .affine-image-fallback-card-content {
+    .pulsar-image-fallback-card-content {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -53,7 +53,7 @@ export class ImageBlockFallbackCard extends WithDisposable(ShadowlessElement) {
       user-select: none;
     }
 
-    .affine-image-card-size {
+    .pulsar-image-card-size {
       overflow: hidden;
       padding-top: 12px;
       color: var(--pulsar-text-secondary-color);

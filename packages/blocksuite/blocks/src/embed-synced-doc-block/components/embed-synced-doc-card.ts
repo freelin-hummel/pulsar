@@ -258,7 +258,7 @@ export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
     return this.block.std;
   }
 
-  @queryAsync('.affine-embed-synced-doc-card-banner.render')
+  @queryAsync('.pulsar-embed-synced-doc-card-banner.render')
   accessor bannerContainer!: Promise<HTMLDivElement>;
 
   @property({ attribute: false })
@@ -273,7 +273,7 @@ export class EmbedSyncedDocCard extends WithDisposable(ShadowlessElement) {
   @property({ attribute: false })
   accessor isNoteContentEmpty = false;
 
-  @queryAsync('.affine-embed-synced-doc-content-note.render')
+  @queryAsync('.pulsar-embed-synced-doc-content-note.render')
   accessor noteContainer!: Promise<HTMLDivElement>;
 
   @property({ attribute: false })

@@ -231,10 +231,10 @@ export class FrameCard extends WithDisposable(ShadowlessElement) {
     >
       ${this.status === 'dragging'
         ? nothing
-        : html`<affine-frame-card-title
+        : html`<pulsar-frame-card-title
             .cardIndex=${this.cardIndex}
             .frame=${this.frame}
-          ></affine-frame-card-title>`}
+          ></pulsar-frame-card-title>`}
       <div
         class="frame-card-body"
         @click=${this._dispatchSelectEvent}

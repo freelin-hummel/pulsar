@@ -116,14 +116,14 @@ export class DatabaseColumnHeader extends SignalWatcher(
               width: `${column.width$.value}px`,
               border: index === 0 ? 'none' : undefined,
             });
-            return html` <affine-database-header-column
+            return html` <pulsar-database-header-column
               style="${style}"
               data-column-id="${column.id}"
               data-column-index="${index}"
               class="pulsar-database-column database-cell"
               .column="${column}"
               .tableViewManager="${this.tableViewManager}"
-            ></affine-database-header-column>`;
+            ></pulsar-database-header-column>`;
           }
         )}
         <div

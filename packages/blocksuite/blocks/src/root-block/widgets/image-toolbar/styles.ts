@@ -8,7 +8,7 @@ export const styles = css`
     z-index: var(--pulsar-z-index-popover);
   }
 
-  .affine-image-toolbar-container {
+  .pulsar-image-toolbar-container {
     height: 24px;
     gap: 4px;
     padding: 4px;

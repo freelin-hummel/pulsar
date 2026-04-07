@@ -8,7 +8,7 @@ export const embedCardToolbarStyle = css`
     z-index: var(--pulsar-z-index-popover);
   }
 
-  .affine-link-preview {
+  .pulsar-link-preview {
     display: flex;
     justify-content: flex-start;
     min-width: 60px;
@@ -31,7 +31,7 @@ export const embedCardToolbarStyle = css`
     text-wrap: nowrap;
   }
 
-  .affine-link-preview > span {
+  .pulsar-link-preview > span {
     display: inline-block;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

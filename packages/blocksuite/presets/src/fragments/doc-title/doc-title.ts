@@ -107,7 +107,7 @@ export class DocTitle extends WithDisposable(ShadowlessElement) {
   }
 
   private get _viewport() {
-    const el = this.closest<HTMLElement>('.affine-page-viewport');
+    const el = this.closest<HTMLElement>('.pulsar-page-viewport');
     assertExists(el);
     return el;
   }
@@ -187,7 +187,7 @@ export class DocTitle extends WithDisposable(ShadowlessElement) {
 export function getDocTitleByEditorHost(
   editorHost: EditorHost
 ): DocTitle | null {
-  const docViewport = editorHost.closest('.affine-page-viewport');
+  const docViewport = editorHost.closest('.pulsar-page-viewport');
   if (!docViewport) return null;
   return docViewport.querySelector('doc-title');
 }

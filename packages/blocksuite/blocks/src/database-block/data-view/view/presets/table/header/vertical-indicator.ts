@@ -102,11 +102,11 @@ export const getTableGroupRects = (tableContainer: HTMLElement) => {
     const groupRect = group.getBoundingClientRect();
     const top =
       group
-        .querySelector('.affine-database-column-header')
+        .querySelector('.pulsar-database-column-header')
         ?.getBoundingClientRect().top ?? groupRect.top;
     const bottom =
       group
-        .querySelector('.affine-database-block-rows')
+        .querySelector('.pulsar-database-block-rows')
         ?.getBoundingClientRect().bottom ?? groupRect.bottom;
     return {
       top: top - tableRect.top,

@@ -70,14 +70,14 @@ function toggleStyle(
 @customElement('pulsar-database-rich-text-cell')
 export class RichTextCell extends BaseCellRenderer<Text> {
   static override styles = css`
-    affine-database-rich-text-cell {
+    pulsar-database-rich-text-cell {
       display: flex;
       align-items: center;
       width: 100%;
       user-select: none;
     }
 
-    .affine-database-rich-text {
+    .pulsar-database-rich-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -89,14 +89,14 @@ export class RichTextCell extends BaseCellRenderer<Text> {
       word-break: break-all;
     }
 
-    .affine-database-rich-text v-line {
+    .pulsar-database-rich-text v-line {
       display: flex !important;
       align-items: center;
       height: 100%;
       width: 100%;
     }
 
-    .affine-database-rich-text v-line > div {
+    .pulsar-database-rich-text v-line > div {
       flex-grow: 1;
     }
   `;
@@ -246,7 +246,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
   };
 
   static override styles = css`
-    affine-database-rich-text-cell-editing {
+    pulsar-database-rich-text-cell-editing {
       display: flex;
       align-items: center;
       width: 100%;
@@ -254,7 +254,7 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
       cursor: text;
     }
 
-    .affine-database-rich-text {
+    .pulsar-database-rich-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -263,14 +263,14 @@ export class RichTextCellEditing extends BaseCellRenderer<Text> {
       outline: none;
     }
 
-    .affine-database-rich-text v-line {
+    .pulsar-database-rich-text v-line {
       display: flex !important;
       align-items: center;
       height: 100%;
       width: 100%;
     }
 
-    .affine-database-rich-text v-line > div {
+    .pulsar-database-rich-text v-line > div {
       flex-grow: 1;
     }
   `;

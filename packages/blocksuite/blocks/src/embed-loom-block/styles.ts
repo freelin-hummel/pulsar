@@ -3,7 +3,7 @@ import { css, html } from 'lit';
 import { EMBED_CARD_HEIGHT } from '../_common/consts.js';
 
 export const styles = css`
-  .affine-embed-loom-block {
+  .pulsar-embed-loom-block {
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
@@ -21,32 +21,32 @@ export const styles = css`
     user-select: none;
   }
 
-  .affine-embed-loom-video {
+  .pulsar-embed-loom-video {
     width: 100%;
     height: 100%;
     opacity: var(--add, 1);
   }
 
-  .affine-embed-loom-video img,
-  .affine-embed-loom-video object,
-  .affine-embed-loom-video svg {
+  .pulsar-embed-loom-video img,
+  .pulsar-embed-loom-video object,
+  .pulsar-embed-loom-video svg {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
   }
 
-  .affine-embed-loom-video-iframe-container {
+  .pulsar-embed-loom-video-iframe-container {
     position: relative;
   }
 
-  .affine-embed-loom-video-iframe-container > iframe {
+  .pulsar-embed-loom-video-iframe-container > iframe {
     width: 100%;
     height: 410px;
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
   }
 
-  .affine-embed-loom-video-iframe-overlay {
+  .pulsar-embed-loom-video-iframe-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -54,11 +54,11 @@ export const styles = css`
     height: 100%;
   }
 
-  .affine-embed-loom-video-iframe-overlay.hide {
+  .pulsar-embed-loom-video-iframe-overlay.hide {
     display: none;
   }
 
-  .affine-embed-loom-content {
+  .pulsar-embed-loom-content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -67,7 +67,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-loom-content-header {
+  .pulsar-embed-loom-content-header {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -79,7 +79,7 @@ export const styles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-loom-content-title-icon {
+  .pulsar-embed-loom-content-title-icon {
     display: flex;
     width: 20px;
     height: 20px;
@@ -87,15 +87,15 @@ export const styles = css`
     align-items: center;
   }
 
-  .affine-embed-loom-content-title-icon img,
-  .affine-embed-loom-content-title-icon object,
-  .affine-embed-loom-content-title-icon svg {
+  .pulsar-embed-loom-content-title-icon img,
+  .pulsar-embed-loom-content-title-icon object,
+  .pulsar-embed-loom-content-title-icon svg {
     width: 20px;
     height: 20px;
     fill: var(--pulsar-background-primary-color);
   }
 
-  .affine-embed-loom-content-title-text {
+  .pulsar-embed-loom-content-title-text {
     flex: 1 0 0;
 
     display: -webkit-box;
@@ -114,7 +114,7 @@ export const styles = css`
     line-height: 22px;
   }
 
-  .affine-embed-loom-content-description {
+  .pulsar-embed-loom-content-description {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -135,7 +135,7 @@ export const styles = css`
     line-height: 20px;
   }
 
-  .affine-embed-loom-content-url {
+  .pulsar-embed-loom-content-url {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -144,7 +144,7 @@ export const styles = css`
     max-width: 100%;
     cursor: pointer;
   }
-  .affine-embed-loom-content-url > span {
+  .pulsar-embed-loom-content-url > span {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -161,37 +161,37 @@ export const styles = css`
     font-weight: 400;
     line-height: 20px;
   }
-  .affine-embed-loom-content-url:hover > span {
+  .pulsar-embed-loom-content-url:hover > span {
     color: var(--pulsar-link-color);
   }
-  .affine-embed-loom-content-url:hover .open-icon {
+  .pulsar-embed-loom-content-url:hover .open-icon {
     fill: var(--pulsar-link-color);
   }
 
-  .affine-embed-loom-content-url-icon {
+  .pulsar-embed-loom-content-url-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 12px;
     height: 12px;
   }
-  .affine-embed-loom-content-url-icon .open-icon {
+  .pulsar-embed-loom-content-url-icon .open-icon {
     height: 12px;
     width: 12px;
     fill: var(--pulsar-text-secondary-color);
   }
 
-  .affine-embed-loom-block.loading {
-    .affine-embed-loom-content-title-text {
+  .pulsar-embed-loom-block.loading {
+    .pulsar-embed-loom-content-title-text {
       color: var(--pulsar-placeholder-color);
     }
   }
 
-  .affine-embed-loom-block.selected {
-    .affine-embed-loom-content-url > span {
+  .pulsar-embed-loom-block.selected {
+    .pulsar-embed-loom-content-url > span {
       color: var(--pulsar-link-color);
     }
-    .affine-embed-loom-content-url .open-icon {
+    .pulsar-embed-loom-content-url .open-icon {
       fill: var(--pulsar-link-color);
     }
   }

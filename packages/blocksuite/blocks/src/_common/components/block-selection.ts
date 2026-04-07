@@ -14,7 +14,7 @@ import { customElement, property } from 'lit/decorators.js';
  *     }
  *
  *   render() {
- *      return html`<affine-block-selection></affine-block-selection>
+ *      return html`<pulsar-block-selection></pulsar-block-selection>
  *   };
  * }
  * ```

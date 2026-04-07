@@ -128,11 +128,11 @@ export class EdgelessToolIconButton extends LitElement {
         <slot></slot>
         ${cache(
           this.showTooltip && tooltip
-            ? html`<affine-tooltip
+            ? html`<pulsar-tooltip
                 tip-position=${this.tipPosition}
                 .arrow=${this.arrow}
                 .offset=${this.tooltipOffset}
-                >${tooltip}</affine-tooltip
+                >${tooltip}</pulsar-tooltip
               >`
             : nothing
         )}

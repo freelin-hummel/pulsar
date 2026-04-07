@@ -831,7 +831,7 @@ export class EdgelessClipboardController extends PageClipboard {
     assertExists(rootComponent);
 
     const container = rootComponent.querySelector(
-      '.affine-block-children-container'
+      '.pulsar-block-children-container'
     );
     if (!container) return;
 
@@ -866,7 +866,7 @@ export class EdgelessClipboardController extends PageClipboard {
       onclone: async function (documentClone: Document, element: HTMLElement) {
         // html2canvas can't support transform feature
         element.style.setProperty('transform', 'none');
-        const layer = documentClone.querySelector('.affine-edgeless-layer');
+        const layer = documentClone.querySelector('.pulsar-edgeless-layer');
         if (layer && layer instanceof HTMLElement) {
           layer.style.setProperty('transform', 'none');
         }

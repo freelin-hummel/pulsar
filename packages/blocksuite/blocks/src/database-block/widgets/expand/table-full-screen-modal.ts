@@ -11,12 +11,12 @@ import { fullScreenStyles } from './styles.js';
 export class DatabaseTableViewFullScreen extends BlockComponent<DatabaseBlockModel> {
   _renderView = () => {
     return html`
-      <affine-database
+      <pulsar-database
         class="pulsar-block-element"
         .modalMode=${true}
         .host=${this.host}
         .model=${this.model}
-      ></affine-database>
+      ></pulsar-database>
     `;
   };
 

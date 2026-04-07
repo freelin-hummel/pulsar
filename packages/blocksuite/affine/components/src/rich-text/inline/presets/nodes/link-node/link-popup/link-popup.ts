@@ -606,7 +606,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
   @property({ attribute: false })
   accessor abortController!: AbortController;
 
-  @query('.affine-confirm-button')
+  @query('.pulsar-confirm-button')
   accessor confirmButton: EditorIconButton | null = null;
 
   @property({ attribute: false })
@@ -618,7 +618,7 @@ export class LinkPopup extends WithDisposable(LitElement) {
   @query('.mock-selection-container')
   accessor mockSelectionContainer!: HTMLDivElement;
 
-  @query('.affine-link-popover-container')
+  @query('.pulsar-link-popover-container')
   accessor popupContainer!: HTMLDivElement;
 
   @property({ attribute: false })

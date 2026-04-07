@@ -36,7 +36,7 @@ const styles = css`
     align-items: center;
   }
 
-  .affine-database-column-stats:hover .stats-cell {
+  .pulsar-database-column-stats:hover .stats-cell {
     opacity: 1;
   }
 

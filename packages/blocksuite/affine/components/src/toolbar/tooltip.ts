@@ -15,7 +15,7 @@ import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 import { HoverController, type HoverOptions } from '../hover/index.js';
 
 const styles = css`
-  .affine-tooltip {
+  .pulsar-tooltip {
     box-sizing: border-box;
     max-width: 280px;
     min-height: 32px;
@@ -91,18 +91,18 @@ const updateArrowStyles = ({
  * ```ts
  * // Simple usage
  * html`
- * <affine-tooltip>Content</affine-tooltip>
+ * <pulsar-tooltip>Content</pulsar-tooltip>
  * `
  * // With placement
  * html`
- * <affine-tooltip tip-position="top">
+ * <pulsar-tooltip tip-position="top">
  *   Content
- * </affine-tooltip>
+ * </pulsar-tooltip>
  * `
  *
  * // With custom properties
  * html`
- * <affine-tooltip
+ * <pulsar-tooltip
  *   .zIndex=${0}
  *   .offset=${4}
  *   .autoFlip=${true}
@@ -111,7 +111,7 @@ const updateArrowStyles = ({
  *   .allowInteractive=${false}
  * >
  *   Content
- * </affine-tooltip>
+ * </pulsar-tooltip>
  * `
  * ```
  */

@@ -70,12 +70,12 @@ export class SurfaceBlockComponent extends BlockComponent<
   };
 
   static override styles = css`
-    .affine-edgeless-surface-block-container {
+    .pulsar-edgeless-surface-block-container {
       width: 100%;
       height: 100%;
     }
 
-    .affine-edgeless-surface-block-container canvas {
+    .pulsar-edgeless-surface-block-container canvas {
       left: 0;
       top: 0;
       width: 100%;
@@ -100,7 +100,7 @@ export class SurfaceBlockComponent extends BlockComponent<
       font-weight: 400;
     }
 
-    .affine-block-children-container.edgeless {
+    .pulsar-block-children-container.edgeless {
       padding-left: 0;
       position: relative;
       overflow: hidden;
@@ -120,7 +120,7 @@ export class SurfaceBlockComponent extends BlockComponent<
       z-index: 0;
     }
 
-    .affine-edgeless-block-child {
+    .pulsar-edgeless-block-child {
       position: absolute;
       transform-origin: center;
       box-sizing: border-box;
@@ -260,7 +260,7 @@ export class SurfaceBlockComponent extends BlockComponent<
     return this._renderer;
   }
 
-  @query('.affine-edgeless-surface-block-container')
+  @query('.pulsar-edgeless-surface-block-container')
   private accessor _surfaceContainer!: HTMLElement;
 }
 

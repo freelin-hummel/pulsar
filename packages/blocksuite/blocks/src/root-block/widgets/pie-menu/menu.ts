@@ -75,7 +75,7 @@ export class PieMenu extends WithDisposable(LitElement) {
     if (!activeNode || isNaN(index)) return;
 
     const node = activeNode.querySelector(
-      `& > affine-pie-node[index='${index}']`
+      `& > pulsar-pie-node[index='${index}']`
     );
 
     if (node instanceof PieNode && !isColorNode(node.model)) {

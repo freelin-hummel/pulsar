@@ -132,10 +132,10 @@ export class OutlinePanelHeader extends WithDisposable(LitElement) {
         </edgeless-tool-icon-button>
       </div>
       <div class="note-preview-setting-container">
-        <affine-outline-note-preview-setting-menu
+        <pulsar-outline-note-preview-setting-menu
           .showPreviewIcon=${this.showPreviewIcon}
           .toggleShowPreviewIcon=${this.toggleShowPreviewIcon}
-        ></affine-outline-note-preview-setting-menu>
+        ></pulsar-outline-note-preview-setting-menu>
       </div>`;
   }
 

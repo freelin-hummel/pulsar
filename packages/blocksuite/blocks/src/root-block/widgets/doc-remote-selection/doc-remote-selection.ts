@@ -73,7 +73,7 @@ export class PulsarDocRemoteSelectionWidget extends WidgetComponent {
             'pulsar:attachment',
             'pulsar:bookmark',
             'pulsar:surface-ref',
-          ]) || /affine:embed-*/.test(block.flavour)
+          ]) || /pulsar:embed-*/.test(block.flavour)
         );
       },
       ...config,

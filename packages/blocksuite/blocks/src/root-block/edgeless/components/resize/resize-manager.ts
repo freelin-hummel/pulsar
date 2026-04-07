@@ -111,7 +111,7 @@ export class HandleResizeManager {
 
     if (this._rotation) {
       const rect = this._target
-        .closest('.affine-edgeless-selected-rect')
+        .closest('.pulsar-edgeless-selected-rect')
         ?.getBoundingClientRect();
       assertExists(rect);
       const { left, top, right, bottom } = rect;

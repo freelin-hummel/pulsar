@@ -3,7 +3,7 @@ import { css } from 'lit';
 import { DRAG_HANDLE_CONTAINER_WIDTH } from './config.js';
 
 export const styles = css`
-  .affine-drag-handle-widget {
+  .pulsar-drag-handle-widget {
     display: flex;
     position: absolute;
     left: 0;
@@ -11,7 +11,7 @@ export const styles = css`
     contain: size layout;
   }
 
-  .affine-drag-handle-container {
+  .pulsar-drag-handle-container {
     top: 0;
     left: 0;
     position: absolute;
@@ -23,11 +23,11 @@ export const styles = css`
     user-select: none;
     box-sizing: border-box;
   }
-  .affine-drag-handle-container:hover {
+  .pulsar-drag-handle-container:hover {
     cursor: grab;
   }
 
-  .affine-drag-handle-grabber {
+  .pulsar-drag-handle-grabber {
     width: 4px;
     height: 100%;
     border-radius: 1px;
@@ -36,11 +36,11 @@ export const styles = css`
   }
 
   @media print {
-    .affine-drag-handle-widget {
+    .pulsar-drag-handle-widget {
       display: none;
     }
   }
-  .affine-drag-hover-rect {
+  .pulsar-drag-hover-rect {
     position: absolute;
     top: 0;
     left: 0;

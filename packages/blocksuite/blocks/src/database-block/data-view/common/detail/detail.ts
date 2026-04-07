@@ -27,7 +27,7 @@ import { DetailSelection } from './selection.js';
 
 const styles = css`
   ${unsafeCSS(dataViewCommonStyle('pulsar-data-view-record-detail'))}
-  affine-data-view-record-detail {
+  pulsar-data-view-record-detail {
     position: relative;
     display: flex;
     flex: 1;
@@ -217,12 +217,12 @@ export class RecordDetail extends SignalWatcher(
           column => {
             return keyed(
               this.rowId,
-              html` <affine-data-view-record-field
+              html` <pulsar-data-view-record-field
                 .view="${this.view}"
                 .column="${column}"
                 .rowId="${this.rowId}"
                 data-column-id="${column.id}"
-              ></affine-data-view-record-field>`
+              ></pulsar-data-view-record-field>`
             );
           }
         )}

@@ -8,7 +8,7 @@ export const SYNCED_MIN_HEIGHT = 64;
 
 export const blockStyles = css`
   .edgeless-block-portal-embed
-    > affine-embed-synced-doc-block[data-nested-editor] {
+    > pulsar-embed-synced-doc-block[data-nested-editor] {
     position: relative;
     display: block;
     left: 0px;
@@ -18,50 +18,50 @@ export const blockStyles = css`
   }
 
   .edgeless-block-portal-embed
-    .affine-embed-synced-doc-editor
-    .affine-page-root-block-container {
+    .pulsar-embed-synced-doc-editor
+    .pulsar-page-root-block-container {
     width: 100%;
   }
 
-  .edgeless-block-portal-embed .affine-embed-synced-doc-container.edgeless {
+  .edgeless-block-portal-embed .pulsar-embed-synced-doc-container.edgeless {
     display: block;
     padding: 0;
     width: 100%;
     height: calc(${EMBED_CARD_HEIGHT.syncedDoc}px + 36px);
   }
-  .edgeless-block-portal-embed .affine-embed-synced-doc-container.surface {
+  .edgeless-block-portal-embed .pulsar-embed-synced-doc-container.surface {
     border: 1px solid var(--pulsar-border-color);
   }
 
-  affine-embed-synced-doc-block[data-nested-editor]
-    .affine-embed-synced-doc-container.page {
+  pulsar-embed-synced-doc-block[data-nested-editor]
+    .pulsar-embed-synced-doc-container.page {
     padding: 0 24px;
   }
 
-  .affine-embed-synced-doc-editor {
+  .pulsar-embed-synced-doc-editor {
     pointer-events: none;
   }
 
-  .affine-embed-synced-doc-container {
+  .pulsar-embed-synced-doc-container {
     border-radius: 8px;
     overflow: hidden;
   }
-  .affine-embed-synced-doc-container.page {
+  .pulsar-embed-synced-doc-container.page {
     display: block;
     width: 100%;
   }
-  .affine-embed-synced-doc-container.edgeless {
+  .pulsar-embed-synced-doc-container.edgeless {
     display: block;
     width: 100%;
     height: calc(${EMBED_CARD_HEIGHT.syncedDoc}px + 36px);
   }
-  .affine-embed-synced-doc-container:hover.light {
+  .pulsar-embed-synced-doc-container:hover.light {
     box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.08);
   }
-  .affine-embed-synced-doc-container:hover.dark {
+  .pulsar-embed-synced-doc-container:hover.dark {
     box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.14);
   }
-  .affine-embed-synced-doc-header-wrapper {
+  .pulsar-embed-synced-doc-header-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,15 +71,15 @@ export const blockStyles = css`
     opacity: 0;
   }
   @media print {
-    .affine-embed-synced-doc-header-wrapper {
+    .pulsar-embed-synced-doc-header-wrapper {
       display: none;
     }
   }
-  .affine-embed-synced-doc-header-wrapper.selected {
+  .pulsar-embed-synced-doc-header-wrapper.selected {
     opacity: 1;
     transition: all 0.23s ease;
   }
-  .affine-embed-synced-doc-header {
+  .pulsar-embed-synced-doc-header {
     display: flex;
     align-items: center;
     width: 100%;
@@ -87,10 +87,10 @@ export const blockStyles = css`
     padding: 0 24px;
     background-color: var(--pulsar-hover-color);
   }
-  .affine-embed-synced-doc-header svg {
+  .pulsar-embed-synced-doc-header svg {
     flex-shrink: 0;
   }
-  .affine-embed-synced-doc-title {
+  .pulsar-embed-synced-doc-title {
     font-size: 14px;
     font-weight: 600;
     line-height: 22px;
@@ -100,7 +100,7 @@ export const blockStyles = css`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .affine-embed-synced-doc-editor-overlay {
+  .pulsar-embed-synced-doc-editor-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -109,11 +109,11 @@ export const blockStyles = css`
     z-index: 1;
     cursor: pointer;
   }
-  .affine-embed-synced-doc-editor-overlay:hover {
+  .pulsar-embed-synced-doc-editor-overlay:hover {
     background: var(--pulsar-hover-color);
   }
 
-  .affine-embed-synced-doc-editor-empty {
+  .pulsar-embed-synced-doc-editor-empty {
     display: flex;
     align-items: center;
     width: 100%;
@@ -121,14 +121,14 @@ export const blockStyles = css`
     min-height: 44px;
   }
 
-  .affine-embed-synced-doc-container.surface
-    > .affine-embed-synced-doc-editor
-    > .affine-embed-synced-doc-editor-empty {
+  .pulsar-embed-synced-doc-container.surface
+    > .pulsar-embed-synced-doc-editor
+    > .pulsar-embed-synced-doc-editor-empty {
     left: 0;
     justify-content: center;
   }
 
-  .affine-embed-synced-doc-editor-empty > span {
+  .pulsar-embed-synced-doc-editor-empty > span {
     color: var(--pulsar-placeholder-color);
     font-feature-settings:
       'clig' off,
@@ -140,28 +140,28 @@ export const blockStyles = css`
     line-height: 24px;
   }
 
-  .affine-embed-synced-doc-container.surface {
+  .pulsar-embed-synced-doc-container.surface {
     background: var(--pulsar-background-primary-color);
   }
 
-  .affine-embed-synced-doc-container
-    > .affine-embed-synced-doc-editor.affine-page-viewport {
+  .pulsar-embed-synced-doc-container
+    > .pulsar-embed-synced-doc-editor.pulsar-page-viewport {
     background: transparent;
   }
 
-  .affine-embed-synced-doc-container > .affine-embed-synced-doc-editor {
+  .pulsar-embed-synced-doc-container > .pulsar-embed-synced-doc-editor {
     width: 100%;
     height: 100%;
   }
 
-  .affine-embed-synced-doc-editor .affine-page-root-block-container {
+  .pulsar-embed-synced-doc-editor .pulsar-page-root-block-container {
     width: 100%;
     max-width: 100%;
   }
 `;
 
 export const cardStyles = css`
-  .affine-embed-synced-doc-card {
+  .pulsar-embed-synced-doc-card {
     margin: 0 auto;
     box-sizing: border-box;
     display: flex;
@@ -174,7 +174,7 @@ export const cardStyles = css`
     user-select: none;
   }
 
-  .affine-embed-synced-doc-card-content {
+  .pulsar-embed-synced-doc-card-content {
     width: calc(100% - 204px);
     height: 100%;
     display: flex;
@@ -186,7 +186,7 @@ export const cardStyles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-synced-doc-card-content-title {
+  .pulsar-embed-synced-doc-card-content-title {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -197,20 +197,20 @@ export const cardStyles = css`
     opacity: var(--add, 1);
   }
 
-  .affine-embed-synced-doc-card-content-title-icon {
+  .pulsar-embed-synced-doc-card-content-title-icon {
     display: flex;
     width: 16px;
     height: 16px;
     justify-content: center;
     align-items: center;
   }
-  .affine-embed-synced-doc-card-content-title-icon svg {
+  .pulsar-embed-synced-doc-card-content-title-icon svg {
     width: 16px;
     height: 16px;
     fill: var(--pulsar-background-primary-color);
   }
 
-  .affine-embed-synced-doc-card-content-title-text {
+  .pulsar-embed-synced-doc-card-content-title-text {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -225,7 +225,7 @@ export const cardStyles = css`
     line-height: 22px;
   }
 
-  .affine-embed-synced-doc-content-note.render {
+  .pulsar-embed-synced-doc-content-note.render {
     display: none;
     overflow: hidden;
     pointer-events: none;
@@ -233,7 +233,7 @@ export const cardStyles = css`
 
   ${embedNoteContentStyles}
 
-  .affine-embed-synced-doc-content-note.default {
+  .pulsar-embed-synced-doc-content-note.default {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -249,8 +249,8 @@ export const cardStyles = css`
     line-height: 20px;
   }
 
-  .affine-embed-synced-doc-card-content-date,
-  .affine-embed-synced-doc-card-content-reload {
+  .pulsar-embed-synced-doc-card-content-date,
+  .pulsar-embed-synced-doc-card-content-reload {
     display: flex;
     flex-grow: 1;
     align-items: flex-end;
@@ -261,7 +261,7 @@ export const cardStyles = css`
     line-height: 20px;
   }
 
-  .affine-embed-synced-doc-card-content-date > span {
+  .pulsar-embed-synced-doc-card-content-date > span {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -277,19 +277,19 @@ export const cardStyles = css`
     line-height: 20px;
   }
 
-  .affine-embed-synced-doc-card-content-reload-button {
+  .pulsar-embed-synced-doc-card-content-reload-button {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 4px;
     cursor: pointer;
   }
-  .affine-embed-synced-doc-card-content-reload-button svg {
+  .pulsar-embed-synced-doc-card-content-reload-button svg {
     width: 12px;
     height: 12px;
     fill: var(--pulsar-background-primary-color);
   }
-  .affine-embed-synced-doc-card-content-reload-button > span {
+  .pulsar-embed-synced-doc-card-content-reload-button > span {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -305,7 +305,7 @@ export const cardStyles = css`
     line-height: 20px;
   }
 
-  .affine-embed-synced-doc-card-banner {
+  .pulsar-embed-synced-doc-card-banner {
     margin: 12px 12px 0px 0px;
     width: 204px;
     max-width: 100%;
@@ -313,12 +313,12 @@ export const cardStyles = css`
     opacity: var(--add, 1);
     pointer-events: none;
   }
-  .affine-embed-synced-doc-card-banner.render {
+  .pulsar-embed-synced-doc-card-banner.render {
     display: none;
   }
-  .affine-embed-synced-doc-card-banner img,
-  .affine-embed-synced-doc-card-banner object,
-  .affine-embed-synced-doc-card-banner svg {
+  .pulsar-embed-synced-doc-card-banner img,
+  .pulsar-embed-synced-doc-card-banner object,
+  .pulsar-embed-synced-doc-card-banner svg {
     width: 204px;
     max-width: 100%;
     height: 102px;
@@ -326,91 +326,91 @@ export const cardStyles = css`
     border-radius: 4px 4px var(--1, 0px) var(--1, 0px);
   }
 
-  .affine-embed-synced-doc-card.loading,
-  .affine-embed-synced-doc-card.deleted,
-  .affine-embed-synced-doc-card.error {
-    .affine-embed-linked-doc-content-note.render {
+  .pulsar-embed-synced-doc-card.loading,
+  .pulsar-embed-synced-doc-card.deleted,
+  .pulsar-embed-synced-doc-card.error {
+    .pulsar-embed-linked-doc-content-note.render {
       display: none;
     }
-    .affine-embed-linked-doc-content-note.default {
+    .pulsar-embed-linked-doc-content-note.default {
       display: block;
     }
-    .affine-embed-synced-doc-card-banner.render {
+    .pulsar-embed-synced-doc-card-banner.render {
       display: none;
     }
-    .affine-embed-synced-doc-card-banner.default {
+    .pulsar-embed-synced-doc-card-banner.default {
       display: block;
     }
-    .affine-embed-synced-doc-card-content-date {
+    .pulsar-embed-synced-doc-card-content-date {
       display: none;
     }
   }
 
-  .affine-embed-synced-doc-card:not(.loading).deleted,
-  .affine-embed-synced-doc-card:not(.loading).error {
+  .pulsar-embed-synced-doc-card:not(.loading).deleted,
+  .pulsar-embed-synced-doc-card:not(.loading).error {
     background: var(--pulsar-background-secondary-color);
   }
-  .affine-embed-synced-doc-card:not(.loading):not(.error):not(
+  .pulsar-embed-synced-doc-card:not(.loading):not(.error):not(
       .surface
     ).deleted {
     height: ${EMBED_CARD_HEIGHT.horizontalThin}px;
-    .affine-embed-synced-doc-card-banner {
+    .pulsar-embed-synced-doc-card-banner {
       height: 66px;
     }
-    .affine-embed-synced-doc-card-banner img,
-    .affine-embed-synced-doc-card-banner object,
-    .affine-embed-synced-doc-card-banner svg {
+    .pulsar-embed-synced-doc-card-banner img,
+    .pulsar-embed-synced-doc-card-banner object,
+    .pulsar-embed-synced-doc-card-banner svg {
       height: 66px;
     }
-    .affine-embed-synced-doc-card-content {
+    .pulsar-embed-synced-doc-card-content {
       gap: 12px;
     }
   }
 
-  .affine-embed-synced-doc-card:not(.loading):not(.error):not(.deleted):not(
+  .pulsar-embed-synced-doc-card:not(.loading):not(.error):not(.deleted):not(
       .note-empty
     ).cycle {
-    .affine-embed-synced-doc-content-note.render {
+    .pulsar-embed-synced-doc-content-note.render {
       display: block;
     }
-    .affine-embed-synced-doc-content-note.default {
+    .pulsar-embed-synced-doc-content-note.default {
       display: none;
     }
   }
 
-  .affine-embed-synced-doc-card:not(.loading):not(.error):not(.deleted):not(
+  .pulsar-embed-synced-doc-card:not(.loading):not(.error):not(.deleted):not(
       .banner-empty
     ).cycle {
-    .affine-embed-synced-doc-card-banner.render {
+    .pulsar-embed-synced-doc-card-banner.render {
       display: block;
     }
-    .affine-embed-synced-doc-card-banner.default {
+    .pulsar-embed-synced-doc-card-banner.default {
       display: none;
     }
   }
-  .affine-embed-synced-doc-card:not(.loading):not(.error):not(
+  .pulsar-embed-synced-doc-card:not(.loading):not(.error):not(
       .deleted
     ).cycle.banner-empty {
-    .affine-embed-synced-doc-card-content {
+    .pulsar-embed-synced-doc-card-content {
       width: 100%;
       height: 100%;
     }
 
-    .affine-embed-synced-doc-card-banner.render {
+    .pulsar-embed-synced-doc-card-banner.render {
       display: none;
     }
 
-    .affine-embed-synced-doc-card-banner.default {
+    .pulsar-embed-synced-doc-card-banner.default {
       display: none;
     }
   }
 
-  .affine-embed-synced-doc-card.surface:not(.cycle) {
+  .pulsar-embed-synced-doc-card.surface:not(.cycle) {
     width: ${EMBED_CARD_WIDTH.syncedDoc}px;
     height: ${EMBED_CARD_HEIGHT.syncedDoc}px;
     flex-direction: column-reverse;
 
-    .affine-embed-synced-doc-card-banner.default {
+    .pulsar-embed-synced-doc-card-banner.default {
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -419,14 +419,14 @@ export const cardStyles = css`
       margin-left: 12px;
       flex-shrink: 0;
     }
-    .affine-embed-synced-doc-card-banner img,
-    .affine-embed-synced-doc-card-banner object,
-    .affine-embed-synced-doc-card-banner svg {
+    .pulsar-embed-synced-doc-card-banner img,
+    .pulsar-embed-synced-doc-card-banner object,
+    .pulsar-embed-synced-doc-card-banner svg {
       width: 340px;
       height: 170px;
     }
 
-    .affine-embed-synced-doc-card-content {
+    .pulsar-embed-synced-doc-card-content {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -435,22 +435,22 @@ export const cardStyles = css`
       height: 100%;
     }
 
-    .affine-embed-synced-doc-card-content-title {
+    .pulsar-embed-synced-doc-card-content-title {
       margin: 0 auto;
     }
 
-    .affine-embed-synced-doc-card-content-note {
+    .pulsar-embed-synced-doc-card-content-note {
       margin: 0 auto;
       flex-grow: 0;
     }
 
-    .affine-embed-synced-doc-card-content-reload {
+    .pulsar-embed-synced-doc-card-content-reload {
       flex-grow: 0;
       margin: 0 auto;
     }
   }
 
-  .affine-embed-synced-doc-card.surface:not(.loading):not(.error):not(
+  .pulsar-embed-synced-doc-card.surface:not(.loading):not(.error):not(
       .deleted
     ).cycle {
     width: ${EMBED_CARD_WIDTH.vertical}px;
@@ -460,55 +460,55 @@ export const cardStyles = css`
       (${EMBED_CARD_HEIGHT.syncedDoc}px - ${EMBED_CARD_HEIGHT.vertical}px) / 2
     );
 
-    .affine-embed-synced-doc-card-content {
+    .pulsar-embed-synced-doc-card-content {
       width: 100%;
     }
 
-    .affine-embed-synced-doc-card-content-note {
+    .pulsar-embed-synced-doc-card-content-note {
       -webkit-line-clamp: 6;
       max-height: 130px;
     }
 
-    .affine-embed-synced-doc-card-content-date {
+    .pulsar-embed-synced-doc-card-content-date {
       flex-grow: 1;
       align-items: flex-end;
     }
 
-    .affine-embed-synced-doc-card-banner {
+    .pulsar-embed-synced-doc-card-banner {
       width: 340px;
       height: 170px;
       margin-left: 12px;
     }
-    .affine-embed-synced-doc-card-banner img,
-    .affine-embed-synced-doc-card-banner object,
-    .affine-embed-synced-doc-card-banner svg {
+    .pulsar-embed-synced-doc-card-banner img,
+    .pulsar-embed-synced-doc-card-banner object,
+    .pulsar-embed-synced-doc-card-banner svg {
       width: 340px;
       height: 170px;
     }
   }
 
-  .affine-embed-synced-doc-card.surface:not(.loading):not(.error):not(
+  .pulsar-embed-synced-doc-card.surface:not(.loading):not(.error):not(
       .deleted
     ).cycle:not(.empty).banner-empty {
-    .affine-embed-synced-doc-card-content {
+    .pulsar-embed-synced-doc-card-content {
       width: 100%;
       height: 100%;
     }
 
-    .affine-embed-synced-doc-card-banner.render {
+    .pulsar-embed-synced-doc-card-banner.render {
       display: none;
     }
 
-    .affine-embed-synced-doc-card-banner.default {
+    .pulsar-embed-synced-doc-card-banner.default {
       display: none;
     }
 
-    .affine-embed-synced-doc-card-content-note {
+    .pulsar-embed-synced-doc-card-content-note {
       -webkit-line-clamp: 16;
       max-height: 320px;
     }
 
-    .affine-embed-synced-doc-card-content-date {
+    .pulsar-embed-synced-doc-card-content-date {
       flex-grow: unset;
       align-items: center;
     }

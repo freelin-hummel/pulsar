@@ -20,12 +20,12 @@ import {
 @customElement('pulsar-database-number-cell')
 export class NumberCell extends BaseCellRenderer<number, NumberColumnDataType> {
   static override styles = css`
-    affine-database-number-cell {
+    pulsar-database-number-cell {
       display: block;
       width: 100%;
     }
 
-    .affine-database-number {
+    .pulsar-database-number {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -113,13 +113,13 @@ export class NumberCellEditing extends BaseCellRenderer<
   };
 
   static override styles = css`
-    affine-database-number-cell-editing {
+    pulsar-database-number-cell-editing {
       display: block;
       width: 100%;
       cursor: text;
     }
 
-    .affine-database-number {
+    .pulsar-database-number {
       display: flex;
       align-items: center;
       width: 100%;
@@ -134,7 +134,7 @@ export class NumberCellEditing extends BaseCellRenderer<
       text-align: right;
     }
 
-    .affine-database-number:focus {
+    .pulsar-database-number:focus {
       outline: none;
     }
   `;

@@ -48,7 +48,7 @@ export class CardStylePanel extends WithDisposable(LitElement) {
           }}
         >
           ${Icon}
-          <affine-tooltip .offset=${4}>${tooltip}</affine-tooltip>
+          <pulsar-tooltip .offset=${4}>${tooltip}</pulsar-tooltip>
         </icon-button>
       `
     );

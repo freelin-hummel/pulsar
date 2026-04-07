@@ -21,7 +21,7 @@ import './stats/column-stats-column.js';
 import { TableAreaSelection } from './types.js';
 
 const styles = css`
-  affine-data-view-table-group:hover .group-header-op {
+  pulsar-data-view-table-group:hover .group-header-op {
     visibility: visible;
     opacity: 1;
   }
@@ -145,10 +145,10 @@ export class TableGroup extends SignalWatcher(
 
   private renderRows(ids: string[]) {
     return html`
-      <affine-database-column-header
+      <pulsar-database-column-header
         .renderGroupHeader="${this.renderGroupHeader}"
         .tableViewManager="${this.view}"
-      ></affine-database-column-header>
+      ></pulsar-database-column-header>
       <div class="pulsar-database-block-rows">
         ${repeat(
           ids,
@@ -179,8 +179,8 @@ export class TableGroup extends SignalWatcher(
               ${PlusIcon()}<span>New Record</span>
             </div>
           </div>`}
-      <affine-database-column-stats .view="${this.view}" .group=${this.group}>
-      </affine-database-column-stats>
+      <pulsar-database-column-stats .view="${this.view}" .group=${this.group}>
+      </pulsar-database-column-stats>
     `;
   }
 

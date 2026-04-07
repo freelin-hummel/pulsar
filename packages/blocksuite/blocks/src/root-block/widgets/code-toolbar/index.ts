@@ -57,7 +57,7 @@ export class PulsarCodeToolbarWidget extends WidgetComponent<
         const context = new CodeBlockToolbarContext(codeBlock, abortController);
 
         return {
-          template: html`<affine-code-toolbar
+          template: html`<pulsar-code-toolbar
             .context=${context}
             .primaryGroups=${this.primaryGroups}
             .moreGroups=${this.moreGroups}
@@ -67,7 +67,7 @@ export class PulsarCodeToolbarWidget extends WidgetComponent<
                 this._hoverController?.abort();
               }
             }}
-          ></affine-code-toolbar>`,
+          ></pulsar-code-toolbar>`,
           container: this.block,
           // stacking-context(editor-host)
           portalStyles: {

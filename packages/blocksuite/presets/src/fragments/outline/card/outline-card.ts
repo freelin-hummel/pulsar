@@ -361,7 +361,7 @@ export class OutlineNoteCard extends SignalWatcher(WithDisposable(LitElement)) {
         </div>`}
           <div class="card-content">
             ${children.map(block => {
-              return html`<affine-outline-block-preview
+              return html`<pulsar-outline-block-preview
                 .block=${block}
                 .className=${this.activeHeadingId === block.id ? 'active' : ''}
                 .showPreviewIcon=${this.showPreviewIcon}
@@ -372,7 +372,7 @@ export class OutlineNoteCard extends SignalWatcher(WithDisposable(LitElement)) {
                   if (this.editorMode === 'edgeless' || this.invisible) return;
                   this._dispatchClickBlockEvent(block);
                 }}
-              ></affine-outline-block-preview>`;
+              ></pulsar-outline-block-preview>`;
             })}
             </div>
           </div>

@@ -147,7 +147,7 @@ export class AIPanelInput extends WithDisposable(LitElement) {
         >
           ${ArrowUpBigIcon}
           ${this._hasContent
-            ? html`<affine-tooltip .offset=${12}>Send to AI</affine-tooltip>`
+            ? html`<pulsar-tooltip .offset=${12}>Send to AI</pulsar-tooltip>`
             : nothing}
         </div>
       </div>

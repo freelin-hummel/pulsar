@@ -9,7 +9,7 @@ import { WidgetBase } from '../../../widget-base.js';
 import { NewRecordPreview } from './new-record-preview.js';
 
 const styles = css`
-  .affine-database-toolbar-item.new-record {
+  .pulsar-database-toolbar-item.new-record {
     margin-left: 12px;
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@ export class DataViewHeaderToolsAddRow extends WidgetBase {
       ?.querySelector('pulsar-database-table')
       ?.getBoundingClientRect();
     const rows: NodeListOf<HTMLElement> | undefined =
-      container?.querySelectorAll('.affine-database-block-row');
+      container?.querySelectorAll('.pulsar-database-block-row');
     if (!rows || !tableRect) {
       return;
     }

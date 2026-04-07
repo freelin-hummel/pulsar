@@ -6,7 +6,7 @@ import { customElement } from 'lit/decorators.js';
 @customElement('pulsar-preview-root')
 export class PreviewRootBlockComponent extends BlockComponent {
   static override styles = css`
-    affine-preview-root {
+    pulsar-preview-root {
       display: block;
     }
   `;

@@ -85,7 +85,7 @@ export const containBlock = (blockIDs: string[], targetID: string) => {
 
 // TODO: this is a hack, need to find a better way
 export const insideDatabaseTable = (element: Element) => {
-  return !!element.closest('.affine-database-block-table');
+  return !!element.closest('.pulsar-database-block-table');
 };
 
 export const captureEventTarget = (target: EventTarget | null) => {
@@ -159,7 +159,7 @@ export const getClosestBlockByPoint = (
     rootComponent,
     point
   );
-  if (!closestNoteBlock || closestNoteBlock.closest('.affine-surface-ref')) {
+  if (!closestNoteBlock || closestNoteBlock.closest('.pulsar-surface-ref')) {
     return null;
   }
 
@@ -171,7 +171,7 @@ export const getClosestBlockByPoint = (
   }) as BlockComponent | null;
 
   const blockSelector =
-    '.affine-note-block-container > .affine-block-children-container > [data-block-id]';
+    '.pulsar-note-block-container > .pulsar-block-children-container > [data-block-id]';
 
   const closestBlock = (
     block && containChildBlock([closestNoteBlock], block.model)

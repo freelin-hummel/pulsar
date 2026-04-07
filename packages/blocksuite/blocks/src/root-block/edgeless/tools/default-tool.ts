@@ -714,7 +714,7 @@ export class DefaultToolController extends EdgelessToolController<DefaultTool> {
               const block = this._edgeless.host.view.getBlock(selected.id);
               if (block) {
                 const rect = block
-                  .querySelector('.affine-block-children-container')!
+                  .querySelector('.pulsar-block-children-container')!
                   .getBoundingClientRect();
 
                 const offsetY = 8 * this.zoom;

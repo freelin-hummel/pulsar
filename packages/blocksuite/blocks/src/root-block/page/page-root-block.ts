@@ -55,17 +55,17 @@ export class PageRootBlockComponent extends BlockComponent<
   private _viewportElement: HTMLDivElement | null = null;
 
   static override styles = css`
-    editor-host:has(> affine-page-root, * > affine-page-root) {
+    editor-host:has(> pulsar-page-root, * > pulsar-page-root) {
       display: block;
       height: 100%;
     }
 
-    affine-page-root {
+    pulsar-page-root {
       display: block;
       height: 100%;
     }
 
-    .affine-page-root-block-container {
+    .pulsar-page-root-block-container {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -92,13 +92,13 @@ export class PageRootBlockComponent extends BlockComponent<
 
     /* Extra small devices (phones, 640px and down) */
     @container viewport (width <= 640px) {
-      .affine-page-root-block-container {
+      .pulsar-page-root-block-container {
         padding-left: ${DOC_BLOCK_CHILD_PADDING}px;
         padding-right: ${DOC_BLOCK_CHILD_PADDING}px;
       }
     }
 
-    .affine-block-element {
+    .pulsar-block-element {
       display: block;
     }
 
@@ -319,7 +319,7 @@ export class PageRootBlockComponent extends BlockComponent<
             'pulsar:attachment',
             'pulsar:surface-ref',
           ]) ||
-          /affine:embed-*/.test(last.flavour)
+          /pulsar:embed-*/.test(last.flavour)
         ) {
           if (readonly) return;
           const paragraphId = this.doc.addBlock(
@@ -429,12 +429,12 @@ export class PageRootBlockComponent extends BlockComponent<
   get viewportElement(): HTMLDivElement | null {
     if (this._viewportElement) return this._viewportElement;
     this._viewportElement = this.host.closest(
-      '.affine-page-viewport'
+      '.pulsar-page-viewport'
     ) as HTMLDivElement | null;
     return this._viewportElement;
   }
 
-  @query('.affine-page-root-block-container')
+  @query('.pulsar-page-root-block-container')
   accessor rootElementContainer!: HTMLDivElement;
 }
 

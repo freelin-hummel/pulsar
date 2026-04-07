@@ -18,7 +18,7 @@ import { GroupTitle } from '../../../common/group-by/group-title.js';
 import './card.js';
 
 const styles = css`
-  affine-data-view-kanban-group {
+  pulsar-data-view-kanban-group {
     width: 260px;
     flex-shrink: 0;
     border-radius: 8px;
@@ -44,7 +44,7 @@ const styles = css`
     font-size: var(--data-view-cell-text-size);
   }
 
-  affine-data-view-kanban-group:hover .group-header-op {
+  pulsar-data-view-kanban-group:hover .group-header-op {
     visibility: visible;
     opacity: 1;
   }
@@ -71,12 +71,12 @@ const styles = css`
     color: var(--pulsar-text-secondary-color);
   }
 
-  affine-data-view-kanban-group:hover .add-card {
+  pulsar-data-view-kanban-group:hover .add-card {
     visibility: visible;
     opacity: 1;
   }
 
-  affine-data-view-kanban-group .add-card:hover {
+  pulsar-data-view-kanban-group .add-card:hover {
     background-color: var(--pulsar-hover-color);
     color: var(--pulsar-text-primary-color);
   }
@@ -170,13 +170,13 @@ export class KanbanGroup extends SignalWatcher(
           id => id,
           id => {
             return html`
-              <affine-data-view-kanban-card
+              <pulsar-data-view-kanban-card
                 data-card-id="${id}"
                 .groupKey="${this.group.key}"
                 .dataViewEle="${this.dataViewEle}"
                 .view="${this.view}"
                 .cardId="${id}"
-              ></affine-data-view-kanban-card>
+              ></pulsar-data-view-kanban-card>
             `;
           }
         )}

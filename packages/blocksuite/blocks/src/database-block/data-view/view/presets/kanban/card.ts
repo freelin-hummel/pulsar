@@ -17,7 +17,7 @@ import './cell.js';
 import { openDetail, popCardMenu } from './menu.js';
 
 const styles = css`
-  affine-data-view-kanban-card {
+  pulsar-data-view-kanban-card {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -28,18 +28,18 @@ const styles = css`
     background-color: var(--pulsar-background-kanban-card-color);
   }
 
-  affine-data-view-kanban-card:hover {
+  pulsar-data-view-kanban-card:hover {
     background-color: var(--pulsar-hover-color);
   }
 
-  affine-data-view-kanban-card .card-header {
+  pulsar-data-view-kanban-card .card-header {
     padding: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  affine-data-view-kanban-card .card-header-title uni-lit {
+  pulsar-data-view-kanban-card .card-header-title uni-lit {
     width: 100%;
   }
 
@@ -47,12 +47,12 @@ const styles = css`
     border-bottom: 0.5px solid var(--pulsar-border-color);
   }
 
-  affine-data-view-kanban-card .card-header-title {
+  pulsar-data-view-kanban-card .card-header-title {
     font-size: var(--data-view-cell-text-size);
     line-height: var(--data-view-cell-text-line-height);
   }
 
-  affine-data-view-kanban-card .card-header-icon {
+  pulsar-data-view-kanban-card .card-header-icon {
     padding: 4px;
     background-color: var(--pulsar-background-secondary-color);
     display: flex;
@@ -61,21 +61,21 @@ const styles = css`
     width: max-content;
   }
 
-  affine-data-view-kanban-card .card-header-icon svg {
+  pulsar-data-view-kanban-card .card-header-icon svg {
     width: 16px;
     height: 16px;
     fill: var(--pulsar-icon-color);
     color: var(--pulsar-icon-color);
   }
 
-  affine-data-view-kanban-card .card-body {
+  pulsar-data-view-kanban-card .card-body {
     display: flex;
     flex-direction: column;
     padding: 8px;
     gap: 4px;
   }
 
-  affine-data-view-kanban-card:hover .card-ops {
+  pulsar-data-view-kanban-card:hover .card-ops {
     visibility: visible;
   }
 
@@ -185,14 +185,14 @@ export class KanbanCard extends SignalWatcher(
           if (this.view.isInHeader(column.id)) {
             return '';
           }
-          return html` <affine-data-view-kanban-cell
+          return html` <pulsar-data-view-kanban-cell
             .contentOnly="${false}"
             data-column-id="${column.id}"
             .view="${this.view}"
             .groupKey="${this.groupKey}"
             .column="${column}"
             .cardId="${this.cardId}"
-          ></affine-data-view-kanban-cell>`;
+          ></pulsar-data-view-kanban-cell>`;
         }
       )}
     </div>`;
@@ -243,14 +243,14 @@ export class KanbanCard extends SignalWatcher(
       return;
     }
     return html` <div class="card-header-title">
-      <affine-data-view-kanban-cell
+      <pulsar-data-view-kanban-cell
         .contentOnly="${true}"
         data-column-id="${title.id}"
         .view="${this.view}"
         .groupKey="${this.groupKey}"
         .column="${title}"
         .cardId="${this.cardId}"
-      ></affine-data-view-kanban-cell>
+      ></pulsar-data-view-kanban-cell>
     </div>`;
   }
 

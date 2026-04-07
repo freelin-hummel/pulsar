@@ -2,7 +2,7 @@ import type { EditorHost } from '@pulsar/block-std';
 import type { InlineEditor } from '@pulsar/inline';
 
 function getDocTitleByEditorHost(editorHost: EditorHost): HTMLElement | null {
-  const docViewport = editorHost.closest('.affine-page-viewport');
+  const docViewport = editorHost.closest('.pulsar-page-viewport');
   if (!docViewport) return null;
   return docViewport.querySelector('doc-title');
 }

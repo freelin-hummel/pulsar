@@ -153,7 +153,7 @@ export function getClosestBlockComponentByPoint(
       // Indented paragraphs or list
       bounds = getRectByBlockComponent(element);
       childBounds = element
-        .querySelector('.affine-block-children-container')
+        .querySelector('.pulsar-block-children-container')
         ?.firstElementChild?.getBoundingClientRect();
 
       if (childBounds && childBounds.height) {
@@ -320,5 +320,5 @@ function findBlockComponent(elements: Element[], parent?: Element) {
  * Gets the rows of the database.
  */
 function getDatabaseBlockRowsElement(element: Element) {
-  return element.querySelector('.affine-database-block-rows');
+  return element.querySelector('.pulsar-database-block-rows');
 }

@@ -11,27 +11,22 @@ import {
   Minus,
 } from 'lucide-react'
 import { useEditorContext } from '../../editor/context.js'
-
-type Tool =
-  | 'select'
-  | 'hand'
-  | 'rect'
-  | 'ellipse'
-  | 'text'
-  | 'pen'
-  | 'note'
-  | 'image'
-  | 'line'
+import type { MapTool, TerrainTextureId, MapObjectType } from '../../shared/mapTypes.js'
+import type { BoardMode } from '../../shared/board.js'
+import { MapToolbar } from './MapToolbar.js'
+import { toEdgelessTool, type Tool } from './edgelessTools.js'
 
 interface ToolDef {
   id: Tool
   label: string
   icon: React.ReactNode
+  /** Available in view mode */
+  viewMode?: boolean
 }
 
 const tools: ToolDef[] = [
-  { id: 'select', label: 'Select', icon: <MousePointer2 size={16} /> },
-  { id: 'hand', label: 'Hand', icon: <Hand size={16} /> },
+  { id: 'select', label: 'Select', icon: <MousePointer2 size={16} />, viewMode: true },
+  { id: 'hand', label: 'Hand', icon: <Hand size={16} />, viewMode: true },
   { id: 'rect', label: 'Rectangle', icon: <Square size={16} /> },
   { id: 'ellipse', label: 'Ellipse', icon: <Circle size={16} /> },
   { id: 'line', label: 'Line', icon: <Minus size={16} /> },
@@ -42,40 +37,55 @@ const tools: ToolDef[] = [
 ]
 
 /**
- * Map our tool IDs to BlockSuite EdgelessTool objects.
+ * Safely retrieve the edgeless root block component from the mounted editor.
+ *
+ * BlockSuite's PulsarEditorContainer is a shadowless Lit element that renders
+ * `<pulsar-edgeless-root>` into the light DOM when in edgeless mode.  The
+ * private `_edgelessRoot` accessor created by the `@query` decorator is backed
+ * by a TC39 private field and is not accessible from outside the class.  We
+ * use a plain DOM querySelector instead which works identically.
  */
-function toEdgelessTool(tool: Tool): Record<string, unknown> | null {
-  switch (tool) {
-    case 'select':
-      return { type: 'default' }
-    case 'hand':
-      return { type: 'pan', panning: true }
-    case 'rect':
-      return { type: 'shape', shapeName: 'rect' }
-    case 'ellipse':
-      return { type: 'shape', shapeName: 'ellipse' }
-    case 'line':
-      return { type: 'connector', mode: 0 }
-    case 'pen':
-      return { type: 'brush' }
-    case 'text':
-      return { type: 'text' }
-    case 'note':
-      return { type: 'pulsar:note', childFlavour: 'pulsar:paragraph', childType: 'text', tip: 'Note' }
-    case 'image':
-      // Image insertion is handled by triggering a file input, not a tool switch
-      return null
-    default:
-      return { type: 'default' }
+function getEdgelessRoot(editor: unknown): {
+  tools?: { setEdgelessTool: (tool: Record<string, unknown>) => void }
+  addImages?: (files: File[]) => Promise<string[]>
+} | null {
+  const el = editor as HTMLElement | null
+  if (!el || typeof el.querySelector !== 'function') return null
+  try {
+    return el.querySelector('pulsar-edgeless-root') as unknown as ReturnType<typeof getEdgelessRoot>
+  } catch {
+    return null
   }
 }
 
 interface ToolbarProps {
   activeTool?: Tool
   onToolChange?: (tool: Tool) => void
+  /** Current board mode — in 'view' mode, only select/hand are available */
+  boardMode?: BoardMode
+  /** Whether the active board is a map (shows map tools) */
+  isMapBoard?: boolean
+  /** Map tool state */
+  activeMapTool?: MapTool | null
+  onMapToolChange?: (tool: MapTool | null) => void
+  selectedTerrain?: TerrainTextureId
+  onTerrainChange?: (terrain: TerrainTextureId) => void
+  selectedObject?: MapObjectType
+  onObjectChange?: (obj: MapObjectType) => void
 }
 
-export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarProps) {
+export function Toolbar({
+  activeTool: controlledTool,
+  onToolChange,
+  boardMode = 'edit',
+  isMapBoard = false,
+  activeMapTool = null,
+  onMapToolChange,
+  selectedTerrain = 'stone',
+  onTerrainChange,
+  selectedObject = 'crate',
+  onObjectChange,
+}: ToolbarProps) {
   const [internalTool, setInternalTool] = useState<Tool>('select')
   const activeTool = controlledTool ?? internalTool
   const editorCtx = useEditorContext()
@@ -97,10 +107,7 @@ export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarPro
         input.onchange = () => {
           const files = Array.from(input.files ?? [])
           if (files.length === 0) return
-          // Access the edgeless root and call addImages
-          const edgelessRoot = (editor as unknown as Record<string, unknown>)._edgelessRoot as
-            | { addImages?: (files: File[]) => Promise<string[]> }
-            | undefined
+          const edgelessRoot = getEdgelessRoot(editor)
           if (edgelessRoot?.addImages) {
             edgelessRoot.addImages(files)
           }
@@ -112,11 +119,7 @@ export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarPro
       const edgelessTool = toEdgelessTool(tool)
       if (!edgelessTool) return
 
-      // Access the edgeless root component's tools manager
-      const edgelessRoot = (editor as unknown as Record<string, unknown>)._edgelessRoot as
-        | { tools?: { setEdgelessTool: (tool: Record<string, unknown>) => void } }
-        | undefined
-
+      const edgelessRoot = getEdgelessRoot(editor)
       if (edgelessRoot?.tools) {
         edgelessRoot.tools.setEdgelessTool(edgelessTool)
       }
@@ -124,13 +127,20 @@ export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarPro
     [editorCtx, onToolChange]
   )
 
+  // Filter tools based on board mode
+  const visibleTools = boardMode === 'view'
+    ? tools.filter((t) => t.viewMode)
+    : tools
+
   return (
-    <div className="toolbar" style={styles.bar}>
-      {tools.map((tool) => (
+    <div className="toolbar" data-testid="toolbar" style={styles.bar}>
+      {visibleTools.map((tool) => (
         <button
           key={tool.id}
           title={tool.label}
           aria-label={tool.label}
+          data-testid={`tool-${tool.id}`}
+          data-active={activeTool === tool.id}
           onClick={() => handleToolChange(tool.id)}
           style={{
             ...styles.button,
@@ -159,6 +169,18 @@ export function Toolbar({ activeTool: controlledTool, onToolChange }: ToolbarPro
           {tool.icon}
         </button>
       ))}
+
+      {/* Map tools — shown only when active board is a map in edit mode */}
+      {isMapBoard && boardMode === 'edit' && (
+        <MapToolbar
+          activeMapTool={activeMapTool}
+          onMapToolChange={onMapToolChange ?? (() => {})}
+          selectedTerrain={selectedTerrain}
+          onTerrainChange={onTerrainChange ?? (() => {})}
+          selectedObject={selectedObject}
+          onObjectChange={onObjectChange ?? (() => {})}
+        />
+      )}
     </div>
   )
 }

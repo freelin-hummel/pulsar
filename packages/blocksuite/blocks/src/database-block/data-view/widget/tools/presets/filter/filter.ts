@@ -8,7 +8,7 @@ import '../../../filter/filter-group.js';
 import { WidgetBase } from '../../../widget-base.js';
 
 const styles = css`
-  .affine-database-filter-button {
+  .pulsar-database-filter-button {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -19,11 +19,11 @@ const styles = css`
     cursor: pointer;
   }
 
-  .affine-database-filter-button:hover {
+  .pulsar-database-filter-button:hover {
     background-color: var(--pulsar-hover-color);
   }
 
-  .affine-database-filter-button svg {
+  .pulsar-database-filter-button svg {
     width: 20px;
     height: 20px;
   }

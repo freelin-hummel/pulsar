@@ -361,7 +361,7 @@ export class InnerSlashMenu extends WithDisposable(LitElement) {
     >
       ${icon && html`<div class="slash-menu-item-icon">${icon}</div>`}
       ${tooltip &&
-      html`<affine-tooltip
+      html`<pulsar-tooltip
         tip-position="right"
         .offset=${22}
         .tooltipStyle=${slashItemToolTipStyle}
@@ -372,7 +372,7 @@ export class InnerSlashMenu extends WithDisposable(LitElement) {
       >
         <div class="tooltip-figure">${tooltip.figure}</div>
         <div class="tooltip-caption">${tooltip.caption}</div>
-      </affine-tooltip>`}
+      </pulsar-tooltip>`}
     </icon-button>`;
   };
 

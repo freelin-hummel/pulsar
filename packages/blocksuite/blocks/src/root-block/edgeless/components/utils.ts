@@ -105,7 +105,7 @@ export function rotateResizeCursor(angle: number) {
 
 export function calcAngle(target: HTMLElement, point: IVec, offset = 0) {
   const rect = target
-    .closest('.affine-edgeless-selected-rect')
+    .closest('.pulsar-edgeless-selected-rect')
     ?.getBoundingClientRect();
   assertExists(rect);
   const { left, top, right, bottom } = rect;

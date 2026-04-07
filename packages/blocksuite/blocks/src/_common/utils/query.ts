@@ -94,21 +94,21 @@ export function getHoveringNote(point: Point) {
  * Gets the table of the database.
  */
 function getDatabaseBlockTableElement(element: Element) {
-  return element.querySelector('.affine-database-block-table');
+  return element.querySelector('.pulsar-database-block-table');
 }
 
 /**
  * Gets the column header of the database.
  */
 function getDatabaseBlockColumnHeaderElement(element: Element) {
-  return element.querySelector('.affine-database-column-header');
+  return element.querySelector('.pulsar-database-column-header');
 }
 
 /**
  * Gets the rows of the database.
  */
 function getDatabaseBlockRowsElement(element: Element) {
-  return element.querySelector('.affine-database-block-rows');
+  return element.querySelector('.pulsar-database-block-rows');
 }
 
 /**
@@ -201,14 +201,14 @@ export function getDropRectByPoint(
 
 function getCellRect(element: Element, bounds?: DOMRect) {
   if (!bounds) {
-    const table = element.closest('.affine-database-block-table');
+    const table = element.closest('.pulsar-database-block-table');
     assertExists(table);
     bounds = table.getBoundingClientRect();
   }
-  // affine-database-block-row-cell
+  // pulsar-database-block-row-cell
   const col = element.parentElement;
   assertExists(col);
-  // affine-database-block-row
+  // pulsar-database-block-row
   const row = col.parentElement;
   assertExists(row);
   const colRect = col.getBoundingClientRect();

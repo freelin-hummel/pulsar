@@ -2,7 +2,7 @@ import { FONT_XS, PANEL_BASE } from '@pulsar/editor-shared/styles';
 import { css } from 'lit';
 
 const editLinkStyle = css`
-  .affine-link-edit-popover {
+  .pulsar-link-edit-popover {
     ${PANEL_BASE};
     display: grid;
     grid-template-columns: auto auto;
@@ -18,14 +18,14 @@ const editLinkStyle = css`
     box-sizing: content-box;
   }
 
-  .affine-link-edit-popover label {
+  .pulsar-link-edit-popover label {
     box-sizing: border-box;
     color: var(--pulsar-icon-color);
     ${FONT_XS};
     font-weight: 400;
   }
 
-  .affine-link-edit-popover input {
+  .pulsar-link-edit-popover input {
     color: inherit;
     padding: 0;
     border: none;
@@ -33,18 +33,18 @@ const editLinkStyle = css`
     color: var(--pulsar-text-primary-color);
     ${FONT_XS};
   }
-  .affine-link-edit-popover input::placeholder {
+  .pulsar-link-edit-popover input::placeholder {
     color: var(--pulsar-placeholder-color);
   }
   input:focus {
     outline: none;
   }
-  .affine-link-edit-popover input:focus ~ label,
-  .affine-link-edit-popover input:active ~ label {
+  .pulsar-link-edit-popover input:focus ~ label,
+  .pulsar-link-edit-popover input:active ~ label {
     color: var(--pulsar-primary-color);
   }
 
-  .affine-edit-area {
+  .pulsar-edit-area {
     width: 280px;
     padding: 4px 10px;
     display: grid;
@@ -62,28 +62,28 @@ const editLinkStyle = css`
     border-radius: 4px;
     background: transparent;
   }
-  .affine-edit-area:focus-within {
+  .pulsar-edit-area:focus-within {
     border-color: var(--pulsar-blue-700);
     box-shadow: var(--pulsar-active-shadow);
   }
 
-  .affine-edit-area.text {
+  .pulsar-edit-area.text {
     grid-area: text-area;
   }
 
-  .affine-edit-area.link {
+  .pulsar-edit-area.link {
     grid-area: link-area;
   }
 
-  .affine-edit-label {
+  .pulsar-edit-label {
     grid-area: label;
   }
 
-  .affine-edit-input {
+  .pulsar-edit-input {
     grid-area: input;
   }
 
-  .affine-confirm-button {
+  .pulsar-confirm-button {
     grid-area: btn;
     user-select: none;
   }
@@ -99,13 +99,13 @@ export const linkPopupStyle = css`
     background-color: rgba(35, 131, 226, 0.28);
   }
 
-  .affine-link-popover-container {
+  .pulsar-link-popover-container {
     z-index: var(--pulsar-z-index-popover);
-    animation: affine-popover-fade-in 0.2s ease;
+    animation: pulsar-popover-fade-in 0.2s ease;
     position: absolute;
   }
 
-  @keyframes affine-popover-fade-in {
+  @keyframes pulsar-popover-fade-in {
     from {
       opacity: 0;
       transform: translateY(-3px);
@@ -116,7 +116,7 @@ export const linkPopupStyle = css`
     }
   }
 
-  .affine-link-popover-overlay-mask {
+  .pulsar-link-popover-overlay-mask {
     position: fixed;
     top: 0;
     left: 0;
@@ -125,7 +125,7 @@ export const linkPopupStyle = css`
     z-index: var(--pulsar-z-index-popover);
   }
 
-  .affine-link-preview {
+  .pulsar-link-preview {
     display: flex;
     justify-content: flex-start;
     min-width: 60px;
@@ -148,7 +148,7 @@ export const linkPopupStyle = css`
     text-wrap: nowrap;
   }
 
-  .affine-link-preview > span {
+  .pulsar-link-preview > span {
     display: inline-block;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -158,7 +158,7 @@ export const linkPopupStyle = css`
     opacity: var(--add, 1);
   }
 
-  .affine-link-popover.create {
+  .pulsar-link-popover.create {
     ${PANEL_BASE};
     gap: 12px;
     padding: 12px;
@@ -166,7 +166,7 @@ export const linkPopupStyle = css`
     color: var(--pulsar-text-primary-color);
   }
 
-  .affine-link-popover-input {
+  .pulsar-link-popover-input {
     min-width: 280px;
     height: 30px;
     box-sizing: border-box;
@@ -179,10 +179,10 @@ export const linkPopupStyle = css`
     color: var(--pulsar-text-primary-color);
     ${FONT_XS};
   }
-  .affine-link-popover-input::placeholder {
+  .pulsar-link-popover-input::placeholder {
     color: var(--pulsar-placeholder-color);
   }
-  .affine-link-popover-input:focus {
+  .pulsar-link-popover-input:focus {
     border-color: var(--pulsar-blue-700);
     box-shadow: var(--pulsar-active-shadow);
   }

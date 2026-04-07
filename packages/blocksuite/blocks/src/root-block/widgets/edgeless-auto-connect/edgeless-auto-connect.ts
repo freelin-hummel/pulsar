@@ -242,9 +242,9 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
 
         return html`<div style=${style} class="edgeless-only-index-label">
           ${HiddenIcon}
-          <affine-tooltip tip-position="bottom">
+          <pulsar-tooltip tip-position="bottom">
             ${getIndexLabelTooltip(SmallDocIcon, 'Hidden on page')}
-          </affine-tooltip>
+          </pulsar-tooltip>
         </div>`;
       }
     )}`;
@@ -345,9 +345,9 @@ export class EdgelessAutoConnectWidget extends WidgetComponent<
               }}
             >
               ${index}
-              <affine-tooltip tip-position="bottom">
+              <pulsar-tooltip tip-position="bottom">
                 ${getIndexLabelTooltip(SmallDocIcon, 'Page mode index')}
-              </affine-tooltip>
+              </pulsar-tooltip>
             </div>
           `);
         }

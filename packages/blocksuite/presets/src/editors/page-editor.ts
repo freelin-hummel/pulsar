@@ -32,7 +32,7 @@ export class PageEditor extends WithDisposable(ShadowlessElement) {
       }
     }
 
-    .affine-page-viewport {
+    .pulsar-page-viewport {
       position: relative;
       height: 100%;
       overflow-x: hidden;

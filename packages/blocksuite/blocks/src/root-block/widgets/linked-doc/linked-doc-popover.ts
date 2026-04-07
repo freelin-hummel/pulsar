@@ -208,8 +208,8 @@ export class LinkedDocPopover extends WithDisposable(LitElement) {
                 accIdx++;
                 const curIdx = accIdx - 1;
                 const tooltip = this._showTooltip
-                  ? html`<affine-tooltip tip-position=${'right'}
-                      >${name}</affine-tooltip
+                  ? html`<pulsar-tooltip tip-position=${'right'}
+                      >${name}</pulsar-tooltip
                     >`
                   : nothing;
                 return html`<icon-button

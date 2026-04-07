@@ -44,7 +44,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
       position: relative;
     }
 
-    .affine-frame-title {
+    .pulsar-frame-title {
       position: absolute;
       display: flex;
       align-items: center;
@@ -69,7 +69,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
       }
     }
 
-    .affine-frame-title:hover {
+    .pulsar-frame-title:hover {
       background-color: color-mix(in srgb, var(--bg-color), #000000 7%);
     }
   `;
@@ -303,7 +303,7 @@ export class EdgelessFrameTitle extends SignalWatcher(
   @state()
   private accessor _frameTitle = '';
 
-  @query('.affine-frame-title')
+  @query('.pulsar-frame-title')
   private accessor _frameTitleEl!: HTMLDivElement;
 
   @state()
